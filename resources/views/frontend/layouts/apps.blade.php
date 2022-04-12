@@ -571,7 +571,12 @@
 
                 .media-slider {
                     height: 44px;
-                }    
+                }  
+
+                .banner-media img {
+                    
+                    width: 100%;
+                }  
                
             }
            
@@ -602,7 +607,7 @@
     </head>
     <body class="theme-lunar-new-year">
         <div class="banner-media desktop">
-            <div class="media-slider" data-size="1">
+            <div class="" data-size="1">
                 <div class="item" data-background-color="#CF1F2F" data-order="1">
                     <a aria-label="slide" data-cate="0" data-place="1295" href="#"><img  src="{{ asset('images/background-image/banner-top.jpg') }}" alt="BF"  ></a>
                 </div>
