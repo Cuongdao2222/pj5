@@ -9,6 +9,7 @@
 
             .item-img_1942{
                 height: 290px;
+                line-height: 290px;
             }
             .breadcrumb{
                 padding: 0;
