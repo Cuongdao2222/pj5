@@ -566,6 +566,7 @@
 
                 .media-slider img{
                     width: 100% !important;
+                    height: 44px !important;
                 }
 
                 .media-slider {
