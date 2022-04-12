@@ -135,7 +135,7 @@
         </section>
 
 
-        <section class="wrapper content-1 sx cssback bg-desktop " style="background-image: url('https://cdn.tgdd.vn/2022/03/campaign/MHD-DMXDesk-1920x630.png'); height: 630px;">
+        <section class="wrapper content-1 sx cssback bg-desktop " style="background-image: url({{  asset('images/background-image/pop-upbanner.jpg')}}); height: 630px;">
 
         
         
