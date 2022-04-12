@@ -563,6 +563,14 @@
                     font-size: 20px;
                     line-height: 30px;
                 }
+
+                .media-slider img{
+                    width: 100% !important;
+                }
+
+                .media-slider {
+                    height: auto !important;
+                }    
                
             }
            
@@ -601,7 +609,10 @@
             <style>
                 .banner-media{
                 background-color: #CF1F2F;
+                width: 100%;
                 }
+
+
 
                 .header__top-mobile section{
                     display: block;
