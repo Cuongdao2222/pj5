@@ -569,7 +569,7 @@
                 }
 
                 .media-slider {
-                    height: auto !important;
+                    height: 44px;
                 }    
                
             }
