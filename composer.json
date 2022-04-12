@@ -44,11 +44,13 @@
         "classmap": [
             "database/seeds",
             "database/factories",
-            "app/lib/Lib"
+            "app/lib/Lib",
+            "app/lib/Lib/simpledom"
         ],
 
         "files": [
-            "app/lib/Lib/Alepay.php"
+            "app/lib/Lib/Alepay.php",
+            "app/lib/Lib/simpledom/simple_html_dom.php"
         ]
 
 

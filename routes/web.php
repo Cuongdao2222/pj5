@@ -48,6 +48,9 @@ Route::post('login-Fe', 'AjaxController@loginClientsFe')->name('login-Fe');
 
 Route::get('logout-Fe', 'AjaxController@logout')->name('logout-Fe');
 
+
+Route::get('crawl', 'crawlController@crawl')->name('crawl');
+
 Route::get('/tin-chi-tiet', function () {
     return view('frontend.blogdetail');
     
