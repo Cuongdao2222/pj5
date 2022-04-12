@@ -100,6 +100,7 @@
             .item-img_1942{
 
                 height: 220px;
+                line-height: 220px;
             }
         </style>
     </head>
