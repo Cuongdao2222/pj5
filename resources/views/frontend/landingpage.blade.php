@@ -102,6 +102,10 @@
                 height: 220px;
                 line-height: 220px;
             }
+
+            .bg-desktop{
+                background-size: 100%;
+            }
         </style>
     </head>
     <body>
