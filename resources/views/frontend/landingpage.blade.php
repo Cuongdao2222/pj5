@@ -7,6 +7,10 @@
             .header__cart {
                 border: 0 !important;
             }    
+            .content-1 {
+
+                background-position: unset !important;
+            }    
             
         </style>
        
@@ -140,7 +144,7 @@
         </section>
 
 
-        <section class="wrapper content-1 sx cssback bg-desktop " style="background-image: url({{  asset('images/background-image/pop-upbanner.jpg')}}); height: 630px;">
+        <section class="wrapper content-1 sx cssback bg-desktop " style="background-image: url({{  asset('images/background-image/pop-upbanner.jpg')}}); height: 450px;">
 
         
         
