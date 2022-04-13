@@ -51,6 +51,8 @@ Route::get('logout-Fe', 'AjaxController@logout')->name('logout-Fe');
 
 Route::get('crawl', 'crawlController@crawl')->name('crawl');
 
+Route::get('inCrawl', 'crawlController@print')->name('print');
+
 Route::get('/tin-chi-tiet', function () {
     return view('frontend.blogdetail');
     

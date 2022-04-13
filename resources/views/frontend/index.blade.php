@@ -240,7 +240,7 @@
             <div class="">
                 <div class="flash-sale" style="height: 398px;">
                     <span id="banner-flash-sale"><a href="https://www.nguyenkim.com/loa-di-dong-energizer-bts106bk.html">
-                    <img width="256" src="https://cdn.nguyenkimmall.com/images/companies/_1/MKT_ECM/0820/Flash_Sale_Theme_256x396.png" style="width: 256px; height: 396px" alt="banner-fs">
+                    <img width="256" src="{{  asset('images/background-image/Flash_Sale_Theme_256x396.jpg')}}" style="width: 256px; height: 396px" alt="banner-fs">
                     </a></span>
                     <div class="flash-product nk-product-of-flash-sales">
                         <div class="col-flash col-flash-2 active">
