@@ -1171,14 +1171,23 @@ class crawlController extends Controller
 
                     if(strip_tags($html->find('#page-view', 0))=='products'){
 
-                        print_r($link.'<br>');
+                        if(strpos($link, 'tivi-lg')||strpos($link, 'tivi-oled-lg')){
+
+                            array_push($blog, $link);
+
+                        }
+
+                       
                     
                     }
                     
                 }
             }
 
+            // $html = file_get_html(trim('https://dienmaynguoiviet.vn/smart-tivi-lg-55nano77tpa-55-inch-4k/'));
 
+            
+            
 
         // $url = 'https://dienmaynguoiviet.vn/smart-tivi-lg-50up8100ptb-50-inch-4k/';
         // $html = file_get_html($url);
@@ -1192,6 +1201,14 @@ class crawlController extends Controller
         // $info  = $html->find('.emty-info table', 0);
         // $arElements = $html->find( "meta[name=keywords]" );
         // $price = $html->find(".p-price", 0);
+        // $image = $html->find('#owl1 img');
+
+        // for ($i=0; $i < count($image); $i++) { 
+
+            // print_r($html->find('#owl1 img', $i)->src);
+        // }
+
+
 
        
     
