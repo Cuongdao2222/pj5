@@ -3,15 +3,6 @@
 @section('content')
 
     @if(isset($product->Meta_id ))
-
-     <?php  
-
-        $products_seo = App\Models\product::select('Meta_id')->where('id',  $product->Meta_id)->first();
-
-        print_r($product->Meta_id);
-
-
-    ?>
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -21,15 +12,18 @@
             </div>
         </div>
     </section>
+     <?php $metaSeo = App\Models\metaSeo::find($product->Meta_id); ?>
 
-    <div class="btn btn-warning"><a href="{{ route('metaSeos.edit', 1) }}"></a>Seo</div>
-    <div class="btn btn-warning"><a href="#mo-ta"></a>Mô tả</div>
+   <!--  <div class="btn btn-warning"><a href="{{ route('metaSeos.edit', 1) }}"></a>Seo</div> -->
+    <div class="btn btn-warning"><a href="#mo-ta">Mô tả</a></div>
     <div class="btn btn-warning" >Thông số</div>
-    <div class="btn btn-warning">Ảnh</div>
+    <div class="btn btn-warning"><a href="{{ route('images.create') }}?{{ $product->id }}">Ảnh</a></div>
+
+
 
 
     
-     @if(!empty($products_seo))
+     @if(!empty($metaSeo))
     <div class="btn btn-info seo-click"> Dùng cho SEO </div>
 
 
@@ -40,8 +34,7 @@
    
     <div class="content px-3">
 
-        <?php $metaSeo = App\Models\metaSeo::find($products_seo->Meta_id); ?>
-
+        
         @include('adminlte-templates::common.errors')
 
         <div class="card seo">

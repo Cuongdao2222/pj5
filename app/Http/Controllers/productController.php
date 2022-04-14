@@ -126,7 +126,7 @@ class productController extends AppBaseController
 
          // lưu ảnh vào server khi đi cóp bài 
 
-        $html = $input['content'];
+        $html = $input['Detail'];
 
         preg_match_all('/<img.*?src=[\'"](.*?)[\'"].*?>/i', $html, $matches);
 
@@ -155,7 +155,7 @@ class productController extends AppBaseController
 
         $html = str_replace($matches[1], $arr_change, $html);
 
-        $input['content'] = $html;
+        $input['Detail'] = $html;
 
 
         //add meta seo cho product
@@ -187,8 +187,9 @@ class productController extends AppBaseController
             $product = $this->productRepository->create($input);
 
         }
+        return redirect()->route('products.edit', $product['id']);
         
-        return Redirect()->back()->with('id', $product['id']);
+        // return Redirect()->back()->with('id', $product['id']);
 
     }
 
@@ -293,7 +294,7 @@ class productController extends AppBaseController
             $input['Image'] = $filePath;
         }
 
-        $html = $input['content'];
+        $html = $input['Detail'];
 
         preg_match_all('/<img.*?src=[\'"](.*?)[\'"].*?>/i', $html, $matches);
 
@@ -322,7 +323,7 @@ class productController extends AppBaseController
 
         $html = str_replace($matches[1], $arr_change, $html);
 
-        $input['content'] = $html;
+        $input['Detail'] = $html;
 
          
         $product = $this->productRepository->update($input, $id);
