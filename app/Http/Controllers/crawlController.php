@@ -14,261 +14,206 @@ class crawlController extends Controller
 
     public function crawl()
     {
-        
 
-    $urls = Array(
-   'https://dienmaynguoiviet.vn/smart-tivi-lg-55-inch-55uh750t-4k/',
+    $urls =  Array(
+         'https://dienmaynguoiviet.vn/android-tivi-sony-43-inch-kd-43x8000e-4k/',
 
-   'https://dienmaynguoiviet.vn/smart-tivi-lg-43up7720ptc-43-inch-4k/',
+         'https://dienmaynguoiviet.vn/android-tivi-sony-kdl-55w800c-55-inch/',
 
-   'https://dienmaynguoiviet.vn/smart-tivi-lg-43lm6300ptb-43-inch-full-hd/',
+         'https://dienmaynguoiviet.vn/internet-tivi-sony-kdl-43w750e-43-inch-full-hd/',
 
-   'https://dienmaynguoiviet.vn/smart-tivi-lg-43-inch-43uj632t-4k/',
+         'https://dienmaynguoiviet.vn/smart-tivi-sony-65-inch-4k-kd-65x7000g/',
 
-   'https://dienmaynguoiviet.vn/smart-tivi-lg-65un721c0tf-65-inch-4k/',
+         'https://dienmaynguoiviet.vn/android-tivi-sony-55-inch-kd-55s8500d/',
 
-   'https://dienmaynguoiviet.vn/smart-tivi-lg-43un7300ptc-43-inch-4k/',
+         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-55x8050h-55-inch-4k/',
 
-   'https://dienmaynguoiviet.vn/smart-tivi-lg-full-hd-43inch-43lk5400pta/',
+         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-43x8000g-43-inch-4k/',
 
-   'https://dienmaynguoiviet.vn/smart-tivi-lg-43uh610t-43-inch-4k-100hz/',
 
+         'https://dienmaynguoiviet.vn/tivi-sony-kdl-48w650d-internet-48-inch/',
 
-   'https://dienmaynguoiviet.vn/smart-tivi-lg-55un7000pta-55-inch-4k/',
 
-   'https://dienmaynguoiviet.vn/smart-tivi-oled-lg-65gxpta-65-inch-4k/',
+         'https://dienmaynguoiviet.vn/smart-tivi-sony-55-inch-4k-kd-55x7000g/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-4k-49-inch-49um7100pta/',
+         'https://dienmaynguoiviet.vn/smart-tivi-sony-55-inch-kd-55x8000es-4k/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-70-inch-4k-70uk6540pta/',
+         'https://dienmaynguoiviet.vn/tivi-sony-kdl-55w650d-internet-55-inch/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-55-inch-4k-55uk6340ptf/',
+         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-43x75-43-inch-4k/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-55uh770t-55-inch-4k/',
+         'https://dienmaynguoiviet.vn/android-tivi-sony-4k-43-inch-kd-43x7500f/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-oled-lg-65cxpta-65-inch-4k/',
+         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-85x9000h-85-inch-4k/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-55un7190pta-55-inch-4k/',
 
-    'https://dienmaynguoiviet.vn/tivi-lg-32lh500d-32-inch-hd/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-32ln560bpta-32-inch-hd/',
+         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-75x9000h-75-inch-4k/',
 
+         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-65x8000g-65-inch-4k/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-43-inch-4k-43uk6200pta/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-43lk5700pta-43-inch-full-hd/',
+         'https://dienmaynguoiviet.vn/android-tivi-sony-49-inch-kd-49x8000d-4k/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-55-inch-55uk6100pta-4k/',
+         'https://dienmaynguoiviet.vn/android-tivi-sony-43-inch-kd-43x8000es-4k/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-86-inch-86uk6500ptb-4k-active-hdr/',
+         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-85x9500g-85-inch-4k/',
 
 
-    'https://dienmaynguoiviet.vn/tivi-lg-24-inch-24lh452d-hd/',
+         'https://dienmaynguoiviet.vn/android-tivi-sony-xr-65x90j-65-inch-4k/',
 
-    'https://dienmaynguoiviet.vn/tivi-lg-43-inch-43lk5000pta-full-hd/',
+         'https://dienmaynguoiviet.vn/smart-tivi-sony-43-inch-kdl-43w660f/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-4k-65-inch-65um7400pta/',
+         'https://dienmaynguoiviet.vn/smart-tivi-sony-43-inch-43w800f-full-hd/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-oled-lg-4k-55-inch-55e9pta/',
+         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-65x9500h-65-inch-4k/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-65-inch-4k-65uk6100pta/',
+         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-65x8050h-65-inch-4k/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-49-inch-49uj633t-4k/',
+         'https://dienmaynguoiviet.vn/smart-tivi-sony-50-inch-kdl-50w660f-full-hd/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-49-inch-49uj652t-4k/',
+         'https://dienmaynguoiviet.vn/internet-tivi-sony-kdl-43w750d-43-inch-full-hd/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-55-inch-55uk6540ptd-4k/',
+         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-55x7500h-55-inch-4k/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-55up7550ptc-55-inch-4k/',
+         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-49x8500g-49-inch-4k/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-70uh635t-70-inch-4k-100hz/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-4k-75-inch-75um7500pta/',
+         'https://dienmaynguoiviet.vn/smart-tivi-sony-43-inch-4k-kd-43x7000g/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-4k-65-inch-65um7600pta/',
+         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-65x7500h-65-inch-4k/',
 
-    'https://dienmaynguoiviet.vn/tivi-oled-lg-oled55e8pta-55-inch/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-32lm636bptb-32-inch-hd/',
+         'https://dienmaynguoiviet.vn/android-tivi-sony-85-inch-4k-kd-85x9000f/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-65-inch-65uj632t-4k/',
+         'https://dienmaynguoiviet.vn/tivi-sony-32-inch-kdl-32r300d-hd/',
 
 
+         'https://dienmaynguoiviet.vn/internet-tivi-sony-kdl-40w660e-40-inch/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-4k-43-inch-43um7300pta/',
 
-    'https://dienmaynguoiviet.vn/tivi-lg-49lh600t-49-inch-smart-tv-full-hd/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-oled-lg-88z1pta-88-inch-8k/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-55un7400pta-55-inch-4k/',
+         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-49x8000g-49-inch-4k/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-43un7400pta-43-inch-4k/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-4k-43-inch-43um7400pta/',
+         'https://dienmaynguoiviet.vn/android-tivi-sony-49-inch-4k-kd-49x7500f/',
 
+         'https://dienmaynguoiviet.vn/smart-tivi-sony-49-inch-4k-kd-49x7000g/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-4k-50-inch-50um7600pta/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-4k-55-inch-55sm8100pta/',
 
 
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-49uk7500pta-49-inch-4k/',
+         'https://dienmaynguoiviet.vn/tivi-sony-kdl-32r300e-32-inch-hd/',
 
+         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-65x80js-65-inch-4k/',
 
-    'https://dienmaynguoiviet.vn/tivi-lg-43lh500t-43-inch-full-hd-2016/#1',
+         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-55x7500h-55-inch-4k/',
 
-    'https://dienmaynguoiviet.vn/tivi-lg-43lh500t-43-inch-full-hd-2016/#2',
 
+         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-50x75-50-inch-4k/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-55-inch-55sj850t-4k/',
+         'https://dienmaynguoiviet.vn/android-tivi-sony-43-inch-4k-kd-43x8500f/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-43nano77tpa-43-inch-4k/',
+         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-49x8050h-49-inch-4k/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-55up8100ptb-55-inch-4k/',
+         'https://dienmaynguoiviet.vn/smart-tivi-sony-55-inch-4k-kd-55x7000f/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-70up7800ptb-70-inch-4k/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-70un7070pta-70-inch-4k/',
+         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-75x8000g-75-inch-4k/',
 
+         'https://dienmaynguoiviet.vn/android-tivi-sony-65-inch-kd-65s8500d/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-65nano77tpa-65-inch-4k/',
+         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-43x7500h-43-inch-4k/',
 
-    'https://dienmaynguoiviet.vn/tivi-oled-lg-55eg910t-55-inch-3d/',
+         'https://dienmaynguoiviet.vn/android-tivi-sony-55-inch-kd-55x7500f/',
 
 
+         'https://dienmaynguoiviet.vn/smart-tivi-sony-43-inch-4k-kd-43x7000f/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-70un7070pta-70-inch-4k/',
+         'https://dienmaynguoiviet.vn/smart-tivi-sony-kdl-43w800g-43-inch-full-hd/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-49-inch-49uj750t-4k/',
+         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-85x86j-85-inch-4k/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-43lj553t-43-inch-full-hd/',
+         'https://dienmaynguoiviet.vn/android-tivi-sony-4k-75-inch-kd-75x8500f/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-4k-49-inch-49um7400pta/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-50up7550ptc-50-inch-4k/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-oled-lg-48a1pta-48-inch-4k/',
+         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-49x7500h-49-inch-4k/',
 
+         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-55x80j-55-inch-4k/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-55inch-4k-55uk7500pta/',
+         'https://dienmaynguoiviet.vn/smart-tivi-sony-49-inch-kd-49x8000e-4k/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-4k-43-inch-43um7600pta/',
+         'https://dienmaynguoiviet.vn/smart-tivi-sony-55-inch-kd-55x7000d-4k/',
 
-    'https://dienmaynguoiviet.vn/tivi-lg-32lh570d-32-inch-hd/',
+         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-55x7500h-55-inch-4k/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-55up7720ptc-55-inch-4k/',
+         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-55x8000g-55-inch-4k/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-4k-55-inch-55sm8600pta/',
+         'https://dienmaynguoiviet.vn/smart-tivi-sony-kd-65x9000e-65-inch-4k/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-55-inch-55uh750t-4k/#1',
+         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-50x86j-50-inch-4k/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-55-inch-55uh750t-4k/#2',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-4k-55-inch-55um7600pta/',
 
+         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-55x9000h-55-inch-4k/',
 
 
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-4k-55-inch-55sm8600pta/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-4k-86-inch-86um7500pta/',
+         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-49x9500h-49-inch-4k/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-43lm5750ptc-43-inch-full-hd/',
+         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-43x8500g-43-inch-4k/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-75sm9900pta-75-inch-8k/',
+         'https://dienmaynguoiviet.vn/android-tivi-sony-4k-55-inch-kd-55x9000f/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-75-inch-75sk8000pta-4k/',
+         'https://dienmaynguoiviet.vn/smart-tivi-sony-kd-55x9300e-4k-55-inch/',
 
+         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-43x80js-43-inch-4k/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-oled-lg-88zxpta-88-inch-8k/',
+         'https://dienmaynguoiviet.vn/internet-tivi-sony-kdl-32w610f-32-inch-hd/',
 
+         'https://dienmaynguoiviet.vn/android-tivi-sony-xr-55x90j-55-inch-4k/',
 
-   
+         'https://dienmaynguoiviet.vn/smart-tivi-sony-kdl-43w660g-43-inch-full-hd/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-55-inch-55uj652t-4k/',
+         'https://dienmaynguoiviet.vn/smart-tivi-sony-75-inch-kd-75x8500d-android-4k/',
 
+         'https://dienmaynguoiviet.vn/smart-tivi-sony-kdl-32w610g-32-inch-hd/',
 
+         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-75x80j-75-inch-4k/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-49un7300ptc-49-inch-4k/',
+         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-55x80j-s-55-inch-4k/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-65up7720ptc-65-inch-4k/',
+         'https://dienmaynguoiviet.vn/android-tivi-sony-xr-65a80j-65-inch-4k/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-4k-70-inch-70um7300pta/',
+         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-65x9000h-65-inch-4k/',
 
+         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-55x9500h-55-inch-4k/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-49-inch-49sk8000pta-4k/',
+         'https://dienmaynguoiviet.vn/smart-tivi-sony-kd-49x9000e-49-inch-4k/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-oled-lg-4k-55-inch-55b9pta/',
+         'https://dienmaynguoiviet.vn/smart-tivi-sony-65-inch-kd-65x8500d/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-4k-55-inch-55um7400pta/',
+         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-50x80j-50-inch-4k/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-oled-lg-55a1pta-55-inch-4k/',
+         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-75x8050h-75-inch-4k/',
 
-    'https://dienmaynguoiviet.vn/tivi-lg-32lv500c-32-inch-hd/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-oled-lg-4k-65-inch-65b9pta/',
+         'https://dienmaynguoiviet.vn/android-tivi-sony-49-inch-4k-kd-49x8500f/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-4k-65-inch-65sm9000pta/',
+         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-65x86j-65-inch-4k/',
 
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-32lm630bptb-32-inch-hd/',
-
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-43un7000pta-43-inch-4k/',
-
-    'https://dienmaynguoiviet.vn/tivi-oled-lg-oled65c8pta-65-inch/',
-
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-43un7190pta-43-inch-4k/',
-
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-43up8100ptb-43-inch-4k/',
-
-    'https://dienmaynguoiviet.vn/tivi-lg-32lj510d-32-inch-hd/',
-
-    'https://dienmaynguoiviet.vn/smart-tivi-oled-lg-oled65w8t-65-inch-4k/',
-
-
-
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-4k-43-inch-43um7100pta/',
-
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-55un7300ptc-55-inch-4k/',
-
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-49-inch-49lh590t-full-hd/',
-
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-50up7720ptc-50-inch-4k/',
-
-    'https://dienmaynguoiviet.vn/smart-tivi-lg-50nano86tpa-50-inch-4k/',
-
-     'https://dienmaynguoiviet.vn/tivi-oled-lg-oled55c8pta-55-inch/',
-
-     'https://dienmaynguoiviet.vn/smart-tivi-lg-55nano86tpa-55-inch-4k/',
-
-     'https://dienmaynguoiviet.vn/smart-tivi-lg-75uh656t-75-inch-4k/',
-
-     'https://dienmaynguoiviet.vn/smart-tivi-lg-65uh770t-65-inch-4k/',
-
-     'https://dienmaynguoiviet.vn/smart-tivi-lg-65-inch-4k-65uk6540ptd/',
-
-     'https://dienmaynguoiviet.vn/smart-tivi-lg-65un7400pta-65-inch-4k/',
-
-     'https://dienmaynguoiviet.vn/tivi-oled-lg-55eg920t-55-inch-smart-tv-full-hd/',
-
-     'https://dienmaynguoiviet.vn/tivi-lg-65uh850t-smart-tv-65-inch-4k-3d-200hz/',
-
-     'https://dienmaynguoiviet.vn/tivi-lg-43-inch-43lj500t-full-hd/',
-
-     'https://dienmaynguoiviet.vn/smart-tivi-lg-49-inch-49lh590t-full-hd/?page=7',
-
-     'https://dienmaynguoiviet.vn/tivi-oled-lg-65c6t-65-iinch-4k-man-hinh-cong/',
-
-    );
-
+        );
 
         // $urls =  $this->getLink('tivi-lg', 'tivi-oled-lg');
 
         if(isset($urls)){
 
+            
             foreach ($urls as $url) {
 
-                if(strpos($url, '?show=tragop')==-1){
+                
                 
                     $html = file_get_html(trim($url));
                     $title = strip_tags($html->find('.emty-title h1', 0));
@@ -366,11 +311,12 @@ class crawlController extends Controller
                     else{
                         print_r($url);
                     } 
-                }       
+                  
+               
             }    
         }
 
-        echo "thanh cong";
+        // echo "thanh cong";
 
     }  
 
