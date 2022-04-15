@@ -80,7 +80,26 @@
             <tr>
                 <td><img src="{{ asset($product->Image) }}" width="150px" height="150px"></td>
             <td>{{ $product->Name }}</td>
-            <td>{{ $product->ProductSku }}</td>
+            <td>
+                
+                <label>Giá</label>
+
+                <div>
+                    <input type="" name="" value="{{ $product->Price }}">
+                </div>
+                
+
+                <br>
+
+                <div class="btn-primary ">Sửa</div>
+
+
+                <br>
+
+                <div class="btn-primary ">Sửa Ảnh</div>
+
+
+            </td>
             <td><a href="{{ route('details', $product->Link) }}">{{ $product->Link }}</a></td>
             <td>{{ $product->Group_id }}</td>
             <td>{{ $product->Quantily }}</td>

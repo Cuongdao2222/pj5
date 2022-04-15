@@ -192,7 +192,7 @@ class categoryController extends Controller
 
             $link   =  $findID->link;
 
-            $data = DB::table('group_product')->join('products', 'group_product.id', '=', 'products.Group_id')->select('products.Name', 'products.id','products.Image', 'products.ProductSku', 'products.Specifications', 'products.Price', 'products.Link','products.active','group_product.link')->where('group_product.id', $id_cate)->Orderby('id', 'desc')->paginate(10);
+            $data = DB::table('group_product')->join('products', 'group_product.id', '=', 'products.Group_id')->select('products.Name', 'products.id','products.Image', 'products.ProductSku', 'products.Specifications', 'products.Price', 'products.Link','products.active','group_product.link')->where('group_product.id', $id_cate)->where('products.active', 1)->Orderby('id', 'desc')->paginate(10);
 
 
 

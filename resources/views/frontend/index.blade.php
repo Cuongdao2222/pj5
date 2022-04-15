@@ -154,8 +154,8 @@
                 <li class="col-">
                     <a href="tivi-cao-cap">
                         <picture>
-                            <source media="(min-width:1201px)" srcset="https://samnec.com.vn/public/image/menu-cate/03/cao-cap.png">
-                            <img src="https://samnec.com.vn/public/image/menu-cate/03/cao-cap.png" alt="Samnec điện máy">
+                            <source media="(min-width:1201px)" >
+                            <img src="{{ asset('images/background-image/011.png') }}" alt="" data-src="{{ asset('images/background-image/011.png') }}">
                         </picture>
                     </a>
                     <p><a href="tivi-cao-cap">TV cao cấp</a></p>
@@ -163,8 +163,8 @@
                 <li>
                     <a href="tu-lanh">
                         <picture>
-                            <source media="(min-width:1201px)" srcset="https://samnec.com.vn/public/image/menu-cate/03/tu-lanh.png">
-                            <img src="https://samnec.com.vn/public/image/menu-cate/03/tu-lanh.png" alt="Samnec điện máy">
+                            <source media="(min-width:1201px)">
+                           <img src="{{ asset('images/background-image/021.png') }}" alt="" data-src="{{ asset('images/background-image/021.png') }}">
                         </picture>
                     </a>
                     <p><a href="tu-lanh">Tủ lạnh</a></p>
@@ -172,8 +172,8 @@
                 <li>
                     <a href="may-giat">
                         <picture>
-                            <source media="(min-width:1201px)" srcset="https://samnec.com.vn/public/image/menu-cate/03/may-giat.png">
-                            <img src="https://samnec.com.vn/public/image/menu-cate/03/may-giat.png" alt="Samnec điện máy">
+                            <source media="(min-width:1201px)">
+                            <img src="{{ asset('images/background-image/031.png') }}" alt="" data-src="{{ asset('images/background-image/031.png') }}">
                         </picture>
                     </a>
                     <p><a href="may-giat">Máy giặt</a></p>
@@ -181,8 +181,8 @@
                 <li>
                     <a href="gia-dung">
                         <picture>
-                            <source media="(min-width:1201px)" srcset="https://samnec.com.vn/public/image/menu-cate/03/gia-dung.png">
-                            <img src="https://samnec.com.vn/public/image/menu-cate/03/gia-dung.png" alt="Samnec điện máy">
+                            <source media="(min-width:1201px)">
+                            <img src="{{ asset('images/background-image/041.png') }}" alt="" data-src="{{ asset('images/background-image/041.png') }}">
                         </picture>
                     </a>
                     <p><a href="gia-dung">Gia dụng</a></p>
@@ -190,8 +190,8 @@
                 <li>
                     <a href="tivi-inch-lon-gia-re">
                         <picture>
-                            <source media="(min-width:1201px)" srcset="https://samnec.com.vn/public/image/menu-cate/03/sale.png">
-                            <img src="https://samnec.com.vn/public/image/menu-cate/03/sale.png" alt="Samnec điện máy">
+                            <source media="(min-width:1201px)">
+                            <img src="{{ asset('images/background-image/051.png') }}" alt="" data-src="{{ asset('images/background-image/051.png') }}">
                         </picture>
                     </a>
                     <p><a href="tivi-inch-lon-gia-re">TV Inch lớn giá rẻ</a></p>
@@ -199,8 +199,8 @@
                 <li>
                     <a href="tra-gop">
                         <picture>
-                            <source media="(min-width:1201px)" srcset="https://samnec.com.vn/public/image/menu-cate/03/tra-gop.png">
-                            <img src="https://samnec.com.vn/public/image/menu-cate/03/tra-gop.png" alt="Samnec điện máy">
+                            <source media="(min-width:1201px)">
+                            <img src="{{ asset('images/background-image/61.png') }}" alt="" data-src="{{ asset('images/background-image/61.png') }}">
                         </picture>
                     </a>
                     <p><a href="tra-gop">Trả góp</a></p>
@@ -327,7 +327,9 @@
         <div class="prd-promo has-banner" style="background-color:#FFF3EE; " data-html-id="3109">
 
             <div class="prd-promo__top clearfix" >
-                <a data-cate="0" data-place="1868" href="#" ><img style="cursor:pointer" src="https://cdn.tgdd.vn/2022/01/banner/Sansale-desk-1200x90-3.png" alt="Theme Giáng Sinh DMX Desk" width="1200" height="90"></a>                
+
+
+                <a data-cate="0" data-place="1868" href="#" ><img style="cursor:pointer" src="{{ asset('images/background-image/banner-summer.jpg') }}" alt="banner-summer" width="1200" height="90"></a>                
             </div>
 
            <!--  Sale -->
@@ -434,7 +436,7 @@
 
                                      
                                 </div>
-                                <p class='result-labels'><img  class='lazyload sale-banner' alt='Giảm Sốc' data-src='{{ asset('images/css/sale.png') }}'></p>
+                               <p class="result-labels"><img class="sale-banner ls-is-cached lazyloaded" alt="Giảm Sốc" data-src="http://localhost/pj5/images/css/sale.png" src="http://localhost/pj5/images/css/sale.png"></p>
                                 <h3>{{ $datas->Name }}</h3>
                                 <!-- <div class="item-compare">
                                     <span>55 inch</span>

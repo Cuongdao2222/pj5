@@ -12,208 +12,25 @@ use App\Models\product;
 class crawlController extends Controller
 {
 
+
+
     public function crawl()
     {
 
-    $urls =  Array(
-         'https://dienmaynguoiviet.vn/android-tivi-sony-43-inch-kd-43x8000e-4k/',
 
-         'https://dienmaynguoiviet.vn/android-tivi-sony-kdl-55w800c-55-inch/',
+        $urls =  $this->getLink('may-giat-electrolux');
 
-         'https://dienmaynguoiviet.vn/internet-tivi-sony-kdl-43w750e-43-inch-full-hd/',
 
-         'https://dienmaynguoiviet.vn/smart-tivi-sony-65-inch-4k-kd-65x7000g/',
 
-         'https://dienmaynguoiviet.vn/android-tivi-sony-55-inch-kd-55s8500d/',
 
-         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-55x8050h-55-inch-4k/',
+        // $urls = ['https://dienmaynguoiviet.vn/tu-lanh-panasonic-nr-yw590ymmv-inverter-540-lit/'];
 
-         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-43x8000g-43-inch-4k/',
 
-
-         'https://dienmaynguoiviet.vn/tivi-sony-kdl-48w650d-internet-48-inch/',
-
-
-         'https://dienmaynguoiviet.vn/smart-tivi-sony-55-inch-4k-kd-55x7000g/',
-
-         'https://dienmaynguoiviet.vn/smart-tivi-sony-55-inch-kd-55x8000es-4k/',
-
-         'https://dienmaynguoiviet.vn/tivi-sony-kdl-55w650d-internet-55-inch/',
-
-         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-43x75-43-inch-4k/',
-
-         'https://dienmaynguoiviet.vn/android-tivi-sony-4k-43-inch-kd-43x7500f/',
-
-         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-85x9000h-85-inch-4k/',
-
-
-
-         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-75x9000h-75-inch-4k/',
-
-         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-65x8000g-65-inch-4k/',
-
-
-         'https://dienmaynguoiviet.vn/android-tivi-sony-49-inch-kd-49x8000d-4k/',
-
-         'https://dienmaynguoiviet.vn/android-tivi-sony-43-inch-kd-43x8000es-4k/',
-
-         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-85x9500g-85-inch-4k/',
-
-
-         'https://dienmaynguoiviet.vn/android-tivi-sony-xr-65x90j-65-inch-4k/',
-
-         'https://dienmaynguoiviet.vn/smart-tivi-sony-43-inch-kdl-43w660f/',
-
-         'https://dienmaynguoiviet.vn/smart-tivi-sony-43-inch-43w800f-full-hd/',
-
-         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-65x9500h-65-inch-4k/',
-
-         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-65x8050h-65-inch-4k/',
-
-         'https://dienmaynguoiviet.vn/smart-tivi-sony-50-inch-kdl-50w660f-full-hd/',
-
-         'https://dienmaynguoiviet.vn/internet-tivi-sony-kdl-43w750d-43-inch-full-hd/',
-
-         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-55x7500h-55-inch-4k/',
-
-         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-49x8500g-49-inch-4k/',
-
-
-         'https://dienmaynguoiviet.vn/smart-tivi-sony-43-inch-4k-kd-43x7000g/',
-
-         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-65x7500h-65-inch-4k/',
-
-
-         'https://dienmaynguoiviet.vn/android-tivi-sony-85-inch-4k-kd-85x9000f/',
-
-         'https://dienmaynguoiviet.vn/tivi-sony-32-inch-kdl-32r300d-hd/',
-
-
-         'https://dienmaynguoiviet.vn/internet-tivi-sony-kdl-40w660e-40-inch/',
-
-
-
-
-         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-49x8000g-49-inch-4k/',
-
-
-         'https://dienmaynguoiviet.vn/android-tivi-sony-49-inch-4k-kd-49x7500f/',
-
-         'https://dienmaynguoiviet.vn/smart-tivi-sony-49-inch-4k-kd-49x7000g/',
-
-
-
-
-         'https://dienmaynguoiviet.vn/tivi-sony-kdl-32r300e-32-inch-hd/',
-
-         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-65x80js-65-inch-4k/',
-
-         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-55x7500h-55-inch-4k/',
-
-
-         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-50x75-50-inch-4k/',
-
-         'https://dienmaynguoiviet.vn/android-tivi-sony-43-inch-4k-kd-43x8500f/',
-
-         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-49x8050h-49-inch-4k/',
-
-         'https://dienmaynguoiviet.vn/smart-tivi-sony-55-inch-4k-kd-55x7000f/',
-
-
-         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-75x8000g-75-inch-4k/',
-
-         'https://dienmaynguoiviet.vn/android-tivi-sony-65-inch-kd-65s8500d/',
-
-         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-43x7500h-43-inch-4k/',
-
-         'https://dienmaynguoiviet.vn/android-tivi-sony-55-inch-kd-55x7500f/',
-
-
-         'https://dienmaynguoiviet.vn/smart-tivi-sony-43-inch-4k-kd-43x7000f/',
-
-         'https://dienmaynguoiviet.vn/smart-tivi-sony-kdl-43w800g-43-inch-full-hd/',
-
-         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-85x86j-85-inch-4k/',
-
-         'https://dienmaynguoiviet.vn/android-tivi-sony-4k-75-inch-kd-75x8500f/',
-
-
-
-         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-49x7500h-49-inch-4k/',
-
-         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-55x80j-55-inch-4k/',
-
-         'https://dienmaynguoiviet.vn/smart-tivi-sony-49-inch-kd-49x8000e-4k/',
-
-         'https://dienmaynguoiviet.vn/smart-tivi-sony-55-inch-kd-55x7000d-4k/',
-
-         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-55x7500h-55-inch-4k/',
-
-         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-55x8000g-55-inch-4k/',
-
-         'https://dienmaynguoiviet.vn/smart-tivi-sony-kd-65x9000e-65-inch-4k/',
-
-         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-50x86j-50-inch-4k/',
-
-
-
-         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-55x9000h-55-inch-4k/',
-
-
-
-         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-49x9500h-49-inch-4k/',
-
-         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-43x8500g-43-inch-4k/',
-
-         'https://dienmaynguoiviet.vn/android-tivi-sony-4k-55-inch-kd-55x9000f/',
-
-         'https://dienmaynguoiviet.vn/smart-tivi-sony-kd-55x9300e-4k-55-inch/',
-
-         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-43x80js-43-inch-4k/',
-
-         'https://dienmaynguoiviet.vn/internet-tivi-sony-kdl-32w610f-32-inch-hd/',
-
-         'https://dienmaynguoiviet.vn/android-tivi-sony-xr-55x90j-55-inch-4k/',
-
-         'https://dienmaynguoiviet.vn/smart-tivi-sony-kdl-43w660g-43-inch-full-hd/',
-
-         'https://dienmaynguoiviet.vn/smart-tivi-sony-75-inch-kd-75x8500d-android-4k/',
-
-         'https://dienmaynguoiviet.vn/smart-tivi-sony-kdl-32w610g-32-inch-hd/',
-
-         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-75x80j-75-inch-4k/',
-
-         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-55x80j-s-55-inch-4k/',
-
-         'https://dienmaynguoiviet.vn/android-tivi-sony-xr-65a80j-65-inch-4k/',
-
-         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-65x9000h-65-inch-4k/',
-
-         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-55x9500h-55-inch-4k/',
-
-         'https://dienmaynguoiviet.vn/smart-tivi-sony-kd-49x9000e-49-inch-4k/',
-
-         'https://dienmaynguoiviet.vn/smart-tivi-sony-65-inch-kd-65x8500d/',
-
-         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-50x80j-50-inch-4k/',
-
-         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-75x8050h-75-inch-4k/',
-
-
-         'https://dienmaynguoiviet.vn/android-tivi-sony-49-inch-4k-kd-49x8500f/',
-
-         'https://dienmaynguoiviet.vn/android-tivi-sony-kd-65x86j-65-inch-4k/',
-
-        );
-
-        // $urls =  $this->getLink('tivi-lg', 'tivi-oled-lg');
 
         if(isset($urls)){
 
             
             foreach ($urls as $url) {
-
-                
                 
                     $html = file_get_html(trim($url));
                     $title = strip_tags($html->find('.emty-title h1', 0));
@@ -268,9 +85,12 @@ class crawlController extends Controller
 
                     $content = str_replace($matches[1], $arr_change, $content);
 
+                    $price = strip_tags($html->find(".p-price", 0));
+
                     $info  = html_entity_decode($html->find('.emty-info table', 0));
                     // $arElements = $html->find( "meta[name=keywords]" );
-                    $price =  trim(str_replace(["Giá:","VNĐ","."],"",strip_tags($html->find(".p-price", 0))));
+                    $price = trim(str_replace('Liên hệ', '0', $price));
+                    $price =  trim(str_replace(["Giá:","VNĐ",".", "Giá khuyến mại:"],"",$price));
                     $images =  html_entity_decode($html->find('#owl1 img',0));
                     
                     if(!empty($images) ){
@@ -290,21 +110,27 @@ class crawlController extends Controller
 
                             $model = strip_tags($html->find('#model', 0));
 
-                            $qualtily = 1;
+                            $qualtily = -1;
 
-                            $maker = 2;
+                            $maker = 12;
 
                             $meta_id = 0;
 
-                            $group_id = 1;
+                            $group_id = 2;
 
                             $active = 0;
 
                             $link =  basename($url);
 
-                            $input = ["Link"=>$link, "Price"=>$price, "Name"=>$title, "ProductSku"=>$model, "Image"=>$image, "Quantily"=>$qualtily, "Maker"=>$maker, "Meta_id"=>$meta_id,"Group_id"=>$group_id, "Active"=>$active, "Specifications"=>$info, "Salient_Features"=>$specialDetail, "Detail"=>$content];
+                            if(empty($link)){
 
-                            product::Create($input);
+                                $link = convertSlug($title);
+                            }
+
+                            $inputs = ["Link"=>$link, "Price"=>$price, "Name"=>$title, "ProductSku"=>$model, "Image"=>$image, "Quantily"=>$qualtily, "Maker"=>$maker, "Meta_id"=>$meta_id,"Group_id"=>$group_id, "active"=>$active, "Specifications"=>$info, "Salient_Features"=>$specialDetail, "Detail"=>$content];
+
+                           
+                            product::Create($inputs);
 
                         }
                     }
@@ -3972,7 +3798,7 @@ class crawlController extends Controller
 
                 if(strip_tags($html->find('#page-view', 0))=='products'){
 
-                    if(strpos($link, $details) ){
+                    if(strpos($link, $details)){
 
                         array_push($blog, $link);
 
@@ -3983,7 +3809,23 @@ class crawlController extends Controller
             }
         }
 
-        print_r($blog);
+        return($blog);
+
+     }
+
+     function convertLink(){
+        
+
+        for($i=157; $i<608; $i++){
+
+            $product = product::find($i);
+
+            $product->Quantily =  -1;
+
+            $product->save();
+        }
+
+        echo "thanh cong";
 
      }
    

@@ -5,11 +5,15 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('css/category.css') }}"> 
 
         <link rel="stylesheet" type="text/css" href="{{ asset('css/categories.css') }}"> 
+         <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}"> 
 
         <style type="text/css">
             
             .box-filter .form-control{
                 width: 100%;
+            }
+            .block-manu{
+                width: 150px;
             }
         </style>
 
@@ -168,7 +172,7 @@
                                         <img class="lazyload thumb" data-src="{{ asset($value->Image) }}" alt="{{ asset($value->Name) }}" style="width:100%"> 
                                     </div>
                                     <div class="items-title">
-                                        <p class='result-label temp1'><img width='20' height='20' class='lazyload' alt='Giảm Sốc' data-src=''><span>Giảm Sốc</span></p>
+                                         <p class='result-labels'><img  class='lazyload sale-banner' alt='Giảm Sốc' data-src='{{ asset('images/css/sale.png') }}'></p>
                                         <h3 >
                                             {{ $value->Name  }}
                                         </h3>
@@ -197,8 +201,18 @@
                                         <!-- <div class="box-p">
                                             <p class="price-old black">20.900.000&#x20AB;</p>
                                         </div> -->
+
+                                        <?php 
+
+                                            if($value->Price =='Liên hệ'){
+                                                $value->Price = 0;
+                                            }
+
+
+
+                                        ?>
                                         
-                                        <strong class="price">{{ number_format($value->Price , 0, ',', '.')}}</strong>
+                                        <strong class="price">{{ number_format(str_replace("\xc2\xa0",'',$value->Price) , 0, ',', '.')}}</strong>
                                         <!-- <p class="item-gift">Quà <b>1.500.000₫</b></p> -->
                                         <div class="item-rating">
                                             <p>
