@@ -3779,7 +3779,7 @@ class crawlController extends Controller
         
     } 
 
-    public function getLink($details)
+    public function getLink()
     {
 
         $codes =  $this->crawls();
@@ -3798,12 +3798,8 @@ class crawlController extends Controller
 
                 if(strip_tags($html->find('#page-view', 0))=='products'){
 
-                    if(strpos($link, $details)){
+                    array_push($blog, $link);
 
-                        array_push($blog, $link);
-
-                    }
-                
                 }
                 
             }
