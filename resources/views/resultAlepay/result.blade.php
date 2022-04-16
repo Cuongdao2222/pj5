@@ -44,7 +44,7 @@ $utils = new AlepayUtils();
                                 <?php 
                                     echo $transactionCode;
                                     echo '<br>Lấy thông tin giao dịch trả góp<br>';
-                                    $info = json_decode($alepay->getTransactionInfo($transactionCode));
+                                    print_r($alepay->getTransactionInfo($transactionCode));
 
                                     die();
                                 ?>
