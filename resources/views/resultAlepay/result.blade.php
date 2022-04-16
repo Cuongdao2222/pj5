@@ -38,6 +38,16 @@ $utils = new AlepayUtils();
                     <ul class="collection col-md-8">
                         <li class="collection-item">
                             <div>
+
+
+
+                                <?php 
+                                    echo $transactionCode;
+                                    echo '<br>Lấy thông tin giao dịch trả góp<br>';
+                                    $info = json_decode($alepay->getTransactionInfo($transactionCode));
+
+                                    die();
+                                ?>
                                 <?php if ($errorCode == '000' || $errorCode == '155') {  ?>
                                     <section>
                                         <div class="middleCart">
