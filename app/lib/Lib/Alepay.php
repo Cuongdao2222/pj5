@@ -249,8 +249,8 @@ class Alepay {
 
     public function Get_Transaction_data($transactionCode)
     {
-        $data['tokenKey'] = $this->apiKey;
-        $signature = $this->alepayUtils->makeSignature($data, $this->checksumKey);
+        $data['tokenKey'] = 'RpMkK0JfiwhEWdfjA6TZi7qKRvoKrz';
+        $signature = $this->alepayUtils->makeSignature($data, 'd7hEU8EAha7ReAtgnmpDbfjpbKgdvx');
         $data['signature'] = $signature;
 
         $data['transactionCode'] = $transactionCode;
