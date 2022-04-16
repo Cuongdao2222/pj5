@@ -79,6 +79,16 @@
                     width: 100%;
                 }
             }    
+
+
+            
+            .box-filter .form-control{
+                width: 100%;
+            }
+            .block-manu{
+                width: 150px;
+            }
+        
             
         </style>
     @endpush
@@ -363,9 +373,11 @@
 
                     filter = filers_url.join(',');
 
-                    href  = 'http://localhost/ti-vi/?filter='+filter+'&group_id={{ @$id_cate }}&property='+propertys+'&link={{ $link }}';
+                   @if(!empty($link))
 
-                    window.location.href  = 'http://localhost/ti-vi/?filter='+filter+'&group_id={{ @$id_cate }}&property='+propertys+'&link={{ $link }}';
+
+                        window.location.href = '{{ route('details',$link) }}?filter=,'+filter+'&group_id={{ @$id_cate }}&property=,'+propertys+'&link={{ $link }}';
+                    @endif
                 }
 
 
