@@ -54,16 +54,7 @@
                         <li class="collection-item">
                             <div>
 
-                                <?php 
-
-                                    
-                                   
-                                    echo '<br>Lấy thông tin giao dịch trả góp<br>';
-                                    $data = $alepay->Get_Transaction_data($transactionCode);
-                                   
-
-                                   
-                                ?>
+                             
                                 <?php if ($errorCode == '000' || $errorCode == '155') {  ?>
 
                                      

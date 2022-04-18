@@ -443,8 +443,8 @@
                                     
                                     
 
-                                     <img src="{{ asset('images/saker/'.strtolower($maker->maker??'').'.png') }}" class="item-saker">
-
+                                 <!--     <img src="{{ asset('images/saker/'.strtolower($maker->maker??'').'.png') }}" class="item-saker">
+ -->
                                      
                                 </div>
                                <p class="result-labels"><img class="sale-banner ls-is-cached lazyloaded" alt="Giảm Sốc" data-src="{{ asset('images/css/sale.png') }}" src="{{ asset('images/css/sale.png') }}"></p>
