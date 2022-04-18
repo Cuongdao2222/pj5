@@ -144,7 +144,7 @@
                                                             
                                                         ?>
                                                         <div class="row">
-                                                            <div class="col-lg-8 mx-auto">
+                                                            <div class="col-lg-12 mx-auto">
                                                                 <ul class="list-group shadow">
                                                                     <li class="list-group-item">
                                                                         <div class="media align-items-lg-center flex-column flex-lg-row p-3">
