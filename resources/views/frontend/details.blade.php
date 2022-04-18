@@ -454,7 +454,9 @@
                                             <!-- <div class="product-quantity">
                                                 <input type="text" class="quantity-field" readonly="readonly" name="qty" value="1">
                                             </div> -->
+                                            @if((int)$data->Price>0)
                                             <button type="button" class="btn btn-lg btn-add-cart btn-add-cart redirectCart" onclick="addToCart({{ $data->id }})">MUA NGAY <br>(Giao hàng tận nơi - Giá tốt - An toàn)</button>
+                                            @endif
                                         </form>
                                         <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                                             Launch demo modal
