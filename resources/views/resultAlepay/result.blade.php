@@ -49,7 +49,7 @@
         <div id="container">
             <div class="row">
                 <div class="center" style="margin:0 auto;">
-                    <h3>Kết quả</h3>
+                    
                     <ul class="collection col-md-8">
                         <li class="collection-item">
                             <div>
