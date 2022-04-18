@@ -9,10 +9,29 @@ $utils = new AlepayUtils();
 ?>
 
 <link rel="stylesheet" type="text/css" href="https://cdn.tgdd.vn/mwgcart/vue-pro/css/desktop/cart-result.min.2ab80dc527e5d6fd453e.css">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
    <script
   src="https://code.jquery.com/jquery-3.6.0.min.js"
   integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
   crossorigin="anonymous"></script>
+
+  <style type="text/css">
+      
+       
+
+        .text-gray {
+          color: #aaa;
+        }
+  </style>
 
 <!doctype html>
 <html lang="en">
@@ -57,7 +76,7 @@ $utils = new AlepayUtils();
 
                                     <?php  
 
-                                        $data_installment  = App\Models\installment::where('email', $data->buyerEmail)->where('phone', $data->buyerPhone)->get()->first();
+                                        $data_installment  = App\Models\installment::where('email', $data->buyerEmail)->where('phone', $data->buyerPhone)->get()->last();
                                     ?>
                                     
                                     <section>
@@ -73,7 +92,7 @@ $utils = new AlepayUtils();
                                                         <div class="info-order-header">
                                                             <h4>Đơn hàng: <span>#{{ $transactionCode }}</span></h4>
                                                             <div class="header-right">
-                                                                <a href="/lich-su-mua-hang">Quản lý đơn hàng</a>
+                                                                <a href="javascript:void(0)" onclick="modal_show()">Quản lý đơn hàng</a>
                                                                 
                                                             </div>
                                                         </div>
@@ -89,7 +108,8 @@ $utils = new AlepayUtils();
                                                         </label>
                                                         <label>
                                                             <span class="">
-                                                                <i class="info-order__dot-icon"></i><span><strong>Tổng tiền: </strong><b class="red">{{ @$data_installment->price }}₫</b></span><!---->
+                                                                <i class="info-order__dot-icon"></i><span><strong>Tổng tiền: </strong><b>
+                                                                    {{ @str_replace(',' ,'.', number_format($data_installment->price)) }}₫</b></span><!---->
                                                             </span>
                                                         </label>
                                                         <!----><!----><!----><!---->
@@ -102,6 +122,73 @@ $utils = new AlepayUtils();
                                             </div>
                                         </div>
                                     </section>
+
+
+                                    <div class="modal fade" id="modal-product" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Sản phẩm trả góp</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                     <div class="container py-5">
+                                                        <div class="row text-center text-white mb-5">
+                                                            <div class="col-lg-7 mx-auto">
+                                                                <h1 class="display-4">Danh Sách Sản Phẩm</h1>
+                                                            </div>
+                                                        </div>
+
+                                                        <?php 
+
+                                                            $product = App\Models\product::find($data_installment->product_id);
+
+                                                            
+                                                        ?>
+                                                        <div class="row">
+                                                            <div class="col-lg-8 mx-auto">
+                                                                <ul class="list-group shadow">
+                                                                    <li class="list-group-item">
+                                                                        <div class="media align-items-lg-center flex-column flex-lg-row p-3">
+                                                                            <div class="media-body order-2 order-lg-1">
+                                                                                <h5 class="mt-0 font-weight-bold mb-2">Sản Phẩm </h5>
+                                                                                <p class="font-italic text-muted mb-0 small">{{ @$product->Name  }}</p>
+                                                                                <div class="d-flex align-items-center justify-content-between mt-1">
+                                                                                    <h6 class="font-weight-bold my-2"> {{ @str_replace(',' ,'.', number_format($data_installment->price)) }}</h6>
+                                                                                    <ul class="list-inline small">
+                                                                                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+                                                                                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+                                                                                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+                                                                                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+                                                                                        <li class="list-inline-item m-0"><i class="fa fa-star-o text-gray"></i></li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                            </div>
+                                                                            <img src="{{ @$product->Image }}" alt="{{ @$product->Name }}" width="200" class="ml-lg-5 order-1 order-lg-2">
+                                                                        </div>
+                                                                    </li>
+                                                                   
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>   
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                   
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <script type="text/javascript">
+                                        
+                                        function modal_show() {
+                                            $('#modal-product').modal('show');
+                                        }
+                                    </script>
 
                                     @endif
 
