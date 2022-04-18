@@ -468,7 +468,7 @@
                                     <div class="clearfix"></div>
                                     <div class="installment-purchase pdetail-installment">
 
-                                        @if((int)$data->Price>3000000)
+
 
                                         <a target="_blank" href="{{ route('details', $data->Link)  }}?show=tra-gop" admicro-data-event="101725" admicro-data-auto="1" admicro-data-order="false">
                                         <strong>TRẢ GÓP</strong>
@@ -480,7 +480,7 @@
                                         <br>
                                         (Visa, Master, JCB)
                                         </a>
-                                         @endif
+                                        
                                         <br><br>
                                         {!!  $data->Specifications  !!} 
 

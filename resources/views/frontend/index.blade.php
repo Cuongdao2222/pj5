@@ -239,7 +239,7 @@
         <!-- flash sale -->
             <div class="">
                 <div class="flash-sale" style="height: 398px;">
-                    <span id="banner-flash-sale"><a href="https://www.nguyenkim.com/loa-di-dong-energizer-bts106bk.html">
+                    <span id="banner-flash-sale"><a href="#">
                     <img width="256" src="{{  asset('images/background-image/Flash_Sale_Theme_256x396.jpg')}}" style="width: 256px; height: 396px" alt="banner-fs">
                     </a></span>
                     <div class="flash-product nk-product-of-flash-sales">
@@ -269,7 +269,7 @@
                                                     <p class="title-shock-price">Giá sốc online</p>
                                                     <span class="price-new">{{ @str_replace(',' ,'.', number_format($value->deal_price)) }}</span>
                                                 </div>
-                                        </div><div class="review_product star"><span class="star_icon_avg_rate_npv" 0="" 5="" title="0/5"><span class="nki-Star-o-new"></span><span class="nki-Star-o-new"></span><span class="nki-Star-o-new"></span><span class="nki-Star-o-new"></span><span class="nki-Star-o-new"></span></span><div class="line_break">|</div><div class="reviewCount">0 đánh giá</div></div><div class="container-timeline">
+                                        </div><!-- <div class="review_product star"><span class="star_icon_avg_rate_npv" 0="" 5="" title="0/5"><span class="nki-Star-o-new"></span><span class="nki-Star-o-new"></span><span class="nki-Star-o-new"></span><span class="nki-Star-o-new"></span><span class="nki-Star-o-new"></span></span><div class="line_break">|</div> --><div class="reviewCount">0 đánh giá</div></div><div class="container-timeline">
                                             <span class="timeline"><span style="width: 2%"></span></span>
                                            <!--  <p>Đã bán <span style="color: #EE1E25">2</span> / 100 sản phẩm</p> -->
                                         </div>
