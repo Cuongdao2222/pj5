@@ -246,6 +246,8 @@
                         <div class="col-flash col-flash-2 active">
                             <div id="sync1S" class="slider-banner owl-carousel flash-sale-banner">
 
+                                <?php dd($deal); ?>
+
                                 @foreach($deal as $value)
 
                                 @if( $value->active ==1)
