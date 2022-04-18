@@ -112,11 +112,62 @@
                                                     </div>
                                                 </div>
                                                 <!---->
+
+                                                <?php 
+
+                                                    $product = App\Models\product::find($data_installment->product_id);
+
+                                                    
+                                                ?>
+
+                                                <div class="timetakegoods">
+                                                <h4>Thời gian nhận hàng</h4>
+                                                    <div class="box-order">
+                                                        
+
+                                                        <?php 
+
+                                                            $today = date("Y-m-d, H:i");
+                                                            $another_date = date("Y-m-d").', 16:30';
+                                                            if (strtotime($today) > strtotime($another_date)) {
+                                                                $trade = "Đơn hàng sẽ được giao vào ngày mai";
+                                                            } else {
+                                                                $trade = "Đơn hàng sẽ được giao trước 16h30 hôm nay";
+                                                            }
+                                                           
+
+                                                        ?>   
+                                                        <!----><!--fragment#178842422f1#head-->
+                                                        <div fragment="178842422f1" class="rowtime"><span>{{ $trade }}</span></div>
+                                                        <!----><!--fragment#178842422f1#tail-->
+                                                        <ul>
+                                                            <li>
+                                                                <a href="{{ @$product->Link }}" target="_blank" class="img-order">
+                                                                    <img data-src="{{ asset(@$product->Image) }}" src="{{ asset(@$product->Image) }}" loading="lazy" class=" ls-is-cached lazyloaded">
+                                                                </a>
+
+                                                                <div class="text-order">
+                                                                    <a href="{{ @$product->Link }}" target="_blank" class="text-order__product-name">{{ @$product->Name  }}</a>
+                                                                  
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                        <!--fragment#d16d94e98a#head-->
+                                                        <div fragment="d16d94e98a" class="lastrow">
+                                                            <!---->
+                                                        </div>
+                                                        <!----><!--fragment#d16d94e98a#tail-->
+                                                    </div>
+                                                   
+                                                </div>
                                                
                                                
                                                
                                             </div>
                                         </div>
+
+
+
                                     </section>
 
 
@@ -137,12 +188,7 @@
                                                             </div>
                                                         </div>
 
-                                                        <?php 
-
-                                                            $product = App\Models\product::find($data_installment->product_id);
-
-                                                            
-                                                        ?>
+                                                        
                                                         <div class="row">
                                                             <div class="col-lg-12 mx-auto">
                                                                 <ul class="list-group shadow">
