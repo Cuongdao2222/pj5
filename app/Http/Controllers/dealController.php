@@ -22,7 +22,7 @@ class dealController extends Controller
         $groupid = $request->group_id;
 
         $products = product::select('Name', 'Link', 'Price','id')->where('group_id', $groupid)->where('active', 1)->Orderby('id', 'desc')->paginate(10);
-        return view('Frontend.ajax.option_product', compact('products'));
+        return view('frontend.ajax.option_product', compact('products'));
 
     }
 
