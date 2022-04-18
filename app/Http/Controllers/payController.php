@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use Alepay;
 
+use App\Models\installment;
+
 class payController extends Controller
 {
 
@@ -41,6 +43,26 @@ class payController extends Controller
         $data['buyerPhone'] = trim($data['phoneNumber']);
 
         $data['buyerCountry'] = 'Việt Nam';
+ 
+        $installment = new installment();
+
+        $installment->price = $data['amount'];
+
+        $installment->email = $data['buyerEmail'];
+
+        $installment->name = $data['buyerName'];
+
+        $installment->phone = $data['phoneNumber'];
+
+        $installment->address = $data['buyerAddress'];
+
+        $installment->qualtity = 1;
+
+        $installment->city = $data['buyerCity'];
+
+        $installment->product_id  = $data['product_id']
+
+        $installment->save();
 
         $result = new Alepay($config);
 

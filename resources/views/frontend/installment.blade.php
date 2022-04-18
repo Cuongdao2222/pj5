@@ -127,6 +127,8 @@
                                name="buyerCity"
                                id="buyerCity" required value="Hà Nội">
 
+                        <input type="hidden" name="product_id" value="{{ $data->id }}">       
+
 
                     </div>
                     <div class="row"></div>

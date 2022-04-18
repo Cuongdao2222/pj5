@@ -44,23 +44,34 @@ $utils = new AlepayUtils();
                                 <?php 
                                     echo $transactionCode;
                                     echo '<br>Lấy thông tin giao dịch trả góp<br>';
-                                    print_r($alepay->Get_Transaction_data($transactionCode));
+                                    $data = $alepay->Get_Transaction_data($transactionCode);
+                                   
 
-                                    die();
+                                   
                                 ?>
                                 <?php if ($errorCode == '000' || $errorCode == '155') {  ?>
+
+                                     
+
+                                    @if($data->message=="Thành công")
+
+                                    <?php  
+
+                                        $data_installment  = App\Models\installment::where('email', $data->buyerEmail)->where('phone', $data->buyerPhone)->get()->first();
+                                    ?>
+                                    
                                     <section>
                                         <div class="middleCart">
                                             <!---->
                                             <div class="alertsuccess-new"><i class="new-cartnew-success"></i><strong>Đặt hàng thành công</strong></div>
                                             <div class="ordercontent">
-                                                <p>Cảm ơn Anh <b>Anh Đặt thử</b> đã cho Điện Máy Người Việt cơ hội được phục vụ.</p>
+                                                <p>Cảm ơn Anh <b>{{ @$data_installment->name }}</b> đã cho Điện Máy Người Việt cơ hội được phục vụ.</p>
                                                 <!---->
                                                 <div>
                                                     <!---->
                                                     <div class="info-order" style="">
                                                         <div class="info-order-header">
-                                                            <h4>Đơn hàng: <span>#56035442</span></h4>
+                                                            <h4>Đơn hàng: <span>#{{ $transactionCode }}</span></h4>
                                                             <div class="header-right">
                                                                 <a href="/lich-su-mua-hang">Quản lý đơn hàng</a>
                                                                 
@@ -68,17 +79,17 @@ $utils = new AlepayUtils();
                                                         </div>
                                                         <label>
                                                             <span class="">
-                                                                <i class="info-order__dot-icon"></i><span><strong>Người nhận hàng: </strong>Anh Đặt thử, 0987654321</span><!---->
+                                                                <i class="info-order__dot-icon"></i><span><strong>Người nhận hàng: </strong>{{ @$data_installment->name }}, {{ @$data_installment->phone }}</span><!---->
                                                             </span>
                                                         </label>
                                                         <label>
                                                             <span class="">
-                                                                <i class="info-order__dot-icon"></i><span><strong>Giao đến: </strong>Anh tôi đặt thử thôi.</span><!---->
+                                                                <i class="info-order__dot-icon"></i><span><strong>Giao đến: </strong>{{ @$data_installment->address }}.</span><!---->
                                                             </span>
                                                         </label>
                                                         <label>
                                                             <span class="">
-                                                                <i class="info-order__dot-icon"></i><span><strong>Tổng tiền: </strong><b class="red">1.402.000₫</b></span><!---->
+                                                                <i class="info-order__dot-icon"></i><span><strong>Tổng tiền: </strong><b class="red">{{ @$data_installment->price }}₫</b></span><!---->
                                                             </span>
                                                         </label>
                                                         <!----><!----><!----><!---->
@@ -91,6 +102,8 @@ $utils = new AlepayUtils();
                                             </div>
                                         </div>
                                     </section>
+
+                                    @endif
 
                                 <?php     
                                 } else {
