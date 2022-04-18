@@ -166,7 +166,7 @@
                                     <div class="boxbanner-32">
                                         <div class="banner-list">
                                             <div class="item banner-item banner-item-1">
-                                                <a target="&quot;_blank&quot;" href="https://mediamart.vn/khuyen-mai-tet" data-id="1022">
+                                                <a target="&quot;_blank&quot;" href="#" data-id="1022">
                                                     <picture>
                                                        
                                                         <img src="https://thegioidohoacom.s3.ap-southeast-1.amazonaws.com/wp-content/uploads/2019/01/10040348/X4iNCOp-1024x454.jpg" alt="Tết Lớn Khuyến Mại Lớn" width="&quot;640&quot;" height="&quot;150&quot;">
