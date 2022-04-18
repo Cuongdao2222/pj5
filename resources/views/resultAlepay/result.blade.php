@@ -146,6 +146,8 @@
                                                                     <img data-src="{{ asset(@$product->Image) }}" src="{{ asset(@$product->Image) }}" loading="lazy" class=" ls-is-cached lazyloaded">
                                                                 </a>
 
+                                                               &nbsp &nbsp &nbsp &nbsp
+
                                                                 <div class="text-order">
                                                                     <a href="{{ @$product->Link }}" target="_blank" class="text-order__product-name">{{ @$product->Name  }}</a>
                                                                   
