@@ -36,14 +36,13 @@
                 <?php 
 
                     $check_deal = App\Models\deal::select('deal_price')->where('product_id', $data->id)->where('active', 1)->first();
+                    if(!empty($check_deal) && !empty(!empty($check_deal->deal_price))){
 
-                    @if(!empty($check_deal))
-                                            <h3>{{ $check_deal->deal_price?@str_replace(',' ,'.', number_format( $check_deal->deal_price)):str_replace(',' ,'.', number_format($data->Price))  }}₫ </h3>
+                        $data->Price = $check_deal->deal_price;
 
-                                            @else
-                                            <h3>{{  str_replace(',' ,'.', number_format($data->Price))  }}₫</h3>
+                    }
 
-                                            @endif
+                  
                 ?>
                 <br>
                 <p><img src="{{ asset($data->Image) }}" width="250" alt="{{ $data->Name }}"></p>

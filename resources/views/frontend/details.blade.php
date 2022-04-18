@@ -57,7 +57,7 @@
 
             $check_deal = App\Models\deal::select('deal_price')->where('product_id', $data->id)->where('active', 1)->first();
 
-            if(!empty($check_deal) && !empty(!empty($check_deal))){
+            if(!empty($check_deal) && !empty(!empty($check_deal->deal_price))){
 
                 $data->Price = $check_deal->deal_price;
 
