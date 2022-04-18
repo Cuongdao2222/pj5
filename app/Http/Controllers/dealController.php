@@ -39,10 +39,10 @@ class dealController extends Controller
 
         if($page =='deal'){
 
-            return view('Frontend.ajax.option_product', compact('products'));
+            return view('frontend.ajax.option_product', compact('products'));
         }
         else{
-            return view('Frontend.ajax.product_landing', compact('products'));
+            return view('frontend.ajax.product_landing', compact('products'));
         }    
 
     }
