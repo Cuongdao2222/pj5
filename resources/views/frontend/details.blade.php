@@ -57,6 +57,13 @@
 
             $check_deal = App\Models\deal::select('deal_price')->where('product_id', $data->id)->where('active', 1)->first();
 
+            if(!empty($check_deal) && !empty(!empty($check_deal))){
+
+                $data->Price = $check_deal->deal_price;
+
+            }
+
+
         ?>
 
 
@@ -178,13 +185,9 @@
 
                                     <div class="pdetail-price">
                                         <div class="pdetail-price-box">
-                                            @if(!empty($check_deal))
-                                            <h3>{{ $check_deal->deal_price?@str_replace(',' ,'.', number_format( $check_deal->deal_price)):str_replace(',' ,'.', number_format($data->Price))  }}₫ </h3>
+                                           
+                                            <h3>{{ str_replace(',' ,'.', number_format($data->Price)) }}₫ </h3>
 
-                                            @else
-                                            <h3>{{  str_replace(',' ,'.', number_format($data->Price))  }}₫</h3>
-
-                                            @endif
                                            
                                         </div>
                                         <!-- <div class="pdetail-promotion">
@@ -422,14 +425,10 @@
 
                                         
                                         <h3>
-
-                                            @if(!empty($check_deal))
-                                            {{ $check_deal->deal_price?@str_replace(',' ,'.', number_format( $check_deal->deal_price)):str_replace(',' ,'.', number_format($data->Price))  }}₫
-
-                                            @else
+                                          
                                             {{str_replace(',' ,'.', number_format($data->Price))  }}₫
 
-                                            @endif
+                                            
                                         </h3>
                                        
                                     </div>
