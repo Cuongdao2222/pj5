@@ -60,7 +60,7 @@ class payController extends Controller
 
         $installment->city = $data['buyerCity'];
 
-        $installment->product_id  = $data['product_id']
+        $installment->product_id  = $data['product_id'];
 
         $installment->save();
 
