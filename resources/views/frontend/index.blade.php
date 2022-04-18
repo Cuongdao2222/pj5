@@ -784,7 +784,7 @@
         });
 
         $('.flash-sale-banner').owlCarousel({
-            loop:true,
+            loop:false,
             margin:10,
             nav:true,
             dots:false,
