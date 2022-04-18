@@ -56,7 +56,7 @@
             <th>Image</th>
         <th>Title</th>
         <th>Category</th>
-        <th>Content</th>
+        
         <th>Mô tả ngắn</th>
 
         <th>Hiển thị</th>
@@ -80,8 +80,8 @@
             <td>{{ $post->title }}</td>
             <td>{{ @$new_category[$post->category] }}</td>
 
-            <td class="content">{!! _substr($post->content,240,3) !!}</td>
-
+           <!--  <td class="content">{!! _substr($post->content,240,3) !!}</td>
+ -->
              <td>{!! _substr(preg_replace("#<\/p>(<\/h[1-6]>)#", '$1', $post->shortcontent),240,3) !!}</td>
 
             <td><a href="javascript:voi(0)" class="active-post" onclick="add_active('{{ $post->id }}','{{ $post->active }}')">{!! $post->active ==1?'<b style="color:red">Hạ xuống</b>':'<b style="color:green">Hiển thị</b>' !!}</a></td>   

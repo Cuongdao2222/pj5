@@ -85,18 +85,18 @@
                 <label>Giá</label>
 
                 <div>
-                    <input type="" name="" value="{{ $product->Price }}">
+                    <input type="" name="flashPrice" value="{{ $product->Price }}" id="flashPrice{{$product->id}}">
                 </div>
                 
 
                 <br>
 
-                <div class="btn-primary ">Sửa</div>
+                <div class="btn-primary" onclick="flashPrice('{{ $product->id}}')">Sửa</div>
 
 
                 <br>
 
-                <div class="btn-primary ">Sửa Ảnh</div>
+               
 
 
             </td>
@@ -490,6 +490,35 @@
         });
        
     }   
+
+
+    function flashPrice(productId) {
+      
+
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+       
+           
+        $.ajax({
+           
+            type: 'POST',
+            url: "{{ route('fast-price') }}",
+            data: {
+                product_id: productId,
+                price:$('#flashPrice'+productId).val()
+                   
+            },
+            success: function(result){
+                alert(result);
+            }
+        });
+       
+    } 
 
     
     

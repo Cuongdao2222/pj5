@@ -111,7 +111,7 @@
                             </a>
                             <div class="blog-flex">
                                 <a href="{{ route('details', $value->link) }}" class="name">{{ $value->title }}</a>
-                                {!! _substrs($value->content, 530) !!}...
+                                
                                 
                                 <a href="{{ route('details', $value->link) }}" class="linkview">Xem chi tiết ›</a>
                             </div>

@@ -402,6 +402,18 @@ class productController extends AppBaseController
 
     }
 
+    public function editFastPrice(Request $request)
+    {
+        $price = $request->price;
+        $product_id = $request->product_id;
+        $product = product::find($product_id);
+        $product->Price = $price;
+
+        $product->save();
+        return response('thanh cong');
+
+    }
+
     public function FindbyNameOrModelOfFrontend(Request $request)
     {
         $clearData = trim($request->key);

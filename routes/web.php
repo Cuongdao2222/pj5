@@ -49,7 +49,7 @@ Route::post('login-Fe', 'AjaxController@loginClientsFe')->name('login-Fe');
 Route::get('logout-Fe', 'AjaxController@logout')->name('logout-Fe');
 
 
-Route::get('crawl', 'crawlController@convertLink')->name('crawl');
+Route::get('crawl', 'crawlController@getImagePost')->name('crawl');
 
 Route::get('inCrawl', 'crawlController@print')->name('print');
 
@@ -91,6 +91,9 @@ Auth::routes(['verify' => true]);
 
 // Route::get('/home', 'HomeController@index');
 
+
+
+
 Route::post('add-cart', 'AjaxController@addProductToCart')->name('cart');
 
 Route::post('order-product', 'Frontend\orderController@orderProduct')->name('order');
@@ -123,6 +126,9 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
     Route::get('filter-group-id', 'dealController@getProductToGroupId')->name('filter-group-id');
 
     Route::get('fill-product-deal', 'dealController@getProductToName')->name('filter-product-deal');
+
+
+    Route::post('/editFastPrice', 'productController@editFastPrice')->name('fast-price');
 
 
     Route::get('deal', 'dealController@index')->name('deal');

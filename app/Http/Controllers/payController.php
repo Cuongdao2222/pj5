@@ -25,7 +25,6 @@ class payController extends Controller
 
         $data['orderCode'] = date('dmY') . '_' . uniqid();
 
-        $data['currency'] = 'VND';
 
         $data['totalItem'] = intval($data['totalItem']);
 
