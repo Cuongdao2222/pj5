@@ -31,6 +31,7 @@ class groupProductController extends AppBaseController
     {
         $groupProducts = $this->groupProductRepository->paginate(10);
 
+
         return view('group_products.index')
             ->with('groupProducts', $groupProducts);
     }
@@ -55,6 +56,14 @@ class groupProductController extends AppBaseController
     public function store(CreategroupProductRequest $request)
     {
         $input = $request->all();
+
+        if($input['group_product_id']==0){
+
+            $input['level'] = 0;
+
+            $input['parent_id'] = 0;
+
+        }
 
         if(empty($input['link'])){
 
