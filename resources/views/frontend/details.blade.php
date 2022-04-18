@@ -458,7 +458,7 @@
                                             <button type="button" class="btn btn-lg btn-add-cart btn-add-cart redirectCart" onclick="addToCart({{ $data->id }})">MUA NGAY <br>(Giao hàng tận nơi - Giá tốt - An toàn)</button>
                                             
                                             @else
-                                            <button type="button" class="btn btn-lg btn-add-cart btn-add-cart redirectCart">LIÊN HỆ <br>(Giao hàng tận nơi - Giá tốt - An toàn)</button>
+                                            <button type="button" class="btn btn-lg btn-add-cart btn-add-cart redirectCart">LIÊN HỆ <br></button>
                                             @endif
                                         </form>
                                         <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">

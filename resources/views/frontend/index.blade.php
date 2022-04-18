@@ -447,7 +447,7 @@
 
                                      
                                 </div>
-                               <p class="result-labels"><img class="sale-banner ls-is-cached lazyloaded" alt="Giảm Sốc" data-src="http://localhost/pj5/images/css/sale.png" src="http://localhost/pj5/images/css/sale.png"></p>
+                               <p class="result-labels"><img class="sale-banner ls-is-cached lazyloaded" alt="Giảm Sốc" data-src="{{ asset('images/css/sale.png') }}" src="{{ asset('images/css/sale.png') }}"></p>
                                 <h3>{{ $datas->Name }}</h3>
                                 <!-- <div class="item-compare">
                                     <span>55 inch</span>
