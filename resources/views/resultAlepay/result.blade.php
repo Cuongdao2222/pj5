@@ -1,67 +1,63 @@
-<?php
-
-require(public_path().'/lib_pay/alepay-v3/config.php');
-
-$errorCode = isset($_GET['errorCode']) ? $_GET['errorCode'] : '';
-$transactionCode = isset($_GET['transactionCode']) ? $_GET['transactionCode'] : '';
-$alepay = new Alepay($config);
-$utils = new AlepayUtils();
-?>
-
-<link rel="stylesheet" type="text/css" href="https://cdn.tgdd.vn/mwgcart/vue-pro/css/desktop/cart-result.min.2ab80dc527e5d6fd453e.css">
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-
-
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
-
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-
-   <script
-  src="https://code.jquery.com/jquery-3.6.0.min.js"
-  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-  crossorigin="anonymous"></script>
-
-  <style type="text/css">
-      
-       
-
-        .text-gray {
-          color: #aaa;
-        }
-  </style>
-
 <!doctype html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport"
-              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <!-- Compiled and minified CSS -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
-
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.tgdd.vn/mwgcart/vue-pro/css/desktop/cart-result.min.2ab80dc527e5d6fd453e.css">
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            function modal_show() {
+            
+                $("#modal-products").modal('show');
+            }
+            
+             
+        </script>
         <!-- Compiled and minified JavaScript -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
         <link rel="stylesheet" href="style/style.css">
         <title>Show Data</title>
+        <style type="text/css">
+            .modal-content{
+            background: #00b09b;
+            background: -webkit-linear-gradient(to right, #00b09b, #96c93d);
+            background: linear-gradient(to right, #00b09b, #96c93d);
+            min-height: 100vh;
+            }
+            .text-gray {
+            color: #aaa;
+            }
+        </style>
+
+    
+
+            <?php
+
+            require(public_path().'/lib_pay/alepay-v3/config.php');
+
+            $errorCode = isset($_GET['errorCode']) ? $_GET['errorCode'] : '';
+            $transactionCode = isset($_GET['transactionCode']) ? $_GET['transactionCode'] : '';
+            $alepay = new Alepay($config);
+            $utils = new AlepayUtils();
+            ?>
+        
     </head>
     <body>
         <div id="container">
             <div class="row">
-                <div class="col s3"></div>
-                <div class="col s6 center">
+                <div class="center" style="margin:0 auto;">
                     <h3>Kết quả</h3>
                     <ul class="collection col-md-8">
                         <li class="collection-item">
                             <div>
 
-
-
                                 <?php 
-                                    echo $transactionCode;
+
+                                    
+                                   
                                     echo '<br>Lấy thông tin giao dịch trả góp<br>';
                                     $data = $alepay->Get_Transaction_data($transactionCode);
                                    
@@ -166,7 +162,7 @@ $utils = new AlepayUtils();
                                                                                     </ul>
                                                                                 </div>
                                                                             </div>
-                                                                            <img src="{{ @$product->Image }}" alt="{{ @$product->Name }}" width="200" class="ml-lg-5 order-1 order-lg-2">
+                                                                            <img src="{{ asset(@$product->Image) }}" alt="{{ @$product->Name }}" width="200" class="ml-lg-5 order-1 order-lg-2">
                                                                         </div>
                                                                     </li>
                                                                    
@@ -203,11 +199,10 @@ $utils = new AlepayUtils();
                     <ul class="collection col-md-8">
                         <li class="collection-item">
                             <div>
-                                <a href="<?php echo ('http://' . $_SERVER['SERVER_NAME']) ?>">Nhấn Vào Đây Nếu Bạn Muốn Mua Tiếp</a>
+                                <a href="http://dienmaynguoiviet.net">Nhấn Vào Đây Nếu Bạn Muốn Mua Tiếp</a>
                             </div>
                         </li>
                     </ul>
-
                 </div>
             </div>
         </div>
