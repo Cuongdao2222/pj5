@@ -144,7 +144,7 @@
         </section>
 
 
-        <section class="wrapper content-1 sx cssback bg-desktop " style="background-image: url({{  asset('images/background-image/pop-upbanner.jpg')}}); height: 450px;">
+        <section class="wrapper content-1 sx cssback bg-desktop " style="background-image: url({{  asset('images/background-image/pop-upbanner.jpg')}}); height: 650px;">
 
         <div class="scroll-menu ">
             <a href="javascript:;" data-id="ce" onclick="scrollToDS('ce')" class="scrollto2"></a>
