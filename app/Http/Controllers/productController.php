@@ -365,7 +365,7 @@ class productController extends AppBaseController
 
         $data      = $clearData;
 
-        $resultProduct = Product::select('id')->where('Name', $data)->OrWhere('ProductSku', $data)->first();
+       $resultProduct = Product::select('id')->where('Name','LIKE', '%' . $data . '%')->OrWhere('ProductSku', 'LIKE', '%' . $data . '%')->first();
 
         if(!empty($resultProduct)){
 
@@ -418,9 +418,9 @@ class productController extends AppBaseController
     {
         $clearData = trim($request->key);
 
-        $data      = $clearData;
+        $data      = strip_tags($clearData);
 
-        $resultProduct = Product::select('id')->where('Name', $data)->OrWhere('ProductSku', $data)->first();
+        $resultProduct = Product::select('id')->where('Name','LIKE', '%' . $data . '%')->OrWhere('ProductSku', 'LIKE', '%' . $data . '%')->first();
 
         if(!empty($resultProduct)){
 
