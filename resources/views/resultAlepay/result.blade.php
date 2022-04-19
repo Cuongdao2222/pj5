@@ -6,7 +6,7 @@
             content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="https://cdn.tgdd.vn/mwgcart/vue-pro/css/desktop/cart-result.min.2ab80dc527e5d6fd453e.css">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/lib/cart-result.min.css') }}">
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
         <script type="text/javascript">

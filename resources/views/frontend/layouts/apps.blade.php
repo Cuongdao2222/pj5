@@ -668,8 +668,10 @@
 
 
             }
+
+            category__txts
            
-            @media screen and (min-width: 777px){
+            @media screen and (min-width: 767px){
                 .mobiles{
                     display: none;
                 }
@@ -696,6 +698,15 @@
                     width: 100%;
                 }  
                
+            }
+
+            @media screen and (max-width: 768px){
+                .category__txts{
+                    display: none;
+                }
+                .nav-list{
+                    display: block !important;
+                }
             }
            
         </style>
