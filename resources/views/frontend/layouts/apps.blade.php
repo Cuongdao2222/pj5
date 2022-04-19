@@ -704,7 +704,7 @@
                 .category__txts{
                     display: none;
                 }
-               
+                
             }
            
         </style>
