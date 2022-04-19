@@ -970,7 +970,7 @@
             <div class="header__top desktop header-pc">
                 <section>
                     <a href="{{route('homeFe')}}" class="header__logo">
-                        <img src="{{ asset('images/template/logochuan.png') }}" style="height:40px;">   
+                        <img src="{{ asset('images/template/logochuan.jpg') }}" style="height:40px;">   
                    
                     </a>
                    
