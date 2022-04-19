@@ -23,7 +23,6 @@ class crawlController extends Controller
     public function crawl()
     {
 
-
         // $urls =  $this->getLink();
 
         $urls  = ['https://dienmaynguoiviet.vn/smart-tivi-lg-65up7720ptc-65-inch-4k/'];
@@ -4167,58 +4166,19 @@ https://dienmaynguoiviet.vn/vi-sao-khong-nen-xem-tivi-khi-dang-an/';
     public function getImagePost()
     {
 
-        for($i=243; $i<2268; $i++){
+        for($i=1; $i<1501; $i++){
 
-            $link = product::find($i);
+            $posts = post::find($i);
 
-            $url  = $link->Link;
+            $posts->link = rtrim(trim($posts->link), "/");
 
-            $urls = 'https://dienmaynguoiviet.vn/'.$url.'/';
+            $posts->save();
 
-        
-            $html = file_get_html(trim($urls));
-
-           
-
-            foreach ($html->find('#owl1 .item img') as $image) {
-
-                $images = $image->src;
-
-                $images = 'https://dienmaynguoiviet.vn/'.$images;
-
-                if(!empty($images)){
-
-                    $file_headers = @get_headers($images);
-
-                    if($file_headers[0] == 'HTTP/1.1 200 OK'){
-
-                        $name = basename($images);
-                        
-                        $name = '/uploads/product/crawl/child/'.time().'_'.$name;
-
-                        Storage::disk('public')->put($name, file_get_contents($images));
-
-                        $image = $name;
-
-                        $input['image'] = $name;
-                        $input['link'] = $name;
-                        $input['product_id'] = $i;
-                        $input['order']= 0;
-
-                    
-                        image::Create($input);
-                    }    
-
-                }
             
-            }
 
         }
-
-        
-
         echo "thanh cong";
-       
+
     }
 
     public function getMetaProducts($value='')

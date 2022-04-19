@@ -1136,136 +1136,85 @@
                             </a>
                             <div class="navmwg accessories tivi-child">
                                 <div class="PKDD">
-                                    <strong>Phụ kiện di động</strong>
-                                    <a href="/sac-dtdd">
-                                        <h3>Pin sạc dự phòng</h3>
+                                    <strong>Thương hiệu</strong>
+                                    <a href="#">
+                                        <h3>Tivi Samsung</h3>
                                     </a>
                                     <a href="/sac-cap">
-                                        <h3>Sạc, cáp</h3>
+                                        <h3>Tivi LG</h3>
                                     </a>
                                     <a href="/mieng-dan-man-hinh">
-                                        <h3>Miếng dán màn hình</h3>
+                                        <h3>Tivi Sony</h3>
                                     </a>
                                     <a href="/op-lung-flipcover">
-                                        <h3>Ốp lưng điện thoại</h3>
+                                        <h3>Tivi Tcl</h3>
                                     </a>
                                     <a href="/op-lung-may-tinh-bang">
-                                        <h3>Ốp lưng máy tính bảng</h3>
+                                        <h3>Tivi Philips</h3>
                                     </a>
-                                    <a href="/gay-tu-suong">
-                                        <h3>Gậy chụp ảnh, Gimbal</h3>
-                                    </a>
-                                    <a href="/gia-do-dien-thoai">
-                                        <h3>Giá đỡ laptop, điện thoại</h3>
-                                    </a>
-                                    <a href="/de-moc-dien-thoai">
-                                        <h3>Đế, móc điện thoại</h3>
-                                    </a>
-                                    <a href="/tui-chong-nuoc">
-                                        <h3>Túi chống nước</h3>
-                                    </a>
-                                    <a href="/tui-dung-airpods">
-                                        <h3>Túi đựng Airpods</h3>
-                                    </a>
-                                    <a href="/phu-kien-thong-minh">
-                                        <h3>Phụ kiện Tablet</h3>
-                                    </a>
-                                    <a href="/airtag">
-                                        <h3>Airtag</h3>
-                                    </a>
+                                   
+                                   
                                     <br><br>
                                 </div>
                                 <div class="sub-cate">
                                     <div class="PKLT">
-                                        <strong>Phụ kiện Laptop</strong>
+                                        <strong>Loại tivi</strong>
                                         <a href="/chuot-may-tinh">
-                                            <h3>Chuột, bàn phím</h3>
+                                            <h3>8K</h3>
                                         </a>
                                         <a href="/thiet-bi-mang">
-                                            <h3>Thiết bị mạng</h3>
+                                            <h3>4K</h3>
                                         </a>
                                         <a href="/camera-giam-sat">
-                                            <h3>Camera, Webcam</h3>
+                                            <h3>Tivi màn hình cong</h3>
                                         </a>
                                         <a href="/tui-chong-soc">
-                                            <h3>Balo, túi chống sốc</h3>
+                                            <h3>Tivi 3D</h3>
                                         </a>
                                         <a href="/phan-mem">
-                                            <h3>Phần mềm</h3>
+                                            <h3>Smart tivi</h3>
                                         </a>
+
+                                          <a href="/tui-chong-soc">
+                                            <h3>Tivi 3D</h3>
+                                        </a>
+                                      
+
+                                          <a href="/tui-chong-soc">
+                                            <h3>Tivi Led</h3>
+                                        </a>
+                                        <a href="/phan-mem">
+                                            <h3>Smart tivi</h3>
+                                        </a>
+                                          <a href="/tui-chong-soc">
+                                            <h3>Tivi OLED</h3>
+                                        </a>
+                                        
+                                       
                                     </div>
                                     <div class="PKCH">
                                         <strong>
-                                        Thương hiệu hàng đầu
-                                        <a href="/phu-kien/chinh-hang" class="">Xem tất cả</a>
+                                        Kích cỡ tivi
+                                        
                                         </strong>
                                         <a href="/phu-kien/apple">
-                                            <h3>Apple</h3>
+                                            <h3>tivi 32 inches</h3>
                                         </a>
                                         <a href="/phu-kien/samsung">
-                                            <h3>Samsung</h3>
+                                            <h3>tivi 49 inches</h3>
                                         </a>
                                         <a href="/phu-kien/sony">
-                                            <h3>Sony</h3>
+                                            <h3>tivi 55 inches</h3>
                                         </a>
                                         <a href="/phu-kien/jbl">
-                                            <h3>JBL</h3>
+                                            <h3>tivi từ 65 inches trở lên</h3>
                                         </a>
                                         <a href="/phu-kien/xiaomi">
-                                            <h3>Xiaomi</h3>
+                                            <h3>tivi 50 inches</h3>
                                         </a>
                                     </div>
-                                    <div class="TBAT">
-                                        <strong>Thiết bị âm thanh</strong>
-                                        <a href="/tai-nghe">
-                                            <h3>Tai nghe</h3>
-                                        </a>
-                                        <a href="/loa-laptop">
-                                            <h3>Loa</h3>
-                                        </a>
-                                        <div class="TBNTM">
-                                            <strong>Thiết bị nhà thông minh</strong>
-                                            <a href="/khoa-dien-tu">
-                                                <h3>Khóa điện tử</h3>
-                                            </a>
-                                            <a href="/android-tv-box">
-                                                <h3>TV Box</h3>
-                                            </a>
-                                            <a href="/o-cam-thong-minh">
-                                                <h3>Ổ cắm thông minh</h3>
-                                            </a>
-                                            <a href="/may-chieu">
-                                                <h3>Máy chiếu</h3>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="PKK">
-                                        <div class="TBLT">
-                                            <strong>Thiết bị lưu trữ</strong>
-                                            <a href="/the-nho-dien-thoai">
-                                                <h3>Thẻ nhớ</h3>
-                                            </a>
-                                            <a href="/usb">
-                                                <h3>USB</h3>
-                                            </a>
-                                            <a href="/o-cung-di-dong">
-                                                <h3>Ổ cứng di động</h3>
-                                            </a>
-                                        </div>
-                                        <strong>Phụ kiện khác</strong>
-                                        <a href="/phu-kien-oto">
-                                            <h3>Phụ kiện ô tô</h3>
-                                        </a>
-                                        <a href="/may-tinh-cam-tay">
-                                            <h3>Máy tính cầm tay</h3>
-                                        </a>
-                                        <a href="/quat-mini">
-                                            <h3>Quạt mini</h3>
-                                        </a>
-                                        <a href="/pin">
-                                            <h3>Pin tiểu, pin điện thoại</h3>
-                                        </a>
-                                    </div>
+                                   
+                                    
                                 </div>
                             </div>
                         </li>
@@ -1276,12 +1225,7 @@
                             </a>
                         </li>
 
-                     <!--    <li>
-                            <a href="/may-giat" class="list-mn">
-                            <i class="icon-tulanh"></i>
-                            <span>Máy giặt</span>
-                            </a>
-                        </li> -->
+                
 
 
                         <li class="child" data-id="may-giat-child">

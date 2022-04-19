@@ -286,6 +286,7 @@ class categoryController extends Controller
 
         $findID = product::where('link', $link)->first();
 
+       
         // chuyển sang category check
 
         if(empty($findID)){
