@@ -1467,11 +1467,7 @@
                             </a>
                         </nav>
                     </div>
-                    <!-- <ul class="txt-list" data-id="706">
-                        <li><a data-cate="0" data-place="706" href="https://www.dienmayxanh.com/may-giat" onclick="jQuery.ajax({ url: '/bannertracking?bid=46706&r='+ (new Date).getTime(), async: true, cache: false });">Máy giặt giảm sốc đến 31%</a></li>
-                        <li><a data-cate="0" data-place="706" href="https://www.dienmayxanh.com/xe-dap?v=ldp" onclick="jQuery.ajax({ url: '/bannertracking?bid=46742&r='+ (new Date).getTime(), async: true, cache: false });">Xe đạp giảm sốc 20% + Quà Hot</a></li>
-                        <li><a data-cate="75,55,2002,1882,2402,822,2528,1987,56,1990,2222,2064,1922,2428,2062,1962,1943,522,54,1983,86,44,462,1944,1991,2023,2342,42,2302,346,2262,0,85,58,2102,1988,2065,1363,443,60,2322,2403,1982,1985,1986,2063,1662,1942,57,1992,1989,166,2162,2529,1742,2182,1984,2142,482,2202" data-place="706" href="https://www.dienmayxanh.com/gia-dung-online-only" onclick="jQuery.ajax({ url: '/bannertracking?bid=27911&r='+ (new Date).getTime(), async: true, cache: false });">Gia dụng Online giảm sốc đến 45%</a></li>
-                    </ul> -->
+                   
                 </section>
             </div>
             @endif
@@ -1889,7 +1885,10 @@
             
         </script>
 
-        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
         
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> -->
 
@@ -1899,7 +1898,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.theme.default.min.css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js"></script>
 
-   <!--  <script src="https://cdn.tgdd.vn/mwgcart/mwgcore/js/bundle/globalDMX.min.v202201141000.js" type="text/javascript"></script> -->
+  
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>

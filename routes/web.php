@@ -14,7 +14,7 @@
 
 
 
-Route::get('/tin-khuyen-mai/', 'Frontend\blogController@index')->name('tin')->middleware('auth');
+Route::get('/tin-khuyen-mai/', 'Frontend\blogController@index')->name('tin');
 
 Route::get('/', 'Frontend\indexController@index')->name('homeFe');
 Route::get('/ckfinder.html', function () {
