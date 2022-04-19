@@ -46,6 +46,106 @@
         <meta name="viewport" content="width=device-width" />
           
         <meta property="og:image" content="https://dienmaynguoiviet.vn/media/banner/logo_logo.png" />
+
+
+        <!-- Global site tag (gtag.js) - Google Ads: 971664599 -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-971664599"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'AW-971664599');
+        </script>
+          <!-- Event snippet for Thêm vào giỏ hàng conversion page
+        In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+        <script>
+        function gtag_report_conversion(url) {
+          var callback = function () {
+            if (typeof(url) != 'undefined') {
+              window.location = url;
+            }
+          };
+          gtag('event', 'conversion', {
+              'send_to': 'AW-971664599/xg4KCICo_MYCENfZqc8D',
+              'event_callback': callback
+          });
+          return false;
+        }
+        </script>
+          <!-- Event snippet for Lượt mua hàng conversion page
+        In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+        <script>
+        function gtag_report_conversion(url) {
+          var callback = function () {
+            if (typeof(url) != 'undefined') {
+              window.location = url;
+            }
+          };
+          gtag('event', 'conversion', {
+              'send_to': 'AW-971664599/ggYyCLij_cYCENfZqc8D',
+              'transaction_id': '',
+              'event_callback': callback
+          });
+          return false;
+        }
+        </script>
+          <!-- Event snippet for Click đt mobile conversion page
+        In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+        <script>
+        function gtag_report_conversion(url) {
+          var callback = function () {
+            if (typeof(url) != 'undefined') {
+              window.location = url;
+            }
+          };
+          gtag('event', 'conversion', {
+              'send_to': 'AW-971664599/BsqZCL6p_cYCENfZqc8D',
+              'event_callback': callback
+          });
+          return false;
+        }
+        </script>
+
+        <!-- Facebook Pixel Code -->
+        <script>
+          !function(f,b,e,v,n,t,s)
+          {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+          n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+          if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+          n.queue=[];t=b.createElement(e);t.async=!0;
+          t.src=v;s=b.getElementsByTagName(e)[0];
+          s.parentNode.insertBefore(t,s)}(window, document,'script',
+          'https://connect.facebook.net/en_US/fbevents.js');
+          fbq('init', '481349662401312');
+          fbq('track', 'PageView');
+        </script>
+        <noscript><img height="1" width="1" style="display:none"
+          src="https://www.facebook.com/tr?id=481349662401312&ev=PageView&noscript=1"
+        /></noscript>
+        <!-- End Facebook Pixel Code -->
+          
+         
+          
+          <!-- Google Tag Manager --> 
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': 
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], 
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= 
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); 
+        })(window,document,'script','dataLayer','GTM-WB77XQL');</script> 
+        <!-- End Google Tag Manager --> 
+          
+        <!-- Global Site Tag (gtag.js) - Google Analytics -->
+        <script async src="//www.googletagmanager.com/gtag/js?id=UA-106951419-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments)};
+          gtag('js', new Date());
+
+          gtag('config', 'UA-106951419-1');
+        </script>
+
+
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
         
@@ -804,6 +904,16 @@
                     padding: 10px;
                     z-index: 999;
                 }
+                .logins-modal, .register-form{
+                    cursor: pointer;
+                }
+
+                .logins-modal:hover{
+                    color: red;
+                }
+                .register-form:hover{
+                    color: red;
+                }
               
 
 
@@ -900,7 +1010,7 @@
 
                         $active_cart =  count($cart)>0?'active':'';
                      ?>   
-                    <a href="javascript:void(0)" class="header__cart {{ $active_cart }}" onclick="showToCart()">
+                    <a href="javascript:void(0)" class="header__cart {{ $active_cart }}" onclick="showToCart()" style="margin-right: -46px;">
 
                         <i class="fa fa-shopping-cart" aria-hidden="true" style="font-size:22px"></i>
                         <b id="count_shopping_cart_store"><span class="number-cart">{{ $number_cart }}</span></b>
@@ -917,14 +1027,22 @@
                         </a>
                     
                     @else
-                    <div class="cliens-login">
-                        <a href="javascript:void(0)" class="header__cart {{ $active_cart }}">
 
-                            <i class="fa fa-user" aria-hidden="true" style="font-size:22px"></i>
+
+                    <div  class="header__cart fas-phones">
+                         <i class="fa fa-user phones-customn" aria-hidden="true"></i>
+                         <div class="div-text">
+                            <span class="tel-head logins-modal">Đăng nhập</span>
+                            <span class="tvbhclient register-form">Đăng ký</span>
+
                             
-                        </a>
+                        </div>
+                    </div>
 
-                        <div class="client-login">
+
+                    <!-- <a href="tel: 02473036336" class="header__cart {{ $active_cart }}">
+                        <i class="fa fa-user" aria-hidden="true" style="font-size:22px"></i>
+                         <div class="div-text">
                             <a rel="nofollow" class="logins-modal" href="javascript:void(0)">
                                 <span style="color:#fff; font-size: 12px;">Đăng nhập</span>
                             </a>
@@ -932,10 +1050,9 @@
                             <a rel="nofollow" class="register-form" href="javascript:void(0)">
                                 <span style="color: #fff; font-size:12px;">Đăng ký</span>
                             </a>
+                            
                         </div>
-                    </div>
-                    
-
+                    </a> -->
                     
                     @endif
 
