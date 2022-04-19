@@ -152,13 +152,13 @@
         <section class="menus-banner">
             <ul>
                 <li class="col-">
-                    <a href="tivi-cao-cap">
+                    <a href="/ti-vi">
                         <picture>
                             <source media="(min-width:1201px)" >
                             <img src="{{ asset('images/background-image/011.png') }}" alt="" data-src="{{ asset('images/background-image/011.png') }}">
                         </picture>
                     </a>
-                    <p><a href="tivi-cao-cap">TV cao cấp</a></p>
+                    <p><a href="/ti-vi">TV cao cấp</a></p>
                 </li>
                 <li>
                     <a href="tu-lanh">
@@ -167,43 +167,43 @@
                            <img src="{{ asset('images/background-image/021.png') }}" alt="" data-src="{{ asset('images/background-image/021.png') }}">
                         </picture>
                     </a>
-                    <p><a href="tu-lanh">Tủ lạnh</a></p>
+                    <p><a href="/tu-lanh">Tủ lạnh</a></p>
                 </li>
                 <li>
-                    <a href="may-giat">
+                    <a href="/may-giat">
                         <picture>
                             <source media="(min-width:1201px)">
                             <img src="{{ asset('images/background-image/031.png') }}" alt="" data-src="{{ asset('images/background-image/031.png') }}">
                         </picture>
                     </a>
-                    <p><a href="may-giat">Máy giặt</a></p>
+                    <p><a href="/may-giat">Máy giặt</a></p>
                 </li>
                 <li>
-                    <a href="gia-dung">
+                    <a href="/gia-dung">
                         <picture>
                             <source media="(min-width:1201px)">
                             <img src="{{ asset('images/background-image/041.png') }}" alt="" data-src="{{ asset('images/background-image/041.png') }}">
                         </picture>
                     </a>
-                    <p><a href="gia-dung">Gia dụng</a></p>
+                    <p><a href="/gia-dung">Gia dụng</a></p>
                 </li>
                 <li>
-                    <a href="tivi-inch-lon-gia-re">
+                    <a href="/ti-vi">
                         <picture>
                             <source media="(min-width:1201px)">
                             <img src="{{ asset('images/background-image/051.png') }}" alt="" data-src="{{ asset('images/background-image/051.png') }}">
                         </picture>
                     </a>
-                    <p><a href="tivi-inch-lon-gia-re">TV Inch lớn giá rẻ</a></p>
+                    <p><a href="/ti-vi">TV Inch lớn giá rẻ</a></p>
                 </li>
                 <li>
-                    <a href="tra-gop">
+                    <a href="/dieu-hoa">
                         <picture>
                             <source media="(min-width:1201px)">
                             <img src="{{ asset('images/background-image/61.png') }}" alt="" data-src="{{ asset('images/background-image/61.png') }}">
                         </picture>
                     </a>
-                    <p><a href="tra-gop">Trả góp</a></p>
+                    <p><a href="/dieu-hoa">Trả góp</a></p>
                 </li>
             </ul>
         </section>

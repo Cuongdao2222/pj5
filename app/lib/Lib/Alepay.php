@@ -38,17 +38,17 @@ class Alepay {
          * Require curl and json extension
          */
         if (isset($opts) && !empty($opts["apiKey"])) {
-            $this->apiKey = 'RpMkK0JfiwhEWdfjA6TZi7qKRvoKrz';
+            $this->apiKey = 'yJVzaXsEfDKYvf6D4hineQMHEBI3EF';
         } else {
             throw new Exception("API key is required !");
         }
         if (isset($opts) && !empty($opts["encryptKey"])) {
-            $this->publicKey = 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDejJkDxom33dul1nlfLP2ScA6V/i57+8Bqee8p9Gc4fYYJbvEAZQPjN4RRuszDvQrogx/jNEowq+JuHXE8nFXsd6MNdcV+A3f80xFsnmvcMvBIdiMDuYYoopL6f4XjRHGZZouN8mcMc9ZvVVWLS3x2Umyt84beNQDhIAhPD9LocQIDAQAB';
+            $this->publicKey = 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDFXmSiZ9q1X0CBN0ye7SNSv+Sz6gtH3lsd3SPaTwYcubQNgah/mwezNl/ABU5cPvUH6g3EQ9a13X++eRSfap4sFF2CehBQSZroZPHIGZEAYi401iOFLInqxV71zqRv1xrNQ4GnEldni+/rkgQaWYICsfy8pxkr+w7l6fZVrJ+aVwIDAQAB';
         } else {
             throw new Exception("Encrypt key is required !");
         }
         if (isset($opts) && !empty($opts["checksumKey"])) {
-            $this->checksumKey = 'd7hEU8EAha7ReAtgnmpDbfjpbKgdvx';
+            $this->checksumKey = 'HaG8ImT64DO8Iivg8qWokIwfqC542x';
         } else {
             throw new Exception("Checksum key is required !");
         }
@@ -229,7 +229,7 @@ class Alepay {
         $signature = $this->alepayUtils->makeSignature($data, $this->checksumKey);
         $data['signature'] = $signature;
         $data_string = json_encode($data);
-		$url =  $this->baseURL['test'] . $this->URI['requestPayment'];
+		$url =  'https://alepay-v3.nganluong.vn/api/v3/checkout/'. $this->URI['requestPayment'];
 
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
@@ -249,12 +249,12 @@ class Alepay {
 
     public function Get_Transaction_data($transactionCode)
     {
-        $data['tokenKey'] = 'RpMkK0JfiwhEWdfjA6TZi7qKRvoKrz';
+        $data['tokenKey'] = 'yJVzaXsEfDKYvf6D4hineQMHEBI3EF';
         $data['transactionCode'] = $transactionCode;
         $signature = $this->alepayUtils->makeSignature($data, 'd7hEU8EAha7ReAtgnmpDbfjpbKgdvx');
         $data['signature'] = $signature;
         $data_string = json_encode($data);
-        $url =  $this->baseURL['test'] . $this->URI['getTransactionInfo'];
+        $url =  'https://alepay-v3.nganluong.vn/api/v3/checkout/'. $this->URI['getTransactionInfo'];
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
         curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
