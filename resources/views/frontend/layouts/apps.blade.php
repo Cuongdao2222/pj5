@@ -1069,7 +1069,7 @@
                 <section>
                     <div class="col-xs-12">
                         <a href="/" class="header__logo">
-                            <img src="{{ asset('images/template/logochuan.png') }}">   
+                            <img src="{{ asset('images/template/logochuan.jpg') }}">   
                        
                         </a>
 
