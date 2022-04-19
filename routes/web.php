@@ -16,7 +16,7 @@
 
 Route::get('/tin-khuyen-mai/', 'Frontend\blogController@index')->name('tin')->middleware('auth');
 
-Route::get('/', 'Frontend\indexController@index')->name('homeFe')->middleware('auth');
+Route::get('/', 'Frontend\indexController@index')->name('homeFe');
 Route::get('/ckfinder.html', function () {
     return view('frontend.ckfinder');
     
@@ -31,7 +31,7 @@ Route::get('/tra-gop', function () {
 Route::get('/landing-page', function () {
     return view('frontend.landingpage');
     
-})->middleware('auth');
+});
 
 
 Route::get('/result.php', function () {
