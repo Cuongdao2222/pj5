@@ -203,6 +203,8 @@
             right: 0;
         }
 
+      
+
         .product_list_cart .cart_col_3 {
             width: 36%;
             text-align: right;
@@ -217,6 +219,9 @@
 
         .product_list_cart .col_price {
             color: #c10017;
+        }
+        .header__logo img{
+            height: 66px !important;
         }
 
 
@@ -841,16 +846,17 @@
                 .tvbhclient{
                     width: 100px;
                 }
-                .header-pc{
+                /*.header-pc{
                     height: 43px;
-                }
+                }*/
 
                 .header-pc section{
-                    height: 43px;
+                    height: 64px;
                 }
 
                 .header__logo{
-                    width: 222px;
+                    width: 394px;
+                    height: 64px;
                 }
 
                 /*box quang cao slider*/
@@ -970,7 +976,7 @@
             <div class="header__top desktop header-pc">
                 <section>
                     <a href="{{route('homeFe')}}" class="header__logo">
-                        <img src="{{ asset('images/template/logochuan.jpg') }}" style="height:40px;">   
+                        <img src="{{ asset('images/template/logochuan.jpg') }}">   
                    
                     </a>
                    
@@ -1130,6 +1136,10 @@
                 <div class="menu-section">
                     <ul class="list-menu">
                         <li class="child" data-id="tivi-child">
+
+
+
+
                             <a class="list-mn" href="{{ route('details', 'ti-vi') }}">
                                 <i class="fa fa-television" aria-hidden="true"></i>
                                 <span>Tivi</span>
@@ -1219,10 +1229,96 @@
                             </div>
                         </li>
                         <li>
-                            <a href="/tu-lanh" class="list-mn">
-                            <i class="icon-tulanh"></i>
-                            <span>Tủ lạnh</span>
+                            <a href="/tu-lanh" >
+                                <li class="child" data-id="tulanh-child">
+                                    <i class="icon-tulanh"></i>
+                                    <span>Tủ lạnh</span>
+                                </li>    
                             </a>
+
+                            <div class="navmwg accessories tulanh-child">
+                                <div class="PKDD">
+                                    <strong>Thương hiệu</strong>
+                                    <a href="#">
+                                        <h3>Tivi Samsung</h3>
+                                    </a>
+                                    <a href="/sac-cap">
+                                        <h3>Tivi LG</h3>
+                                    </a>
+                                    <a href="/mieng-dan-man-hinh">
+                                        <h3>Tivi Sony</h3>
+                                    </a>
+                                    <a href="/op-lung-flipcover">
+                                        <h3>Tivi Tcl</h3>
+                                    </a>
+                                    <a href="/op-lung-may-tinh-bang">
+                                        <h3>Tivi Philips</h3>
+                                    </a>
+                                   
+                                   
+                                    <br><br>
+                                </div>
+                                <div class="sub-cate">
+                                    <div class="PKLT">
+                                        <strong>Dung tích</strong>
+                                        <a href="/chuot-may-tinh">
+                                            <h3>8K</h3>
+                                        </a>
+                                        <a href="/thiet-bi-mang">
+                                            <h3>4K</h3>
+                                        </a>
+                                        <a href="/camera-giam-sat">
+                                            <h3>Tivi màn hình cong</h3>
+                                        </a>
+                                        <a href="/tui-chong-soc">
+                                            <h3>Tivi 3D</h3>
+                                        </a>
+                                        <a href="/phan-mem">
+                                            <h3>Smart tivi</h3>
+                                        </a>
+
+                                          <a href="/tui-chong-soc">
+                                            <h3>Tivi 3D</h3>
+                                        </a>
+                                      
+
+                                          <a href="/tui-chong-soc">
+                                            <h3>Tivi Led</h3>
+                                        </a>
+                                        <a href="/phan-mem">
+                                            <h3>Smart tivi</h3>
+                                        </a>
+                                          <a href="/tui-chong-soc">
+                                            <h3>Tivi OLED</h3>
+                                        </a>
+                                        
+                                       
+                                    </div>
+                                    <div class="PKCH">
+                                        <strong>
+                                       Loại tủ
+                                        
+                                        </strong>
+                                        <a href="/phu-kien/apple">
+                                            <h3>tivi 32 inches</h3>
+                                        </a>
+                                        <a href="/phu-kien/samsung">
+                                            <h3>tivi 49 inches</h3>
+                                        </a>
+                                        <a href="/phu-kien/sony">
+                                            <h3>tivi 55 inches</h3>
+                                        </a>
+                                        <a href="/phu-kien/jbl">
+                                            <h3>tivi từ 65 inches trở lên</h3>
+                                        </a>
+                                        <a href="/phu-kien/xiaomi">
+                                            <h3>tivi 50 inches</h3>
+                                        </a>
+                                    </div>
+                                   
+                                    
+                                </div>
+                            </div>
                         </li>
 
                 
@@ -1234,10 +1330,88 @@
                                 <span>Máy giặt</span>
                             </a>
 
-                            <div class="navmwg may-giat-child">
-                                <a href="/dong-ho"><h3>Đồng hồ thời trang</h3></a>
-                                <a href="/trang-suc"><h3>Trang sức</h3></a>
-                                <a href="/mat-kinh"><h3>Mắt kính</h3></a>
+                            <div class="navmwg accessories may-giat-child">
+                                <div class="PKDD">
+                                    <strong>Thương hiệu</strong>
+                                    <a href="#">
+                                        <h3>Tivi Samsung</h3>
+                                    </a>
+                                    <a href="/sac-cap">
+                                        <h3>Tivi LG</h3>
+                                    </a>
+                                    <a href="/mieng-dan-man-hinh">
+                                        <h3>Tivi Sony</h3>
+                                    </a>
+                                    <a href="/op-lung-flipcover">
+                                        <h3>Tivi Tcl</h3>
+                                    </a>
+                                    <a href="/op-lung-may-tinh-bang">
+                                        <h3>Tivi Philips</h3>
+                                    </a>
+                                   
+                                   
+                                    <br><br>
+                                </div>
+                                <div class="sub-cate">
+                                    <div class="PKLT">
+                                        <strong>Kiểu giặt</strong>
+                                        <a href="/chuot-may-tinh">
+                                            <h3>8K</h3>
+                                        </a>
+                                        <a href="/thiet-bi-mang">
+                                            <h3>4K</h3>
+                                        </a>
+                                        <a href="/camera-giam-sat">
+                                            <h3>Tivi màn hình cong</h3>
+                                        </a>
+                                        <a href="/tui-chong-soc">
+                                            <h3>Tivi 3D</h3>
+                                        </a>
+                                        <a href="/phan-mem">
+                                            <h3>Smart tivi</h3>
+                                        </a>
+
+                                          <a href="/tui-chong-soc">
+                                            <h3>Tivi 3D</h3>
+                                        </a>
+                                      
+
+                                          <a href="/tui-chong-soc">
+                                            <h3>Tivi Led</h3>
+                                        </a>
+                                        <a href="/phan-mem">
+                                            <h3>Smart tivi</h3>
+                                        </a>
+                                          <a href="/tui-chong-soc">
+                                            <h3>Tivi OLED</h3>
+                                        </a>
+                                        
+                                       
+                                    </div>
+                                    <div class="PKCH">
+                                        <strong>
+                                        Khối lượng giặt
+                                        
+                                        </strong>
+                                        <a href="/phu-kien/apple">
+                                            <h3>tivi 32 inches</h3>
+                                        </a>
+                                        <a href="/phu-kien/samsung">
+                                            <h3>tivi 49 inches</h3>
+                                        </a>
+                                        <a href="/phu-kien/sony">
+                                            <h3>tivi 55 inches</h3>
+                                        </a>
+                                        <a href="/phu-kien/jbl">
+                                            <h3>tivi từ 65 inches trở lên</h3>
+                                        </a>
+                                        <a href="/phu-kien/xiaomi">
+                                            <h3>tivi 50 inches</h3>
+                                        </a>
+                                    </div>
+                                   
+                                    
+                                </div>
                             </div>
 
                         </li>
@@ -1277,8 +1451,6 @@
                             </a>
                         </li>
 
-                      
-                      
                     </ul>
                 </div>
                 
