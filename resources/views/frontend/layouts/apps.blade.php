@@ -1137,9 +1137,6 @@
                     <ul class="list-menu">
                         <li class="child" data-id="tivi-child">
 
-
-
-
                             <a class="list-mn" href="{{ route('details', 'ti-vi') }}">
                                 <i class="fa fa-television" aria-hidden="true"></i>
                                 <span>Tivi</span>
@@ -1228,12 +1225,10 @@
                                 </div>
                             </div>
                         </li>
-                        <li>
-                            <a href="/tu-lanh" >
-                                <li class="child" data-id="tulanh-child">
-                                    <i class="icon-tulanh"></i>
-                                    <span>Tủ lạnh</span>
-                                </li>    
+                        <li class="child" data-id="tulanh-child">
+                            <a class="list-mn" href="{{ route('details', 'tu-lanh') }}">
+                                <i class="fa fa-television" aria-hidden="true"></i>
+                                <span>Tủ lạnh</span>
                             </a>
 
                             <div class="navmwg accessories tulanh-child">
