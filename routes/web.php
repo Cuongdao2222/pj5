@@ -110,7 +110,7 @@ Route::post('rate-form', 'AjaxController@rateForm')->name('rate-form');
 
 Route::get('/category/{slug}', 'Frontend\categoryController@index')->name('category-product')->middleware('auth');
 
-Route::get('/{slug}', 'Frontend\categoryController@details')->name('details')->middleware('auth');
+Route::get('/{slug}', 'Frontend\categoryController@details')->name('details');
 
 Route::post('ajax-clent-register', 'AjaxController@registerClient')->name('register-client-fe');
 

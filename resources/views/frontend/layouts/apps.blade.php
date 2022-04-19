@@ -1134,7 +1134,7 @@
                                 <i class="fa fa-television" aria-hidden="true"></i>
                                 <span>Tivi</span>
                             </a>
-                            <!-- <div class="navmwg accessories tivi-child">
+                            <div class="navmwg accessories tivi-child">
                                 <div class="PKDD">
                                     <strong>Phụ kiện di động</strong>
                                     <a href="/sac-dtdd">
@@ -1267,7 +1267,7 @@
                                         </a>
                                     </div>
                                 </div>
-                            </div> -->
+                            </div>
                         </li>
                         <li>
                             <a href="/tu-lanh" class="list-mn">
@@ -1276,12 +1276,12 @@
                             </a>
                         </li>
 
-                        <li>
+                     <!--    <li>
                             <a href="/may-giat" class="list-mn">
                             <i class="icon-tulanh"></i>
                             <span>Máy giặt</span>
                             </a>
-                        </li>
+                        </li> -->
 
 
                         <li class="child" data-id="may-giat-child">
@@ -1290,11 +1290,11 @@
                                 <span>Máy giặt</span>
                             </a>
 
-                            <!-- <div class="navmwg may-giat-child">
+                            <div class="navmwg may-giat-child">
                                 <a href="/dong-ho"><h3>Đồng hồ thời trang</h3></a>
                                 <a href="/trang-suc"><h3>Trang sức</h3></a>
                                 <a href="/mat-kinh"><h3>Mắt kính</h3></a>
-                            </div> -->
+                            </div>
 
                         </li>
 
@@ -1333,12 +1333,7 @@
                             </a>
                         </li>
 
-                        <li>
-                            <a class="list-mn" href="#">
-                                <i class="icon-diengiadung"></i>
-                                <span>Tủ Đông</span>
-                            </a>
-                        </li>
+                      
                       
                     </ul>
                 </div>
