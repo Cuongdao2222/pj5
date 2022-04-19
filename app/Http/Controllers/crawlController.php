@@ -4166,7 +4166,7 @@ https://dienmaynguoiviet.vn/vi-sao-khong-nen-xem-tivi-khi-dang-an/';
     public function getImagePost()
     {
 
-        for($i=1; $i<1501; $i++){
+        for($i=1501; $i<1514; $i++){
 
             $posts = post::find($i);
 
