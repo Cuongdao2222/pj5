@@ -107,7 +107,7 @@
                         
                         <div class="blog-list-item">
                             <a href="{{ route('details', $value->link) }}" class="img">
-                            <img src="{{ asset($value->image) }}" alt="{{ $value->title }}">
+                            <img src="{{ asset($value->image) }}" data-src ="{{ asset($value->image) }}" alt="{{ $value->title }}">
                             </a>
                             <div class="blog-flex">
                                 <a href="{{ route('details', $value->link) }}" class="name">{{ $value->title }}</a>
