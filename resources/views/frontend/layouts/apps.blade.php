@@ -704,9 +704,7 @@
                 .category__txts{
                     display: none;
                 }
-                .nav-list{
-                    display: block !important;
-                }
+               
             }
            
         </style>
