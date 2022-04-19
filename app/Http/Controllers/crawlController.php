@@ -4166,7 +4166,7 @@ https://dienmaynguoiviet.vn/vi-sao-khong-nen-xem-tivi-khi-dang-an/';
     public function getImagePost()
     {
 
-        for($i=1501; $i<1514; $i++){
+        for($i=1; $i<1501; $i++){
 
             $posts = post::find($i);
 
@@ -4252,7 +4252,7 @@ https://dienmaynguoiviet.vn/vi-sao-khong-nen-xem-tivi-khi-dang-an/';
                 if(isset($matches[1])){
                     foreach($matches[1] as $value){
                        
-                        $value = 'https://dienmaynguoiviet.vn/'.$value;
+                        $value = 'https://dienmaynguoiviet.vn/'.str_replace('../','', $value);
 
                         $arr_image = explode('/', $value);
 
