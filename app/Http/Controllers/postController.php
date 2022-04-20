@@ -216,13 +216,6 @@ class postController extends AppBaseController
 
         $arr_change = [];
 
-
-        print_r($matches);
-
-        die();
-
-     
-
         if(isset($matches[1])){
             foreach($matches[1] as $value){
                 $arr_image = explode('/', $value);
