@@ -408,7 +408,7 @@
                             </div>
 
                             <div class="scroll-box">
-                                <div class="boxbanner-32">
+                                <!-- <div class="boxbanner-32">
                                     <div class="banner-list">
                                         <div class="item banner-item banner-item-1">
                                             <a target="#" data-id="1022">
@@ -419,7 +419,7 @@
                                             </a>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
 
                                 <div class="pdetail-price">
                                     <div class="pdetail-price-box">

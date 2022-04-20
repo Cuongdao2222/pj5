@@ -171,11 +171,11 @@
         }
 
         .menu-pc{
-                background: #fed100 !important;
-            }
+            background: #fed100 !important;
+        }
 
-            .header__top {
-            background-color: #187A43;
+        .header__top {
+            background-color: #187A43 !important;
         }
 
         /*menu top*/
