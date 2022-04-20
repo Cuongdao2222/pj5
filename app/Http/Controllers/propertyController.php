@@ -176,14 +176,7 @@ class propertyController extends AppBaseController
     public function removePropertyChild(Request $request){
         $id = $request->id;
 
-       
-
-        if(!empty($name)){
-
-            property::find($id)->delete(); ; 
-
-           
-        }
+        property::find($id)->delete(); ; 
 
     }
 }

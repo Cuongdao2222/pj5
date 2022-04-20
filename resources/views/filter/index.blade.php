@@ -297,9 +297,7 @@
         }
 
          function remove_filter_property(){
-
-        
-           
+            
             $.ajax({
 
             type: 'GET',
