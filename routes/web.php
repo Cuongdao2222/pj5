@@ -130,6 +130,8 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::post('/editFastPrice', 'productController@editFastPrice')->name('fast-price');
 
+    Route::post('/edit-fast-Qualtity', 'productController@editFastQualtity')->name('edit-fast-qualtity');
+
 
     Route::get('deal', 'dealController@index')->name('deal');
 

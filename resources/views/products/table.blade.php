@@ -102,7 +102,20 @@
             </td>
             <td><a href="{{ route('details', $product->Link) }}">{{ $product->Link }}</a></td>
             <td>{{ $product->Group_id }}</td>
-            <td>{{ $product->Quantily }}</td>
+            <td>
+                <span>sửa nhanh</span>
+                <input type="" name="qualtily" value="{{ $product->Quantily }}" id="qualtity{{ $product->id }}">
+
+                <br>
+
+                <br>
+
+                <div class="btn-primary" onclick="flashQualtily('{{ $product->id}}')">Sửa</div>
+
+
+                <br>
+
+            </td>
 
             <td><input type="checkbox" id="hot{{ $product->id }}" name="hot"  onclick='handleClick({{ $product->id }});' data-id ="{{ $product->Group_id }}" {{ in_array($product->id, $list_hot)?'checked':'' }}></td>
             <td><input type="checkbox" id="sale{{ $product->id }}" name="sale"  onclick='saleClick({{ $product->id }});' data-id ="{{ $product->Group_id }}" {{ in_array($product->id, $list_sales)?'checked':'' }}></td>
@@ -412,6 +425,31 @@
         });
 
         
+    }
+
+    function flashQualtily(productId) {
+
+         $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+           
+        $.ajax({
+           
+            type: 'POST',
+            url: "{{ route('edit-fast-qualtity') }}",
+            data: {
+                product_id: productId,
+                qualtity:$('#qualtity'+productId).val()
+                   
+            },
+            success: function(result){
+                alert(result);
+            }
+        });
+       
     }
 
     function saleClick(id) {
