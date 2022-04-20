@@ -161,6 +161,7 @@ class propertyController extends AppBaseController
 
         $name = $request->name;
 
+
         if(!empty($name)){
 
             $property = property::find($id);
@@ -168,6 +169,20 @@ class propertyController extends AppBaseController
             $property->name = $name;
 
             $property->save();
+        }
+
+    }
+
+    public function removePropertyChild(Request $request){
+        $id = $request->id;
+
+       
+
+        if(!empty($name)){
+
+            property::find($id)->delete(); ; 
+
+           
         }
 
     }

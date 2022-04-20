@@ -367,7 +367,16 @@
                     propertys.push(property);
 
                 }
-    
+
+                
+                else{
+                    filers_url.splice(filers_url.indexOf(filters));
+
+                    propertys.splice(filers_url.indexOf(filters));
+
+                }
+
+             
                 if(filers_url.length>0){
                     propertys = propertys.join(',');
 
@@ -375,8 +384,18 @@
 
                    @if(!empty($link))
 
-
-                        window.location.href = '{{ route('details',$link) }}?filter=,'+filter+'&group_id={{ @$id_cate }}&property=,'+propertys+'&link={{ $link }}';
+                        
+                        filter = filter.replace(",", "");
+                        propertys = propertys.replace(",", "");
+                        
+                        if(filter==''){
+                            window.location.href = '{{ route('details',$link) }}';
+                        }
+                        else{
+                      
+                            window.location.href = '{{ route('details',$link) }}?filter=,'+filter+'&group_id={{ @$id_cate }}&property=,'+propertys+'&link={{ $link }}';
+                        }
+                        
                     @endif
                 }
 

@@ -14,7 +14,7 @@
 
 
 
-Route::get('/tin-khuyen-mai/', 'Frontend\blogController@index')->name('tin')->middleware('auth');
+Route::get('/tin-khuyen-mai/', 'Frontend\blogController@index')->name('tin');
 
 Route::get('/', 'Frontend\indexController@index')->name('homeFe');
 Route::get('/ckfinder.html', function () {
@@ -221,6 +221,11 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
     Route::get('category/{category_id}', 'productController@selectProductByCategory')->name('select-category');
 
     Route::get('edit-property-child', 'propertyController@editPropertyChild')->name('property-edit-child');
+
+    Route::get('remove-property-child', 'propertyController@removePropertyChild')->name('property-remove-child');
+
+
+    
 
     Route::get('add-active-post', 'postController@addActive')->name('add-active-post');
 

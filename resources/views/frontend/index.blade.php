@@ -366,7 +366,7 @@
                             
                             
                         </div>
-                       <!--  <p class='result-label temp1'><img width='20' height='20' class='lazyload' alt='Giảm Sốc' data-src='https://cdn.tgdd.vn/2020/10/content/icon1-50x50.png'><span>Giảm Sốc</span></p> -->
+                       
                         <h3>{{ $value->Name }}</h3>
                        
                         <strong class="price">{{  @str_replace(',' ,'.', number_format($value->Price))  }}.&#x20AB;</strong>
@@ -392,8 +392,6 @@
         </div>
 
         <?php
-
-            // $data = App\Models\product::where('Group_id', 1)->get();
 
             $group = App\Models\groupProduct::where('parent_id', 0)->get();
          ?>   
@@ -496,10 +494,10 @@
      
     
         <!-- Banner dọc 2 bên -->
-        <!-- <div class="sticky-sidebar" style="display: none;">
-            <a data-cate="0" data-place="1863" href="https://www.dienmayxanh.com/flashsale#game" onclick="jQuery.ajax({ url: '/bannertracking?bid=47538&r='+ (new Date).getTime(), async: true, cache: false });" class="banner-left"><img style="cursor:pointer" src="https://cdn.tgdd.vn/2022/01/banner/tttt-79x271-1.png" alt="Theme Giáng Sinh Trái" width="79" height="271"></a>
-            <a data-cate="0" data-place="1864" href="https://www.dienmayxanh.com/flashsale#game" onclick="jQuery.ajax({ url: '/bannertracking?bid=47537&r='+ (new Date).getTime(), async: true, cache: false });" class="banner-right"><img style="cursor:pointer" src="https://cdn.tgdd.vn/2022/01/banner/ppp-79x271-1.png" alt="Theme Giáng Sinh Phải" width="79" height="271"></a>        
-        </div> -->
+        <div class="sticky-sidebar" style="display: none;">
+            <a data-cate="0" data-place="1863" href="#" class="banner-left"><img style="cursor:pointer" src="#" alt="Theme Giáng Sinh Trái" width="79" height="271"></a>
+            <a data-cate="0" data-place="1864" href="#" class="banner-right"><img style="cursor:pointer" src="#" alt="Theme Giáng Sinh Phải" width="79" height="271"></a>        
+        </div>
         
         <?php  
 
