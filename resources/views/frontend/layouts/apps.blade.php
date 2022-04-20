@@ -1806,7 +1806,7 @@
                             </li>
 
                           
-                            <li>
+                            <li class="mobile">
                                 <a href="{{ Route::getFacadeRoot()->current()->uri() }}?show=pc_view">Xem bản desktop</a>
                             </li>
                         </ul>
