@@ -174,7 +174,7 @@
             background: #fed100 !important;
         }
 
-        .header__top {
+        .header-pc {
             background-color: #187A43 !important;
         }
 
