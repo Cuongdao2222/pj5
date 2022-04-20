@@ -2,6 +2,32 @@
 
 @section('content')
 
+<style type="text/css">
+    
+    #edit-property-table .modal-body {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      line-height: 20px;
+      color: #333333;
+    }
+
+    #edit-property-table table, #edit-property-table th, #edit-property-table td {
+      border: solid 1px #000;
+      padding: 10px;
+    }
+
+    #edit-property-table table {
+        border-collapse:collapse;
+        caption-side:bottom;
+    }
+
+    caption {
+      font-size: 16px;
+      font-weight: bold;
+      padding-top: 5px;
+    }
+</style>
+
 
 <div style="background-color:#FFF">
     <div id="action-links">
@@ -10,6 +36,8 @@
     <?php 
 
         $product_id = $_GET['productId'];
+
+        $groupProduct = App\Models\groupProduct::select('name')->where('id', $_GET['group-product'])->first();
         if(!empty($product_id)){ 
             $infoProduct = App\Models\product::find($product_id);
         }    
@@ -79,7 +107,7 @@
 
                                             ?>
 
-                                            <td valign="top"><span><input type="checkbox" id="attributeValue_{{ $propertys->id }}" onclick="useThis('{{ $product_id }}',  '{{$filters->id}}', '{{ $propertys->id }}')" {{ isset($arr_value[$propertys->id])&& in_array($product_id  ,$arr_value[$propertys->id])?'checked':'' }}> <label for="code" data-id="$propertys->id">{{ $propertys->name }}</label></span><br></td>
+                                            <td valign="top"><span><input type="checkbox" id="attributeValue_{{ $propertys->id }}" onclick="useThis('{{ $product_id }}',  '{{$filters->id}}', '{{ $propertys->id }}')" {{ isset($arr_value[$propertys->id])&& in_array($product_id  ,$arr_value[$propertys->id])?'checked':'' }}> <label for="code" data-id="{{ $propertys->id }}">{{ $propertys->name }}</label></span><br></td>
                                             @endforeach
                                         @else
 
@@ -147,6 +175,48 @@
                 </div>
             </div>
         </div>
+
+
+        <div class="modal fade" id="edit-property-table" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                      
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>&nbsp;</th>
+                                    <th>Tên thuộc tính</th>
+                                    <th>Danh mục của thuộc tính</th>
+                                    <th>sửa</th>
+                                    <th>xóa</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Giá trị</td>
+                                    <td class="name">5</td>
+                                    <td class="parent_name">8</td>
+                                    <td><a href="javascript:void(0)" class="edit-pr">sửa</a></td>
+                                    <td><a href="javascript:void(0)" class="remove-pr" onclick="remove_filter_property()">xóa</a></td>
+                                </tr>
+                               
+                            </tbody>
+                           
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary add-deal-price" onclick="edit_filter_property()">Xác nhận</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <br>
         
         <br>
@@ -157,26 +227,56 @@
         <input type="hidden" name="list_att_add_value" id="list_att_add_value" value=";">
         <input type="hidden" name="noattr" value=""> -->
         <input type="hidden" name="id-child-dbclick" id="id-child-dbclick">
+
+        <input type="hidden" name="name-child-dbclick" id="name-child-dbclick">
+
+
+
+
+
+
+
         
+                
     </div>
 
     <script type="text/javascript">
 
-        $('#tb_padding label').dblclick(function(){
+        $('.edit-pr').click(function(){
 
             $('#edit-property').modal('show');
 
-            $('#name-property').val($(this).text());
+             $('#edit-property-table').modal('hide');
+          
+
+        })
+
+
+         $('#tb_padding label').dblclick(function(){
+
+            $('#edit-property-table').modal('show');
+
+            $('.name').html($(this).text());
+
+            $('.parent_name').html('{{ $groupProduct->name }}')
 
 
 
             $('#id-child-dbclick').val($(this).attr('data-id'));
 
+
+            $('#name-child-dbclick').val($(this).attr($(this).text()));
+
+           
+
+
+
         })
 
 
+
         function edit_filter_property(){
-           
+ 
             $.ajax({
 
             type: 'GET',
@@ -187,11 +287,36 @@
                 },
                 success: function(result){
 
+                    
+
+
                   window.location.reload();
                    
                 }
             });
         }
+
+         function remove_filter_property(){
+
+        
+           
+            $.ajax({
+
+            type: 'GET',
+                url: "{{ route('property-remove-child') }}",
+                data: {
+                    id:$('#id-child-dbclick').val(),
+                    
+                },
+                success: function(result){
+
+                  window.location.reload();
+                   
+                }
+            });
+        }
+
+
         function useThis(product_id, filterId, property_id) {
 
             const checked = $('#attributeValue_'+property_id).is(':checked'); 

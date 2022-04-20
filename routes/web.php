@@ -222,6 +222,11 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::get('edit-property-child', 'propertyController@editPropertyChild')->name('property-edit-child');
 
+    Route::get('remove-property-child', 'propertyController@removePropertyChild')->name('property-remove-child');
+
+
+    
+
     Route::get('add-active-post', 'postController@addActive')->name('add-active-post');
 
     Route::get('add-hight-light-post', 'postController@addHightLight')->name('add-hight-light-post');

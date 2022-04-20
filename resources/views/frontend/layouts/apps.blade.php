@@ -669,9 +669,9 @@
 
             }
 
-            category__txts
            
-            @media screen and (min-width: 767px){
+           
+            @media screen and (min-width: 777px){
                 .mobiles{
                     display: none;
                 }
@@ -700,12 +700,7 @@
                
             }
 
-            @media screen and (max-width: 768px){
-                .category__txts{
-                    display: none;
-                }
-                
-            }
+
            
         </style>
 
@@ -1450,7 +1445,7 @@
 
             </div>
 
-            @if(\Request::route()->getName()!='homeFe')
+            
             <div class="header__main">
                 <section>
 
@@ -1479,7 +1474,7 @@
                    
                 </section>
             </div>
-            @endif
+          
         </header>
 
         @yield('content')
