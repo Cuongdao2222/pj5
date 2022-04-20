@@ -77,18 +77,11 @@
             <section>
                 <div class="slider-bannertop owl-carousel owl-theme">
                     <div class="item">
-                        <a aria-label="slide" data-cate="1942" data-place="1537"><img width=800  src="https://cdn.tgdd.vn/2022/01/banner/800-200-800x200-38.png" alt="tivi chung"  ></a>
+                        <a aria-label="slide" data-cate="1942" data-place="1537"><img width=1200  src="{{ asset('images/template/banner-category.jpg') }}" alt="tivi chung"  ></a>
                     </div>
                     
                 </div>
-                <!-- <div class="promote-banner ">
-                    <a href="/Banner C&#x1ED1; &#x110;&#x1ECB;nh" class="promote-item">
-                    <a aria-label="slide" data-cate="1942" data-place="1538" href="#" onclick="jQuery.ajax({ url: '/bannertracking?bid=43621&r='+ (new Date).getTime(), async: true, cache: false });"><img  src="https://cdn.tgdd.vn/2021/07/banner/TraGop390-97-390x97-1.png" alt="Banner Cố Định"  ></a>
-                    </a>
-                    <a href="/tivi tr&#x1B0;ng b&#xE0;y" class="promote-item">
-                    <a aria-label="slide" data-cate="1942" data-place="1538" href="https://www.dienmayxanh.com/may-doi-tra/tivi?type=7#" onclick="jQuery.ajax({ url: '/bannertracking?bid=45610&r='+ (new Date).getTime(), async: true, cache: false });"><img  src="https://cdn.tgdd.vn/2021/08/banner/390-97-390x97-4.png" alt="tivi trưng bày"  ></a>
-                    </a>
-                </div> -->
+               
             </section>
 
         </div>
@@ -212,7 +205,7 @@
 
                                         ?>
                                         
-                                        <strong class="price">{{ number_format(str_replace("\xc2\xa0",'',$value->Price) , 0, ',', '.')}}</strong>
+                                        <strong class="price">{{ number_format(str_replace("\xc2\xa0",'',$value->Price) , 0, ',', '.')}}&#x20AB</strong>
                                         <!-- <p class="item-gift">Quà <b>1.500.000₫</b></p> -->
                                         <div class="item-rating">
                                             <p>

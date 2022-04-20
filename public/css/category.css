@@ -5282,7 +5282,7 @@ section {
 .box-filter {
     position: relative;
     font-size: 0;
-    padding-top: 10px
+    padding-top: 10px;
 }
 
 .fixed .box-filter {
@@ -13750,4 +13750,10 @@ a#ss-now span label {
 
 .owl-carousel:hover button {
     opacity: 1
+}
+
+@media only screen and (max-width: 768px) {
+  .box-filter{
+    text-align: center;
+  }
 }
