@@ -513,6 +513,10 @@
                 padding-top: 10px;
             }
 
+            .list-menu h3:hover{
+                font-weight: bold;
+            }
+
            /* .list-menu>li:hover, .main-menu>li.active {
                 background-color: #fff;
             }*/

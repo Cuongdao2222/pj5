@@ -272,7 +272,14 @@
                                                     <span class="price-new">{{ @str_replace(',' ,'.', number_format($value->deal_price)) }}</span>
                                                 </div>
                                         </div>
-                                        <div class="review_product star"><span class="star_icon_avg_rate_npv" 0="" 5="" title="0/5"><span class="nki-Star-o-new"></span><span class="nki-Star-o-new"></span><span class="nki-Star-o-new"></span><span class="nki-Star-o-new"></span><span class="nki-Star-o-new"></span></span>
+                                        <div class="review_product star">
+                                           <p>
+                                                <i class="icon-star"></i>
+                                                <i class="icon-star"></i>
+                                                <i class="icon-star"></i>
+                                                <i class="icon-star"></i>
+                                                <i class="icon-star-dark"></i>
+                                            </p>
                                             <div class="line_break">|</div>
                                                 <div class="reviewCount">0 đánh giá</div>
                                             </div>
