@@ -414,6 +414,19 @@ class productController extends AppBaseController
 
     }
 
+     public function editFastQualtity(Request $request)
+    {
+
+        $qualtity = $request->qualtity;
+        $product_id = $request->product_id;
+        $product = product::find($product_id);
+        $product->Quantily = $qualtity;
+
+        $product->save();
+        return response('thanh cong');
+
+    }
+
     public function FindbyNameOrModelOfFrontend(Request $request)
     {
         $clearData = trim($request->key);
