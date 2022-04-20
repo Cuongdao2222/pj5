@@ -3,6 +3,7 @@
 @extends('frontend.layouts.apps')
 
 @section('content') 
+
         <style type="text/css">
             
             @media screen and (min-width: 777px){
