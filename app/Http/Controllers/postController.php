@@ -118,6 +118,8 @@ class postController extends AppBaseController
 
         $meta_model->meta_og_content = $input['title'];
 
+        $meta_model->meta_key_words = $input['title'];
+
         $meta_model->meta_og_title = $input['shortcontent'];
 
         $meta_model->save();
