@@ -175,7 +175,7 @@
             }
 
             .header__top {
-            background-color: #187A43 !important;
+            background-color: #187A43;
         }
 
         /*menu top*/
