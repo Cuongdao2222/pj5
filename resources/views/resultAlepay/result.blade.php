@@ -56,12 +56,7 @@
 
                                 <?php 
 
-                                    
-                                   
-                                  
                                     $data = $alepay->Get_Transaction_data($transactionCode);
-                                   
-
                                    
                                 ?>
                                 <?php if ($errorCode == '000' || $errorCode == '155') {  ?>

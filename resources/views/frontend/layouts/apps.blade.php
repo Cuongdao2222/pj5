@@ -1408,35 +1408,118 @@
 
                         </li>
 
-                        <li>
+                        <li class="child" data-id="dieu-hoa-child">
                             <a class="list-mn" href="/dieu-hoa">
                                 <i class="icon-maylanh"></i>
                                 <span>Điều hòa</span>
                             </a>
+                            <div class="navmwg accessories dieu-hoa-child">
+                                <div class="PKDD">
+                                    <strong>Thương hiệu</strong>
+                                    <a href="#">
+                                        <h3>Máy giặt Electrolux</h3>
+                                    </a>
+                                    <a href="/sac-cap">
+                                        <h3>Máy giặt LG</h3>
+                                    </a>
+                                    <a href="/mieng-dan-man-hinh">
+                                        <h3>Máy giặt Panasonic</h3>
+                                    </a>
+                                    <a href="/op-lung-flipcover">
+                                        <h3>Máy giặt Samsung</h3>
+                                    </a>
+                                    <a href="/op-lung-may-tinh-bang">
+                                        <h3>Máy giặt Sharp</h3>
+                                    </a>
+                                   
+                                   
+                                    <br><br>
+                                </div>
+                                <div class="sub-cate">
+                                    <div class="PKLT">
+                                        <strong>Tiết Kiệm Điện</strong>
+                                        <a href="/chuot-may-tinh">
+                                            <h3>Lồng Ngang</h3>
+                                        </a>
+                                        <a href="/thiet-bi-mang">
+                                            <h3>Lồng Đứng</h3>
+                                        </a>
+                                        <a href="/camera-giam-sat">
+                                            <h3>Lồng Nghiêng</h3>
+                                        </a>
+                                        
+                                        
+                                       
+                                    </div>
+                                    <div class="PKCH">
+                                        <strong>
+                                        Công Suất
+                                        
+                                        </strong>
+                                        <a href="/phu-kien/apple">
+                                            <h3>Dưới 7kg</h3>
+                                        </a>
+                                        <a href="/phu-kien/samsung">
+                                            <h3>Từ 7 - 8kg</h3>
+                                        </a>
+                                        <a href="/phu-kien/sony">
+                                            <h3>Từ 8 - 9kg</h3>
+                                        </a>
+                                        <a href="/phu-kien/jbl">
+                                            <h3>Trên 9kg</h3>
+                                        </a>
+                                       
+                                    </div>
+
+                                     <div class="PKCH">
+                                        <strong>
+                                       Loại Điều Hòa
+                                        
+                                        </strong>
+                                        <a href="/phu-kien/apple">
+                                            <h3>Dưới 7kg</h3>
+                                        </a>
+                                        <a href="/phu-kien/samsung">
+                                            <h3>Từ 7 - 8kg</h3>
+                                        </a>
+                                        <a href="/phu-kien/sony">
+                                            <h3>Từ 8 - 9kg</h3>
+                                        </a>
+                                        <a href="/phu-kien/jbl">
+                                            <h3>Trên 9kg</h3>
+                                        </a>
+                                       
+                                    </div>
+
+                                    
+                                   
+                                    
+                                </div>
+                            </div>
                         </li>
 
-                        <li>
+                        <li class="child" data-id="dieu-hoa-child">
                             <a class="list-mn" href="#">
                                 <i class="icon-diengiadung"></i>
                                 <span>Đồ gia dụng</span>
                             </a>
                         </li>
 
-                        <li>
+                        <li class="child" data-id="dieu-hoa-child">
                             <a class="list-mn" href="#">
                                 <i class="icon-diengiadung"></i>
                                 <span>Tủ đông</span>
                             </a>
                         </li>
 
-                        <li>
+                        <li class="child" data-id="dieu-hoa-child">
                             <a class="list-mn" href="#">
                                 <i class="icon-diengiadung"></i>
                                 <span>A.O.Smith</span>
                             </a>
                         </li>
 
-                         <li>
+                         <li class="child" data-id="dieu-hoa-child">
                             <a class="list-mn" href="#">
                                 <i class="icon-diengiadung"></i>
                                 <span>Tủ Mát</span>
