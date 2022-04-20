@@ -59,9 +59,9 @@ class post extends Model
     
      public static $rulesUpdate = [
         'image' => 'max:10000|mimes:jpg,jpeg,png',
-        'title' =>  'required|max:4096|unique:posts',
+        'title' =>  'required|max:4096',
         'content' =>  'required',
-        'shortcontent'=> 'required|max:4096',
+        
 
     ];
 
