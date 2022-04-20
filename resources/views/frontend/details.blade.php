@@ -213,7 +213,7 @@
 
                                                 }
                                                 elseif($data->Quantily==-1){
-                                                    $status ='Hết hàng';
+                                                    $status ='Ngừng kinh doanh';
                                                 }
                                                 else{
                                                     $status = 'Còn hàng';

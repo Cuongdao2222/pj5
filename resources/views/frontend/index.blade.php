@@ -522,6 +522,8 @@
                         <div class="col1-big-img">
                             <img data-src="{{ asset( $post[0]['image'])  }}" class=" ls-is-cached lazyloaded" alt="{{ $post[0]['title'] }}" src="{{ $post[0]['image'] }}">
                         </div>
+
+                        <p class="spl-item-title">{{ $post[0]['title'] }}</p>
                        
                     </a>
                     <div class="col1-simple">
