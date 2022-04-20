@@ -701,6 +701,9 @@
                     
                     width: 100%;
                 }  
+                .list-mn{
+                    margin-left: 23px;
+                }
                
             }
 
