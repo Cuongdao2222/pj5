@@ -5408,7 +5408,7 @@ body.dmx-site #loader:before {
 
 [class ^="icondetail-"],
 [class *="icondetail-"] {
-    background - image: url(//cdn.tgdd.vn/mwgcart/mwg-site/ContentMwg/images/TGDD/Mobile/icon_chitiet@2x-min.png?v=2);
+    background-image: url('icon-chitiet.png');
     background-repeat: no-repeat;
     display: inline-block;
     height: 30px;

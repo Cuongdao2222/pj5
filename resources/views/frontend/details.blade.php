@@ -749,26 +749,26 @@
          
   <div class="buy-group">
     
-    
+    @if((int)$data->Price>0)
     <div class="clear space10px in">
      
-        <a class="btn-buy txt_center cor5px buy-nows-popup" onclick="addToShoppingCart('pro','3036',document.getElementById('s_quantity').value,'2350000');" href="javascript:;">
+        <a class="btn-buy txt_center cor5px buy-nows-popup" onclick="addToShoppingCart('pro','3036',document.getElementById('s_quantity').value,'{{ $data->Price}}');" href="javascript:;">
             <i class="fa fa-shopping-cart"></i> <span class="txt_15" onclick="addToCart({{ $data->id }})">Mua ngay</span>
         </a>
-
-      
-        
     </div>
+    @endif
 
+     @if((int)$data->Price>3000000)
     <div class="clear space10px credit">
-        <a class="btn-buy txt_center cor5px but-1-gop"  href="javascript:;" style="background: #ffde00; border-bottom: 0;" >
-            <i class="fa fa-shopping-cart"></i> <span class="txt_15" onclick="addToCart({{ $data->id }})">Trả góp</span>
+        <a class="btn-buy txt_center cor5px but-1-gop"  href="{{ route('details', $data->Link)  }}?show=tra-gop" style="background: #ffde00; border-bottom: 0;" >
+            <i class="fa fa-shopping-cart"></i> <span class="txt_15">Trả góp</span>
         </a>
 
-        <a class="btn-buy txt_center cor5px"  href="javascript:;" style="background: #ffde00; border-bottom: 0;">
-            <i class="fa fa-shopping-cart"></i> <span class="txt_15" onclick="addToCart({{ $data->id }})">Trả góp qua thẻ</span>
+        <a class="btn-buy txt_center cor5px"  href="{{ route('details', $data->Link)  }}?show=tra-gop" style="background: #ffde00; border-bottom: 0;">
+            <i class="fa fa-shopping-cart"></i> <span class="txt_15" >Trả góp qua thẻ</span>
         </a>
     </div>
+    @endif
     
       Gọi đặt mua:  <span class="txt_b txt_red"><a href="tel:0967025111">098 361 2828</a></span> (sau 17h)<br>
        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="txt_b txt_red"> <a href="tel:02438615111">091 301 1888</a></span> (sau 17h)
