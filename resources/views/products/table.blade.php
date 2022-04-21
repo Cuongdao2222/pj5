@@ -71,7 +71,6 @@
         ?>
 
         <?php  
-
             $now = Carbon\Carbon::now(); 
         ?>
 
@@ -79,7 +78,7 @@
 
             <tr>
                 <td><img src="{{ asset($product->Image) }}" width="150px" height="150px"></td>
-            <td>{{ $product->Name }}</td>
+            <td><a href="{{ route('products.edit', [$product->id]) }}">{{ $product->Name }}</a></td>
             <td>
                 
                 <label>Giá</label>
