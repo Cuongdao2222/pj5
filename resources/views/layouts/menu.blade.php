@@ -113,7 +113,7 @@
 </li>
 
 
-@if(Auth::user()->id==2 || Auth::user()->id==1)
+@if(Auth::user()->id==1 || Auth::user()->id==4)
 
 <li class="nav-item">
     <a href="{{ route('products.index') }}"
