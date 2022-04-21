@@ -18,6 +18,7 @@
     <div class="btn btn-warning"><a href="#mo-ta">Mô tả</a></div>
     <div class="btn btn-warning" ><a href="{{ route('filter-property') }}?group-product={{ $product->Group_id }}&productId={{ $product->id }}">Thông số</a></div>
     <div class="btn btn-warning"><a href="{{ route('images.create') }}?{{ $product->id }}">Ảnh</a></div>
+    <div class="btn btn-warning" ><a href="#mo-ta">Thông số kỹ thuật chi tiết</a></div>
 
 
 
