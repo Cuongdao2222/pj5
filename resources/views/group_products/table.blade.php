@@ -6,6 +6,8 @@
 
     <?php  
 
+         $groupProductss = App\Models\groupProduct::get();
+
         function recursiveMenu($data, $parent_id=0, $sub=true){
             echo $sub ? '<ul>': '<ul class="sub-menu">';
             foreach ($data as $key => $item) {
@@ -25,7 +27,7 @@
         
 
     ?>
-    <table class="table" id="groupProducts-table">
+   <!--  <table class="table" id="groupProducts-table">
         <thead>
         <tr>
             <th>Name</th>
@@ -61,7 +63,9 @@
             </tr>
         @endforeach
         </tbody>
-    </table>
+    </table> -->
+
+    <?php recursiveMenu($groupProductss);  ?>
 
     <div class="modal fade" id="modals-product" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -77,7 +81,7 @@
 
                      <?php   
 
-                        $groupProductss = App\Models\groupProduct::get();
+                       
 
                         recursiveMenu($groupProductss); 
 
