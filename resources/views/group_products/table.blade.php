@@ -75,7 +75,13 @@
                 <div class="modal-body">
                     
 
-                     <?php   recursiveMenu($groupProducts); ?>
+                     <?php   
+
+                        $groupProductss = App\Models\groupProduct::get()
+
+                        recursiveMenu($groupProductss); 
+
+                     ?>
 
                 </div>
                 
