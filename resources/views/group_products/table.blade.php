@@ -15,6 +15,23 @@
 
          $groupProductss = App\Models\groupProduct::get();
 
+
+         function recursiveMenus($data, $parent_id=0, $sub=true, $level=0)
+         {
+            echo $sub ? '<ul>': '<ul class="sub-menus">';
+            foreach ($data as $key => $item) {
+                 if($item['group_product_id'] == $parent_id){
+                    unset($data[$key]);
+                  ?>    
+             <li>
+              <a href="<?php echo $item['slug']?>"><?php echo $item['name']?></a>
+              
+              <?php recursiveMenu($data, $item['id'], false); ?>
+             </li>
+                <?php }} 
+             echo "</ul>";
+         }
+
         function recursiveMenu($data, $parent_id=0, $sub=true, $level=0){
 
 
@@ -97,9 +114,9 @@
 
                      <?php   
 
-                       
+                       $groupProductss = App\Models\groupProduct::get();
 
-                        recursiveMenu($groupProductss); 
+                        recursiveMenus($groupProductss); 
 
                      ?>
 
