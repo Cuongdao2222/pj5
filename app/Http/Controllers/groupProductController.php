@@ -141,6 +141,10 @@ class groupProductController extends AppBaseController
             $input['parent_id'] = 0;
 
         }
+
+        dd($input);
+
+        die();
        
 
         if (empty($groupProduct)) {
