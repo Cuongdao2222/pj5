@@ -142,11 +142,6 @@ class groupProductController extends AppBaseController
 
         }
 
-        dd($input);
-
-        die();
-       
-
         if (empty($groupProduct)) {
             Flash::error('Group Product not found');
 

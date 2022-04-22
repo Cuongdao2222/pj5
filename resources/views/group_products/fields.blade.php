@@ -60,9 +60,9 @@
 
 <input type="hidden" name="data_value" value="{{ json_encode($list_cat) }}" id="data_value">
 
-<input type="hidden" name="level" id="level">
+<input type="hidden" name="level" id="level" value="{{ @$groupProducts->level }}">
 
-<input type="hidden" name="parent_id" id="parent_id">
+<input type="hidden" name="parent_id" id="parent_id" value="{{ @$groupProducts->parent_id }}">
 
 
 
