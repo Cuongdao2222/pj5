@@ -132,7 +132,7 @@ class groupProductController extends AppBaseController
 
         $groupProduct = $this->groupProductRepository->find($id);
 
-        $input['link'] = convertSlug($input['name']);
+       
 
         if($input['group_product_id']==0){
 

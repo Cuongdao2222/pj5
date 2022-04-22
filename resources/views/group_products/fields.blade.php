@@ -4,6 +4,11 @@
     {!! Form::text('name', null, ['class' => 'form-control','maxlength' => 1000]) !!}
 </div>
 
+<div class="form-group col-sm-6">
+    {!! Form::label('link', 'Link:') !!}
+    {!! Form::text('link', null, ['class' => 'form-control','maxlength' => 10000]) !!}
+</div>
+
 <!-- group_product_id Field -->
 
 <?php  

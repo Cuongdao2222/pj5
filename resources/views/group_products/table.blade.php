@@ -144,7 +144,7 @@
 
             dataId = $(this).attr('data-id');
 
-            $('.sua').attr('href', 'https://dienmaynguoiviet.net/admins/groupProducts/'+dataId+'/edit');
+            $('.sua').attr('href', '{{env("APP_URL")}}/admins/groupProducts/'+dataId+'/edit');
 
             $('#info-modal').modal('show');
 
