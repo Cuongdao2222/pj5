@@ -1,4 +1,9 @@
-
+<style type="text/css">
+    
+    .paren1 span{
+        cursor: pointer;
+    }
+</style>
 
 <div class="table-responsive">
     <div>
@@ -10,16 +15,25 @@
 
          $groupProductss = App\Models\groupProduct::get();
 
-        function recursiveMenu($data, $parent_id=0, $sub=true){
-            echo $sub ? '<ul class="parent">': '<ul class="sub-menu">';
+        function recursiveMenu($data, $parent_id=0, $sub=true, $level=0){
+
+
+            if($level==0){
+                 $levelcheck = $parent_id;
+
+            }
+            else{
+                 $levelcheck ='';
+            }
+            echo $sub ? '<ul>':'<ul class="sub-menu sub'.$levelcheck.'">';
             foreach ($data as $key => $item) {
                  if($item['group_product_id'] == $parent_id){
                     unset($data[$key]);
                   ?>    
              <li class="paren1">
-              <a href="javascript:void(0)"  class="click1" data-id="{{ $item['id'] }}"><?php echo $item['name']?></a>
+              <a href="javascript:void(0)"  class="click1" data-id="{{ $item['id'] }}"><?php echo $item['name']?></a>  @if($item['level']==0 )<span class="clicks{{ $item['id'] }}" onclick="showChild('sub{{ $item['id'] }}', 'clicks{{ $item['id'] }}')">+</span>@endif
               
-              <?php recursiveMenu($data, $item['id'], false); ?>
+              <?php recursiveMenu($data, $item['id'], false, $item['level']); ?>
              </li>
                 <?php }} 
              echo "</ul>";
@@ -131,7 +145,7 @@
 
 
 
-        // $('.sub-menu').hide();
+        $('.sub-menu').hide();
 
         // $('.parent').click(function () {
            
@@ -151,30 +165,20 @@
 
         })
 
+        function showChild(id, classs) {
 
-
-
-
-        // function show_child() {
+            if($('.'+id).is(":visible") ){
+                 $('.'+id).hide();
+                 $('.'+classs).text('+');
+            }
+            else{
+                $('.'+id).show();
+                $('.'+classs).text('-');
+            }
 
            
-
-          
-
-            
-
-        //     // parent.find('ul').show();
-
-
-        //     // if ($(this).children('.sub-menu').is(':visible')) { //check if hidden or not
-        //     //      $(this).children('.sub-menu').hide(); //if yes hide
-
-        //     // } else {
-
-        //     //     $(this).children('.sub-menu').show(); // else show
-        //     // }
            
-        // }
+        }
 
     </script>
 </div>
