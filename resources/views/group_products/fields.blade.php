@@ -14,7 +14,7 @@
 
 <?php  
 
-
+    
 
     $groupProducts = App\Models\groupProduct::select('id', 'name', 'group_product_id')->get()->toArray();
 
@@ -58,11 +58,14 @@
    
 </div>
 
+
+
+
 <input type="hidden" name="data_value" value="{{ json_encode($list_cat) }}" id="data_value">
 
-<input type="hidden" name="level" id="level" value="{{ @$groupProducts->level }}">
+<input type="hidden" name="level" id="level" value="{{ @$groupProduct->level }}">
 
-<input type="hidden" name="parent_id" id="parent_id" value="{{ @$groupProducts->parent_id }}">
+<input type="hidden" name="parent_id" id="parent_id" value="{{ @$groupProduct->parent_id }}">
 
 
 
