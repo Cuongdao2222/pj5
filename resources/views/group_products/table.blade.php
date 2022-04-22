@@ -102,14 +102,18 @@
 
         })
 
-        $('.sub-menu').hide();
+        // $('.sub-menu').hide();
 
 
         function show_child() {
 
-            $(this).children('.sub-menu').show();
-           
+            if ($(this).children('.sub-menu').is(':visible')) { //check if hidden or not
+                 $(this).children('.sub-menu').hide(); //if yes hide
 
+            } else {
+
+                $(this).children('.sub-menu').show(); // else show
+            }
            
         }
 
