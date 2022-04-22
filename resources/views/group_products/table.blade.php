@@ -77,7 +77,7 @@
 
                      <?php   
 
-                        $groupProductss = App\Models\groupProduct::get()
+                        $groupProductss = App\Models\groupProduct::get();
 
                         recursiveMenu($groupProductss); 
 
