@@ -31,118 +31,107 @@ class crawlController extends Controller
 
             if(isset($urls)){
                 foreach ($urls as $url) {
-
-                  
                     
-                        $html = file_get_html(trim($url));
-                        $title = strip_tags($html->find('.emty-title h1', 0));
-                        
-                        $specialDetail = html_entity_decode($html->find('.special-detail', 0));
-                        $content  = html_entity_decode($html->find('.emty-content .Description',0));
+                    $html = file_get_html(trim($url));
+                    $title = strip_tags($html->find('.emty-title h1', 0));
+                    
+                    $specialDetail = html_entity_decode($html->find('.special-detail', 0));
+                    $content  = html_entity_decode($html->find('.emty-content .Description',0));
 
-                       
+                    preg_match_all('/<img.*?src=[\'"](.*?)[\'"].*?>/i', $content, $matches);
 
-                        preg_match_all('/<img.*?src=[\'"](.*?)[\'"].*?>/i', $content, $matches);
+                    $arr_change = [];
 
-                        $arr_change = [];
+                    $time = time();
 
-                        $time = time();
+                    $regexp = '/^[a-zA-Z0-9][a-zA-Z0-9\-\_]+[a-zA-Z0-9]$/';
 
-                        $regexp = '/^[a-zA-Z0-9][a-zA-Z0-9\-\_]+[a-zA-Z0-9]$/';
+                    if(isset($matches[1])){
+                        foreach($matches[1] as $value){
+                           
+                            $value = 'https://dienmaynguoiviet.vn/'.str_replace('..', '', $value);
 
-                        if(isset($matches[1])){
-                            foreach($matches[1] as $value){
-                               
-                                $value = 'https://dienmaynguoiviet.vn/'.str_replace('..', '', $value);
+                            $arr_image = explode('/', $value);
 
-                                $arr_image = explode('/', $value);
+                            if($arr_image[0] != env('APP_URL')){
 
-                                if($arr_image[0] != env('APP_URL')){
-
-                                    $file_headers = @get_headers($value);
+                                $file_headers = @get_headers($value);
 
 
-                                    if($file_headers[0] == 'HTTP/1.1 200 OK') 
-                                    {
+                                if($file_headers[0] == 'HTTP/1.1 200 OK') 
+                                {
 
-                                        $infoFile = pathinfo($value, PATHINFO_EXTENSION);
+                                    $infoFile = pathinfo($value, PATHINFO_EXTENSION);
 
-                                       if(!empty($infoFile)){
+                                   if(!empty($infoFile)){
 
-                                            if($infoFile=='png'||$infoFile=='jpg'||$infoFile=='web'){
+                                        if($infoFile=='png'||$infoFile=='jpg'||$infoFile=='web'){
 
-                                                $img = '/images/product/crawl/'.basename($value);
+                                            $img = '/images/product/crawl/'.basename($value);
 
-                                                file_put_contents(public_path().$img, file_get_contents($value));
+                                            file_put_contents(public_path().$img, file_get_contents($value));
 
-                                             
-                                                array_push($arr_change, 'images/product/crawl/'.basename($value));
-                                            }   
-                                        }
-
-                                        
+                                         
+                                            array_push($arr_change, 'images/product/crawl/'.basename($value));
+                                        }   
                                     }
-                                   
+
+                                    
                                 }
-                                
+                               
                             }
+                            
                         }
+                    }
 
+                    $content = str_replace($matches[1], $arr_change, $content);
 
+                    $price = strip_tags($html->find(".p-price", 0));
 
-                        $content = str_replace($matches[1], $arr_change, $content);
+                    $info  = html_entity_decode($html->find('.emty-info table', 0));
+                    // $arElements = $html->find( "meta[name=keywords]" );
+                    $price = trim(str_replace('Liên hệ', '0', $price));
+                    $price =  trim(str_replace(["Giá:","VNĐ",".", "Giá khuyến mại:"],"",$price));
+                    $images =  html_entity_decode($html->find('#owl1 img',0));
+                    
+                    if(!empty($images) ){
+                        $image = $html->find('#owl1 img',0)->src;
+                        if(!empty($image)){
 
+                            $urlImage = 'https://dienmaynguoiviet.vn/'.$image;
 
+                            $contents = file_get_contents($urlImage);
+                            $name = basename($urlImage);
+                            
+                            $name = '/uploads/product/crawl/'.time().'_'.$name;
 
+                            Storage::disk('public')->put($name, $contents);
 
-                        $price = strip_tags($html->find(".p-price", 0));
+                            $image = $name;
 
-                        $info  = html_entity_decode($html->find('.emty-info table', 0));
-                        // $arElements = $html->find( "meta[name=keywords]" );
-                        $price = trim(str_replace('Liên hệ', '0', $price));
-                        $price =  trim(str_replace(["Giá:","VNĐ",".", "Giá khuyến mại:"],"",$price));
-                        $images =  html_entity_decode($html->find('#owl1 img',0));
-                        
-                        if(!empty($images) ){
-                            $image = $html->find('#owl1 img',0)->src;
-                            if(!empty($image)){
+                            $model = strip_tags($html->find('#model', 0));
 
-                                $urlImage = 'https://dienmaynguoiviet.vn/'.$image;
+                            $qualtily = -1;
 
-                                $contents = file_get_contents($urlImage);
-                                $name = basename($urlImage);
-                                
-                                $name = '/uploads/product/crawl/'.time().'_'.$name;
+                            $maker = 12;
 
-                                Storage::disk('public')->put($name, $contents);
+                            $meta_id = 0;
 
-                                $image = $name;
+                            $group_id = 2;
 
-                                $model = strip_tags($html->find('#model', 0));
+                            $active = 0;
 
-                                $qualtily = -1;
+                            $link =  str_replace('https://dienmaynguoiviet.vn/', '', $url);
 
-                                $maker = 12;
+                            $inputs = ["Link"=>$link, "Price"=>$price, "Name"=>$title, "ProductSku"=>$model, "Image"=>$image, "Quantily"=>$qualtily, "Maker"=>$maker, "Meta_id"=>$meta_id,"Group_id"=>$group_id, "active"=>0, "Specifications"=>$info, "Salient_Features"=>$specialDetail, "Detail"=>$content];
 
-                                $meta_id = 0;
+                            product::Create($inputs);
 
-                                $group_id = 2;
-
-                                $active = 0;
-
-                                $link =  str_replace('https://dienmaynguoiviet.vn/', '', $url);
-
-                                $inputs = ["Link"=>$link, "Price"=>$price, "Name"=>$title, "ProductSku"=>$model, "Image"=>$image, "Quantily"=>$qualtily, "Maker"=>$maker, "Meta_id"=>$meta_id,"Group_id"=>$group_id, "active"=>0, "Specifications"=>$info, "Salient_Features"=>$specialDetail, "Detail"=>$content];
-
-                                product::Create($inputs);
-
-                            }
                         }
-                        else{
-                            print_r($url);
-                        } 
-                   
-                   
+                    }
+                    else{
+                        print_r($url);
+                    } 
                 }    
             }
         
@@ -159,10 +148,9 @@ class crawlController extends Controller
         for ($i=243; $i < 2268; $i++) { 
 
             $product = product::find($i);
-
            
-            if(strpos($product->Link, '-lg-')>-1 ){
-                 $product->Maker = 2;
+            if(strpos($product->Link, 'may-giat')>-1 ){
+                 $product->Maker = 12;
 
                  $product->save();
                
@@ -4181,38 +4169,43 @@ https://dienmaynguoiviet.vn/vi-sao-khong-nen-xem-tivi-khi-dang-an/';
 
     }
 
-    public function getMetaProducts($value='')
+    public function getMetaProducts()
     {
-        for($i=1; $i<1514; $i++){
+        for($i=2736; $i<2846; $i++){
 
-            $link = post::find($i);
+            $link = product::find($i);
 
-            $url  = $link->Link;
 
-            $urls = 'https://dienmaynguoiviet.vn/'.$url.'/';
+            if(isset($link)&&$link->Meta_id==0){
+
+
+                $url = $link->Link;
+
+                $urls = 'https://dienmaynguoiviet.vn/'.$url.'/';
 
         
-            $html = file_get_html(trim($urls));
+                $html = file_get_html(trim($urls));
 
-            $keyword = htmlspecialchars($html->find("meta[name=keywords]",0)->getAttribute('content'));
-            $content = $html->find("meta[name=description]",0) ->getAttribute('content');
-            $title   = $html-> find("title",0)-> plaintext;
+                $keyword = htmlspecialchars($html->find("meta[name=keywords]",0)->getAttribute('content'));
+                $content = $html->find("meta[name=description]",0) ->getAttribute('content');
+                $title   = $html-> find("title",0)-> plaintext;
             
-            // $input   = ['meta_title'=>$title, 'meta_content'=>$content, 'meta_key_words'=>$keyword, 'meta_og_title'=>$title, 'meta_og_content'=>$content];
+                $meta   = new metaSeo();
 
-            $meta   = new metaSeo();
+                $meta->meta_title =$title; 
+                $meta->meta_content =$content; 
+                $meta->meta_key_words = strip_tags($keyword); 
+                $meta->meta_og_title =$title; 
+                $meta->meta_og_content =$content; 
 
-            $meta->meta_title =$title; 
-            $meta->meta_content =$content; 
-            $meta->meta_key_words = strip_tags($keyword); 
-            $meta->meta_og_title =$title; 
-            $meta->meta_og_content =$content; 
+                $meta->save();
 
-            $meta->save();
+                $link->Meta_id = $meta['id'];
 
-            $link->Meta_id = $meta['id'];
+                $link->save();
 
-            $link->save();
+
+            }
 
 
         }   
@@ -4326,6 +4319,359 @@ https://dienmaynguoiviet.vn/vi-sao-khong-nen-xem-tivi-khi-dang-an/';
         } 
 
         echo "thanh cong";   
+    }
+
+    public function sosanh()
+    {
+        $code  = 'ADR75-V-ET-1
+                AR600-U3
+                AR75-A-S-H1
+                Z7
+                Z4
+                S600
+                R400E
+                E3
+                E2
+                A2
+                A1
+                M2
+                AR75-A-S-2
+                AR75-A-S-1E
+                G2
+                G1
+                M1
+                C2
+                C1
+                KJ420F-B01
+                KJ500F-B01
+                
+                NF-N15SRA
+                NF-N30ASRA
+                NF-N50ASRA
+                SD-P104WRA
+                MK-5076MWRA
+                MK-K51PKRA
+                MX-AC400WRA
+                MJ-DJ31SRA
+                MJ-M176PWRA
+                MJ-L500SRA
+                MJ-DJ01SRA
+                MJ-SJ01WRA
+                MJ-H100WRA
+                MJ-68MWRA
+                MX-SS1BRA
+                MX-GS1WRA
+                MX-V310KRA
+                MX-V300KRA
+                MX-900MWRA
+                MX-GX1561WRA
+                MX-GX1511WRA
+                MX-EX1511WRA
+                MX-EX1561WRA
+                 MX-MG5351WRA 
+                 MX-MP5151WRA 
+                 MX-MG53C1CRA 
+                MX-M300SRA
+                MX-M210SRA
+                MX-M200WRA
+                MX-M200GRA
+                MX-M100WRA
+                MX-M100GRA
+                NC-HU301PZSY
+                NC-BG3000CSY
+                NC-EG4000CSY
+                NC-EG3000CSY
+                NC-EG2200CSY
+                NC-HKD121WRA
+                NC-SK1BRA
+                NC-GK1WRA
+                MK-GB3WRA
+                MK-GH3WRA
+                NB-H3801KRA
+                NB-H3203KRA
+                NT-H900KRA
+                SR-PX184KRA
+                SR-HB184KRA
+                SR-AFM181WRA
+                SR-AFY181WRA
+                SR-CX188SRA
+                SR-CP188NRA
+                SR-CP108NRA
+                SR-CL188WRA
+                SR-CL108WRA
+                SR-MVN187HRA
+                SR-MVN187LRA
+                SR-MVN107HRA
+                SR-MVN107LRA
+                SR-MVP187HRA
+                SR-MVP187NRA
+                SR-MVQ187SRA
+                SR-MVQ187VRA
+                NU-SC100WYUE
+                NU-SC180BYUE
+                NN-DS596BYUE
+                NN-CT655MYUE
+                NN-CT36HBYUE
+                NN-GT65JBYUE
+                NN-GD37HBYUE
+                NN-GF574MYUE
+                NN-GT35HMYUE
+                NN-GM34JMYUE
+                NN-GM24JBYUE
+                NN-ST65JBYUE
+                NN-ST34HMYUE
+                NN-SM33HMYUE
+                NN-ST25JWYUE
+                MC-CG370GN46
+                MC-CG371AN46
+                MC-CG373RN46
+                MC-CG525RN49
+                MC-CJ911RN49
+                MC-CL305BN46
+                MC-CL431AN46
+                MC-CL561AN46
+                MC-CL563RN46
+                MC-CL565KN46
+                MC-CL777HN49
+                MC-CL779RN49
+                MC-SB30JW049
+                MC-CL789RN49
+                MC-CL787TN49
+                MC-CL575KN49
+                MC-CL573AN49
+                MC-CL571GN49
+                MC-YL631RN46
+                MC-YL669GN49
+                MC-YL635TN46
+                MC-YL637SN49
+                AMC-CT1
+                NI-GSE050ARA
+                NI-GWE080WRA
+                NI-GSD071PRA
+                NI-GSD051GRA
+                NI-WT980RRA
+                NI-L700SSGRA
+                NI-WL30VRA
+                NI-U600CARA
+                NI-U400CPRA
+                NI-W650CSLRA
+                NI-W410TSRRA
+                NI-E510TDRA
+                NI-E410TMRA
+                NI-M300TARA
+                NI-M300TVRA
+                NI-M250TPRA
+                NI-317TVRA
+                NI-317TXRA
+                EH-NA98RP645
+                EH-NA98-K645
+                EH-NA65-K645
+                EH-NA45RP645
+                EH-NA27PN645
+                EH-NE81-K645
+                EH-NE71-P645
+                EH-NE65-K645
+                EH-NE20-K645
+                EH-ND57-P645
+                EH-ND57-H645
+                EH-ND64-P645
+                EH-NE11-V645
+                EH-ND30-K645
+                EH-ND30-P645
+                EH-ND21-P645
+                EH-ND13-V645
+                EH-ND12-P645
+                EH-ND11-W645
+                EH-ND11-A645
+                EH-HE10VP421
+                 MX-MG5351WRA 
+                 MX-MP5151WRA 
+                 MX-MG53C1CRA 
+                EH-NA98RP645
+                EH-NA98-K645
+                EH-NA27PN645
+                EH-HE10VP421
+                EH-ND57-P645
+                EH-ND57-H645
+                VC18M2120SB/SV
+                VC18M3110VB/SV
+                VCC8836V36/XSV
+                VS03R6523J1/SV
+                VS15R8544S1/SV
+                VS15A6031R1/SV
+                MS23K3513AS/SV
+                MG23K3515AS/SV
+                MG23K3575AS/SV
+                MG23T5018CK/SV
+                MG30T5018CK/SV
+                MC35R8088LE/SV
+                AX34R3020WW/SV
+                AX40R3030WM/SV
+                AX60R5080WD/SV
+                VR05R5050WK/SV
+                VR30T85516W/SV';
+
+        $data  = explode('       ', $code);
+
+        $check = [];
+
+
+         $check = [];
+
+        $all_model = product::select('ProductSku')->get()->pluck('ProductSku')->toArray();
+
+
+        foreach($data as $val){    
+
+            $url = 'https://dienmaynguoiviet.vn/tim?q='.trim($val);
+
+            $html = file_get_html(trim($url));
+
+            if($html->find('.p-name', 0) ){
+
+                $href = $html->find('.p-name', 0)->href;
+
+            
+                if(!in_array($val,  $all_model)){
+
+                    array_push($check, $href);
+                }    
+            }
+
+        } 
+
+        $datas = array_unique($check);
+
+        
+        foreach($datas as $val){    
+
+        
+            $url = 'https://dienmaynguoiviet.vn/'.$val;
+                
+            $html = file_get_html(trim($url));
+            $title = strip_tags($html->find('.emty-title h1', 0));
+            
+            $specialDetail = html_entity_decode($html->find('.special-detail', 0));
+            $content  = html_entity_decode($html->find('.emty-content .Description',0));
+             preg_match_all('/<img.*?src=[\'"](.*?)[\'"].*?>/i', $content, $matches);
+
+            $arr_change = [];
+
+            $time = time();
+
+            $regexp = '/^[a-zA-Z0-9][a-zA-Z0-9\-\_]+[a-zA-Z0-9]$/';
+
+            if(isset($matches[1])){
+                foreach($matches[1] as $value){
+                   
+                    $value = 'https://dienmaynguoiviet.vn/'.str_replace('..', '', $value);
+
+                    $arr_image = explode('/', $value);
+
+                    if($arr_image[0] != env('APP_URL')){
+
+                        $file_headers = @get_headers($value);
+
+
+                         if($file_headers[0] == 'HTTP/1.1 200 OK') 
+                        {
+
+                             $infoFile = pathinfo($value, PATHINFO_EXTENSION);
+
+                            if(!empty($infoFile)){
+
+                                 if($infoFile=='png'||$infoFile=='jpg'||$infoFile=='web'){
+
+                                     $img = '/images/product/crawl/'.basename($value);
+
+                                     file_put_contents(public_path().$img, file_get_contents($value));
+
+                                 
+                                    array_push($arr_change, 'images/product/crawl/'.basename($value));
+                                 }   
+                             }
+
+                            
+                         }
+                       
+                     }
+                    
+                 }
+             }
+
+             $content = str_replace($matches[1], $arr_change, $content);
+
+             $price = strip_tags($html->find(".p-price", 0));
+
+            $info  = html_entity_decode($html->find('.emty-info table', 0));
+            // $arElements = $html->find( "meta[name=keywords]" );
+            $price = trim(str_replace('Liên hệ', '0', $price));
+            $price =  trim(str_replace(["Giá:","VNĐ",".", "Giá khuyến mại:"],"",$price));
+            $images =  html_entity_decode($html->find('#owl1 img',0));
+            
+            if(!empty($images) ){
+                $image = $html->find('#owl1 img',0)->src;
+                if(!empty($image)){
+
+                    $urlImage = 'https://dienmaynguoiviet.vn/'.$image;
+
+                    $contents = file_get_contents($urlImage);
+                    $name = basename($urlImage);
+                    
+                    $name = '/uploads/product/crawl/'.time().'_'.$name;
+
+                    Storage::disk('public')->put($name, $contents);
+
+                    $image = $name;
+
+                    $model = strip_tags($html->find('#model', 0));
+
+                    $qualtily = -1;
+
+                    $maker = 12;
+
+                    $meta_id = 0;
+
+                    $group_id = 2;
+
+                    $active = 0;
+
+                    $link =  str_replace('https://dienmaynguoiviet.vn/', '', $url);
+
+                    $inputs = ["Link"=>$link, "Price"=>$price, "Name"=>$title, "ProductSku"=>$model, "Image"=>$image, "Quantily"=>$qualtily, "Maker"=>$maker, "Meta_id"=>$meta_id,"Group_id"=>$group_id, "active"=>0, "Specifications"=>$info, "Salient_Features"=>$specialDetail, "Detail"=>$content];
+
+                    product::Create($inputs);
+
+                }
+            }
+            else{
+                print_r($url);
+            } 
+            
+        } 
+        echo "thanh cong";
+    }
+
+    function filter(){
+
+        for ($i=243; $i < 2845; $i++) { 
+
+            $product = product::find($i);
+
+            if(!empty($product->Link)){
+                if(strpos($product->Link, 'may-loc-nuoc') ){
+                    $product->Group_id = 9;
+
+                    $product->save();
+
+                }
+
+            }
+
+            
+            
+        }
+        echo "thanh cong";
     }
    
 }
