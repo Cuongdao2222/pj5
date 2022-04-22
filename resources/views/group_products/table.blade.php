@@ -1,3 +1,5 @@
+
+
 <div class="table-responsive">
     <div>
         <button class="groupProduct">Xem toàn bộ danh mục liên quan</button>
@@ -15,7 +17,7 @@
                     unset($data[$key]);
                   ?>    
              <li>
-              <a href="<?php echo $item['slug']?>"><?php echo $item['name']?></a>
+              <a href="javascript:void(0)" onclick="show_child()"><?php echo $item['name']?></a>
               
               <?php recursiveMenu($data, $item['id'], false); ?>
              </li>
@@ -99,6 +101,17 @@
            $('#modals-product').modal('show');
 
         })
+
+        $('.sub-menu').hide();
+
+
+        function show_child() {
+
+            $(this).children('.sub-menu').show();
+           
+
+           
+        }
 
     </script>
 </div>

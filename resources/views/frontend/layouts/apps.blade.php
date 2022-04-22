@@ -171,11 +171,11 @@
         }
 
         .menu-pc{
-            background: #fed100 !important;
+            background: #fbff0e !important;
         }
 
         .header-pc {
-            background-color: #187A43 !important;
+            background-color: #3fb6e0 !important;
         }
 
         /*menu top*/
@@ -784,7 +784,7 @@
                 }
 
                 .menu-pc{
-                    background: #fed100;
+                    background: #fbff0e;
                 }
 
 
