@@ -9,11 +9,14 @@
     {!! Form::text('link', null, ['class' => 'form-control','maxlength' => 10000]) !!}
 </div>
 
-<!-- group_product_id Field -->
+
+
 
 <?php  
 
-    $groupProduct = App\Models\groupProduct::select('id', 'name', 'group_product_id')->get()->toArray();
+
+
+    $groupProducts = App\Models\groupProduct::select('id', 'name', 'group_product_id')->get()->toArray();
 
     function data_tree($data, $parent_id = 0, $level = 0){
         $result = [];
@@ -32,10 +35,7 @@
     }
 
 
-    $list_cat = data_tree($groupProduct, 0);
-
-    // dd( $list_cat);
-
+    $list_cat = data_tree($groupProducts, 0);
 
     $arr_new_list_cat = [];
 
@@ -49,13 +49,12 @@
 
     }  
 
-
 ?>
 
 <!-- Group_id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('Group', 'Danh mục') !!}
-    {!! Form::select('group_product_id', $arr_new_list_cat,'', ['class' => 'form-control custom-select' ]) !!}
+    {!! Form::select('group_product_id', $arr_new_list_cat, $groupProduct->group_product_id, ['class' => 'form-control custom-select' ]) !!}
    
 </div>
 

@@ -17,6 +17,8 @@
 
         <div class="card">
 
+            
+
             {!! Form::model($groupProduct, ['route' => ['groupProducts.update', $groupProduct->id], 'method' => 'patch']) !!}
 
             <div class="card-body">
