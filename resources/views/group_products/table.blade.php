@@ -11,13 +11,13 @@
          $groupProductss = App\Models\groupProduct::get();
 
         function recursiveMenu($data, $parent_id=0, $sub=true){
-            echo $sub ? '<ul>': '<ul class="sub-menu">';
+            echo $sub ? '<ul class="parent">': '<ul class="sub-menu">';
             foreach ($data as $key => $item) {
                  if($item['group_product_id'] == $parent_id){
                     unset($data[$key]);
                   ?>    
-             <li>
-              <a href="javascript:void(0)" onclick="show_child()"><?php echo $item['name']?></a>
+             <li class="paren1">
+              <a href="javascript:void(0)"  class="click1" data-id="{{ $item['id'] }}"><?php echo $item['name']?></a>
               
               <?php recursiveMenu($data, $item['id'], false); ?>
              </li>
@@ -95,6 +95,32 @@
         </div>
     </div>
 
+
+
+    <div class="modal fade" id="info-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Sửa danh mục</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    
+
+                     <a href="" class="sua">Sửa</a>
+                     <br>
+                     <!-- <a href="" class="xoa">Xóa</a> -->
+
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+
+
     <script type="text/javascript">
         $('.groupProduct').click(function () {
            
@@ -102,20 +128,53 @@
 
         })
 
+
+
+
         // $('.sub-menu').hide();
 
-
-        function show_child() {
-
-            if ($(this).children('.sub-menu').is(':visible')) { //check if hidden or not
-                 $(this).children('.sub-menu').hide(); //if yes hide
-
-            } else {
-
-                $(this).children('.sub-menu').show(); // else show
-            }
+        // $('.parent').click(function () {
            
-        }
+        //     parent = $(this).parents().find('li').attr('class');
+
+        //     alert(parent);
+        // })
+
+        $('.click1').dblclick(function(){
+
+            dataId = $(this).attr('data-id');
+
+            $('.sua').attr('href', 'https://dienmaynguoiviet.net/admins/groupProducts/'+dataId+'/edit');
+
+            $('#info-modal').modal('show');
+
+
+        })
+
+
+
+
+
+        // function show_child() {
+
+           
+
+          
+
+            
+
+        //     // parent.find('ul').show();
+
+
+        //     // if ($(this).children('.sub-menu').is(':visible')) { //check if hidden or not
+        //     //      $(this).children('.sub-menu').hide(); //if yes hide
+
+        //     // } else {
+
+        //     //     $(this).children('.sub-menu').show(); // else show
+        //     // }
+           
+        // }
 
     </script>
 </div>
