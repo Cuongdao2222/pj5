@@ -18,7 +18,7 @@
         function recursiveMenu($data, $parent_id=0, $sub=true, $level=0){
 
 
-            if($level==0){
+            if($level==0||$level==1){
                  $levelcheck = $parent_id;
 
             }
@@ -31,7 +31,7 @@
                     unset($data[$key]);
                   ?>    
              <li class="paren1">
-              <a href="javascript:void(0)"  class="click1" data-id="{{ $item['id'] }}"><?php echo $item['name']?></a>  @if($item['level']==0 )<span class="clicks{{ $item['id'] }}" onclick="showChild('sub{{ $item['id'] }}', 'clicks{{ $item['id'] }}')">+</span>@endif
+              <a href="javascript:void(0)"  class="click1" data-id="{{ $item['id'] }}"><?php echo $item['name']?></a>  @if($item['level']==0|| $item['level']==1)<span class="clicks{{ $item['id'] }}" onclick="showChild('sub{{ $item['id'] }}', 'clicks{{ $item['id'] }}')">+</span>@endif
               
               <?php recursiveMenu($data, $item['id'], false, $item['level']); ?>
              </li>
@@ -176,8 +176,7 @@
                 $('.'+classs).text('-');
             }
 
-           
-           
+        
         }
 
     </script>
