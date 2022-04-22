@@ -5,7 +5,7 @@
             <th>Image</th>
         <th>Tên sản phẩm</th>
         <th>Sửa nhanh</th>
-        <th>Link</th>
+        
         <th>Nhóm sản phẩm</th>
         <th>Số lượng trong kho</th>
         
@@ -99,8 +99,8 @@
 
 
             </td>
-            <td><a href="{{ route('details', $product->Link) }}">{{ $product->Link }}</a></td>
-            <td>{{ $product->Group_id }}</td>
+            
+             <td>{{ App\Models\groupProduct::find($product->Group_id)->name }}</td>
             <td>
                 <span>sửa nhanh</span>
                 <input type="" name="qualtily" value="{{ $product->Quantily }}" id="qualtity{{ $product->id }}">

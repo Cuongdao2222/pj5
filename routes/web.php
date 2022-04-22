@@ -16,6 +16,8 @@
 
 Route::get('/tin-khuyen-mai/', 'Frontend\blogController@index')->name('tin');
 
+Route::get('/tin-tong-hop/', 'Frontend\blogController@index')->name('tin-th');
+
 Route::get('/', 'Frontend\indexController@index')->name('homeFe');
 Route::get('/ckfinder.html', function () {
     return view('frontend.ckfinder');
@@ -49,7 +51,7 @@ Route::post('login-Fe', 'AjaxController@loginClientsFe')->name('login-Fe');
 Route::get('logout-Fe', 'AjaxController@logout')->name('logout-Fe');
 
 
-Route::get('crawl', 'crawlController@getImagePost')->name('crawl');
+Route::get('crawl', 'crawlController@sosanh')->name('crawl');
 
 Route::get('inCrawl', 'crawlController@print')->name('print');
 

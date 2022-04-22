@@ -5,6 +5,16 @@
 @section('content') 
 
         <style type="text/css">
+
+
+            @media screen and (max-width: 776px){
+
+                .header__top {
+                   background-color: #187A43;
+                }   
+            }    
+
+           
             
             @media screen and (min-width: 777px){
                .pdetail-installment table{
