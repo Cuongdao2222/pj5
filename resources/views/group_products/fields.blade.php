@@ -54,7 +54,7 @@
 <!-- Group_id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('Group', 'Danh mục') !!}
-    {!! Form::select('group_product_id', $arr_new_list_cat, $groupProduct->group_product_id, ['class' => 'form-control custom-select' ]) !!}
+    {!! Form::select('group_product_id', $arr_new_list_cat, @$groupProduct->group_product_id, ['class' => 'form-control custom-select' ]) !!}
    
 </div>
 
