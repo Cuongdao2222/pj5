@@ -188,12 +188,9 @@ class categoryController extends Controller
 
             $ar_list = $this->find_List_Id_Group($id_cate,$groupProduct_level);
 
-           
-
             $link   =  $findID->link;
 
             $data = DB::table('group_product')->join('products', 'group_product.id', '=', 'products.Group_id')->select('products.Name', 'products.id','products.Image', 'products.ProductSku', 'products.Specifications', 'products.Price', 'products.Link','products.active','group_product.link')->where('group_product.id', $id_cate)->where('products.active', 1)->Orderby('id', 'desc')->paginate(10);
-
 
 
             $filter = filter::where('group_product_id', $id_cate)->select('name', 'id')->get();
@@ -261,6 +258,7 @@ class categoryController extends Controller
         }
 
         $category = category::find($data->category);
+
 
         $related_news = post::where('category', $data->category)->where('active', 1)->select('title', 'link', 'id')->get();
 
