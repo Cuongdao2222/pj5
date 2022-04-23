@@ -113,6 +113,8 @@ class productController extends AppBaseController
             $input['Price'] = str_replace(',', '', $input['Price']);
             $input['Price'] = str_replace('.', '', $input['Price']);
         }
+
+
         if ($request->hasFile('Image')) {
 
             $file_upload = $request->file('Image');
@@ -451,6 +453,8 @@ class productController extends AppBaseController
         }
         
     }
+
+    
 
     public function search()
     {

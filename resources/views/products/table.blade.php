@@ -103,7 +103,7 @@
              <td>{{ App\Models\groupProduct::find($product->Group_id)->name }}</td>
             <td>
                 <span>sửa nhanh</span>
-                <input type="" name="qualtily" value="{{ $product->Quantily }}" id="qualtity{{ $product->id }}">
+                <input type="" name="qualtily" value="{{ $product->Quantily }}" id="qualtity{{ $product->id }}" style="width: 50%;">
 
                 <br>
 
@@ -156,7 +156,7 @@
                     <option value="0">Không chọn</option>
                     @if(isset($group_gift))
                     @foreach($group_gift as $value)
-                    <option value="{{ $value->id }}" {{ $id_group_gift == $value->id?'selected':'' }}>{{ $value->group_name }}</option>
+                    <option value="{{ $value->id }}" {{ $id_group_gift == $value->id?'selected':'' }} >{{ $value->group_name }}</option>
                     @endforeach
                     @endif
 

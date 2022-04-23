@@ -149,6 +149,12 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
         
     })->name('rate-client');
 
+    Route::get('/group-product/selected', function () {
+        return view('group_products.product_selected_group_product');
+    })->name('group-product-selected');
+
+    
+
     Route::get('view-user', function () {
 
         if(Auth::user()->permision==1){
@@ -170,6 +176,8 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
     Route::get('order', 'Frontend\orderController@orderList')->name('order_list');
 
     Route::get('/order-list/{id}', 'Frontend\orderController@orderListView')->name('order_list_view');
+
+    Route::post('/add-group-product-option', 'groupProductController@addGroupProduct')->name('add-group-product');
 
     Route::get('generator_builder', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@builder')->name('io_generator_builder');
 

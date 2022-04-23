@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use Flash;
 use Response;
 
+use App\Models\groupProduct;
+
 class groupProductController extends AppBaseController
 {
     /** @var  groupProductRepository */
@@ -180,5 +182,110 @@ class groupProductController extends AppBaseController
         Flash::success('Group Product deleted successfully.');
 
         return redirect(route('groupProducts.index'));
+    }
+
+    public function find_Parent($id)
+    {
+
+        $ar_parent = [];
+
+        $parent =  groupProduct::find($id);
+
+        $level = $parent->level;
+
+        for($i=0 ;$i<$level; $i++){
+
+            $find = $parent->parent_id;
+
+            $parent = groupProduct::where('id',  $find)->first();
+
+
+            $ar_parent[$i] = $parent->id;
+
+        }
+
+        return $ar_parent;
+    }
+
+   
+
+    public function addGroupProduct(Request $request)
+    {
+        $id = $request->id;
+
+        $product_id = $request->product_id;
+
+        $active = $request->active;
+
+
+
+        $id_group = $this->find_Parent($id);
+
+        array_push($id_group, $id);
+
+    
+        if($active==1){
+
+
+            if(isset($id_group)){
+
+                foreach ($id_group as $value) {
+
+                    $all_product_group =  groupProduct::find($value);
+
+                    if( $all_product_group->product_id != ''){
+
+                        $data_product_id = json_decode($all_product_group->product_id);
+                    }
+                    else{
+                        $data_product_id = [];
+
+                    }
+                    array_push($data_product_id, $product_id);
+
+                    $all_product_group->product_id = json_encode(array_unique($data_product_id));
+
+                    $all_product_group->save();
+                    
+                }
+
+            }
+
+            return response('thanh cong');
+            
+        }
+        // th xóa ko chọn
+        else{
+
+            $level = groupProduct::find($id)->level;
+
+            
+            if($level==2){
+
+                $all_product_group =  groupProduct::find($id);
+
+                if( $all_product_group->product_id != ''){
+
+                    $data_product_id = json_decode($all_product_group->product_id);
+
+                    $findKey = array_search($product_id, $data_product_id);
+
+                    array_splice($data_product_id, $findKey, 1);
+
+                    $all_product_group->product_id = json_encode($data_product_id);
+
+                    $all_product_group->save();
+
+                    
+                }
+
+                return response('thanh cong');  
+
+
+            }   
+
+
+        }
+
     }
 }
