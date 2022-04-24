@@ -1162,10 +1162,10 @@
                 </section>
             </div>
 
-           
+
             <div class="header__top desktop menu-pc">
                 <div class="menu-section">
-                    <ul class="list-menu">
+                   <!--  <ul class="list-menu">
 
                         <?php 
 
@@ -1217,6 +1217,472 @@
                         @endforeach
                         
 
+                    </ul> -->
+
+                    <ul class="list-menu">
+                        <li class="child" data-id="danh-muc1">
+                            <a class="list-mn" href="http://localhost/pj5/ti-vi">
+                            <i class="fa-regular fa-refrigerator"></i>
+                            <span>Tivi</span>
+                            </a>
+                            <div class="navmwg accessories danh-muc1" style="display: none;">
+                                <div class="sub-cate">
+                                    <div class="PKLT">
+                                        <strong>Thương hiệu</strong>
+                                        <a href="http://localhost/pj5/tivi-samsung">
+                                            <h3>Tivi Samsung</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/tivi-lg">
+                                            <h3>Tivi LG</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/tivi-sony">
+                                            <h3>Tivi Sony</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/tivi-tcl">
+                                            <h3>Tivi TCL</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/tivi-philips">
+                                            <h3>Tivi Philips</h3>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="sub-cate">
+                                    <div class="PKLT">
+                                        <strong>Loại tivi</strong>
+                                        <a href="http://localhost/pj5/8k">
+                                            <h3>8K</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/tivi-4k">
+                                            <h3>4K</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/smart-tivi">
+                                            <h3>Smart tivi</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/tivi-led">
+                                            <h3>Tivi Led</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/tivi-oled">
+                                            <h3>Tivi OLED</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/tivi-qled">
+                                            <h3>Tivi QLED</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/tivi-frame">
+                                            <h3>Tivi Frame</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/tivi-neo-qled">
+                                            <h3>Tivi Neo QLED</h3>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="sub-cate">
+                                    <div class="PKLT">
+                                        <strong>Kích cỡ tivi</strong>
+                                        <a href="http://localhost/pj5/tivi-32-inches">
+                                            <h3>Tivi 32 inches</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/tivi-43-inches">
+                                            <h3>Tivi 43 inches</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/tivi-49-inches">
+                                            <h3>Tivi 49 inches</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/tivi-50-inches">
+                                            <h3>Tivi 50 inches</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/tivi-55-inches">
+                                            <h3>Tivi 55 inches</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/tivi-tu-65-inches-tro-len">
+                                            <h3>Tivi từ 65 inches trở lên</h3>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="child" data-id="danh-muc2">
+                            <a class="list-mn" href="http://localhost/pj5/may-giat">
+                            <i class="fa-regular fa-refrigerator"></i>
+                            <span>Máy giặt</span>
+                            </a>
+                            <div class="navmwg accessories danh-muc2" style="display: none;">
+                                <div class="sub-cate">
+                                    <div class="PKLT">
+                                        <strong>Thương hiệu</strong>
+                                        <a href="http://localhost/pj5/may-giat-electrolux">
+                                            <h3>Máy giặt Electrolux</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/may-giat-lg">
+                                            <h3>Máy giặt LG</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/may-giat-panasonic">
+                                            <h3>Máy giặt Panasonic</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/may-giat-samsung">
+                                            <h3>Máy giặt Samsung</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/may-giat-sharp">
+                                            <h3>Máy giặt Sharp</h3>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="sub-cate">
+                                    <div class="PKLT">
+                                        <strong>Kiểu giặt</strong>
+                                        <a href="http://localhost/pj5/may-giat-long-ngang">
+                                            <h3>Máy giặt lồng ngang</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/may-giat-long-dung">
+                                            <h3>Máy giặt lồng đứng</h3>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="sub-cate">
+                                    <div class="PKLT">
+                                        <strong>Khối lượng giặt</strong>
+                                        <a href="http://localhost/pj5/duoi-7kg">
+                                            <h3>Dưới 7kg</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/tu-7-8kg">
+                                            <h3>Từ 7-8kg</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/tu-8-9kg">
+                                            <h3>Từ 8-9kg</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/tren-9kg">
+                                            <h3>Trên 9kg</h3>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="child" data-id="danh-muc3">
+                            <a class="list-mn" href="http://localhost/pj5/tu-lanh">
+                            <i class="fa-regular fa-refrigerator"></i>
+                            <span>Tủ lạnh</span>
+                            </a>
+                            <div class="navmwg accessories danh-muc3" style="display: none;">
+                                <div class="sub-cate">
+                                    <div class="PKLT">
+                                        <strong>Thương hiệu</strong>
+                                        <a href="http://localhost/pj5/tu-lanh-hitachi">
+                                            <h3>Tủ lạnh Hitachi</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/tu-lanh-panasonic">
+                                            <h3>Tủ lạnh Panasonic</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/tu-lanh-samsung">
+                                            <h3>Tủ lạnh Samsung</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/tu-lanh-sharp">
+                                            <h3>Tủ lạnh Sharp</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/tu-lanh-lg">
+                                            <h3>Tủ lạnh LG</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/tu-lanh-funiki">
+                                            <h3>Tủ lạnh Funiki</h3>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="sub-cate">
+                                    <div class="PKLT">
+                                        <strong>Dung tích</strong>
+                                        <a href="http://localhost/pj5/duoi-150-lit">
+                                            <h3>Dưới 150 lít</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/tu-150-200-lit">
+                                            <h3>Từ 150-200 lít</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/tu-200-300-lit">
+                                            <h3>Từ 200-300 lít</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/tu-300-400-lit">
+                                            <h3>Từ 300-400 lít</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/tu-400-500-lit">
+                                            <h3>Từ 400-500 lít</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/tu-400-500-lit">
+                                            <h3>Từ 400-500 lít</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/tu-500-600-lit">
+                                            <h3>Từ 500-600 lít</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/tren-600-lit">
+                                            <h3>Trên 600 lít</h3>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="sub-cate">
+                                    <div class="PKLT">
+                                        <strong>Loại tủ</strong>
+                                        <a href="http://localhost/pj5/tu-lanh-mini">
+                                            <h3>Tủ lạnh mini</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/tu-lanh-ngan-da-tren">
+                                            <h3>Tủ lạnh ngăn đá trên</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/tu-lanh-ngan-da-duoi">
+                                            <h3>tủ lạnh ngăn đá dưới</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/tu-lanh-side-by-side">
+                                            <h3>Tủ lạnh Side By Side</h3>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="child" data-id="danh-muc4">
+                            <a class="list-mn" href="http://localhost/pj5/dieu-hoa">
+                            <i class="fa-regular fa-refrigerator"></i>
+                            <span>Điều hòa</span>
+                            </a>
+                            <div class="navmwg accessories danh-muc4" style="display: none;">
+                                <div class="sub-cate">
+                                    <div class="PKLT">
+                                        <strong>Thương hiệu</strong>
+                                        <a href="http://localhost/pj5/dieu-hoa-daikin">
+                                            <h3>Điều hòa Daikin</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/dieu-hoa-panasonic">
+                                            <h3>Điều hòa Panasonic</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/dieu-hoa-mitsubishi">
+                                            <h3>Điều hòa Mitsubishi</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/dieu-hoa-lg">
+                                            <h3>Điều hòa LG</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/dieu-hoa-sharp">
+                                            <h3>Điều hòa Sharp</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/dieu-hoa-funiki">
+                                            <h3>Điều hòa Funiki</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/dieu-hoa-samsung">
+                                            <h3>Điều hòa Samsung</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/dieu-hoa-nagakawa">
+                                            <h3>Điều hòa Nagakawa</h3>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="sub-cate">
+                                    <div class="PKLT">
+                                        <strong>Tiết kiệm điện</strong>
+                                        <a href="http://localhost/pj5/dieu-hoa-tiet-kiem-dien">
+                                            <h3>Điều hòa tiết kiệm điện</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/co">
+                                            <h3>Có</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/co-inverter">
+                                            <h3>Có nverter</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/khong-inverter">
+                                            <h3>Không inverter</h3>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="sub-cate">
+                                    <div class="PKLT">
+                                        <strong>Công suất</strong>
+                                        <a href="http://localhost/pj5/1hp">
+                                            <h3>1HP</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/15hp">
+                                            <h3>1.5HP</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/2hp">
+                                            <h3>2HP</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/25hp">
+                                            <h3>2.5HP</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/3hp">
+                                            <h3>3HP</h3>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="child" data-id="danh-muc6">
+                            <a class="list-mn" href="http://localhost/pj5/tu-dong">
+                            <i class="fa-regular fa-refrigerator"></i>
+                            <span>Tủ đông</span>
+                            </a>
+                            <div class="navmwg accessories danh-muc6" style="display: none;">
+                                <div class="sub-cate">
+                                    <div class="PKLT">
+                                        <strong>Thương hiệu</strong>
+                                        <a href="http://localhost/pj5/sanaky">
+                                            <h3>Sanaky</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/kangaroo">
+                                            <h3>Kangaroo</h3>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="sub-cate">
+                                    <div class="PKLT">
+                                        <strong>Dung tích</strong>
+                                        <a href="http://localhost/pj5/tu-100-lit-200-lit">
+                                            <h3>Từ 100 lít - 200 lít</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/tu-200-lit-300-lit">
+                                            <h3>Từ 200 lít - 300 lít</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/tu-300-lit-400-lit">
+                                            <h3>Từ 300 lít - 400 lít</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/tu-400-lit-500-lit">
+                                            <h3>Từ 400 lít - 500 lít</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/tu-500-lit-600-lit">
+                                            <h3>Từ 500 lít - 600 lít</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/tu-600-lit-700-lit">
+                                            <h3>Từ 600 lít - 700 lít</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/tu-700-lit-800-lit">
+                                            <h3>Từ 700 lít - 800 lít</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/tu-800-lit-900-lit">
+                                            <h3>Từ 800 lít - 900 lít</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/tu-900-lit-1000-lit">
+                                            <h3>Từ 900 lít - 1000 lít</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/tu-1000-lit-1500-lit">
+                                            <h3>Từ 1000 lít - 1500 lít</h3>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="child" data-id="danh-muc7">
+                            <a class="list-mn" href="http://localhost/pj5/tu-mat">
+                            <i class="fa-regular fa-refrigerator"></i>
+                            <span>Tủ Mát</span>
+                            </a>
+                            <div class="navmwg accessories danh-muc7" style="display: none;">
+                                <div class="sub-cate">
+                                    <div class="PKLT">
+                                        <strong>Thương hiệu</strong>
+                                        <a href="http://localhost/pj5/sanaky">
+                                            <h3>Sanaky</h3>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="sub-cate">
+                                    <div class="PKLT">
+                                        <strong>Dung tích</strong>
+                                        <a href="http://localhost/pj5/tu-100-200-lit">
+                                            <h3>Từ 100-200 lít</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/tu-200-300-lit">
+                                            <h3>Từ 200-300 lít</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/tu-300-400-lit">
+                                            <h3>Từ 300-400 lít</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/tu-400-500-lit">
+                                            <h3>Từ 400-500 lít</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/tu-500-600-lit">
+                                            <h3>Từ 500-600 lít</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/tu-600-700-lit">
+                                            <h3>Từ 600-700 lít</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/tu-700-800-lit">
+                                            <h3>Từ 700-800 lít</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/tu-800-900-lit">
+                                            <h3>Từ 800-900 lít</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/tu-900-1000-lit">
+                                            <h3>Từ 900-1000 lít</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/tren-1000-lit">
+                                            <h3>Trên 1000 lít</h3>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="sub-cate">
+                                    <div class="PKLT">
+                                        <strong>Tủ ướp rượu</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="child" data-id="danh-muc8">
+                            <a class="list-mn" href="http://localhost/pj5/gia-dung">
+                            <i class="fa-regular fa-refrigerator"></i>
+                            <span>Gia dụng</span>
+                            </a>
+                            <div class="navmwg accessories danh-muc8" style="display: none;">
+                                <div class="sub-cate">
+                                    <div class="PKLT">
+                                        <strong>Sản phẩm gia dụng</strong>
+                                        <a href="http://localhost/pj5/may-hut-bui">
+                                            <h3>Máy hút bụi</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/binh-nong-lanh">
+                                            <h3>Bình nóng lạnh</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/ban-la">
+                                            <h3>Bàn là</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/may-say-toc">
+                                            <h3>Máy sấy tóc</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/may-loc-khong-khi-samsung">
+                                            <h3>Máy lọc không khí Samsung</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/may-loc-khong-khi-sharp">
+                                            <h3>Máy lọc không khí Sharp</h3>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="sub-cate">
+                                    <div class="PKLT">
+                                        <strong>Sản phẩm nhà bếp</strong>
+                                        <a href="http://localhost/pj5/noi-com-dien">
+                                            <h3>Nồi cơm điện</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/lo-vi-song">
+                                            <h3>Lò vi sóng</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/binh-thuy-dien">
+                                            <h3>Bình thủy điện</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/am-sieu-toc">
+                                            <h3>Ấm siêu tốc</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/may-xay-sinh-to">
+                                            <h3>Máy xay sinh tố</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/may-ep-hoa-qua">
+                                            <h3>Máy ép hoa quả</h3>
+                                        </a>
+                                        <a href="http://localhost/pj5/may-xay-da-nang">
+                                            <h3>Máy xay đa năng</h3>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="child" data-id="danh-muc9">
+                            <a class="list-mn" href="http://localhost/pj5/may-loc-nuoc">
+                            <i class="fa-regular fa-refrigerator"></i>
+                            <span>Máy lọc nước</span>
+                            </a>
+                            <div class="navmwg accessories danh-muc9" style="display: none;">
+                            </div>
+                        </li>
+                        
                     </ul>
                 </div>
                 
@@ -1651,6 +2117,36 @@
                 </div>
             </div>
         </footer>
+
+        <div style="position:fixed; bottom:130px; right:0;">   
+        <a href="tel:02473036336"><img src="{{ asset('images/template/tongdai02473036336.png') }}" alt="hotline" style="height:72px;"></a>
+          
+        <div class="clear"></div>
+          
+        </div>
+
+
+        <style type="text/css">
+
+            #myBtn-top{
+                 position: fixed;
+                bottom: 55px;
+                right: 30px;
+                z-index: 99;
+                font-size: 18px;
+                border: none;
+                outline: none;
+                background-color: #ccc;
+                color: #333;
+                cursor: pointer;
+                padding: 15px;
+                border-radius: 4px;
+            }
+            
+           
+        </style>
+
+        <button onclick="topFunction()" id="myBtn-top" title="Go to top" style="display: block;"><i class="fas fa-angle-up"></i></button>
         
 
         
@@ -1687,12 +2183,25 @@
 
     @stack('script')
 
+    <script type="text/javascript">
+        
+         function topFunction() {
+  
+           $("html, body").animate({ scrollTop: 0 }, 1000);
+            return false;
+          
+        }
+    </script>
+
     @if($popup->option ==0)
     <script type="text/javascript">
         
         // turn off popup
         
         lazyload();
+
+
+
 
 
         $('.box-promotion-close').bind("click", function(){
