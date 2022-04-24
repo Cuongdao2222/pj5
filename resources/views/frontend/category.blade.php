@@ -20,6 +20,8 @@
     
     @endpush
 
+
+
         <div class="locationbox__overlay"></div>
         <!-- <div class="locationbox">
             <div class="locationbox__item locationbox__item--right" onclick="OpenLocation()">
@@ -41,7 +43,7 @@
             </div>
             <b id="h-provincename" style="display:none!important" data-provinceid="3">Hồ Chí Minh</b>
         </div> -->
-        <div class="locationbox__popup new-popup hide" id="lc_pop--sugg">
+        <!-- <div class="locationbox__popup new-popup hide" id="lc_pop--sugg">
             <div class="locationbox__popup--cnt locationbox__popup--suggestion new-locale">
                 <div class="flex-block">
                     <i class="icon-location"></i>
@@ -53,7 +55,7 @@
                 </div>
             </div>
         </div>
-
+ -->
         <div class="bsc-block">
             <section>
                 <ul class="breadcrumb">
@@ -262,7 +264,8 @@
             <div class="overlay"></div>
 
            
-            @if(\Request::route()->getName()!='search-product-frontend')
+            @if(\Request::route()->getName()!='search-product-frontend' && !empty($data))
+
             {{ @$data->links() }}
 
             @endif
