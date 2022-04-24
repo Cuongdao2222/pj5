@@ -51,7 +51,7 @@ Route::post('login-Fe', 'AjaxController@loginClientsFe')->name('login-Fe');
 Route::get('logout-Fe', 'AjaxController@logout')->name('logout-Fe');
 
 
-Route::get('crawl', 'crawlController@sosanh')->name('crawl');
+Route::get('crawl', 'crawlController@filter')->name('crawl');
 
 Route::get('inCrawl', 'crawlController@print')->name('print');
 
@@ -149,11 +149,7 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
         
     })->name('rate-client');
 
-    Route::get('/group-product/selected', function () {
-        return view('group_products.product_selected_group_product');
-    })->name('group-product-selected');
-
-    
+    Route::get('/group-product/selected/{id}', 'groupProductController@showProductIdToUrl')->name('group-product-selected');
 
     Route::get('view-user', function () {
 

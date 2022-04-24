@@ -190,7 +190,16 @@ class categoryController extends Controller
 
             $link   =  $findID->link;
 
-            $data = DB::table('group_product')->join('products', 'group_product.id', '=', 'products.Group_id')->select('products.Name', 'products.id','products.Image', 'products.ProductSku', 'products.Specifications', 'products.Price', 'products.Link','products.active','group_product.link')->where('group_product.id', $id_cate)->where('products.active', 1)->Orderby('id', 'desc')->paginate(10);
+
+            $Group_product = groupProduct::find($id_cate);
+
+
+            $Group_product = json_decode($Group_product->product_id);
+
+
+            $data = Product::whereIn('id', $Group_product)->where('active', 1)->orderBy('id', 'desc')->paginate(10);
+
+            // $data = DB::table('group_product')->join('products', 'group_product.id', '=', 'products.Group_id')->select('products.Name', 'products.id','products.Image', 'products.ProductSku', 'products.Specifications', 'products.Price', 'products.Link','products.active','group_product.link')->where('group_product.id', $id_cate)->where('products.active', 1)->Orderby('id', 'desc')->paginate(10);
 
 
             $filter = filter::where('group_product_id', $id_cate)->select('name', 'id')->get();

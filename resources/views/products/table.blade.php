@@ -44,7 +44,38 @@
                 }
                 return $output;
             }
-        
+
+
+            function get_Group_Product($id){
+                $data_groupProduct = App\Models\groupProduct::where('level', 0)->get()->pluck('id');
+
+                $infoProductOfGroup = App\Models\groupProduct::select('product_id', 'id')->whereIn('id', $data_groupProduct)->get()->toArray();
+
+                $result = [];
+
+
+                if(isset($infoProductOfGroup)){
+
+                    foreach($infoProductOfGroup as $key => $val){
+
+
+                        if(!empty($val['product_id'])&& in_array($id, json_decode($val['product_id']))){
+
+                            array_push($result, $val['id']);
+                        }
+                       
+                        
+                    }
+
+                }
+
+                
+                return $result;
+
+            } 
+
+            
+
         ?>    
 
         <?php  
@@ -99,8 +130,8 @@
 
 
             </td>
-            
-             <td>{{ App\Models\groupProduct::find($product->Group_id)->name }}</td>
+                  
+            <td>{{ get_Group_Product($product->id)[0]??'' }}</td>
             <td>
                 <span>sửa nhanh</span>
                 <input type="" name="qualtily" value="{{ $product->Quantily }}" id="qualtity{{ $product->id }}" style="width: 50%;">
@@ -116,8 +147,10 @@
 
             </td>
 
-            <td><input type="checkbox" id="hot{{ $product->id }}" name="hot"  onclick='handleClick({{ $product->id }});' data-id ="{{ $product->Group_id }}" {{ in_array($product->id, $list_hot)?'checked':'' }}></td>
-            <td><input type="checkbox" id="sale{{ $product->id }}" name="sale"  onclick='saleClick({{ $product->id }});' data-id ="{{ $product->Group_id }}" {{ in_array($product->id, $list_sales)?'checked':'' }}></td>
+            <td><input type="checkbox" id="hot{{ $product->id }}" name="hot"  onclick='handleClick({{ $product->id }});' data-id ="{{ get_Group_Product($product->id)[0]??'' }}" {{ in_array($product->id, $list_hot)?'checked':'' }}></td>
+            <td><input type="checkbox" id="sale{{ $product->id }}" name="sale"  onclick='saleClick({{ $product->id }});' data-id ="{{ get_Group_Product($product->id)[0]??'' }}" {{ in_array($product->id, $list_sales)?'checked':'' }}></td>
+
+          
 
             
             <?php  

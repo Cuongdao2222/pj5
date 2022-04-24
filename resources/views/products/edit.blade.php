@@ -20,18 +20,11 @@
     <div class="btn btn-warning"><a href="{{ route('images.create') }}?{{ $product->id }}">Ảnh</a></div>
     <div class="btn btn-warning" ><a href="#mo-ta">Thông số kỹ thuật chi tiết</a></div>
 
-
-
+    <div class="btn btn-warning" ><a href="{{ route('group-product-selected', $product->id) }}">Danh mục</a></div>
 
     
      @if(!empty($metaSeo))
     <div class="btn btn-info seo-click"> Dùng cho SEO </div>
-
-
-   
-   
-     
-
    
     <div class="content px-3">
 

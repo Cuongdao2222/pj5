@@ -11,11 +11,14 @@
 
 <?php 
 
+    $GLOBALS['id'] = $id;
+
+    
     function data_active_show(){
 
         $data = App\Models\groupProduct::select('product_id', 'id')->get();
 
-        $product_id =243;
+        $product_id =  $GLOBALS['id'];
 
         $data_active = [];
 
@@ -41,6 +44,13 @@
     }
 
 ?>
+
+<?php 
+
+    $name_product = App\Models\product::find($id);
+?>
+
+<h2>Sửa danh mục cho sản phẩm {{ $name_product->Name }}</h2>
 
 
 <?php 
@@ -164,6 +174,8 @@
     </table> -->
 
     <?php recursiveMenu($groupProductss);  ?>
+
+    <?php unset($GLOBALS['id']); ?>
 
    
 

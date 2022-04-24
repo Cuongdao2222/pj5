@@ -158,7 +158,7 @@
 
 
         <link rel="stylesheet" href="{{ asset('css/lib/bootstrap.min.css') }}">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
         
         <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}"> 
         <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -802,7 +802,7 @@
                 }
 
                 .navmwg .sub-cate {
-                    width: 67%;
+                    width: 33%;
                     display: flex;
                     flex-wrap: wrap;
                 }
@@ -814,7 +814,7 @@
                 }
 
                 .navmwg .sub-cate>div {
-                    width: 50%;
+                    width: 100%;
                 }
 
                 .navmwg .TBLT {
@@ -1161,377 +1161,61 @@
                 
                 </section>
             </div>
+
+           
             <div class="header__top desktop menu-pc">
                 <div class="menu-section">
                     <ul class="list-menu">
-                        <li class="child" data-id="tivi-child">
 
-                            <a class="list-mn" href="{{ route('details', 'ti-vi') }}">
-                                <i class="fa fa-television" aria-hidden="true"></i>
-                                <span>Tivi</span>
+                        <?php 
+
+                            $menu = App\Models\groupProduct::where('level', 0)->get();
+                        ?>
+                        @foreach($menu as $menus)
+                        <li class="child" data-id="danh-muc{{ $menus->id }}">
+
+                            <a class="list-mn" href="{{ route('details', $menus->link) }}">
+                               <i class="fa-regular fa-refrigerator"></i>
+                                <span>{{ $menus->name }}</span>
                             </a>
-                            <div class="navmwg accessories tivi-child">
-                                <div class="PKDD">
-                                    <strong>Thương hiệu</strong>
-                                    <a href="#">
-                                        <h3>Tivi Samsung</h3>
-                                    </a>
-                                    <a href="/sac-cap">
-                                        <h3>Tivi LG</h3>
-                                    </a>
-                                    <a href="/mieng-dan-man-hinh">
-                                        <h3>Tivi Sony</h3>
-                                    </a>
-                                    <a href="/op-lung-flipcover">
-                                        <h3>Tivi Tcl</h3>
-                                    </a>
-                                    <a href="/op-lung-may-tinh-bang">
-                                        <h3>Tivi Philips</h3>
-                                    </a>
-                                   
-                                   
-                                    <br><br>
-                                </div>
+
+                            <?php 
+
+                                $find = App\Models\groupProduct::where('parent_id', $menus->id)->get()->toArray();
+                            ?>  
+
+
+                            @if(isset($find))
+                            <div class="navmwg accessories danh-muc{{ $menus->id }}">
+
+                                @foreach($find as $menu1)
+
                                 <div class="sub-cate">
                                     <div class="PKLT">
-                                        <strong>Loại tivi</strong>
-                                        <a href="/chuot-may-tinh">
-                                            <h3>8K</h3>
-                                        </a>
-                                        <a href="/thiet-bi-mang">
-                                            <h3>4K</h3>
-                                        </a>
-                                        <a href="/camera-giam-sat">
-                                            <h3>Tivi màn hình cong</h3>
-                                        </a>
-                                        <a href="/tui-chong-soc">
-                                            <h3>Tivi 3D</h3>
-                                        </a>
-                                        <a href="/phan-mem">
-                                            <h3>Smart tivi</h3>
-                                        </a>
+                                        <strong>{{ @$menu1['name'] }}</strong>
 
-                                          <a href="/tui-chong-soc">
-                                            <h3>Tivi 3D</h3>
-                                        </a>
-                                      
+                                       <?php $find1 = App\Models\groupProduct::where('parent_id',$menu1['id'])->get()->toArray(); ?>
 
-                                          <a href="/tui-chong-soc">
-                                            <h3>Tivi Led</h3>
+                                       @if(isset($find1))
+                                       @foreach($find1 as $find1s)
+
+                                        <a href="{{ route('details', $find1s['link']) }}">
+                                            <h3>{{ $find1s['name'] }}</h3>
                                         </a>
-                                        <a href="/phan-mem">
-                                            <h3>Smart tivi</h3>
-                                        </a>
-                                          <a href="/tui-chong-soc">
-                                            <h3>Tivi OLED</h3>
-                                        </a>
-                                        
+                                        @endforeach
+
+                                        @endif
+                                     
                                        
                                     </div>
-                                    <div class="PKCH">
-                                        <strong>
-                                        Kích cỡ tivi
-                                        
-                                        </strong>
-                                        <a href="/phu-kien/apple">
-                                            <h3>tivi 32 inches</h3>
-                                        </a>
-                                        <a href="/phu-kien/samsung">
-                                            <h3>tivi 49 inches</h3>
-                                        </a>
-                                        <a href="/phu-kien/sony">
-                                            <h3>tivi 55 inches</h3>
-                                        </a>
-                                        <a href="/phu-kien/jbl">
-                                            <h3>tivi từ 65 inches trở lên</h3>
-                                        </a>
-                                        <a href="/phu-kien/xiaomi">
-                                            <h3>tivi 50 inches</h3>
-                                        </a>
-                                    </div>
-                                   
                                     
                                 </div>
+                                @endforeach
                             </div>
+                            @endif
                         </li>
-                        <li class="child" data-id="tulanh-child">
-                            <a class="list-mn" href="{{ route('details', 'tu-lanh') }}">
-                                <i class="fa fa-television" aria-hidden="true"></i>
-                                <span>Tủ lạnh</span>
-                            </a>
-
-                            <div class="navmwg accessories tulanh-child">
-                                <div class="PKDD">
-                                    <strong>Thương hiệu</strong>
-                                    <a href="#">
-                                        <h3>Hitachi</h3>
-                                    </a>
-                                    <a href="/sac-cap">
-                                        <h3>Panasonic</h3>
-                                    </a>
-                                    <a href="/mieng-dan-man-hinh">
-                                        <h3>Samsung</h3>
-                                    </a>
-                                    <a href="/op-lung-flipcover">
-                                        <h3>Sharp</h3>
-                                    </a>
-                                    <a href="/op-lung-may-tinh-bang">
-                                        <h3>LG</h3>
-                                    </a>
-
-                                    <a href="/op-lung-may-tinh-bang">
-                                        <h3>Electrolux</h3>
-                                    </a>
-
-                                    <a href="/op-lung-may-tinh-bang">
-                                        <h3>Funiki</h3>
-                                    </a>
-                                   
-                                   
-                                    <br><br>
-                                </div>
-                                <div class="sub-cate">
-                                    <div class="PKLT">
-                                        <strong>Dung tích</strong>
-                                        <a href="/chuot-may-tinh">
-                                            <h3>Dưới 150 lít</h3>
-                                        </a>
-                                        <a href="/thiet-bi-mang">
-                                            <h3>Từ 150 - 200 lít</h3>
-                                        </a>
-                                        <a href="/camera-giam-sat">
-                                            <h3>Từ 200 - 300 lít</h3>
-                                        </a>
-                                        <a href="/tui-chong-soc">
-                                            <h3>Từ 300 - 400 lít</h3>
-                                        </a>
-                                        <a href="/phan-mem">
-                                            <h3>Từ 400 - 500 lít</h3>
-                                        </a>
-
-                                          <a href="/tui-chong-soc">
-                                            <h3>Từ 500 - 600 lít</h3>
-                                        </a>
-                                      
-
-                                          <a href="/tui-chong-soc">
-                                            <h3>Trên 600 lít</h3>
-                                        </a>
-                                        
-                                    
-                                    </div>
-                                    <div class="PKCH">
-                                        <strong>
-                                       Loại tủ
-                                        
-                                        </strong>
-                                        <a href="/phu-kien/apple">
-                                            <h3>Tủ lạnh Side By Side</h3>
-                                        </a>
-                                        <a href="/phu-kien/samsung">
-                                            <h3>Tủ lạnh ngăn đá dưới</h3>
-                                        </a>
-                                        <a href="/phu-kien/sony">
-                                            <h3>Tủ Lạnh Ngăn Đá Trên</h3>
-                                        </a>
-                                        <a href="/phu-kien/jbl">
-                                            <h3>Tủ Lạnh Mini</h3>
-                                        </a>
-                                        
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                        </li>
-
-
-                        <li class="child" data-id="may-giat-child">
-                            <a class="list-mn" href="/may-giat">
-                                <i class="icon-maygiat"></i>
-                                <span>Máy giặt</span>
-                            </a>
-
-                            <div class="navmwg accessories may-giat-child">
-                                <div class="PKDD">
-                                    <strong>Thương hiệu</strong>
-                                    <a href="#">
-                                        <h3>Máy giặt Electrolux</h3>
-                                    </a>
-                                    <a href="/sac-cap">
-                                        <h3>Máy giặt LG</h3>
-                                    </a>
-                                    <a href="/mieng-dan-man-hinh">
-                                        <h3>Máy giặt Panasonic</h3>
-                                    </a>
-                                    <a href="/op-lung-flipcover">
-                                        <h3>Máy giặt Samsung</h3>
-                                    </a>
-                                    <a href="/op-lung-may-tinh-bang">
-                                        <h3>Máy giặt Sharp</h3>
-                                    </a>
-                                   
-                                   
-                                    <br><br>
-                                </div>
-                                <div class="sub-cate">
-                                    <div class="PKLT">
-                                        <strong>Kiểu giặt</strong>
-                                        <a href="/chuot-may-tinh">
-                                            <h3>Lồng Ngang</h3>
-                                        </a>
-                                        <a href="/thiet-bi-mang">
-                                            <h3>Lồng Đứng</h3>
-                                        </a>
-                                        <a href="/camera-giam-sat">
-                                            <h3>Lồng Nghiêng</h3>
-                                        </a>
-                                        
-                                        
-                                       
-                                    </div>
-                                    <div class="PKCH">
-                                        <strong>
-                                        Khối lượng giặt
-                                        
-                                        </strong>
-                                        <a href="/phu-kien/apple">
-                                            <h3>Dưới 7kg</h3>
-                                        </a>
-                                        <a href="/phu-kien/samsung">
-                                            <h3>Từ 7 - 8kg</h3>
-                                        </a>
-                                        <a href="/phu-kien/sony">
-                                            <h3>Từ 8 - 9kg</h3>
-                                        </a>
-                                        <a href="/phu-kien/jbl">
-                                            <h3>Trên 9kg</h3>
-                                        </a>
-                                       
-                                    </div>
-                                   
-                                    
-                                </div>
-                            </div>
-
-                        </li>
-
-                        <li class="child" data-id="dieu-hoa-child">
-                            <a class="list-mn" href="/dieu-hoa">
-                                <i class="icon-maylanh"></i>
-                                <span>Điều hòa</span>
-                            </a>
-                            <div class="navmwg accessories dieu-hoa-child">
-                                <div class="PKDD">
-                                    <strong>Thương hiệu</strong>
-                                    <a href="#">
-                                        <h3>Máy giặt Electrolux</h3>
-                                    </a>
-                                    <a href="/sac-cap">
-                                        <h3>Máy giặt LG</h3>
-                                    </a>
-                                    <a href="/mieng-dan-man-hinh">
-                                        <h3>Máy giặt Panasonic</h3>
-                                    </a>
-                                    <a href="/op-lung-flipcover">
-                                        <h3>Máy giặt Samsung</h3>
-                                    </a>
-                                    <a href="/op-lung-may-tinh-bang">
-                                        <h3>Máy giặt Sharp</h3>
-                                    </a>
-                                   
-                                   
-                                    <br><br>
-                                </div>
-                                <div class="sub-cate">
-                                    <div class="PKLT">
-                                        <strong>Tiết Kiệm Điện</strong>
-                                        <a href="/chuot-may-tinh">
-                                            <h3>Lồng Ngang</h3>
-                                        </a>
-                                        <a href="/thiet-bi-mang">
-                                            <h3>Lồng Đứng</h3>
-                                        </a>
-                                        <a href="/camera-giam-sat">
-                                            <h3>Lồng Nghiêng</h3>
-                                        </a>
-                                        
-                                        
-                                       
-                                    </div>
-                                    <div class="PKCH">
-                                        <strong>
-                                        Công Suất
-                                        
-                                        </strong>
-                                        <a href="/phu-kien/apple">
-                                            <h3>Dưới 7kg</h3>
-                                        </a>
-                                        <a href="/phu-kien/samsung">
-                                            <h3>Từ 7 - 8kg</h3>
-                                        </a>
-                                        <a href="/phu-kien/sony">
-                                            <h3>Từ 8 - 9kg</h3>
-                                        </a>
-                                        <a href="/phu-kien/jbl">
-                                            <h3>Trên 9kg</h3>
-                                        </a>
-                                       
-                                    </div>
-
-                                     <div class="PKCH">
-                                        <strong>
-                                       Loại Điều Hòa
-                                        
-                                        </strong>
-                                        <a href="/phu-kien/apple">
-                                            <h3>Dưới 7kg</h3>
-                                        </a>
-                                        <a href="/phu-kien/samsung">
-                                            <h3>Từ 7 - 8kg</h3>
-                                        </a>
-                                        <a href="/phu-kien/sony">
-                                            <h3>Từ 8 - 9kg</h3>
-                                        </a>
-                                        <a href="/phu-kien/jbl">
-                                            <h3>Trên 9kg</h3>
-                                        </a>
-                                       
-                                    </div>
-
-                                    
-                                   
-                                    
-                                </div>
-                            </div>
-                        </li>
-
-                        <li class="child" data-id="dieu-hoa-child">
-                            <a class="list-mn" href="#">
-                                <i class="icon-diengiadung"></i>
-                                <span>Đồ gia dụng</span>
-                            </a>
-                        </li>
-
-                        <li class="child" data-id="dieu-hoa-child">
-                            <a class="list-mn" href="#">
-                                <i class="icon-diengiadung"></i>
-                                <span>Tủ đông</span>
-                            </a>
-                        </li>
-
-                        <li class="child" data-id="dieu-hoa-child">
-                            <a class="list-mn" href="#">
-                                <i class="icon-diengiadung"></i>
-                                <span>A.O.Smith</span>
-                            </a>
-                        </li>
-
-                         <li class="child" data-id="dieu-hoa-child">
-                            <a class="list-mn" href="#">
-                                <i class="icon-diengiadung"></i>
-                                <span>Tủ Mát</span>
-                            </a>
-                        </li>
+                        @endforeach
+                        
 
                     </ul>
                 </div>

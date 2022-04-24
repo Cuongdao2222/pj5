@@ -7,6 +7,7 @@ use App\Http\Requests\UpdategroupProductRequest;
 use App\Repositories\groupProductRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
+use App\Models\product;
 use Flash;
 use Response;
 
@@ -184,6 +185,14 @@ class groupProductController extends AppBaseController
         return redirect(route('groupProducts.index'));
     }
 
+    public function showProductIdToUrl($id)
+    {
+        $Product = product::findOrFail($id);
+
+        return view('group_products.product_selected_group_product', compact('id'));
+        
+    }
+
     public function find_Parent($id)
     {
 
@@ -205,6 +214,27 @@ class groupProductController extends AppBaseController
         }
 
         return $ar_parent;
+    }
+
+
+    public function deleteChild($id, $product_id)
+    {
+        $all_product_group =  groupProduct::find($id);
+
+        if( $all_product_group->product_id != ''){
+
+            $data_product_id = json_decode($all_product_group->product_id);
+
+            $findKey = array_search($product_id, $data_product_id);
+
+            array_splice($data_product_id, $findKey, 1);
+
+            $all_product_group->product_id = json_encode($data_product_id);
+
+            $all_product_group->save();
+
+            
+        }
     }
 
    
@@ -259,30 +289,78 @@ class groupProductController extends AppBaseController
 
             $level = groupProduct::find($id)->level;
 
+
+
             
             if($level==2){
 
-                $all_product_group =  groupProduct::find($id);
-
-                if( $all_product_group->product_id != ''){
-
-                    $data_product_id = json_decode($all_product_group->product_id);
-
-                    $findKey = array_search($product_id, $data_product_id);
-
-                    array_splice($data_product_id, $findKey, 1);
-
-                    $all_product_group->product_id = json_encode($data_product_id);
-
-                    $all_product_group->save();
-
-                    
-                }
+                $this->deleteChild($id, $product_id);
 
                 return response('thanh cong');  
 
 
-            }   
+            } 
+            elseif($level==1){
+
+                // xoa con level =2
+
+                $all_product_group =  groupProduct::where('parent_id', $id)->where('level', 2)->get()->pluck('id');
+
+                if(isset($all_product_group)){
+
+                    foreach ($all_product_group as  $value) {
+
+                        $this->deleteChild($value, $product_id);
+                        
+                        
+                    }
+                }
+
+                // xoa phan tu cha
+
+                $this->deleteChild($id, $product_id);
+
+
+            }  
+
+            
+            else{
+
+                // neu level bang 0 
+
+                $all_product_group_level1 =  groupProduct::where('parent_id', $id)->where('level', 1)->get()->pluck('id'); 
+
+                if(isset($all_product_group_level1)){
+
+                    foreach($all_product_group_level1 as $value1){
+
+                        $all_product_group =  groupProduct::where('parent_id', $value1)->where('level', 2)->get()->pluck('id');
+
+                        if(isset($all_product_group)){
+
+                            foreach ($all_product_group as  $value) {
+
+                                $this->deleteChild($value, $product_id);
+                                
+                                
+                            }
+                        }
+
+                        // xoa phan tu cha
+
+                        $this->deleteChild($value1, $product_id);
+
+                    }
+
+                }
+
+                // xoa phan tu level bang 0
+
+                $this->deleteChild($id);
+                
+            }
+
+            return response('thanh cong');
 
 
         }

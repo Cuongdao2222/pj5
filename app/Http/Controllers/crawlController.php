@@ -14,6 +14,8 @@ use  App\Models\image;
 
 use App\Models\metaSeo;
 
+use App\Models\groupProduct;
+
 
 class crawlController extends Controller
 {
@@ -4654,21 +4656,43 @@ https://dienmaynguoiviet.vn/vi-sao-khong-nen-xem-tivi-khi-dang-an/';
 
     function filter(){
 
-        for ($i=243; $i < 2845; $i++) { 
+        for ($i=243; $i < 2268; $i++) { 
 
             $product = product::find($i);
 
-            if(!empty($product->Link)){
-                if(strpos($product->Link, 'may-loc-nuoc') ){
-                    $product->Group_id = 9;
+            if(!empty($product->Link) && strpos(trim($product->Link), 'tivi')){
 
-                    $product->save();
 
+                $groupProduct = groupProduct::find(1);
+
+                if($groupProduct->product_id==''){
+
+                    $datas_ar = [];
+
+                    $groupProduct->product_id=json_encode($datas_ar);
+                }
+                else{
+                    $groupProduct->product_id = $groupProduct->product_id;
                 }
 
-            }
+                $data_product = json_decode($groupProduct->product_id);
 
-            
+
+
+                array_push($data_product, $i);
+
+                array_unique($data_product);
+
+                $data_product = json_encode($data_product);
+
+                $groupProduct->product_id = $data_product;
+
+
+                $groupProduct->save();
+
+            }
+           
+
             
         }
         echo "thanh cong";

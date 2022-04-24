@@ -164,45 +164,6 @@
 </div>
 
 
-<?php  
-
-    $groupProduct = App\Models\groupProduct::select('id', 'name', 'group_product_id')->get()->toArray();
-
-    function data_tree($data, $parent_id = 0, $level = 0){
-        $result = [];
-        foreach($data as $item){
-            if($item['group_product_id'] == $parent_id){
-                $item['level'] = $level;
-                $result[] = $item;
-                unset($data[$item['id']]);
-                $child = data_tree($data, $item['id'], $level + 1 );
-                $result = array_merge($result, $child);
-            }
-        }
-        return $result;
-    }
-    $list_cat = data_tree($groupProduct, 0);
-
-    $arr_new_list_cat = [];
-
-
-    if(isset($list_cat)){
-
-        foreach($list_cat as $value){
-            $arr_new_list_cat[$value['id']] = str_repeat(html_entity_decode('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'), $value['level']).' - '.$value['name'];
-        }  
-
-    }  
-
-?>
-
-
-<!-- Group_id Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('Group', 'Group:') !!}
-    {!! Form::select('Group_id', $arr_new_list_cat, @$GroupSelected, ['class' => 'form-control custom-select']) !!}
-   
-</div>
 
 <!-- Image Field -->
 <div class="form-group col-sm-6">

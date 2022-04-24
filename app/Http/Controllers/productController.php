@@ -82,37 +82,49 @@ class productController extends AppBaseController
             $input['Price'] = str_replace('.', '', $input['Price']);
         }
 
+        if(empty($input['Group_id'])){
+
+            $input['Group_id'] = 0;
+
+        }    
+
+        // if(!empty($input['Group_id'])){
+
+        //     // tìm sản phẩm cha để add vào 
+
+        //     $add_parent = [];
+
+        //     $parent = groupProduct::find($input['Group_id']);
+
+        //     $level = $parent->level;
+
+        //     if($level>0){
+
+        //         for($i = 0; $i<= $level; $i++){
+
+        //             if($parent->parent_id != 0){
+
+        //                 $parent = (groupProduct::find($parent->parent_id));
+
+        //                 array_push($add_parent, $parent->id);
+        //             }
+
+        //         }
+
+        //     }
+        //     else{
+        //         array_push($add_parent, $parent->id);
+        //     }
+
+        //     $input['Price'] = str_replace(',', '', $input['Price']);
+        //     $input['Price'] = str_replace('.', '', $input['Price']);
+        // }
+
         if(!empty($input['Group_id'])){
 
-            // tìm sản phẩm cha để add vào 
+            $input['Group_id'] = 0;
 
-            $add_parent = [];
-
-            $parent = groupProduct::find($input['Group_id']);
-
-            $level = $parent->level;
-
-            if($level>0){
-
-                for($i = 0; $i<= $level; $i++){
-
-                    if($parent->parent_id != 0){
-
-                        $parent = (groupProduct::find($parent->parent_id));
-
-                        array_push($add_parent, $parent->id);
-                    }
-
-                }
-
-            }
-            else{
-                array_push($add_parent, $parent->id);
-            }
-
-            $input['Price'] = str_replace(',', '', $input['Price']);
-            $input['Price'] = str_replace('.', '', $input['Price']);
-        }
+        }    
 
 
         if ($request->hasFile('Image')) {
@@ -182,13 +194,10 @@ class productController extends AppBaseController
 
         $input['Meta_id'] = $meta_model['id'];
 
-        foreach($add_parent as $val){
-           
-           
-            $input['Group_id'] = $val;
-            $product = $this->productRepository->create($input);
+        
 
-        }
+        $product = $this->productRepository->create($input);
+
         return redirect()->route('products.edit', $product['id']);
         
         // return Redirect()->back()->with('id', $product['id']);
@@ -272,18 +281,23 @@ class productController extends AppBaseController
             $input['Price'] = str_replace('.', '', $input['Price']);
         }
 
-        
+        if(!empty($input['Group_id'])){
 
-        if($product->Group_id != $input['Group_id']){
+            $input['Group_id'] = 0;
 
-            $hot = hotProduct::where('product_id', $id)->first();
+        }    
 
-            $hot = hotProduct::find($hot->id);
 
-            $hot->group_id = $input['Group_id'];
+        // if($product->Group_id != $input['Group_id']){
 
-            $hot->save();
-        }
+        //     $hot = hotProduct::where('product_id', $id)->first();
+
+        //     $hot = hotProduct::find($hot->id);
+
+        //     $hot->group_id = $input['Group_id'];
+
+        //     $hot->save();
+        // }
 
         if ($request->hasFile('Image')) {
 
@@ -389,9 +403,18 @@ class productController extends AppBaseController
 
     public function selectProductByCategory($cate_id)
     {
-       $products = Product::where('Group_id', $cate_id)->orderBy('id', 'desc')->paginate(10);
+       // $products = Product::where('Group_id', $cate_id)->orderBy('id', 'desc')->paginate(10);
 
-       return view('products.index')
+        $Group_product = groupProduct::find($cate_id);
+
+
+        $Group_product = json_decode($Group_product->product_id);
+
+
+        $products = Product::whereIn('id', $Group_product)->orderBy('id', 'desc')->paginate(10);
+
+
+        return view('products.index')
             ->with('products', $products);
 
         if (empty($product)) {
