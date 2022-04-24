@@ -1150,7 +1150,7 @@
                         <div class="col-4 icons-heads icons-3">
                             
                             <a href="{{ route('tin') }}" class="header__cart ">
-                                <i class="fa fa-newspaper-o" aria-hidden="true" style="font-size:22px"></i>
+                                <i class="fa fa-newspaper" aria-hidden="true" style="font-size:22px"></i>
                                 
                             </a>
                         </div>
@@ -1699,16 +1699,15 @@
                             <i class="fa fa-bars" aria-hidden="true"></i>
                         </span></p>
                         <!-- <a href="/danh-muc-nhom-hang" class="category__all">Tất cả nhóm hàng</a> -->
+
+
+                   
                         <nav class="nav-list">
-                            <a href="/dtdd">Tivi</a>
-                            <a href="/laptop-ldp">Tủ lạnh</a>
-                            <a href="/may-tinh-bang">Máy giặt</a>
-                            <a href="/phu-kien">Điều hòa</a>
-                            <a href="/dong-ho-thong-minh-ldp">Đồ gia dụng</a>
-                            <a href="/avaji">Tủ đông</a>
-                            <a href="/pc-may-in">Tủ mát</a>
-                            <a href="/may-doi-tra">Máy sấy quần áo</a>
-                            <a href="/sim-so-dep">A.O.Smith</a>
+                            <?php  $meumobile = App\Models\groupProduct::select('name', 'link')->where('level', 0)->get();   ?>
+                            @foreach($meumobile as $menu)
+                            <a href="{{ route('details', $menu->link) }}">{{ $menu->name }}</a>
+                            @endforeach
+                            
                             <a href="/tien-ich" class="promotion-menu">
                                 Giảm giá <br>đặc biệt
                                 <span class="item__label">- 5%</span>
@@ -2036,7 +2035,7 @@
                         <h3 class="title">Thông tin</h3>
                         <ul class="footer_list-link">
                             <li>
-                                <a href="#">Giới thiệu</a>
+                                <a href="/gioi-thieu">Giới thiệu</a>
                             </li>
                             <li>
                                 <a href="#">Liên hệ</a>
@@ -2055,13 +2054,13 @@
                         <h3 class="title">Hỗ trợ mua hàng</h3>
                         <ul class="footer_list-link">
                             <li>
-                                <a href="#">Hướng dẫn trả góp</a>
+                                <a href="{{ route('details', 'huong-dan-mua-dien-may-tra-gop-online-qua-the-tin-dung-tren-trang-web-dien-may-nguoi-viet') }}">Hướng dẫn trả góp</a>
                             </li>
                             <li>
                                 <a href="#">Cách thức thanh toán</a>
                             </li>
                             <li>
-                                <a href="#">Bảng giá vật tư lắp đặt</a>
+                                <a href="{{ route('details', 'bang-gia-vat-tu-lap-dat-may-giat') }}">Bảng giá vật tư lắp đặt</a>
                             </li>
                         </ul>
                     </div>

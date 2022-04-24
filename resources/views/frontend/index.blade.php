@@ -105,16 +105,16 @@
 
 
                 <!-- Banner hot -->
-                <a class = "" aria-label="slide" data-cate="0" data-place="1539" href="#">
+                <a class = "" aria-label="slide" data-cate="0" data-place="1539" href="{{ route('details', 'ti-vi')}}">
                     <img  src="{{ asset('uploads/banner/01.png') }}" data-src="{{ asset('uploads/banner/01.png') }}"    alt="San pham hot CE Tivi"  >
                 </a>
-                <a class = "" aria-label="slide" data-cate="0" data-place="1539" href="#">
+                <a class = "" aria-label="slide" data-cate="0" data-place="1539" href="{{ route('details', 'may-giat')}}">
                     <img  src="{{ asset('uploads/banner/02.png') }}"  data-src="{{ asset('uploads/banner/02.png') }}" alt="Sản phẩm hot CE - Doc quyen"  >
                 </a>
-                <a class = "" aria-label="slide" data-cate="0" data-place="1539" href="#">
+                <a class = "" aria-label="slide" data-cate="0" data-place="1539" href="{{ route('details', 'tu-lanh')}}">
                     <img  src="{{ asset('uploads/banner/03.png') }}"  data-src="{{ asset('uploads/banner/03.png') }}" alt="2021 - Trang chủ hot - Desktop"  >
                 </a>
-                <a class = "" aria-label="slide" data-cate="0" data-place="1539" href="#">
+                <a class = "" aria-label="slide" data-cate="0" data-place="1539" href="{{ route('details', 'gia-dung')}}">
                     <img  src="{{ asset('uploads/banner/04.png') }}"  data-src="{{ asset('uploads/banner/04.png') }}" alt="2021 - Trang chủ hot - Desktop"  >
                 </a>
                 <!-- End -->
@@ -129,16 +129,13 @@
                 </span></p>
                 <!-- <a href="/danh-muc-nhom-hang" class="category__all">Tất cả nhóm hàng</a> -->
                 <nav class="nav-list" style="display: none;">
-                    <a href="/dtdd">Tivi</a>
-                    <a href="/laptop-ldp">Tủ lạnh</a>
-                    <a href="/may-tinh-bang">Máy giặt</a>
-                    <a href="/phu-kien">Điều hòa</a>
-                    <a href="/dong-ho-thong-minh-ldp">Đồ gia dụng</a>
-                    <a href="/avaji">Tủ đông</a>
-                    <a href="/pc-may-in">Tủ mát</a>
-                    <a href="/may-doi-tra">Máy sấy quần áo</a>
-                    <a href="/sim-so-dep">A.O.Smith</a>
-                    <a href="/tien-ich" class="promotion-menu">
+                    <?php  $meumobile = App\Models\groupProduct::select('name', 'link')->where('level', 0)->get();   ?>
+                    @foreach($meumobile as $menu)
+                    <a href="{{ route('details', $menu->link) }}">{{ $menu->name }}</a>
+                    @endforeach
+                   
+
+                    <a href="#" class="promotion-menu">
                         Giảm giá <br>đặc biệt
                         <span class="item__label">- 5%</span>
                     </a>
@@ -152,49 +149,49 @@
         <section class="menus-banner">
             <ul>
                 <li class="col-">
-                    <a href="/ti-vi">
+                    <a href="{{ route('details', 'ti-vi') }}">
                         <picture>
                             <source media="(min-width:1201px)" >
                             <img src="{{ asset('images/background-image/011.png') }}" alt="" data-src="{{ asset('images/background-image/011.png') }}">
                         </picture>
                     </a>
-                    <p><a href="/ti-vi">TV cao cấp</a></p>
+                    <p><a href="{{ route('details', 'ti-vi') }}">TV cao cấp</a></p>
                 </li>
                 <li>
-                    <a href="tu-lanh">
+                    <a href="{{ route('details', 'tu-lanh') }}">
                         <picture>
                             <source media="(min-width:1201px)">
                            <img src="{{ asset('images/background-image/021.png') }}" alt="" data-src="{{ asset('images/background-image/021.png') }}">
                         </picture>
                     </a>
-                    <p><a href="/tu-lanh">Tủ lạnh</a></p>
+                    <p><a href="{{ route('details', 'tu-lanh') }}">Tủ lạnh</a></p>
                 </li>
                 <li>
-                    <a href="/may-giat">
+                    <a href="{{ route('details', 'may-giat') }}">
                         <picture>
                             <source media="(min-width:1201px)">
                             <img src="{{ asset('images/background-image/031.png') }}" alt="" data-src="{{ asset('images/background-image/031.png') }}">
                         </picture>
                     </a>
-                    <p><a href="/may-giat">Máy giặt</a></p>
+                    <p><a href="{{ route('details', 'may-giat') }}">Máy giặt</a></p>
                 </li>
                 <li>
-                    <a href="/gia-dung">
+                    <a href="{{ route('details', 'gia-dung') }}">
                         <picture>
                             <source media="(min-width:1201px)">
                             <img src="{{ asset('images/background-image/041.png') }}" alt="" data-src="{{ asset('images/background-image/041.png') }}">
                         </picture>
                     </a>
-                    <p><a href="/gia-dung">Gia dụng</a></p>
+                    <p><a href="{{ route('details', 'gia-dung') }}">Gia dụng</a></p>
                 </li>
                 <li>
-                    <a href="/ti-vi">
+                    <a href="{{ route('details', 'tivi-50-inches') }}">
                         <picture>
                             <source media="(min-width:1201px)">
                             <img src="{{ asset('images/background-image/051.png') }}" alt="" data-src="{{ asset('images/background-image/051.png') }}">
                         </picture>
                     </a>
-                    <p><a href="/ti-vi">TV Inch lớn giá rẻ</a></p>
+                    <p><a href="{{ route('details', 'tivi-50-inches') }}">TV Inch lớn giá rẻ</a></p>
                 </li>
                 <li>
                     <a href="/dieu-hoa">

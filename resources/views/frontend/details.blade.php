@@ -235,6 +235,8 @@
                                             
                                            
                                         </div>
+
+                                        @if($data->Quantily>0)
                                         <div class="pdetail-add-to-cart add-to-cart">
                                             <div class="inline">
                                                 <input type="hidden" name="productId" value="{{ $data->id }}">
@@ -262,7 +264,7 @@
                                             </a>
 
                                         </div>
-
+                                        @endif
                                     </div>
                                     <div class="clearfix"></div>
                                 </div>
@@ -459,6 +461,8 @@
                                     <div class="pdetail-stockavailable">
                                         <span>{{ $status }} </span>
                                     </div>
+                                   
+                                    @if($data->Quatily<=0)
                                     <div class="pdetail-add-to-cart add-to-cart">
                                         <form class="inline">
                                             <input type="hidden" name="productId" value="19439">
@@ -482,9 +486,7 @@
 
                                     <div class="clearfix"></div>
                                     <div class="installment-purchase pdetail-installment">
-
-                                        
-
+                                      
                                         @if((int)$data->Price>3000000)
 
                                         <a target="_blank" href="{{ route('details', $data->Link)  }}?show=tra-gop" admicro-data-event="101725" admicro-data-auto="1" admicro-data-order="false">
@@ -500,14 +502,15 @@
                                          @endif
                                         <br><br>
                                         {!!  $data->Specifications  !!} 
-
-                                        <span class="view-all" data-toggle="modal" data-target="#specifications">Xem chi tiết thông số kỹ thuật</span>
+                                       
+                                        
 
                                     </div>
-
+                                     @endif
+                                    
                                 </div>
                                 <div class="clearfix"></div>
-
+                                <span class="view-all" data-toggle="modal" data-target="#specifications">Xem chi tiết thông số kỹ thuật</span>
                             </div>
                            
                         </div>
@@ -695,7 +698,7 @@
                 <div class="fl" style="padding:0 5px 0 0;">
                   Model: <span class="value txt_blue">{{ $data->ProductSku }}</span> | 
                   
-                  Tình trạng: <span class="value txt_blue">Còn hàng</span> | 
+                  Tình trạng: <span class="value txt_blue">{{ $status }}</span> | 
                    </div>
               
               <a id="btn-vote" class="txt_555 fl" href="javascript:;" onclick="go_comm()"> Đánh giá: </a>
@@ -708,10 +711,7 @@
                   
         <div class="prod-info-left fl">          
                 
-        <!-- <div class="space3px txt_555">Giá thị trường: <span class="txt_d">3.055.000đ</span></div> -->
-                  
-        <div class="price">Giá: 
-            <span class="robot txt_green txt_b txt_20">{{  str_replace(',' ,'.', number_format($value->Price))  }} &#x20AB;</span>
+            <span class="robot txt_green txt_b txt_20">{{  str_replace(',' ,'.', number_format($data->Price))  }} &#x20AB;</span>
         </div>
           
         <div class="clear space3px"></div>
@@ -756,9 +756,9 @@
         </div>
         @endif
           
-         
-  <div class="buy-group">
     
+  <div class="buy-group">
+    @if($data->Quantily>0) 
     @if((int)$data->Price>0)
     <div class="clear space10px in">
      
@@ -779,10 +779,13 @@
         </a>
     </div>
     @endif
+    @endif
+
     
       Gọi đặt mua:  <span class="txt_b txt_red"><a href="tel:0967025111">098 361 2828</a></span> (sau 17h)<br>
        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="txt_b txt_red"> <a href="tel:02438615111">091 301 1888</a></span> (sau 17h)
    </div>
+  
     
     
         <div class="clear"></div>
