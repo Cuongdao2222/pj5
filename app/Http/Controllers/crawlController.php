@@ -4656,7 +4656,7 @@ https://dienmaynguoiviet.vn/vi-sao-khong-nen-xem-tivi-khi-dang-an/';
 
     function filter(){
 
-        for ($i=243; $i < 2268; $i++) { 
+        for ($i=243; $i < 2845; $i++) { 
 
             $product = product::find($i);
 
