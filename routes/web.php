@@ -58,7 +58,7 @@ Route::get('inCrawl', 'crawlController@print')->name('print');
 Route::get('/tin-chi-tiet', function () {
     return view('frontend.blogdetail');
     
-})->middleware('auth');
+});
 
 
 

@@ -308,7 +308,6 @@ class categoryController extends Controller
 
         $findID = product::where('link', $link)->first();
 
-       
         // chuyển sang category check
 
         if(empty($findID)){
@@ -316,6 +315,10 @@ class categoryController extends Controller
             return($this->categoryView($slug));
 
         }
+
+
+
+
         else{
 
             $images = image::where('product_id', $findID->id)->get();

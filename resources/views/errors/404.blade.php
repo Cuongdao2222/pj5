@@ -1,6 +1,17 @@
+<?php 
+
+    $page = '404';
+
+   
+
+   
+?>
+
 @extends('frontend.layouts.apps')
 
 @section('content') 
+
+
 
  @push('style')
         <link rel="stylesheet" type="text/css" href="{{ asset('css/category.css') }}"> 

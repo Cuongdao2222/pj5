@@ -4,9 +4,15 @@
 <html lang="vi-VN">
     <head>
         <meta charset="utf-8" />
+
+      <?php  
+
+      $requestcheck = \Request::route();
+
+      ?>
        
          
-        @if(\Request::route()->getName()=='details') 
+        @if(!empty($requestcheck)&& \Request::route()->getName()=='details') 
 
 
 
@@ -982,7 +988,7 @@
         </div>
         @else
 
-        @if(\Request::route()->getName() =="homeFe")
+        @if(!empty($requestcheck)&& \Request::route()->getName() =="homeFe")
         <div id="box-promotion" class="box-promotion box-promotion-active">
             <div class="box-promotion-item" style="width: 500px;height: 500px;left: 34%;top: 23%;">
                 <div class="box-banner">
@@ -2046,7 +2052,13 @@
 
                           
                             <li class="mobile">
+                                <?php 
+
+                                    $routeUri = Route::getFacadeRoot()->current();
+                                ?>
+                                @if(!empty($routeUri))
                                 <a href="{{ Route::getFacadeRoot()->current()->uri() }}?show=pc_view">Xem bản desktop</a>
+                                @endif
                             </li>
                         </ul>
                     </div>
