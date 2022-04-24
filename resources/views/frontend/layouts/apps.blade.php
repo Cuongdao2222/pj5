@@ -1180,7 +1180,7 @@
                         @foreach($menu as $menus)
                         <li class="child" data-id="danh-muc{{ $menus->id }}">
 
-                            <a class="list-mn" href="{{ route('details', $menus->link) }}">
+                            <a class="list-mn" href="{{ route('details',' $menus->link) }}">
                                <i class="fa-regular fa-refrigerator"></i>
                                 <span>{{ $menus->name }}</span>
                             </a>
@@ -1205,7 +1205,7 @@
                                        @if(isset($find1))
                                        @foreach($find1 as $find1s)
 
-                                        <a href="{{ route('details', $find1s['link']) }}">
+                                        <a href="{{ route('details',' $find1s['link']) }}">
                                             <h3>{{ $find1s['name'] }}</h3>
                                         </a>
                                         @endforeach
@@ -1227,7 +1227,7 @@
 
                     <ul class="list-menu">
                         <li class="child" data-id="danh-muc1">
-                            <a class="list-mn" href="{{env('APP_URL')}}/ti-vi">
+                            <a class="list-mn" href="{{route('details','ti-vi'}}">
                             <i class="fa-regular fa-refrigerator"></i>
                             <span>Tivi</span>
                             </a>
@@ -1235,19 +1235,19 @@
                                 <div class="sub-cate">
                                     <div class="PKLT">
                                         <strong>Thương hiệu</strong>
-                                        <a href="{{env('APP_URL')}}/tivi-samsung">
+                                        <a href="{{route('details','tivi-samsung'}}">
                                             <h3>Tivi Samsung</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/tivi-lg">
+                                        <a href="{{route('details','tivi-lg'}}">
                                             <h3>Tivi LG</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/tivi-sony">
+                                        <a href="{{route('details','tivi-sony'}}">
                                             <h3>Tivi Sony</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/tivi-tcl">
+                                        <a href="{{route('details','tivi-tcl'}}">
                                             <h3>Tivi TCL</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/tivi-philips">
+                                        <a href="{{route('details','tivi-philips'}}">
                                             <h3>Tivi Philips</h3>
                                         </a>
                                     </div>
@@ -1255,28 +1255,28 @@
                                 <div class="sub-cate">
                                     <div class="PKLT">
                                         <strong>Loại tivi</strong>
-                                        <a href="{{env('APP_URL')}}/8k">
+                                        <a href="{{route('details','8k'}}">
                                             <h3>8K</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/tivi-4k">
+                                        <a href="{{route('details','tivi-4k'}}">
                                             <h3>4K</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/smart-tivi">
+                                        <a href="{{route('details','smart-tivi'}}">
                                             <h3>Smart tivi</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/tivi-led">
+                                        <a href="{{route('details','tivi-led'}}">
                                             <h3>Tivi Led</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/tivi-oled">
+                                        <a href="{{route('details','tivi-oled'}}">
                                             <h3>Tivi OLED</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/tivi-qled">
+                                        <a href="{{route('details','tivi-qled'}}">
                                             <h3>Tivi QLED</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/tivi-frame">
+                                        <a href="{{route('details','tivi-frame'}}">
                                             <h3>Tivi Frame</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/tivi-neo-qled">
+                                        <a href="{{route('details','tivi-neo-qled'}}">
                                             <h3>Tivi Neo QLED</h3>
                                         </a>
                                     </div>
@@ -1284,22 +1284,22 @@
                                 <div class="sub-cate">
                                     <div class="PKLT">
                                         <strong>Kích cỡ tivi</strong>
-                                        <a href="{{env('APP_URL')}}/tivi-32-inches">
+                                        <a href="{{route('details','tivi-32-inches'}}">
                                             <h3>Tivi 32 inches</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/tivi-43-inches">
+                                        <a href="{{route('details','tivi-43-inches'}}">
                                             <h3>Tivi 43 inches</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/tivi-49-inches">
+                                        <a href="{{route('details','tivi-49-inches'}}">
                                             <h3>Tivi 49 inches</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/tivi-50-inches">
+                                        <a href="{{route('details','tivi-50-inches'}}">
                                             <h3>Tivi 50 inches</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/tivi-55-inches">
+                                        <a href="{{route('details','tivi-55-inches'}}">
                                             <h3>Tivi 55 inches</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/tivi-tu-65-inches-tro-len">
+                                        <a href="{{route('details','tivi-tu-65-inches-tro-len'}}">
                                             <h3>Tivi từ 65 inches trở lên</h3>
                                         </a>
                                     </div>
@@ -1307,7 +1307,7 @@
                             </div>
                         </li>
                         <li class="child" data-id="danh-muc2">
-                            <a class="list-mn" href="{{env('APP_URL')}}/may-giat">
+                            <a class="list-mn" href="{{route('details','may-giat'}}">
                             <i class="fa-regular fa-refrigerator"></i>
                             <span>Máy giặt</span>
                             </a>
@@ -1315,19 +1315,19 @@
                                 <div class="sub-cate">
                                     <div class="PKLT">
                                         <strong>Thương hiệu</strong>
-                                        <a href="{{env('APP_URL')}}/may-giat-electrolux">
+                                        <a href="{{route('details','may-giat-electrolux'}}">
                                             <h3>Máy giặt Electrolux</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/may-giat-lg">
+                                        <a href="{{route('details','may-giat-lg'}}">
                                             <h3>Máy giặt LG</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/may-giat-panasonic">
+                                        <a href="{{route('details','may-giat-panasonic'}}">
                                             <h3>Máy giặt Panasonic</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/may-giat-samsung">
+                                        <a href="{{route('details','may-giat-samsung'}}">
                                             <h3>Máy giặt Samsung</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/may-giat-sharp">
+                                        <a href="{{route('details','may-giat-sharp'}}">
                                             <h3>Máy giặt Sharp</h3>
                                         </a>
                                     </div>
@@ -1335,10 +1335,10 @@
                                 <div class="sub-cate">
                                     <div class="PKLT">
                                         <strong>Kiểu giặt</strong>
-                                        <a href="{{env('APP_URL')}}/may-giat-long-ngang">
+                                        <a href="{{route('details','may-giat-long-ngang'}}">
                                             <h3>Máy giặt lồng ngang</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/may-giat-long-dung">
+                                        <a href="{{route('details','may-giat-long-dung'}}">
                                             <h3>Máy giặt lồng đứng</h3>
                                         </a>
                                     </div>
@@ -1346,16 +1346,16 @@
                                 <div class="sub-cate">
                                     <div class="PKLT">
                                         <strong>Khối lượng giặt</strong>
-                                        <a href="{{env('APP_URL')}}/duoi-7kg">
+                                        <a href="{{route('details','duoi-7kg'}}">
                                             <h3>Dưới 7kg</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/tu-7-8kg">
+                                        <a href="{{route('details','tu-7-8kg'}}">
                                             <h3>Từ 7-8kg</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/tu-8-9kg">
+                                        <a href="{{route('details','tu-8-9kg'}}">
                                             <h3>Từ 8-9kg</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/tren-9kg">
+                                        <a href="{{route('details','tren-9kg'}}">
                                             <h3>Trên 9kg</h3>
                                         </a>
                                     </div>
@@ -1363,7 +1363,7 @@
                             </div>
                         </li>
                         <li class="child" data-id="danh-muc3">
-                            <a class="list-mn" href="{{env('APP_URL')}}/tu-lanh">
+                            <a class="list-mn" href="{{route('details','tu-lanh'}}">
                             <i class="fa-regular fa-refrigerator"></i>
                             <span>Tủ lạnh</span>
                             </a>
@@ -1371,22 +1371,22 @@
                                 <div class="sub-cate">
                                     <div class="PKLT">
                                         <strong>Thương hiệu</strong>
-                                        <a href="{{env('APP_URL')}}/tu-lanh-hitachi">
+                                        <a href="{{route('details','tu-lanh-hitachi'}}">
                                             <h3>Tủ lạnh Hitachi</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/tu-lanh-panasonic">
+                                        <a href="{{route('details','tu-lanh-panasonic'}}">
                                             <h3>Tủ lạnh Panasonic</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/tu-lanh-samsung">
+                                        <a href="{{route('details','tu-lanh-samsung'}}">
                                             <h3>Tủ lạnh Samsung</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/tu-lanh-sharp">
+                                        <a href="{{route('details','tu-lanh-sharp'}}">
                                             <h3>Tủ lạnh Sharp</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/tu-lanh-lg">
+                                        <a href="{{route('details','tu-lanh-lg'}}">
                                             <h3>Tủ lạnh LG</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/tu-lanh-funiki">
+                                        <a href="{{route('details','tu-lanh-funiki'}}">
                                             <h3>Tủ lạnh Funiki</h3>
                                         </a>
                                     </div>
@@ -1394,28 +1394,28 @@
                                 <div class="sub-cate">
                                     <div class="PKLT">
                                         <strong>Dung tích</strong>
-                                        <a href="{{env('APP_URL')}}/duoi-150-lit">
+                                        <a href="{{route('details','duoi-150-lit'}}">
                                             <h3>Dưới 150 lít</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/tu-150-200-lit">
+                                        <a href="{{route('details','tu-150-200-lit'}}">
                                             <h3>Từ 150-200 lít</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/tu-200-300-lit">
+                                        <a href="{{route('details','tu-200-300-lit'}}">
                                             <h3>Từ 200-300 lít</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/tu-300-400-lit">
+                                        <a href="{{route('details','tu-300-400-lit'}}">
                                             <h3>Từ 300-400 lít</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/tu-400-500-lit">
+                                        <a href="{{route('details','tu-400-500-lit'}}">
                                             <h3>Từ 400-500 lít</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/tu-400-500-lit">
+                                        <a href="{{route('details','tu-400-500-lit'}}">
                                             <h3>Từ 400-500 lít</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/tu-500-600-lit">
+                                        <a href="{{route('details','tu-500-600-lit'}}">
                                             <h3>Từ 500-600 lít</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/tren-600-lit">
+                                        <a href="{{route('details','tren-600-lit'}}">
                                             <h3>Trên 600 lít</h3>
                                         </a>
                                     </div>
@@ -1423,16 +1423,16 @@
                                 <div class="sub-cate">
                                     <div class="PKLT">
                                         <strong>Loại tủ</strong>
-                                        <a href="{{env('APP_URL')}}/tu-lanh-mini">
+                                        <a href="{{route('details','tu-lanh-mini'}}">
                                             <h3>Tủ lạnh mini</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/tu-lanh-ngan-da-tren">
+                                        <a href="{{route('details','tu-lanh-ngan-da-tren'}}">
                                             <h3>Tủ lạnh ngăn đá trên</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/tu-lanh-ngan-da-duoi">
+                                        <a href="{{route('details','tu-lanh-ngan-da-duoi'}}">
                                             <h3>tủ lạnh ngăn đá dưới</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/tu-lanh-side-by-side">
+                                        <a href="{{route('details','tu-lanh-side-by-side'}}">
                                             <h3>Tủ lạnh Side By Side</h3>
                                         </a>
                                     </div>
@@ -1440,7 +1440,7 @@
                             </div>
                         </li>
                         <li class="child" data-id="danh-muc4">
-                            <a class="list-mn" href="{{env('APP_URL')}}/dieu-hoa">
+                            <a class="list-mn" href="{{route('details','dieu-hoa'}}">
                             <i class="fa-regular fa-refrigerator"></i>
                             <span>Điều hòa</span>
                             </a>
@@ -1448,28 +1448,28 @@
                                 <div class="sub-cate">
                                     <div class="PKLT">
                                         <strong>Thương hiệu</strong>
-                                        <a href="{{env('APP_URL')}}/dieu-hoa-daikin">
+                                        <a href="{{route('details','dieu-hoa-daikin'}}">
                                             <h3>Điều hòa Daikin</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/dieu-hoa-panasonic">
+                                        <a href="{{route('details','dieu-hoa-panasonic'}}">
                                             <h3>Điều hòa Panasonic</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/dieu-hoa-mitsubishi">
+                                        <a href="{{route('details','dieu-hoa-mitsubishi'}}">
                                             <h3>Điều hòa Mitsubishi</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/dieu-hoa-lg">
+                                        <a href="{{route('details','dieu-hoa-lg'}}">
                                             <h3>Điều hòa LG</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/dieu-hoa-sharp">
+                                        <a href="{{route('details','dieu-hoa-sharp'}}">
                                             <h3>Điều hòa Sharp</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/dieu-hoa-funiki">
+                                        <a href="{{route('details','dieu-hoa-funiki'}}">
                                             <h3>Điều hòa Funiki</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/dieu-hoa-samsung">
+                                        <a href="{{route('details','dieu-hoa-samsung'}}">
                                             <h3>Điều hòa Samsung</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/dieu-hoa-nagakawa">
+                                        <a href="{{route('details','dieu-hoa-nagakawa'}}">
                                             <h3>Điều hòa Nagakawa</h3>
                                         </a>
                                     </div>
@@ -1477,16 +1477,16 @@
                                 <div class="sub-cate">
                                     <div class="PKLT">
                                         <strong>Tiết kiệm điện</strong>
-                                        <a href="{{env('APP_URL')}}/dieu-hoa-tiet-kiem-dien">
+                                        <a href="{{route('details','dieu-hoa-tiet-kiem-dien'}}">
                                             <h3>Điều hòa tiết kiệm điện</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/co">
+                                        <a href="{{route('details','co'}}">
                                             <h3>Có</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/co-inverter">
+                                        <a href="{{route('details','co-inverter'}}">
                                             <h3>Có nverter</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/khong-inverter">
+                                        <a href="{{route('details','khong-inverter'}}">
                                             <h3>Không inverter</h3>
                                         </a>
                                     </div>
@@ -1494,19 +1494,19 @@
                                 <div class="sub-cate">
                                     <div class="PKLT">
                                         <strong>Công suất</strong>
-                                        <a href="{{env('APP_URL')}}/1hp">
+                                        <a href="{{route('details','1hp'}}">
                                             <h3>1HP</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/15hp">
+                                        <a href="{{route('details','15hp'}}">
                                             <h3>1.5HP</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/2hp">
+                                        <a href="{{route('details','2hp'}}">
                                             <h3>2HP</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/25hp">
+                                        <a href="{{route('details','25hp'}}">
                                             <h3>2.5HP</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/3hp">
+                                        <a href="{{route('details','3hp'}}">
                                             <h3>3HP</h3>
                                         </a>
                                     </div>
@@ -1514,7 +1514,7 @@
                             </div>
                         </li>
                         <li class="child" data-id="danh-muc6">
-                            <a class="list-mn" href="{{env('APP_URL')}}/tu-dong">
+                            <a class="list-mn" href="{{route('details','tu-dong'}}">
                             <i class="fa-regular fa-refrigerator"></i>
                             <span>Tủ đông</span>
                             </a>
@@ -1522,10 +1522,10 @@
                                 <div class="sub-cate">
                                     <div class="PKLT">
                                         <strong>Thương hiệu</strong>
-                                        <a href="{{env('APP_URL')}}/sanaky">
+                                        <a href="{{route('details','sanaky'}}">
                                             <h3>Sanaky</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/kangaroo">
+                                        <a href="{{route('details','kangaroo'}}">
                                             <h3>Kangaroo</h3>
                                         </a>
                                     </div>
@@ -1533,34 +1533,34 @@
                                 <div class="sub-cate">
                                     <div class="PKLT">
                                         <strong>Dung tích</strong>
-                                        <a href="{{env('APP_URL')}}/tu-100-lit-200-lit">
+                                        <a href="{{route('details','tu-100-lit-200-lit'}}">
                                             <h3>Từ 100 lít - 200 lít</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/tu-200-lit-300-lit">
+                                        <a href="{{route('details','tu-200-lit-300-lit'}}">
                                             <h3>Từ 200 lít - 300 lít</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/tu-300-lit-400-lit">
+                                        <a href="{{route('details','tu-300-lit-400-lit'}}">
                                             <h3>Từ 300 lít - 400 lít</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/tu-400-lit-500-lit">
+                                        <a href="{{route('details','tu-400-lit-500-lit'}}">
                                             <h3>Từ 400 lít - 500 lít</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/tu-500-lit-600-lit">
+                                        <a href="{{route('details','tu-500-lit-600-lit'}}">
                                             <h3>Từ 500 lít - 600 lít</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/tu-600-lit-700-lit">
+                                        <a href="{{route('details','tu-600-lit-700-lit'}}">
                                             <h3>Từ 600 lít - 700 lít</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/tu-700-lit-800-lit">
+                                        <a href="{{route('details','tu-700-lit-800-lit'}}">
                                             <h3>Từ 700 lít - 800 lít</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/tu-800-lit-900-lit">
+                                        <a href="{{route('details','tu-800-lit-900-lit'}}">
                                             <h3>Từ 800 lít - 900 lít</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/tu-900-lit-1000-lit">
+                                        <a href="{{route('details','tu-900-lit-1000-lit'}}">
                                             <h3>Từ 900 lít - 1000 lít</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/tu-1000-lit-1500-lit">
+                                        <a href="{{route('details','tu-1000-lit-1500-lit'}}">
                                             <h3>Từ 1000 lít - 1500 lít</h3>
                                         </a>
                                     </div>
@@ -1568,7 +1568,7 @@
                             </div>
                         </li>
                         <li class="child" data-id="danh-muc7">
-                            <a class="list-mn" href="{{env('APP_URL')}}/tu-mat">
+                            <a class="list-mn" href="{{route('details','tu-mat'}}">
                             <i class="fa-regular fa-refrigerator"></i>
                             <span>Tủ Mát</span>
                             </a>
@@ -1576,7 +1576,7 @@
                                 <div class="sub-cate">
                                     <div class="PKLT">
                                         <strong>Thương hiệu</strong>
-                                        <a href="{{env('APP_URL')}}/sanaky">
+                                        <a href="{{route('details','sanaky'}}">
                                             <h3>Sanaky</h3>
                                         </a>
                                     </div>
@@ -1584,34 +1584,34 @@
                                 <div class="sub-cate">
                                     <div class="PKLT">
                                         <strong>Dung tích</strong>
-                                        <a href="{{env('APP_URL')}}/tu-100-200-lit">
+                                        <a href="{{route('details','tu-100-200-lit'}}">
                                             <h3>Từ 100-200 lít</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/tu-200-300-lit">
+                                        <a href="{{route('details','tu-200-300-lit'}}">
                                             <h3>Từ 200-300 lít</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/tu-300-400-lit">
+                                        <a href="{{route('details','tu-300-400-lit'}}">
                                             <h3>Từ 300-400 lít</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/tu-400-500-lit">
+                                        <a href="{{route('details','tu-400-500-lit'}}">
                                             <h3>Từ 400-500 lít</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/tu-500-600-lit">
+                                        <a href="{{route('details','tu-500-600-lit'}}">
                                             <h3>Từ 500-600 lít</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/tu-600-700-lit">
+                                        <a href="{{route('details','tu-600-700-lit'}}">
                                             <h3>Từ 600-700 lít</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/tu-700-800-lit">
+                                        <a href="{{route('details','tu-700-800-lit'}}">
                                             <h3>Từ 700-800 lít</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/tu-800-900-lit">
+                                        <a href="{{route('details','tu-800-900-lit'}}">
                                             <h3>Từ 800-900 lít</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/tu-900-1000-lit">
+                                        <a href="{{route('details','tu-900-1000-lit'}}">
                                             <h3>Từ 900-1000 lít</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/tren-1000-lit">
+                                        <a href="{{route('details','tren-1000-lit'}}">
                                             <h3>Trên 1000 lít</h3>
                                         </a>
                                     </div>
@@ -1624,7 +1624,7 @@
                             </div>
                         </li>
                         <li class="child" data-id="danh-muc8">
-                            <a class="list-mn" href="{{env('APP_URL')}}/gia-dung">
+                            <a class="list-mn" href="{{route('details','gia-dung'}}">
                             <i class="fa-regular fa-refrigerator"></i>
                             <span>Gia dụng</span>
                             </a>
@@ -1632,22 +1632,22 @@
                                 <div class="sub-cate">
                                     <div class="PKLT">
                                         <strong>Sản phẩm gia dụng</strong>
-                                        <a href="{{env('APP_URL')}}/may-hut-bui">
+                                        <a href="{{route('details','may-hut-bui'}}">
                                             <h3>Máy hút bụi</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/binh-nong-lanh">
+                                        <a href="{{route('details','binh-nong-lanh'}}">
                                             <h3>Bình nóng lạnh</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/ban-la">
+                                        <a href="{{route('details','ban-la'}}">
                                             <h3>Bàn là</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/may-say-toc">
+                                        <a href="{{route('details','may-say-toc'}}">
                                             <h3>Máy sấy tóc</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/may-loc-khong-khi-samsung">
+                                        <a href="{{route('details','may-loc-khong-khi-samsung'}}">
                                             <h3>Máy lọc không khí Samsung</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/may-loc-khong-khi-sharp">
+                                        <a href="{{route('details','may-loc-khong-khi-sharp'}}">
                                             <h3>Máy lọc không khí Sharp</h3>
                                         </a>
                                     </div>
@@ -1655,25 +1655,25 @@
                                 <div class="sub-cate">
                                     <div class="PKLT">
                                         <strong>Sản phẩm nhà bếp</strong>
-                                        <a href="{{env('APP_URL')}}/noi-com-dien">
+                                        <a href="{{route('details','noi-com-dien'}}">
                                             <h3>Nồi cơm điện</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/lo-vi-song">
+                                        <a href="{{route('details','lo-vi-song'}}">
                                             <h3>Lò vi sóng</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/binh-thuy-dien">
+                                        <a href="{{route('details','binh-thuy-dien'}}">
                                             <h3>Bình thủy điện</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/am-sieu-toc">
+                                        <a href="{{route('details','am-sieu-toc'}}">
                                             <h3>Ấm siêu tốc</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/may-xay-sinh-to">
+                                        <a href="{{route('details','may-xay-sinh-to'}}">
                                             <h3>Máy xay sinh tố</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/may-ep-hoa-qua">
+                                        <a href="{{route('details','may-ep-hoa-qua'}}">
                                             <h3>Máy ép hoa quả</h3>
                                         </a>
-                                        <a href="{{env('APP_URL')}}/may-xay-da-nang">
+                                        <a href="{{route('details','may-xay-da-nang'}}">
                                             <h3>Máy xay đa năng</h3>
                                         </a>
                                     </div>
@@ -1681,7 +1681,7 @@
                             </div>
                         </li>
                         <li class="child" data-id="danh-muc9">
-                            <a class="list-mn" href="{{env('APP_URL')}}/may-loc-nuoc">
+                            <a class="list-mn" href="{{route('details','may-loc-nuoc'}}">
                             <i class="fa-regular fa-refrigerator"></i>
                             <span>Máy lọc nước</span>
                             </a>
@@ -1711,7 +1711,7 @@
                         <nav class="nav-list">
                             <?php  $meumobile = App\Models\groupProduct::select('name', 'link')->where('level', 0)->get();   ?>
                             @foreach($meumobile as $menu)
-                            <a href="{{ route('details', $menu->link) }}">{{ $menu->name }}</a>
+                            <a href="{{ route('details',' $menu->link) }}">{{ $menu->name }}</a>
                             @endforeach
                             
                             <a href="/tien-ich" class="promotion-menu">
@@ -2066,13 +2066,13 @@
                         <h3 class="title">Hỗ trợ mua hàng</h3>
                         <ul class="footer_list-link">
                             <li>
-                                <a href="{{ route('details', 'huong-dan-mua-dien-may-tra-gop-online-qua-the-tin-dung-tren-trang-web-dien-may-nguoi-viet') }}">Hướng dẫn trả góp</a>
+                                <a href="{{ route('details',' 'huong-dan-mua-dien-may-tra-gop-online-qua-the-tin-dung-tren-trang-web-dien-may-nguoi-viet') }}">Hướng dẫn trả góp</a>
                             </li>
                             <li>
                                 <a href="#">Cách thức thanh toán</a>
                             </li>
                             <li>
-                                <a href="{{ route('details', 'bang-gia-vat-tu-lap-dat-may-giat') }}">Bảng giá vật tư lắp đặt</a>
+                                <a href="{{ route('details',' 'bang-gia-vat-tu-lap-dat-may-giat') }}">Bảng giá vật tư lắp đặt</a>
                             </li>
                         </ul>
                     </div>
