@@ -11,37 +11,9 @@
 
 <?php 
 
-  
-
-    
-    function data_active_show($id){
-
-        $data = App\Models\groupProduct::select('product_id', 'id')->get();
-
-        $product_id =  $id;
-
-        $data_active = [];
+   
 
 
-        if(isset($data)){
-
-            foreach ($data as $value) {
-
-
-
-                if(!empty(json_decode($value->product_id))&&in_array($product_id, json_decode($value->product_id))){
-
-                    array_push($data_active, $value->id);
-
-                }
-                
-            }
-
-        }
-
-        return $data_active;
-
-    }
 
 ?>
 
@@ -94,14 +66,33 @@
 
          $groupProductss = App\Models\groupProduct::get();
 
-         $groupProducts = App\Models\groupProduct::get();
+
+        function recursiveMenu($id, $data, $parent_id=0, $sub=true, $level=0){
+
+            $datas = App\Models\groupProduct::select('product_id', 'id')->get();
+
+            $product_id =  $id;
+
+            $data_active = [];
 
 
-         
+            if(isset($data)){
 
-        function recursiveMenu($data, $parent_id=0, $sub=true, $level=0){
+                foreach ($data as $value) {
 
-            $data_active = data_active_show();
+
+                    if(!empty(json_decode($value->product_id))&&in_array($product_id, json_decode($value->product_id))){
+
+                        array_push($data_active, $value->id);
+
+                    }
+                    
+                }
+
+            }
+
+
+
 
             if($level==0||$level==1){
                  $levelcheck = $parent_id;
@@ -125,58 +116,17 @@
 
               <input type="checkbox" id="select{{ $item['id'] }}" name="sale" onclick="selected({{ $item['id'] }})" {{ in_array($item['id'], $data_active)?'checked':''}}><a href="javascript:void(0)"  class="click1" data-id="{{ $item['id'] }}"><?php echo $item['name']?></a>  @if($item['level']<count($all_prent))<span class="clicks{{ $item['id'] }}" onclick="showChild('sub{{ $item['id'] }}', 'clicks{{ $item['id'] }}')">+</span>@endif
               
-              <?php recursiveMenu($data, $item['id'], false, $item['level'], $data_active); ?>
+              <?php recursiveMenu($id, $data, $item['id'], false, $item['level'], $data_active); ?>
              </li>
                 <?php }} 
              echo "</ul>";
         }
 
         
-        
-
     ?>
-   <!--  <table class="table" id="groupProducts-table">
-        <thead>
-        <tr>
-            <th>Name</th>
-            <th colspan="3">Action</th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach($groupProducts as $groupProduct)
-            <tr>
-                <td>{{ $groupProduct->name }}</td>
-                <td width="120">
-                    {!! Form::open(['route' => ['groupProducts.destroy', $groupProduct->id], 'method' => 'delete']) !!}
-                    <div class='btn-group'>
-                        <a href="{{ route('groupProducts.show', [$groupProduct->id]) }}"
-                           class='btn btn-default btn-xs'>
-                            <i class="far fa-eye"></i>
-                        </a>
-                        <a href="{{ route('groupProducts.edit', [$groupProduct->id]) }}"
-                           class='btn btn-default btn-xs'>
-                            <i class="far fa-edit"></i>
-                        </a>
-                         <a href="{{ route('filters.create') }}?groupid={{ $groupProduct->id }}"
-                           class='btn btn-default btn-xs'>
-                            <i class="fa fa-filter"></i>
-                        </a>
-                       
 
 
-                        {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
-                    </div>
-                    {!! Form::close() !!}
-                </td>
-            </tr>
-        @endforeach
-        </tbody>
-    </table> -->
-
-    <?php recursiveMenu($groupProductss);  ?>
-
-   
-
+    <?php recursiveMenu($id, $groupProductss);  ?>
 
 
     <div class="modal fade" id="info-modal" tabindex="-1" role="dialog" aria-hidden="true">
@@ -271,7 +221,7 @@
                 url: "{{ route('add-group-product') }}",
                 data: {
                     id: id,
-                    product_id:{{ $product_id }},
+                    product_id:{{ $id }},
                     active:active,
                 },
                
