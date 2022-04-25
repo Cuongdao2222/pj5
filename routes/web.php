@@ -78,7 +78,7 @@ Route::get('/add-property-filter', function () {
 Route::post('filter-search-client', 'Frontend\filterController@filter')->name('client-search');
 
 Route::get('/cache-clear', function () {
-     \Artisan::call('cache:clear');
+     \Artisan::call('key:generate');
       \Artisan::call('config:clear');
      echo "thanh cong";
 
