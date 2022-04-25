@@ -433,10 +433,10 @@ class AjaxController extends Controller
 
        
         if($action =='id'){
-            $product_search   = product::whereIn('id', $list_id)->orderBy('id', 'asc')->get();
+            $product_search   = product::whereIn('id', $list_id)->where('active', 1)->orderBy('id', 'asc')->get();
         }
         else{
-           $product_search   = product::whereIn('id', $list_id)->orderBy('price', $action)->get();
+           $product_search   = product::whereIn('id', $list_id)->where('active', 1)->orderBy('price', $action)->get();
         }
         return view('frontend.ajax.product', compact('product_search', 'action'));
         
