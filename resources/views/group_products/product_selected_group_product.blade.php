@@ -176,7 +176,7 @@
                     url: "{{ route('filter-child-click') }}",
                     data: {
                         id: id,
-                        product_id, product_id
+                        product_id: product_id
                        
                     },
                    
@@ -184,8 +184,14 @@
 
                         console.log(result);
 
+                        if($('.'+id).text()==''){
+
+                             $('.'+id).append(result);
+
+                        }
+
                         
-                        $('.'+id).append(result);
+                       
                        
                        
                     }
@@ -208,8 +214,6 @@
                 active = 1;
             }
 
-
-            alert(checked);
             
             $.ajaxSetup({
                 headers: {
@@ -228,7 +232,7 @@
                
                 success: function(result){
 
-                    alert(result)
+                    console.log(result);
                    
                 }
             });
