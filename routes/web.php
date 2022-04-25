@@ -61,9 +61,6 @@ Route::get('/tin-chi-tiet', function () {
 });
 
 
-
-
-
 // Route::any('/ckfinder/connector', '\CKSource\CKFinderBridge\Controller\CKFinderController@requestAction')
 //     ->name('ckfinder_connector');
 
