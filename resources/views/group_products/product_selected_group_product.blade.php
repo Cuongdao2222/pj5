@@ -48,11 +48,6 @@
 
 ?>
 
-<?php  
-
-
-        dd(1);
-?>
 
 <div class="table-responsive">
    <!--  <div>
@@ -121,6 +116,14 @@
     <?php recursiveMenu($id, $groupProductss);  ?>
 
 
+    <?php  
+
+
+    dd(1);
+?>
+
+
+
     <div class="modal fade" id="info-modal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -135,7 +138,7 @@
 
                      <a href="" class="sua">Sửa</a>
                      <br>
-                     <!-- <a href="" class="xoa">Xóa</a> -->
+                     
 
                 </div>
                 
