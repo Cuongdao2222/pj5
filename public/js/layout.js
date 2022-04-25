@@ -4265,11 +4265,11 @@ var ConditionOperator, AutoComplete, globalEvent, laodBHX, isLoadPopupLocation, 
                     })
                 };
                 i = i("abort");
-                try {
-                    e.send(t.hasContent && t.data || null)
-                } catch (u) {
-                    if (i) throw u;
-                }
+                // try {
+                //     e.send(t.hasContent && t.data || !null)
+                // } catch (u) {
+                //     if (i) throw u;
+                // }
             },
             abort: function() {
                 i && i()

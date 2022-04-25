@@ -2151,7 +2151,7 @@
         
 
         
-         <script src="{{ asset('js/layout.js') }}" type="text/javascript"></script>
+        
        
         
         <!-- <script async="async" defer="defer" src="https://cdn.tgdd.vn/mwgcart/mwgcore/js/bundle/homeGTM.min.v202111271240.js" type="text/javascript"></script> -->
@@ -2164,13 +2164,13 @@
             
         </script>
 
-        <script src="{{ asset('js/lib/jquery.min.js') }}"></script>
+      
         
   
 
     <link rel="stylesheet" href="{{asset('css/lib/owl.carousel.min.css')}}">
 
-
+ <script src="{{ asset('js/layout.js') }}" type="text/javascript"></script>
     <link rel="stylesheet" href="{{asset('css/lib/owl.theme.default.min.css')}}">
     <script type="text/javascript" src="{{asset('js/lib/owl.carousel.min.js')}}"></script>
 
