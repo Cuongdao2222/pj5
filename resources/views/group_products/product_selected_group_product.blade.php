@@ -116,11 +116,7 @@
     <?php recursiveMenu($id, $groupProductss);  ?>
 
 
-    <?php  
 
-
-    dd(1);
-?>
 
 
 
@@ -221,5 +217,11 @@
 
     </script>
 </div>
+
+<?php  
+
+
+    die();
+?>
 
 @endsection
