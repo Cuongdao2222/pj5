@@ -218,10 +218,12 @@
     </script>
 </div>
 
+
+
+@endsection
+
 <?php  
 
 
     die();
 ?>
-
-@endsection
