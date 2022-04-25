@@ -108,11 +108,7 @@
                 if($item['group_product_id'] == $parent_id){
                     unset($data[$key]);
                 ?>    
-             <li class="paren1">
-
-
-
-            
+            <li class="paren1">
 
               <input type="checkbox" id="select{{ $item['id'] }}" name="sale" onclick="selected({{ $item['id'] }})" {{ in_array($item['id'], $data_active)?'checked':''}}><a href="javascript:void(0)"  class="click1" data-id="{{ $item['id'] }}"><?php echo $item['name']?></a>  @if($item['level']<count($all_prent))<span class="clicks{{ $item['id'] }}" onclick="showChild('sub{{ $item['id'] }}', 'clicks{{ $item['id'] }}')">+</span>@endif
               
@@ -124,7 +120,6 @@
 
         
     ?>
-
 
     <?php recursiveMenu($id, $groupProductss);  ?>
 
