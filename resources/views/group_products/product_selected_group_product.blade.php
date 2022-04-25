@@ -9,13 +9,6 @@
     }
 </style>
 
-<?php 
-
-   
-
-
-
-?>
 
 <?php 
 
@@ -26,7 +19,6 @@
 
 
 <?php 
-
 
     function get_child_of_Parent($parent){
 
@@ -54,6 +46,12 @@
 
 
 
+?>
+
+<?php  
+
+
+        dd(1);
 ?>
 
 <div class="table-responsive">
@@ -117,7 +115,6 @@
                 <?php }} 
              echo "</ul>";
         }
-
         
     ?>
 
@@ -155,17 +152,7 @@
 
         })
 
-
-
-
         $('.sub-menu').hide();
-
-        // $('.parent').click(function () {
-           
-        //     parent = $(this).parents().find('li').attr('class');
-
-        //     alert(parent);
-        // })
 
         $('.click1').dblclick(function(){
 
@@ -224,7 +211,6 @@
 
                     console.log(result)
                    
-
                 }
             });
 
