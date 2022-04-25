@@ -13,6 +13,8 @@
 <?php 
 
     $name_product = App\Models\product::find($id);
+
+    $product_id   = $id;
 ?>
 
 <h2>Sửa danh mục cho sản phẩm {{ $name_product->Name }}</h2>
@@ -57,35 +59,30 @@
 
     <?php  
 
-         $groupProductss = App\Models\groupProduct::get();
+        $groupProductss = App\Models\groupProduct::select('product_id', 'level', 'name','id')->get();
+
+        $data_active = [];
+
+        if(isset($groupProductss)){
+
+            foreach ($groupProductss as $value) {
 
 
-        function recursiveMenu($id, $data, $parent_id=0, $sub=true, $level=0){
+                if(!empty(json_decode($value->product_id))&&in_array($product_id, json_decode($value->product_id))){
 
-            $datas = App\Models\groupProduct::select('product_id', 'id')->get();
+                    array_push($data_active, $value->id);
 
-            $product_id =  $id;
-
-            $data_active = [];
-
-
-            if(isset($data)){
-
-                foreach ($data as $value) {
-
-
-                    if(!empty(json_decode($value->product_id))&&in_array($product_id, json_decode($value->product_id))){
-
-                        array_push($data_active, $value->id);
-
-                    }
-                    
                 }
-
+                
             }
 
+        }
 
 
+        function recursiveMenu($data_active, $id, $data, $parent_id=0, $sub=true, $level=0){
+
+
+            $product_id =  $id;
 
             if($level==0||$level==1){
                  $levelcheck = $parent_id;
@@ -105,7 +102,7 @@
 
               <input type="checkbox" id="select{{ $item['id'] }}" name="sale" onclick="selected({{ $item['id'] }})" {{ in_array($item['id'], $data_active)?'checked':''}}><a href="javascript:void(0)"  class="click1" data-id="{{ $item['id'] }}"><?php echo $item['name']?></a>  @if($item['level']<count($all_prent))<span class="clicks{{ $item['id'] }}" onclick="showChild('sub{{ $item['id'] }}', 'clicks{{ $item['id'] }}')">+</span>@endif
               
-              <?php recursiveMenu($id, $data, $item['id'], false, $item['level'], $data_active); ?>
+              <?php recursiveMenu($data_active, $id, $data, $item['id'], false, $item['level'], $data_active); ?>
              </li>
                 <?php }} 
              echo "</ul>";
@@ -113,11 +110,10 @@
         
     ?>
 
-    <?php recursiveMenu($id, $groupProductss);  ?>
+    <?php recursiveMenu($data_active, $id, $groupProductss);  ?>
 
 
-
-
+    
 
 
     <div class="modal fade" id="info-modal" tabindex="-1" role="dialog" aria-hidden="true">
@@ -218,8 +214,4 @@
     </script>
 </div>
 
-
-
 @endsection
-
-
