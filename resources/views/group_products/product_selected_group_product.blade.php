@@ -203,10 +203,7 @@
         </div>
     </div>
 
-    <?php 
-
-        $product_id = 243
-    ?>
+   
 
     <script type="text/javascript">
         $('.groupProduct').click(function () {
