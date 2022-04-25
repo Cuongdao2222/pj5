@@ -147,19 +147,21 @@ class crawlController extends Controller
     {
 
         // $info[1] = 'ti-vi'; $info[2] = 'may-giat'; $info[3] = 'tu-lanh'; $info[4] = 'dieu-hoa';
-        for ($i=243; $i < 2268; $i++) { 
+        // for ($i=243; $i < 2268; $i++) { 
 
-            $product = product::find($i);
+        //     $product = product::find($i);
            
-            if(strpos($product->Link, 'may-giat')>-1 ){
-                 $product->Maker = 12;
+        //     if(strpos($product->Link, 'may-giat')>-1 ){
+        //          $product->Maker = 12;
 
-                 $product->save();
+        //          $product->save();
                
-            }
+        //     }
                 
-        }
-        echo "thanh cong";
+        // }
+        // echo "thanh cong";
+
+
     }
 
     public function crawls()
@@ -4156,17 +4158,35 @@ https://dienmaynguoiviet.vn/vi-sao-khong-nen-xem-tivi-khi-dang-an/';
     public function getImagePost()
     {
 
-        for($i=1; $i<1501; $i++){
+        $html = file_get_html('https://dienmaynguoiviet.vn/sitemap.xml');
 
-            $posts = post::find($i);
+        $link = $html->find('loc');
 
-            $posts->link = rtrim(trim($posts->link), "/");
+        foreach($link as $links){
 
-            $posts->save();
+            $htmls = strip_tags($links);
 
-            
 
+            $name = basename($htmls);
+
+            file_put_contents(public_path().'/'.$name, file_get_contents($htmls));
+
+
+            // foreach ($links  as $key => $value) {
+
+            //     if($key ==0){
+
+            //         print_r(strip_tags($value));
+
+            //         die();
+
+            //     }
+            //     // code...
+            // }
+
+           
         }
+
         echo "thanh cong";
 
     }
