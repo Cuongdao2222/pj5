@@ -8,6 +8,8 @@ use App\Models\hotProduct;
 
 use App\Models\saleProduct;
 
+use App\Models\groupProduct;
+
 use App\Models\product;
 
 use App\Models\Order;
@@ -230,6 +232,22 @@ class AjaxController extends Controller
         $product->save();
 
         echo "thanh cong";
+
+    }
+
+
+    public function findChild(Request $request)
+    {
+        $id = $request->id;
+
+        $id = str_replace('sub', '', $id);
+
+
+    
+        $data = groupProduct::where('parent_id', $id)->get();
+
+
+        return view('frontend.ajax.child_click', compact('data', 'id'));
 
     }
 

@@ -1081,19 +1081,7 @@
                     </div>
 
 
-                    <!-- <a href="tel: 02473036336" class="header__cart {{ $active_cart }}">
-                        <i class="fa fa-user" aria-hidden="true" style="font-size:22px"></i>
-                         <div class="div-text">
-                            <a rel="nofollow" class="logins-modal" href="javascript:void(0)">
-                                <span style="color:#fff; font-size: 12px;">Đăng nhập</span>
-                            </a>
-                        
-                            <a rel="nofollow" class="register-form" href="javascript:void(0)">
-                                <span style="color: #fff; font-size:12px;">Đăng ký</span>
-                            </a>
-                            
-                        </div>
-                    </a> -->
+                    
                     
                     @endif
 
@@ -2164,7 +2152,7 @@
 
         
          <script src="{{ asset('js/layout.js') }}" type="text/javascript"></script>
-         <script src="{{ asset('js/layout1.js') }}" type="text/javascript"></script>
+       
         
         <!-- <script async="async" defer="defer" src="https://cdn.tgdd.vn/mwgcart/mwgcore/js/bundle/homeGTM.min.v202111271240.js" type="text/javascript"></script> -->
         <script>

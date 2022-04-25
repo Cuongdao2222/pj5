@@ -13,8 +13,6 @@
 <?php 
 
     $name_product = App\Models\product::find($id);
-
-    $product_id   = $id;
 ?>
 
 <h2>Sửa danh mục cho sản phẩm {{ $name_product->Name }}</h2>
@@ -59,30 +57,32 @@
 
     <?php  
 
-        $groupProductss = App\Models\groupProduct::select('product_id', 'level', 'name','id')->get();
-
-        $data_active = [];
-
-        if(isset($groupProductss)){
-
-            foreach ($groupProductss as $value) {
+         $groupProductss = App\Models\groupProduct::select('id', 'name', 'level','product_id')->where('level', 0)->get();
 
 
-                if(!empty(json_decode($value->product_id))&&in_array($product_id, json_decode($value->product_id))){
-
-                    array_push($data_active, $value->id);
-
-                }
-                
-            }
-
-        }
-
-
-        function recursiveMenu($data_active, $id, $data, $parent_id=0, $sub=true, $level=0){
-
+        function recursiveMenu($id, $data, $parent_id=0, $sub=true, $level=0){
 
             $product_id =  $id;
+
+            $data_active = [];
+
+
+            if(isset($data)){
+
+                foreach ($data as $value) {
+
+                    if(!empty(json_decode($value->product_id))&&in_array($product_id, json_decode($value->product_id))){
+
+                        array_push($data_active, $value->id);
+
+                    }
+                    
+                }
+
+            }
+
+
+
 
             if($level==0||$level==1){
                  $levelcheck = $parent_id;
@@ -93,16 +93,17 @@
             }
             echo $sub ? '<ul>':'<ul class="sub-menu sub'.$levelcheck.'">';
             foreach ($data as $key => $item) {
-
+                
+                
                 $all_prent = App\Models\groupProduct::where('parent_id', $item['id'])->get();
                 if($item['group_product_id'] == $parent_id){
                     unset($data[$key]);
                 ?>    
             <li class="paren1">
 
-              <input type="checkbox" id="select{{ $item['id'] }}" name="sale" onclick="selected({{ $item['id'] }})" {{ in_array($item['id'], $data_active)?'checked':''}}><a href="javascript:void(0)"  class="click1" data-id="{{ $item['id'] }}"><?php echo $item['name']?></a>  @if($item['level']<count($all_prent))<span class="clicks{{ $item['id'] }}" onclick="showChild('sub{{ $item['id'] }}', 'clicks{{ $item['id'] }}')">+</span>@endif
+              <input type="checkbox" id="select{{ $item['id'] }}" name="sale" onclick="selected({{ $item['id'] }})" {{ in_array($item['id'], $data_active)?'checked':''}}><a href="javascript:void(0)"  class="click1" data-id="{{ $item['id'] }}"><?php echo $item['name']?></a>  @if($item['level']<count($all_prent))<span class="clicks{{ $item['id'] }}" onclick="showChild('sub{{ $item['id'] }}', 'clicks{{ $item['id'] }}', '{{ $id }}')">+</span>@endif
               
-              <?php recursiveMenu($data_active, $id, $data, $item['id'], false, $item['level'], $data_active); ?>
+              <?php recursiveMenu($id, $data, $item['id'], false, $item['level'], $data_active); ?>
              </li>
                 <?php }} 
              echo "</ul>";
@@ -110,7 +111,7 @@
         
     ?>
 
-    <?php recursiveMenu($data_active, $id, $groupProductss);  ?>
+    <?php recursiveMenu($id, $groupProductss);  ?>
 
 
     
@@ -160,13 +161,35 @@
 
         })
 
-        function showChild(id, classs) {
+        function showChild(id, classs, product_id) {
 
             if($('.'+id).is(":visible") ){
                  $('.'+id).hide();
                  $('.'+classs).text('+');
+
             }
             else{
+                
+
+                $.ajax({
+                    type: 'GET',
+                    url: "{{ route('filter-child-click') }}",
+                    data: {
+                        id: id,
+                        product_id, product_id
+                       
+                    },
+                   
+                    success: function(result){
+
+                        console.log(result);
+
+                        
+                        $('.'+id).append(result);
+                       
+                       
+                    }
+                });
                 $('.'+id).show();
                 $('.'+classs).text('-');
             }
@@ -186,6 +209,7 @@
             }
 
 
+            alert(checked);
             
             $.ajaxSetup({
                 headers: {
@@ -204,7 +228,7 @@
                
                 success: function(result){
 
-                    console.log(result)
+                    alert(result)
                    
                 }
             });

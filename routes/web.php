@@ -232,8 +232,8 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::get('remove-property-child', 'propertyController@removePropertyChild')->name('property-remove-child');
 
+    Route::get('child-click', 'AjaxController@findChild')->name('filter-child-click');
 
-    
 
     Route::get('add-active-post', 'postController@addActive')->name('add-active-post');
 

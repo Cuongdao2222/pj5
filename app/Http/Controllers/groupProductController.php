@@ -320,7 +320,6 @@ class groupProductController extends AppBaseController
 
                 $this->deleteChild($id, $product_id);
 
-
             }  
 
             
@@ -356,7 +355,7 @@ class groupProductController extends AppBaseController
 
                 // xoa phan tu level bang 0
 
-                $this->deleteChild($id);
+                $this->deleteChild($id, $product_id);
                 
             }
 
