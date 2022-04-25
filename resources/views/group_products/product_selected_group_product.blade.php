@@ -222,8 +222,4 @@
 
 @endsection
 
-<?php  
 
-
-    die();
-?>
