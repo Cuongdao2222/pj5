@@ -137,6 +137,11 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::get('home', 'HomeController@index')->name('home-admin');
 
+    Route::get('delete-link-add', 'showController@deleteLinkAdd')->name('delete-link-add');
+
+
+    
+
     Route::post('info-pop-up', 'showController@addPopup')->name('add-popup');
 
     Route::post('add-image-background', 'showController@addBackgroundSite')->name('add-image-background');

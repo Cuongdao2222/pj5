@@ -8,6 +8,8 @@ use App\Models\background;
 
 use App\Models\popup;
 
+use DB;
+
 class showController extends Controller
 {
 
@@ -38,6 +40,14 @@ class showController extends Controller
         return back()->with('status','sửa thành công');
 
         
+    }
+
+    public function deleteLinkAdd(Request $request)
+    {
+        $id = $request->id;
+        $delete = DB::table('muchsearch')->delete($id);
+        return response('thanh cong');
+
     }
 
 

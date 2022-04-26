@@ -83,7 +83,7 @@
             @if( $value->active ==1)                                                        
             <div class="col-md-3 col-6 lists">
                 <div class="item  __cate_1942">
-                    <a href="https://dienmaynguoiviet.net/smat-tivi-lg-55nano80tpa-55-inch-4k" data-box="BoxCate" class="main-contain">
+                    <a href="{{ route('details', $value->link) }}" data-box="BoxCate" class="main-contain">
                         <div class="item-label">
                             <span class="lb-tragop">Trả góp 0%</span>
                         </div>

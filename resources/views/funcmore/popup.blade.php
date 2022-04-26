@@ -188,7 +188,7 @@
 
                     @if(isset($link))
                         @foreach($link as $links)
-                            <a href="{{ $links->link }}">{{ $links->title }}</a>
+                            <a href="{{ $links->link }}">{{ $links->title }}</a>&nbsp &nbsp  <span class="delete" id="delete{{ $links->id }}" onclick="deleteLink('{{ $links->id }}')" style="cursor:pointer;">xóa</span> <br>
                         @endforeach
                     @endif
                 </div>
@@ -203,6 +203,22 @@
 
 
 <script type="text/javascript">
+
+    function deleteLink(id){
+        $.ajax({
+           
+            type: 'Get',
+            url: "{{ route('delete-link-add') }}",
+            data: {
+                id:id
+                
+                   
+            },
+            success: function(result){
+                window.location.reload();
+            }
+        });
+    }
 
     function muchSearchs() {
        $.ajaxSetup({
