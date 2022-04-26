@@ -70,12 +70,13 @@
         @if(!empty($deal)&count($deal)>0)
 
         @if($now->between($timeDeal_star, $timeDeal_end))
+         <h3>Sản phẩm đang có  giá tốt </h3>
 
         @foreach($deal as $value)
 
         @if( $value->active ==1)
 
-        <h3>Sản phẩm đang có  giá tốt </h3>
+       
         
         <div class="row list-pro">
             
