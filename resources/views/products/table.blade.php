@@ -6,14 +6,14 @@
         <th>Tên sản phẩm</th>
         <th>Sửa nhanh</th>
         
-        <th>Nhóm sản phẩm</th>
+        <th>Hiển thị</th>
         <th>Số lượng trong kho</th>
         
         <th>Sản phẩm Hot</th>
         <th>Sản phẩm Sale</th>
 
         <th>Quà tặng</th>
-        <th>Hiển thị</th>
+        <th>Nhóm sản phẩm</th>
         
         <th colspan="3">Action</th>
         </tr>
@@ -131,7 +131,7 @@
 
             </td>
                   
-            <td>{{ get_Group_Product($product->id)[0]??'' }}</td>
+            <td><input type="checkbox" id="active{{ $product->id }}" name="active" onclick='active({{ $product->id }})'   {{ $product->active==1?'checked':'' }}></td>
             <td>
                 <span>sửa nhanh</span>
                 <input type="" name="qualtily" value="{{ $product->Quantily }}" id="qualtity{{ $product->id }}" style="width: 50%;">
@@ -195,7 +195,7 @@
 
                        
                 </select></td>
-            <td><input type="checkbox" id="active{{ $product->id }}" name="active" onclick='active({{ $product->id }})'   {{ $product->active==1?'checked':'' }}></td>
+            <td>{{ get_Group_Product($product->id)[0]??'' }}</td>
 
 
             
