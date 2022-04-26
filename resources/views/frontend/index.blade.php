@@ -399,23 +399,26 @@
 
             $group = App\Models\groupProduct::select('id','name', 'link')->where('parent_id', 0)->get();
 
+            $hot = DB::table('hot')->select('product_id')->where('group_id', 2)->get()->pluck('product_id');
+
+           
            
          ?>   
+
+
 
         <div  class="owl-slider-count" style="display: none;">{{ count($group) }}</div> 
         @foreach($group as $key => $groups)
 
             <?php
 
+                $datas =  App\Models\groupProduct::find($groups->id)->prduct_id;
+
                 $hot = DB::table('hot')->select('product_id')->where('group_id', $groups->id)->get()->pluck('product_id');
 
 
-                
+                $data =  DB::table('products')->whereIn('id', $hot)->where('active', 1)->get();
 
-                $data =  DB::table('products')->whereIn('id', $hot)->get();
-
-
-            
 
             ?>
 
@@ -495,7 +498,7 @@
                         
                         
                     </div>
-                    <a class="readmore-txt blue" href="{{ route('category-product', @$groups->link)  }}"><span>Xem tất cả <b>{{ @count($data)}}</b> {{ @$group[$i]->name }}</span></a>
+                    <a class="readmore-txt blue" href="{{ route('category-product', @$groups->link)  }}"><span>Xem tất cả <b>{{ @count(json_decode($datas))}}</b> {{ @$groups->name }}</span></a>
                 </div>
             </div>
         </div>

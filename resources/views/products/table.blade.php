@@ -9,11 +9,11 @@
        
         <th>Số lượng trong kho</th>
 
-        
-        <th>Sản phẩm Hot</th>
-        <th>Sản phẩm Sale</th>
-
         <th>Hiển thị</th>
+        <th>Sản phẩm Sale</th>
+        <th>Sản phẩm Hot</th>
+
+        
 
 
         <th>Quà tặng</th>
