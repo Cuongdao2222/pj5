@@ -463,7 +463,7 @@
                                         <span>{{ $status }} </span>
                                     </div>
                                    
-                                    @if($data->Quatily<=0)
+                                    @if($data->Quatily>0)
                                     <div class="pdetail-add-to-cart add-to-cart">
                                         <form class="inline">
                                             <input type="hidden" name="productId" value="19439">

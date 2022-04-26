@@ -27,116 +27,108 @@ class crawlController extends Controller
 
         // $urls =  $this->getLink();
 
-        $urls  = ['https://dienmaynguoiviet.vn/smart-tivi-lg-65up7720ptc-65-inch-4k/'];
+        for($i=2451; $i<2845; $i++){
 
-        
+            $link = product::find($i);
 
-            if(isset($urls)){
-                foreach ($urls as $url) {
-                    
-                    $html = file_get_html(trim($url));
-                    $title = strip_tags($html->find('.emty-title h1', 0));
-                    
-                    $specialDetail = html_entity_decode($html->find('.special-detail', 0));
-                    $content  = html_entity_decode($html->find('.emty-content .Description',0));
+            if(!empty($link->Link)){
 
-                    preg_match_all('/<img.*?src=[\'"](.*?)[\'"].*?>/i', $content, $matches);
+                $links = 'https://dienmaynguoiviet.vn/'.trim($link->Link).'/';
 
-                    $arr_change = [];
+                $html = file_get_html($links);
+              
+                $content  = html_entity_decode($html->find('.emty-content .Description',0));
 
-                    $time = time();
+                preg_match_all('/<img.*?src=[\'"](.*?)[\'"].*?>/i', $content, $matches);
 
-                    $regexp = '/^[a-zA-Z0-9][a-zA-Z0-9\-\_]+[a-zA-Z0-9]$/';
+                $arr_change = [];
 
-                    if(isset($matches[1])){
-                        foreach($matches[1] as $value){
-                           
-                            $value = 'https://dienmaynguoiviet.vn/'.str_replace('..', '', $value);
+                $time = time();
 
-                            $arr_image = explode('/', $value);
+                $regexp = '/^[a-zA-Z0-9][a-zA-Z0-9\-\_]+[a-zA-Z0-9]$/';
 
-                            if($arr_image[0] != env('APP_URL')){
+                if(isset($matches[1])){
+                    foreach($matches[1] as $value){
+                       
+                        $value = 'https://dienmaynguoiviet.vn/'.str_replace('..', '', $value);
 
-                                $file_headers = @get_headers($value);
+                        $arr_image = explode('/', $value);
+
+                        if($arr_image[0] != env('APP_URL')){
+
+                            $file_headers = @get_headers($value);
 
 
-                                if($file_headers[0] == 'HTTP/1.1 200 OK') 
-                                {
+                            if($file_headers[0] == 'HTTP/1.1 200 OK') 
+                            {
 
-                                    $infoFile = pathinfo($value, PATHINFO_EXTENSION);
+                                $infoFile = pathinfo($value, PATHINFO_EXTENSION);
 
-                                   if(!empty($infoFile)){
+                               if(!empty($infoFile)){
 
-                                        if($infoFile=='png'||$infoFile=='jpg'||$infoFile=='web'){
+                                    if($infoFile=='png'||$infoFile=='jpg'||$infoFile=='web'){
 
-                                            $img = '/images/product/crawl/'.basename($value);
+                                        $img = '/images/product/crawl/'.basename($value);
 
-                                            file_put_contents(public_path().$img, file_get_contents($value));
+                                        file_put_contents(public_path().$img, file_get_contents($value));
 
-                                         
-                                            array_push($arr_change, 'images/product/crawl/'.basename($value));
-                                        }   
-                                    }
-
-                                    
+                                     
+                                        array_push($arr_change, 'images/product/crawl/'.basename($value));
+                                    }   
                                 }
-                               
+
+                                
                             }
-                            
+                           
                         }
+                        
                     }
+                }
 
-                    $content = str_replace($matches[1], $arr_change, $content);
+                $content = str_replace($matches[1], $arr_change, $content);
 
-                    $price = strip_tags($html->find(".p-price", 0));
 
-                    $info  = html_entity_decode($html->find('.emty-info table', 0));
-                    // $arElements = $html->find( "meta[name=keywords]" );
-                    $price = trim(str_replace('Liên hệ', '0', $price));
-                    $price =  trim(str_replace(["Giá:","VNĐ",".", "Giá khuyến mại:"],"",$price));
-                    $images =  html_entity_decode($html->find('#owl1 img',0));
-                    
-                    if(!empty($images) ){
-                        $image = $html->find('#owl1 img',0)->src;
-                        if(!empty($image)){
+                $info  = html_entity_decode($html->find('.emty-info table', 0));
+                // $arElements = $html->find( "meta[name=keywords]" );
+            
+                $images =  html_entity_decode($html->find('#owl1 img',0));
+                
+                if(!empty($images) ){
+                    $image = $html->find('#owl1 img',0)->src;
+                    if(!empty($image)){
 
-                            $urlImage = 'https://dienmaynguoiviet.vn/'.$image;
+                        $urlImage = 'https://dienmaynguoiviet.vn/'.$image;
 
-                            $contents = file_get_contents($urlImage);
-                            $name = basename($urlImage);
-                            
-                            $name = '/uploads/product/crawl/'.time().'_'.$name;
+                        $contents = file_get_contents($urlImage);
+                        $name = basename($urlImage);
+                        
+                        $name = '/uploads/product/crawl/'.time().'_'.$name;
 
-                            Storage::disk('public')->put($name, $contents);
+                        Storage::disk('public')->put($name, $contents);
 
-                            $image = $name;
+                        $image = $name;
 
-                            $model = strip_tags($html->find('#model', 0));
 
-                            $qualtily = -1;
+                        $inputs = ["Image"=>$image,  "Detail"=>$content];
 
-                            $maker = 12;
+                        $link->update($inputs);
 
-                            $meta_id = 0;
-
-                            $group_id = 2;
-
-                            $active = 0;
-
-                            $link =  str_replace('https://dienmaynguoiviet.vn/', '', $url);
-
-                            $inputs = ["Link"=>$link, "Price"=>$price, "Name"=>$title, "ProductSku"=>$model, "Image"=>$image, "Quantily"=>$qualtily, "Maker"=>$maker, "Meta_id"=>$meta_id,"Group_id"=>$group_id, "active"=>0, "Specifications"=>$info, "Salient_Features"=>$specialDetail, "Detail"=>$content];
-
-                            product::Create($inputs);
-
-                        }
                     }
-                    else{
-                        print_r($url);
-                    } 
-                }    
+                }
+                else{
+                    print_r($links);
+                } 
+      
+
             }
-        
+            else{
+                 print_r($link->id);
+
+            }
+
+            
+
+        }
 
         echo "thanh cong";
 
@@ -4158,33 +4150,6 @@ https://dienmaynguoiviet.vn/vi-sao-khong-nen-xem-tivi-khi-dang-an/';
     public function getImagePost()
     {
 
-        $html = file_get_html('https://dienmaynguoiviet.vn/sitemap.xml');
-
-        $link = $html->find('loc');
-
-        foreach($link as $links){
-
-            $htmls = strip_tags($links);
-
-
-            $name = basename($htmls);
-
-            file_put_contents(public_path().'/'.$name, file_get_contents($htmls));
-
-
-            // foreach ($links  as $key => $value) {
-
-            //     if($key ==0){
-
-            //         print_r(strip_tags($value));
-
-            //         die();
-
-            //     }
-            //     // code...
-            // }
-
-           
         }
 
         echo "thanh cong";
@@ -4241,104 +4206,92 @@ https://dienmaynguoiviet.vn/vi-sao-khong-nen-xem-tivi-khi-dang-an/';
      public function post()
      {
 
-        $urls =  $this->getLink();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+        for ($i = 3; $i<1514; $i++) {
 
-        if(isset($urls)){
+            $link = post::find($i);
 
-            
-            foreach ($urls as $url) {
+            $links = $link->link;
 
-                $html = file_get_html(trim($url));
-                $title = strip_tags($html->find('.detail-head h1', 0));
-                $shortContent = html_entity_decode($html->find('.emtry_content h2', 0)); 
-                $content =  str_replace(html_entity_decode($html->find('.emtry_content h2', 0)), '', html_entity_decode($html->find('.emtry_content', 0))) ; 
+           
 
-                // lay anh trong bai viet
+            $html = file_get_html('https://dienmaynguoiviet.vn/'.trim($links).'/');
+           
+            $content =  str_replace(html_entity_decode($html->find('.emtry_content h2', 0)), '', html_entity_decode($html->find('.emtry_content', 0))) ; 
 
-                 preg_match_all('/<img.*?src=[\'"](.*?)[\'"].*?>/i', $content, $matches);
+            // lay anh trong bai viet
 
-                $arr_change = [];
+             preg_match_all('/<img.*?src=[\'"](.*?)[\'"].*?>/i', $content, $matches);
 
-                $time = time();
+            $arr_change = [];
 
-                $regexp = '/^[a-zA-Z0-9][a-zA-Z0-9\-\_]+[a-zA-Z0-9]$/';
+            $time = time();
 
-                if(isset($matches[1])){
-                    foreach($matches[1] as $value){
-                       
-                        $value = 'https://dienmaynguoiviet.vn/'.str_replace('../','', $value);
+            $regexp = '/^[a-zA-Z0-9][a-zA-Z0-9\-\_]+[a-zA-Z0-9]$/';
 
-                        $arr_image = explode('/', $value);
+            if(isset($matches[1])){
+                foreach($matches[1] as $value){
+                   
+                    $value = 'https://dienmaynguoiviet.vn/'.str_replace('../','', $value);
 
-                        if($arr_image[0] != env('APP_URL')){
+                    $arr_image = explode('/', $value);
 
-                            $file_headers = @get_headers($value);
+                    if($arr_image[0] != env('APP_URL')){
 
-                            if($file_headers[0] == 'HTTP/1.1 200 OK') 
-                            {
+                        $file_headers = @get_headers($value);
 
-                                $infoFile = pathinfo($value);
+                        if($file_headers[0] == 'HTTP/1.1 200 OK') 
+                        {
 
-                               if(!empty($infoFile['extension'])){
+                            $infoFile = pathinfo($value);
 
-                                    if($infoFile['extension']=='png'||$infoFile['extension']=='jpg'||$infoFile['extension']=='web'){
+                           if(!empty($infoFile['extension'])){
 
-                                        $img = '/images/posts/crawl/'.basename($value);
+                                if($infoFile['extension']=='png'||$infoFile['extension']=='jpg'||$infoFile['extension']=='web'){
 
-                                        file_put_contents(public_path().$img, file_get_contents($value));
+                                    $img = '/images/posts/crawl/'.basename($value);
 
-                                     
-                                        array_push($arr_change, 'images/posts/crawl/'.basename($value));
-                                    }   
-                                }
+                                    file_put_contents(public_path().$img, file_get_contents($value));
 
-                                
+                                 
+                                    array_push($arr_change, 'images/posts/crawl/'.basename($value));
+                                }   
                             }
-                           
-                        }
-                        
-                    }
-                }
 
-                $content = str_replace($matches[1], $arr_change, $content);
-
-                // ảnh đại diện bài viết
-
-                $images =  html_entity_decode($html->find('.sidebar-left img',0));
                             
-                if(!empty($images) ){
-
-                    
-                    $image = $html->find('.sidebar-left img',0)->src;
-                    if(!empty($image)){
-
-                        $urlImage = 'https://dienmaynguoiviet.vn/'.$image;
-
-                        $contents = file_get_contents($urlImage);
-
-                        $name = basename($urlImage);
-                        
-                        $name = '/uploads/posts/crawl/'.time().'_'.$name;
-
-                        Storage::disk('public')->put($name, $contents);
-
-                        $image = $name;
-
-
-                        $active = 0;
-
-                       $link =  str_replace('https://dienmaynguoiviet.vn/', '', $url);
-
-                        $inputs = ["link"=>$link,"image"=>$image, "content"=>$content, "title"=>$title, 'shortcontent'=> $shortContent, 'id_user'=>1, 'category'=>4, 'Meta_id'=>0,'active'=>0, 'hight_light'=>0] ;
-
+                        }
                        
-                        post::Create($inputs);
-
                     }
+                    
                 }
-            }    
-        } 
+            }
+
+
+            // ảnh đại diện bài viết
+
+
+
+
+
+
+                    $name = basename($urlImage);
+                    
+                    $name = '/uploads/posts/crawl/'.time().'_'.$name;
+
+                    Storage::disk('public')->put($name, $contents);
+
+                    $image = $name;
+
+
+                    $active = 0;
+
+
+
+                }
+            }
+
+           
+        }    
+     
 
         echo "thanh cong";   
     }
