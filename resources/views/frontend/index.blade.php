@@ -397,16 +397,25 @@
 
         <?php
 
-            $group = App\Models\groupProduct::where('parent_id', 0)->get();
+            $group = App\Models\groupProduct::select('id','name', 'link')->where('parent_id', 0)->get();
+
+           
          ?>   
 
         <div  class="owl-slider-count" style="display: none;">{{ count($group) }}</div> 
-        @for($i =0; $i <count($group); $i++)
+        @foreach($group as $key => $groups)
 
             <?php
-                $all_Product = DB::table('group_product')->join('products', 'group_product.id', '=', 'products.Group_id')->select('products.id')->where('group_product.id', $group[$i]->id)->where('products.active', 1)->get();
-                $data =  DB::table('products')->join('hot', 'products.id', '=', 'hot.product_id')->join('group_product', 'products.Group_id', '=', 'group_product.id')->where('hot.group_id', $group[$i]->id)->get();
 
+                $hot = DB::table('hot')->select('product_id')->where('group_id', $groups->id)->get()->pluck('product_id');
+
+
+                
+
+                $data =  DB::table('products')->whereIn('id', $hot)->get();
+
+
+            
 
             ?>
 
@@ -416,7 +425,7 @@
          
         <div class="box-common _cate_1942">
             <ul class="box-common__tab">
-                <li class="active-tab" data-cate-id="1942">{{  @$group[$i]->name }}</li>
+                <li class="active-tab" data-cate-id="1942">{{  @$groups->name }}</li>
                 <!-- <li data-cate-id="2162" data-prop-value-ids="90016">Loa karaoke, Dàn âm thanh</li> -->
             </ul>
             <div class="box-common__main relative">
@@ -424,7 +433,7 @@
                     <div class="loaderweb"></div>
                 </div>
                 <div class="box-common__content">
-                    <div class="listproduct slider-home owl-carousel" id="banner-product_{{ $i }}" data-size="10">
+                    <div class="listproduct slider-home owl-carousel" id="banner-product_{{ $key }}" data-size="10">
 
                        
  
@@ -470,7 +479,7 @@
                                 <?php  
                                     $now = Carbon\Carbon::now();
 
-                                    $promotion = promotion_product($datas->product_id, $now);
+                                    $promotion = promotion_product($datas->id, $now);
                                 ?>
                                 
 
@@ -486,14 +495,14 @@
                         
                         
                     </div>
-                    <a class="readmore-txt blue" href="{{ route('category-product', @$group[$i]->link)  }}"><span>Xem tất cả <b>{{ @count($all_Product)}}</b> {{ @$group[$i]->name }}</span></a>
+                    <a class="readmore-txt blue" href="{{ route('category-product', @$groups->link)  }}"><span>Xem tất cả <b>{{ @count($data)}}</b> {{ @$group[$i]->name }}</span></a>
                 </div>
             </div>
         </div>
 
        
         @endif
-        @endfor
+        @endforeach
         <!-- End  -->
      
     
