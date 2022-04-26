@@ -240,14 +240,17 @@ class AjaxController extends Controller
     {
         $id = $request->id;
 
+
         $id = str_replace('sub', '', $id);
+
+        $product_id = $request->product_id;
 
 
     
         $data = groupProduct::where('parent_id', $id)->get();
 
 
-        return view('frontend.ajax.child_click', compact('data', 'id'));
+        return view('frontend.ajax.child_click', compact('data', 'id', 'product_id'));
 
     }
 

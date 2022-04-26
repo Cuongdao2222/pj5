@@ -139,19 +139,21 @@ class crawlController extends Controller
     {
 
         // $info[1] = 'ti-vi'; $info[2] = 'may-giat'; $info[3] = 'tu-lanh'; $info[4] = 'dieu-hoa';
-        for ($i=243; $i < 2268; $i++) { 
+        // for ($i=243; $i < 2268; $i++) { 
 
-            $product = product::find($i);
+        //     $product = product::find($i);
            
-            if(strpos($product->Link, 'may-giat')>-1 ){
-                 $product->Maker = 12;
+        //     if(strpos($product->Link, 'may-giat')>-1 ){
+        //          $product->Maker = 12;
 
-                 $product->save();
+        //          $product->save();
                
-            }
+        //     }
                 
-        }
-        echo "thanh cong";
+        // }
+        // echo "thanh cong";
+
+
     }
 
     public function crawls()
@@ -4148,64 +4150,11 @@ https://dienmaynguoiviet.vn/vi-sao-khong-nen-xem-tivi-khi-dang-an/';
     public function getImagePost()
     {
 
-        for($i=1923; $i<2845; $i++){
-
-            $posts = product::find($i);
-
-            if(isset($posts)){
-
-                $link = 'https://dienmaynguoiviet.vn/'.$posts->Link.'/';
-
-                $html = file_get_html(trim($link));
-
-                $image = $html->find('.img-detail img');
-
-
-                
-
-                for($ids = 0; $ids<count($image); $ids++){
-
-                    $images = $html->find('.img-detail img', $ids)->src;
-
-                   
-                    $images = 'https://dienmaynguoiviet.vn/'. $images;
-
-
-                    $file_headers = @get_headers('https://dienmaynguoiviet.vn/'.$images);
-
-                    if($file_headers[0] == 'HTTP/1.1 200 OK'){
-
-                        $img  = '/uploads/product/crawl/child/'.basename($images);
-
-                        file_put_contents(public_path().$img, file_get_contents($images));
-
-                        $input['image'] = $img;
-
-                        $input['link'] = $img;
-
-                        $input['product_id'] = $i;
-
-                        $input['order'] = 0;
-
-
-                        $images_model = new image();
-
-                        $images_model = $images_model->create($input);
-
-                      
-
-                    }
-                }
-            }
-            else{
-                print_r($posts);
-            }
         }
+
         echo "thanh cong";
 
     }
-
-
 
     public function getMetaProducts()
     {
@@ -4250,8 +4199,6 @@ https://dienmaynguoiviet.vn/vi-sao-khong-nen-xem-tivi-khi-dang-an/';
         echo "thanh cong";
 
     }
-
-
 
 
 
@@ -4318,21 +4265,13 @@ https://dienmaynguoiviet.vn/vi-sao-khong-nen-xem-tivi-khi-dang-an/';
                 }
             }
 
-            $content = str_replace($matches[1], $arr_change, $content);
 
             // ảnh đại diện bài viết
 
-            $images =  strip_tags($html->find('#image-page',0));
-                        
-            if(!empty($images) ){
 
-                $image = strip_tags($html->find('#image-page',0));
 
-                if(!empty($image)){
 
-                    $urlImage = 'https://dienmaynguoiviet.vn/'.$image;
 
-                    $contents = file_get_contents($urlImage);
 
                     $name = basename($urlImage);
                     
@@ -4345,12 +4284,7 @@ https://dienmaynguoiviet.vn/vi-sao-khong-nen-xem-tivi-khi-dang-an/';
 
                     $active = 0;
 
-               
 
-                    $inputs = ["image"=>$image, "content"=>$content] ;
-
-                   
-                    $link->update($inputs);
 
                 }
             }
