@@ -73,7 +73,7 @@
     </a>
 
     <?php
-        $listGroup = App\Models\groupProduct::select('name','id')->get();
+        $listGroup = App\Models\groupProduct::select('name','id')->where('level', 0)->get();
 
     ?>
 
@@ -94,7 +94,23 @@
         </a>
     </li>
     @endforeach
+
+    
     @endif
+
+    <li class="child-nav">
+        <a href=""
+           class="nav-link">
+            <p>Sản phẩm chế độ là Sale</p>
+        </a>
+    </li>
+
+     <li class="child-nav">
+        <a href=""
+           class="nav-link">
+            <p>Sản phẩm chế độ là Hot</p>
+        </a>
+    </li>
 </ul>
 
 
