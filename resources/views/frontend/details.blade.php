@@ -244,6 +244,7 @@
                                                     <input type="text" class="quantity-field" readonly="readonly" name="qty" value="1">
                                                 </div> -->
                                                 <button type="button" class="btn btn-lg btn-add-cart btn-add-cart redirectCart" onclick="addToCart({{ $data->id }})">MUA NGAY <br>(Giao hàng tận nơi - Giá tốt - An toàn)</button>
+
                                             </div>
                                             <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                                                 Launch demo modal
@@ -822,6 +823,8 @@
 
         <script type="text/javascript">
 
+            
+
 
             $( document ).ready(function() {
 
@@ -976,9 +979,9 @@
                 },
                 success: function(result){
 
-                    // console.log(result);
+                    console.log($("#number-product-cart").text());
                   
-                   // numberCart = result.find("#number-product-cart").text();
+                   // numberCart = result.find($("#number-product-cart").text());
                    $('.viewer-product').append(result);
 
                    
@@ -987,6 +990,7 @@
             });    
             
             function addToCart(id) {
+
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -1001,8 +1005,12 @@
                            
                     },
                     success: function(result){
-                      
-                       // numberCart = result.find("#number-product-cart").text();
+
+                       //  numberProductCart = $(".number-cart").text();
+
+                       //  console.log(numberProductCart);
+                       
+                       // numberCart = result.find(numberProductCart);
 
                         $('#tbl_list_carts').append(result);
 

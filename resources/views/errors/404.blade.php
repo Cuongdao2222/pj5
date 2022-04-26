@@ -71,15 +71,15 @@
 
         @if($now->between($timeDeal_star, $timeDeal_end))
 
-        @foreach($deal as $value)
-
-        @if( $value->active ==1)
+       
 
         <h3>Sản phẩm đang có  giá tốt </h3>
         
         <div class="row list-pro">
             
-                                                                  
+             @foreach($deal as $value)
+
+            @if( $value->active ==1)                                                        
             <div class="col-md-3 col-6 lists">
                 <div class="item  __cate_1942">
                     <a href="https://dienmaynguoiviet.net/smat-tivi-lg-55nano80tpa-55-inch-4k" data-box="BoxCate" class="main-contain">
@@ -90,7 +90,7 @@
                             <img class="thumb ls-is-cached lazyloaded" data-src="" alt="{{ $value->name }}" style="width:100%" src="{{ asset($value->image) }}"> 
                         </div>
                         <div class="items-title">
-                             <p class="result-labels"><img class="sale-banner ls-is-cached lazyloaded" alt="Giảm Sốc" data-src="images/css/sale.png" src="https://dienmaynguoiviet.net/images/css/sale.png"></p>
+                             <p class="result-labels"><img class="sale-banner ls-is-cached lazyloaded" alt="Giảm Sốc" data-src="{{ asset('images/css/sale.png') }}" src="{{ asset('images/css/sale.png') }}"></p>
                             <h3>
                                {{ $value->name }}
                             </h3>
@@ -118,12 +118,14 @@
                  
                 </div>
             </div>
+
+            @endif
+
+        @endforeach
                                                                                         
         </div>
 
-        @endif
-
-        @endforeach
+        
 
         @endif
 
