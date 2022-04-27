@@ -4649,57 +4649,79 @@ https://dienmaynguoiviet.vn/vi-sao-khong-nen-xem-tivi-khi-dang-an/';
 
     function implodePrice(){
 
-        $code = 'EWF8025EQWA
-                EWF9025BQWA
-                EWF9025BQSA
-                EWF9024BDWB
-                EWF9024ADSA
-                EWF1024BDWA
-                EWW8023AEWA
-                EWW1042AEWA
-                EWF8024D3WB
-                EWF9024D3WB
-                EWF8024P5WB
-                EWF8024P5SB
-                EWF9024P5SB
-                EWF1024P5WB
-                EWF1024P5SB
-                EWF9042R7SB
-                EWF1042R7SB
-                EWF1141R9SB
-                EWW9024P5WB
-                EWW1024P5WB
-                EWW1142Q7WB
-                EDV754H3WB
-                EDV854J3WB
-                EDV854N3SB';
+        $code = 'WA22R8870GV/SV
+                WA16R6380BV/SV
+                WA12T5360BV/SV
+                WA10T5260BY/SV
+                WA90T5260BY/SV
+                WA85T5160BY/SV
+                DF60R8600CG/SV
+                WW90T3040WW/SV
+                DV90T7240BB/SV
+                DV90TA240AX/SV
+                DV90T7240BH/SV
+                DV90TA240AE/SV
+                WD14TP44DSB/SV
+                WD11T734DBX/SV
+                WD95T754DBX/SV
+                WD95T4046CE/SV
+                WW12TP94DSB/SV
+                WW10TP44DSB/SV
+                WW10TP54DSB/SV
+                WW10T634DLX/SV
+                WW10TP44DSH/SV
+                WW10TP54DSH/SV
+                WW10TA046AE/SV
+                WW90TP44DSB/SV
+                WW90TP54DSB/SV
+                WW95TA046AX/SV
+                WW90TP44DSH/SV
+                WW90TP54DSH/SV
+                WW90T634DLE/SV
+                WW95T4040CE/SV
+                WW85T554DAX/SV
+                WW85T554DAW/SV
+                WW85T4040CE/SV
+                WA11T5260BV/SV
+                WA10T5260BV/SV';
 
 
 
-        $price = '7010000
-                7940000
-                8140000
-                8450000
-                9070000
-                9940000
-                11750000
-                15350000
-                7110000
-                8660000
-                8150000
-                9070000
-                10460000
-                10970000
-                11850000
-                11950000
-                13190000
-                19570000
-                12880000
-                14840000
-                17310000
-                8190000
-                9220000
-                9690000';
+        $price = '16180000 
+                11280000 
+                11390000 
+                6600000 
+                5820000 
+                5670000 
+                31830000 
+                7270000 
+                16330000 
+                15150000 
+                17670000 
+                15250000 
+                19880000 
+                16430000 
+                12060000 
+                11440000 
+                18180000 
+                11080000 
+                14480000 
+                12060000 
+                10460000 
+                13030000 
+                9890000 
+                9690000 
+                9220000 
+                8810000 
+                9330000 
+                9840000 
+                8610000 
+                9640000 
+                9270000 
+                8660000 
+                7680000 
+                9380000 
+                9530000';
 
         $prices = explode(PHP_EOL, $price);
         $data = explode(PHP_EOL, $code);
