@@ -4786,5 +4786,19 @@ https://dienmaynguoiviet.vn/vi-sao-khong-nen-xem-tivi-khi-dang-an/';
 
        
     }
+
+    public function removelink()
+    {
+        for($i=1; $i<1514;$i++){
+
+            $link = post::find($i);
+
+            $link->link = rtrim(trim($link->link),'/');
+
+            $link->save();
+
+        }
+        echo "thành công";
+    }
    
 }

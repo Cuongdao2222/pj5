@@ -73,9 +73,6 @@
          <h3>Sản phẩm đang có  giá tốt </h3>
 
        
-
-       
-        
         <div class="row list-pro">
             
              @foreach($deal as $value)
