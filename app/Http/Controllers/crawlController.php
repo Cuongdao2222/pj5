@@ -4798,11 +4798,11 @@ https://dienmaynguoiviet.vn/vi-sao-khong-nen-xem-tivi-khi-dang-an/';
 
     public function removelink()
     {
-        for($i=1; $i<1514;$i++){
+        for($i=243; $i<2845;$i++){
 
-            $link = post::find($i);
+            $link = product::find($i);
 
-            $link->link = rtrim(trim($link->link),'/');
+            $link->link =  str_replace('/','',trim($link->link));
 
             $link->save();
 
