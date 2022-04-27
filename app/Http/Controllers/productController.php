@@ -398,7 +398,7 @@ class productController extends AppBaseController
         if(!empty($resultProduct)){
 
 
-            $products = Product::where('id', $resultProduct->id)->paginate(10);
+            $products = Product::whereIn('id', $resultProduct->id)->paginate(10);
 
             return view('products.index')
             ->with('products', $products);
