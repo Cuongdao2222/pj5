@@ -1,6 +1,9 @@
 @extends('frontend.layouts.apps')
 @section('content') 
 <style type="text/css">
+    div.stars {
+    width: auto !important;
+    }    
     @media screen and (max-width: 776px){
     .header__top {
     background-color: #187A43;
@@ -41,9 +44,7 @@
     .modal-body table td{
     padding:  0 15px !important;
     }
-    div.stars {
-    width: auto !important;
-    }    
+    
     } 
 </style>
 <?php  
@@ -84,17 +85,33 @@
 <section data-id="235791" data-cate-id="1942" class="detail ">
     <ul class="breadcrumb">
         <?php  
-            $groupProduct = App\Models\groupProduct::find($data->Group_id);
+            $groupProduct = App\Models\groupProduct::select('name', 'link', 'product_id')->where('level', 0)->get();
+
+            foreach($groupProduct as $groupProducts ){
+
+                if(!empty(json_decode($groupProducts->product_id))){
+
+                    if(in_array($data['id'],json_decode($groupProducts->product_id))){
+
+                        $groupName = $groupProducts->name;
+
+                        $groupLink = $groupProducts->link;
+                    }
+                }
+            }
+
             ?>
         <li>
             <a href="{{route('homeFe')}}">Trang chủ</a>
             <meta property="position" content="1">
         </li>
+        @if(!empty($groupLink))
         <li>
             <span>›</span>
-            <a href="{{ route('details', $groupProduct->link) }}">{{ @$groupProduct->name }}</a>
+            <a href="{{ route('details', $groupLink??'') }}">{{ @$groupName }}</a>
             <meta property="position" content="2">
         </li>
+        @endif
         <!-- <li>
             <span>›</span>
             <a href="/tivi?g=smart-tivi">Smart Tivi</a>
@@ -187,11 +204,14 @@
                                         else{
                                             $status = 'Còn hàng';
                                         }
-                                        
+
+
                                         
                                         ?>
                                     <span>{{ $status }}</span>
                                 </div>
+
+                                <!-- mobile -->
                                 @if($data->Quantily>0)
                                 <div class="pdetail-add-to-cart add-to-cart">
                                     <div class="inline">
@@ -217,6 +237,17 @@
                                     <br>
                                     (Visa, Master, JCB)
                                     </a>
+                                </div>
+
+                                @else
+
+                                <div class="pdetail-add-to-cart add-to-cart">
+                                    <div class="inline">
+                                       
+                                      
+                                        <button type="button" class="btn btn-lg btn-add-cart btn-add-cart redirectCart">Liên hệ</button>
+                                    </div>
+                                   
                                 </div>
                                 @endif
                             </div>
@@ -381,14 +412,16 @@
                             <div class="pdetail-stockavailable">
                                 <span>{{ $status }} </span>
                             </div>
-                            @if($data->Quatily>0)
+
+
+                            @if($data['Quantily']>0)
                             <div class="pdetail-add-to-cart add-to-cart">
                                 <form class="inline">
                                     <input type="hidden" name="productId" value="19439">
                                     <!-- <div class="product-quantity">
                                         <input type="text" class="quantity-field" readonly="readonly" name="qty" value="1">
                                         </div> -->
-                                    @if((int)$data->Price>0)
+                                    @if((int)$data['Price']>0)
                                     <button type="button" class="btn btn-lg btn-add-cart btn-add-cart redirectCart" onclick="addToCart({{ $data->id }})">MUA NGAY <br>(Giao hàng tận nơi - Giá tốt - An toàn)</button>
                                     @else
                                     <button type="button" class="btn btn-lg btn-add-cart btn-add-cart redirectCart">LIÊN HỆ <br></button>
@@ -400,7 +433,7 @@
                             </div>
                             <div class="clearfix"></div>
                             <div class="installment-purchase pdetail-installment">
-                                @if((int)$data->Price>3000000)
+                                @if((int)$data['Price']>3000000)
                                 <a target="_blank" href="{{ route('details', $data->Link)  }}?show=tra-gop" admicro-data-event="101725" admicro-data-auto="1" admicro-data-order="false">
                                 <strong>TRẢ GÓP</strong>
                                 <br>
@@ -417,12 +450,20 @@
                             </div>
                             @else
 
-                                 <button type="button" class="btn btn-lg btn-add-cart btn-add-cart redirectCart">LIÊN HỆ <br></button>
+                            <div class="pdetail-add-to-cart add-to-cart">
+                                <div class="inline">
+                                   
+                                  
+                                    <button type="button" class="btn btn-lg btn-add-cart btn-add-cart redirectCart">Liên hệ</button>
+                                </div>
+                               
+                            </div>
+                           
                             @endif
 
                         </div>
                         <div class="clearfix"></div>
-                        <span class="view-all" data-toggle="modal" data-target="#specifications">Xem chi tiết thông số kỹ thuật</span>
+                       <!--  <span class="view-all" data-toggle="modal" data-target="#specifications">Xem chi tiết thông số kỹ thuật</span> -->
                     </div>
                 </div>
             </div>
