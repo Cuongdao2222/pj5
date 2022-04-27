@@ -4806,7 +4806,7 @@ https://dienmaynguoiviet.vn/vi-sao-khong-nen-xem-tivi-khi-dang-an/';
 
             if(empty($link->Link)){
 
-                print_r($i)
+                print_r($i);
 
                 die();
             }
