@@ -4649,127 +4649,57 @@ https://dienmaynguoiviet.vn/vi-sao-khong-nen-xem-tivi-khi-dang-an/';
 
     function implodePrice(){
 
-        $code = 'F2721HTTV
-                FM1208N6W
-                FM1209N6W
-                FM1209S6W
-                TH2722SSAK
-                TH2519SSAK
-                TH2113SSAK
-                TH2112SSAV
-                TH2111SSAL
-                T2311DSAL
-                T2351VSAM
-                T2350VS2M
-                T2350VS2W
-                T2395VS2M
-                T2395VS2W
-                T2185VS2M
-                T2185VS2W
-                T2735NWLV
-                S3RF
-                S3WF
-                S5MB
-                DR-80BW
-                T2735NWLV
-                TV2402NTWW
-                TV2402NTWB
-                FV1450H2B
-                FV1450S2B
-                FV1450S3W
-                FV1450S3V
-                FV1408G4W
-                FV1409G4V
-                FV1409S2V
-                FV1409S2W
-                FV1409S3W
-                FV1409S4W
-                FV1408S4W
-                FV1208S4W
-                FV1408S4V
-                T2555VSAB
-                T2313VSAB
-                T2313VS2W
-                T2313VSPM
-                T2351VSAB
-                T2350VSAB
-                T2108VSPM
-                TH2111SSAB
-                F2515RTGW
-                F2515STGW
-                DVHP09B
-                DVHP09W
-                FV1410S4P
-                FV1410S3B
-                FV1410S5W
-                FV1411S3B
-                FV1411S4P
-                FV1411S5W
-                FV1413H3BA
-                FV1413S3WA
-                T2108VSPM2';
+        $code = 'EWF8025EQWA
+                EWF9025BQWA
+                EWF9025BQSA
+                EWF9024BDWB
+                EWF9024ADSA
+                EWF1024BDWA
+                EWW8023AEWA
+                EWW1042AEWA
+                EWF8024D3WB
+                EWF9024D3WB
+                EWF8024P5WB
+                EWF8024P5SB
+                EWF9024P5SB
+                EWF1024P5WB
+                EWF1024P5SB
+                EWF9042R7SB
+                EWF1042R7SB
+                EWF1141R9SB
+                EWW9024P5WB
+                EWW1024P5WB
+                EWW1142Q7WB
+                EDV754H3WB
+                EDV854J3WB
+                EDV854N3SB';
 
 
 
-        $price = '34610000 
-                7880000 
-                8040000 
-                8140000 
-                16380000 
-                13600000 
-                10720000 
-                10920000 
-                10000000 
-                7730000 
-                5980000 
-                5980000 
-                6180000 
-                5720000 
-                5570000 
-                5770000 
-                5460000 
-                41620000 
-                33630000 
-                33630000 
-                43880000 
-                12360000 
-                12060000 
-                12360000 
-                12780000  
-                17310000 
-                13650000 
-                11590000 
-                12730000 
-                11750000 
-                13030000 
-                10510000 
-                9580000 
-                9330000 
-                9580000 
-                8860000 
-                8040000 
-                9580000 
-                7940000 
-                7420000 
-                7320000 
-                6490000 
-                6650000 
-                6600000 
-                4850000 
-                10200000 
-                18540000 
-                16590000 
-                17210000 
-                16480000 
-                11030000 
-                12160000 
-                10250000 
-                14530000 
-                14220000 
-                13190000 
-                18130000 
-                14940000 
-                4850000 ';
+        $price = '7010000
+                7940000
+                8140000
+                8450000
+                9070000
+                9940000
+                11750000
+                15350000
+                7110000
+                8660000
+                8150000
+                9070000
+                10460000
+                10970000
+                11850000
+                11950000
+                13190000
+                19570000
+                12880000
+                14840000
+                17310000
+                8190000
+                9220000
+                9690000';
 
         $prices = explode(PHP_EOL, $price);
         $data = explode(PHP_EOL, $code);
@@ -4780,6 +4710,8 @@ https://dienmaynguoiviet.vn/vi-sao-khong-nen-xem-tivi-khi-dang-an/';
             $model = product::Where('ProductSku', trim($value))->first();
 
             if(!empty($model->ProductSku)){
+
+                print_r($model->ProductSku);
 
                 $modelsAdd = product::find($model->id);
 
