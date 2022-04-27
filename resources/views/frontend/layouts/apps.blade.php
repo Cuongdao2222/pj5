@@ -1879,20 +1879,7 @@
                                     <h4 style="font-size:15px; margin-top:20px;">Hình thức thanh toán:</h4>
                                     <table style="width:100%;">
                                         <tbody>
-                                            <tr class="item-paymethod">
-                                                <td><input type="radio" style="width:initial; padding:0; margin:0; height:auto;" checked="" name="pay_method" value="1" class="pay_option" id="paymethod_1"></td>
-                                                <td>
-                                                    <label for="paymethod_1">Thẻ tín dụng</label>
-                                                    <div id="pay_0" style="display:none;" class="pay_content"></div>
-                                                </td>
-                                            </tr>
-                                            <tr class="item-paymethod">
-                                                <td><input type="radio" style="width:initial; padding:0; margin:0; height:auto;" name="pay_method" value="2" class="pay_option" id="paymethod_2"></td>
-                                                <td>
-                                                    <label for="paymethod_2">Thẻ ATM nội địa</label>
-                                                    <div id="pay_1" style="display:none;" class="pay_content"></div>
-                                                </td>
-                                            </tr>
+                                          
                                             <tr class="item-paymethod">
                                                 <td><input type="radio" style="width:initial; padding:0; margin:0; height:auto;" name="pay_method" value="3" class="pay_option" id="paymethod_3"></td>
                                                 <td>
@@ -1900,13 +1887,7 @@
                                                     <div id="pay_2" style="display:none;" class="pay_content">Trả tiền khi nhận hàng</div>
                                                 </td>
                                             </tr>
-                                            <tr class="item-paymethod">
-                                                <td><input type="radio" style="width:initial; padding:0; margin:0; height:auto;" name="pay_method" value="4" class="pay_option" id="paymethod_4"></td>
-                                                <td>
-                                                    <label for="paymethod_4">Thanh toán trả góp qua Alepay (Qua thẻ Visa, Master, JCB)</label>
-                                                    <div id="pay_3" style="display:none;" class="pay_content"></div>
-                                                </td>
-                                            </tr>
+                                            
                                         </tbody>
                                     </table>
                                 </div>
