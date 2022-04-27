@@ -155,7 +155,7 @@
             <section>
                 <div class="slider-bannertop owl-carousel owl-theme">
                     <div class="item">
-                        <a aria-label="slide" data-cate="1942" data-place="1537"><img width=800  src="https://cdn.tgdd.vn/2022/01/banner/800-200-800x200-38.png" alt="tivi chung"  ></a>
+                        <a aria-label="slide" data-cate="1942" data-place="1537"><img width=800  src="{{ asset('images/template/banner-category.jpg') }}" alt="tivi chung"  ></a>
                     </div>
                     
                 </div>
@@ -255,7 +255,7 @@
                                         <img class="lazyload thumb" data-src="{{ asset($value->Image) }}" alt="{{ asset($value->Name) }}" style="width:100%"> 
                                     </div>
                                     <div class="items-title">
-                                        <p class='result-label temp1'><img width='20' height='20' class='lazyload' alt='Giảm Sốc' data-src=''><span>Giảm Sốc</span></p>
+                                         <p class='result-labels'><img  class='lazyload sale-banner' alt='Giảm Sốc' data-src='{{ asset('images/css/sale.png') }}'></p>
                                         <h3 >
                                             {{ $value->Name  }}
                                         </h3>

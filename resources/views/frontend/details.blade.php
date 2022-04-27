@@ -5,47 +5,51 @@
     width: auto !important;
     }    
     @media screen and (max-width: 776px){
-    .header__top {
-    background-color: #187A43;
-    }   
-    }    
-    @media screen and (min-width: 777px){
-    .pdetail-installment table{
-    width: 440px !important;
-    overflow: hidden;
-    }
-    .pdetail-installment{
-    height: 400px;
-    width: 440px;
-    overflow: hidden;
-    }
-    .pdetail-installment td{
-    padding-left: 5px;
-    }
-    .Salient_Features td{
-    padding: 0 15px;
-    }
-    .view-all {
-    position: absolute;
-    width: 440px;
-    /*left: 0;*/
-    bottom: 0;
-    padding: 6px 0;
-    font-weight: 300;
-    cursor: pointer;
-    text-align: center;
-    font-size: 14px;
-    color: #288ad6;
-    background: #fff;
-    border: 1px solid #288ad6;
-    border-radius: 4px;
-    transition: 0.6s ease-out;
-    }
-    .modal-body table td{
-    padding:  0 15px !important;
-    }
-    
-    } 
+        .header__top {
+            background-color: #187A43;
+            }   
+        }    
+        @media screen and (min-width: 777px){
+
+            #thongso td{
+                height: 30px !important;
+            }
+            .pdetail-installment table{
+                width: 440px !important;
+                overflow: hidden;
+            }
+            .pdetail-installment{
+                height: 400px;
+                width: 440px;
+                overflow: hidden;
+            }
+            .pdetail-installment td{
+                padding-left: 5px;
+            }
+            .Salient_Features td{
+                padding: 0 15px;
+            }
+            .view-all {
+                position: absolute;
+                width: 440px;
+                /*left: 0;*/
+                bottom: 0;
+                padding: 6px 0;
+                font-weight: 300;
+                cursor: pointer;
+                text-align: center;
+                font-size: 14px;
+                color: #288ad6;
+                background: #fff;
+                border: 1px solid #288ad6;
+                border-radius: 4px;
+                transition: 0.6s ease-out;
+            }
+            .modal-body table td{
+                padding:  0 15px !important;
+            }
+        
+        } 
 </style>
 <?php  
     $check_deal = App\Models\deal::select('deal_price')->where('product_id', $data->id)->where('active', 1)->first();
