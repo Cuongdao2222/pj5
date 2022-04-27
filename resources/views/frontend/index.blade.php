@@ -517,9 +517,9 @@
         
         <?php  
 
-                        $post = App\Models\post::where('active',1)->where('hight_light', 1)->select('link', 'title', 'image')->get()->toArray();
+            $post = App\Models\post::where('active',1)->where('hight_light', 1)->select('link', 'title', 'image')->get()->toArray();
 
-                    ?>
+        ?>
                     
         @if(isset($post) && count($post)>0)
         <div class="applications">
