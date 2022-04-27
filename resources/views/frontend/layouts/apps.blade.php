@@ -54,6 +54,9 @@
 
 
 
+
+
+
         <link rel="shortcut icon" href="https://dienmaynguoiviet.vn/template/dienmaynguoiviet/images/favicon.ico"/>
         <meta name="robots" content="index,follow" />
       
@@ -168,6 +171,24 @@
         
         <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}"> 
         <meta name="csrf-token" content="{{ csrf_token() }}">
+
+        @if(\Request::route()->getName()=='details')
+        <style>
+         .installment-purchase a {
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+            padding: 8px 5px;
+            line-height: 18px;
+            width: 49%;
+            border-radius: 5px;
+            display: inline-block;
+            text-align: center;
+            cursor: pointer;
+            background: #ffde00;
+            }
+        </style>    
+         @endif   
 
         <style type="text/css">
             .product_list_cart {
@@ -330,19 +351,9 @@
             border: solid 1px #e11b1e;
             }
 
-            .installment-purchase a {
-            text-decoration: none;
-            color: #333;
-            font-size: 14px;
-            padding: 8px 5px;
-            line-height: 18px;
-            width: 49%;
-            border-radius: 5px;
-            display: inline-block;
-            text-align: center;
-            cursor: pointer;
-            background: #ffde00;
-            }
+
+
+           
             .add-to-cart {
             margin-top: 10px;
             margin-bottom: 10px;
