@@ -51,7 +51,7 @@ Route::post('login-Fe', 'AjaxController@loginClientsFe')->name('login-Fe');
 Route::get('logout-Fe', 'AjaxController@logout')->name('logout-Fe');
 
 
-Route::get('crawl', 'crawlController@filter')->name('crawl');
+Route::get('sitemap.xml', 'sitemapController@index');
 
 Route::get('inCrawl', 'crawlController@print')->name('print');
 

@@ -134,6 +134,15 @@ class crawlController extends Controller
 
     }  
 
+    public function crawl1()
+    {
+        $post = Post::orderBy('updated_at', 'desc')->take(40)->get();
+
+        return response()->view('sitemap.index', [
+            'post' => $post,
+        ])->header('Content-Type', 'text/xml');
+    }
+
 
     public function filterCategory()
     {
