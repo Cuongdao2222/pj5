@@ -357,12 +357,25 @@ class sitemapController extends Controller
 
         $arr_number = explode(PHP_EOL, $number);
 
-
-
         return response()->view('sitemap.index', [
             'arr_number' => $arr_number,
         ])->header('Content-Type', 'text/xml');
 
+   }
+
+   public function sitemapChildProduct()
+   {
+    $product = product::take(60)->OrderBy('id', 'desc')->get()
+       return response()->view('sitemap.child', [
+            'arr_number' => $product
+        ])->header('Content-Type', 'text/xml');
+   }
+   public function sitemapChildBlog()
+   {
+    $blog = blog::take(60)->OrderBy('id', 'desc')->get()
+       return response()->view('sitemap.childs_blog', [
+            'arr_number' => $blog
+        ])->header('Content-Type', 'text/xml');
    }
 }
 
