@@ -306,7 +306,11 @@ class categoryController extends Controller
     {
         $link = trim($slug);
 
-        $findID = product::where('link', $link)->first();
+        $link = str_replace('/','',$link);
+
+ 
+
+        $findID = product::where('Link', $link)->first();
 
         // chuyển sang category check
 

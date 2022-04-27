@@ -377,11 +377,23 @@ class productController extends AppBaseController
 
     public function FindbyNameOrModel(Request $request)
     {
-        $clearData = trim($request->search);
+        $clearData = trim($request->key);
 
-        $data      = $clearData;
+        $data      = strip_tags($clearData);
 
-       $resultProduct = Product::select('id')->where('Name','LIKE', '%' . $data . '%')->OrWhere('ProductSku', 'LIKE', '%' . $data . '%')->first();
+        $findGroupProduct = groupProduct::where('name', 'LIKE', '%' . $data . '%')->first();
+
+        if(!empty($findGroupProduct)){
+
+            $resultProduct = json_decode($findGroupProduct->product_id);
+
+        }
+
+
+        else{
+            $resultProduct = Product::select('id')->where('Name','LIKE', '%' . $data . '%')->OrWhere('ProductSku', 'LIKE', '%' . $data . '%')->get()->pluck('id');
+        }
+
 
         if(!empty($resultProduct)){
 
@@ -458,11 +470,22 @@ class productController extends AppBaseController
 
         $data      = strip_tags($clearData);
 
-        $resultProduct = Product::select('id')->where('Name','LIKE', '%' . $data . '%')->OrWhere('ProductSku', 'LIKE', '%' . $data . '%')->first();
+        $findGroupProduct = groupProduct::where('name', 'LIKE', '%' . $data . '%')->first();
 
-        if(!empty($resultProduct)){
+        if(!empty($findGroupProduct)){
 
-            $products = Product::where('id', $resultProduct->id)->paginate(10);
+            $resultProduct = json_decode($findGroupProduct->product_id);
+
+        }
+
+
+        else{
+            $resultProduct = Product::select('id')->where('Name','LIKE', '%' . $data . '%')->OrWhere('ProductSku', 'LIKE', '%' . $data . '%')->get()->pluck('id');
+        }
+
+        if(isset($resultProduct)){
+
+            $products = Product::whereIn('id', $resultProduct)->where('active', 1)->paginate(10);
 
     
             return view('frontend.category')

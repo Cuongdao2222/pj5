@@ -73,7 +73,7 @@ class dealController extends Controller
                 $products_add['image'] = $products[$i]['Image'];
                 $products_add['link'] = $products[$i]['Link'];
                 $products_add['price'] = $products[$i]['Price'];
-                $products_add['deal_price'] = $products[$i]['price_deal'];
+                $products_add['deal_price'] = str_replace([',','.'],'',$products[$i]['price_deal']);
 
                 $products_add['product_id'] = $products[$i]['id'];
 
