@@ -172,7 +172,7 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}"> 
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        @if(\Request::route()->getName()=='details')
+        @if(\Request::route()->getName()!='details')
         <style>
          .installment-purchase a {
             text-decoration: none;
