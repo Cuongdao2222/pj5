@@ -463,7 +463,8 @@
 
                         </div>
                         <div class="clearfix"></div>
-                        <div><span class="view-all" data-toggle="modal" data-target="#specifications">Xem chi tiết thông số kỹ thuật</span></div>
+                         <button type="button" class="btn btn-lg" data-toggle="modal" data-target="#specifications">Xem chi tiết thông số kỹ thuật</button>
+                       
                         
                     </div>
                 </div>
