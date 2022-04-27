@@ -1,10 +1,10 @@
 <?php echo '<?xml version="1.0" encoding="UTF-8"?>'; ?>
 
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    @if(isset($number))
-    @foreach($number as $numbers)
+    @if(isset($arr_number))
+    @foreach($arr_number as $numbers)
         <sitemap>
-            <loc>https://dienmaynguoiviet.vn/sitemap_pc{{$number}}</loc>
+            <loc>https://dienmaynguoiviet.vn/sitemap_pc{{$numbers}}</loc>
             <lastmod>{{ Carbon\Carbon::now()->format('Y-m-d') }}</lastmod>
         </sitemap>
     @endforeach    

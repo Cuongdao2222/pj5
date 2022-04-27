@@ -357,11 +357,11 @@ class sitemapController extends Controller
 
         $arr_number = explode(PHP_EOL, $number);
 
-        print_r($arr_number);
 
-        // return response()->view('sitemap.index', [
-        //     'arr_number' => $arr_number,
-        // ])->header('Content-Type', 'text/xml');
+
+        return response()->view('sitemap.index', [
+            'arr_number' => $arr_number,
+        ])->header('Content-Type', 'text/xml');
 
    }
 }
