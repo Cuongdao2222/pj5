@@ -2131,7 +2131,7 @@
         </footer>
 
         <div style="position:fixed; bottom:130px; right:0;">   
-        <a href="tel:02473036336"><img src="{{ asset('images/template/tongdai02473036336.png') }}" alt="hotline" style="height:72px;"></a>
+        <a href="tel:02473036336"><img src="{{ asset('images/template/tongdai02473036336.png') }}" alt="hotline" style="height:72px; z-index: 999;"></a>
           
         <div class="clear"></div>
           
