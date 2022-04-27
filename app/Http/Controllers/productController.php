@@ -381,7 +381,7 @@ class productController extends AppBaseController
 
         $data      = strip_tags($clearData);
 
-        $findGroupProduct = groupProduct::where('name', 'LIKE', '%' . $data . '%')->first();
+        $findGroupProduct = groupProduct::where('name', $data)->first();
 
         if(!empty($findGroupProduct)){
 
@@ -391,25 +391,29 @@ class productController extends AppBaseController
 
 
         else{
-            $resultProduct = Product::select('id')->where('Name','LIKE', '%' . $data . '%')->OrWhere('ProductSku', 'LIKE', '%' . $data . '%')->get()->pluck('id');
+          
+            $find_first = Product::select('id')->where('Name','LIKE', '%' . $data . '%')->OrWhere('ProductSku', 'LIKE', '%' . $data . '%')->first();
+
+            $resultProduct = [$find_first->id];
         }
 
 
-        if(!empty($resultProduct)){
+        if(isset($resultProduct)){
 
+            $products = Product::whereIn('id', $resultProduct)->paginate(10);
 
-            $products = Product::whereIn('id', $resultProduct->id)->paginate(10);
-
+    
             return view('products.index')
             ->with('products', $products);
 
+
         }
         else{
-            Flash::error('Không tìm thấy sản phẩm, vui lòng tìm kiếm lại"');
+           Flash::error('Không tìm thấy sản phẩm, vui lòng tìm kiếm lại"');
 
             return redirect(route('products.index'));
-            
         }
+            
         
     }
 
@@ -480,7 +484,9 @@ class productController extends AppBaseController
 
 
         else{
-            $resultProduct = Product::select('id')->where('Name','LIKE', '%' . $data . '%')->OrWhere('ProductSku', 'LIKE', '%' . $data . '%')->get()->pluck('id');
+             $find_first = Product::select('id')->where('Name','LIKE', '%' . $data . '%')->OrWhere('ProductSku', 'LIKE', '%' . $data . '%')->first();
+
+            $resultProduct = [$find_first->id];
         }
 
         if(isset($resultProduct)){
