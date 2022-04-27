@@ -4802,14 +4802,7 @@ https://dienmaynguoiviet.vn/vi-sao-khong-nen-xem-tivi-khi-dang-an/';
 
             $link = product::find($i);
 
-            $link->Link =  str_replace('/','',trim($link->Link));
-
-            if(empty($link->Link)){
-
-                print_r($i);
-
-                die();
-            }
+            $link->Link =  convertSlug(trim($link->Name));
 
             $link->save();
 
