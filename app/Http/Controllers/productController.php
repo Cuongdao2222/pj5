@@ -472,13 +472,14 @@ class productController extends AppBaseController
     {
         $clearData = trim($request->key);
 
+
+
         $data      = strip_tags($clearData);
 
         $resultProduct = [];
 
         $find_first = Product::select('id')->where('Name','LIKE', '%'. $data .'%')->OrWhere('ProductSku', 'LIKE', '%' . $data . '%')->get()->pluck('id');
 
-    
         if(isset($find_first)){
 
             foreach ($find_first as  $value) {
@@ -489,11 +490,11 @@ class productController extends AppBaseController
 
         }
 
+
         if(isset($resultProduct)){
 
-            $products = Product::whereIn('id', $resultProduct)->where('active', 1)->paginate(10);
+            $products = Product::whereIn('id', $resultProduct)->paginate(10);
 
-    
             return view('frontend.category')
             ->with('data', $products);
 
