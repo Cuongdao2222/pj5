@@ -381,24 +381,23 @@ class productController extends AppBaseController
 
         $data      = strip_tags($clearData);
 
-        $findGroupProduct = groupProduct::where('name', $data)->first();
+        $resultProduct = [];
 
-        if(!empty($findGroupProduct)){
+        $find_first = Product::select('id')->where('Name','LIKE', '%'. $data .'%')->OrWhere('ProductSku', 'LIKE', '%' . $data . '%')->get()->pluck('id');
 
-            $resultProduct = json_decode($findGroupProduct->product_id);
+       
+
+        if(isset($find_first)){
+
+            foreach ($find_first as  $value) {
+
+                array_push($resultProduct, $find_first);
+            }
 
 
         }
 
-
-        else{
-          
-            $find_first = Product::select('id')->where('Name','LIKE', '%' . $data . '%')->OrWhere('ProductSku', 'LIKE', '%' . $data . '%')->first();
-
-            $resultProduct = [$find_first->id];
-        }
-
-
+        
         if(isset($resultProduct)){
 
             $products = Product::whereIn('id', $resultProduct)->paginate(10);
@@ -475,19 +474,19 @@ class productController extends AppBaseController
 
         $data      = strip_tags($clearData);
 
-        $findGroupProduct = groupProduct::where('name', 'LIKE', '%' . $data . '%')->first();
+        $resultProduct = [];
 
-        if(!empty($findGroupProduct)){
+        $find_first = Product::select('id')->where('Name','LIKE', '%'. $data .'%')->OrWhere('ProductSku', 'LIKE', '%' . $data . '%')->get()->pluck('id');
 
-            $resultProduct = json_decode($findGroupProduct->product_id);
+    
+        if(isset($find_first)){
 
-        }
+            foreach ($find_first as  $value) {
+
+                array_push($resultProduct, $find_first);
+            }
 
 
-        else{
-             $find_first = Product::select('id')->where('Name','LIKE', '%' . $data . '%')->OrWhere('ProductSku', 'LIKE', '%' . $data . '%')->first();
-
-            $resultProduct = [$find_first->id];
         }
 
         if(isset($resultProduct)){
