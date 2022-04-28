@@ -4798,16 +4798,32 @@ https://dienmaynguoiviet.vn/vi-sao-khong-nen-xem-tivi-khi-dang-an/';
 
     public function removelink()
     {
-        for($i=243; $i<2845;$i++){
+       
+        //     $arr= product::select('id', 'ProductSku')->get()->pluck('ProductSku');
 
-            $link = product::find($i);
+        //     $unique = array_unique($arr); 
+        //     $dupes = array_diff_key( $arr, $unique ); 
 
-            $link->Link =  convertSlug(trim($link->Name));
+        //     print_r()
 
-            $link->save();
+            
+        // echo "thành công";
 
+        $arr = product::select('id', 'ProductSku')->get()->pluck('ProductSku')->toArray();
+
+        $unique = array_unique($arr); 
+        $dupes = array_diff_key($arr, $unique); 
+
+        $model = array_unique($dupes);
+
+        foreach ($model as $value) {
+
+            print_r($value.'<br>');
+           
         }
-        echo "thành công";
+
+
+
     }
    
 }
