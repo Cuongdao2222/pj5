@@ -16,6 +16,10 @@ use App\Models\metaSeo;
 
 use App\Models\groupProduct;
 
+use App\Models\filter;
+use DB;
+use App\products1;
+
 
 class crawlController extends Controller
 {
@@ -4988,6 +4992,72 @@ https://dienmaynguoiviet.vn/may-say-lg-dr-80bw-80-kg/';
         echo "thanh cong";
 
     }
+
+    public function selectedCode()
+    {
+
+
+        $pass = 28;
+
+        $code = filter::select('value')->where('id', $pass)->get();
+
+        $codes = json_decode($code[0]->value);
+
+        $data = [];
+        
+        foreach ( $codes  as $key => $values) {
+
+            $numbers = array_filter($values, function($var){
+                return $var>243;
+                
+            });
+
+            $ProductSku = array_map(function($n){
+
+                return(products1::find($n)->ProductSku);
+
+            }, $numbers);
+
+            if(!empty($ProductSku)){
+                $data[$key] =$ProductSku;
+
+            }
+        
+        }
+
+        $datasss = [];
+
+        foreach($data as $key => $datas){
+
+          
+
+            $ProductSku = array_map(function($n){
+
+                $datass = product::where('ProductSku', $n)->first();
+
+                return($datass->id);
+
+            }, $datas);
+
+
+            $datasss[$key] = array_values($ProductSku);
+
+         }
+
+         $finter = filter::find($pass);
+
+         $result = json_encode($datasss);
+
+         $finter->value =  $result;
+
+         $finter->save();
+
+         echo "thanh cong";
+
+    
+    }
+
+   
 
 
 
