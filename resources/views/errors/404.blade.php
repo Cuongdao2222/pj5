@@ -67,67 +67,7 @@
 
         ?>
 
-        @if(!empty($deal)&count($deal)>0)
-
-        @if($now->between($timeDeal_star, $timeDeal_end))
-         <h3>Sản phẩm đang có  giá tốt </h3>
-
        
-        <div class="row list-pro">
-            
-             @foreach($deal as $value)
-
-            @if( $value->active ==1)                                                        
-            <div class="col-md-3 col-6 lists">
-                <div class="item  __cate_1942">
-                    <a href="{{ route('details', $value->link) }}" data-box="BoxCate" class="main-contain">
-                        <div class="item-label">
-                            <span class="lb-tragop">Trả góp 0%</span>
-                        </div>
-                        <div class="item-img item-img_1942">
-                            <img class="thumb ls-is-cached lazyloaded" data-src="" alt="{{ $value->name }}" style="width:100%" src="{{ asset($value->image) }}"> 
-                        </div>
-                        <div class="items-title">
-                             <p class="result-labels"><img class="sale-banner ls-is-cached lazyloaded" alt="Giảm Sốc" data-src="{{ asset('images/css/sale.png') }}" src="{{ asset('images/css/sale.png') }}"></p>
-                            <h3>
-                               {{ $value->name }}
-                            </h3>
-
-                                                                                                                              
-                            <strong class="price">{{ @str_replace(',' ,'.', number_format($value->deal_price))}}&#x20AB;</strong>
-                           
-                            <div class="item-rating">
-                                <p>
-                                    <i class="icon-star"></i>
-                                    <i class="icon-star"></i>
-                                    <i class="icon-star"></i>
-                                    <i class="icon-star"></i>
-                                    <i class="icon-star"></i>
-                                </p>
-
-                            </div>
-
-                        </div>
-                        
-                    </a>
-                    <div class="item-bottom">
-                        <a href="#" class="shiping"></a>
-                    </div>
-                 
-                </div>
-            </div>
-
-            @endif
-
-        @endforeach
-                                                                                        
-        </div>
-
-        
-
-        @endif
-
-        @endif
        
     </div>
 
