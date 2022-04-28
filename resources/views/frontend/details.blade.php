@@ -61,6 +61,9 @@
             .modal-body table td{
                 padding:  0 15px !important;
             }
+            .pdetail-installment td{
+                height: 30px;
+            }
         
         } 
 </style>
@@ -244,12 +247,12 @@
                                 </div>
                                 <div class="clearfix"></div>
                                 <div class="installment-purchase pdetail-installment">
-                                    <a target="_blank" href="" admicro-data-event="101725" admicro-data-auto="1" admicro-data-order="false">
+                                    <a target="_blank" href="" admicro-data-event="101725" admicro-data-auto="1" admicro-data-order="false" class="but-1-gop">
                                     <strong>TRẢ GÓP</strong>
                                     <br>
                                     (Công ty tài chính)
                                     </a>
-                                    <a target="_blank" href="" admicro-data-event="101725" admicro-data-auto="1" admicro-data-order="false">
+                                    <a target="_blank" href="" admicro-data-event="101725" admicro-data-auto="1" admicro-data-order="false" class="but-1-gop">
                                     <strong>TRẢ GÓP QUA THẺ</strong>
                                     <br>
                                     (Visa, Master, JCB)
