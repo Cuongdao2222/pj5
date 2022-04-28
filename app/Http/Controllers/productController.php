@@ -377,7 +377,7 @@ class productController extends AppBaseController
 
     public function FindbyNameOrModel(Request $request)
     {
-        $clearData = trim($request->key);
+        $clearData = trim($request->search);
 
         $data      = strip_tags($clearData);
 
@@ -386,6 +386,7 @@ class productController extends AppBaseController
         if(!empty($findGroupProduct)){
 
             $resultProduct = json_decode($findGroupProduct->product_id);
+
 
         }
 
