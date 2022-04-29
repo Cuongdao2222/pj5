@@ -5067,12 +5067,12 @@ https://dienmaynguoiviet.vn/may-say-lg-dr-80bw-80-kg/';
     public function removelink()
     {
        
-        //     $arr= product::select('id', 'ProductSku')->get()->pluck('ProductSku');
+            // $arr= product::select('id', 'ProductSku')->get()->pluck('ProductSku')->toArray();
 
-        //     $unique = array_unique($arr); 
-        //     $dupes = array_diff_key( $arr, $unique ); 
+            // $unique = array_unique($arr); 
+            // $dupes = array_diff_key( $arr, $unique ); 
 
-        //     print_r()
+            // print_r($dupes);
 
             
         // echo "thành công";
@@ -5082,13 +5082,22 @@ https://dienmaynguoiviet.vn/may-say-lg-dr-80bw-80-kg/';
         $unique = array_unique($arr); 
         $dupes = array_diff_key($arr, $unique); 
 
-        $model = array_unique($dupes);
+        
+        $idfind =  product::select('id', 'ProductSku')->whereIn('ProductSku', $dupes)->get()->pluck('id')->toArray();
 
-        foreach ($model as $value) {
+        foreach($idfind as $ids){
 
-            print_r($value.'<br>');
-           
+             $productss = product::find($ids);
+             $productss->delete();
+
+
         }
+
+        
+
+        echo "thanh cong";
+
+    
 
 
 
