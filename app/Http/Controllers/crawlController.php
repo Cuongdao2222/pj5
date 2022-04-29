@@ -4997,8 +4997,8 @@ https://dienmaynguoiviet.vn/may-say-lg-dr-80bw-80-kg/';
     {
 
 
-        for($pass=14; $pass<29; $pass++){
-
+       
+            $pass =14;
        
 
             $code = filter::select('value')->where('id', $pass)->get();
@@ -5053,7 +5053,7 @@ https://dienmaynguoiviet.vn/may-say-lg-dr-80bw-80-kg/';
              $finter->value =  $result;
 
              $finter->save();
-        }     
+          
         echo "thanh cong";
 
 
@@ -5082,24 +5082,21 @@ https://dienmaynguoiviet.vn/may-say-lg-dr-80bw-80-kg/';
         $unique = array_unique($arr); 
         $dupes = array_diff_key($arr, $unique); 
 
+        $dupess= array_unique($dupes);
+
         
-        $idfind =  product::select('id', 'ProductSku')->whereIn('ProductSku', $dupes)->get()->pluck('id')->toArray();
+     
 
-        foreach($idfind as $ids){
+        foreach($dupess as  $dupesss){
 
-             $productss = product::find($ids);
-             $productss->delete();
+          
+            $dataId = product::Where('ProductSku', $dupesss)->first();
 
+            $product = $dataId::find($dataId->id)->delete();
 
         }
 
-        
-
         echo "thanh cong";
-
-    
-
-
 
     }
    
