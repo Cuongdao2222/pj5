@@ -324,6 +324,8 @@ class categoryController extends Controller
 
         else{
 
+
+            $pageCheck = "product";
             $images = image::where('product_id', $findID->id)->get();
 
             $data =  product::findOrFail($findID->id);
@@ -337,7 +339,7 @@ class categoryController extends Controller
 
             $meta = metaSeo::find($data->Meta_id);
 
-            return view('frontend.details', compact('data', 'images', 'other_product', 'meta'));
+            return view('frontend.details', compact('data', 'images', 'other_product', 'meta', 'pageCheck'));
         }
     }
 

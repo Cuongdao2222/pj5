@@ -29,7 +29,7 @@ class crawlController extends Controller
     public function crawl()
     {
 
-        $urls =  $this->crawls();
+        $urls =  $this->cralwss();
 
       
 
@@ -153,7 +153,46 @@ class crawlController extends Controller
 
         echo "thanh cong";
 
-    }  
+    } 
+
+
+    public function cralwss()
+    {
+        $code  = "https://dienmaynguoiviet.vn/android-tivi-qled-tcl-65c725-65-inch-4k/
+                https://dienmaynguoiviet.vn/android-tivi-qled-tcl-55c725-55-inch-4k/
+                https://dienmaynguoiviet.vn/android-tivi-tcl-l43s5200-43-inch-full-hd/
+                https://dienmaynguoiviet.vn/androi-tivi-tcl-l32s5200-32-inch-hd/
+                https://dienmaynguoiviet.vn/android-tivi-tcl-43p618-43-inch-4k/
+                https://dienmaynguoiviet.vn/android-tivi-tcl-55p618-55-inch-4k/
+                https://dienmaynguoiviet.vn/android-tivi-tcl-65p618-65-inch-4k/
+                https://dienmaynguoiviet.vn/android-tivi-tcl-75p618-75-inch-4k/
+                https://dienmaynguoiviet.vn/android-tivi-qled-tcl-65c715-65-inch-4k/
+                https://dienmaynguoiviet.vn/android-tivi-qled-tcl-65q716-65-inch-4k/
+                https://dienmaynguoiviet.vn/android-tivi-qled-tcl-55c715-55-inch-4k/
+                https://dienmaynguoiviet.vn/android-tivi-tcl-75p715-75-inch-4k/
+                https://dienmaynguoiviet.vn/android-tivi-tcl-55p715-55-inch-4k/
+                https://dienmaynguoiviet.vn/android-tivi-tcl-50p715-50-inch-4k/
+                https://dienmaynguoiviet.vn/android-tivi-tcl-43p715-43-inch-4k/
+                https://dienmaynguoiviet.vn/smart-tivi-tcl-4k-55-inch-55a8/
+                https://dienmaynguoiviet.vn/smart-tivi-tcl-4k-50-inch-50a8/
+                https://dienmaynguoiviet.vn/smart-tivi-tcl-4k-50-inch-50p8s/
+                https://dienmaynguoiviet.vn/smart-tivi-tcl-4k-55-inch-55p8s/
+                https://dienmaynguoiviet.vn/android-tivi-tcl-65-inch-4k-l65p8/
+                https://dienmaynguoiviet.vn/android-tivi-tcl-55-inch-4k-l55p8/
+                https://dienmaynguoiviet.vn/android-tivi-tcl-50-inch-4k-l50p8/
+                https://dienmaynguoiviet.vn/android-tivi-tcl-43-inch-4k-l43p8/
+                https://dienmaynguoiviet.vn/tivi-qled-tcl-85-inch-4k-85x6/
+                https://dienmaynguoiviet.vn/tivi-qled-tcl-55-inch-4k-l55x4/
+                https://dienmaynguoiviet.vn/smart-tivi-tcl-40-inch-4k-l40p62-uf/
+                https://dienmaynguoiviet.vn/smart-tivi-tcl-65-inch-l65p6-4k/
+                https://dienmaynguoiviet.vn/smart-tivi-tcl-55-inch-l55p6-4k/
+                https://dienmaynguoiviet.vn/smart-tivi-tcl-50-inch-l50p6-4k/";
+
+        $codess = explode(PHP_EOL, $code);
+
+        return $codess;          
+
+    } 
 
     public function crawl1()
     {
@@ -4927,7 +4966,7 @@ https://dienmaynguoiviet.vn/may-say-lg-dr-80bw-80-kg/';
     public function getImagePost()
     {
 
-        for($i=1; $i<3995; $i++){
+        for($i=3999; $i<4023; $i++){
 
             $posts = product::find($i);
 

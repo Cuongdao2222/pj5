@@ -54,9 +54,13 @@
 
         @endif
 
+
+
         @if(!empty($pageCheck))
 
             
+
+
             <!-- Google Code dành cho Thẻ tiếp thị lại -->
             <p>&nbsp;</p>
             <!--------------------------------------------------
@@ -64,13 +68,13 @@
             --------------------------------------------------->
             <script type="text/javascript">// <![CDATA[
             var google_tag_params = {
-            ecomm_prodid: '32lh500d',
+            ecomm_prodid: '{{ @$data->id }}',
             ecomm_pagetype: 'home',
-            ecomm_totalvalue: '4790000',
-            dynx_itemid: '32lh500d',
-            dynx_itemid2: '32lh500d',
+            ecomm_totalvalue: '{{ @$data->Price }}',
+            dynx_itemid: '{{ @$data->ProducSku }}',
+            dynx_itemid2: '{{ @$data->ProducSku }}',
             dynx_pagetype: 'home',
-            dynx_totalvalue: '4790000',
+            dynx_totalvalue: '{{ @$data->Price }}',
             };
             // ]]></script>
             <script type="text/javascript">// <![CDATA[
@@ -87,24 +91,26 @@
             </div>
             </noscript>
 
-        
+            <script type="application/ld+json">
+              {
+              "@context": "http://schema.org",
+              "@type": "Product",
+              "headline": "{{ @$data->Name }}",
+              "datePublished": {{ $data->created_at->format('Y-m-d') }},
+              "name": "{{ @$data->Name }}",
+              "image": [
+              "https://dienmaynguoiviet.vn/media/product/250_6092_6.jpg"
+              ]
+              }
+    </script>
+
+
+
         @endif
 
 
 
-    <script type="application/ld+json">
-      {
-      "@context": "http://schema.org",
-      "@type": "Product",
-      "headline": "Tủ đông Sanaky VH-6699HY3N inverter 530 lít 1 chế độ",
-      "datePublished": "2022-04-20T10:33:22+0700",
-      "name": "Tủ đông Sanaky VH-6699HY3N inverter 530 lít 1 chế độ",
-      "image": [
-      "https://dienmaynguoiviet.vn/media/product/250_6092_6.jpg"
-      ]
-      }
-    </script>
-
+    
 
 
 
