@@ -4295,9 +4295,9 @@ https://dienmaynguoiviet.vn/may-say-lg-dr-80bw-80-kg/';
 
     public function getMetaProducts()
     {
-        for($i=1; $i<1514; $i++){
+        for($i=1; $i<3995; $i++){
 
-            $link = post::find($i);
+            $link = product::find($i);
 
 
             if(isset($link)){
