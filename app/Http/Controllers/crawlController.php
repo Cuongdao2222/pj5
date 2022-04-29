@@ -4997,62 +4997,65 @@ https://dienmaynguoiviet.vn/may-say-lg-dr-80bw-80-kg/';
     {
 
 
-        $pass = 28;
+        for($pass=14; $pass<29; $pass++){
 
-        $code = filter::select('value')->where('id', $pass)->get();
+       
 
-        $codes = json_decode($code[0]->value);
+            $code = filter::select('value')->where('id', $pass)->get();
 
-        $data = [];
-        
-        foreach ( $codes  as $key => $values) {
+            $codes = json_decode($code[0]->value);
 
-            $numbers = array_filter($values, function($var){
-                return $var>243;
-                
-            });
+            $data = [];
+            
+            foreach ( $codes  as $key => $values) {
 
-            $ProductSku = array_map(function($n){
+                $numbers = array_filter($values, function($var){
+                    return $var>243;
+                    
+                });
 
-                return(products1::find($n)->ProductSku);
+                $ProductSku = array_map(function($n){
 
-            }, $numbers);
+                    return(products1::find($n)->ProductSku);
 
-            if(!empty($ProductSku)){
-                $data[$key] =$ProductSku;
+                }, $numbers);
 
+                if(!empty($ProductSku)){
+                    $data[$key] =$ProductSku;
+
+                }
+            
             }
-        
-        }
 
-        $datasss = [];
+            $datasss = [];
 
-        foreach($data as $key => $datas){
+            foreach($data as $key => $datas){
 
-          
+              
 
-            $ProductSku = array_map(function($n){
+                $ProductSku = array_map(function($n){
 
-                $datass = product::where('ProductSku', $n)->first();
+                    $datass = product::where('ProductSku', $n)->first();
 
-                return($datass->id);
+                    return($datass->id);
 
-            }, $datas);
+                }, $datas);
 
 
-            $datasss[$key] = array_values($ProductSku);
+                $datasss[$key] = array_values($ProductSku);
 
-         }
+             }
 
-         $finter = filter::find($pass);
+             $finter = filter::find($pass);
 
-         $result = json_encode($datasss);
+             $result = json_encode($datasss);
 
-         $finter->value =  $result;
+             $finter->value =  $result;
 
-         $finter->save();
+             $finter->save();
+        }     
+        echo "thanh cong";
 
-         echo "thanh cong";
 
     
     }
