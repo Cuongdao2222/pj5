@@ -306,9 +306,8 @@ class categoryController extends Controller
     {
         $link = trim($slug);
 
-        $link = str_replace('/','',$link);
+        $link = $link.'/';
 
- 
 
         $findID = product::where('Link', $link)->first();
 

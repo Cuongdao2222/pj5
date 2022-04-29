@@ -9,6 +9,8 @@
 
       $requestcheck = \Request::route();
 
+
+
       ?>
        
          
@@ -51,6 +53,57 @@
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 
         @endif
+
+        @if(!empty($pageCheck))
+
+            
+            <!-- Google Code dành cho Thẻ tiếp thị lại -->
+            <p>&nbsp;</p>
+            <!--------------------------------------------------
+            Không thể liên kết thẻ tiếp thị lại với thông tin nhận dạng cá nhân hay đặt thẻ tiếp thị lại trên các trang có liên quan đến danh mục nhạy cảm. Xem thêm thông tin và hướng dẫn về cách thiết lập thẻ trên: http://google.com/ads/remarketingsetup
+            --------------------------------------------------->
+            <script type="text/javascript">// <![CDATA[
+            var google_tag_params = {
+            ecomm_prodid: '32lh500d',
+            ecomm_pagetype: 'home',
+            ecomm_totalvalue: '4790000',
+            dynx_itemid: '32lh500d',
+            dynx_itemid2: '32lh500d',
+            dynx_pagetype: 'home',
+            dynx_totalvalue: '4790000',
+            };
+            // ]]></script>
+            <script type="text/javascript">// <![CDATA[
+            var google_conversion_id = 971664599;
+            var google_custom_params = window.google_tag_params;
+            var google_remarketing_only = true;
+            // ]]></script>
+            <script src="//www.googleadservices.com/pagead/conversion.js" type="text/javascript">// <![CDATA[
+
+            // ]]></script>
+            <noscript>
+            <div style="display:inline;">
+            <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/971664599/?value=0&guid=ON&script=0"/>
+            </div>
+            </noscript>
+
+        
+        @endif
+
+
+
+    <script type="application/ld+json">
+      {
+      "@context": "http://schema.org",
+      "@type": "Product",
+      "headline": "Tủ đông Sanaky VH-6699HY3N inverter 530 lít 1 chế độ",
+      "datePublished": "2022-04-20T10:33:22+0700",
+      "name": "Tủ đông Sanaky VH-6699HY3N inverter 530 lít 1 chế độ",
+      "image": [
+      "https://dienmaynguoiviet.vn/media/product/250_6092_6.jpg"
+      ]
+      }
+    </script>
 
 
 

@@ -4999,13 +4999,17 @@ https://dienmaynguoiviet.vn/may-say-lg-dr-80bw-80-kg/';
 
        
             $pass =14;
+
        
 
             $code = filter::select('value')->where('id', $pass)->get();
 
+
             $codes = json_decode($code[0]->value);
 
             $data = [];
+
+
             
             foreach ( $codes  as $key => $values) {
 
@@ -5026,6 +5030,8 @@ https://dienmaynguoiviet.vn/may-say-lg-dr-80bw-80-kg/';
                 }
             
             }
+
+            dd($data);
 
             $datasss = [];
 
