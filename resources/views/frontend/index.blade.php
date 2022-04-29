@@ -121,27 +121,6 @@
                 
             </div>
             
-            @if(\Request::route()->getName()=='homeFe')        
-            <div class="category mobile">
-                <p class="category__txts">
-                <span class="menu-list">
-                    <i class="fa fa-bars" aria-hidden="true"></i>
-                </span></p>
-                <!-- <a href="/danh-muc-nhom-hang" class="category__all">Tất cả nhóm hàng</a> -->
-                <nav class="nav-list" style="display: none;">
-                    <?php  $meumobile = App\Models\groupProduct::select('name', 'link')->where('level', 0)->get();   ?>
-                    @foreach($meumobile as $menu)
-                    <a href="{{ route('details', $menu->link) }}">{{ $menu->name }}</a>
-                    @endforeach
-                   
-
-                    <a href="#" class="promotion-menu">
-                        Giảm giá <br>đặc biệt
-                        <span class="item__label">- 5%</span>
-                    </a>
-                </nav>
-            </div>
-            @endif
             
                
         </div>
