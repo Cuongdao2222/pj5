@@ -4570,7 +4570,7 @@ https://dienmaynguoiviet.vn/may-say-lg-dr-80bw-80-kg/';
 
         foreach ($image as $key => $imgs) {
 
-            $img = trim($img->image);
+            $img = trim($imgs->image);
 
             // Getting page header data
             $array = @get_headers($img->image);
