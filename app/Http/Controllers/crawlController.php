@@ -25,6 +25,30 @@ class crawlController extends Controller
 {
 
 
+    public function checklinkss()
+    {
+      
+        $post = image::select('image','product_id')->get();
+
+        foreach ($post as $key => $images) {
+            $file_headers = @get_headers('http://localhost/'.$images->images);
+
+            if($file_headers[0] != 'HTTP/1.1 200 OK'){
+
+                $product = product::find($images->product_id);
+
+                $products = $product->Link;
+
+                print_r($products);
+
+            }
+        }   
+
+    }
+
+
+   
+
 
     public function crawl()
     {
@@ -227,104 +251,127 @@ class crawlController extends Controller
 
     public function crawls()
     {
-        $codes = 'https://dienmaynguoiviet.vn/smart-tivi-samsung-ua50au9000-50-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-samsung-ua50au8000-50-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-samsung-ua50au7000-50-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-samsung-ua50au7700-50-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-neo-qled-samsung-qa75qn85a-75-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-neo-qled-samsung-qa65qn85a-65-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-neo-qled-samsung-qa65qn800a-65-inch-8k/
-https://dienmaynguoiviet.vn/android-tivi-philips-65put8215-65-inch-4k/
-https://dienmaynguoiviet.vn/android-tivi-philips-50put8215-50-inch-4k/
-https://dienmaynguoiviet.vn/android-tivi-philips-32pht6915-32-inch-hd/
-https://dienmaynguoiviet.vn/android-tivi-philips-55put8215-55-inch-4k/
-https://dienmaynguoiviet.vn/android-tivi-philips-43pft691567-43-inch-full-hd/
-https://dienmaynguoiviet.vn/smart-tivi-samsung-ua43au8000-43-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-samsung-ua43au7700-43-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-lg-43up7500ptc-43-inch-4k/
-https://dienmaynguoiviet.vn/android-tivi-sony-kd-43x86j-43-inch-4k/
-https://dienmaynguoiviet.vn/android-tivi-sony-kd-43x80js-43-inch-4k/
-https://dienmaynguoiviet.vn/android-tivi-sony-kd-43x75-43-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-lg-43up7550ptc-43-inch-4k/
-https://dienmaynguoiviet.vn/android-tivi-vsmart-43kd6600-43-inch-4k/
-https://dienmaynguoiviet.vn/android-tivi-vsmart-55ke8500-55-inch-4k/
-https://dienmaynguoiviet.vn/android-tivi-vsmart-55kd6800-55-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa65q70a-65-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa65q80a-65-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa55q80a-55-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa75q70a-75-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa55q70a-55-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-khung-tranh-qled-samsung-qa55ls03t-55-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa75q60a-75-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa65q60a-65-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa50q60a-50-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa43q60a-43-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa55q60a-55-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa85q950ts-85-inch-8k/
-https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa75q950ts-75-inch-8k/
-https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa65q950ts-65-inch-8k/
-https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa82q800ta-82-inch-8k/
-https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa75q800ta-75-inch-8k/
-https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa65q800ta-65-inch-8k/
-https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa65q95ta-55-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa55q95t-55-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa75q80t-75-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa65q80t-65-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa55q80t-55-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa49q80t-49-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa85q70t-85-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa75q70t-75-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa65q70t-65-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa55q70t-55-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa65q65t-65-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa55q65t-55-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa50q65t-50-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa43q65t-43-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa98q900r-98-inch-8k/
-https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa82q900r-82-inch-8k/
-https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa75q900r-75-inch-8k/
-https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa65q900r-65-inch-8k/
-https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa82q65r-82-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa75q65r-75-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa82q90r-82-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa75q90r-75-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa65q90r-65-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa65q80r-65-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa55q80r-55-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa75q75r-75-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa65q75r-65-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa55q75r-55-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa49q75r-49-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa65q65r-65-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa55q65r-55-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa49q65r-49-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa43q65r-43-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-65-inch-4k-qa65q6fna/
-https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-55-inch-4k-qa55q6fna/
-https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-49-inch-4k-qa49q6fna/
-https://dienmaynguoiviet.vn/smart-tivi-samsung-qled-55-inch-4k-qa55q7fna/
-https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-75-inch-4k-qa75q9fna/
-https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-75-inch-4k-qa75q7fna/
-https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-65-inch-4k-qa65q9fna/
+        $codes = 'https://dienmaynguoiviet.vn/smart-tivi-samsung-49-inch-49mu8000-4k/
+https://dienmaynguoiviet.vn/smart-tivi-samsung-55-inch-55mu8000-4k/
+https://dienmaynguoiviet.vn/smart-tivi-samsung-65-inch-65mu8000-4k/
+https://dienmaynguoiviet.vn/smart-tivi-samsung-55-inch-55mu9000-4k/
+https://dienmaynguoiviet.vn/smart-tivi-samsung-ua65mu9000-man-hinh-cong-4k/
+https://dienmaynguoiviet.vn/smart-tivi-samsung-78ku6500-78-inch-4k-man-hinh-cong/
+https://dienmaynguoiviet.vn/smart-tivi-samsung-65-inch-ua65ku6100-curved-4k-hdr-100hz/
+https://dienmaynguoiviet.vn/smart-tivi-samsung-55-inch-ua55ku6100-curved-4k-hdr-100hz/
+https://dienmaynguoiviet.vn/smart-tivi-samsung-49-inch-ua49ku6100-curved-4k-hdr-100hz/
+https://dienmaynguoiviet.vn/smart-tivi-samsung-40-inch-ua40ku6100-curved-4k-hdr-100hz/
+https://dienmaynguoiviet.vn/smart-tivi-samsung-ua65ku6400-65-inch-4k-100hz/
+https://dienmaynguoiviet.vn/smart-tivi-samsung-ua55ku6400-55-inch-4k-100hz/
+https://dienmaynguoiviet.vn/smart-tivi-samsung-ua49ku6400-49-inch-4k-100hz/
+https://dienmaynguoiviet.vn/smart-tivi-samsung-ua43ku6400-43-inch-4k-100hz/
+https://dienmaynguoiviet.vn/smart-tivi-samsung-ua40ku6400-40-inch-4k-100hz/
+https://dienmaynguoiviet.vn/smart-tivi-samsung-70ku6000-70-inch-4k-man-hinh-cong-100hz/
+https://dienmaynguoiviet.vn/smart-tivi-samsung-65ku6000-65-inch-4k-man-hinh-cong-100hz/
+https://dienmaynguoiviet.vn/smart-tivi-samsung-60ku6000-60-inch-4k-man-hinh-cong-100hz/
+https://dienmaynguoiviet.vn/smart-tivi-samsung-55ku6000-55-inch-4k-man-hinh-cong-100hz/
+https://dienmaynguoiviet.vn/smart-tivi-samsung-50ku6000-50-inch-4k-man-hinh-cong-100hz/
+https://dienmaynguoiviet.vn/smart-tivi-samsung-43ku6000-43-inch-4k-man-hinh-cong-100hz/
+https://dienmaynguoiviet.vn/smart-tivi-samsung-40ku6000-40-inch-4k-100hz/
+https://dienmaynguoiviet.vn/smart-tivi-samsung-65ku6500-65-inch-4k-man-hinh-cong-100hz/
+https://dienmaynguoiviet.vn/smart-tivi-samsung-55ku6500-55-inch-4k-man-hinh-cong-100hz/
+https://dienmaynguoiviet.vn/smart-tivi-samsung-49ku6500-49-inch-4k-man-hinh-cong-100hz/
+https://dienmaynguoiviet.vn/smart-tivi-samsung-43ku6500-43-inch-4k-man-hinh-cong-100hz/
+https://dienmaynguoiviet.vn/smart-tivi-samsung-78ks9000-curver-78-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-samsung-60ks7000-60-inches-4k/
+https://dienmaynguoiviet.vn/smart-tivi-samsung-55ks7000-55-inches-4k/
+https://dienmaynguoiviet.vn/smart-tivi-samsung-49ks7000-49-inches-4k/
+https://dienmaynguoiviet.vn/smart-tivi-samsung-65ks7500-65-inch-man-hinh-cong/
+https://dienmaynguoiviet.vn/smart-tivi-samsung-55ks7500-55-inch-man-hinh-cong/
+https://dienmaynguoiviet.vn/smart-tivi-samsung-49ks7500-49-inch-man-hinh-cong/
+https://dienmaynguoiviet.vn/smart-tivi-samsung-65ks9000-curver-65-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-samsung-55ks9000-curver-55-inch-4k/
+https://dienmaynguoiviet.vn/tivi-samsung-ua55js7200-smart-tv-55/
+https://dienmaynguoiviet.vn/tivi-samsung-ua65ju6000-65-inches-smart-tv-4k/
+https://dienmaynguoiviet.vn/tivi-led-samsung-ua65ju7000-smart-tv-65-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-tcl-49p32-cf-49-inch-full-hd/
+https://dienmaynguoiviet.vn/smart-tivi-tcl-55-inch-4k-l55p5-uc/
+https://dienmaynguoiviet.vn/smart-tivi-tcl-65x3-qled-65-inch-4k-man-hinh-cong/
+https://dienmaynguoiviet.vn/smart-tivi-oled-cong-lg-55-inch-55ec930t-full-hd/
+https://dienmaynguoiviet.vn/tivi-oled-lg-65e6t-65-iinch-4k-man-hinh-cong/
+https://dienmaynguoiviet.vn/tivi-oled-lg-65c6t-65-iinch-4k-man-hinh-cong/
+https://dienmaynguoiviet.vn/smart-tivi-oled-lg-65eg965t-cong-65-inch-4k-3d/
+https://dienmaynguoiviet.vn/tivi-oled-lg-55c6t-55-inch-4k/
+https://dienmaynguoiviet.vn/tivi-oled-lg-55eg920t-55-inch-smart-tv-full-hd/
+https://dienmaynguoiviet.vn/tivi-oled-lg-55eg910t-55-inch-3d/
+https://dienmaynguoiviet.vn/tv-uhd-4k-lg-65ug870t-65-inch-smart-tv-200hz/
+https://dienmaynguoiviet.vn/tv-uhd-4k-lg-79ug880t-79-inch-3d-200hz/
+https://dienmaynguoiviet.vn/smart-tivi-samsung-ua55ru7300-55-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-samsung-ua49ru7300-49-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-samsung-65-inch-4k-ua65nu7300/
+https://dienmaynguoiviet.vn/smart-tivi-samsung-55-inch-4k-ua55nu7500-man-hinh-cong/
 https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-65-inch-4k-qa65q8cna/
-https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-65-inch-4k-qa65q7fna/
+https://dienmaynguoiviet.vn/smar-tivi-samsung-55-inch-4k-ua55nu7300/
+https://dienmaynguoiviet.vn/samsung-smarttv-49inch-uhd-4k-ua49nu7500kxxv-man-hinh-cong/
 https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-55-inch-4k-qa55q8cna/
-https://dienmaynguoiviet.vn/smart-tivi-samsung-qled-qa49q7fam-49-inch/
-https://dienmaynguoiviet.vn/smart-tivi-samsung-qled-qa65q7fam-65-inch/
-https://dienmaynguoiviet.vn/smart-tivi-samsung-qled-qa75q7fam-75-inch/
+https://dienmaynguoiviet.vn/samsung-smarttv-uhd-4k-ua49nu7300kxxv/
+https://dienmaynguoiviet.vn/smart-tivi-samsung-ua55nu8500-55-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-samsung-ua65nu8500-65-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-samsung-49m6303-55-inch-full-hd/
+https://dienmaynguoiviet.vn/smart-tivi-samsung-ua49mu6103-49-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-samsung-55m6303-55-inch-full-hd-man-hinh-cong/
 https://dienmaynguoiviet.vn/smart-tivi-samsung-qled-qa55q8-55-inch-man-hinh-cong/
 https://dienmaynguoiviet.vn/smart-tivi-samsung-qled-qa65q8-65-inch/
 https://dienmaynguoiviet.vn/smart-tivi-samsung-qled-qa75q8-75-inch/
-https://dienmaynguoiviet.vn/smart-tivi-samsung-qled-qa65q9-65-inch/
-https://dienmaynguoiviet.vn/smart-tivi-samsung-qled-qa75q9-75-inch/
-https://dienmaynguoiviet.vn/smart-tivi-samsung-qled-qa88q9fam-88-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa55q7f-55-inch/
+https://dienmaynguoiviet.vn/smart-tivi-samsung-49-inch-49m6300-full-hd/
+https://dienmaynguoiviet.vn/smart-tivi-samsung-55-inch-55m6300-full-hd/
+https://dienmaynguoiviet.vn/smart-tivi-samsung-49-inch-49mu6500-4k/
+https://dienmaynguoiviet.vn/smart-tivi-samsung-55-inch-55mu6500-4k/
+https://dienmaynguoiviet.vn/smart-tivi-samsung-65-inch-65mu6500-4k/
+https://dienmaynguoiviet.vn/smart-tivi-samsung-ua55k6300-55-inch-full-hd/
+https://dienmaynguoiviet.vn/smart-tivi-samsung-49k6300-49-inch-full-hd/
+https://dienmaynguoiviet.vn/smart-tivi-samsung-40k6300-40-inch-full-hd/
 https://dienmaynguoiviet.vn/easy-smart-tivi-sharp-45-inch-lc-45le380x-full-hd/
 https://dienmaynguoiviet.vn/internet-tivi-32-inch-sharp-lc-32le375x-hd/
-https://dienmaynguoiviet.vn/tivi-sharp-32-inch-lc-32le280x-hd/
-https://dienmaynguoiviet.vn/tivi-led-sharp-lc-32le150m-32-inch-hd-ready/
+https://dienmaynguoiviet.vn/smart-tivi-panasonic-th-55fx700v-55-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-panasonic-th-49fx700v-49-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-panasonic-th-65fx600v-65-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-panasonic-th-55fx600v-55-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-panasonic-th-43fx600v-43-inch-uhd-4k/
+https://dienmaynguoiviet.vn/smart-tivi-panasonic-th-50fs500v-50-inch-full-hd/
+https://dienmaynguoiviet.vn/smart-tivi-oled-panasonic-th-77ez1000v-77-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-panasonic-65-inch-th-65ez1000v-4k/
+https://dienmaynguoiviet.vn/smart-tivi-panasonic-55-inch-th-55ez950v-4k/
+https://dienmaynguoiviet.vn/tivi-panasonic-49-inch-th-49lx1v-4k/
+https://dienmaynguoiviet.vn/android-tivi-qled-tcl-65c725-65-inch-4k/
+https://dienmaynguoiviet.vn/android-tivi-qled-tcl-55c725-55-inch-4k/
+https://dienmaynguoiviet.vn/android-tivi-tcl-l43s5200-43-inch-full-hd/
+https://dienmaynguoiviet.vn/androi-tivi-tcl-l32s5200-32-inch-hd/
+https://dienmaynguoiviet.vn/android-tivi-tcl-43p618-43-inch-4k/
+https://dienmaynguoiviet.vn/android-tivi-tcl-55p618-55-inch-4k/
+https://dienmaynguoiviet.vn/android-tivi-tcl-65p618-65-inch-4k/
+https://dienmaynguoiviet.vn/android-tivi-tcl-75p618-75-inch-4k/
+https://dienmaynguoiviet.vn/android-tivi-qled-tcl-65c715-65-inch-4k/
+https://dienmaynguoiviet.vn/android-tivi-qled-tcl-65q716-65-inch-4k/
+https://dienmaynguoiviet.vn/android-tivi-qled-tcl-55c715-55-inch-4k/
+https://dienmaynguoiviet.vn/android-tivi-tcl-75p715-75-inch-4k/
+https://dienmaynguoiviet.vn/android-tivi-tcl-55p715-55-inch-4k/
+https://dienmaynguoiviet.vn/android-tivi-tcl-50p715-50-inch-4k/
+https://dienmaynguoiviet.vn/android-tivi-tcl-43p715-43-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-tcl-4k-55-inch-55a8/
+https://dienmaynguoiviet.vn/smart-tivi-tcl-4k-50-inch-50a8/
+https://dienmaynguoiviet.vn/smart-tivi-tcl-4k-50-inch-50p8s/
+https://dienmaynguoiviet.vn/smart-tivi-tcl-4k-55-inch-55p8s/
+https://dienmaynguoiviet.vn/android-tivi-tcl-65-inch-4k-l65p8/
+https://dienmaynguoiviet.vn/android-tivi-tcl-55-inch-4k-l55p8/
+https://dienmaynguoiviet.vn/android-tivi-tcl-50-inch-4k-l50p8/
+https://dienmaynguoiviet.vn/android-tivi-tcl-43-inch-4k-l43p8/
+https://dienmaynguoiviet.vn/tivi-qled-tcl-85-inch-4k-85x6/
+https://dienmaynguoiviet.vn/tivi-qled-tcl-55-inch-4k-l55x4/
+https://dienmaynguoiviet.vn/smart-tivi-tcl-40-inch-4k-l40p62-uf/
+https://dienmaynguoiviet.vn/smart-tivi-tcl-65-inch-l65p6-4k/
+https://dienmaynguoiviet.vn/smart-tivi-tcl-55-inch-l55p6-4k/
+https://dienmaynguoiviet.vn/smart-tivi-tcl-50-inch-l50p6-4k/
 https://dienmaynguoiviet.vn/android-tivi-sony-xr-85x95j-85-inch-4k/
 https://dienmaynguoiviet.vn/android-tivi-sony-xr-75x90j-75-inch-4k/
+https://dienmaynguoiviet.vn/android-tivi-sony-kd-43x86j-43-inch-4k/
+https://dienmaynguoiviet.vn/android-tivi-sony-kd-43x80js-43-inch-4k/
+https://dienmaynguoiviet.vn/android-tivi-sony-kd-43x75-43-inch-4k/
 https://dienmaynguoiviet.vn/android-tivi-sony-kd-85x86j-85inch-4k/
 https://dienmaynguoiviet.vn/android-tivi-sony-kd-75x86j-75-inch-4k/
 https://dienmaynguoiviet.vn/android-tivi-sony-kd-65x86j-65-inch-4k/
@@ -332,16 +379,17 @@ https://dienmaynguoiviet.vn/android-tivi-oled-sony-xr-77a80j-77-inch-4k/
 https://dienmaynguoiviet.vn/android-tivi-sony-kd-75x80j-75-inch-4k/
 https://dienmaynguoiviet.vn/android-tivi-sony-xr-65x90j-65-inch-4k/
 https://dienmaynguoiviet.vn/android-tivi-sony-kd-65x80js-65-inch-4k/
+https://dienmaynguoiviet.vn/android-tivi-sony-kd-55x86j-55-inch-4k/
 https://dienmaynguoiviet.vn/android-tivi-sony-kd-55x80j-s-55-inch-4k/
 https://dienmaynguoiviet.vn/android-tivi-sony-kd-55x80j-55-inch-4k/
 https://dienmaynguoiviet.vn/android-tivi-oled-sony-xr-55a90j-55-inch-4k/
 https://dienmaynguoiviet.vn/android-tivi-oled-sony-xr-55a80j-55-inch-4k/
-https://dienmaynguoiviet.vn/android-tivi-oled-sony-xr-65a90j-65-inch-4k/
 https://dienmaynguoiviet.vn/android-tivi-sony-xr-50x90j-50-inch-4k/
 https://dienmaynguoiviet.vn/android-tivi-sony-kd-50x86j-50-inch-4k/
 https://dienmaynguoiviet.vn/android-tivi-sony-kd-50x80j-50-inch-4k/
 https://dienmaynguoiviet.vn/android-tivi-sony-xr-55x90j-55-inch-4k/
 https://dienmaynguoiviet.vn/android-tivi-sony-kd-50x75-50-inch-4k/
+https://dienmaynguoiviet.vn/android-tivi-sony-kd-85z8h-85-inch-8k/
 https://dienmaynguoiviet.vn/android-tivi-sony-kd-85x9000h-85-inch-4k/
 https://dienmaynguoiviet.vn/android-tivi-sony-kd-75x9000h-75-inch-4k/
 https://dienmaynguoiviet.vn/android-tivi-sony-kd-75x8050h-75-inch-4k/
@@ -358,9 +406,7 @@ https://dienmaynguoiviet.vn/android-tivi-sony-kd-65x9500h-65-inch-4k/
 https://dienmaynguoiviet.vn/android-tivi-sony-kd-55x9500h-55-inch-4k/
 https://dienmaynguoiviet.vn/android-tivi-sony-kd-49x9500h-49-inch-4k/
 https://dienmaynguoiviet.vn/android-tivi-oled-sony-kd-65a8g-65-inch-4k/
-https://dienmaynguoiviet.vn/android-tivi-oled-sony-kd-55a9g-55-inch-4k/
 https://dienmaynguoiviet.vn/android-tivi-oled-sony-kd-55a8g-55-inch-4k/
-https://dienmaynguoiviet.vn/android-tivi-oled-sony-kd-65a9g-65-inch-4k/
 https://dienmaynguoiviet.vn/android-tivi-sony-kd-85x9500g-85-inch-4k/
 https://dienmaynguoiviet.vn/android-tivi-sony-kd-75x8500g-75-inch-4k/
 https://dienmaynguoiviet.vn/android-tivi-sony-kd-75x8000g-75-inch-4k/
@@ -370,6 +416,8 @@ https://dienmaynguoiviet.vn/android-tivi-sony-kd-49x8500g-49-inch-4k/
 https://dienmaynguoiviet.vn/smart-tivi-sony-55-inch-4k-kd-55x7000g/
 https://dienmaynguoiviet.vn/smart-tivi-sony-49-inch-4k-kd-49x7000g/
 https://dienmaynguoiviet.vn/smart-tivi-sony-43-inch-4k-kd-43x7000g/
+https://dienmaynguoiviet.vn/smart-tivi-sony-kdl-49w800g-49-inch-full-hd/
+https://dienmaynguoiviet.vn/smart-tivi-sony-kdl-43w800g-43-inch-full-hd/
 https://dienmaynguoiviet.vn/android-tivi-sony-kd-75x9500g-75-inch-4k/
 https://dienmaynguoiviet.vn/android-tivi-sony-kd-65x9500g-65-inch-4k/
 https://dienmaynguoiviet.vn/android-tivi-sony-kd-55x9500g-55-inch-4k/
@@ -379,9 +427,9 @@ https://dienmaynguoiviet.vn/android-tivi-sony-kd-55x8500g-55-inch-4k/
 https://dienmaynguoiviet.vn/android-tivi-sony-kd-55x8000g-55-inch-4k/
 https://dienmaynguoiviet.vn/android-tivi-sony-kd-49x8000g-49-inch-4k/
 https://dienmaynguoiviet.vn/android-tivi-sony-kd-43x8000g-43-inch-4k/
-https://dienmaynguoiviet.vn/tivi-oled-sony-55-inch-4k-kd-55a8f/
+https://dienmaynguoiviet.vn/smart-tivi-sony-kdl-50w660g-50-inch-full-hd/
+https://dienmaynguoiviet.vn/smart-tivi-sony-kdl-43w660g-43-inch-full-hd/
 https://dienmaynguoiviet.vn/smart-tivi-sony-65-inch-4k-kd-65x7000f/
-https://dienmaynguoiviet.vn/tivi-oled-sony-65-inch-4k-kd-65a8f/
 https://dienmaynguoiviet.vn/android-tivi-sony-60-inch-4k-kd-60x8300f/
 https://dienmaynguoiviet.vn/smart-tivi-sony-55-inch-4k-kd-55x7000f/
 https://dienmaynguoiviet.vn/android-tivi-sony-49-inch-4k-kd-49x9000f/
@@ -394,11 +442,15 @@ https://dienmaynguoiviet.vn/android-tivi-sony-43-inch-4k-kd-43x8500f/
 https://dienmaynguoiviet.vn/android-tivi-sony-49-inch-4k-kd-49x7500f/
 https://dienmaynguoiviet.vn/android-tivi-sony-4k-55-inch-kd-55x9000f/
 https://dienmaynguoiviet.vn/smart-tivi-sony-43-inch-kdl-43w660f/
+https://dienmaynguoiviet.vn/smart-tivi-lg-32lq576bpsa-32-inch-hd/
+https://dienmaynguoiviet.vn/smart-tivi-lg-43up7500ptc-43-inch-4k/
 https://dienmaynguoiviet.vn/smart-tivi-lg-50up7500ptc-50-inch-4k/
 https://dienmaynguoiviet.vn/smart-tivi-lg-55up7500ptc-55-inch-4k/
 https://dienmaynguoiviet.vn/smart-tivi-lg-43un721cotf-43-inch-4k/
 https://dienmaynguoiviet.vn/smart-tivi-oled-lg-48a1pta-48-inch-4k/
 https://dienmaynguoiviet.vn/smart-tivi-lg-55un721c0tf-55-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-lg-43lm5750ptc-43-inch-full-hd/
+https://dienmaynguoiviet.vn/smart-tivi-lg-43up7550ptc-43-inch-4k/
 https://dienmaynguoiviet.vn/smart-tivi-lg-50up7550ptc-50-inch-4k/
 https://dienmaynguoiviet.vn/smart-tivi-lg-55up7550ptc-55-inch-4k/
 https://dienmaynguoiviet.vn/smart-tivi-lg-65up7550ptc-65-inch-4k/
@@ -436,9 +488,17 @@ https://dienmaynguoiviet.vn/smart-tivi-oled-lg-65c1ptb-65-inch-4k/
 https://dienmaynguoiviet.vn/smart-tivi-oled-lg-77c1ptb-77-inch-4k/
 https://dienmaynguoiviet.vn/smart-tivi-oled-lg-55g1pta-55-inch-4k/
 https://dienmaynguoiviet.vn/smart-tivi-oled-lg-65g1pta-65-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-oled-lg-88z1pta-88-inch-8k/
 https://dienmaynguoiviet.vn/smart-tivi-lg-65un721c0tf-65-inch-4k/
 https://dienmaynguoiviet.vn/smart-tivi-lg-70un7070pta-70-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-lg-75nano95tna-75-inch-8k/
+https://dienmaynguoiviet.vn/smart-tivi-lg-65nano95tna-65-inch-8k/
+https://dienmaynguoiviet.vn/smart-tivi-lg-55nano95tna-55-inch-8k/
+https://dienmaynguoiviet.vn/smart-tivi-lg-32ln560bpta-32-inch-hd/
+https://dienmaynguoiviet.vn/smart-tivi-lg-43ln5600pta-43-inch-full-hd/
 https://dienmaynguoiviet.vn/smart-tivi-oled-lg-65rxpta-65-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-oled-lg-88zxpta-88-inch-8k/
+https://dienmaynguoiviet.vn/smart-tivi-oled-lg-77zxpta-77-inch-8k/
 https://dienmaynguoiviet.vn/smart-tivi-oled-lg-65gxpta-65-inch-4k/
 https://dienmaynguoiviet.vn/smart-tivi-oled-lg-55gxpta-55-inch-4k/
 https://dienmaynguoiviet.vn/smart-tivi-oled-lg-77cxpta-77-inch-4k/
@@ -473,8 +533,11 @@ https://dienmaynguoiviet.vn/smart-tivi-lg-43un7400pta-43-inch-4k/
 https://dienmaynguoiviet.vn/smart-tivi-lg-43un7300ptc-43-inch-4k/
 https://dienmaynguoiviet.vn/smart-tivi-lg-43un7190pta-43-inch-4k/
 https://dienmaynguoiviet.vn/smart-tivi-lg-43un7000pta-43-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-lg-43lm6360ptb-43-inch-hd/
+https://dienmaynguoiviet.vn/smart-tivi-lg-32lm636bptb-32-inch-hd/
 https://dienmaynguoiviet.vn/smart-tivi-lg-75sm9900pta-75-inch-8k/
 https://dienmaynguoiviet.vn/smart-tivi-lg-75-inch-4k-75um6970/
+https://dienmaynguoiviet.vn/smart-tivi-lg-32lm570bptc-32-inch-hd/
 https://dienmaynguoiviet.vn/smart-tivi-lg-4k-43-inch-43um7100pta/
 https://dienmaynguoiviet.vn/smart-tivi-lg-4k-49-inch-49um7100pta/
 https://dienmaynguoiviet.vn/smart-tivi-lg-4k-55-inch-55um7100pta/
@@ -512,11 +575,9 @@ https://dienmaynguoiviet.vn/smart-tivi-lg-55-inch-4k-55uk6320pte/
 https://dienmaynguoiviet.vn/smart-tivi-lg-43-inch-4k-43uk6200pta/
 https://dienmaynguoiviet.vn/smart-tivi-oled-lg-oled77w8t-77-inch-4k/
 https://dienmaynguoiviet.vn/smart-tivi-oled-lg-oled65w8t-65-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-lg-86-inch-86uk6500ptb-4k-active-hdr/
-https://dienmaynguoiviet.vn/tivi-oled-lg-oled55e8pta-55-inch/
-https://dienmaynguoiviet.vn/tivi-oled-lg-oled65e8pta-65-inch/
-https://dienmaynguoiviet.vn/tivi-oled-lg-oled55c8pta-55-inch/
 https://dienmaynguoiviet.vn/tivi-oled-lg-oled65c8pta-65-inch/
+https://dienmaynguoiviet.vn/smarttv-lg-32inch-32lk540bpta/
+https://dienmaynguoiviet.vn/smart-tivi-lg-full-hd-43inch-43lk5400pta/
 https://dienmaynguoiviet.vn/smart-tivi-lg-43lk5700pta-43-inch-full-hd/
 https://dienmaynguoiviet.vn/smart-tivi-lg-55inch-4k-55uk7500pta/
 https://dienmaynguoiviet.vn/smart-tivi-lg-75-inch-75sk8000pta-4k/
@@ -556,22 +617,58 @@ https://dienmaynguoiviet.vn/smart-tivi-lg-49-inch-49uj633t-4k/
 https://dienmaynguoiviet.vn/smart-tivi-lg-43-inch-43uj633t-4k/
 https://dienmaynguoiviet.vn/smart-tivi-lg-65-inch-65uj632t-4k/
 https://dienmaynguoiviet.vn/smart-tivi-lg-43-inch-43uj632t-4k/
+https://dienmaynguoiviet.vn/smart-tivi-lg-43-inch-43lj614t-full-hd/
+https://dienmaynguoiviet.vn/smart-tivi-lg-49lj553t-49-inch-full-hd/
+https://dienmaynguoiviet.vn/smart-tivi-lg-55-inch-55lj550t-full-hd/
+https://dienmaynguoiviet.vn/smart-tivi-lg-32-inch-32lj550d-hd/
+https://dienmaynguoiviet.vn/smart-tivi-lg-32lj571d-32-inch-hd/
 https://dienmaynguoiviet.vn/smart-tivi-lg-55-inch-55uh750t-4k/
-https://dienmaynguoiviet.vn/smart-tivi-oled-cong-lg-55-inch-55ec930t-full-hd/
-https://dienmaynguoiviet.vn/tivi-oled-lg-65e6t-65-iinch-4k-man-hinh-cong/
-https://dienmaynguoiviet.vn/tivi-oled-lg-65c6t-65-iinch-4k-man-hinh-cong/
-https://dienmaynguoiviet.vn/smart-tivi-oled-lg-65eg965t-cong-65-inch-4k-3d/
 https://dienmaynguoiviet.vn/smart-tivi-lg-75uh656t-75-inch-4k/
-https://dienmaynguoiviet.vn/tivi-oled-lg-55c6t-55-inch-4k/
 https://dienmaynguoiviet.vn/smart-tivi-lg-60-inch-4k-60uh617t-ultra-hd-4k-100hz/
-https://dienmaynguoiviet.vn/tivi-oled-lg-55eg920t-55-inch-smart-tv-full-hd/
-https://dienmaynguoiviet.vn/tivi-oled-lg-55eg910t-55-inch-3d/
-https://dienmaynguoiviet.vn/tv-uhd-4k-lg-65ug870t-65-inch-smart-tv-200hz/
-https://dienmaynguoiviet.vn/tv-uhd-4k-lg-79ug880t-79-inch-3d-200hz/
+https://dienmaynguoiviet.vn/smart-tivi-samsung-ua50au9000-50-inch-4k/
 https://dienmaynguoiviet.vn/smart-tivi-samsung-ua65au8000-65-inch-4k/
 https://dienmaynguoiviet.vn/smart-tivi-samsung-ua55au8000-55-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-samsung-ua50au8000-50-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-samsung-ua43au8000-43-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-samsung-ua50au7000-50-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-samsung-ua43au7700-43-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-samsung-ua50au7700-50-inch-4k/
 https://dienmaynguoiviet.vn/smart-tivi-samsung-ua65au7700-65-inch-4k/
 https://dienmaynguoiviet.vn/smart-tivi-samsung-ua55au7700-55-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa65q70a-65-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-neo-qled-samsung-qa75qn85a-75-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-neo-qled-samsung-qa65qn85a-65-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-neo-qled-samsung-qa65qn800a-65-inch-8k/
+https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa65q80a-65-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa55q80a-55-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa75q70a-75-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa55q70a-55-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-khung-tranh-qled-samsung-qa55ls03t-55-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa75q60a-75-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa65q60a-65-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa50q60a-50-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa43q60a-43-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa55q60a-55-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa85q950ts-85-inch-8k/
+https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa75q950ts-75-inch-8k/
+https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa65q950ts-65-inch-8k/
+https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa82q800ta-82-inch-8k/
+https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa75q800ta-75-inch-8k/
+https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa65q800ta-65-inch-8k/
+https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa65q95ta-55-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa55q95t-55-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa75q80t-75-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa65q80t-65-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa55q80t-55-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa49q80t-49-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa85q70t-85-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa75q70t-75-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa65q70t-65-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa55q70t-55-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa65q65t-65-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa55q65t-55-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa50q65t-50-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa43q65t-43-inch-4k/
 https://dienmaynguoiviet.vn/smart-tivi-samsung-ua65tu8500-65-inch-4k/
 https://dienmaynguoiviet.vn/smart-tivi-samsung-ua55tu8500-55-inch-4k/
 https://dienmaynguoiviet.vn/smart-tivi-samsung-ua50tu8500-50-inch-4k/
@@ -586,13 +683,30 @@ https://dienmaynguoiviet.vn/smart-tivi-samsung-ua65tu7000-65-inch-4k/
 https://dienmaynguoiviet.vn/smart-tivi-samsung-ua55tu7000-55-inch-4k/
 https://dienmaynguoiviet.vn/smart-tivi-samsung-ua50tu7000-50-inch-4k/
 https://dienmaynguoiviet.vn/smart-tivi-samsung-ua43tu7000-43-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa98q900r-98-inch-8k/
+https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa82q900r-82-inch-8k/
+https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa75q900r-75-inch-8k/
+https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa65q900r-65-inch-8k/
+https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa82q65r-82-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa75q65r-75-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa82q90r-82-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa75q90r-75-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa65q90r-65-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa65q80r-65-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa55q80r-55-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa75q75r-75-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa65q75r-65-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa55q75r-55-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa49q75r-49-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa65q65r-65-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa55q65r-55-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa49q65r-49-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-qa43q65r-43-inch-4k/
 https://dienmaynguoiviet.vn/smart-tivi-samsung-ua65ru8000-65-inch-4k/
 https://dienmaynguoiviet.vn/smart-tivi-samsung-ua65ru7400-65-inch-4k/
 https://dienmaynguoiviet.vn/smart-tivi-samsung-ua55ru7400-55-inch-4k/
 https://dienmaynguoiviet.vn/smart-tivi-samsung-ua50ru7400-50-inch-4k/
 https://dienmaynguoiviet.vn/smart-tivi-samsung-ua43ru7400-43-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-samsung-ua55ru7300-55-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-samsung-ua49ru7300-49-inch-4k/
 https://dienmaynguoiviet.vn/smart-tivi-samsung-ua50ru7200-50-inch-4k/
 https://dienmaynguoiviet.vn/smart-tivi-samsung-ua43ru7200-43-inch-4k/
 https://dienmaynguoiviet.vn/smart-tivi-samsung-ua65nu7090-65-inch-4k/
@@ -603,56 +717,9 @@ https://dienmaynguoiviet.vn/smart-tivi-samsung-65-inch-4k-ua65ru7100/
 https://dienmaynguoiviet.vn/smart-tivi-samsung-50-inch-4k-ua50ru7100/
 https://dienmaynguoiviet.vn/smart-tivi-samsung-43-inch-4k-ua43ru7100/
 https://dienmaynguoiviet.vn/smart-tivi-samsung-55-inch-4k-ua55ru7100/
-https://dienmaynguoiviet.vn/smart-tivi-samsung-65-inch-4k-ua65nu7300/
 https://dienmaynguoiviet.vn/smart-tivi-samsung-50-inch-4k-ua50nu7800/
-https://dienmaynguoiviet.vn/smart-tivi-75-inch-4k-ua75nu7100/
-https://dienmaynguoiviet.vn/smart-tivi-samsung-65-inch-4k-ua65nu7500/
-https://dienmaynguoiviet.vn/smart-tivi-samsung-65-inch-4k-ua65nu7400/
-https://dienmaynguoiviet.vn/smart-tivi-samsung-65-inch-4k-ua65nu7100/
-https://dienmaynguoiviet.vn/smart-tivi-samsung-ua58nu7103-58-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-samsung-55-inch-4k-ua55nu7500-man-hinh-cong/
-https://dienmaynguoiviet.vn/smart-tivi-samsung-55-inch-4k-ua55nu7400/
-https://dienmaynguoiviet.vn/samsung-smarttv-50inch-4k-ua50nu7400kxxv/
-https://dienmaynguoiviet.vn/smar-tivi-samsung-55-inch-4k-ua55nu7300/
-https://dienmaynguoiviet.vn/samsung-smarttv-49inch-uhd-4k-ua49nu7500kxxv-man-hinh-cong/
-https://dienmaynguoiviet.vn/smart-tivi-samsung-55-inch-4k-ua55nu7100/
-https://dienmaynguoiviet.vn/samsung-smarttv-uhd-4k-ua49nu7300kxxv/
-https://dienmaynguoiviet.vn/smart-tivi-samsung-49nu7100-49-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-samsung-4k-43-inch-43nu7800/
-https://dienmaynguoiviet.vn/smart-tivi-samsung-43-inch-4k-ua43nu7400/
-https://dienmaynguoiviet.vn/smart-tivi-samsung-4k-43-inch-43nu7100/
-https://dienmaynguoiviet.vn/smart-tivi-samsung-ua55nu8000-55-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-samsung-ua65nu8000-65-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-samsung-ua75nu8000-75-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-samsung-ua82nu8000-82-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-samsung-ua55nu8500-55-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-samsung-ua65nu8500-65-inch-4k/
-https://dienmaynguoiviet.vn/smart-tivi-samsung-75-inch-ua75mu6103-4k/
-https://dienmaynguoiviet.vn/smart-tivi-samsung-55-inch-ua55mu6103-4k/
-https://dienmaynguoiviet.vn/smart-tivi-samsung-43-inch-ua43mu6400-4k/
-https://dienmaynguoiviet.vn/smart-tivi-samsung-65-inch-ua65mu6103-4k/
-https://dienmaynguoiviet.vn/smart-tivi-samsung-43-inch-ua43mu6103-4k/
-https://dienmaynguoiviet.vn/smart-tivi-samsung-40-inch-ua40mu6103-4k/
-https://dienmaynguoiviet.vn/tivi-samsung-55-inch-ua55ls003/
-https://dienmaynguoiviet.vn/tivi-samsung-65-inch-ua65ls003/
-https://dienmaynguoiviet.vn/smart-tivi-samsung-65-inch-ua65mu6100-4k/
-https://dienmaynguoiviet.vn/smart-tivi-samsung-40-inch-40mu6100-4k/
-https://dienmaynguoiviet.vn/smart-tivi-samsung-43-inch-43mu6100-4k/
-https://dienmaynguoiviet.vn/smart-tivi-samsung-49-inch-49mu6100-4k/
-https://dienmaynguoiviet.vn/smart-tivi-samsung-50-inch-50mu6100-4k/
-https://dienmaynguoiviet.vn/smart-tivi-samsung-55-inch-55mu6100-4k/
-https://dienmaynguoiviet.vn/smart-tivi-samsung-75-inch-75mu6100-4k/
-https://dienmaynguoiviet.vn/smart-tivi-samsung-40-inch-40mu6400-4k/
-https://dienmaynguoiviet.vn/smart-tivi-samsung-49-inch-49mu6400-4k/
-https://dienmaynguoiviet.vn/smart-tivi-samsung-55-inch-55mu6400-4k/
-https://dienmaynguoiviet.vn/smart-tivi-samsung-65-inch-65mu6400-4k/
-https://dienmaynguoiviet.vn/smart-tivi-samsung-49-inch-49mu6500-4k/
-https://dienmaynguoiviet.vn/smart-tivi-samsung-55-inch-55mu6500-4k/
-https://dienmaynguoiviet.vn/smart-tivi-samsung-65-inch-65mu6500-4k/
-https://dienmaynguoiviet.vn/smart-tivi-samsung-55-inch-55mu7000-4k/
-https://dienmaynguoiviet.vn/smart-tivi-samsung-65-inch-65mu7000-4k/
-https://dienmaynguoiviet.vn/smart-tivi-samsung-75-inch-75mu7000-4k/
-https://dienmaynguoiviet.vn/smart-tivi-samsung-82-inch-82mu7000-4k/
+https://dienmaynguoiviet.vn/tivi-samsung-ua32n4300-32-inch-hd/
+https://dienmaynguoiviet.vn/smart-tivi-qled-samsung-65-inch-4k-qa65q6fna/
 https://dienmaynguoiviet.vn/smart-tivi-samsung-ua50au9000-50-inch-4k/
 https://dienmaynguoiviet.vn/smart-tivi-samsung-ua50au8000-50-inch-4k/
 https://dienmaynguoiviet.vn/smart-tivi-samsung-ua50au7000-50-inch-4k/
@@ -3130,7 +3197,7 @@ https://dienmaynguoiviet.vn/ban-la-hoi-nuoc-panasonic-ni-p300tara-1200w-de-ma-ti
 https://dienmaynguoiviet.vn/ban-la-hoi-nuoc-panasonic-ni-e410tmra-mat-ma-teflon/
 https://dienmaynguoiviet.vn/ban-la-hoi-nuoc-panasonic-ni-e510tdra/
 https://dienmaynguoiviet.vn/ban-la-hoi-nuoc-panasonic-ni-w650cslra/
-https://dienmaynguoiviet.vn/ban-la-kho-panasonic-ni-317tvgra/=
+https://dienmaynguoiviet.vn/ban-la-kho-panasonic-ni-317tvgra/
 https://dienmaynguoiviet.vn/binh-nuoc-nong-truc-tiep-ariston-rmc45pe-vn/
 https://dienmaynguoiviet.vn/binh-nuoc-nong-truc-tiep-ariston-rmc45e-vn/
 https://dienmaynguoiviet.vn/may-nuoc-nong-truc-tiep-ariston-smc45e-vn/
@@ -4451,516 +4518,27 @@ https://dienmaynguoiviet.vn/may-say-lg-dr-80bw-80-kg/';
 
     public function sosanh()
     {
-        $code  = '43UN721C0TF
-            43UP751C0TC
-            55UN721C0TF
-            55UP751C0TC
-            65UN721COTF
-            32LQ576BPSA
-            43LM5750PTC
-            43NANO77TPA
-            43UP7500PTC
-            43UP7550PTC
-            43UP7720PTC
-            43UP8100PTB
-            50NANO77TPA
-            50NANO86TPA
-            50UP7500PTC
-            50UP7550PTC
-            50UP7720PTC
-            50UP8100PTB
-            55NANO77TPA
-            55NANO86TPA
-            55NANO91TNA
-            55UP7500PTC
-            55UP7550PTC
-            55UP7720PTC
-            55UP8100PTB
-            65NANO77TPA
-            65UP7550PTC
-            65UP7720PTC
-            65UP8100PTB
-            70UP7800PTB
-            75NANO86TPA
-            75UP7800PTB
-            86UP8000PTB
-            OLED48A1PTA
-            OLED55A1PTA
-            OLED55C1PTB
-            OLED55GXPTA
-            OLED65A1PTA
-            OLED65C1PTB
-            OLED65CXPTA
-            32S6500
-            43P737
-            55C725
-            55P615
-            55P618
-            55P725
-            NR-BC360QKVN
-            NR-BC360WKVN
-            NR-BX421GPKV
-            NR-BX421WGKV
-            NR-BX421XGKV
-            NR-BX471WGKV
-            NR-BX471XGKV
-            NR-DZ601VGKV
-            NR-DZ601YGKV
-            NR-SV280BPKV
-            NR-TL351GPKV
-            NR-TV301BPKV
-            SJ-FX630V-BE
-            SJ-FX631V-SL
-            SJ-FX640V-SL
-            SJ-FX688VG-BK
-            SJ-X201E-SL
-            SJ-X281E-DS
-            SJ-X316E-DS
-            SJ-X316E-SL
-            SJ-X346E-SL
-            R-FVX480PGV9
-            R-FVX510PGV9 GBK
-            R-FVY480PGV0 GBK
-            RB-27N4010BU/SV
-            RB-27N4010BY/SV
-            RB-27N4010S8/SV
-            RB-27N4170BU/SV
-            RB27N4190BU/SV
-            RB-30N4010S8/SV
-            RB-30N4170BU/SV
-            RB30N4190BU/SV
-            RF48A4000B4/SV
-            RF48A4010B4/SV
-            RS-62R5001B4/SV
-            RS62R5001M9/SV
-            RS64R53012C/SV
-            RS64R5301B4/SV
-            RS64T5F01B4/SV
-            RT-19M300BGS/SV
-            RT-22M4032BU/SV
-            RT22M4040DX/SV
-            RT-25M4032BY/SV
-            RT-29K5532BU/SV
-            RT-32K5932BU/SV
-            ES-X95HV-S
-            WA10T5260BV/SV
-            WA10T5260BY/SV
-            WA85T5160BY/SV
-            WD95K5410OX/SV
-            WD95T4046CE/SV
-            WD95T754DBX/SV
-            WW10T634DLX/SV
-            WW10TA046AE/SV
-            WW10TP44DSB/SV
-            WW10TP44DSH/SV
-            WW85T554DAX/SV
-            WW90T3040WW/SV
-            WW90T634DLE/SV
-            WW90TP44DSB/SV
-            WW90TP44DSH/SV
-            WW90TP54DSB/SV
-            WW95TA046AX/SV
-            DR-80BW
-            F2515RTGW
-            F2515STGW
-            FM1209N6W
-            FV1208S4W
-            FV1408G4W
-            FV1408S4V
-            FV1408S4W
-            FV1409G4V
-            FV1409S4W
-            FV1410S3B
-            FV1410S4P
-            FV1410S5W
-            FV1411S3B
-            FV1411S4P
-            FV1411S5W
-            FV1413H3BA
-            FV1450H2B
-            T2313VSPM
-            T2350VS2W
-            T2350VSAB
-            TH2113SSAK
-            TH2519SSAK
-            TH2722SSAK
-            EDS854N3SB
-            EDV754H3WB
-            EDV805JQWA
-            EDV854J3WB
-            MC-CJ911RN49
-            MC-CL305BN46
-            MC-CL571GN49
-            MC-CL573AN49
-            MC-CL575KN49
-            MC-SBV01W246
-            MC-YL635TN46
-            VC18M2120SB/SV
-            VCC8836V36/XSV
-            VR05R5050WK/SV
-            VS03R6523J1/SV
-            VS15A6031R1/SV
-            HZM 700 GB
-            Vỏ Kangaroo KG108KNT
-            LOIL0C3
-            NAG-0504
-            NI-E410TMRA
-            NI-E510TDRA
-            NI-317TXRA
-            NI-GWE080WRA
-            NI-M250TPRA
-            NI-WT980RRA
-            MJ-68MWRA
-            MJ-DJ01SRA
-            MJ-DJ31SRA
-            MJ-H100WRA
-            MJ-L500SRA
-            MJ-SJ01WRA
-            MX-EX1001WRA
-            MX-EX1011WRA
-            MX-EX1031WRA
-            MX-M100GRA
-            MX-M100WRA
-            MX-M200WRA
-            MX-MG5351WRA
-            MX-MG53C1CRA
-            MX-MP5151WRA
-            TZ-0156-V1
-            TZ0158-V1
-            WA-UT0404A
-            AT610PM
-            AT805PM
-            AT810PM
-            SL2 20LUX ECO 2.5FE
-            AN2 15 R AG+ 2.5 FE
-            AN2 30 R AG+ 2.5 FE
-            SL2 20R AG+ 2.5 FE
-            SL2 30R AG+ 2.5 FE
-            SL2 20 RS AG+ 2.5 FE
-            SL2 30 RS AG+ 2.5 FE
-            Pro R50SH
-            AN LUX 6 UE 1.5 FE
-            AN LUX 6 BE 1.5 FE 
-            3C-PM02-32
-            PJ-1340
-            AN-GXDV55
-            AN-GXDV65
-            65P618
-            75P618
-            L43S5200
-            32PHT6915
-            43PFT6915
-            50PUT7906
-            50PUT8215
-            55OLED706
-            55PUT7906
-            55PUT8215
-            65OLED706
-            65PUT7906
-            65PUT8215
-            70PUT7906
-            70PUT8215
-            SP2
-            SP8A
-            CU/CS-N9WKH
-            CU/CS-XPU9XKH-8
-            CU/CS-U12XKH-8
-            CU/CS-U9XKH-8
-            CU/CS-N12WKH-8
-            CU/CS-N18XKH-8
-            CU/CS- N24XKH-8
-            CU/CS-XPU12XKH-8
-            CU/CS-XPU18XKH-8
-            YZ12WKH
-            YZ9WKH
-            MS-HP35VF
-            MS-JS25VF
-            MS-JS35VF
-            MSY-JP25VF
-            MSY-JP35VF
-            MSZ-HL25VA
-            MSZ-HL35VA
-            FTC50NV1V/RC50NV1V
-            FTF25UV1V/RF25UV1V
-            FTF35UV1V
-            FTHF25VAVMV/RHF25VAVMV
-            FTHF35VAVMV/RHF35VAVMV
-            FTKB25WAVMV/RKB25WAVMV
-            RT-32K5932S8/SV
-            RT-35K5982BS/SV
-            RT-35K5982S8/SV
-            GN-D255BL
-            GN-D312BL
-            GN-D372BLA
-            GN-D372PSA
-            GN-D392PSA
-            GN-F304PS
-            GN-F304WB
-            GN-M312BL
-            GN-M312PS
-            GN-M332BL
-            GR-B247WB
-            GR-B257JDS
-            GR-B257WB
-            GR-D22MB
-            GR-D247MC
-            GR-D257JS
-            GR-D257MC
-            GR-D257WB
-            GR-X22MB
-            GR-X257JS
-            GR-X257MC
-            GN-L422GB
-            GN-L702GB
-            GR-X247JS
-            ETB3440K-A
-            FR71CD
-            FR135CD
-            FR125CI
-            FR132CI
-            VH5699HY3
-            VH5699W3
-            VH150HY2
-            VH1599HYKD
-            VH230HY
-            VH2599W2KD
-            VH285A2
-            VH2899A2K
-            VH2899W1
-            VH2899W2KD
-            VH3699A1
-            VH3699A2K
-            EDV854N3SB
-            EWF1024P5WB
-            EWF8025EQWA
-            EWF9024ADSA
-            EWF9024D3WB
-            EWF9025BQSA
-            EWF9042R7SB
-            EWF9523ADSA
-            EWW8023AEWA
-            DVHP09B
-            DVHP09W
-            NF-N30ASRA
-            NF-N50ASRA
-            SR-CL108WRA
-            SR-CL188WRA
-            SR-CL188WRAM
-            SR-CP188NRAM
-            SR-CX188SRAM
-            SR-MVN187HRA
-            KS-11ETV"RB"
-            KS-181TJV
-            KS-181TJV"AB"
-            KS-181TJV"BM"
-            KS-181TJV"PB"
-            KS-182ETV"SW"
-            KS-18TJV"GR"
-            KS-18TJV"LL"
-            KS-19TJV"BC"
-            KS-A08V-WH
-            KS-COM180EV-GY
-            KS-COM181CV-GL
-            KSH-D55V
-            KS-N192ETV "SP"
-            KS-NR191STV-CU
-            KS-R231STV "SS"
-            CR0661(cam)
-            CR0661(xanh)
-            CR-0675F
-            CR-0821FI
-            CRP-CHSS1009FN-1.8l
-            CR0632
-            MX-V300KRA
-            SD-P104WRA
-            EJ-J408-WH
-            EJ-J850-BK
-            EM-H074SV-BK
-            AX34R3020WW/SV
-            AX40R3030WM/SV
-            AX60R5080WD/SV
-            F-PXJ30A
-            DW-D12A-W
-            DW-D20A-W
-            DW-E16FA-W
-            FP-J30E-B
-            FP-J40E-W
-            FP-J50V-H
-            FP-J60E-W
-            FP-JM30V-B
-            IG-GC2E-B
-            KCG40EVW
-            KC-G50EV-W
-            KC-G60EV-W
-            ADR75VET1
-            A1
-            A2
-            C1
-            C2
-            E2
-            E3
-            G1
-            G2
-            AR600 - U3
-            AR75AS1E
-            AR75AS2
-            AR75ASH1
-            5000613
-            5001132
-            FTKB35WAVMV/RKB35WAVMV
-            FTKC25UAVMV/RKC25UAVMV
-            FTKC35UAVMV/RKC35UAVMV
-            MHDAIKIn
-            AR09TYHQASINSV/XSV (1c, inv )
-            AR12TYHQASINSV/XSV(1c,inv)
-            AR13TYGCDWKNSV/XSV (1c, inv )
-            AR18TYHYCWKNSV/XSV(1c,inv)
-            AR24TYHYCWKNSV/XSV
-            B10END
-            B10END1
-            B13END1
-            B18END
-            B24END
-            V10APFUVMO
-            V10ENW1
-            V10ENW1M
-            V13ENS1
-            V13ENS1M
-            V18ENF1
-            V18ENF1M
-            V24ENF1
-            HIC09TMU
-            HSC09TMU.H8
-            HSC12MMC
-            HSC12TMU
-            HSC18TMU.H8
-            HSC24TMU.H8
-            NS-A12R1M05
-            NS-A18R1M05
-            NS-C09R1M05
-            NS-C12R1M05
-            ATNQ18GPLE7 (Cục trong)
-            ATNQ24GTLA1 (Cục trong)
-            ATUQ18GPLE7 (Cục ngoài)
-            ATUQ24GTLA1 (Cục ngoài)
-            PT-MCGWO
-            PT-UTC
-            FXSQ50PAVE9
-            VH3699A2KD
-            VH3699W1N
-            VH3699W2KD
-            VH3699W3
-            VH3899K
-            VH405W2
-            VH4099A1
-            VH4099A2KD
-            VH4099A3
-            VH4099W1N
-            VH4099W3
-            VH4099W4K
-            VH4899K3
-            VH568HY2
-            VH5699HY
-            VH5699W1
-            VH6699HY3
-            VH6699HY3N
-            VH6699W3N
-            VH8699HY3N
-            VH888KA
-            VH6688A1
-            VH308K3L
-            VH308KL
-            VH358K3L
-            VH358KL
-            VH408K3L
-            KG168NC1
-            KG265NC1
-            KG329NC1
-            KG399NC1
-            KG498C2
-            NA-F100A4GRV
-            NA-F100A9DRV
-            NA-F10S10BRV
-            NA-F90A9DRV
-            NA-F90S10BRV
-            NA-FD10VR1BV
-            NA-FD11AR1BV
-            NA-V10FX1LVT
-            NA-V90FX1LVT
-            NA-V95FX2BVT
-            NH-E70JA1WVT
-            CR1021
-            CR1122
-            IH732B
-            IHZ732PRO
-            EKJ-17VPS-WH
-            KP-31BTV-CU
-            KP-31BTV-RD
-            KP-Y40PV-CU
-            KP-Y40PV-RD
-            ND13-V645
-            EH-NE20-K645
-            NB-H3203KRA
-            NB-H3801KRA
-            NN-GD37HBYUE
-            NN-GM24JBYUE
-            NN-GM34JMYUE
-            NN-GT35HMYUE
-            NU-SC180BYUE
-            AX-1250VN(B)
-            KF-AF55EV-BK
-            KF-AF70EV-BK
-            KF-AF70EV-ST
-            R-209VN-SK
-            R-31A2VN-S
-            R-G223VN-SM
-            R-G225VN-BK
-            R-G227VN-M
-            R-G228VN-SL
-            R-G52XVN-ST
-            MG23K3575AS/SV
-            MG23T5018CK/SV
-            MG30T5018CK/SV
-            MS23K3513AS/SV
-            MC-CG370GN46
-            MC-CG371AN46
-            AOI97
-            CBC-20-BP-10
-            G908-BK1-PR
-            MMF-100
-            SC-20PT-BP-5
-            KJ420F-B01
-            KJ500F-B01
-            335830000
-            451157V
-            451350R2V
-            46-0004-V
-            LX-0022-V
-            LX-0023-V
-            LX005AOS-1V-001
-            LX-006R02V-001
-            LX-054V-001
-            LX-056V-001
-            LX-209V-001
-            LX-292295AOS-1V
-            LX292V-334664-000
-            LX292V-TZ00028V
-            LX293V
-            LX-293V-001
-            LX295V
-            LX-362V-001
-            LX-363V-001
-            LX363V-362V
-            PJ-1866-V
-            PJ-2074-V
-            PJ2160-V
-            TZ00026V
-            TZ00027V
-            TZ00043
-            TZ00043
-            TZ00044
-            TZ-00144-V
-            TZ0152-V1';
+        $code  = 'L32S5200
+                L32S6300
+                32S6500
+                40S6500
+                L43S5200
+                L43P618
+                L50P618
+                L55P618
+                L65P618
+                L75P618
+                55P725
+                50P615
+                55P615
+                55C725
+                65C725
+                43LM6360PTB
+                32LM636BPTB
+                43LM5750PTC
+                32LM575BPTC
+                32LG576BPSA
+                43LM5750PTC';
 
         $data  = explode(' ', $code);
 
@@ -4985,6 +4563,8 @@ https://dienmaynguoiviet.vn/may-say-lg-dr-80bw-80-kg/';
             
                 if(!in_array($val,  $all_model)){
 
+                    $data = 
+
                     array_push($check, $href);
                 }    
             }
@@ -4993,114 +4573,12 @@ https://dienmaynguoiviet.vn/may-say-lg-dr-80bw-80-kg/';
 
         $datas = array_unique($check);
 
-        
-        foreach($datas as $val){    
+        $dif   = array_diff_key($datas, $check);
+
+        print_r($dif);
 
         
-            $url = 'https://dienmaynguoiviet.vn/'.$val;
-                
-            $html = file_get_html(trim($url));
-            $title = strip_tags($html->find('.emty-title h1', 0));
-            
-            $specialDetail = html_entity_decode($html->find('.special-detail', 0));
-            $content  = html_entity_decode($html->find('.emty-content .Description',0));
-             preg_match_all('/<img.*?src=[\'"](.*?)[\'"].*?>/i', $content, $matches);
-
-            $arr_change = [];
-
-            $time = time();
-
-            $regexp = '/^[a-zA-Z0-9][a-zA-Z0-9\-\_]+[a-zA-Z0-9]$/';
-
-            if(isset($matches[1])){
-                foreach($matches[1] as $value){
-                   
-                    $value = 'https://dienmaynguoiviet.vn/'.str_replace('..', '', $value);
-
-                    $arr_image = explode('/', $value);
-
-                    if($arr_image[0] != env('APP_URL')){
-
-                        $file_headers = @get_headers($value);
-
-
-                         if($file_headers[0] == 'HTTP/1.1 200 OK') 
-                        {
-
-                             $infoFile = pathinfo($value, PATHINFO_EXTENSION);
-
-                            if(!empty($infoFile)){
-
-                                 if($infoFile=='png'||$infoFile=='jpg'||$infoFile=='web'){
-
-                                     $img = '/images/product/crawl/'.basename($value);
-
-                                     file_put_contents(public_path().$img, file_get_contents($value));
-
-                                 
-                                    array_push($arr_change, 'images/product/crawl/'.basename($value));
-                                 }   
-                             }
-
-                            
-                         }
-                       
-                     }
-                    
-                 }
-             }
-
-             $content = str_replace($matches[1], $arr_change, $content);
-
-             $price = strip_tags($html->find(".p-price", 0));
-
-            $info  = html_entity_decode($html->find('.emty-info table', 0));
-            // $arElements = $html->find( "meta[name=keywords]" );
-            $price = trim(str_replace('Liên hệ', '0', $price));
-            $price =  trim(str_replace(["Giá:","VNĐ",".", "Giá khuyến mại:"],"",$price));
-            $images =  html_entity_decode($html->find('#owl1 img',0));
-            
-            if(!empty($images) ){
-                $image = $html->find('#owl1 img',0)->src;
-                if(!empty($image)){
-
-                    $urlImage = 'https://dienmaynguoiviet.vn/'.$image;
-
-                    $contents = file_get_contents($urlImage);
-                    $name = basename($urlImage);
-                    
-                    $name = '/uploads/product/crawl/'.time().'_'.$name;
-
-                    Storage::disk('public')->put($name, $contents);
-
-                    $image = $name;
-
-                    $model = strip_tags($html->find('#model', 0));
-
-                    $qualtily = -1;
-
-                    $maker = 12;
-
-                    $meta_id = 0;
-
-                    $group_id = 2;
-
-                    $active = 0;
-
-                    $link =  str_replace('https://dienmaynguoiviet.vn/', '', $url);
-
-                    $inputs = ["Link"=>$link, "Price"=>$price, "Name"=>$title, "ProductSku"=>$model, "Image"=>$image, "Quantily"=>$qualtily, "Maker"=>$maker, "Meta_id"=>$meta_id,"Group_id"=>$group_id, "active"=>0, "Specifications"=>$info, "Salient_Features"=>$specialDetail, "Detail"=>$content];
-
-                    product::Create($inputs);
-
-                }
-            }
-            else{
-                print_r($url);
-            } 
-            
-        } 
-        echo "thanh cong";
+       
     }
 
     function filter(){
