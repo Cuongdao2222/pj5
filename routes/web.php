@@ -52,7 +52,7 @@ Route::get('sitemap_pc60.xml', 'sitemapController@sitemapChildProduct');
 
 Route::get('sitemap_article.xml', 'sitemapController@sitemapChildBlog');
 
-Route::get('inCrawl', 'crawlController@removelink')->name('print');
+Route::get('inCrawl', 'crawlController@checkimageNulll')->name('print');
 
 Route::get('/tin-chi-tiet', function () {
     return view('frontend.blogdetail');

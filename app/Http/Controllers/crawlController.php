@@ -4568,10 +4568,12 @@ https://dienmaynguoiviet.vn/may-say-lg-dr-80bw-80-kg/';
 
         $image = image::select('image')->get();
 
-        foreach ($image as $key => $img) {
+        foreach ($image as $key => $imgs) {
+
+            $img = trim($img->image);
 
             // Getting page header data
-            $array = @get_headers($img);
+            $array = @get_headers($img->image);
               
             // Storing value at 1st position because
             // that is only what we need to check
