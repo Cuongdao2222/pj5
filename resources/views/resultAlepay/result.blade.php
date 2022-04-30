@@ -242,7 +242,7 @@
                     <ul class="collection col-md-8">
                         <li class="collection-item">
                             <div>
-                                <a href="http://dienmaynguoiviet.net">Nhấn Vào Đây Nếu Bạn Muốn Mua Tiếp</a>
+                                <a href="/">Nhấn Vào Đây Nếu Bạn Muốn Mua Tiếp</a>
                             </div>
                         </li>
                     </ul>
