@@ -55,124 +55,164 @@ class crawlController extends Controller
 
         $urls =  $this->cralwss();
 
-      
+        for ($i=4023; $i < 4132; $i++) { 
 
-        
+            $products = product::find($i);
 
-            if(isset($urls)){
-                foreach ($urls as $url) {
+            $products->Link = trim($products->Link);
+
+            $products->save();
+           
+        }
+
+        echo "thanh cong";
+
+
+        die();
+
+        // foreach ($urls as $key => $value) {
+        //     $product = product::select('Link')->whereBetween('id', [4024, 4122])->get()->pluck('Link')->toArray();
+
+
+          
+        // }
+        // $dif = [];
+
+        // foreach ($urls as $key => $value) {
+
+        //     $vals = trim(str_replace('https://dienmaynguoiviet.vn/', '', $value));
+
+           
+
+        //     if(!in_array($vals, $product)){
+
+        //         array_push($dif, $value);
+                
+        //     }
+           
+        // }
+
+    
+    
+        if(isset($dif)){
+            foreach ($dif as $url) {
+                
+                    $html = file_get_html(trim($url));
+                    $title = strip_tags($html->find('.emty-title h1', 0));
                     
-                        $html = file_get_html(trim($url));
-                        $title = strip_tags($html->find('.emty-title h1', 0));
-                        
-                        $specialDetail = html_entity_decode($html->find('.special-detail', 0));
-                        $content  = html_entity_decode($html->find('.emty-content .Description',0));
+                    $specialDetail = html_entity_decode($html->find('.special-detail', 0));
+                    $content  = html_entity_decode($html->find('.emty-content .Description',0));
 
-                       
+                   
 
-                        preg_match_all('/<img.*?src=[\'"](.*?)[\'"].*?>/i', $content, $matches);
+                    preg_match_all('/<img.*?src=[\'"](.*?)[\'"].*?>/i', $content, $matches);
 
-                        $arr_change = [];
+                    $arr_change = [];
 
-                        $time = time();
+                    $time = time();
 
-                        $regexp = '/^[a-zA-Z0-9][a-zA-Z0-9\-\_]+[a-zA-Z0-9]$/';
+                    $regexp = '/^[a-zA-Z0-9][a-zA-Z0-9\-\_]+[a-zA-Z0-9]$/';
 
-                        if(isset($matches[1])){
-                            foreach($matches[1] as $value){
-                               
-                                $value = 'https://dienmaynguoiviet.vn/'.str_replace('..', '', $value);
+                    if(isset($matches[1])){
+                        foreach($matches[1] as $value){
+                           
+                            $value = 'https://dienmaynguoiviet.vn/'.str_replace('..', '', $value);
 
-                                $arr_image = explode('/', $value);
+                            $arr_image = explode('/', $value);
 
-                                if($arr_image[0] != env('APP_URL')){
+                            if($arr_image[0] != env('APP_URL')){
 
-                                    $file_headers = @get_headers($value);
+                                $file_headers = @get_headers($value);
 
 
-                                    if($file_headers[0] == 'HTTP/1.1 200 OK') 
-                                    {
+                                if($file_headers[0] == 'HTTP/1.1 200 OK') 
+                                {
 
-                                        $infoFile = pathinfo($value, PATHINFO_EXTENSION);
+                                    $infoFile = pathinfo($value, PATHINFO_EXTENSION);
 
-                                       if(!empty($infoFile)){
+                                   if(!empty($infoFile)){
 
-                                            if($infoFile=='png'||$infoFile=='jpg'||$infoFile=='web'){
+                                        if($infoFile=='png'||$infoFile=='jpg'||$infoFile=='web'){
 
-                                                $img = '/images/product/crawl/'.basename($value);
+                                            $img = '/images/product/crawl/'.basename($value);
 
-                                                file_put_contents(public_path().$img, file_get_contents($value));
+                                            file_put_contents(public_path().$img, file_get_contents($value));
 
-                                             
-                                                array_push($arr_change, 'images/product/crawl/'.basename($value));
-                                            }   
-                                        }
-
-                                        
+                                         
+                                            array_push($arr_change, 'images/product/crawl/'.basename($value));
+                                        }   
                                     }
-                                   
+
+                                    
                                 }
-                                
+                               
                             }
+                            
                         }
+                    }
 
 
 
-                        $content = str_replace($matches[1], $arr_change, $content);
+                    $content = str_replace($matches[1], $arr_change, $content);
 
 
 
 
-                        $price = strip_tags($html->find(".p-price", 0));
+                    $price = strip_tags($html->find(".p-price", 0));
 
-                        $info  = html_entity_decode($html->find('.emty-info table', 0));
-                        // $arElements = $html->find( "meta[name=keywords]" );
-                        $price = trim(str_replace('Liên hệ', '0', $price));
-                        $price =  trim(str_replace(["Giá:","VNĐ",".", "Giá khuyến mại:"],"",$price));
-                        $images =  html_entity_decode($html->find('#owl1 img',0));
-                        
-                        if(!empty($images) ){
-                            $image = $html->find('#owl1 img',0)->src;
-                            if(!empty($image)){
+                    $info  = html_entity_decode($html->find('.emty-info table', 0));
+                    // $arElements = $html->find( "meta[name=keywords]" );
+                    $price = trim(str_replace('Liên hệ', '0', $price));
+                    $price =  trim(str_replace(["Giá:","VNĐ",".", "Giá khuyến mại:"],"",$price));
+                    $images =  html_entity_decode($html->find('#owl1 img',0));
+                    
+                    if(!empty($images) ){
+                        $image = $html->find('#owl1 img',0)->src;
+                        if(!empty($image)){
 
-                                $urlImage = 'https://dienmaynguoiviet.vn/'.$image;
+                            $urlImage = 'https://dienmaynguoiviet.vn/'.$image;
 
-                                $contents = file_get_contents($urlImage);
-                                $name = basename($urlImage);
-                                
-                                $name = '/uploads/product/crawl/'.time().'_'.$name;
+                            $contents = file_get_contents($urlImage);
+                            $name = basename($urlImage);
+                            
+                            $name = '/uploads/product/crawl/'.time().'_'.$name;
 
-                                Storage::disk('public')->put($name, $contents);
+                            Storage::disk('public')->put($name, $contents);
 
-                                $image = $name;
+                            $image = $name;
 
-                                $model = strip_tags($html->find('#model', 0));
+                          
 
-                                $qualtily = -1;
-
-                                $maker = 12;
-
-                                $meta_id = 0;
-
-                                $group_id = 2;
-
-                                $active = 0;
-
-                                $link =  str_replace('https://dienmaynguoiviet.vn/', '', $url);
-
-                                $inputs = ["Link"=>$link, "Price"=>$price, "Name"=>$title, "ProductSku"=>$model, "Image"=>$image, "Quantily"=>$qualtily, "Maker"=>$maker, "Meta_id"=>$meta_id,"Group_id"=>$group_id, "active"=>0, "Specifications"=>$info, "Salient_Features"=>$specialDetail, "Detail"=>$content];
-
-                                product::Create($inputs);
-
-                            }
                         }
                         else{
-                            print_r($url);
-                        } 
-                   
-                   
-                }    
-            }
+                            $image = '/images/product/noimage.png';
+                        }
+
+                        $model = strip_tags($html->find('#model', 0));
+
+                        $qualtily = -1;
+
+                        $maker = 12;
+
+                        $meta_id = 0;
+
+                        $group_id = 2;
+
+                        $active = 0;
+
+                        $link =  str_replace('https://dienmaynguoiviet.vn/', '', $url);
+
+                        $inputs = ["Link"=>$link, "Price"=>$price, "Name"=>$title, "ProductSku"=>$model, "Image"=>$image, "Quantily"=>$qualtily, "Maker"=>$maker, "Meta_id"=>$meta_id,"Group_id"=>$group_id, "active"=>0, "Specifications"=>$info, "Salient_Features"=>$specialDetail, "Detail"=>$content];
+
+                        product::Create($inputs);
+                    }
+                    else{
+                        print_r($url);
+                    } 
+               
+               
+            }    
+        }
         
 
         echo "thanh cong";
@@ -182,35 +222,114 @@ class crawlController extends Controller
 
     public function cralwss()
     {
-        $code  = "https://dienmaynguoiviet.vn/android-tivi-qled-tcl-65c725-65-inch-4k/
-                https://dienmaynguoiviet.vn/android-tivi-qled-tcl-55c725-55-inch-4k/
-                https://dienmaynguoiviet.vn/android-tivi-tcl-l43s5200-43-inch-full-hd/
-                https://dienmaynguoiviet.vn/androi-tivi-tcl-l32s5200-32-inch-hd/
-                https://dienmaynguoiviet.vn/android-tivi-tcl-43p618-43-inch-4k/
-                https://dienmaynguoiviet.vn/android-tivi-tcl-55p618-55-inch-4k/
-                https://dienmaynguoiviet.vn/android-tivi-tcl-65p618-65-inch-4k/
-                https://dienmaynguoiviet.vn/android-tivi-tcl-75p618-75-inch-4k/
-                https://dienmaynguoiviet.vn/android-tivi-qled-tcl-65c715-65-inch-4k/
-                https://dienmaynguoiviet.vn/android-tivi-qled-tcl-65q716-65-inch-4k/
-                https://dienmaynguoiviet.vn/android-tivi-qled-tcl-55c715-55-inch-4k/
-                https://dienmaynguoiviet.vn/android-tivi-tcl-75p715-75-inch-4k/
-                https://dienmaynguoiviet.vn/android-tivi-tcl-55p715-55-inch-4k/
-                https://dienmaynguoiviet.vn/android-tivi-tcl-50p715-50-inch-4k/
-                https://dienmaynguoiviet.vn/android-tivi-tcl-43p715-43-inch-4k/
-                https://dienmaynguoiviet.vn/smart-tivi-tcl-4k-55-inch-55a8/
-                https://dienmaynguoiviet.vn/smart-tivi-tcl-4k-50-inch-50a8/
-                https://dienmaynguoiviet.vn/smart-tivi-tcl-4k-50-inch-50p8s/
-                https://dienmaynguoiviet.vn/smart-tivi-tcl-4k-55-inch-55p8s/
-                https://dienmaynguoiviet.vn/android-tivi-tcl-65-inch-4k-l65p8/
-                https://dienmaynguoiviet.vn/android-tivi-tcl-55-inch-4k-l55p8/
-                https://dienmaynguoiviet.vn/android-tivi-tcl-50-inch-4k-l50p8/
-                https://dienmaynguoiviet.vn/android-tivi-tcl-43-inch-4k-l43p8/
-                https://dienmaynguoiviet.vn/tivi-qled-tcl-85-inch-4k-85x6/
-                https://dienmaynguoiviet.vn/tivi-qled-tcl-55-inch-4k-l55x4/
-                https://dienmaynguoiviet.vn/smart-tivi-tcl-40-inch-4k-l40p62-uf/
-                https://dienmaynguoiviet.vn/smart-tivi-tcl-65-inch-l65p6-4k/
-                https://dienmaynguoiviet.vn/smart-tivi-tcl-55-inch-l55p6-4k/
-                https://dienmaynguoiviet.vn/smart-tivi-tcl-50-inch-l50p6-4k/";
+        $code  = "https://dienmaynguoiviet.vn/smart-tivi-samsung-49-inch-49mu8000-4k/
+        https://dienmaynguoiviet.vn/smart-tivi-samsung-55-inch-55mu8000-4k/
+        https://dienmaynguoiviet.vn/smart-tivi-samsung-65-inch-65mu8000-4k/
+        https://dienmaynguoiviet.vn/smart-tivi-samsung-55-inch-55mu9000-4k/
+        https://dienmaynguoiviet.vn/smart-tivi-samsung-ua65mu9000-man-hinh-cong-4k/
+        https://dienmaynguoiviet.vn/smart-tivi-samsung-78ku6500-78-inch-4k-man-hinh-cong/
+        https://dienmaynguoiviet.vn/smart-tivi-samsung-65-inch-ua65ku6100-curved-4k-hdr-100hz/
+        https://dienmaynguoiviet.vn/smart-tivi-samsung-55-inch-ua55ku6100-curved-4k-hdr-100hz/
+        https://dienmaynguoiviet.vn/smart-tivi-samsung-49-inch-ua49ku6100-curved-4k-hdr-100hz/
+        https://dienmaynguoiviet.vn/smart-tivi-samsung-40-inch-ua40ku6100-curved-4k-hdr-100hz/
+        https://dienmaynguoiviet.vn/smart-tivi-samsung-ua65ku6400-65-inch-4k-100hz/
+        https://dienmaynguoiviet.vn/smart-tivi-samsung-ua55ku6400-55-inch-4k-100hz/
+        https://dienmaynguoiviet.vn/smart-tivi-samsung-ua49ku6400-49-inch-4k-100hz/
+        https://dienmaynguoiviet.vn/smart-tivi-samsung-ua43ku6400-43-inch-4k-100hz/
+        https://dienmaynguoiviet.vn/smart-tivi-samsung-ua40ku6400-40-inch-4k-100hz/
+        https://dienmaynguoiviet.vn/smart-tivi-samsung-70ku6000-70-inch-4k-man-hinh-cong-100hz/
+        https://dienmaynguoiviet.vn/smart-tivi-samsung-65ku6000-65-inch-4k-man-hinh-cong-100hz/
+        https://dienmaynguoiviet.vn/smart-tivi-samsung-60ku6000-60-inch-4k-man-hinh-cong-100hz/
+        https://dienmaynguoiviet.vn/smart-tivi-samsung-55ku6000-55-inch-4k-man-hinh-cong-100hz/
+        https://dienmaynguoiviet.vn/smart-tivi-samsung-50ku6000-50-inch-4k-man-hinh-cong-100hz/
+        https://dienmaynguoiviet.vn/smart-tivi-samsung-43ku6000-43-inch-4k-man-hinh-cong-100hz/
+        https://dienmaynguoiviet.vn/smart-tivi-samsung-40ku6000-40-inch-4k-100hz/
+        https://dienmaynguoiviet.vn/smart-tivi-samsung-65ku6500-65-inch-4k-man-hinh-cong-100hz/
+        https://dienmaynguoiviet.vn/smart-tivi-samsung-55ku6500-55-inch-4k-man-hinh-cong-100hz/
+        https://dienmaynguoiviet.vn/smart-tivi-samsung-49ku6500-49-inch-4k-man-hinh-cong-100hz/
+        https://dienmaynguoiviet.vn/smart-tivi-samsung-43ku6500-43-inch-4k-man-hinh-cong-100hz/
+        https://dienmaynguoiviet.vn/smart-tivi-samsung-78ks9000-curver-78-inch-4k/
+        https://dienmaynguoiviet.vn/smart-tivi-samsung-60ks7000-60-inches-4k/
+        https://dienmaynguoiviet.vn/smart-tivi-samsung-55ks7000-55-inches-4k/
+        https://dienmaynguoiviet.vn/smart-tivi-samsung-49ks7000-49-inches-4k/
+        https://dienmaynguoiviet.vn/smart-tivi-samsung-65ks7500-65-inch-man-hinh-cong/
+        https://dienmaynguoiviet.vn/smart-tivi-samsung-55ks7500-55-inch-man-hinh-cong/
+        https://dienmaynguoiviet.vn/smart-tivi-samsung-49ks7500-49-inch-man-hinh-cong/
+        https://dienmaynguoiviet.vn/smart-tivi-samsung-65ks9000-curver-65-inch-4k/
+        https://dienmaynguoiviet.vn/smart-tivi-samsung-55ks9000-curver-55-inch-4k/
+        https://dienmaynguoiviet.vn/tivi-samsung-ua55js7200-smart-tv-55/
+        https://dienmaynguoiviet.vn/tivi-samsung-ua65ju6000-65-inches-smart-tv-4k/
+        https://dienmaynguoiviet.vn/tivi-led-samsung-ua65ju7000-smart-tv-65-inch-4k/
+        https://dienmaynguoiviet.vn/smart-tivi-tcl-49p32-cf-49-inch-full-hd/
+        https://dienmaynguoiviet.vn/smart-tivi-tcl-55-inch-4k-l55p5-uc/
+        https://dienmaynguoiviet.vn/smart-tivi-tcl-65x3-qled-65-inch-4k-man-hinh-cong/
+        https://dienmaynguoiviet.vn/smart-tivi-samsung-49m6303-55-inch-full-hd/
+        https://dienmaynguoiviet.vn/smart-tivi-samsung-ua49mu6103-49-inch-4k/
+        https://dienmaynguoiviet.vn/smart-tivi-samsung-55m6303-55-inch-full-hd-man-hinh-cong/
+        https://dienmaynguoiviet.vn/smart-tivi-samsung-49-inch-49m6300-full-hd/
+        https://dienmaynguoiviet.vn/smart-tivi-samsung-55-inch-55m6300-full-hd/
+        https://dienmaynguoiviet.vn/smart-tivi-samsung-ua55k6300-55-inch-full-hd/
+        https://dienmaynguoiviet.vn/smart-tivi-samsung-49k6300-49-inch-full-hd/
+        https://dienmaynguoiviet.vn/smart-tivi-samsung-40k6300-40-inch-full-hd/
+        https://dienmaynguoiviet.vn/smart-tivi-panasonic-th-55fx700v-55-inch-4k/
+        https://dienmaynguoiviet.vn/smart-tivi-panasonic-th-49fx700v-49-inch-4k/
+        https://dienmaynguoiviet.vn/smart-tivi-panasonic-th-65fx600v-65-inch-4k/
+        https://dienmaynguoiviet.vn/smart-tivi-panasonic-th-55fx600v-55-inch-4k/
+        https://dienmaynguoiviet.vn/smart-tivi-panasonic-th-43fx600v-43-inch-uhd-4k/
+        https://dienmaynguoiviet.vn/smart-tivi-panasonic-th-50fs500v-50-inch-full-hd/
+        https://dienmaynguoiviet.vn/smart-tivi-oled-panasonic-th-77ez1000v-77-inch-4k/
+        https://dienmaynguoiviet.vn/smart-tivi-panasonic-65-inch-th-65ez1000v-4k/
+        https://dienmaynguoiviet.vn/smart-tivi-panasonic-55-inch-th-55ez950v-4k/
+        https://dienmaynguoiviet.vn/tivi-panasonic-49-inch-th-49lx1v-4k/
+        https://dienmaynguoiviet.vn/android-tivi-sony-kd-55x86j-55-inch-4k/
+        https://dienmaynguoiviet.vn/android-tivi-sony-kd-85z8h-85-inch-8k/
+        https://dienmaynguoiviet.vn/smart-tivi-sony-kdl-49w800g-49-inch-full-hd/
+        https://dienmaynguoiviet.vn/smart-tivi-sony-kdl-43w800g-43-inch-full-hd/
+        https://dienmaynguoiviet.vn/smart-tivi-sony-kdl-50w660g-50-inch-full-hd/
+        https://dienmaynguoiviet.vn/smart-tivi-sony-kdl-43w660g-43-inch-full-hd/
+        https://dienmaynguoiviet.vn/smart-tivi-lg-32lq576bpsa-32-inch-hd/
+        https://dienmaynguoiviet.vn/smart-tivi-lg-43lm5750ptc-43-inch-full-hd/
+        https://dienmaynguoiviet.vn/smart-tivi-oled-lg-88z1pta-88-inch-8k/
+        https://dienmaynguoiviet.vn/smart-tivi-lg-75nano95tna-75-inch-8k/
+        https://dienmaynguoiviet.vn/smart-tivi-lg-65nano95tna-65-inch-8k/
+        https://dienmaynguoiviet.vn/smart-tivi-lg-55nano95tna-55-inch-8k/
+        https://dienmaynguoiviet.vn/smart-tivi-lg-32ln560bpta-32-inch-hd/
+        https://dienmaynguoiviet.vn/smart-tivi-lg-43ln5600pta-43-inch-full-hd/
+        https://dienmaynguoiviet.vn/smart-tivi-oled-lg-88zxpta-88-inch-8k/
+        https://dienmaynguoiviet.vn/smart-tivi-oled-lg-77zxpta-77-inch-8k/
+        https://dienmaynguoiviet.vn/smart-tivi-lg-50un6900pta-50-inch-4k/
+        https://dienmaynguoiviet.vn/smart-tivi-lg-43lm6360ptb-43-inch-hd/
+        https://dienmaynguoiviet.vn/smart-tivi-lg-32lm636bptb-32-inch-hd/
+        https://dienmaynguoiviet.vn/smart-tivi-lg-32lm570bptc-32-inch-hd/
+        https://dienmaynguoiviet.vn/smarttv-lg-32inch-32lk540bpta/
+        https://dienmaynguoiviet.vn/smart-tivi-lg-full-hd-43inch-43lk5400pta/
+        https://dienmaynguoiviet.vn/smart-tivi-lg-43-inch-43lj614t-full-hd/
+        https://dienmaynguoiviet.vn/smart-tivi-lg-49lj553t-49-inch-full-hd/
+        https://dienmaynguoiviet.vn/smart-tivi-lg-55-inch-55lj550t-full-hd/
+        https://dienmaynguoiviet.vn/smart-tivi-lg-32-inch-32lj550d-hd/
+        https://dienmaynguoiviet.vn/smart-tivi-lg-32lj571d-32-inch-hd/
+        https://dienmaynguoiviet.vn/tivi-samsung-ua32n4300-32-inch-hd/
+        https://dienmaynguoiviet.vn/tu-dong-sanaky-vh-419a-419-lit/
+        https://dienmaynguoiviet.vn/dieu-hoa-daikin-ftkb25wavmv-1-chieu-inverter-9000btu/
+        https://dienmaynguoiviet.vn/dieu-hoa-panasonic-cu/cs-xz9xkh-8-inverter-2-chieu-9000btu/
+        https://dienmaynguoiviet.vn/may-loc-khong-khi-sharp-fp-j50v-h-40m2/
+        https://dienmaynguoiviet.vn/may-xay-da-nang-panasonic-mj-dj31sra-800w/
+        https://dienmaynguoiviet.vn/may-ep-cham-midea-mj-js20a-200w/
+        https://dienmaynguoiviet.vn/lo-vi-song-midea-20-lit-mmo-20ke1/
+        https://dienmaynguoiviet.vn/bep-tu-midea-mi-sv21dm-8-chuc-nang/
+        https://dienmaynguoiviet.vn/noi-com-dien-midea-mr-sc18mb-18-lit/
+        https://dienmaynguoiviet.vn/may-say-toc-panasonic-eh-ne11-v645-1200w-2-toc-do-say-say-ion-muot-toc/
+        https://dienmaynguoiviet.vn/ban-la-kho-panasonic-ni-317tvgra/
+        https://dienmaynguoiviet.vn/may-loc-nuoc-kangaroo-kg106-6-loi-vo-inox-khong-nhiem-tu/
+        https://dienmaynguoiviet.vn/noi-com-cuckoo-1.8-lit-cr-1065b/
+        https://dienmaynguoiviet.vn/noi-com-cuckoo-1.8-lit-cr-1065r/
+        https://dienmaynguoiviet.vn/noi-com-dien-cuckoo-18l-crp-g1015m/
+        https://dienmaynguoiviet.vn/noi-com-dien-cuckoo-cr-3021-54l-mau-inox/
+        https://dienmaynguoiviet.vn/lo-vi-song-sharp-r-g52xvn-st-25-lit-co-nuong/
+        https://dienmaynguoiviet.vn/may-giat-sharp-es-fk954sv-g-inverter-9.5-kg/
+        https://dienmaynguoiviet.vn/may-giat-sharp-es-fk852sv-g-85-kg/
+        https://dienmaynguoiviet.vn/may-giat-sharp-es-fk852ev-w-85-kg/
+        https://dienmaynguoiviet.vn/may-giat-lg-t2309vs2m-inverter-9-kg/";
 
         $codess = explode(PHP_EOL, $code);
 
@@ -4401,7 +4520,7 @@ https://dienmaynguoiviet.vn/may-say-lg-dr-80bw-80-kg/';
 
     public function getMetaProducts()
     {
-        for($i=3995; $i<4023; $i++){
+        for($i=4023; $i<4132; $i++){
 
             $link = product::find($i);
 
@@ -4441,6 +4560,32 @@ https://dienmaynguoiviet.vn/may-say-lg-dr-80bw-80-kg/';
         }   
         echo "thanh cong";
 
+    }
+
+    public function checkimageNulll()
+    {
+        $url = 'http://demo.dienmaynguoiviet.net/uploads/product/crawl/child/5982_may_giat_electrolux_ewf1024p5wb_inverter_10_kg_org_13.jpg';
+
+        $image 
+        // Getting page header data
+        $array = @get_headers($url);
+          
+        // Storing value at 1st position because
+        // that is only what we need to check
+        $string = $array[0];
+          
+        // 404 for error, 200 for no error
+        if(!strpos($string, "200")) {
+
+            $baseImage = basename($url);
+
+            $content = 'https://dienmaynguoiviet.vn/media/product/'.$baseImage;
+
+             file_put_contents(public_path().'/'.$img, file_get_contents($content));
+
+
+            echo "thanh cong";
+        } 
     }
 
 
@@ -5170,7 +5315,7 @@ https://dienmaynguoiviet.vn/may-say-lg-dr-80bw-80-kg/';
     public function getImagePost()
     {
 
-        for($i=3999; $i<4023; $i++){
+        for($i=3995; $i<4132; $i++){
 
             $posts = product::find($i);
 
