@@ -4566,26 +4566,42 @@ https://dienmaynguoiviet.vn/may-say-lg-dr-80bw-80-kg/';
     {
         $url = 'http://demo.dienmaynguoiviet.net/uploads/product/crawl/child/5982_may_giat_electrolux_ewf1024p5wb_inverter_10_kg_org_13.jpg';
 
-        $image 
-        // Getting page header data
-        $array = @get_headers($url);
-          
-        // Storing value at 1st position because
-        // that is only what we need to check
-        $string = $array[0];
-          
-        // 404 for error, 200 for no error
-        if(!strpos($string, "200")) {
+        $image = image::select('image')->get();
 
-            $baseImage = basename($url);
+        foreach ($image as $key => $img) {
 
-            $content = 'https://dienmaynguoiviet.vn/media/product/'.$baseImage;
+            // Getting page header data
+            $array = @get_headers($img);
+              
+            // Storing value at 1st position because
+            // that is only what we need to check
+            $string = $array[0];
+              
+            // 404 for error, 200 for no error
+            if(!strpos($string, "200")) {
 
-             file_put_contents(public_path().'/'.$img, file_get_contents($content));
+                $baseImage = basename($url);
+
+                $content = 'https://dienmaynguoiviet.vn/media/product/'.$baseImage;
+
+                $check = @get_headers($content);
+
+                if(strpos($check[0], "200")){
+
+                     file_put_contents(public_path().'/'.$img, file_get_contents($content));
+                }
+                else{
+
+                    print_r($content);
+                }
 
 
-            echo "thanh cong";
-        } 
+            } 
+
+           
+        }
+        
+        echo "thanh cong";
     }
 
 
