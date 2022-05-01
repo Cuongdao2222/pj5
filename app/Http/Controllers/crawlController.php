@@ -46,6 +46,38 @@ class crawlController extends Controller
 
     }
 
+    public function fill_name(){
+
+        $ar_info[1] ='tivi';
+        $ar_info[2] ='may-giat';
+        $ar_info[3] ='tu-lanh';
+        $ar_info[4] ='dieu-hoa';
+        $ar_info[6] ='tu-dong';
+        $ar_info[7] ='tu-mat';
+       
+        $ar_info[9] ='may-loc-nuoc';
+
+        $ar_info[71] ='may-say';
+
+    
+        foreach ($ar_info as $key => $value) {
+
+
+            $productname = product::select('id')->where('Link', 'like', '%'.$value.'%')->get()->pluck('id')->toArray();
+
+            $groupProduct = groupProduct::find($key);
+
+            $groupProduct->product_id = json_encode($productname);
+
+            $groupProduct->save();
+
+        }
+      
+
+        echo "thanh cong";
+        
+    }
+
 
    
 

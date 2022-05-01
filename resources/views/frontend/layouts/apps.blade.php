@@ -1090,7 +1090,7 @@
                     </a>
 
                     <form  class="header__search" method="get" action="{{ route('search-product-frontend') }}">
-                        <input  type="text" class="input-search" placeholder="tìm sản phẩm..." name="key" autocomplete="off" maxlength="100">
+                        <input  type="text" class="input-search" placeholder="tìm sản phẩm..." name="key" autocomplete="off" maxlength="100" required>
                         <button type="submit">
                         <i class="icon-search"></i>
                         </button>
