@@ -4572,8 +4572,11 @@ https://dienmaynguoiviet.vn/may-say-lg-dr-80bw-80-kg/';
 
             $img = trim($imgs->image);
 
+            $url = env('APP_URL').'/'.$img;
+
             // Getting page header data
-            $array = @get_headers($img->image);
+            $array = @get_headers($url);
+
               
             // Storing value at 1st position because
             // that is only what we need to check
@@ -4588,14 +4591,18 @@ https://dienmaynguoiviet.vn/may-say-lg-dr-80bw-80-kg/';
 
                 $check = @get_headers($content);
 
-                if(strpos($check[0], "200")){
+                if(!strpos($check[0], "200")){
 
                      file_put_contents(public_path().'/'.$img, file_get_contents($content));
-                }
-                else{
 
-                    print_r($content);
+                     print_r($url);
+
+
                 }
+                // else{
+
+                //     print_r($content);
+                // }
 
 
             } 
