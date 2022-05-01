@@ -15,6 +15,17 @@
             .block-manu{
                 width: 150px;
             }
+
+            @media screen and (max-width:776px) {
+                .box-filter{
+                    display: flex;
+                    overflow: auto;
+
+                }
+                .box-filter .form-control {
+                    width: 117px;
+                }
+            }
         </style>
 
     

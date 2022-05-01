@@ -72,6 +72,8 @@
             .lists-id{
                 display: none;
             }
+
+
             @media screen and (max-width: 776px){
                 .listproduct{
                     display: block;
@@ -82,6 +84,15 @@
                 .listproduct img {
                    
                     width: 100%;
+                }
+
+                .box-filter{
+                    display: flex;
+                    overflow: auto;
+
+                }
+                .box-filter .form-control {
+                    width: 117px !important;
                 }
             }    
 

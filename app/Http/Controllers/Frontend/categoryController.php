@@ -214,8 +214,7 @@ class categoryController extends Controller
 
             }
 
-            dd($data);
-
+            
 
 
 
