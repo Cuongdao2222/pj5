@@ -4564,8 +4564,8 @@ https://dienmaynguoiviet.vn/may-say-lg-dr-80bw-80-kg/';
 
     public function checkimageNulll()
     {
-        $url = 'http://demo.dienmaynguoiviet.net/uploads/product/crawl/child/5982_may_giat_electrolux_ewf1024p5wb_inverter_10_kg_org_13.jpg';
-
+        
+        
         $image = image::select('image')->get();
 
         foreach ($image as $key => $imgs) {
