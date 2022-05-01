@@ -242,7 +242,7 @@
                     <?php $arr_id_pro = []; ?>
                    
                     @foreach($product_search as $value)
-                        @if($value->active==1)
+                        
 
                             <?php   
 
@@ -299,7 +299,7 @@
                                 </a> -->
                             </div>
                         </div>
-                        @endif
+                        
                     @endforeach
 
 
