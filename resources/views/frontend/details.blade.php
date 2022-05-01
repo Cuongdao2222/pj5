@@ -4,7 +4,7 @@
     div.stars {
     width: auto !important;
     }   
-    .installment-purchase .but-tra-gop {
+    .installment-purchase .but-1-gop {
         text-decoration: none;
         color: #333;
         font-size: 14px;
