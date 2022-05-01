@@ -4,7 +4,7 @@
     div.stars {
     width: auto !important;
     }   
-    .installment-purchase .but-1-gop {
+    .installment-purchase .but-tra-gop {
         text-decoration: none;
         color: #333;
         font-size: 14px;
@@ -21,11 +21,22 @@
         .header__top {
             background-color: #187A43;
             }   
-        }
-        .installment-purchase .but-1-gop {
-            font-size: 12px;
+        } 
 
+        .installment-purchase .but-1-gop {
+            text-decoration: none;
+            color: #333;
+            font-size: 12px;
+            padding: 8px 5px;
+            line-height: 18px;
+            width: 49%;
+            border-radius: 5px;
+            display: inline-block;
+            text-align: center;
+            cursor: pointer;
+            background: #ffde00;
         }   
+         
         @media screen and (min-width: 777px){
 
             #thongso td{
@@ -458,12 +469,12 @@
                             <div class="clearfix"></div>
                             <div class="installment-purchase pdetail-installment">
                                 @if((int)$data['Price']>3000000)
-                                <a target="_blank" class="but-1-gop" href="{{ route('details', $data->Link)  }}?show=tra-gop" admicro-data-event="101725" admicro-data-auto="1" admicro-data-order="false">
+                                <a target="_blank" class="but-tra-gop" href="{{ route('details', $data->Link)  }}?show=tra-gop" admicro-data-event="101725" admicro-data-auto="1" admicro-data-order="false">
                                 <strong>TRẢ GÓP</strong>
                                 <br>
                                 (Công ty tài chính)
                                 </a>
-                                <a target="_blank" class="but-1-gop" href="{{ route('details', $data->Link)  }}?show=tra-gop" admicro-data-event="101725" admicro-data-auto="1" admicro-data-order="false">
+                                <a target="_blank" class="but-tra-gop" href="{{ route('details', $data->Link)  }}?show=tra-gop" admicro-data-event="101725" admicro-data-auto="1" admicro-data-order="false">
                                 <strong>TRẢ GÓP QUA THẺ</strong>
                                 <br>
                                 (Visa, Master, JCB)
