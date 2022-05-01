@@ -458,12 +458,12 @@
                             <div class="clearfix"></div>
                             <div class="installment-purchase pdetail-installment">
                                 @if((int)$data['Price']>3000000)
-                                <a target="_blank" class="but-tra-gop" href="{{ route('details', $data->Link)  }}?show=tra-gop" admicro-data-event="101725" admicro-data-auto="1" admicro-data-order="false">
+                                <a target="_blank" class="but-1-gop" href="{{ route('details', $data->Link)  }}?show=tra-gop" admicro-data-event="101725" admicro-data-auto="1" admicro-data-order="false">
                                 <strong>TRẢ GÓP</strong>
                                 <br>
                                 (Công ty tài chính)
                                 </a>
-                                <a target="_blank" class="but-tra-gop" href="{{ route('details', $data->Link)  }}?show=tra-gop" admicro-data-event="101725" admicro-data-auto="1" admicro-data-order="false">
+                                <a target="_blank" class="but-1-gop" href="{{ route('details', $data->Link)  }}?show=tra-gop" admicro-data-event="101725" admicro-data-auto="1" admicro-data-order="false">
                                 <strong>TRẢ GÓP QUA THẺ</strong>
                                 <br>
                                 (Visa, Master, JCB)
