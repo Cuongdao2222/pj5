@@ -137,8 +137,17 @@ class filterController extends Controller
                 // return redirect('/'.$link.'/?filter= 1');
 
                     return response($product_search);
-                }    
+                } 
 
+                else{
+
+                    print_r('bay vao day');
+                }   
+
+            }
+            else{
+
+                print_r('code');
             }
 
         }  
