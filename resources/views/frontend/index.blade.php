@@ -730,7 +730,7 @@
             $('#banner-product_'+i).owlCarousel({
                 
                 margin:10,
-                nav:true,
+                nav:false,
                 navText: ["<i class='fa fa-chevron-left'></i>","<i class='fa fa-chevron-right'></i>"],
                 loop: true,
                 items:1.5,
