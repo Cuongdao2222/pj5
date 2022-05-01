@@ -728,16 +728,17 @@
         for (i = 0; i < number_slider; i++) {
 
             $('#banner-product_'+i).owlCarousel({
-                loop: false,
+                
                 margin:10,
-                nav:false,
+                nav:true,
                 navText: ["<i class='fa fa-chevron-left'></i>","<i class='fa fa-chevron-right'></i>"],
+                items:2,
+                loop: true,
                 responsive:{
-                    0:{
-                        items:2.5
-                    },
+                   
                     600:{
-                        items:2.5
+                        items:2
+                       
                     },
                     1000:{
                         items:5
@@ -749,16 +750,16 @@
 
         $('.banner-sale').owlCarousel({
             loop:false,
-
+            items:2,
             margin:10,
             nav:true,
             navText: ["<i class='fa fa-chevron-left'></i>","<i class='fa fa-chevron-right'></i>"],
             responsive:{
                 0:{
-                    items:2.5
+                    items:2
                 },
                 600:{
-                    items:2.5
+                    items:2
                 },
                 1000:{
                     items:5
