@@ -30,6 +30,7 @@ class categoryController extends Controller
     public function categoryView($slug)
     {
 
+
         if(!empty($_GET['filter'])){
 
             $link     = strip_tags($_GET['link']);
@@ -79,6 +80,12 @@ class categoryController extends Controller
 
             $keys =  [];
 
+            $result = [];
+
+            $product = [];
+
+            $product_search = [];
+
         
             if(!empty($list_data_group[0]['value'])){
 
@@ -98,8 +105,7 @@ class categoryController extends Controller
 
                 }
                 
-                $result = [];
-                $product = [];
+                
 
                 if(isset($keys)){
                     foreach($keys as $key1 => $vals){
@@ -141,14 +147,16 @@ class categoryController extends Controller
 
                         $product_search = product::whereIn('id', $result_product)->get();
 
-                        // return view('frontend.ajax.product', compact('product_search'));
+                       
                         
                     }
 
-                    return view('frontend.filter', compact('product_search', 'link', 'filter', 'id_cate'));
-
+                   
                 }
             }
+             return view('frontend.filter', compact('product_search', 'link', 'filter', 'id_cate'));
+
+           
 
 
         }

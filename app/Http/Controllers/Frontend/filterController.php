@@ -66,6 +66,7 @@ class filterController extends Controller
 
         $keys =  [];
 
+
       
         if(!empty($list_data_group[0]['value'])){
 
@@ -139,22 +140,14 @@ class filterController extends Controller
                     return response($product_search);
                 } 
 
-                else{
-
-                    print_r('bay vao day');
-                }   
+               
 
             }
-            else{
-
-                print_r('code');
-            }
+            
 
         }  
 
-        else{
-            print_r('code');
-        }  
+      
             
     }
     
