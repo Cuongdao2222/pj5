@@ -4571,42 +4571,29 @@ https://dienmaynguoiviet.vn/may-say-lg-dr-80bw-80-kg/';
         foreach ($image as $key => $imgs) {
 
             $img = trim($imgs->image);
+            $path = public_path().'/'.$img;
 
-            $url = env('APP_URL').'/'.$img;
+            if(!file_exists($path)){
 
-            // Getting page header data
-            $array = @get_headers($url);
-
-              
-            // Storing value at 1st position because
-            // that is only what we need to check
-            $string = $array[0];
-              
-            // 404 for error, 200 for no error
-            if(!strpos($string, "200")) {
-
-                $baseImage = basename($url);
-
+                $baseImage = basename($img);
                 $content = 'https://dienmaynguoiviet.vn/media/product/'.$baseImage;
 
                 $check = @get_headers($content);
 
-                if(!strpos($check[0], "200")){
+                if(strpos($check[0], "200")){
 
-                     file_put_contents(public_path().'/'.$img, file_get_contents($content));
+                     file_put_contents($path, file_get_contents($content));
 
-                     print_r($url);
+                     print_r($path);
 
 
                 }
-                // else{
+                
 
-                //     print_r($content);
-                // }
-
-
-            } 
-
+            }
+              
+        
+           
            
         }
         
