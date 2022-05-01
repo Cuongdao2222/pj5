@@ -48,17 +48,35 @@ class crawlController extends Controller
 
     public function fill_name(){
 
-        $ar_info[1] ='tivi';
-        $ar_info[2] ='may-giat';
-        $ar_info[3] ='tu-lanh';
-        $ar_info[4] ='dieu-hoa';
-        $ar_info[6] ='tu-dong';
-        $ar_info[7] ='tu-mat';
+        $ar_info[12] ='samsung';
+        $ar_info[13] ='lg';
+        $ar_info[14] ='sony';
+        $ar_info[15] ='tcl';
+        $ar_info[16] ='philips';
+
+        $dataTivi = groupProduct::find(1);
+
+
+        $ar_tivi = json_decode($dataTivi->product_id);
+
+        foreach($ar_info as $key=>$value){
+
+            $data = product::select('Link','id')->where('Link','like','%'.$value.'%')->whereIn('id', $ar_tivi)->get()->pluck('id')->toArray();
+
+            $addData = groupProduct::find($key);
+
+            $addData->product_id = json_encode($data);
+
+            $addData->save();
+        }
+
+        echo "thanh cong";
+
+        die();
+
+
        
-        $ar_info[9] ='may-loc-nuoc';
-
-        $ar_info[71] ='may-say';
-
+       
     
         foreach ($ar_info as $key => $value) {
 
