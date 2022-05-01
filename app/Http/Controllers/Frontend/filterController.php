@@ -141,7 +141,11 @@ class filterController extends Controller
 
             }
 
-        }    
+        }  
+
+        else{
+            print_r('code');
+        }  
             
     }
     
