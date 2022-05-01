@@ -4565,10 +4565,14 @@ https://dienmaynguoiviet.vn/may-say-lg-dr-80bw-80-kg/';
     public function checkimageNulll()
     {
         
-        
-        $image = image::select('image')->get();
 
-        foreach ($image as $key => $imgs) {
+        
+
+
+
+        for ($i= 20999; $i<27480; $i++) {
+
+            $imgs = image::find($i);
 
             $img = trim($imgs->image);
             $path = public_path().'/'.$img;
