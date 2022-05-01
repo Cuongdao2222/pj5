@@ -21,7 +21,11 @@
         .header__top {
             background-color: #187A43;
             }   
-        }    
+        }
+        .installment-purchase .but-1-gop {
+            font-size: 12px;
+
+        }   
         @media screen and (min-width: 777px){
 
             #thongso td{
