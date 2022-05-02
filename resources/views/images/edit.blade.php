@@ -11,6 +11,15 @@
         </div>
     </section>
 
+    <?php  
+        $start = stripos($_SERVER['REQUEST_URI'],'?');
+        
+        $result = substr($_SERVER['REQUEST_URI'], $start);
+
+        $product_id = str_replace('?', '', $result);
+
+    ?>
+
     <div class="content px-3">
 
         @include('adminlte-templates::common.errors')

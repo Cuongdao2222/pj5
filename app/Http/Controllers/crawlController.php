@@ -103,17 +103,18 @@ class crawlController extends Controller
     public function crawl()
     {
 
-        $urls =  $this->cralwss();
+        $product = product::select('Link', 'id')->get();
 
-        for ($i=4023; $i < 4132; $i++) { 
+        foreach ($product as $key => $value) {
 
-            $products = product::find($i);
-
+            $products = product::find($value->id);
             $products->Link = trim($products->Link);
+             $products->save();
 
-            $products->save();
-           
+            
         }
+
+        
 
         echo "thanh cong";
 

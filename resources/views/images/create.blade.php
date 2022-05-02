@@ -47,9 +47,13 @@
     </div>
 
     <?php 
+
+        
         
 
         $images = App\Models\image::where('product_id', $product_id)->get();
+
+        
 
        
     ?>

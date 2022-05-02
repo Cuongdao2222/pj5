@@ -162,6 +162,26 @@ class AjaxController extends Controller
 
     }
 
+    public function getProductActive(Request $request)
+    {
+        $products = $request->product;
+
+        $product = product::select('Link', 'Name', 'Image', 'Price')->where('Name','like','%'.$products.'%' )->take(10)->get();
+
+        $sugests =[];
+
+
+
+        foreach($product as $products){
+
+            $sugest = '<a class="suggest_link" href="'.route('details', $products->Link).'">'.$products->Name.'</a><br><p>giá: '.number_format($products->Price).'đ</p><br>';
+
+            array_push($sugests, $sugest);
+        }
+
+        return response(json_encode($sugests));
+    }
+
     public function addSaleProduct(Request $request)
     {
 

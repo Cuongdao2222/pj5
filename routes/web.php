@@ -106,6 +106,8 @@ Route::post('rate-form', 'AjaxController@rateForm')->name('rate-form');
 
 
 
+
+
 Route::get('/category/{slug}', 'Frontend\categoryController@index')->name('category-product')->middleware('auth');
 
 Route::get('/{slug}', 'Frontend\categoryController@details')->name('details');
@@ -115,6 +117,9 @@ Route::post('ajax-clent-register', 'AjaxController@registerClient')->name('regis
 Route::post('muchsearch', 'AjaxController@muchSearch')->name('muchSearch');
 
 Route::post('get-email-user', 'AjaxController@getEmail')->name('getemail');
+
+Route::post('suggest', 'AjaxController@getProductActive')->name('sugest-click');
+
 
 
 

@@ -229,6 +229,7 @@
        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
         
         <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}"> 
+         <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         
@@ -1090,7 +1091,7 @@
                     </a>
 
                     <form  class="header__search" method="get" action="{{ route('search-product-frontend') }}">
-                        <input  type="text" class="input-search" placeholder="tìm sản phẩm..." name="key" autocomplete="off" maxlength="100" required>
+                        <input  type="text" class="input-search" id="tags" placeholder="tìm sản phẩm..." name="key" autocomplete="off" maxlength="100" required>
                         <button type="submit">
                         <i class="icon-search"></i>
                         </button>
@@ -2179,6 +2180,17 @@
                 padding: 15px;
                 border-radius: 4px;
             }
+
+            .appendAddress{
+                top: 65px;
+                left: 1000.66px;
+                width: 903.344px;
+            }
+
+            #ui-id-1{
+                width: auto !important;
+                padding: 10px !important;
+            }
             
            
         </style>
@@ -2221,8 +2233,6 @@ s0.parentNode.insertBefore(s1,s0);
 <!--End of Tawk.to Script-->
 
       
-        
-  
 
     <link rel="stylesheet" href="{{asset('css/lib/owl.carousel.min.css')}}">
 
@@ -2240,6 +2250,53 @@ s0.parentNode.insertBefore(s1,s0);
 
     @stack('script')
 
+  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+
+  <script>
+
+
+
+
+    $(function() {
+        $("#tags").autocomplete({
+            
+            source: function(request, response) {
+                $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+
+
+                });
+                $.ajax({
+
+                    url: "{{  route('sugest-click')}}",
+                    type: "POST",
+                    data: {
+                        product:$('#tags').val()
+                    },
+                    dataType: "json",
+                    success: function (data) {
+                        var items = data;
+
+                        response(items);
+
+                        $('#ui-id-1').html();
+
+                        $('#ui-id-1').html(data);
+                    
+                    }
+                });
+            },
+            html:true,
+        });
+    })  
+
+  
+
+  
+  </script>
+
     <script type="text/javascript">
         
          function topFunction() {
@@ -2248,6 +2305,8 @@ s0.parentNode.insertBefore(s1,s0);
             return false;
           
         }
+
+
     </script>
 
     @if($popup->option ==0)
