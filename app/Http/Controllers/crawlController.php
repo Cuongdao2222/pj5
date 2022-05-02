@@ -108,7 +108,7 @@ class crawlController extends Controller
         foreach ($product as $key => $value) {
 
             $products = product::find($value->id);
-            $products->Link = trim($products->Link);
+            $products->Link = str_replace('/','',trim($products->Link));
              $products->save();
 
             
