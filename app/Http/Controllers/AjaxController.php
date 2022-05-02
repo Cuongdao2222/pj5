@@ -166,7 +166,7 @@ class AjaxController extends Controller
     {
         $products = $request->product;
 
-        $product =   product::select('Link', 'Name', 'Image', 'Price')->where('Name','like','%'.$products.'%' )->OrWhere('ProductSku', 'LIKE', '%' . $products . '%')->where('active', 1)->take(10)->get();
+        $product =   product::select('Link', 'Name', 'Image', 'Price')->where('Name','like','%'.$products.'%' )->OrWhere('ProductSku', 'LIKE', '%' . $products . '%')->where('active', 1)->take(5)->get();
 
         $sugests =[];
 
@@ -174,7 +174,7 @@ class AjaxController extends Controller
 
         foreach($product as $products){
 
-            $sugest = '<a class="suggest_link" href="'.route('details', $products->Link).'">'.$products->Name.'</a><br><p>giá: '.number_format($products->Price).'đ</p><br>';
+            $sugest = '<a href="'.route("details", $products->Link).'"><img src="'.asset($products->Image).'" width="50" style="margin-right:10px;"></a><a class="suggest_link" href="'.route('details', $products->Link).'">'.$products->Name.'</a><br><p>giá: '.number_format($products->Price).'đ</p><br>';
 
             array_push($sugests, $sugest);
         }

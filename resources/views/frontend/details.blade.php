@@ -292,7 +292,7 @@
                 </div>
             </div>
             <div class="total-imgslider">
-                <a id="show-popup-featured-images-gallery" style="display: block" href="javascript:void(0)"  data-color-id="0">Xem tất cả điểm nổi bật</a>
+                <a id="show-popup-featured-images-gallery" style="display: block" href="javascript:void(0)"  data-color-id="0" data-toggle="modal" data-target="#Salient_Features">Xem tất cả điểm nổi bật</a>
             </div>
             <div class="scrolling_inner">
                 <div class="box01__tab scrolling">
