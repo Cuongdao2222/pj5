@@ -365,14 +365,14 @@ class sitemapController extends Controller
 
    public function sitemapChildProduct()
    {
-    $product = product::take(60)->OrderBy('id', 'desc')->get()
+    $product = product::take(60)->OrderBy('id', 'desc')->get();
        return response()->view('sitemap.child', [
             'arr_number' => $product
         ])->header('Content-Type', 'text/xml');
    }
    public function sitemapChildBlog()
    {
-    $blog = blog::take(60)->OrderBy('id', 'desc')->get()
+    $blog = blog::take(60)->OrderBy('id', 'desc')->get();
        return response()->view('sitemap.childs_blog', [
             'arr_number' => $blog
         ])->header('Content-Type', 'text/xml');
