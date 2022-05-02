@@ -476,6 +476,11 @@ class productController extends AppBaseController
 
         $data      = strip_tags($clearData);
 
+        if(empty($data)){
+            return redirect()->route('homeFe');
+
+        }
+
         $resultProduct = [];
 
         $find_first = Product::select('id')->where('Name','LIKE', '%'. $data .'%')->OrWhere('ProductSku', 'LIKE', '%' . $data . '%')->get()->pluck('id');

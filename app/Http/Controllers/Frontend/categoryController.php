@@ -210,7 +210,7 @@ class categoryController extends Controller
                 $Group_product = json_decode($Group_product->product_id);
 
               
-                $data = Product::whereIn('id', $Group_product)->where('active', 0)->orderBy('id', 'desc')->paginate(10);
+                $data = Product::whereIn('id', $Group_product)->where('active', 1)->orderBy('id', 'desc')->paginate(10);
 
             }
 
