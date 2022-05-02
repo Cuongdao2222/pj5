@@ -133,7 +133,7 @@ class filterController extends Controller
 
                     }
 
-                    $product_search = product::whereIn('id', $result_product)->get();
+                    $product_search = product::whereIn('id', $result_product)->where('active', 1)->get();
 
                 // return redirect('/'.$link.'/?filter= 1');
 
