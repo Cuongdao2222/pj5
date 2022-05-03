@@ -232,7 +232,7 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::resource('images', 'imageController');
 
-    Route::post('find-product', 'productController@FindbyNameOrModel')->name('find-product');
+    Route::get('find-product', 'productController@FindbyNameOrModel')->name('find-product');
 
     Route::get('category/{category_id}', 'productController@selectProductByCategory')->name('select-category');
 

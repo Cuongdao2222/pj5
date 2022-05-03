@@ -13,8 +13,8 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <!-- Search form -->
-                    <form class="form-inline active-pink-3 active-pink-4 " method="post" action="{{ Route('find-product') }}">
-                        @csrf
+                    <form class="form-inline active-pink-3 active-pink-4 " method="get" action="{{ Route('find-product') }}">
+                       
                         <button><i class="fas fa-search" aria-hidden="true"></i></button>
                         <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search"
                             aria-label="Search" name="search">
