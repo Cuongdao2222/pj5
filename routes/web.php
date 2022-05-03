@@ -18,6 +18,12 @@ Route::get('/tin-khuyen-mai/', 'Frontend\blogController@index')->name('tin');
 
 Route::get('/tin-tong-hop/', 'Frontend\blogController@index')->name('tin-th');
 
+ Route::get('landingpage', function () {
+        return view('landing.landing');
+        
+    })->name('landing');
+
+
 Route::get('/', 'Frontend\indexController@index')->name('homeFe');
 Route::get('/ckfinder.html', function () {
     return view('frontend.ckfinder');
@@ -198,11 +204,7 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::get('add-lanfding-pro', 'landingController@addLanding')->name('add-product-landing');
 
-    Route::get('landingpage', function () {
-        return view('landing.landing');
-        
-    })->name('landing');
-
+   
     Route::get('add-hight-light', 'landingController@add_Hight_Light')->name('add-hight-light');
 
     Route::get('remove-hight-light', 'landingController@removeLanding')->name('remove-hight-light');
