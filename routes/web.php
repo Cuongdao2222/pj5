@@ -18,10 +18,7 @@ Route::get('/tin-khuyen-mai/', 'Frontend\blogController@index')->name('tin');
 
 Route::get('/tin-tong-hop/', 'Frontend\blogController@index')->name('tin-th');
 
- Route::get('landingpage', function () {
-        return view('landing.landing');
-        
-    })->name('landing');
+
 
 
 Route::get('/', 'Frontend\indexController@index')->name('homeFe');
@@ -149,7 +146,10 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::get('delete-link-add', 'showController@deleteLinkAdd')->name('delete-link-add');
 
-
+     Route::get('landingpage', function () {
+        return view('landing.landing');
+        
+    })->name('landing');
     
 
     Route::post('info-pop-up', 'showController@addPopup')->name('add-popup');
