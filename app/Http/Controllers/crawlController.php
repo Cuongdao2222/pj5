@@ -102,49 +102,8 @@ class crawlController extends Controller
 
     public function crawl()
     {
+        $dif = $this->cralwss();
 
-        $product = product::select('Link', 'id')->get();
-
-        foreach ($product as $key => $value) {
-
-            $products = product::find($value->id);
-            $products->Link = str_replace('/','',trim($products->Link));
-             $products->save();
-
-            
-        }
-
-        
-
-        echo "thanh cong";
-
-
-        die();
-
-        // foreach ($urls as $key => $value) {
-        //     $product = product::select('Link')->whereBetween('id', [4024, 4122])->get()->pluck('Link')->toArray();
-
-
-          
-        // }
-        // $dif = [];
-
-        // foreach ($urls as $key => $value) {
-
-        //     $vals = trim(str_replace('https://dienmaynguoiviet.vn/', '', $value));
-
-           
-
-        //     if(!in_array($vals, $product)){
-
-        //         array_push($dif, $value);
-                
-        //     }
-           
-        // }
-
-    
-    
         if(isset($dif)){
             foreach ($dif as $url) {
                 
@@ -251,7 +210,7 @@ class crawlController extends Controller
 
                         $active = 0;
 
-                        $link =  str_replace('https://dienmaynguoiviet.vn/', '', $url);
+                        $link =  str_replace('/', '', trim(str_replace('https://dienmaynguoiviet.vn/', '', $url)));
 
                         $inputs = ["Link"=>$link, "Price"=>$price, "Name"=>$title, "ProductSku"=>$model, "Image"=>$image, "Quantily"=>$qualtily, "Maker"=>$maker, "Meta_id"=>$meta_id,"Group_id"=>$group_id, "active"=>0, "Specifications"=>$info, "Salient_Features"=>$specialDetail, "Detail"=>$content];
 
