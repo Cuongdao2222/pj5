@@ -28,6 +28,8 @@
                 </div>
 
                 <div class="btn btn-red"><a href="{{ route('deal') }}">deal sản phẩm</a></div>
+
+                <div class="bthongbao"></div>
             </div>
         </div>
     </section>

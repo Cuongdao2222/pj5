@@ -592,7 +592,8 @@
                    
             },
             success: function(result){
-                alert(result);
+                $('.bthongbao').text('thanh cong');
+                window.location.href;
             }
         });
        
