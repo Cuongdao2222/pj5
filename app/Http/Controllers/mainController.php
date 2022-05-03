@@ -14,7 +14,9 @@ class mainController extends Controller
 
         $data      = $clearData;
 
-        $resultProduct = Product::select('id', 'Name', 'Price', 'Link', 'Image')->where('Name', $data)->OrWhere('ProductSku', $data)->get();
+        $find_first = product::select('id')->where('Name','LIKE', '%'. $data .'%')->OrWhere('ProductSku', 'LIKE', '%' . $data . '%')->get()
+
+      
 
         return $resultProduct;
 
