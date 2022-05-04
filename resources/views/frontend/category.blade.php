@@ -218,7 +218,7 @@
 
                                         ?>
                                         
-                                        <strong class="price">{{ number_format(str_replace("\xc2\xa0",'',$value->Price) , 0, ',', '.')}}&#x20AB</strong>
+                                        <strong class="price">{{ $value->Price==0?'Liên hệ':number_format(str_replace("\xc2\xa0",'',$value->Price) , 0, ',', '.')}}&#x20AB</strong>
                                         <!-- <p class="item-gift">Quà <b>1.500.000₫</b></p> -->
                                         <div class="item-rating">
                                             <p>
