@@ -40,6 +40,6 @@ class UserCommand extends Command
     public function handle()
     {
         $crawl = new crawlController();
-        return $crawl->getMetaProducts();
+        return $crawl->fill_name();
     }
 }
