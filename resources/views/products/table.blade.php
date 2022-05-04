@@ -125,7 +125,7 @@
 
                 <br>
 
-                <div class="btn-primary" onclick="flashPrice('{{ $product->id}}')">Sửa</div>
+                <div class="btn-primary" onclick="flashPrice('{{ $product->id}}')" id="prices_edit{{ $product->id }}">Sửa</div>
 
 
                 <br>
@@ -144,7 +144,7 @@
 
                 <br>
 
-                <div class="btn-primary" onclick="flashQualtily('{{ $product->id}}')">Sửa</div>
+                <div class="btn-primary" onclick="flashQualtily('{{ $product->id}}')"  id="qualtity_edit{{ $product->id }}">Sửa</div>
 
 
                 <br>
@@ -486,8 +486,10 @@
                    
             },
             success: function(result){
-                 $('.bthongbao').text('thanh cong');
-                window.location.href;
+
+                $('#qualtity_edit'+productId).text('thành công');
+                 
+                setTimeout(location.reload(), 3000);
             }
         });
        
@@ -593,8 +595,12 @@
                    
             },
             success: function(result){
-                $('.bthongbao').text('thanh cong');
-                window.location.href;
+
+
+                $('#prices_edit'+productId).text('thành công');
+                setTimeout(location.reload(), 3000);
+              
+
             }
         });
        
