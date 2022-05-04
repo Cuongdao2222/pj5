@@ -232,114 +232,46 @@ class crawlController extends Controller
 
     public function cralwss()
     {
-        $code  = "https://dienmaynguoiviet.vn/smart-tivi-samsung-49-inch-49mu8000-4k/
-        https://dienmaynguoiviet.vn/smart-tivi-samsung-55-inch-55mu8000-4k/
-        https://dienmaynguoiviet.vn/smart-tivi-samsung-65-inch-65mu8000-4k/
-        https://dienmaynguoiviet.vn/smart-tivi-samsung-55-inch-55mu9000-4k/
-        https://dienmaynguoiviet.vn/smart-tivi-samsung-ua65mu9000-man-hinh-cong-4k/
-        https://dienmaynguoiviet.vn/smart-tivi-samsung-78ku6500-78-inch-4k-man-hinh-cong/
-        https://dienmaynguoiviet.vn/smart-tivi-samsung-65-inch-ua65ku6100-curved-4k-hdr-100hz/
-        https://dienmaynguoiviet.vn/smart-tivi-samsung-55-inch-ua55ku6100-curved-4k-hdr-100hz/
-        https://dienmaynguoiviet.vn/smart-tivi-samsung-49-inch-ua49ku6100-curved-4k-hdr-100hz/
-        https://dienmaynguoiviet.vn/smart-tivi-samsung-40-inch-ua40ku6100-curved-4k-hdr-100hz/
-        https://dienmaynguoiviet.vn/smart-tivi-samsung-ua65ku6400-65-inch-4k-100hz/
-        https://dienmaynguoiviet.vn/smart-tivi-samsung-ua55ku6400-55-inch-4k-100hz/
-        https://dienmaynguoiviet.vn/smart-tivi-samsung-ua49ku6400-49-inch-4k-100hz/
-        https://dienmaynguoiviet.vn/smart-tivi-samsung-ua43ku6400-43-inch-4k-100hz/
-        https://dienmaynguoiviet.vn/smart-tivi-samsung-ua40ku6400-40-inch-4k-100hz/
-        https://dienmaynguoiviet.vn/smart-tivi-samsung-70ku6000-70-inch-4k-man-hinh-cong-100hz/
-        https://dienmaynguoiviet.vn/smart-tivi-samsung-65ku6000-65-inch-4k-man-hinh-cong-100hz/
-        https://dienmaynguoiviet.vn/smart-tivi-samsung-60ku6000-60-inch-4k-man-hinh-cong-100hz/
-        https://dienmaynguoiviet.vn/smart-tivi-samsung-55ku6000-55-inch-4k-man-hinh-cong-100hz/
-        https://dienmaynguoiviet.vn/smart-tivi-samsung-50ku6000-50-inch-4k-man-hinh-cong-100hz/
-        https://dienmaynguoiviet.vn/smart-tivi-samsung-43ku6000-43-inch-4k-man-hinh-cong-100hz/
-        https://dienmaynguoiviet.vn/smart-tivi-samsung-40ku6000-40-inch-4k-100hz/
-        https://dienmaynguoiviet.vn/smart-tivi-samsung-65ku6500-65-inch-4k-man-hinh-cong-100hz/
-        https://dienmaynguoiviet.vn/smart-tivi-samsung-55ku6500-55-inch-4k-man-hinh-cong-100hz/
-        https://dienmaynguoiviet.vn/smart-tivi-samsung-49ku6500-49-inch-4k-man-hinh-cong-100hz/
-        https://dienmaynguoiviet.vn/smart-tivi-samsung-43ku6500-43-inch-4k-man-hinh-cong-100hz/
-        https://dienmaynguoiviet.vn/smart-tivi-samsung-78ks9000-curver-78-inch-4k/
-        https://dienmaynguoiviet.vn/smart-tivi-samsung-60ks7000-60-inches-4k/
-        https://dienmaynguoiviet.vn/smart-tivi-samsung-55ks7000-55-inches-4k/
-        https://dienmaynguoiviet.vn/smart-tivi-samsung-49ks7000-49-inches-4k/
-        https://dienmaynguoiviet.vn/smart-tivi-samsung-65ks7500-65-inch-man-hinh-cong/
-        https://dienmaynguoiviet.vn/smart-tivi-samsung-55ks7500-55-inch-man-hinh-cong/
-        https://dienmaynguoiviet.vn/smart-tivi-samsung-49ks7500-49-inch-man-hinh-cong/
-        https://dienmaynguoiviet.vn/smart-tivi-samsung-65ks9000-curver-65-inch-4k/
-        https://dienmaynguoiviet.vn/smart-tivi-samsung-55ks9000-curver-55-inch-4k/
-        https://dienmaynguoiviet.vn/tivi-samsung-ua55js7200-smart-tv-55/
-        https://dienmaynguoiviet.vn/tivi-samsung-ua65ju6000-65-inches-smart-tv-4k/
-        https://dienmaynguoiviet.vn/tivi-led-samsung-ua65ju7000-smart-tv-65-inch-4k/
-        https://dienmaynguoiviet.vn/smart-tivi-tcl-49p32-cf-49-inch-full-hd/
-        https://dienmaynguoiviet.vn/smart-tivi-tcl-55-inch-4k-l55p5-uc/
-        https://dienmaynguoiviet.vn/smart-tivi-tcl-65x3-qled-65-inch-4k-man-hinh-cong/
-        https://dienmaynguoiviet.vn/smart-tivi-samsung-49m6303-55-inch-full-hd/
-        https://dienmaynguoiviet.vn/smart-tivi-samsung-ua49mu6103-49-inch-4k/
-        https://dienmaynguoiviet.vn/smart-tivi-samsung-55m6303-55-inch-full-hd-man-hinh-cong/
-        https://dienmaynguoiviet.vn/smart-tivi-samsung-49-inch-49m6300-full-hd/
-        https://dienmaynguoiviet.vn/smart-tivi-samsung-55-inch-55m6300-full-hd/
-        https://dienmaynguoiviet.vn/smart-tivi-samsung-ua55k6300-55-inch-full-hd/
-        https://dienmaynguoiviet.vn/smart-tivi-samsung-49k6300-49-inch-full-hd/
-        https://dienmaynguoiviet.vn/smart-tivi-samsung-40k6300-40-inch-full-hd/
-        https://dienmaynguoiviet.vn/smart-tivi-panasonic-th-55fx700v-55-inch-4k/
-        https://dienmaynguoiviet.vn/smart-tivi-panasonic-th-49fx700v-49-inch-4k/
-        https://dienmaynguoiviet.vn/smart-tivi-panasonic-th-65fx600v-65-inch-4k/
-        https://dienmaynguoiviet.vn/smart-tivi-panasonic-th-55fx600v-55-inch-4k/
-        https://dienmaynguoiviet.vn/smart-tivi-panasonic-th-43fx600v-43-inch-uhd-4k/
-        https://dienmaynguoiviet.vn/smart-tivi-panasonic-th-50fs500v-50-inch-full-hd/
-        https://dienmaynguoiviet.vn/smart-tivi-oled-panasonic-th-77ez1000v-77-inch-4k/
-        https://dienmaynguoiviet.vn/smart-tivi-panasonic-65-inch-th-65ez1000v-4k/
-        https://dienmaynguoiviet.vn/smart-tivi-panasonic-55-inch-th-55ez950v-4k/
-        https://dienmaynguoiviet.vn/tivi-panasonic-49-inch-th-49lx1v-4k/
-        https://dienmaynguoiviet.vn/android-tivi-sony-kd-55x86j-55-inch-4k/
-        https://dienmaynguoiviet.vn/android-tivi-sony-kd-85z8h-85-inch-8k/
-        https://dienmaynguoiviet.vn/smart-tivi-sony-kdl-49w800g-49-inch-full-hd/
-        https://dienmaynguoiviet.vn/smart-tivi-sony-kdl-43w800g-43-inch-full-hd/
-        https://dienmaynguoiviet.vn/smart-tivi-sony-kdl-50w660g-50-inch-full-hd/
-        https://dienmaynguoiviet.vn/smart-tivi-sony-kdl-43w660g-43-inch-full-hd/
-        https://dienmaynguoiviet.vn/smart-tivi-lg-32lq576bpsa-32-inch-hd/
-        https://dienmaynguoiviet.vn/smart-tivi-lg-43lm5750ptc-43-inch-full-hd/
-        https://dienmaynguoiviet.vn/smart-tivi-oled-lg-88z1pta-88-inch-8k/
-        https://dienmaynguoiviet.vn/smart-tivi-lg-75nano95tna-75-inch-8k/
-        https://dienmaynguoiviet.vn/smart-tivi-lg-65nano95tna-65-inch-8k/
-        https://dienmaynguoiviet.vn/smart-tivi-lg-55nano95tna-55-inch-8k/
-        https://dienmaynguoiviet.vn/smart-tivi-lg-32ln560bpta-32-inch-hd/
-        https://dienmaynguoiviet.vn/smart-tivi-lg-43ln5600pta-43-inch-full-hd/
-        https://dienmaynguoiviet.vn/smart-tivi-oled-lg-88zxpta-88-inch-8k/
-        https://dienmaynguoiviet.vn/smart-tivi-oled-lg-77zxpta-77-inch-8k/
-        https://dienmaynguoiviet.vn/smart-tivi-lg-50un6900pta-50-inch-4k/
-        https://dienmaynguoiviet.vn/smart-tivi-lg-43lm6360ptb-43-inch-hd/
-        https://dienmaynguoiviet.vn/smart-tivi-lg-32lm636bptb-32-inch-hd/
-        https://dienmaynguoiviet.vn/smart-tivi-lg-32lm570bptc-32-inch-hd/
-        https://dienmaynguoiviet.vn/smarttv-lg-32inch-32lk540bpta/
-        https://dienmaynguoiviet.vn/smart-tivi-lg-full-hd-43inch-43lk5400pta/
-        https://dienmaynguoiviet.vn/smart-tivi-lg-43-inch-43lj614t-full-hd/
-        https://dienmaynguoiviet.vn/smart-tivi-lg-49lj553t-49-inch-full-hd/
-        https://dienmaynguoiviet.vn/smart-tivi-lg-55-inch-55lj550t-full-hd/
-        https://dienmaynguoiviet.vn/smart-tivi-lg-32-inch-32lj550d-hd/
-        https://dienmaynguoiviet.vn/smart-tivi-lg-32lj571d-32-inch-hd/
-        https://dienmaynguoiviet.vn/tivi-samsung-ua32n4300-32-inch-hd/
-        https://dienmaynguoiviet.vn/tu-dong-sanaky-vh-419a-419-lit/
-        https://dienmaynguoiviet.vn/dieu-hoa-daikin-ftkb25wavmv-1-chieu-inverter-9000btu/
-        https://dienmaynguoiviet.vn/dieu-hoa-panasonic-cu/cs-xz9xkh-8-inverter-2-chieu-9000btu/
-        https://dienmaynguoiviet.vn/may-loc-khong-khi-sharp-fp-j50v-h-40m2/
-        https://dienmaynguoiviet.vn/may-xay-da-nang-panasonic-mj-dj31sra-800w/
-        https://dienmaynguoiviet.vn/may-ep-cham-midea-mj-js20a-200w/
-        https://dienmaynguoiviet.vn/lo-vi-song-midea-20-lit-mmo-20ke1/
-        https://dienmaynguoiviet.vn/bep-tu-midea-mi-sv21dm-8-chuc-nang/
-        https://dienmaynguoiviet.vn/noi-com-dien-midea-mr-sc18mb-18-lit/
-        https://dienmaynguoiviet.vn/may-say-toc-panasonic-eh-ne11-v645-1200w-2-toc-do-say-say-ion-muot-toc/
-        https://dienmaynguoiviet.vn/ban-la-kho-panasonic-ni-317tvgra/
-        https://dienmaynguoiviet.vn/may-loc-nuoc-kangaroo-kg106-6-loi-vo-inox-khong-nhiem-tu/
-        https://dienmaynguoiviet.vn/noi-com-cuckoo-1.8-lit-cr-1065b/
-        https://dienmaynguoiviet.vn/noi-com-cuckoo-1.8-lit-cr-1065r/
-        https://dienmaynguoiviet.vn/noi-com-dien-cuckoo-18l-crp-g1015m/
-        https://dienmaynguoiviet.vn/noi-com-dien-cuckoo-cr-3021-54l-mau-inox/
-        https://dienmaynguoiviet.vn/lo-vi-song-sharp-r-g52xvn-st-25-lit-co-nuong/
-        https://dienmaynguoiviet.vn/may-giat-sharp-es-fk954sv-g-inverter-9.5-kg/
-        https://dienmaynguoiviet.vn/may-giat-sharp-es-fk852sv-g-85-kg/
-        https://dienmaynguoiviet.vn/may-giat-sharp-es-fk852ev-w-85-kg/
-        https://dienmaynguoiviet.vn/may-giat-lg-t2309vs2m-inverter-9-kg/";
+        $code  = "https://dienmaynguoiviet.vn/tu-lanh-samsung-inverter-360-lit-rt35k5982s8sv/
+https://dienmaynguoiviet.vn/android-tivi-sony-xr-65a80j-65-inch-4k/
+https://dienmaynguoiviet.vn/smart-tivi-tcl-32s6300-32-inch-hd/
+https://dienmaynguoiviet.vn/android-tivi-tcl-32s6500-32-inch-hd/
+https://dienmaynguoiviet.vn/android-tivi-tcl-40s6500-40-inch-full-hd/
+https://dienmaynguoiviet.vn/android-tivi-tcl-50p618-50-inch-4k/
+https://dienmaynguoiviet.vn/android-tivi-tcl-55p725-55-inch-4k/
+https://dienmaynguoiviet.vn/android-tivi-tcl-50p615-50-inch-4k/
+https://dienmaynguoiviet.vn/android-tivi-tcl-55p615-55-inch-4k/
+https://dienmaynguoiviet.vn/tu-dong-lg-gn-f304wb-inverter-165-lit/
+https://dienmaynguoiviet.vn/tu-dong-lg-gn-f304ps-inverter-165-lit/
+https://dienmaynguoiviet.vn/tu-lanh-samsung-rt19m300bgssv-208-lit/
+https://dienmaynguoiviet.vn/tu-lanh-samsung-inverter-319-lit-rt32k5932s8sv/
+https://dienmaynguoiviet.vn/tu-lanh-samsung-442-lit-rt43k6631slsv-ngan-da-tren/
+https://dienmaynguoiviet.vn/tu-lanh-samsung-451-lit-rt46k6836slsv-ngan-da-tren/
+https://dienmaynguoiviet.vn/tu-lanh-samsung-rt22farbdsa-sv-243-lit/
+https://dienmaynguoiviet.vn/tu-lanh-sharp-sj-x201e-ds-196-lit/
+https://dienmaynguoiviet.vn/tu-lanh-sharp-inverter-sj-x251e-sl-241-lit/
+https://dienmaynguoiviet.vn/tu-lanh-sharp-inverter-sj-x251e-ds-241-lit/
+https://dienmaynguoiviet.vn/tu-lanh-sharp-sj-x281e-sl-271-lit/
+https://dienmaynguoiviet.vn/tu-lanh-sharp-sj-x281e-ds-inverter-271-lit/
+https://dienmaynguoiviet.vn/tu-lanh-sharp-inverter-sj-x316e-sl-314-lit/
+https://dienmaynguoiviet.vn/tu-lanh-sharp-inverter-sj-x316e-ds-314-lit/
+https://dienmaynguoiviet.vn/tu-lanh-sharp-inverter-sj-x346e-sl-342-lit/
+https://dienmaynguoiviet.vn/tu-lanh-sharp-inverter-sj-x346e-ds-342-lit/
+https://dienmaynguoiviet.vn/tu-lanh-hitachi-bg410pgv6x-inverter-330-lit/
+https://dienmaynguoiviet.vn/tu-lanh-hitachi-inverter-540-lit-r-fw690pgv7x-gbw/
+https://dienmaynguoiviet.vn/tu-lanh-funiki-fr-125ci-120-lit/
+https://dienmaynguoiviet.vn/tu-lanh-funiki-fr-132ci-130-lit/
+https://dienmaynguoiviet.vn/tu-lanh-funiki-fr-152ci-150-lit/
+https://dienmaynguoiviet.vn/tu-lanh-funiki-fr-135cd-130-lit/
+https://dienmaynguoiviet.vn/tu-lanh-funiki-fr-51cd-50-lit/
+https://dienmaynguoiviet.vn/tu-lanh-funiki-fr-71cd-50-lit/
+https://dienmaynguoiviet.vn/tu-lanh-funiki-fr-91cd-91-lit/
+https://dienmaynguoiviet.vn/tu-dong-sanaky-vh2299a1/
+https://dienmaynguoiviet.vn/tu-dong-sanaky-vh1199hy/
+https://dienmaynguoiviet.vn/dieu-hoa-daikin-1-chieu-ftxv50qvmv-inverter-18000btu/
+https://dienmaynguoiviet.vn/dieu-hoa-daikin-ftxv60qvmv-2-chieu-inverter-22000btu/
+https://dienmaynguoiviet.vn/dieu-hoa-daikin-ftxv71qvmv-2-chieu-inverter-24000btu/
+https://dienmaynguoiviet.vn/dieu-hoa-daikin-ftkb35wavmv-1-chieu-inverter-12000btu/";
 
         $codess = explode(PHP_EOL, $code);
 
@@ -4689,27 +4621,46 @@ https://dienmaynguoiviet.vn/may-say-lg-dr-80bw-80-kg/';
 
     public function sosanh()
     {
-        $code  = 'L32S5200
-                L32S6300
-                32S6500
-                40S6500
-                L43S5200
-                L43P618
-                L50P618
-                L55P618
-                L65P618
-                L75P618
-                55P725
-                50P615
-                55P615
-                55C725
-                65C725
-                43LM6360PTB
-                32LM636BPTB
-                43LM5750PTC
-                32LM575BPTC
-                32LG576BPSA
-                43LM5750PTC';
+        $code  = 'RT35K5982S8/SV
+                    XR-65A80J
+                    32S6300
+                    32S6500
+                    40S6500
+                    50P618
+                    55P725
+                    50P615
+                    55P615
+                    GN-F304WB
+                    GN-F304PS
+                    RT19M300BGS/SV
+                    RT32K5932S8/SV
+                    RT43K6631SL/SV
+                    RT46K6836SL/SV
+                    RT22FARBDSA/SV
+                    SJ-X201E-DS
+                    SJ-X251E-SL
+                    SJ-X251E-DS
+                    SJ-X281E-SL
+                    SJ-X281E-DS
+                    SJ-X316E-SL
+                    SJ-X316E-DS
+                    SJ-X346E-SL
+                    SJ-X346E-DS
+                    BG410PGV6X
+                    R-FW690PGV7
+                    FR-125CI
+                    FR-132CI
+                    FR-152CI
+                    FR-135CD
+                    FR-51CD
+                    FR-71CD
+                    FR-91CD
+                    VH-2299A1
+                    VH-1199HY
+                    FTXV50QVMV
+                    FTXV60QVMV
+                    FTXV71QVMV
+                    FTKB35WAVMV';
 
         $data  = explode(' ', $code);
 
@@ -4718,7 +4669,7 @@ https://dienmaynguoiviet.vn/may-say-lg-dr-80bw-80-kg/';
 
          $check = [];
 
-        $all_model = product::select('ProductSku')->get()->pluck('ProductSku')->toArray();
+        // $all_model = product::select('ProductSku')->get()->pluck('ProductSku')->toArray();
 
 
         foreach($data as $val){    
@@ -4734,8 +4685,6 @@ https://dienmaynguoiviet.vn/may-say-lg-dr-80bw-80-kg/';
             
                 if(!in_array($val,  $all_model)){
 
-                    $data = 
-
                     array_push($check, $href);
                 }    
             }
@@ -4747,8 +4696,6 @@ https://dienmaynguoiviet.vn/may-say-lg-dr-80bw-80-kg/';
         $dif   = array_diff_key($datas, $check);
 
         print_r($dif);
-
-        
        
     }
 
