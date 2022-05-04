@@ -446,6 +446,11 @@ class productController extends AppBaseController
     public function editFastPrice(Request $request)
     {
         $price = $request->price;
+
+        $price = str_replace(',', '', $price);
+
+        $price = str_replace('.', '', $price);
+
         $product_id = $request->product_id;
         $product = product::find($product_id);
         $product->Price = $price;
