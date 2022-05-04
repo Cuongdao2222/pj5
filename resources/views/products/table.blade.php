@@ -221,7 +221,7 @@
                             <i class="fas fa-image"></i>
                         </a>
 
-                         <a href="{{ route('filter-property') }}?group-product={{ $product->Group_id }}&productId={{ $product->id }}"
+                         <a href="{{ route('filter-property') }}?group-product={{ get_Group_Product($product->id)[0]??'' }}&productId={{ $product->id }}"
                            class='btn btn-default btn-xs'>
                             <i class="fa fa-filter"></i>
                         </a>
