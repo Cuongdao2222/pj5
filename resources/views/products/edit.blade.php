@@ -14,9 +14,41 @@
     </section>
      <?php $metaSeo = App\Models\metaSeo::find($product->Meta_id); ?>
 
+     <?php
+
+     function get_Group_Product($id){
+                $data_groupProduct = App\Models\groupProduct::where('level', 0)->get()->pluck('id');
+
+                $infoProductOfGroup = App\Models\groupProduct::select('product_id', 'id')->whereIn('id', $data_groupProduct)->get()->toArray();
+
+                $result = [];
+
+
+                if(isset($infoProductOfGroup)){
+
+                    foreach($infoProductOfGroup as $key => $val){
+
+
+                        if(!empty($val['product_id'])&& in_array($id, json_decode($val['product_id']))){
+
+                            array_push($result, $val['id']);
+                        }
+                       
+                        
+                    }
+
+                }
+
+                
+                return $result;
+
+            }
+
+    ?>        
+
    <!--  <div class="btn btn-warning"><a href="{{ route('metaSeos.edit', 1) }}"></a>Seo</div> -->
     <div class="btn btn-warning"><a href="#mo-ta">Mô tả</a></div>
-    <div class="btn btn-warning" ><a href="{{ route('filter-property') }}?group-product={{ $product->Group_id }}&productId={{ $product->id }}">Thông số</a></div>
+    <div class="btn btn-warning" ><a href="{{ route('filter-property') }}?group-product={{ get_Group_Product($product->id)[0]??'' }}&productId={{ $product->id }}">Thông số</a></div>
     <div class="btn btn-warning"><a href="{{ route('images.create') }}?{{ $product->id }}">Ảnh</a></div>
     <div class="btn btn-warning" ><a href="#mo-ta">Thông số kỹ thuật chi tiết</a></div>
 
