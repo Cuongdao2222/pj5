@@ -346,7 +346,7 @@ class productController extends AppBaseController
 
         Flash::success('Product updated successfully.');
 
-        return redirect(route('products.index'));
+        return redirect()->back();
     }
 
     /**
