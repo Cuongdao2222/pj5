@@ -57,22 +57,7 @@
 
     <?php  
 
-         $groupProductss = App\Models\groupProduct::select('id', 'name', 'level','product_id')->get();
-
-         $data_actives = [];
-
-
-         foreach ($groupProductss as $key => $value) {
-
-             if(!empty(json_decode($value->product_id))&&in_array($id, json_decode($value->product_id))){
-
-                array_push($data_actives, $value->id);
-
-            }
-            
-         }
-
-         print_r($data_actives);
+         $groupProductss = App\Models\groupProduct::select('id', 'name', 'level','product_id')->where('level', 0)->get();
 
 
         function recursiveMenu($id, $data, $parent_id=0, $sub=true, $level=0){
@@ -95,6 +80,7 @@
                 }
 
             }
+
 
 
 
@@ -178,6 +164,8 @@
 
         function showChild(id, classs, product_id) {
 
+            
+
             if($('.'+id).is(":visible") ){
                  $('.'+id).hide();
                  $('.'+classs).text('+');
@@ -197,17 +185,13 @@
                    
                     success: function(result){
 
-                        console.log(result);
+                       
 
                         if($('.'+id).text()==''){
 
                              $('.'+id).append(result);
 
                         }
-
-                        
-                       
-                       
                        
                     }
                 });
