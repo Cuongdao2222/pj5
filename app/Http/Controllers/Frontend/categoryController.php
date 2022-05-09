@@ -228,6 +228,7 @@ class categoryController extends Controller
                 'id_cate'=>$id_cate,
                 'link'=>$link,
                 'ar_list'=>$ar_list,
+                'Group_product'=>$Group_product,
 
             ];
 

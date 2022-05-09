@@ -121,6 +121,8 @@ class metaSeoController extends AppBaseController
             return redirect(route('metaSeos.index'));
         }
 
+       
+
         $metaSeo = $this->metaSeoRepository->update($request->all(), $id);
 
         Flash::success('Meta Seo updated successfully.');

@@ -104,7 +104,7 @@
 
             <section>
                 <div class="jsfix scrolling_inner scroll-right">
-                    <div><h4>Điện máy nguời việt là địa chỉ bán tivi chính hãng uy tín tại Hà Nội. Chúng tôi cam kết tất cả sản phẩm đều là hàng chính hãng, nguyên đai, nguyên kiện, mới 100%.</h4></div>
+                    <div><h4>{{ @$Group_product->slogan }}</h4></div>
                     <div class="box-filter block-scroll-main scrolling">
                         @if(isset($filter))
                         @foreach($filter as $filters)
