@@ -46,6 +46,27 @@ class crawlController extends Controller
 
     }
 
+    public function addMetaSeoForGroup()
+    {
+        $groupProduct = groupProduct::select('id')->get();
+
+        $i = 5686;
+
+        foreach ($groupProduct as $key => $value) {
+
+           
+            $group = groupProduct::find($value->id);
+            $group->Meta_id = $i;
+            $group->save();
+            $i++;
+
+
+
+        }
+
+        echo "thanh cong";
+    }
+
     public function fill_name(){
 
         $ar_info[1] ='tivi';
@@ -104,7 +125,7 @@ class crawlController extends Controller
 
     public function crawl()
     {
-        $dif = $this->cralwss();
+        $dif = ['https://dienmaynguoiviet.vn/smart-tivi-oled-lg-65g1pta-65-inch-4k/', 'https://dienmaynguoiviet.vn/smart-tivi-lg-32lm575bptc-32-inch-hd/'];
 
         if(isset($dif)){
             foreach ($dif as $url) {
@@ -5290,7 +5311,7 @@ https://dienmaynguoiviet.vn/may-say-lg-dr-80bw-80-kg/';
     public function getImagePost()
     {
 
-        for($i=4132; $i<4172; $i++){
+        for($i=4172; $i<4174; $i++){
 
             $posts = product::find($i);
 
