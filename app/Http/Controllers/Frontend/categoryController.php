@@ -201,6 +201,8 @@ class categoryController extends Controller
 
             $Group_product = groupProduct::find($id_cate);
 
+            $meta = metaSeo::find($Group_product->Meta_id);
+
             $data =[];
 
           
@@ -229,6 +231,7 @@ class categoryController extends Controller
                 'link'=>$link,
                 'ar_list'=>$ar_list,
                 'Group_product'=>$Group_product,
+                'meta'=> $meta,
 
             ];
 
