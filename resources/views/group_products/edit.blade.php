@@ -11,7 +11,7 @@
         </div>
     </section>
 
-    
+     @include('flash::message')
 
      <?php $metaSeo = App\Models\metaSeo::find($groupProduct->Meta_id); ?>
 
