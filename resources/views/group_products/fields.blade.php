@@ -10,7 +10,7 @@
 </div>
 
 <div class="form-group col-sm-6">
-    {!! Form::label('slogan', 'Link:') !!}
+    {!! Form::label('slogan', 'slogan:') !!}
     {!! Form::text('slogan', null, ['class' => 'form-control','maxlength' => 10000]) !!}
 </div>
 

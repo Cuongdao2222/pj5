@@ -20,7 +20,7 @@ class groupProduct extends Model
 
 
     public $fillable = [
-        'name', 'link', 'group_product_id','level', 'parent_id'
+        'name', 'link', 'group_product_id','level', 'parent_id','slogan'
     ];
 
     /**
@@ -32,6 +32,7 @@ class groupProduct extends Model
         'id' => 'integer',
         'link'=> 'string',
         'name'=> 'string',
+        'slogan'=>'string',
         'group_product_id' => 'integer',
     ];
 
@@ -41,7 +42,8 @@ class groupProduct extends Model
      * @var array
      */
     public static $rules = [
-        'name' => 'required|max:1000'
+        'name' => 'required|max:1000',
+        'slogan'=>'required'
     ];
 
     

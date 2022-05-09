@@ -25,6 +25,25 @@ class crawlController extends Controller
 {
 
 
+    public function addMEtaserForG(){
+        for($i= 1; $i<272; $i++){
+
+            $meta = new metaSeo();
+
+            $meta->meta_content = '';
+
+            $meta->meta_title = '';
+            $meta->meta_key_words = '';
+            $meta->meta_og_title = '';
+            $meta->meta_og_content = '';
+
+            $meta->save();
+
+        }
+        echo "thanh cong";
+
+    }
+
     public function checklinkss()
     {
       
@@ -50,7 +69,7 @@ class crawlController extends Controller
     {
         $groupProduct = groupProduct::select('id')->get();
 
-        $i = 5686;
+        $i = 5688;
 
         foreach ($groupProduct as $key => $value) {
 
@@ -59,7 +78,6 @@ class crawlController extends Controller
             $group->Meta_id = $i;
             $group->save();
             $i++;
-
 
 
         }
