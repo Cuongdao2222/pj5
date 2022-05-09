@@ -162,6 +162,10 @@ class categoryController extends Controller
         }
         else{
             $data = $this->getDataOfCate($slug);
+
+            
+
+
             return view('frontend.category', with($data));
         }
        
@@ -201,6 +205,11 @@ class categoryController extends Controller
 
             $Group_product = groupProduct::find($id_cate);
 
+
+            $slogan =  $Group_product->slogan;
+
+        
+
             $meta = metaSeo::find($Group_product->Meta_id);
 
             $data =[];
@@ -230,10 +239,12 @@ class categoryController extends Controller
                 'id_cate'=>$id_cate,
                 'link'=>$link,
                 'ar_list'=>$ar_list,
-                'Group_product'=>$Group_product,
+                'slogan'=>$slogan,
                 'meta'=> $meta,
 
             ];
+
+
 
 
 
