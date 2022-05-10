@@ -255,6 +255,38 @@ class groupProductController extends AppBaseController
         return redirect(route('groupProducts.index'));
     }
 
+    public function removeGrPD(Request $request)
+    {
+        $id = $request->id;
+
+        // check để xóa
+
+        $check = $this->groupProductRepository->find($id);
+
+        $level = (int)$check->level+1;
+
+
+
+        $check_child = groupProduct::where('level', $level)->where('id', $id)->get()->toArray();
+
+        
+
+        if(empty(json_decode($check->product_id))&& $check_child==null){
+
+            $this->groupProductRepository->delete($id);
+
+            Flash::success('Xóa thành công');
+        }
+        else{
+           
+             Flash::error('Không thể xóa Danh mục này, do phát sinh lỗi');
+
+        }
+        
+
+        return redirect(route('groupProducts.index'));
+    }
+
    
 
     public function addGroupProduct(Request $request)

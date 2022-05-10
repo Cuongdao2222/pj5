@@ -243,6 +243,8 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::get('showGroupProduct', 'groupProductController@showGroupProduct')->name('showGroupProduct');
 
+    Route::get('deleteGroupProduct', 'groupProductController@removeGrPD')->name('deleteGroupProduct');
+
     Route::resource('makers', 'makerController');
 
     Route::resource('products', 'productController');

@@ -145,6 +145,9 @@
 
                      <a href="#" class="an">Ẩn danh mục</a>   
                      <br>
+
+                      <a href="#" class="xoa">Xóa danh mục</a>   
+                     <br>
                      <!-- <a href="" class="xoa">Xóa</a> -->
 
                 </div>
@@ -187,6 +190,10 @@
             $('.an').attr('href', '{{ route("showGroupProduct") }}?id='+dataId+'');
 
             $('.an').text(text);
+
+            
+            $('.xoa').attr('href', '{{ route("deleteGroupProduct") }}?id='+dataId+'');
+
 
             $('#info-modal').modal('show');
 
