@@ -186,6 +186,14 @@
     </a>
 </li>
 
+<li class="nav-item">
+    <a href="{{ route('postcd') }}"
+       class="nav-link {{ Request::is('order_list') ? 'active' : '' }}">
+        <p>Nội dung cố định </p>
+    </a>
+</li>
+
+
 <style type="text/css">
     
     .child-nav a{

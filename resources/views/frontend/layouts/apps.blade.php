@@ -4,30 +4,19 @@
 <html lang="vi-VN">
     <head>
         <meta charset="utf-8" />
+          <?php  
 
-      <?php  
+          $requestcheck = \Request::route();
 
-      $requestcheck = \Request::route();
-
-
-
-      ?>
-       
-         
-        @if(!empty($requestcheck)&& \Request::route()->getName()=='details') 
-
-
-
-        @if(!isset($meta))
-
-
+          ?>
+        @if(isset($meta))
         <title>{{ $meta->meta_title }}</title>
         <meta name="description" content="{{ $meta->meta_content }}"/>
         <meta property="og:title" content="{{ $meta->meta_title }}" />
         <meta property="og:description" content="{{ $meta->meta_content }}" /> 
         <meta name="keywords" content="{{ $meta->meta_keywords??'sieu thi dien may, siêu thị điện máy, mua điện máy giá rẻ, siêu thị điện máy uy tín, siêu thị điện máy trực tuyến' }}"/>
 
-        @endif
+       
         @else
 
         <?php $meta = App\Models\metaSeo::find(5959); ?>
@@ -57,9 +46,6 @@
 
 
         @if(!empty($pageCheck))
-
-            
-
 
             <!-- Google Code dành cho Thẻ tiếp thị lại -->
             <p>&nbsp;</p>
@@ -108,7 +94,7 @@
 
         @endif
 
-        <link rel="shortcut icon" href="https://dienmaynguoiviet.vn/template/dienmaynguoiviet/images/favicon.ico"/>
+        <link rel="shortcut icon" href="{{ asset('uploads/icon/favicon.ico') }}"/>
         <meta name="robots" content="index,follow" />
       
         <meta name="keywords" content="sieu thi dien may, siêu thị điện máy, mua điện máy giá rẻ, siêu thị điện máy uy tín, siêu thị điện máy trực tuyến"/>

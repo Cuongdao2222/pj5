@@ -28,8 +28,13 @@ Route::get('/ckfinder.html', function () {
 })->middleware('auth');
 
 
-Route::get('/landing-page', function () {
+Route::get('/deal', function () {
     return view('frontend.landingpage');
+    
+});
+
+Route::get('/lien-he', function () {
+    return view('frontend.lienhe');
     
 });
 
@@ -140,6 +145,12 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
 
     Route::get('deal', 'dealController@index')->name('deal');
+
+
+    Route::get('post-codinh', function () {
+        return view('footerpost.index');
+        
+    })->name('postcd');
 
 
     Route::get('home', 'HomeController@index')->name('home-admin');

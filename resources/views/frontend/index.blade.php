@@ -11,6 +11,25 @@
             .preorder-hot{
                 padding: 0 !important;
             }
+            .name-box{
+                display: block;
+                overflow: hidden;
+                padding: 15px 22px;
+                font-size: 22px;
+                line-height: 36px;
+                color: #333;
+                text-transform: uppercase;
+            }
+
+            /*.menus-banner strong {
+                
+                bottom: 24px;
+                left: 18px;
+                font-size: 17px;
+                line-height: 20px;
+                color: #2f80ed;
+                font-weight: 500;
+            }*/
             
              @media screen and (min-width: 776px){
                  
@@ -126,6 +145,7 @@
         </div>
 
         <section class="menus-banner">
+            <strong class="name-box">Xu hướng mua sắm</strong>
             <ul>
                 <li class="col-">
                     <a href="{{ route('details', 'ti-vi') }}">
@@ -135,6 +155,7 @@
                         </picture>
                     </a>
                     <p><a href="{{ route('details', 'ti-vi') }}">TV cao cấp</a></p>
+                    
                 </li>
                 <li>
                     <a href="{{ route('details', 'tu-lanh') }}">
