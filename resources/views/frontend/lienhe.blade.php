@@ -6,6 +6,7 @@
 
         <link rel="stylesheet" type="text/css" href="{{ asset('css/categories.css') }}"> 
          <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}"> 
+         <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
  @endpush        
 <div class="container page-content">
     <h1>Liên Hệ</h1>
@@ -18,10 +19,15 @@
         <!--col1-->
         <div class="col-sm-6 col-xs-12">
             <style type="text/css">
+                .form-group label{
+                    width: 40% !important;
+                }
                 .require { font-weight:bold; color:#F00}
+
+
             </style>
             <p>Mọi thắc mắc hoặc góp ý, quý khách vui lòng liên hệ trực tiếp với bộ phận chăm sóc khách hàng của chúng tôi bằng cách điền đầy đủ thông tin vào form bên dưới</p>
-            <form method="post" enctype="multipart/form-data">
+            <form method="post" enctype="multipart/form-data" name="registration">
                 <div class="form-group">
                     <label>Tên đầy đủ</label>
                     <input type="text" class="inputText" name="contact_name" id="contact_name">
@@ -62,19 +68,24 @@
                 if(check_email.length < 2 && 2 > 1) error += "- Bạn chưa nhập email\n";
                 if(check_tel.length < 2 && 2 > 1) error += "- Bạn chưa nhập SĐT\n";
                 if(check_message.length < 2 && 2 > 1) error += "- Bạn chưa nhập nội dung\n";
+               
                 
                 
                 if(error == ""){
+                     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(check_email))
+                      {
+                        alert('thanh cong');
+                      }
+                      else{
+                        error += "email không đúng định dạng";
+
+                        alert(error);
+                      }
                 
-                alert("Bạn đã gửi thành công");
-                $("[type='text'],textarea").val('');
-                  $.post("/ajax/post.php", {action : 'customer', action_type: 'contact',type:'contact', from :'ajax', 'info[name]':check_name, 'info[title]':'Contact','info[type]':'contact', 'info[email]':check_email, 'info[tel]':check_tel, 'info[message]':check_message}
-                  ,function(data){
-                    console.log(data);
-                  });  
+                    
                 }
-                else alert(error);
-                return false;
+                    else alert(error);
+                    return false;
                 }
             </script>
         </div>
@@ -82,4 +93,5 @@
     </div>
     <!--row-->
 </div>
+
 @endsection
