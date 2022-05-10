@@ -29,7 +29,8 @@ class bannerController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $banners = $this->bannerRepository->paginate(10);
+        $option = empty($request->option)?0:$request->option;
+        $banners = $this->bannerRepository->allQuery(['option'=>$option])->paginate(10);
 
         return view('banners.index')
             ->with('banners', $banners);
@@ -180,5 +181,16 @@ class bannerController extends AppBaseController
         Flash::success('Banner deleted successfully.');
 
         return redirect(route('banners.index'));
+    }
+
+    public function activeBanner(Request $request)
+    {
+        $id  = $request->id;
+
+        $banner = $this->bannerRepository->update(['active'=>$request->active], $id);
+
+        Flash::success('Banner update successfully.');
+
+        return redirect()->back();
     }
 }

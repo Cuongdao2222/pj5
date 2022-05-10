@@ -222,6 +222,10 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::resource('banners', 'bannerController');
 
+    Route::get('activeBanner', 'bannerController@activeBanner')->name('active-banner');
+
+    
+
     Route::resource('categories', 'categoryController');
 
     Route::resource('groupProducts', 'groupProductController');

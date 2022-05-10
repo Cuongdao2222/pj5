@@ -24,7 +24,9 @@ class banner extends Model
     public $fillable = [
         'image',
         'title',
-        'link'
+        'link',
+        'option',
+        'active'
     ];
 
     /**
@@ -35,7 +37,8 @@ class banner extends Model
     protected $casts = [
         'id' => 'integer',
         'image' => 'string',
-        'link' => 'string'
+        'link' => 'string',
+        'option'=>'integer'
     ];
 
     /**
@@ -45,14 +48,14 @@ class banner extends Model
      */
     public static $rules = [
        
-        'image' => 'required|max:10000|mimes:jpg,jpeg, png',
+        'image' => 'required|max:10000|mimes:jpg,jpeg,png',
         'title' => 'required',
         'link' => 'required',
     ];
     
     public static $rulesUpdate = [
        
-        'image' => 'max:10000|mimes:jpg,jpeg, png',
+        'image' => 'max:10000|mimes:jpg,jpeg,png',
         'title' => 'required',
         'link' => 'required',
     ];

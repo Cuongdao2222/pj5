@@ -18,7 +18,7 @@
 
 
 
-        @if(isset($meta))
+        @if(!isset($meta))
 
 
         <title>{{ $meta->meta_title }}</title>
@@ -29,14 +29,14 @@
 
         @endif
         @else
-        <title>sieu thi dien may, siêu thị điện máy, mua điện máy giá rẻ, siêu thị điện máy uy tín, siêu thị điện máy trực tuyến</title>
 
-        <meta name="description" content="Siêu thị Điện Máy Người Việt mua sắm thiết bị điện tử điện lạnh, gia dụng, máy lọc nước chính hãng giá rẻ. Nhiều ưu đãi, giao và lắp đặt miễn phí."/>
+        <?php $meta = App\Models\metaSeo::find(5959); ?>
 
-         <meta property="og:title" content="Điện Máy Người Việt - Mua sắm điện máy chính hãng giá rẻ" />
-        <meta property="og:description" content="Siêu thị Điện Máy Người Việt mua sắm thiết bị điện tử điện lạnh, gia dụng, máy lọc nước chính hãng giá rẻ. Nhiều ưu đãi, giao và lắp đặt miễn phí." /> 
-
-        <meta name="keywords" content="sieu thi dien may, siêu thị điện máy, mua điện máy giá rẻ, siêu thị điện máy uy tín, siêu thị điện máy trực tuyến"/>
+        <title>{{ $meta->meta_title }}</title>
+        <meta name="description" content="{{ $meta->meta_content }}"/>
+        <meta property="og:title" content="{{ $meta->meta_title }}" />
+        <meta property="og:description" content="{{ $meta->meta_content }}" /> 
+        <meta name="keywords" content="{{ $meta->meta_keywords??'sieu thi dien may, siêu thị điện máy, mua điện máy giá rẻ, siêu thị điện máy uy tín, siêu thị điện máy trực tuyến' }}"/>
         @endif
         
         <meta http-equiv="cache-control" content="no-cache" />
@@ -107,14 +107,6 @@
 
 
         @endif
-
-
-
-    
-
-
-
-
 
         <link rel="shortcut icon" href="https://dienmaynguoiviet.vn/template/dienmaynguoiviet/images/favicon.ico"/>
         <meta name="robots" content="index,follow" />
@@ -805,7 +797,14 @@
         <div class="banner-media desktop">
             <div class="" data-size="1">
                 <div class="item" data-background-color="#CF1F2F" data-order="1">
-                    <a aria-label="slide" data-cate="0" data-place="1295" href="#"><img  src="{{ asset('images/background-image/banner-top.jpg') }}" alt="BF"  ></a>
+
+                    <?php 
+                        $banner = App\Models\banners::where('option', 1)->get()->last()
+                    ?>
+
+                    @if(!empty($banner)&& $banner->active ==1)
+                    <a aria-label="slide" data-cate="0" data-place="1295" href="#"><img  src="{{ asset($banner->image) }}" alt="BF"  ></a>
+                    @endif
                 </div>
             </div>
             <style>

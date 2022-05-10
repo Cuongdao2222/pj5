@@ -13,22 +13,10 @@ class indexController extends Controller
     public function index()
     {
 
-        $banners = banners::get();
-        return view('frontend.index', compact('banners'));
-    }
+        $banners = banners::where('option', 0)->where('active', 1)->get();
 
-    public function readFile(){
-        $link = base_path().'/public/css/category.css';
-        $fp = fopen($link, "r");//mở file ở chế độ đọc
-        while (! feof ($fp)) {
-            $c = fgetc($fp);
-            if ($c == "\n") {
-                echo "<br>";
-            } else {
-                echo $c;
-            }
-        }
-        fclose($fp);
+        $bannersRight = banners::where('option', 2)->where('active', 1)->get();
+        return view('frontend.index', compact('banners', 'bannersRight'));
     }
    
 }

@@ -92,32 +92,32 @@
                                 {{  $value->title }}
                             </h3>
                         </div>
-                         @endforeach
+                        @endforeach
                         @endif
                         
                     </div>
                 </aside>
 
-                <!-- <h1>gdfgdfgdfgdgdgdgd</h1> -->
+              
                 <!-- End -->
             </div>
-            <div class="preorder-hot"> <!-- banner phải -->
+            <div class="preorder-hot"> 
+
+                
 
 
-                <!-- Banner hot -->
-                <a class = "" aria-label="slide" data-cate="0" data-place="1539" href="{{ route('details', 'ti-vi')}}">
-                    <img  src="{{ asset('uploads/banner/01.png') }}" data-src="{{ asset('uploads/banner/01.png') }}"    alt="San pham hot CE Tivi"  >
+                @if(isset( $bannersRight ))
+
+                @foreach( $bannersRight as $values)
+
+                <a  aria-label="slide" data-cate="0" data-place="1539" href="{{ $values->link }}">
+                    <img  src="{{ asset($values->image) }}" data-src="{{ asset($values->image) }}"  alt="{{ $values->title }}" >
                 </a>
-                <a class = "" aria-label="slide" data-cate="0" data-place="1539" href="{{ route('details', 'may-giat')}}">
-                    <img  src="{{ asset('uploads/banner/02.png') }}"  data-src="{{ asset('uploads/banner/02.png') }}" alt="Sản phẩm hot CE - Doc quyen"  >
-                </a>
-                <a class = "" aria-label="slide" data-cate="0" data-place="1539" href="{{ route('details', 'tu-lanh')}}">
-                    <img  src="{{ asset('uploads/banner/03.png') }}"  data-src="{{ asset('uploads/banner/03.png') }}" alt="2021 - Trang chủ hot - Desktop"  >
-                </a>
-                <a class = "" aria-label="slide" data-cate="0" data-place="1539" href="{{ route('details', 'gia-dung')}}">
-                    <img  src="{{ asset('uploads/banner/04.png') }}"  data-src="{{ asset('uploads/banner/04.png') }}" alt="2021 - Trang chủ hot - Desktop"  >
-                </a>
-                <!-- End -->
+               
+                @endforeach
+
+                @endif
+               
                 
             </div>
             
@@ -440,7 +440,7 @@
  -->
                                      
                                 </div>
-                               <p class="result-labels"><img class="sale-banner ls-is-cached lazyloaded" alt="Giảm Sốc" data-src="{{ asset('images/css/sale.png') }}" src="{{ asset('images/css/sale.png') }}"></p>
+                             <!--   <p class="result-labels"><img class="sale-banner ls-is-cached lazyloaded" alt="Giảm Sốc" data-src="{{ asset('images/css/sale.png') }}" src="{{ asset('images/css/sale.png') }}"></p> -->
                                 <h3>{{ $datas->Name }}</h3>
                                 <!-- <div class="item-compare">
                                     <span>55 inch</span>

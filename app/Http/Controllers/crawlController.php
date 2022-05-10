@@ -26,7 +26,7 @@ class crawlController extends Controller
 
 
     public function addMEtaserForG(){
-        for($i= 1; $i<272; $i++){
+        for($i= 1; $i<2; $i++){
 
             $meta = new metaSeo();
 

@@ -86,12 +86,20 @@
                 </ul>
             </section>
         </div>
+
+        <?php 
+            $banner = App\Models\banners::where('option', 4)->get()->last();
+        ?>
         <div class="top-banner">
             <section>
                 <div class="slider-bannertop owl-carousel owl-theme">
-                    <div class="item">
-                        <a aria-label="slide" data-cate="1942" data-place="1537"><img width=1200  src="{{ asset('images/template/banner-category.jpg') }}" alt="tivi chung"  ></a>
+
+                    @if(!empty($banner)&& $banner->active ==1)
+                     <div class="item">
+                        <a aria-label="slide" data-cate="1942" data-place="1537"><img width=1200  src="{{ asset($banner->image) }}" alt="tivi chung"  ></a>
                     </div>
+                    @endif
+                   
                     
                 </div>
                
@@ -179,7 +187,7 @@
                                         <img class="lazyload thumb" data-src="{{ asset($value->Image) }}" alt="{{ asset($value->Name) }}" style="width:100%"> 
                                     </div>
                                     <div class="items-title">
-                                         <p class='result-labels'><img  class='lazyload sale-banner' alt='Giảm Sốc' data-src='{{ asset('images/css/sale.png') }}'></p>
+                                        
                                         <h3 >
                                             {{ $value->Name  }}
                                         </h3>
