@@ -237,6 +237,24 @@ class groupProductController extends AppBaseController
         }
     }
 
+
+    public function showGroupProduct(Request $request)
+    {
+        $id = $request->id;
+
+        $group = $this->groupProductRepository->find($id);
+
+        $groupActive = $group->active==1?0:1;
+
+        $input['active'] = $groupActive;
+
+        $this->groupProductRepository->update($input, $id);
+
+        Flash::success('Group Product saved successfully.');
+
+        return redirect(route('groupProducts.index'));
+    }
+
    
 
     public function addGroupProduct(Request $request)

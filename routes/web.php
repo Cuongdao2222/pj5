@@ -230,6 +230,8 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::resource('groupProducts', 'groupProductController');
 
+    Route::get('showGroupProduct', 'groupProductController@showGroupProduct')->name('showGroupProduct');
+
     Route::resource('makers', 'makerController');
 
     Route::resource('products', 'productController');

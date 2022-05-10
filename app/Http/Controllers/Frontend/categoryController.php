@@ -218,10 +218,20 @@ class categoryController extends Controller
 
             if(!empty($Group_product) && !empty($Group_product->product_id)){
 
-                $Group_product = json_decode($Group_product->product_id);
+                $Group_product_active = $Group_product->active;
+
+                $data = [];
+
+                if($Group_product_active==1){
+
+                    $Group_product = json_decode($Group_product->product_id);
 
               
-                $data = Product::whereIn('id', $Group_product)->where('active', 1)->orderBy('id', 'desc')->paginate(10);
+                    $data = Product::whereIn('id', $Group_product)->where('active', 1)->orderBy('id', 'desc')->paginate(10);
+
+                }
+
+               
 
             }
 

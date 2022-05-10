@@ -20,7 +20,7 @@ class groupProduct extends Model
 
 
     public $fillable = [
-        'name', 'link', 'group_product_id','level', 'parent_id','slogan'
+        'name', 'link', 'group_product_id','level', 'parent_id','slogan','active'
     ];
 
     /**

@@ -48,7 +48,7 @@
                     unset($data[$key]);
                   ?>    
              <li class="paren1">
-              <a href="javascript:void(0)"  class="click1" data-id="{{ $item['id'] }}"><?php echo $item['name']?></a>  @if($item['level']==0|| $item['level']==1|| $item['level']==2)<span class="clicks{{ $item['id'] }}" onclick="showChild('sub{{ $item['id'] }}', 'clicks{{ $item['id'] }}')">+</span>@endif
+              <a href="javascript:void(0)"  class="click1" data-id="{{ $item['id'] }}" data-show="{{ $item['active'] }}"><?php echo $item['name']?></a>    @if($item['level']==0|| $item['level']==1|| $item['level']==2)<span class="clicks{{ $item['id'] }}" onclick="showChild('sub{{ $item['id'] }}', 'clicks{{ $item['id'] }}')">+</span>@endif 
               
               <?php recursiveMenu($data, $item['id'], false, $item['level']); ?>
              </li>
@@ -142,6 +142,9 @@
 
                      <a href="" class="sua">Sửa</a>
                      <br>
+
+                     <a href="#" class="an">Ẩn danh mục</a>   
+                     <br>
                      <!-- <a href="" class="xoa">Xóa</a> -->
 
                 </div>
@@ -175,7 +178,15 @@
 
             dataId = $(this).attr('data-id');
 
+            show   = $(this).attr('data-show');
+
+            text = show==1?'Ẩn danh mục':'Hiện danh mục';
+
             $('.sua').attr('href', '{{env("APP_URL")}}/admins/groupProducts/'+dataId+'/edit');
+
+            $('.an').attr('href', '{{ route("showGroupProduct") }}?id='+dataId+'');
+
+            $('.an').text(text);
 
             $('#info-modal').modal('show');
 
