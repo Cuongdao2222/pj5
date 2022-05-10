@@ -147,61 +147,22 @@
         <section class="menus-banner">
             <strong class="name-box">Xu hướng mua sắm</strong>
             <ul>
+
+                @if(!empty($bannerUnderSlider))
+                @foreach($bannerUnderSlider as $slider)
                 <li class="col-">
-                    <a href="{{ route('details', 'ti-vi') }}">
+                    <a href="{{ $slider->link }}">
                         <picture>
                             <source media="(min-width:1201px)" >
-                            <img src="{{ asset('images/background-image/011.png') }}" alt="" data-src="{{ asset('images/background-image/011.png') }}">
+                            <img src="{{ asset($slider->image) }}" alt="" data-src="{{ asset($slider->image) }}">
                         </picture>
                     </a>
-                    <p><a href="{{ route('details', 'ti-vi') }}">TV cao cấp</a></p>
+                    <p><a href="{{ $slider->link }}">{{ $slider->title }}</a></p>
                     
                 </li>
-                <li>
-                    <a href="{{ route('details', 'tu-lanh') }}">
-                        <picture>
-                            <source media="(min-width:1201px)">
-                           <img src="{{ asset('images/background-image/021.png') }}" alt="" data-src="{{ asset('images/background-image/021.png') }}">
-                        </picture>
-                    </a>
-                    <p><a href="{{ route('details', 'tu-lanh') }}">Tủ lạnh</a></p>
-                </li>
-                <li>
-                    <a href="{{ route('details', 'may-giat') }}">
-                        <picture>
-                            <source media="(min-width:1201px)">
-                            <img src="{{ asset('images/background-image/031.png') }}" alt="" data-src="{{ asset('images/background-image/031.png') }}">
-                        </picture>
-                    </a>
-                    <p><a href="{{ route('details', 'may-giat') }}">Máy giặt</a></p>
-                </li>
-                <li>
-                    <a href="{{ route('details', 'gia-dung') }}">
-                        <picture>
-                            <source media="(min-width:1201px)">
-                            <img src="{{ asset('images/background-image/041.png') }}" alt="" data-src="{{ asset('images/background-image/041.png') }}">
-                        </picture>
-                    </a>
-                    <p><a href="{{ route('details', 'gia-dung') }}">Gia dụng</a></p>
-                </li>
-                <li>
-                    <a href="{{ route('details', 'tivi-50-inches') }}">
-                        <picture>
-                            <source media="(min-width:1201px)">
-                            <img src="{{ asset('images/background-image/051.png') }}" alt="" data-src="{{ asset('images/background-image/051.png') }}">
-                        </picture>
-                    </a>
-                    <p><a href="{{ route('details', 'tivi-50-inches') }}">TV Inch lớn giá rẻ</a></p>
-                </li>
-                <li>
-                    <a href="/dieu-hoa">
-                        <picture>
-                            <source media="(min-width:1201px)">
-                            <img src="{{ asset('images/background-image/61.png') }}" alt="" data-src="{{ asset('images/background-image/61.png') }}">
-                        </picture>
-                    </a>
-                    <p><a href="/dieu-hoa">Trả góp</a></p>
-                </li>
+                @endforeach
+                @endif
+               
             </ul>
         </section>
        

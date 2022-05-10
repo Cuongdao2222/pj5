@@ -39,6 +39,10 @@ Route::get('/lien-he', function () {
 });
 
 
+
+Route::post('add-lienhe','lienheController@addLienhe')->name('addlienhe');
+
+
 Route::get('/result.php', function () {
     return view('resultAlepay.result');
     

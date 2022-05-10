@@ -11,6 +11,11 @@
 <div class="container page-content">
     <h1>Liên Hệ</h1>
 </div>
+
+@if(session()->has('success'))
+<p>{{ session('success') }}</p>
+
+@endif
 <div class="container page-content">
     <div class="row">
         <div class="col-sm-6 col-xs-12">
@@ -27,7 +32,9 @@
 
             </style>
             <p>Mọi thắc mắc hoặc góp ý, quý khách vui lòng liên hệ trực tiếp với bộ phận chăm sóc khách hàng của chúng tôi bằng cách điền đầy đủ thông tin vào form bên dưới</p>
-            <form method="post" enctype="multipart/form-data" name="registration">
+            <form method="post"  name="registration" action="{{ route('addlienhe') }}" id="form-lienhe">
+                @csrf
+
                 <div class="form-group">
                     <label>Tên đầy đủ</label>
                     <input type="text" class="inputText" name="contact_name" id="contact_name">
@@ -74,7 +81,14 @@
                 if(error == ""){
                      if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(check_email))
                       {
-                        alert('thanh cong');
+                        if(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im.test(check_tel)){
+                            $('#form-lienhe').submit();
+
+                        }
+                        else{
+                             error += "số điện thoại không đúng định dạng";
+                        }
+                        
                       }
                       else{
                         error += "email không đúng định dạng";

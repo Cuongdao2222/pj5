@@ -154,13 +154,37 @@
                                 <tr class="table_public_tr">
                                     <td width="40">STT</td>
                                     <td width="190">Khách hàng</td>
-                                    <td width="130">Thời gian</td>
+                                    <td width="130">Điện thọai</td>
+                                    <td width="130">Email</td>
                                     <td>Nội dung</td>
                                     <td width="120">Xem chi tiết</td>
                                 </tr>
+                                <?php 
+                                    $lienhe = DB::table('lienhe')->take(6)->orderBy('id', 'desc')->get()->toArray();
+                                  
+                                ?>
+
+                                @if(isset($lienhe))
+                                @foreach($lienhe as $lienhes)
                                 <tr>
+                                    <td width="40"></td>
+                                    <td width="190">{{ $lienhes->contact_name }}</td>
+                                    <td width="130">{{ $lienhes->contact_tel }}</td>
+                                    <td width="130">{{ $lienhes->contact_email }}</td>
+                                    <td width="130">{{ $lienhes->contact_message  }}</td>
+                                    <td width="130"></td>
+                                </tr>
+
+                                @endforeach
+
+                                @else
+                                <tr>
+                                    
+
                                     <td colspan="4">Hiện tại chưa có liên hệ mới nào !</td>
                                 </tr>
+                                @endif    
+                                
                             </tbody>
                         </table>
                     </div>
