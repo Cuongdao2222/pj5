@@ -24,6 +24,49 @@ use App\products1;
 class crawlController extends Controller
 {
 
+    public function getMetaToFails()
+    {
+        $link = metaSeo::where('meta_content', 'Đường link cần xem không có trên website hoặc đã bị xóa')->get();
+
+        foreach ($link as $key => $value) {
+
+
+            $product = product::where('Meta_id', $value->id)->first();
+
+
+            if(!empty($product)){
+
+
+                $url = $product->Link;
+
+                $urls = 'https://dienmaynguoiviet.vn/'.$url.'/';
+
+        
+                $html = file_get_html(trim($urls));
+
+                $keyword = htmlspecialchars($html->find("meta[name=keywords]",0)->getAttribute('content'));
+                $content = $html->find("meta[name=description]",0) ->getAttribute('content');
+                $title   = $html-> find("title",0)-> plaintext;
+            
+                $meta   =  metaSeo::find($value->id);
+
+                $meta->meta_title =$title; 
+                $meta->meta_content =$content; 
+                $meta->meta_key_words = strip_tags($keyword); 
+                $meta->meta_og_title =$title; 
+                $meta->meta_og_content =$content; 
+
+                $meta->save();
+
+            }
+
+
+        }   
+        echo "thanh cong";
+
+       
+    }
+
 
     public function addMEtaserForG(){
         for($i= 1; $i<2; $i++){
