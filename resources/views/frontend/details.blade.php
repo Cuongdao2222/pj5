@@ -175,11 +175,11 @@
         <div class="box02__left">
             <div class="detail-rate">
                 <p>
-                    <i class="icondetail-star"></i>
-                    <i class="icondetail-star"></i>
-                    <i class="icondetail-star"></i>
-                    <i class="icondetail-star"></i>
-                    <i class="icondetail-star-dark"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
                 </p>
             </div>
         </div>

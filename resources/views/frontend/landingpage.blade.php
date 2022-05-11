@@ -192,9 +192,7 @@
                                         @foreach($hight_light as $val)
                                         <div class="item" data-id="235642">
                                             <a href="{{ route('details', $val->link) }}" class=" main-contain" data-s="Nomal" data-site="2" data-pro="3" data-cache="False" data-name="Smart Tivi QLED 4K 55 inch Samsung QA55Q65A" data-id="235642" data-price="19900000.0" data-brand="Samsung" data-cate="Tivi" data-box="BoxHiddenPromotion">
-                                                <div class="item-label">
-                                                    <span class="lb-tragop">Tra&#x309; go&#x301;p 0%</span>
-                                                </div>
+                                               
                                                 <div class="item-img item-img_1942">
                                                     <img src="{{ asset($val->image) }}" loading="lazy" class="lazyload" alt="{{ $val->name }}" width=210 height=210>
                                                     <img src="{{ asset($val->image) }}" width="40" height="40" class="lazyload lbliconimg lbliconimg_1942" />
@@ -238,9 +236,7 @@
                                         @foreach($products as $val)
                                         <div class="item" data-id="235792">
                                             <a href="{{ route('details', $val->link) }}" class=" main-contain" data-name="{{ $val->name }}" data-id="235792" data-price="{{ $val->price }}" data-brand="Samsung" data-cate="Tivi" data-box="BoxHiddenPromotion">
-                                                <div class="item-label">
-                                                    <span class="lb-tragop">Tra&#x309; go&#x301;p 0%</span>
-                                                </div>
+                                               <span class="icon_tragop">Trả góp <i>0%</i></span>
                                                 <div class="item-img item-img_1942">
                                                     <img src="{{ asset($val->image) }}" loading="lazy" class="lazyload" alt="{{ $val->name }}" width=210 height=210>
                                                    
@@ -259,13 +255,13 @@
                                                 <strong class="price">{{  @number_format($val->price , 0, ',', '.')  }}&#x20AB;</strong>
                                                 <div class="item-rating">
                                                     <p>
-                                                        <i class="icon-star"></i>
-                                                        <i class="icon-star"></i>
-                                                        <i class="icon-star"></i>
-                                                        <i class="icon-star"></i>
-                                                        <i class="icon-star-dark"></i>
+                                                       <i class="fa-solid fa-star"></i>
+                                                        <i class="fa-solid fa-star"></i>
+                                                        <i class="fa-solid fa-star"></i>
+                                                        <i class="fa-solid fa-star"></i>
+                                                        <i class="fa-solid fa-star"></i>
                                                     </p>
-                                                    <p class="item-rating-total">29</p>
+                                                    
                                                 </div>
                                             </a>
                                         </div>
