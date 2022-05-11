@@ -326,6 +326,30 @@ class categoryController extends Controller
 
         die();
     }
+
+
+    public function pageView($slug)
+    {
+        $link = trim($slug);
+
+        $data = post::where('link', $link)->where('category', 5)->first();
+
+        if(empty($data)){
+            abort('404');
+        }
+
+        $category = category::find(5);
+
+
+        $related_news = post::where('category', 5)->select('title', 'link', 'id')->get();
+
+        $name_cate = $category->namecategory;
+
+        $meta = metaSeo::find($data->Meta_id);
+
+        return view('frontend.blogdetail',compact( 'name_cate', 'related_news', 'meta', 'data'));
+
+    }
     public function index($slug)
     {
         

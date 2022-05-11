@@ -36,12 +36,31 @@
 <!-- shortcontent Field -->
 <div class="form-group col-sm-12 col-lg-12">
     {!! Form::label('shortcontent', 'Mô tả ngắn:') !!}
-    {!! Form::textarea('shortcontent', null, ['class' => 'form-control content-input']) !!}
+   <textarea class="form-control content-input" name="shortcontent" cols="50" rows="10" id="shortcontent">{!! strip_tags($post->shortcontent) !!}</textarea>
 </div>
 
 
 
 
+
+<div id="article_media_holder"><style type="text/css">
+    a.preview_media{
+        position:relative; /*this is the key*/
+        z-index:24;}
+    a.preview_media:hover{z-index:25; cursor:pointer}
+    a.preview_media span{display: none}
+    a.preview_media:hover span{
+        display:block;
+        position:absolute;
+        top:-120px; left:50px; width:auto;
+        text-align: center}
+</style>
+
+
+<br>
+
+
+</div>
 <!-- Content Field -->
 <div class="form-group col-sm-12 col-md-12">
     {!! Form::label('content', 'Content:') !!}

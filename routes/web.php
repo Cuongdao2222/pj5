@@ -94,6 +94,8 @@ Route::get('/cache-clear', function () {
 
 Route::get('searchquery', 'productController@search')->name('test');
 
+Route::get('page/{slug}', 'Frontend\categoryController@pageView')->name('page_cd');
+
 
 Route::get('tim', 'productController@FindbyNameOrModelOfFrontend')->name('search-product-frontend');
 
