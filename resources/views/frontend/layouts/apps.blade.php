@@ -53,7 +53,7 @@
         @if(!empty($pageCheck))
 
             <!-- Google Code dành cho Thẻ tiếp thị lại -->
-            <p>&nbsp;</p>
+            
             <!--------------------------------------------------
             Không thể liên kết thẻ tiếp thị lại với thông tin nhận dạng cá nhân hay đặt thẻ tiếp thị lại trên các trang có liên quan đến danh mục nhạy cảm. Xem thêm thông tin và hướng dẫn về cách thiết lập thẻ trên: http://google.com/ads/remarketingsetup
             --------------------------------------------------->

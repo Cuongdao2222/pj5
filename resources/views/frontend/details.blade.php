@@ -23,13 +23,25 @@
             }   
         } 
 
+        .box01__show{
+
+            min-height: auto !important;
+        }
+
+        .breadcrumb{
+
+            text-overflow: ellipsis;
+            overflow: visible;
+            white-space: nowrap;
+        }
+
         .installment-purchase .but-1-gop {
             text-decoration: none;
             color: #333;
             font-size: 12px;
             padding: 8px 5px;
             line-height: 18px;
-            width: 49%;
+            width: 100% !important;
             border-radius: 5px;
             display: inline-block;
             text-align: center;
@@ -262,11 +274,7 @@
                                 </div>
                                 <div class="clearfix"></div>
                                 <div class="installment-purchase pdetail-installment">
-                                    <a target="_blank"  href="{{ route('details', $data->Link)  }}?show=tra-gop" admicro-data-event="101725" admicro-data-auto="1" admicro-data-order="false" class="but-1-gop">
-                                    <strong>TRẢ GÓP</strong>
-                                    <br>
-                                    (Công ty tài chính)
-                                    </a>
+                                   
                                     <a target="_blank"  href="{{ route('details', $data->Link)  }}?show=tra-gop" admicro-data-event="101725" admicro-data-auto="1" admicro-data-order="false" class="but-1-gop">
                                     <strong>TRẢ GÓP QUA THẺ</strong>
                                     <br>
