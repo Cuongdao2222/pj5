@@ -110,7 +110,17 @@
                 height: 5in;
             }
 
+            .priority .item {
+
+                background-image: url('{{ asset("images/background-image/fsfsfsfsa.jpg")  }}');
+            }
+
             @media screen and (max-width:768px) {
+
+                .priority .item {
+
+                    background-image: none;
+                }
                 
                 .icon_tragop {
                     right: 35px;
