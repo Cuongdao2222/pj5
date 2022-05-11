@@ -30,7 +30,7 @@
     <script type="text/javascript">
         
         $('.banner-sales').owlCarousel({
-                loop:false,
+                loop:true,
 
                 margin:10,
                 nav:false,
