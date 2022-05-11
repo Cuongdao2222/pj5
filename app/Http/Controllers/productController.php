@@ -479,18 +479,24 @@ class productController extends AppBaseController
 
 
 
-        $data      = strip_tags($clearData);
+        $datas      = strip_tags($clearData);
 
-        if(empty($data)){
+        if(empty($datas)){
             return redirect()->route('homeFe');
 
         }
 
         $resultProduct = [];
 
-        $find_first = Product::select('id')->where('Name','LIKE', '%'. $data .'%')->OrWhere('ProductSku', 'LIKE', '%' . $data . '%')->get()->pluck('id');
+        $numberdata = 0;
+
+        $find_first = Product::select('id')->where('Name','LIKE', '%'. $datas .'%')->OrWhere('ProductSku', 'LIKE', '%' . $datas . '%')->get()->pluck('id');
+
+
 
         if(isset($find_first)){
+
+             $numberdata = count($find_first);
 
             foreach ($find_first as  $value) {
 
@@ -503,15 +509,15 @@ class productController extends AppBaseController
 
         if(isset($resultProduct)){
 
-            $products = Product::whereIn('id', $resultProduct)->paginate(10);
+            $data = Product::whereIn('id', $resultProduct)->paginate(10);
 
-            return view('frontend.category')
-            ->with('data', $products);
+            return view('frontend.category',compact('data','numberdata'));
+           
 
         }
         else{
             $data = [];
-            return view('frontend.category', compact('data'));
+            return view('frontend.category', compact('data', 'numberdata'));
             // Flash::error('Không tìm thấy sản phẩm, vui lòng tìm kiếm lại"');
         }
         

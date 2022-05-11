@@ -82,18 +82,35 @@
             </div>
             </noscript>
 
+
             <script type="application/ld+json">
               {
               "@context": "http://schema.org",
               "@type": "Product",
               "headline": "{{ @$data->Name }}",
-              "datePublished": {{ $data->created_at->format('Y-m-d') }},
+              "datePublished": "{{ $data->created_at->format('Y-m-d') }}",
               "name": "{{ @$data->Name }}",
               "image": [
-              "https://dienmaynguoiviet.vn/media/product/250_6092_6.jpg"
+              "{{ asset($data->Image) }}"
               ]
               }
-    </script>
+            </script>
+
+            <script type="application/ld+json">
+            {
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "url": "https://dienmaynguoiviet.vn",
+              "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://dienmaynguoiviet.vn/tim?key={search_term_string}",
+                "query-input": "required name=search_term_string"
+              }
+            }
+            </script>
+  
+
+          
 
 
 
