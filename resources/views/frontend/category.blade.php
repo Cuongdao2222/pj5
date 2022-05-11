@@ -147,7 +147,7 @@
 
             <div class="box-sort ">
                 @if(isset($data))
-                <p class="sort-total"><b>{{ count($data) }}</b> Sản phẩm <strong class="manu-sort"></strong></p>
+                <p class="sort-total"><b>{{ $numberdata }}</b> Sản phẩm <strong class="manu-sort"></strong></p>
 
                 @endif
                 <div class="sort-select ">

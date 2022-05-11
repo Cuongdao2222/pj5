@@ -10,7 +10,10 @@
             .content-1 {
 
                 background-position: unset !important;
-            }    
+            }  
+            .listproduct .item{
+                position: relative;
+            }  
             
         </style>
        

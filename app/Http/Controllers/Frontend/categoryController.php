@@ -74,9 +74,9 @@ class categoryController extends Controller
 
             $ar_list = $this->find_List_Id_Group($id_cate,$groupProduct_level);
 
+            $parent_cate_id = $ar_list[0]['id'];
 
-
-            $filter = filter::where('group_product_id', $id_cate)->select('name', 'id')->get();
+            $filter = filter::where('group_product_id', $parent_cate_id)->select('name', 'id')->get();
 
             $fill = [];
 
@@ -149,17 +149,13 @@ class categoryController extends Controller
 
                         $product_search = product::whereIn('id', $result_product)->get();
 
-                       
-                        
+                    
                     }
 
                    
                 }
             }
              return view('frontend.filter', compact('product_search', 'link', 'filter', 'id_cate'));
-
-           
-
 
         }
         else{
@@ -202,21 +198,19 @@ class categoryController extends Controller
 
             $ar_list = $this->find_List_Id_Group($id_cate,$groupProduct_level);
 
-            $link   =  $findID->link;
+            $parent_cate_id = $ar_list[0]['id'];
 
+            $link   =  $findID->link;
 
             $Group_product = groupProduct::find($id_cate);
 
-
             $slogan =  $Group_product->slogan;
-
-        
 
             $meta = metaSeo::find($Group_product->Meta_id);
 
             $data =[];
 
-          
+            $numberdata = 0;
 
             if(!empty($Group_product) && !empty($Group_product->product_id)){
 
@@ -229,21 +223,16 @@ class categoryController extends Controller
                     $Group_product = json_decode($Group_product->product_id);
 
               
-                    $data = Product::whereIn('id', $Group_product)->where('active', 1)->orderBy('id', 'desc')->paginate(10);
+                    $data = product::whereIn('id', $Group_product)->where('active', 1)->orderBy('id', 'desc')->paginate(10);
+
+                    $numberdata = product::select('id')->whereIn('id', $Group_product)->where('active', 1)->orderBy('id', 'desc')->get()->count();
 
                 }
 
-               
-
             }
 
-
-            // $data = DB::table('group_product')->join('products', 'group_product.id', '=', 'products.Group_id')->select('products.Name', 'products.id','products.Image', 'products.ProductSku', 'products.Specifications', 'products.Price', 'products.Link','products.active','group_product.link')->where('group_product.id', $id_cate)->where('products.active', 1)->Orderby('id', 'desc')->paginate(10);
-
-
-
-
-            $filter = filter::where('group_product_id', $id_cate)->select('name', 'id')->get();
+            
+            $filter = filter::where('group_product_id', $parent_cate_id)->select('name', 'id')->get();
 
             $data = [
                 'data'=>$data,
@@ -253,12 +242,9 @@ class categoryController extends Controller
                 'ar_list'=>$ar_list,
                 'slogan'=>$slogan,
                 'meta'=> $meta,
+                'numberdata'=>$numberdata,
 
             ];
-
-
-
-
 
             return $data;
         }    
@@ -295,7 +281,7 @@ class categoryController extends Controller
 
         $info_list_category = [];
 
-        $groupProduct_info = groupProduct::select('name','link')->whereIn('id', $ar_list)->get()->toArray();
+        $groupProduct_info = groupProduct::select('name','link','id')->whereIn('id', $ar_list)->get()->toArray();
 
         return $groupProduct_info;
     
