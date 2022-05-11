@@ -478,7 +478,7 @@
         
         <?php  
 
-            $post = App\Models\post::where('active',1)->where('hight_light', 1)->select('link', 'title', 'image')->take(5)->get()->toArray();
+            $post = App\Models\post::where('active',1)->where('hight_light', 1)->select('link', 'title', 'image')->take(6)->get()->toArray();
 
         ?>
                     
