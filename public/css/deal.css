@@ -4701,9 +4701,7 @@ strong.choose-province {
 	width: 36px
 }
 
-.header__top {
-	background-color: #4285de
-}
+
 
 .header__top section {
 	align-items: center;
@@ -11181,6 +11179,12 @@ img.flash-icon {
 span.like-fanpage iframe {
 	min-width: 156px
 }
+
+@media screen and (max-width:768px) {
+	.container {
+		max-width: 600px
+	}
+}	
 
 @media screen and (max-width:1024px) {
 

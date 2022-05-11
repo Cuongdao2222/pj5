@@ -16,6 +16,8 @@
             }  
             
         </style>
+
+         <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}"> 
        
         
         <link rel="stylesheet" type="text/css" href="{{ asset('css/deal.css') }}">
@@ -98,62 +100,61 @@
                 line-height: 220px;
             }
 
+            .prodCol_5 .item-img img{
+                max-width: 100%;
+                height: auto;
+            } 
+
             .bg-desktop{
                 background-size: 100%;
+                height: 5in;
             }
+
+            @media screen and (max-width:768px) {
+                
+                .icon_tragop {
+                    right: 35px;
+                    top: 77px;
+                }   
+                .priority .item {
+                    padding: 0;
+                 }
+                 .priority .item a .item-img { 
+                    width: auto;
+                 }
+                 .item-img_1942 {
+                   
+                    line-height: 300px;
+                }  
+                .priority .item h3 {
+                    width: 100%;
+                }  
+               
+                .priority .item .item-img img {
+                    
+                    width: 100%;
+                } 
+                .list-child{
+                    text-align: center;
+
+                }
+                .bg-desktop{
+                    height: 1in;
+                }
+
+            }   
         </style>
     </head>
     <body>
-        <script>
-            document.root = true;
-        </script>
-        
-        
-        <div class="locationbox__overlay"></div>
-        <div class="locationbox">
-            <div class="locationbox__item locationbox__item--right" onclick="OpenLocation()">
-                <p>Chọn địa chỉ nhận hàng</p>
-                <a class="cls-location" href="javascript:void(0)">Đóng</a>
-            </div>
-            <div class="locationbox__item" id="lc_title"><i class="icondetail-address-white"></i><span> Vui lòng đợi trong giây lát...</span></div>
-            <div class="locationbox__popup" id="lc_pop--choose">
-                <div class="locationbox__popup--cnt locationbox__popup--choose">
-                    <div class="locationbox__popup--chooseDefault">
-                        <div class="lds-ellipsis">
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <b id="h-provincename" style="display:none!important" data-provinceid="3">Hồ Chí Minh</b>
+       
+    
+        <div class="wrapper content-1 sx cssback bg-desktop " style="background-image: url({{  asset('images/background-image/pop-upbanner.jpg')}}); " >
+
         </div>
-      
-        <section class="wrapper content-fs off" id="flashsale-block">
-        </section>
-
-
-        <section class="wrapper content-1 sx cssback bg-desktop " style="background-image: url({{  asset('images/background-image/pop-upbanner.jpg')}}); height: 53vmin;">
-
-        <div class="scroll-menu ">
-            <a href="javascript:;" data-id="ce" onclick="scrollToDS('ce')" class="scrollto2"></a>
-            <a href="javascript:;" data-id="appliances" onclick="scrollToDS('appliances')" class="scrollto2"></a>
-            <a href="javascript:;" data-id="phone" onclick="scrollToDS('phone')" class="scrollto2"></a>
-            <a href="javascript:;" data-id="laptop" onclick="scrollToDS('laptop')" class="scrollto2"></a>
-            <a href="javascript:;" data-id="accessories" onclick="scrollToDS('accessories')" class="scrollto2"></a>
-            <a href="javascript:;" data-id="smartwatch" onclick="scrollToDS('smartwatch')" class="scrollto2"></a>
-            <a href="javascript:;" data-id="reserved1" onclick="scrollToDS('reserved1')" class="scrollto2"></a>
-            <a href="javascript:;" data-id="reserved2" onclick="scrollToDS('reserved2')" class="scrollto2"></a>
-            <a href="javascript:;" data-id="reserved3" onclick="scrollToDS('reserved3')" class="scrollto2"></a>
-        </div>
-        <a href="#" id="hc-link"></a>
-            </section>
-        <section class="wrapper content-2 bg-hotsale-multi" style="background-image: url('')">
+        <div class="wrapper content-2 bg-hotsale-multi" style="background-image: url('')">
             <div class="cache _posi multiple-hotsale">
                 
-                <div class="container row-product">
+                <div class="row-product">
                     <div class="tagline" id="noibat">
                         <div class="wrap" id="normal-ds">
                             <div class="one4all normal">
@@ -168,21 +169,7 @@
                                             </span>
                                         </p>
                                     </div>
-                                    <div class="filter-pros">
-                                        <a href="javascript:;" class="check" data-type="0" onclick="filterhotsale(this, 2300, 5, 0)">
-                                        <i class="icon-button"></i>
-                                        <span>Nổi bật</span>
-                                        </a>
-                                        <a href="javascript:;" class="" data-type="1" onclick="filterhotsale(this, 2300, 5, 1)">
-                                        <i class="icon-button"></i>
-                                        <span>Giá cao đến thấp</span>
-                                        </a>
-                                        <a href="javascript:;" class="" data-type="2" onclick="filterhotsale(this, 2300, 5, 2)">
-                                        <i class="icon-button"></i>
-                                        <span>Giá thấp đến cao</span>
-                                        </a>
-                                    </div>
-
+                                   
                                     
 
 
@@ -193,7 +180,7 @@
                                         ?>
                                         @if(count($hight_light)>0&& isset($hight_light))
                                         @foreach($hight_light as $val)
-                                        <div class="item" data-id="235642">
+                                        <div class="item">
                                             <a href="{{ route('details', $val->link) }}" class=" main-contain" data-s="Nomal" data-site="2" data-pro="3" data-cache="False" data-name="Smart Tivi QLED 4K 55 inch Samsung QA55Q65A" data-id="235642" data-price="19900000.0" data-brand="Samsung" data-cate="Tivi" data-box="BoxHiddenPromotion">
                                                
                                                 <div class="item-img item-img_1942">
@@ -230,14 +217,14 @@
                                     </ul>
 
 
-                                    <div id="group2300" class="prdWrapper prodCol_5 listproduct">
+                                    <div  class="prdWrapper prodCol_5 row">
                                         <?php  
 
                                             $products = DB::table('landing_product')->where('hight_light', 0)->get();
                                         ?>
                                         @if(isset($products) && count($products)>0)
                                         @foreach($products as $val)
-                                        <div class="item" data-id="235792">
+                                        <div class="item col-md-3 col-6 list-child">
                                             <a href="{{ route('details', $val->link) }}" class=" main-contain" data-name="{{ $val->name }}" data-id="235792" data-price="{{ $val->price }}" data-brand="Samsung" data-cate="Tivi" data-box="BoxHiddenPromotion">
                                                <span class="icon_tragop">Trả góp <i>0%</i></span>
                                                 <div class="item-img item-img_1942">
@@ -282,23 +269,10 @@
             </div>
           
            
-        </section>
+        </div>
         <div id="videos"></div>
        
-        <script>var isTGDD = 0;var isMobile = 0;document.showCoreBrain = true;var CHAT_ENABLED=1;var g_version = '201706230508';</script>
-        <div id="fb-root"></div>
-        <script type="text/javascript">
-            setTimeout(function () {
-                (function (d, s, id) {
-                    var js, fjs = d.getElementsByTagName(s)[0];
-                    if (d.getElementById(id)) return;
-                    js = d.createElement(s); js.id = id;
-                    js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.8";
-                    fjs.parentNode.insertBefore(js, fjs);
-                }(document, 'script', 'facebook-jssdk'));
-            }, 10000);
-        </script>
+      
        
-       
-  
+    
 @endsection

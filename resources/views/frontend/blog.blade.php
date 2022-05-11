@@ -4,12 +4,15 @@
 
     @section('content') 
     <link rel="stylesheet" type="text/css" href="{{asset('css/dienmay.css')}}"> 
-    <link rel="stylesheet" href="https://dienmaynguoiviet.vn/template/dienmaynguoiviet/script/owl.carousel.min.css">
-    <link rel="stylesheet" href="https://dienmaynguoiviet.vn/template/dienmaynguoiviet/script/styles.css?v=8881288.8883.151">
-    <link rel="stylesheet" href="https://dienmaynguoiviet.vn/template/dienmaynguoiviet/script/customs.css?v=245754.75.52928">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css?v=1" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1"
-        crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&subset=vietnamese" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}?v=8881288.8883.151">
+    <link rel="stylesheet" href="{{ asset('css/customs.css') }}?v=245754.75.52928">
+
+   
+     <link rel="stylesheet" type="text/css" href="{{ asset('css/category.css') }}"> 
+
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/categories.css') }}"> 
+         <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}"> 
     
     
     <!-- end header -->
@@ -91,9 +94,9 @@
                         <figure>
                             <img src="" alt="">
                         </figure>
-                        <ul class="ulcatemenu">
+                       <!--  <ul class="ulcatemenu">
                             <li class="active"><a>Tư vấn mua sắm</a></li>
-                        </ul>
+                        </ul> -->
                     </div>
                 </div>
                 <div class="col-lg-7">

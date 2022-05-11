@@ -230,7 +230,7 @@
         }
 
         .header-pc {
-            background-color: #3fb6e0 !important;
+            background-color: #187A43 !important;
         }
 
         /*menu top*/
@@ -321,7 +321,7 @@
             background-color: transparent;
         }
         .cart_col_1{
-            width: 20%;
+            width: 23%;
         }  
         .total-cart-price, .cart-foot span{
             color: #c10017;
