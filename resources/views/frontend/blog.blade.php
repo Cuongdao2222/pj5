@@ -104,7 +104,7 @@
                         
                         @isset($data)
                         @foreach($data as $value)
-                        @if($data->category!=5)
+                        @if($value->category!=5)
                         
                         <div class="blog-list-item">
                             <a href="{{ route('details', $value->link) }}" class="img">
