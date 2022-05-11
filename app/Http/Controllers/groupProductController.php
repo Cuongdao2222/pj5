@@ -73,6 +73,24 @@ class groupProductController extends AppBaseController
             $input['link'] = convertSlug($input['name']);
         }
 
+        $meta_model = new metaSeo();
+
+        $meta_model->meta_title = '';
+
+        $meta_model->meta_content ='';
+
+        $meta_model->meta_og_content ='';
+
+        $meta_model->meta_og_title ='';
+
+        $meta_model->meta_key_words ='';
+
+        $meta_model->save();
+
+        $input['Meta_id'] = $meta_model['id'];
+
+
+
         $groupProduct = $this->groupProductRepository->create($input);
 
         Flash::success('Group Product saved successfully.');

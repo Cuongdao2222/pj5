@@ -27,7 +27,12 @@
         <meta property="og:description" content="{{ $meta->meta_content }}" /> 
         <meta name="keywords" content="{{ $meta->meta_keywords??'sieu thi dien may, siêu thị điện máy, mua điện máy giá rẻ, siêu thị điện máy uy tín, siêu thị điện máy trực tuyến' }}"/>
         @endif
-        
+
+        <link rel="shortcut icon" href="{{ asset('uploads/icon/favicon.ico') }}"/>
+        <!-- <meta name = "google-site-verify" content = "1AH1fN3G7ygWRcOlEQWJyhginaxmT67zTMPP8wnfFD0" />
+        <meta name="p:domain_verify" content="109de6686e51e396ddd32475ad614b1f"/>
+        <meta name="google-site-verification" content="P-EnxCkmnXXEDeC0FWq-rSxjbSSyy9HeimO6f2Evtyc" /> -->
+
         <meta http-equiv="cache-control" content="no-cache" />
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -94,7 +99,7 @@
 
         @endif
 
-        <link rel="shortcut icon" href="{{ asset('uploads/icon/favicon.ico') }}"/>
+        
         <meta name="robots" content="index,follow" />
       
         <meta name="keywords" content="sieu thi dien may, siêu thị điện máy, mua điện máy giá rẻ, siêu thị điện máy uy tín, siêu thị điện máy trực tuyến"/>
@@ -102,7 +107,7 @@
         <link rel="alternate" type="application/rss+xml" title="RSS Feed for https://dienmaynguoiviet.vn" href="/product.rss" />
       
           
-        <meta property="og:image" content="https://dienmaynguoiviet.vn/media/banner/logo_logo.png" />
+        <meta property="og:image" content="{{ asset('images/template/logochuan.jpg') }}" />
 
 
         <!-- Global site tag (gtag.js) - Google Ads: 971664599 -->
