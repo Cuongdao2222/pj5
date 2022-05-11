@@ -1748,7 +1748,7 @@
                             <a href="{{ route('details',$menu->link) }}">{{ $menu->name }}</a>
                             @endforeach
                             
-                            <a href="/tien-ich" class="promotion-menu">
+                            <a href="/deal" class="promotion-menu">
                                 Giảm giá <br>đặc biệt
                                 <span class="item__label">- 5%</span>
                             </a>
