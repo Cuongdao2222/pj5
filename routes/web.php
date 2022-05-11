@@ -122,7 +122,7 @@ Route::post('rate-form', 'AjaxController@rateForm')->name('rate-form');
 
 
 
-
+Route::get('show-viewer-product', 'AjaxController@showViewerProduct')->name('show-viewed-product');
 
 Route::get('/category/{slug}', 'Frontend\categoryController@index')->name('category-product')->middleware('auth');
 
@@ -135,6 +135,8 @@ Route::post('muchsearch', 'AjaxController@muchSearch')->name('muchSearch');
 Route::post('get-email-user', 'AjaxController@getEmail')->name('getemail');
 
 Route::post('suggest', 'AjaxController@getProductActive')->name('sugest-click');
+
+
 
 
 
@@ -312,7 +314,7 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::post('remove-sale-product', 'AjaxController@removeSaleProduct')->name('remove-sale-product');
 
-     Route::get('show-viewer-poduct', 'AjaxController@showViewerProduct')->name('show-viewed-product');
+     
 
     Route::post('check-active', 'AjaxController@checkActive')->name('check-active');
 

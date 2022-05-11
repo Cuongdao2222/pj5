@@ -277,8 +277,7 @@ class AjaxController extends Controller
     public function showViewerProduct(Request $request)
     {
         if($request->ajax()){
-            $clear_data = json_decode($request->product_id);
-
+            $clear_data = (array)json_decode($request->product_id);
 
                // kiểm tra dữ liệu đầu vào
             $data_product_id = [];

@@ -868,6 +868,7 @@
     localStorage.setItem('viewed_product', JSON.stringify(product_id_item_viewer));
     
     view_product_id = localStorage.getItem('viewed_product');
+
     
     button_buy_height = $('.scroll-box').offset().top;
     view_more_height  = ($('.view-more-related').offset().top);
@@ -910,8 +911,7 @@
                
         },
         success: function(result){
-    
-            console.log($("#number-product-cart").text());
+
           
            // numberCart = result.find($("#number-product-cart").text());
            $('.viewer-product').append(result);
