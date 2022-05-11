@@ -88,9 +88,8 @@ class groupProductController extends AppBaseController
 
         $meta_model->save();
 
+       
         $input['Meta_id'] = $meta_model['id'];
-
-
 
         $groupProduct = $this->groupProductRepository->create($input);
 
