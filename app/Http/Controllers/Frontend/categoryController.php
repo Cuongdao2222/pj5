@@ -23,6 +23,8 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 
 use App\Http\Controllers\Frontend\filterController;
 
+use Session;
+
 class categoryController extends Controller
 {
 
@@ -319,6 +321,21 @@ class categoryController extends Controller
         $name_cate = $category->namecategory;
 
         $meta = metaSeo::find($data->Meta_id);
+
+        // đếm số lượt view
+
+        $sessionKey = 'post_' . $data->id;
+
+        $sessionView = Session::get($sessionKey);
+
+        $post_view = post::findOrFail($data->id);
+
+        if (!$sessionView) { //nếu chưa có session
+
+            Session::put($sessionKey, 1); //set giá trị cho session
+            $post_view->increment('views');
+
+        }
 
        
 

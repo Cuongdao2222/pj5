@@ -39,7 +39,7 @@
             <td>{{ $i }}</td>
             <!--<td><a class='preview_media' href="javascript:;">Xem nhanh <span></span></a></td>-->    
             <td>
-                <div class="peek-view-banner"><img border="0" src="{{ asset($banner->image) }}" width="690" height="305"></div>
+                <div class="peek-view-banner"><img border="0" src="{{ asset($banner->image) }}" width="690" ></div>
                 <b style="color:#F00">Thông tin</b><br>
                 <table cellpadding="0" cellspacing="0">
                     <tbody>
