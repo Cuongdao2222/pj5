@@ -19,9 +19,7 @@
        
        
         <style>
-            .icon-star, .icon-star-half, .icon-star-dark {
-            background-image: url(https://cdn.tgdd.vn/mwgcart/mwg-site/ContentMwg/images/DMX/Global/Desktop/icon_common@2x.png?v=1);
-            }
+           
             .priority .item .item-img img {height: auto;}ul li .iconup img {
             height: 18px !important;
             }
@@ -151,8 +149,7 @@
             </section>
         <section class="wrapper content-2 bg-hotsale-multi" style="background-image: url('')">
             <div class="cache _posi multiple-hotsale">
-                <h3 class="tag cssback" id="ce" style="background-image: url('https://cdn.tgdd.vn/2022/03/campaign/CE-1200x120-1.png');height:179px;background-position: center top;">
-                </h3>
+                
                 <div class="container row-product">
                     <div class="tagline" id="noibat">
                         <div class="wrap" id="normal-ds">
@@ -216,11 +213,11 @@
                                                 <strong class="price">{{  @number_format($val->price , 0, ',', '.')  }}&#x20AB;</strong>
                                                 <div class="item-rating">
                                                     <p>
-                                                        <i class="icon-star"></i>
-                                                        <i class="icon-star"></i>
-                                                        <i class="icon-star"></i>
-                                                        <i class="icon-star"></i>
-                                                        <i class="icon-star-dark"></i>
+                                                       <i class="fa-solid fa-star"></i>
+                                                        <i class="fa-solid fa-star"></i>
+                                                        <i class="fa-solid fa-star"></i>
+                                                        <i class="fa-solid fa-star"></i>
+                                                        <i class="fa-solid fa-star"></i>
                                                     </p>
                                                     <p class="item-rating-total">87</p>
                                                 </div>

@@ -245,6 +245,18 @@
             position: relative;
         } 
 
+        .icon_tragop {
+            background-color: #f1c40f;
+            padding: 3px;
+            border-radius: 2px;
+            font-size: 10px;
+            color: #000;
+            position: absolute;
+            right: 10px;
+            top: 15px;
+            z-index: 1;
+        }
+
         .menu-section span{
             font-weight: bold;
         }
@@ -293,12 +305,9 @@
         .header__logo img{
             height: 66px !important;
         }
-
-       
-
-
-
-       
+        .fa-star{
+            color: #fb7132 !important;
+        }
 
         .product_list_cart .col_input input, .product_list_cart .col_input a {
             width: 35px;

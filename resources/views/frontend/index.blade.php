@@ -21,6 +21,8 @@
                 text-transform: uppercase;
             }
 
+
+
             /*.menus-banner strong {
                 
                 bottom: 24px;
@@ -232,11 +234,11 @@
                                         </div>
                                         <div class="review_product star">
                                            <p>
-                                                <i class="icon-star"></i>
-                                                <i class="icon-star"></i>
-                                                <i class="icon-star"></i>
-                                                <i class="icon-star"></i>
-                                                <i class="icon-star-dark"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
                                             </p>
                                             <div class="line_break">|</div>
                                                 <div class="reviewCount">0 đánh giá</div>
@@ -337,11 +339,11 @@
                         <strong class="price">{{  @str_replace(',' ,'.', number_format($value->Price))  }}.&#x20AB;</strong>
                         <div class="item-rating">
                             <p>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                <i class="icon-star-dark"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
                             </p>
                             
                         </div>
@@ -409,10 +411,8 @@
                         
                         <div class="item"  data-pos="1">
                             <a href='{{ route('details', $datas->Link) }}'>
-                                <div class="item-label">
-                                    <span class="lb-tragop">trả góp 0%</span>
-
-                                </div>
+                                <span class="icon_tragop">Trả góp <i>0%</i></span>
+                                
                                 <div class="item-img">
                                     <img data-src="{{ asset($datas->Image) }}" class="lazyload"   alt="{{ $datas->Name }}" width=210 height=210>
                                     
@@ -432,11 +432,11 @@
                            
                                 <div class="item-rating">
                                     <p>
-                                        <i class="icon-star"></i>
-                                        <i class="icon-star"></i>
-                                        <i class="icon-star"></i>
-                                        <i class="icon-star"></i>
-                                        <i class="icon-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
                                     </p>
                                 </div>
 
