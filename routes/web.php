@@ -33,6 +33,8 @@ Route::get('/deal', function () {
     
 });
 
+
+
 Route::get('/lien-he', function () {
     return view('frontend.lienhe');
     
@@ -140,6 +142,12 @@ Route::post('suggest', 'AjaxController@getProductActive')->name('sugest-click');
 
 Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
+    Route::get('/register','customnUserController@registerUser')->name('register-user');
+
+     Route::get('/delete-user-permission','customnUserController@deleteUser')->name('deleteUser');
+
+
+
     Route::get('filter-group-id', 'dealController@getProductToGroupId')->name('filter-group-id');
 
     Route::get('fill-product-deal', 'dealController@getProductToName')->name('filter-product-deal');
@@ -148,6 +156,11 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
     Route::post('/editFastPrice', 'productController@editFastPrice')->name('fast-price');
 
     Route::post('/edit-fast-Qualtity', 'productController@editFastQualtity')->name('edit-fast-qualtity');
+
+    Route::get('update-permision', 'customnUserController@updatePermision')->name('updatePermission');
+
+
+     Route::post('/addUser', 'customnUserController@addUser')->name('adduser');
 
 
     Route::get('deal', 'dealController@index')->name('deal');
@@ -180,17 +193,7 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::get('/group-product/selected/{id}', 'groupProductController@showProductIdToUrl')->name('group-product-selected');
 
-    Route::get('view-user', function () {
-
-        if(Auth::user()->permision==1){
-            return view('user.index');
-        }
-        else{
-            echo"bạn không có quyền vào trang này";
-        }
-        
-        
-    })->name('view-user');
+    Route::get('view-user', 'customnUserController@viewUser')->name('view-user');
 
     Route::get('new-banner', function () {
         return view('newbanner.banner');
@@ -282,6 +285,7 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
      Route::get('/filter-deal-products-add-deal', 'dealController@add_Deal')->name('result-add');
 
      Route::get('/delete-deal', 'dealController@removeDeal')->name('delete-deal');
+
 
 
     Route::get('/active-deal', 'dealController@activeDeal')->name('active-deal');

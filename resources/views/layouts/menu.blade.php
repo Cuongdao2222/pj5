@@ -60,7 +60,7 @@
     </ul> -->
     
 </li>
-
+@if(Auth::user()->permision>1)
 
 <li class="nav-item" style="display: flex; height:44px;"  >
 
@@ -83,6 +83,7 @@
     
     
 </li>
+
 
 <ul style="width: 68%;">
     @if(count($listGroup)>0)
@@ -112,7 +113,7 @@
         </a>
     </li>
 </ul>
-
+@endif
 
 <li class="nav-item">
     <a href="{{ route('makers.index') }}"
@@ -129,7 +130,7 @@
 </li>
 
 
-@if(Auth::user()->id==1 || Auth::user()->id==4)
+@if(Auth::user()->permision>1)
 
 <li class="nav-item">
     <a href="{{ route('products.index') }}"
@@ -140,12 +141,19 @@
 
 @endif
 
-@if(Auth::user()->id==1)
+@if(Auth::user()->permision == 3)
 
 <li class="nav-item">
     <a href="{{ route('view-user') }}"
        class="nav-link {{ Request::is('products*') ? 'active' : '' }}">
         <p>Quản trị người dùng</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('register-user') }}"
+       class="nav-link {{ Request::is('products*') ? 'active' : '' }}">
+        <p>Đăng ký user</p>
     </a>
 </li>
 

@@ -1,3 +1,12 @@
+
+<?php 
+    if(Auth::user()->permision==0){
+        echo "bạn chưa được cấp quyền truy cập";
+        return Auth::logout();
+        
+    }
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
