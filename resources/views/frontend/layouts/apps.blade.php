@@ -2054,10 +2054,10 @@
                                 <a href="/gioi-thieu">Giới thiệu</a>
                             </li>
                             <li>
-                                <a href="#">Liên hệ</a>
+                                <a href="/lien-he">Liên hệ</a>
                             </li>
                             <li>
-                                <a href="#">Dự án bán buôn</a>
+                                <a href="/nha-phan-phoi-dien-may-uy-tin-chuyen-nghiep">Dự án bán buôn</a>
                             </li>
 
                           
@@ -2106,16 +2106,16 @@
                         <h3 class="title">Chính sách</h3>
                         <ul class="footer_list-link">
                             <li>
-                                <a href="#">Chính sách &amp; quy định chung</a>
+                                <a href="/page/chinh-sach-quy-dinh-chung">Chính sách &amp; quy định chung</a>
                             </li>
                             <li>
-                                <a href="#">Chính sách đổi trả sản phẩm</a>
+                                <a href="/page/chinh-sach-doi-tra-hang">Chính sách đổi trả sản phẩm</a>
                             </li>
                             <li>
-                                <a href="#">Chính sách bảo hành</a>
+                                <a href="page/chinh-sach-bao-hanh">Chính sách bảo hành</a>
                             </li>
                             <li>
-                                <a href="#">Chính sách giao hàng</a>
+                                <a href="/page/chinh-sach-van-chuyen">Chính sách giao hàng</a>
                             </li>
                         </ul>
                     </div>
