@@ -144,9 +144,7 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::get('/register','customnUserController@registerUser')->name('register-user');
 
-     Route::get('/delete-user-permission','customnUserController@deleteUser')->name('deleteUser');
-
-
+    Route::get('/delete-user-permission','customnUserController@deleteUser')->name('deleteUser');
 
     Route::get('filter-group-id', 'dealController@getProductToGroupId')->name('filter-group-id');
 

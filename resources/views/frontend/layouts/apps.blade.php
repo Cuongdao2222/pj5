@@ -1794,10 +1794,10 @@
                                     </div>
                                     <!--option-group-->
                                 </div>
-                                <div class="item-form" style="width: 50%;display: inline-block;">
+                                <div class="item-form">
                                     <input type="text" name="name" id="buyer_name" placeholder="Họ tên">
                                 </div>
-                                <div class="item-form" style="width: 49%;display: inline-block;">
+                                <div class="item-form">
                                     <input type="text" name="phone_number" id="buyer_tel" value="" placeholder="Số điện thoại">
                                 </div>
                                 <div class="item-form">
