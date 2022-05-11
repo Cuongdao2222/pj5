@@ -2081,7 +2081,7 @@
                                 <a href="{{ route('details','huong-dan-mua-dien-may-tra-gop-online-qua-the-tin-dung-tren-trang-web-dien-may-nguoi-viet') }}">Hướng dẫn trả góp</a>
                             </li>
                             <li>
-                                <a href="#">Cách thức thanh toán</a>
+                                <a href="/page/cach-thuc-thanh-toan">Cách thức thanh toán</a>
                             </li>
                             <li>
                                 <a href="{{ route('details', 'bang-gia-vat-tu-lap-dat-may-giat') }}">Bảng giá vật tư lắp đặt</a>
