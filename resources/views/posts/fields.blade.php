@@ -36,7 +36,7 @@
 <!-- shortcontent Field -->
 <div class="form-group col-sm-12 col-lg-12">
     {!! Form::label('shortcontent', 'Mô tả ngắn:') !!}
-   <textarea class="form-control content-input" name="shortcontent" cols="50" rows="10" id="shortcontent">{!! strip_tags($post->shortcontent) !!}</textarea>
+   <textarea class="form-control content-input" name="shortcontent" cols="50" rows="10" id="shortcontent">{!! strip_tags(@$post->shortcontent) !!}</textarea>
 </div>
 
 
