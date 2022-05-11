@@ -278,8 +278,40 @@
                         </div>
                         <div class="space"></div>
                         <div style="display:block; padding: 0 45px; width: 68% ;" id="content_1">
-                            <div>Xem nhiều nhất trong 30 ngày qua - <a href="?opt=report&amp;view=product-visit">Xem danh sách</a></div>
-                            <div id="top_pro_visit"></div>
+                            <?php  
+
+                                $views = App\Models\product::select('Name','views', 'Link')->Orderby('views', 'desc')->take(10)->get();
+
+
+                            ?>
+
+                            <table cellpadding="5" id="tb_padding" border="1" bordercolor="#CCCCCC" style="border-collapse:collapse;">
+                                <tbody>
+                                    <tr bgcolor="#EEEEEE" style="font-weight:bold;">
+                                        <td>STT</td>
+                                        <td>Sản phẩm</td>
+                                        <td>Lượt xem</td>
+
+                                    </tr>
+                                    <?php  
+                                        $i =0;
+                                        
+                                    ?>
+                                    @foreach($views as $view)   
+                                    <?php 
+                                        $i++;
+                                    ?> 
+                                    <tr>
+
+                                        <td>{{ $i }}</td>
+                                        <td><a href="{{ route('details', $view->Link) }}" target="_blank">{{ $view->Name }}</a></td>
+                                        <td>{{ $view->views }}</td>
+                                    </tr>
+                                    @endforeach
+                                
+                                </tbody>
+                            </table>    
+        
                           
                         </div>
                        <!--  <div class="" style="display:none;" id="content_2">

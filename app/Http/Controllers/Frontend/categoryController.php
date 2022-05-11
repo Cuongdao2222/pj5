@@ -406,6 +406,20 @@ class categoryController extends Controller
 
             $meta = metaSeo::find($data->Meta_id);
 
+            // đếm số lượt view
+
+            $sessionKey = 'product_' . $findID->id;
+
+            $sessionView = Session::get($sessionKey);
+
+        
+            if (!$sessionView) { //nếu chưa có session
+
+                Session::put($sessionKey, 1); //set giá trị cho session
+                $data->increment('views');
+
+            }
+
             return view('frontend.details', compact('data', 'images', 'other_product', 'meta', 'pageCheck'));
         }
     }
