@@ -8,6 +8,7 @@ use App\Repositories\groupProductRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use App\Models\product;
+use App\Models\metaSeo;
 use Flash;
 use Response;
 
