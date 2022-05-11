@@ -1261,7 +1261,7 @@
 
                     <ul class="list-menu">
                         <li class="child" data-id="danh-muc1">
-                            <a class="list-mn" href="{{route('details','ti-vi')}}">
+                            <a class="list-mn" href="{{route('details','tivi')}}">
                             <i class="fa-regular fa-refrigerator"></i>
                             <span>Tivi</span>
                             </a>
