@@ -9,18 +9,7 @@
          <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
  @endpush  
 
- <?php 
-
-            $ip = $_SERVER['REMOTE_ADDR'];
-            if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
-            $ip = $_SERVER['HTTP_CLIENT_IP'];
-            } else if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-            $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
-            }
-            echo "IP address: " . $ip;
-
-            die();
-        ?>     
+    
 <div class="container page-content">
     <h1>Liên Hệ</h1>
 </div>
