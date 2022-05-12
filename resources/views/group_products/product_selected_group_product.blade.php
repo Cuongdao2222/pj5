@@ -10,10 +10,47 @@
 </style>
 
 
+
 <?php 
 
+    function get_Group_Product($id){
+        $data_groupProduct = App\Models\groupProduct::where('level', 0)->get()->pluck('id');
+
+        $infoProductOfGroup = App\Models\groupProduct::select('product_id', 'id')->whereIn('id', $data_groupProduct)->get()->toArray();
+
+        $result = [];
+
+
+        if(isset($infoProductOfGroup)){
+
+            foreach($infoProductOfGroup as $key => $val){
+
+
+                if(!empty($val['product_id'])&& in_array($id, json_decode($val['product_id']))){
+
+                    array_push($result, $val['id']);
+                }
+               
+                
+            }
+
+        }
+
+        
+        return $result;
+
+    }
     $name_product = App\Models\product::find($id);
-?>
+
+    ?>        
+
+
+<div class="btn btn-warning"><a href="{{ route('products.edit', $product_id) }}#mo-ta">Mô tả</a></div>
+<div class="btn btn-warning" ><a href="{{ route('filter-property') }}?group-product={{ get_Group_Product($id)[0]??'' }}&productId={{ $id }}">Thông số</a></div>
+<div class="btn btn-warning"><a href="{{ route('images.create') }}?{{ $id }}">Ảnh</a></div>
+<div class="btn btn-warning" ><a href="{{ route('products.edit', $id) }}#mo-ta">Thông số kỹ thuật chi tiết</a></div>
+
+<div class="btn btn-warning" ><a href="{{ route('group-product-selected', $id) }}">Danh mục</a></div>
 
 <h2>Sửa danh mục cho sản phẩm {{ $name_product->Name }}</h2>
 
@@ -80,9 +117,6 @@
                 }
 
             }
-
-
-
 
 
             if($level==0||$level==1||$level==2){

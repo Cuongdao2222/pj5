@@ -44,6 +44,26 @@
 
     ?>
 
+     <?php
+        $group_id = $_GET['groupid']??$_GET['group-product'];
+
+
+       
+        $filter = App\Models\filter::where('group_product_id', $group_id)->get();
+    ?>
+
+
+<div class="btn btn-warning"><a href="{{ route('products.edit', $product_id) }}#mo-ta">Mô tả</a></div>
+<div class="btn btn-warning" ><a href="{{ route('filter-property') }}?group-product={{  $group_id??'' }}&productId={{ $product_id }}">Thông số</a></div>
+<div class="btn btn-warning"><a href="{{ route('images.create') }}?{{ $product_id }}">Ảnh</a></div>
+<div class="btn btn-warning" ><a href="{{ route('products.edit', $product_id) }}#mo-ta">Thông số kỹ thuật chi tiết</a></div>
+
+<div class="btn btn-warning" ><a href="{{ route('group-product-selected', $product_id) }}">Danh mục</a></div>
+
+
+
+
+
     <h3 align="center">{{ @$infoProduct->Name }} </h3>
     <!-- <ul id="tabnav">
         <li><a href="javascript:void(0)" onclick="switchTab('sell_product.php?id=4444&amp;view=basic&amp;l=vn&amp;popup=1')">Cơ bản</a></li>

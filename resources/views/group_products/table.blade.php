@@ -48,7 +48,7 @@
                     unset($data[$key]);
                   ?>    
              <li class="paren1">
-              <a href="javascript:void(0)"  class="click1" data-id="{{ $item['id'] }}" data-show="{{ $item['active'] }}"><?php echo $item['name']?></a>    @if($item['level']==0|| $item['level']==1|| $item['level']==2)<span class="clicks{{ $item['id'] }}" onclick="showChild('sub{{ $item['id'] }}', 'clicks{{ $item['id'] }}')">+</span>@endif 
+              <a href="javascript:void(0)"  class="click1" data-id="{{ $item['id'] }}" data-show="{{ $item['active'] }}"><?php echo $item['name']?></a>    @if($item['level']==0|| $item['level']==1|| $item['level']==2)<span class="clicks{{ $item['id'] }}" onclick="showChild('sub{{ $item['id'] }}', 'clicks{{ $item['id'] }}')">+</span>@endif {{ $item['active']==0?'Danh mục đang ẩn':'' }}
               
               <?php recursiveMenu($data, $item['id'], false, $item['level']); ?>
              </li>
