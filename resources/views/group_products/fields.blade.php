@@ -11,7 +11,7 @@
 
 <div class="form-group col-sm-6">
     {!! Form::label('slogan', 'slogan:') !!}
-    {!! Form::text('slogan', null, ['class' => 'form-control','maxlength' => 10000]) !!}
+    {!! Form::textarea('slogan', null, ['class' => 'form-control','maxlength' => 10000, 'id'=>'slogan']) !!}
 </div>
 
 
@@ -105,6 +105,22 @@
             
     })
 
+</script>
+
+<?php  $url_domain =  Config::get('app.url') ?>
+
+
+<script type="text/javascript">
+    
+
+    CKEDITOR.replace( 'slogan', {
+        filebrowserBrowseUrl: '{{ $url_domain }}/ckfinder.html',
+        filebrowserImageBrowseUrl: '{{ $url_domain }}/ckfinder.html?Type=Images',
+        filebrowserUploadUrl: '{{ $url_domain }}/js/core/connector/php/connector.php?command=QuickUpload&type=Files',
+        filebrowserImageUploadUrl: '{{ $url_domain }}/js/core/connector/php/connector.php?command=QuickUpload&type=Images',
+        filebrowserWindowWidth : '1000',
+        filebrowserWindowHeight : '700'
+    } );
 </script>
 
 
