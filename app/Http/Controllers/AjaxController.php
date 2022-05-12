@@ -451,7 +451,7 @@ class AjaxController extends Controller
                 }
 
                 else{
-                    return response('chạy vào đây');
+                    return response($arr);
 
                 }
 
