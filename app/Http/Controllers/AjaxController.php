@@ -427,11 +427,13 @@ class AjaxController extends Controller
 
                 $arr  = json_decode($value, true);
 
-                unset($arr[$propertyId]);
+               
+
+               
 
                 if(isset($arr[$propertyId])){
 
-                    $index_value = array_search($arr[$propertyId], $product_id);
+                    $index_value = array_search($product_id, $arr[$propertyId]);
 
                     if((int)$index_value>-1){
 
@@ -444,16 +446,11 @@ class AjaxController extends Controller
                         return response('xóa thành công');
 
                     }
-                    else{
-                        return response('chạy vào đây code');
-                    }
+                   
 
                 }
 
-                else{
-                    return response('chạy vào đây');
-
-                }
+            
 
             }
             
