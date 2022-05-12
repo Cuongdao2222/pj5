@@ -2404,6 +2404,8 @@ s0.parentNode.insertBefore(s1,s0);
         $(".child").mouseenter(function(){
             const child = $( this ).attr('data-id');
 
+            $(this).css('position','relative');
+
            
             $('.'+child).show();
         }).mouseleave(function(){
