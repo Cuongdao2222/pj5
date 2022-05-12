@@ -94,7 +94,7 @@
 
     <?php  
 
-         $groupProductss = App\Models\groupProduct::select('id', 'name', 'level','product_id')->where('level', 0)->get();
+         $groupProductss = App\Models\groupProduct::select('id', 'name', 'level','product_id','active')->where('level', 0)->get();
 
 
         function recursiveMenu($id, $data, $parent_id=0, $sub=true, $level=0){
@@ -135,14 +135,19 @@
                     unset($data[$key]);
                 ?>  
 
-              
+             @if($item['active']> 0)    
             <li class="paren1">
 
-              <input type="checkbox" id="select{{ $item['id'] }}" name="sale" onclick="selected({{ $item['id'] }})" {{ in_array($item['id'], $data_active)?'checked':''}}><a href="javascript:void(0)"  class="click1" data-id="{{ $item['id'] }}"><?php echo $item['name']?></a>  @if($item['level']<count($all_prent))<span class="clicks{{ $item['id'] }}" onclick="showChild('sub{{ $item['id'] }}', 'clicks{{ $item['id'] }}', '{{ $id }}')">+</span>@endif
+               
+              <input type="checkbox" id="select{{ $item['id'] }}" name="sale" onclick="selected({{ $item['id'] }})" {{ in_array($item['id'], $data_active)?'checked':''}}>
+
+              <a href="javascript:void(0)"  class="click1" data-id="{{ $item['id'] }}"><?php echo $item['name']?></a>  
+
+              @if($item['level']<count($all_prent))<span class="clicks{{ $item['id'] }}" onclick="showChild('sub{{ $item['id'] }}', 'clicks{{ $item['id'] }}', '{{ $id }}')">+</span>@endif
               
               <?php recursiveMenu($id, $data, $item['id'], false, $item['level'], $data_active); ?>
              </li>
-
+             @endif
                 <?php }} 
              echo "</ul>";
         }
