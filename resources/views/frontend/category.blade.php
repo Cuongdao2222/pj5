@@ -114,7 +114,7 @@
 
             <section>
                 <div class="jsfix scrolling_inner scroll-right">
-                    <div><h4>{{ @$slogan }}</h4></div>
+                    <div><h4>{!! @$slogan !!}</h4></div>
                     <div class="box-filter block-scroll-main scrolling">
                         @if(isset($filter))
                         @foreach($filter as $filters)
