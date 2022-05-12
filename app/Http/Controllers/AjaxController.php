@@ -444,6 +444,14 @@ class AjaxController extends Controller
                         return response('xóa thành công');
 
                     }
+                    else{
+                        return response('chạy vào đây code');
+                    }
+
+                }
+
+                else{
+                    return response('chạy vào đây');
 
                 }
 
