@@ -388,7 +388,7 @@
                             </div>
                         </div>
                         <div class="" style="display:none;" id="content_6">
-                            <div>Bài viết xem nhiều nhất trong 30 ngày qua - <a href="?opt=report&amp;view=article-visit">Xem danh sách</a></div>
+                           
                              <?php  
 
                                 $views_post = App\Models\post::select('title','views', 'link')->Orderby('views', 'desc')->take(10)->get();
