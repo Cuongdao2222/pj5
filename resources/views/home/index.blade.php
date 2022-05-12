@@ -203,57 +203,34 @@
                                     <td>Nội dung</td>
                                     <td width="80">Xem</td>
                                 </tr>
+
+                                <?php  
+
+                                    $rate = App\Models\rate::where('active', '0')->Orderby('id','desc')->take(10)->get()
+                                ?>
+
+                                @if(!empty($rate))
+                                @foreach($rate as $rates)
                                 <tr onmouseover="this.className='row-hover'" onmouseout="this.className=''" class="">
                                     <td class="stt">1</td>
                                     <td class="email">
-                                        Thảo Nguyên<br>
+                                        {{ $rates->name }}<br>
                                         <br>
-                                        08-02-2022, 7:13 pm                            
+                                        {{ $rates->updated_at->format('d/m/Y') }}                          
                                     </td>
                                     <td class="content">
-                                        <div><a href="?opt=product&amp;view=user-comment#review_8643">[product] Tủ lạnh Samsung RT22FARBDSA/SV 243 ...</a></div>
-                                        Tủ này khay đựng đá ...                            
+
+                                        {!! $rates->content  !!}                       
                                     </td>
                                     <td>
-                                        <a href="?opt=product&amp;view=user-comment#review_8643">
-                                            <div class="pic icon_xem"></div>
+                                        <a href="{{ route('rate-client') }}">
+                                           xem
                                         </a>
                                     </td>
                                 </tr>
-                                <tr onmouseover="this.className='row-hover'" onmouseout="this.className=''" class="">
-                                    <td class="stt">2</td>
-                                    <td class="email">
-                                        user_name<br>
-                                        <br>
-                                        05-01-2022, 1:18 am                            
-                                    </td>
-                                    <td class="content">
-                                        <div><a href="?opt=product&amp;view=user-comment#review_8638">[item_type] item_title</a></div>
-                                        content                            
-                                    </td>
-                                    <td>
-                                        <a href="?opt=product&amp;view=user-comment#review_8638">
-                                            <div class="pic icon_xem"></div>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr onmouseover="this.className='row-hover'" onmouseout="this.className=''" class="">
-                                    <td class="stt">3</td>
-                                    <td class="email">
-                                        user_name<br>
-                                        <br>
-                                        05-01-2022, 12:25 am                            
-                                    </td>
-                                    <td class="content">
-                                        <div><a href="?opt=product&amp;view=user-comment#review_8632">[item_type] item_title</a></div>
-                                        content                            
-                                    </td>
-                                    <td>
-                                        <a href="?opt=product&amp;view=user-comment#review_8632">
-                                            <div class="pic icon_xem"></div>
-                                        </a>
-                                    </td>
-                                </tr>
+                                @endforeach
+                                @endif
+                               
                             </tbody>
                         </table>
                     </div>
@@ -314,9 +291,36 @@
         
                           
                         </div>
-                       <!--  <div class="" style="display:none;" id="content_2">
-                            <div>Số lượt truy cập website theo ngày - <a href="?opt=report&amp;view=visitor">Xem danh sách</a></div>
-                            <div id="home_report_visitor"></div>
+                        <div class="" style="display:none;" id="content_2">
+                            <div id="home_report_visitor">
+                                <table cellpadding="5" id="tb_padding" border="1" bordercolor="#CCCCCC" style="border-collapse:collapse;">
+                                    <tbody><tr bgcolor="#EEEEEE" style="font-weight:bold;">
+                                        <td width="40px">STT</td>
+                                        <td>Ngày</td>
+                                        <td width="140px">Số truy cập</td>
+                                    </tr>
+                                    <?php 
+
+                                        $data_client = App\Models\viewsite::Orderby('id', 'desc')->take(10)->select('views','updated_at')->get();
+                                        $count = 0;
+                                    ?>
+
+
+                                    @foreach($data_client as $views)
+                                    <?php 
+                                        $count++;
+                                    ?>
+                                    <tr>
+                                        <td>{{ $count }}</td>
+                                        <td>{{ $views->updated_at->format('d-m-Y') }}</td>
+                                        <td>{{ $views->views }}</td>
+                                    </tr>
+                                    @endforeach
+                                
+                                   
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                         <div class="" style="display:none;" id="content_3">
                             <div>Sản phẩm mua nhiều nhất trong 30 ngày qua</div>
@@ -324,16 +328,101 @@
                         </div>
                         <div class="" style="display:none;" id="content_4">
                             <div>Website mang người dùng đến</div>
-                            <div id="home_report_referer"></div>
+                            <div id="home_report_referer">
+                                <table cellpadding="5" id="tb_padding" border="1" bordercolor="#CCCCCC" style="border-collapse:collapse;">
+                                    <tbody>
+                                        <tr bgcolor="#EEEEEE" style="font-weight:bold;">
+                                            <td>STT</td>
+                                            <td>Nguồn</td>
+                                            <td>Lượt giới thiệu</td>
+                                        </tr>
+
+                                        <?php 
+                                            $k =0;
+                                            $website = App\Models\referer::Orderby('count', 'desc')->take(10)->get();
+
+                                        ?>
+
+                                        @if($website != null)
+                                        @foreach($website as $vals)
+                                        <?php  $k++; ?>
+                                        <tr>
+                                            <td>{{ $k }}</td>
+                                            <td>{{ $vals->website }}</td>
+                                            <td>{{ $vals->count }}</td>
+                                        </tr>
+                                        @endforeach
+                                        @endif
+
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                         <div class="" style="display:none;" id="content_5">
-                            <div>Tìm kiếm tại website nhiều nhất trong 30 ngày qua - <a href="?opt=report&amp;view=search">Xem danh sách</a></div>
-                            <div id="home_report_search"></div>
+                            
+                            <div id="home_report_search">
+                                <table cellpadding="5" id="tb_padding" border="1" bordercolor="#CCCCCC" style="border-collapse:collapse;">
+                                    <tbody>
+                                        <tr bgcolor="#EEEEEE" style="font-weight:bold;">
+                                            <td>STT</td>
+                                            <td>Từ khóa</td>
+                                            <td>Lượt tìm kiếm</td>
+                                        </tr>
+                                        <?php 
+                                            $j = 0;
+                                            $keyword = App\Models\searchkey::select('search', 'count')->Orderby('count', 'desc')->take(10)->get();
+                                        ?>
+                                        @if(!empty($keyword))
+                                        @foreach($keyword as $values)
+                                        <?php $j++; ?>
+                                        <tr>
+                                            <td>{{ $j }}</td>
+                                            <td>{{ $values->search }}</td>
+                                            <td>{{ $values->count }}</td>
+                                        </tr>
+                                        @endforeach
+                                        @endif
+                                        <tr>
+
+                                </table>
+                            </div>
                         </div>
                         <div class="" style="display:none;" id="content_6">
                             <div>Bài viết xem nhiều nhất trong 30 ngày qua - <a href="?opt=report&amp;view=article-visit">Xem danh sách</a></div>
-                            <div id="top_article_visit"></div>
-                        </div> -->
+                             <?php  
+
+                                $views_post = App\Models\post::select('title','views', 'link')->Orderby('views', 'desc')->take(10)->get();
+
+
+                            ?>
+
+                            <table cellpadding="5" id="tb_padding" border="1" bordercolor="#CCCCCC" style="border-collapse:collapse;">
+                                <tbody>
+                                    <tr bgcolor="#EEEEEE" style="font-weight:bold;">
+                                        <td>STT</td>
+                                        <td>Bài viết</td>
+                                        <td>Lượt xem</td>
+
+                                    </tr>
+                                    <?php  
+                                        $z =0;
+                                        
+                                    ?>
+                                    @foreach($views_post as $views)   
+                                    <?php 
+                                        $z++;
+                                    ?> 
+                                    <tr>
+
+                                        <td>{{ $z }}</td>
+                                        <td><a href="{{ route('details', $views->link) }}" target="_blank">{{ $views->title }}</a></td>
+                                        <td>{{ $views->views }}</td>
+                                    </tr>
+                                    @endforeach
+                                
+                                </tbody>
+                            </table>        
+                        </div>
                     </div>
                     
                     <!--End thống kê-->

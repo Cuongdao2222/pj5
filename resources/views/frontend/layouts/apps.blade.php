@@ -232,6 +232,89 @@
          <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
+        <?php 
+
+            // đếm số lượt view
+
+            $sessionKey = 'view_user';
+
+
+            $sessionView = Session::get($sessionKey);
+
+
+            $now = Carbon\Carbon::now();
+
+            if (!$sessionView) { //nếu chưa có session
+
+                Session::put($sessionKey, 1); //set giá trị cho session
+
+                $now = Carbon\Carbon::now();
+
+                $date_count = App\Models\viewsite::get()->last();
+
+                $dt = $date_count->updated_at;
+
+                $check = $now->diffInDays($dt);
+
+
+                if($check>0){
+                    $userview = new  App\Models\viewsite();
+
+                    $userview->views = 1;
+
+                    $userview->save();
+                }
+                else{
+
+                    App\Models\viewsite::increment('views');
+                }
+
+
+            }
+
+            //check website mang người dùng đến
+
+
+            if (isset($_SERVER['HTTP_REFERER'])) {
+              // Store Referral URL in a variable
+
+               
+                $char = $_SERVER['HTTP_REFERER'];
+
+                $url = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
+
+                $pos = strpos($char,$url);
+
+
+                if ($pos === false) {
+
+
+                    $refURL = $_SERVER['HTTP_REFERER'];
+
+                    $unique = App\Models\referer::where('website', trim($refURL))->get()->first();
+
+                    if(!empty($unique)){
+
+                        App\Models\referer::find($unique->id)->increment('count');
+                    }
+                    else{
+
+                        $referer = new App\Models\referer();
+
+                        $referer->website = trim($refURL);
+
+                        $referer->save();
+
+                    }
+
+
+                }
+
+            }
+
+
+        ?>
+
         
        
 
@@ -2394,9 +2477,6 @@ s0.parentNode.insertBefore(s1,s0);
 
         })
        
-
-
-
 
 
         // hover menu

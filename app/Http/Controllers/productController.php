@@ -13,6 +13,10 @@ use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
 use App\Models\hotProduct;
 use Flash;
+use Session;
+
+
+use App\Models\searchkey;
 use Response;
 
 use App\Models\metaSeo ;
@@ -477,14 +481,56 @@ class productController extends AppBaseController
     {
         $clearData = trim($request->key);
 
-
-
         $datas      = strip_tags($clearData);
 
         if(empty($datas)){
             return redirect()->route('homeFe');
 
         }
+
+        // checksearch of client
+
+
+        $unique = searchkey::where('search', trim($datas))->get()->first();
+
+        if(!empty($unique)){
+
+            searchkey::find($unique->id)->increment('count');
+        }
+        else{
+
+            $searchkey = new searchkey();
+
+            $searchkey->search = trim($datas);
+
+            $searchkey->save();
+
+        }
+
+        //check client search hơn 200 lần
+
+        $sessionKey = 'userSearch';
+
+
+        $sessionSearch = Session::get($sessionKey);
+
+        if (!$sessionSearch) { //nếu chưa có session
+
+            Session::put($sessionKey, 1);
+        }
+        else{
+
+            $sessionSearch +=1;
+        }  
+
+        if($sessionSearch>150){
+
+            echo "bạn đang spam phần tìm kiếm?";
+
+            die();
+        }
+
+
 
         $resultProduct = [];
 

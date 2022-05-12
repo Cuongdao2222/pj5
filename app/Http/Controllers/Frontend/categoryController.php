@@ -323,8 +323,6 @@ class categoryController extends Controller
 
         }
 
-       
-
         echo view('frontend.blogdetail',compact( 'name_cate', 'related_news', 'meta', 'data'));
 
         die();
