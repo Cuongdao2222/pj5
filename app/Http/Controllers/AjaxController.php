@@ -427,7 +427,7 @@ class AjaxController extends Controller
 
                 $arr  = json_decode($value, true);
 
-                
+                unset($arr[$propertyId]);
 
                 if(isset($arr[$propertyId])){
 
@@ -450,6 +450,10 @@ class AjaxController extends Controller
 
                 }
 
+                else{
+                    return response('chạy vào đây');
+
+                }
 
             }
             
