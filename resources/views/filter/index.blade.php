@@ -33,6 +33,14 @@
     <div id="action-links">
        
     </div>
+
+    @if(empty($groupProduct))
+
+    <h2>Chưa chọn danh mục cho sản phẩm</h2>
+
+
+
+    @endif
     <?php 
 
         $product_id = $_GET['productId'];
@@ -278,7 +286,7 @@
 
             $('.name').html($(this).text());
 
-            $('.parent_name').html('{{ $groupProduct->name }}')
+            $('.parent_name').html('{{ $groupProduct->name??'' }}')
 
 
 
@@ -288,9 +296,6 @@
             $('#name-child-dbclick').val($(this).attr($(this).text()));
 
            
-
-
-
         })
 
 
