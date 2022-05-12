@@ -179,6 +179,7 @@
 
         $('.click1').dblclick(function(){
 
+
             dataId = $(this).attr('data-id');
 
             show   = $(this).attr('data-show');
