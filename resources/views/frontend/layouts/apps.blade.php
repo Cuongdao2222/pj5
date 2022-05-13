@@ -567,7 +567,7 @@
                             
                         </li> -->
                         <li class="child" data-id="danh-muc1">
-                            <a class="list-mn" href="{{route('details','tivi')}}">
+                            <a class="list-mn" href="{{route('details','ti-vi')}}">
                             <i class="fa-regular fa-refrigerator"></i>
                             <span>Tivi</span>
                             </a>
