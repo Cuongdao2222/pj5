@@ -554,59 +554,7 @@
 
             <div class="header__top desktop menu-pc">
                 <div class="menu-section">
-                   <!--  <ul class="list-menu">
-
-                        <?php 
-
-                            $menu = App\Models\groupProduct::where('level', 0)->get();
-                        ?>
-                        @foreach($menu as $menus)
-                        <li class="child" data-id="danh-muc{{ $menus->id }}">
-
-                            <a class="list-mn" href="{{ route('details',$menus->link) }}">
-                               <i class="fa-regular fa-refrigerator"></i>
-                                <span>{{ $menus->name }}</span>
-                            </a>
-
-                            <?php 
-
-                                $find = App\Models\groupProduct::where('parent_id', $menus->id)->get()->toArray();
-                            ?>  
-
-
-                            @if(isset($find))
-                            <div class="navmwg accessories danh-muc{{ $menus->id }}">
-
-                                @foreach($find as $menu1)
-
-                                <div class="sub-cate">
-                                    <div class="PKLT">
-                                        <strong>{{ @$menu1['name'] }}</strong>
-
-                                       <?php $find1 = App\Models\groupProduct::where('parent_id',$menu1['id'])->get()->toArray(); ?>
-
-                                       @if(isset($find1))
-                                       @foreach($find1 as $find1s)
-
-                                        <a href="{{ route('details',$find1s['link']) }}">
-                                            <h3>{{ $find1s['name'] }}</h3>
-                                        </a>
-                                        @endforeach
-
-                                        @endif
-                                     
-                                       
-                                    </div>
-                                    
-                                </div>
-                                @endforeach
-                            </div>
-                            @endif
-                        </li>
-                        @endforeach
-                        
-
-                    </ul> -->
+                   
 
                     <ul class="list-menu">
 
