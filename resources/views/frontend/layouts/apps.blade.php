@@ -252,7 +252,7 @@
 
                 $date_count = App\Models\viewsite::get()->last();
 
-                $dt = $date_count->updated_at;
+                $dt = $date_count->created_at;
 
                 $check = $now->diffInDays($dt);
 
@@ -277,7 +277,6 @@
 
             if (isset($_SERVER['HTTP_REFERER'])) {
               // Store Referral URL in a variable
-
                
                 $char = $_SERVER['HTTP_REFERER'];
 
@@ -306,7 +305,6 @@
                         $referer->save();
 
                     }
-
 
                 }
 
