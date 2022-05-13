@@ -11,6 +11,7 @@
         </div>
     </section>
 
+    
     <?php  
         $start = stripos($_SERVER['REQUEST_URI'],'?');
         
@@ -18,7 +19,48 @@
 
         $product_id = str_replace('?', '', $result);
 
+        function get_Group_Product($id){
+            $data_groupProduct = App\Models\groupProduct::where('level', 0)->get()->pluck('id');
+
+            $infoProductOfGroup = App\Models\groupProduct::select('product_id', 'id')->whereIn('id', $data_groupProduct)->get()->toArray();
+
+            $result = [];
+
+
+            if(isset($infoProductOfGroup)){
+
+                foreach($infoProductOfGroup as $key => $val){
+
+
+                    if(!empty($val['product_id'])&& in_array($id, json_decode($val['product_id']))){
+
+                        array_push($result, $val['id']);
+                    }
+                   
+                    
+                }
+
+            }
+
+            
+            return $result;
+
+        }
+
+        $group_id = get_Group_Product($product_id);
+
     ?>
+
+    <div class="btn btn-warning" ><a href="{{ route('group-product-selected', $product_id) }}">Danh mục</a></div>
+    <div class="btn btn-warning"><a href="{{ route('products.edit', $product_id) }}#mo-ta">Mô tả</a></div>
+    <div class="btn btn-warning" ><a href="{{ route('filter-property') }}?group-product={{  $group_id[0]??'' }}&productId={{ $product_id }}">Thông số</a></div>
+    <div class="btn btn-warning"><a href="{{ route('images.create') }}?{{ $product_id }}">Ảnh</a></div>
+    <div class="btn btn-warning" ><a href="{{ route('products.edit', $product_id) }}#mo-ta">Thông số kỹ thuật chi tiết</a></div>
+   
+    <div class="btn btn-warning" ><a href="{{ route('details', $product_id) }}" target="_blank">Xem tại web</a></div>
+
+
+
 
     <div class="content px-3">
 
@@ -48,15 +90,12 @@
 
     <?php 
 
-        
-        
 
         $images = App\Models\image::where('product_id', $product_id)->get();
-
-        
-
        
     ?>
+
+
     @if(!empty($images))
 
     <div class="table-responsive">

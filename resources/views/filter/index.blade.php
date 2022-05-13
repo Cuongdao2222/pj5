@@ -60,13 +60,16 @@
         $filter = App\Models\filter::where('group_product_id', $group_id)->get();
     ?>
 
-
+<div class="btn btn-warning" ><a href="{{ route('group-product-selected', $product_id) }}">Danh mục</a></div>
 <div class="btn btn-warning"><a href="{{ route('products.edit', $product_id) }}#mo-ta">Mô tả</a></div>
 <div class="btn btn-warning" ><a href="{{ route('filter-property') }}?group-product={{  $group_id??'' }}&productId={{ $product_id }}">Thông số</a></div>
 <div class="btn btn-warning"><a href="{{ route('images.create') }}?{{ $product_id }}">Ảnh</a></div>
 <div class="btn btn-warning" ><a href="{{ route('products.edit', $product_id) }}#mo-ta">Thông số kỹ thuật chi tiết</a></div>
+@if(!empty($product_id))
+<div class="btn btn-warning" ><a href="{{ route('details',  $infoProduct->Link) }}" target="_blank">Xem tại web</a></div>
+@endif
 
-<div class="btn btn-warning" ><a href="{{ route('group-product-selected', $product_id) }}">Danh mục</a></div>
+
 
 
 
