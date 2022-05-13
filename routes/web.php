@@ -31,7 +31,7 @@ Route::get('/ckfinder.html', function () {
 Route::get('/deal', function () {
     return view('frontend.landingpage');
     
-});
+})->name('dealFe');
 
 
 

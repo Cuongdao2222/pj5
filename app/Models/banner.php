@@ -26,6 +26,7 @@ class banner extends Model
         'title',
         'link',
         'option',
+        'slogan',
         'active'
     ];
 

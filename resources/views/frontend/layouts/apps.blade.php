@@ -954,7 +954,7 @@
                     padding: 10px;
                     z-index: 10;
                     border: 1px solid #eee;
-                    left: 0;
+                    left: -130px !important;
                 }
 
                 .navmwg .sub-cate {
@@ -1364,6 +1364,14 @@
                     </ul> -->
 
                     <ul class="list-menu">
+
+                        <!-- <li>
+                            <a class="list-mn" href="{{route('dealFe')}}">
+                            <i class="fa-regular fa-refrigerator"></i>
+                            <span>Giảm giá đặc biệt</span>
+                            </a>
+                            
+                        </li> -->
                         <li class="child" data-id="danh-muc1">
                             <a class="list-mn" href="{{route('details','tivi')}}">
                             <i class="fa-regular fa-refrigerator"></i>

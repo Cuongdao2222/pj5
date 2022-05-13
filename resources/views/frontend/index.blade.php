@@ -21,6 +21,16 @@
                 text-transform: uppercase;
             }
 
+            .menus-banner strong {
+               
+                
+                font-size: 17px;
+                line-height: 20px;
+                color: #2f80ed;
+                font-weight: 500;
+                max-resolution: 15px;
+            }
+
 
 
             /*.menus-banner strong {
@@ -160,7 +170,8 @@
                         </picture>
                     </a>
                     <p><a href="{{ $slider->link }}">{{ $slider->title }}</a></p>
-                    
+                    <br>
+                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>{{ @$slider->slogan }}</strong>
                 </li>
                 @endforeach
                 @endif
