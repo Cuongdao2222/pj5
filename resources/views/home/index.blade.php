@@ -312,7 +312,7 @@
                                     ?>
                                     <tr>
                                         <td>{{ $count }}</td>
-                                        <td>{{ $views->updated_at->format('d-m-Y') }}</td>
+                                        <td>{{ $views->created_at->format('d-m-Y') }}</td>
                                         <td>{{ $views->views }}</td>
                                     </tr>
                                     @endforeach
