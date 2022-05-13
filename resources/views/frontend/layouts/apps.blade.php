@@ -1034,16 +1034,21 @@
                         <span class="menu-list">
                             <i class="fa fa-bars" aria-hidden="true"></i>
                         </span></p>
-                        <!-- <a href="/danh-muc-nhom-hang" class="category__all">Tất cả nhóm hàng</a> -->
-
-
-                   
+                       
                         <nav class="nav-list">
-                            <?php  $meumobile = App\Models\groupProduct::select('name', 'link')->where('level', 0)->get();   ?>
-                            @foreach($meumobile as $menu)
-                            <a href="{{ route('details',$menu->link) }}">{{ $menu->name }}</a>
-                            @endforeach
+                            <a href="http://dienmaynguoiviet.net/tivi">Tivi</a>
+                            <a href="http://dienmaynguoiviet.net/may-giat">Máy giặt</a>
+                            <a href="http://dienmaynguoiviet.net/tu-lanh">Tủ lạnh</a>
+                            <a href="http://dienmaynguoiviet.net/dieu-hoa">Điều hòa</a>
+                            <a href="http://dienmaynguoiviet.net/tu-dong">Tủ đông</a>
+                            <a href="http://dienmaynguoiviet.net/tu-mat">Tủ Mát</a>
+                            <a href="http://dienmaynguoiviet.net/gia-dung">Gia dụng</a>
+                            <a href="http://dienmaynguoiviet.net/may-loc-nuoc">Máy lọc nước</a>
+                            <a href="http://dienmaynguoiviet.net/may-say-quan-ao">Máy sấy quần áo</a>
+                            <a href="http://dienmaynguoiviet.net/may-loc-nuoc-ao-smith">A.O.Smith</a>
+                            <a href="http://dienmaynguoiviet.net/may-cu-trung-bay">Máy cũ, Trưng bày</a>
                             
+                                                        
                             <a href="/deal" class="promotion-menu">
                                 Giảm giá <br>đặc biệt
                                 <span class="item__label">- 5%</span>
