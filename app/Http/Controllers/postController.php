@@ -174,7 +174,11 @@ class postController extends AppBaseController
 
             $input['image'] = $filePath;
         }
-        $input['link'] = $this->createSlug($input['title']);
+
+        if($input['category'] != 5){
+
+            $input['link'] = $this->createSlug($input['title']);
+        }    
 
         $input['id_user'] = Auth::id();
 
