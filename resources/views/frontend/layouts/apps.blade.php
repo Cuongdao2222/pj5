@@ -241,9 +241,6 @@
 
             $sessionView = Session::get($sessionKey);
 
-
-            $now = Carbon\Carbon::now();
-
             if (!$sessionView) { //nếu chưa có session
 
                 Session::put($sessionKey, 1); //set giá trị cho session
@@ -252,11 +249,11 @@
 
                 $date_count = App\Models\viewsite::get()->last();
 
-                $dt = $date_count->created_at;
+                $dt = $date_count->created_at->format('d-m-Y');
 
                 $check = $now->diffInDays($dt);
 
-
+        
                 if($check>0){
                     $userview = new  App\Models\viewsite();
 
