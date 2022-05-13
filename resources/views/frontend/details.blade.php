@@ -287,6 +287,7 @@
                                         </button> -->
                                 </div>
                                 <div class="clearfix"></div>
+                                @if((int)$data['Price']>3000000)
                                 <div class="installment-purchase pdetail-installment">
                                    
                                     <a target="_blank"  href="{{ route('details', $data->Link)  }}?show=tra-gop" admicro-data-event="101725" admicro-data-auto="1" admicro-data-order="false" class="but-1-gop">
@@ -295,6 +296,7 @@
                                     (Visa, Master, JCB)
                                     </a>
                                 </div>
+                                @endif
 
                                 @else
 

@@ -1217,7 +1217,7 @@
                                         <tbody>
                                           
                                             <tr class="item-paymethod">
-                                                <td><input type="radio" style="width:initial; padding:0; margin:0; height:auto;" name="pay_method" value="3" class="pay_option" id="paymethod_3"></td>
+                                                <td><input type="radio" style="width:initial; padding:0; margin:0; height:auto;" name="pay_method" value="3" class="pay_option" id="paymethod_3" checked></td>
                                                 <td>
                                                     <label for="paymethod_3">Trả tiền khi nhận hàng</label>
                                                     <div id="pay_2" style="display:none;" class="pay_content">Trả tiền khi nhận hàng</div>
