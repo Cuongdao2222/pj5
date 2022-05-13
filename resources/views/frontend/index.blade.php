@@ -171,7 +171,7 @@
                     </a>
                     <p><a href="{{ $slider->link }}">{{ $slider->title }}</a></p>
                     <br>
-                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>{{ @$slider->slogan }}</strong>
+                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="{{ $slider->link }}"><strong>{{ @$slider->slogan }}</strong></a>
                 </li>
                 @endforeach
                 @endif
