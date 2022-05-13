@@ -16,6 +16,18 @@
         text-align: center;
         cursor: pointer;
         background: #ffde00;
+    }
+
+    .modal-body tr{
+
+        height: 50px !important;
+    }
+
+    @media screen and (min-width: 576px){
+        .modal-dialog {
+            max-width: 800px !important;
+            
+        }
     } 
     @media screen and (max-width: 776px){
         .header__top {
@@ -34,6 +46,8 @@
             overflow: visible;
             white-space: nowrap;
         }
+
+
 
         .installment-purchase .but-1-gop {
             text-decoration: none;

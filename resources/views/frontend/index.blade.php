@@ -6,59 +6,7 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('css/home.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}"> 
         
-        <style>
-            
-            .preorder-hot{
-                padding: 0 !important;
-            }
-            .name-box{
-                display: block;
-                overflow: hidden;
-                padding: 15px 22px;
-                font-size: 22px;
-                line-height: 36px;
-                color: #333;
-                text-transform: uppercase;
-            }
-
-            .menus-banner .strongtitle {
-               
-                
-                font-size: 17px;
-                line-height: 20px;
-                color: #2f80ed;
-                font-weight: 500;
-                max-resolution: 15px;
-            }
-
-
-
-            /*.menus-banner strong {
-                
-                bottom: 24px;
-                left: 18px;
-                font-size: 17px;
-                line-height: 20px;
-                color: #2f80ed;
-                font-weight: 500;
-            }*/
-            
-             @media screen and (min-width: 776px){
-                 
-                .homebanners{
-                    height: 350px;
-                    border-bottom:1px solid #ddd;
-                }
-                
-                .item-saker{
-                    
-                    width:88px !important;
-                }
-                 
-             }     
-            
-        </style>
-
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/index.css') }}">
 
     @endpush
     
