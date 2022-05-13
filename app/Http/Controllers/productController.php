@@ -262,11 +262,12 @@ class productController extends AppBaseController
 
         $input  = $request->all();
 
-        if(empty($input['Link'])){
+        if(empty($product->Link)){
 
             $input['Link'] = convertSlug($input['Name']);
         }
 
+    
         if(empty($input['Quantily'])){
 
             $input['Quantily'] = 0;
