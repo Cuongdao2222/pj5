@@ -74,39 +74,7 @@ class postController extends AppBaseController
         }
         $input['link'] = $this->createSlug($input['title']);
 
-         // lưu ảnh vào server khi đi cóp bài 
-
-        $html = $input['content'];
-
-        preg_match_all('/<img.*?src=[\'"](.*?)[\'"].*?>/i', $html, $matches);
-
-
-        $arr_change = [];
-
-        if(isset($matches[1])){
-            foreach($matches[1] as $value){
-                $arr_image = explode('/', $value);
-
-                if($arr_image[0] != env('APP_URL')){
-
-                    $file_headers = @get_headers($value);
-                    if ($file_headers) {
-                        $img = public_path('images/posts/'.basename($value));
-
-               
-                        file_put_contents($img, file_get_contents($value));
-
-                        array_push($arr_change, env('APP_URL').'/images/posts/'.basename($value));
-                    } 
-                }
-                
-            }
-        }
-
-        $html = str_replace($matches[1], $arr_change, $html);
-
-        $input['content'] = $html;
-
+        
         $input['id_user'] = Auth::id();
 
         $meta_model = new metaSeo();
@@ -208,11 +176,7 @@ class postController extends AppBaseController
         }
         $input['link'] = $this->createSlug($input['title']);
 
-
-       
         $input['id_user'] = Auth::id();
-
-
 
         $post = $this->postRepository->update($input, $id);
 
