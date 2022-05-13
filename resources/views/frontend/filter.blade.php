@@ -271,7 +271,7 @@
                                         <img class="lazyload thumb" data-src="{{ asset($value->Image) }}" alt="{{ asset($value->Name) }}" style="width:100%"> 
                                     </div>
                                     <div class="items-title">
-                                         <p class='result-labels'><img  class='lazyload sale-banner' alt='Giảm Sốc' data-src='{{ asset('images/css/sale.png') }}'></p>
+                                       
                                         <h3 >
                                             {{ $value->Name  }}
                                         </h3>
@@ -289,11 +289,11 @@
                                         <!-- <p class="item-gift">Quà <b>1.500.000₫</b></p> -->
                                         <div class="item-rating">
                                             <p>
-                                                <i class="icon-star"></i>
-                                                <i class="icon-star"></i>
-                                                <i class="icon-star"></i>
-                                                <i class="icon-star"></i>
-                                                <i class="icon-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
                                             </p>
                                            <!--  <p class="item-rating-total">56</p> -->
                                         </div>
