@@ -336,7 +336,11 @@
 
             @media only screen and (max-width: 768px) {
                   .menus-banner .strongtitle {
-                    font-size: 12px;
+                    font-size: 12px !important;
+                    -webkit-line-clamp: 1;
+                      -webkit-box-orient: vertical;
+                      overflow: hidden;
+                      display: -webkit-box;
                   }  
             }
         </style>
