@@ -186,7 +186,14 @@ class postController extends AppBaseController
 
         Flash::success('Post updated successfully.');
 
-        return redirect(route('posts.index'));
+        if($input['category'] == 5){
+
+            return redirect(route('postcd'));
+        }
+        else{
+
+            return redirect(route('posts.index'));
+        }    
     }
 
     /**
