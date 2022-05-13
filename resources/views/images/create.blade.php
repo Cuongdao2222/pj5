@@ -48,6 +48,7 @@
         }
 
         $group_id = get_Group_Product($product_id);
+        $product_info = App\Models\product::find($product_id);
 
     ?>
 
@@ -57,7 +58,7 @@
     <div class="btn btn-warning"><a href="{{ route('images.create') }}?{{ $product_id }}">Ảnh</a></div>
     <div class="btn btn-warning" ><a href="{{ route('products.edit', $product_id) }}#mo-ta">Thông số kỹ thuật chi tiết</a></div>
    
-    <div class="btn btn-warning" ><a href="{{ route('details', $product_id) }}" target="_blank">Xem tại web</a></div>
+    <div class="btn btn-warning" ><a href="{{ route('details', $product_info->Link) }}" target="_blank">Xem tại web</a></div>
 
 
 
