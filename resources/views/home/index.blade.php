@@ -301,7 +301,7 @@
                                     </tr>
                                     <?php 
 
-                                        $data_client = App\Models\viewsite::Orderby('id', 'desc')->take(10)->select('views','updated_at')->get();
+                                        $data_client = App\Models\viewsite::Orderby('id', 'desc')->take(10)->select('views','updated_at', 'created_at')->get();
                                         $count = 0;
                                     ?>
 
@@ -312,7 +312,7 @@
                                     ?>
                                     <tr>
                                         <td>{{ $count }}</td>
-                                        <td>{{ $views->updated_at->format('d-m-Y') }}</td>
+                                        <td>{{ $views->created_at->format('d-m-Y') }}</td>
                                         <td>{{ $views->views }}</td>
                                     </tr>
                                     @endforeach
