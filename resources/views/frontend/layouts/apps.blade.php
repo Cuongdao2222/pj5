@@ -441,12 +441,10 @@
                     <?php
                         $cart = Gloudemans\Shoppingcart\Facades\Cart::content();
 
-
                         $number_cart = count($cart);
-
-                        $active_cart =  count($cart)>0?'active':'';
+                       
                      ?>   
-                    <a href="javascript:void(0)" class="header__cart {{ $active_cart }}" onclick="showToCart()" style="margin-right: -58px;">
+                    <a href="javascript:void(0)" class="header__cart " onclick="showToCart()" style="margin-right: -58px;">
 
                         <i class="fa fa-shopping-cart" aria-hidden="true" style="font-size:22px"></i>
                         <b id="count_shopping_cart_store"><span class="number-cart">{{ $number_cart }}</span></b>
@@ -510,18 +508,11 @@
                         </form>
                     </div>    
 
-                    <?php
-                        $cart = Gloudemans\Shoppingcart\Facades\Cart::content();
-
-
-                        $number_cart = count($cart);
-
-                        $active_cart =  count($cart)>0?'active':'';
-                     ?>  
+                   
                     <div class="row col-12 all-icons-head">  
                         <div class="col-4 icons-heads icons-1">
                             
-                            <a href="javascript:void(0)" class="header__cart {{ $active_cart }}" onclick="showToCart()" style="width: auto;">
+                            <a href="javascript:void(0)" class="header__cart" onclick="showToCart()" style="width: auto;">
                                 <i class="fa fa-shopping-cart" aria-hidden="true" style="font-size:22px"></i>
                                 <b id="count_shopping_cart_store"><span class="number-cart">{{ $number_cart }}</span></b>
                             </a>
