@@ -294,6 +294,17 @@
                         </div>
                        
                         <h3>{{ $value->Name }}</h3>
+
+                        <?php  
+                            $infoName  = str_replace($value->ProductSku,'', strstr($value->Name, $value->ProductSku));
+                            if(!empty($infoName)){
+
+                                $arName = explode('inch', $infoName);
+                            }
+                            
+                        ?>
+
+                        <div class="item-compare"><span class="display-tv"> {{ $arName[0] }} inch</span><span class="resolution"> {{ @$arName[1] }}</span></div>
                        
                         <strong class="price">{{  @str_replace(',' ,'.', number_format($value->Price))  }}.&#x20AB;</strong>
                         <div class="item-rating">
@@ -334,7 +345,7 @@
 
             <?php
 
-                $datas =  App\Models\groupProduct::find($groups->id)->prduct_id;
+               
 
                 $hot = DB::table('hot')->select('product_id')->where('group_id', $groups->id)->get()->pluck('product_id');
 
@@ -365,9 +376,6 @@
                         @foreach($data as $datas)
                         @if($datas->active==1)
                         
-                       <?php  $maker =  App\Models\maker::find($datas->Maker); ?>
-                         
-                        
                         <div class="item"  data-pos="1">
                             <a href='{{ route('details', $datas->Link) }}'>
                                 <span class="icon_tragop">Trả góp <i>0%</i></span>
@@ -383,10 +391,46 @@
                                 </div>
                              <!--   <p class="result-labels"><img class="sale-banner ls-is-cached lazyloaded" alt="Giảm Sốc" data-src="{{ asset('images/css/sale.png') }}" src="{{ asset('images/css/sale.png') }}"></p> -->
                                 <h3>{{ $datas->Name }}</h3>
-                                <!-- <div class="item-compare">
-                                    <span>55 inch</span>
-                                    <span>4K</span>
-                                </div> -->
+                                @if($groups->id<5)
+
+                                <?php
+                                    
+                                        if($groups->id == 1){
+
+                                            $searchstring = 'inch';
+                                        }
+                                        else{
+                                            $searchstring = 'inverter';
+
+                                        }
+                                       
+                                    $infoName  = str_replace($datas->ProductSku,'', strstr($datas->Name, $datas->ProductSku));
+                                    if(!empty($infoName)){
+
+                                        $arNames = [];
+                                        if(strpos($datas->Name, $searchstring)){
+
+                                            $arNames = explode($searchstring, $infoName);
+
+                                        }
+
+                            
+                                    }
+                                ?>
+                               
+                                
+                                <div class="item-compare">
+                                    @if(!empty($arNames))
+                                    <span>{{ @$arNames[0] }} {{ !empty($arNames)?$searchstring:'' }}</span>
+                                    <span>{{ @$arNames[1] }}</span>
+                                    @endif
+                                    
+                                </div>
+                                
+                               
+
+                        
+                                @endif
                                 <strong class="price">{{ @number_format($datas->Price , 0, ',', '.')}}&#x20AB;</strong>
                            
                                 <div class="item-rating">
@@ -407,7 +451,6 @@
                                 
 
                                 @if(!empty($promotion))
-
                                     <div class="quatang"><img src="{{ asset($promotion->image) }}"></div>
                                 @endif
                                 

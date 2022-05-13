@@ -103,7 +103,7 @@
                 padding:  0 15px !important;
             }
             .pdetail-installment td{
-                height: 30px;
+                height: 30px !important;
             }
         
         } 
