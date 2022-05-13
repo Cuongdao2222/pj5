@@ -264,9 +264,7 @@
                         <div class="col-md-3 col-6 lists">
                             <div class="item  __cate_1942">
                                 <a href='{{ route("details", $value->Link ) }}' data-box="BoxCate" class="main-contain">
-                                    <div class="item-label">
-                                        <span class="lb-tragop">Trả góp 0%</span>
-                                    </div>
+                                     <span class="icon_tragop">Trả góp <i>0%</i></span>
                                     <div class="item-img item-img_1942">
                                         <img class="lazyload thumb" data-src="{{ asset($value->Image) }}" alt="{{ asset($value->Name) }}" style="width:100%"> 
                                     </div>
