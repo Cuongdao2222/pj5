@@ -4266,7 +4266,14 @@ var ConditionOperator, AutoComplete, globalEvent, laodBHX, isLoadPopupLocation, 
                 };
                 i = i("abort");
                 try {
-                    e.send(t.hasContent && t.data || null)
+
+                        if(t.hasContent != false){
+                            e.send(t.hasContent && t.data || null);
+                        }
+                        
+                    
+                    
+                    
                 } catch (u) {
                     if (i) throw u;
                 }
