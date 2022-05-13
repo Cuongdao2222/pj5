@@ -152,9 +152,13 @@ class bannerController extends AppBaseController
 
         $banner = $this->bannerRepository->update($input, $id);
 
+        $option =  $banner->option;
+
         Flash::success('Banner updated successfully.');
 
-        return redirect(route('banners.index'));
+       
+
+        return redirect(route('banners.index').'?option='.$option);
     }
 
     /**
