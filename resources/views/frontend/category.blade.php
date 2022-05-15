@@ -191,7 +191,7 @@
                                             {{ $value->Name  }}
                                         </h3>
 
-                                         @if($id_cate<5)
+                                        @if(!empty($id_cate) && $id_cate<5)
                                         <?php
                                             
                                                 if($id_cate == 1){
