@@ -25,7 +25,7 @@ class crawlController extends Controller
 {
     public function addFilterProduct()
     {
-        $search = 'may-giat-electrolux';
+        $search = 'may-giat-panasonic';
 
         $query  = product::where('Link', 'like','%'.$search.'%')->get();
 
@@ -47,7 +47,7 @@ class crawlController extends Controller
         else{
             $ar_kqs = [];
         }
-        $ar_kqs[51] = $ar_kq;
+        $ar_kqs[53] = $ar_kq;
 
 
         $filter->value = json_encode($ar_kqs);
