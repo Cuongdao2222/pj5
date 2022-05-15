@@ -1046,7 +1046,7 @@
                         </span></p>
                        
                         <nav class="nav-list">
-                            <a href="http://dienmaynguoiviet.net/tivi">Tivi</a>
+                            <a href="http://dienmaynguoiviet.net/ti-vi">Tivi</a>
                             <a href="http://dienmaynguoiviet.net/may-giat">Máy giặt</a>
                             <a href="http://dienmaynguoiviet.net/tu-lanh">Tủ lạnh</a>
                             <a href="http://dienmaynguoiviet.net/dieu-hoa">Điều hòa</a>
