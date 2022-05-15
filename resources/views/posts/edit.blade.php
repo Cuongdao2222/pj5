@@ -35,7 +35,7 @@
                 if(isset($matches[1])){
                     foreach ($matches[1] as $key => $value) {
                         $values = 'src="'.$value.'"';
-                        $values1 = 'src="'.$value.'" id="images'.$key.'"';
+                        $values1 = 'src="'.asset($value).'" id="images'.$key.'"';
 
                         $ar_new[] = $values;
                         $ar_change[] = $values1;
