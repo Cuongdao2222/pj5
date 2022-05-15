@@ -19,6 +19,34 @@
         <div class="card">
 
             {!! Form::model($post, ['route' => ['posts.update', $post->id], 'method' => 'patch', 'files' => true]) !!}
+             <?php 
+
+                if(!empty($post->content)){
+
+                    $contens = $post->content;
+
+                    $images = preg_match_all('/<img.*?src=[\'"](.*?)[\'"].*?>/i', $contens, $matches);
+
+                }
+
+                $ar_new = [];
+
+                $ar_change = [];
+                if(isset($matches[1])){
+                    foreach ($matches[1] as $key => $value) {
+                        $values = 'src="'.$value.'"';
+                        $values1 = 'src="'.$value.'" id="images'.$key.'"';
+
+                        $ar_new[] = $values;
+                        $ar_change[] = $values1;
+                       
+                    }
+                    $content1 = str_replace($ar_new, $ar_change, $contens);
+
+                    $post->content = $content1;
+                }    
+            ?>
+
 
             <div class="card-body">
                 <div class="row">
