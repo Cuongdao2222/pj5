@@ -23,6 +23,40 @@ use App\products1;
 
 class crawlController extends Controller
 {
+    public function filterTech()
+    {
+        $maygiat = groupProduct::find(2)->product_id;
+        $info = product::select('Specifications', 'id')->whereIn('id', json_decode($maygiat))->get();
+        $filter = filter::find(16);
+        $longdung = [];
+        foreach($info as $val){
+            $pos = strpos(strtolower($val->Specifications), 'lồng ngang');
+            if($pos === false){
+                array_push($longdung, $val->id);
+            }
+
+        }
+
+        $filter = filter::find(17);
+
+         if(!empty($filter->value)){
+
+            $ar_kqs = json_decode($filter->value, true);
+
+        }
+        else{
+            $ar_kqs = [];
+        }
+        $ar_kqs[31] =  $longdung;
+
+        $filter->value = json_encode($ar_kqs);
+
+        $filter->save();
+        echo "thanh cong";
+
+
+
+    }
 
     public function filterPrice()
     {
