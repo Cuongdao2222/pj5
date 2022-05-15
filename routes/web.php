@@ -28,13 +28,18 @@ Route::get('/ckfinder.html', function () {
 })->middleware('auth');
 
 
-Route::get('/deal', function () {
+Route::get('/landingpage', function () {
     return view('frontend.landingpage');
     
 })->name('dealFe');
 
+Route::get('/deal', function () {
+    return view('frontend.deallist');
+    
+})->name('dealFe');
 
-Route::get('filterurl','crawlController@addFilterProduct');
+
+// Route::get('filterurl','crawlController@addFilterProduct');
 
 
 Route::get('/lien-he', function () {
