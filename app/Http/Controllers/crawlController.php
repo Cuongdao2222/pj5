@@ -86,9 +86,17 @@ class crawlController extends Controller
 
 
     }
-    public function addFilterProduct()
+    public function addFilterProduct(Request $request)
     {
-        $search = 'dieu-hoa-panasonic';
+
+        $link =  $request->link;
+        $property   = $request->property;
+
+        $ar   = $request->ar;
+
+
+         
+        $search = $link;
 
         $query  = product::where('Link', 'like','%'.$search.'%')->get();
 
@@ -99,7 +107,7 @@ class crawlController extends Controller
             array_push($ar_kq, $value->id);
         }
 
-        $filter = filter::find(30);
+        $filter = filter::find($property);
 
          
         if(!empty($filter->value)){
@@ -110,7 +118,7 @@ class crawlController extends Controller
         else{
             $ar_kqs = [];
         }
-        $ar_kqs[117] = $ar_kq;
+        $ar_kqs[$ar] = $ar_kq;
 
 
         $filter->value = json_encode($ar_kqs);

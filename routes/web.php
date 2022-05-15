@@ -34,6 +34,8 @@ Route::get('/deal', function () {
 })->name('dealFe');
 
 
+Route::get('filterurl','crawlController@addFilterProduct');
+
 
 Route::get('/lien-he', function () {
     return view('frontend.lienhe');
