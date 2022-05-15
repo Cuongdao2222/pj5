@@ -28,7 +28,7 @@ class crawlController extends Controller
     {
         $maygiat = groupProduct::find(2)->product_id;
 
-        $price   = product::select('id')->whereIn('id', json_decode($maygiat))->whereBetween('Price', [7000000, 10000000])->get()->pluck('id')->toArray();
+        $price   = product::select('id')->whereIn('id', json_decode($maygiat))->whereBetween('Price', [10000000, 12000000])->get()->pluck('id')->toArray();
 
         $filter = filter::find(16);
 
@@ -40,7 +40,7 @@ class crawlController extends Controller
         else{
             $ar_kqs = [];
         }
-        $ar_kqs[24] =  $price;
+        $ar_kqs[25] =  $price;
 
         $filter->value = json_encode($ar_kqs);
 
