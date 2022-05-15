@@ -65,6 +65,8 @@ class categoryController extends Controller
             $list_data_group = filter::where('group_product_id', $group_id)->whereIn('id', $filter)->select('value')->get()->toArray();
 
 
+
+
             $findID = groupProduct::where('link', $link)->first();
 
             $id_cate = $findID->id;
@@ -72,7 +74,9 @@ class categoryController extends Controller
             $groupProduct_level = $findID->level;
 
 
+
             $ar_list = $this->find_List_Id_Group($id_cate,$groupProduct_level);
+
 
             $parent_cate_id = $ar_list[0]['id'];
 
@@ -155,7 +159,7 @@ class categoryController extends Controller
                    
                 }
             }
-             return view('frontend.filter', compact('product_search', 'link', 'filter', 'id_cate'));
+             return view('frontend.filter', compact('product_search', 'link', 'filter', 'id_cate', 'ar_list', 'groupProduct_level'));
 
         }
         else{
@@ -240,6 +244,8 @@ class categoryController extends Controller
                 'slogan'=>$slogan,
                 'meta'=> $meta,
                 'numberdata'=>$numberdata,
+                'groupProduct_level'=>$groupProduct_level
+
 
             ];
 
