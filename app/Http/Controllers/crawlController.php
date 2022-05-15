@@ -27,10 +27,10 @@ class crawlController extends Controller
     {
         $maygiat = groupProduct::find(2)->product_id;
         $info = product::select('Specifications', 'id')->whereIn('id', json_decode($maygiat))->get();
-        $filter = filter::find(16);
+       
         $longdung = [];
         foreach($info as $val){
-            $pos = strpos(strtolower($val->Specifications), 'lồng ngang');
+            $pos = strpos(strtolower($val->Specifications), 'lồng đứng');
             if($pos === false){
                 array_push($longdung, $val->id);
             }
@@ -47,7 +47,7 @@ class crawlController extends Controller
         else{
             $ar_kqs = [];
         }
-        $ar_kqs[31] =  $longdung;
+        $ar_kqs[30] =  $longdung;
 
         $filter->value = json_encode($ar_kqs);
 
@@ -88,7 +88,7 @@ class crawlController extends Controller
     }
     public function addFilterProduct()
     {
-        $search = 'may-giat-panasonic';
+        $search = 'dieu-hoa-daikin';
 
         $query  = product::where('Link', 'like','%'.$search.'%')->get();
 
@@ -99,7 +99,7 @@ class crawlController extends Controller
             array_push($ar_kq, $value->id);
         }
 
-        $filter = filter::find(15);
+        $filter = filter::find(30);
 
          
         if(!empty($filter->value)){
@@ -110,7 +110,7 @@ class crawlController extends Controller
         else{
             $ar_kqs = [];
         }
-        $ar_kqs[53] = $ar_kq;
+        $ar_kqs[118] = $ar_kq;
 
 
         $filter->value = json_encode($ar_kqs);
