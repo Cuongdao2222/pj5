@@ -191,38 +191,45 @@
                                             {{ $value->Name  }}
                                         </h3>
 
+                                         @if($id_cate<5)
                                         <?php
+                                            
+                                                if($id_cate == 1){
+                                                    $searchstring = 'inch';
+                                                }
+                                                else{
+                                                    $searchstring = 'inverter';
+                                                }
+                                               
+                                            $infoName  = str_replace($value->ProductSku,'', strstr($value->Name, $value->ProductSku));
 
-                                        if( !empty($id_cate) && $id_cate ==1){
+                                            $infoName = str_replace($value->ProductSku,'', $infoName);
 
-                                        
-                                            $number_cut = strpos($value->Name, 'inch')-3;
+                                            if(!empty($infoName)){
+                                                $arNames = [];
+                                                if(strpos($value->Name, $searchstring)){
 
-                                            $result_cut  = substr($value->Name, $number_cut);
+                                                    $arNames = explode($searchstring, $infoName);
 
-                                            $display  = substr($result_cut, -2);
-                                        }
-
-
+                                                }
+                                            }
                                         ?>
-                                        @if(!empty($id_cate) && $id_cate ==1)
+
                                         <div class="item-compare">
-                                            <span>{{ str_replace($display, '', $result_cut) }}</span>
-                                            <span>{{ $display }}</span>
+                                            @if(!empty($arNames))
+                                            <span>{{ @$arNames[0] }} {{ !empty($arNames)?$searchstring:'' }}</span>
+                                            <span>{{ @$arNames[1] }}</span>
+                                            @endif
+                                            
                                         </div>
-
+                                
                                         @endif
-                                        <!-- <div class="box-p">
-                                            <p class="price-old black">20.900.000&#x20AB;</p>
-                                        </div> -->
-
+                                      
                                         <?php 
 
                                             if($value->Price =='Liên hệ'){
                                                 $value->Price = 0;
                                             }
-
-
 
                                         ?>
                                         

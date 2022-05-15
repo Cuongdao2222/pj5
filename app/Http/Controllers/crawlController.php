@@ -23,6 +23,39 @@ use App\products1;
 
 class crawlController extends Controller
 {
+    public function addFilterProduct()
+    {
+        $search = 'may-giat-samsung';
+
+        $query  = product::where('Link', 'like','%'.$search.'%')->get();
+
+        $ar_kq = [];
+
+        foreach ($query as $key => $value) {
+          
+            array_push($ar_kq, $value->id);
+        }
+
+        $filter = filter::find(15);
+
+         
+        if(!empty($filter->value)){
+
+            $ar_kqs = json_decode($filter->value, true);
+
+        }
+        else{
+            $ar_kqs = [];
+        }
+        $ar_kqs[49] = $ar_kq;
+
+
+        $filter->value = json_encode($ar_kqs);
+
+        $filter->save();
+        echo "thanh cong";
+
+    }
 
     public function getMetaToFails()
     {

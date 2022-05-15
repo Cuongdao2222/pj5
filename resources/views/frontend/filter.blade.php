@@ -283,7 +283,7 @@
                                             <p class="price-old black">20.900.000&#x20AB;</p>
                                         </div> -->
                                         
-                                        <strong class="price">{{ number_format($value->Price , 0, ',', '.')}}</strong>
+                                        <strong class="price">{{ $value->Price==0?'Liên hệ':number_format(str_replace("\xc2\xa0",'',$value->Price) , 0, ',', '.')}}{{ $value->Price!=0?'đ':''   }}</strong>
                                         <!-- <p class="item-gift">Quà <b>1.500.000₫</b></p> -->
                                         <div class="item-rating">
                                             <p>

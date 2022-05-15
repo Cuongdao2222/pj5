@@ -139,9 +139,6 @@ Route::post('suggest', 'AjaxController@getProductActive')->name('sugest-click');
 
 
 
-
-
-
 Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::get('/register','customnUserController@registerUser')->name('register-user');
