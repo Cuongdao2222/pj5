@@ -112,7 +112,7 @@
 
                 $ar_change = [];
                 foreach ($matches[1] as $key => $value) {
-                    str_replace('id="images'.$key., '', $contens);
+                    str_replace('id="images'.$key.'"','', $contens);
 
 
                     $values = 'src="'.$value.'"';
