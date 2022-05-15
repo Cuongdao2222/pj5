@@ -144,6 +144,40 @@
     {!! Form::textarea('Specifications', null, ['class' => 'form-control', 'id' =>'content-2']) !!}
 </div>
 
+<div class="col-md-12 col-sm-12">
+    
+    <div id="article_media_holder">
+    <style type="text/css">
+        a.preview_media{
+        position:relative; /*this is the key*/
+        z-index:24;}
+        a.preview_media:hover{z-index:25; cursor:pointer}
+        a.preview_media span{display: none}
+        a.preview_media:hover span{
+        display:block;
+        position:absolute;
+        top:-120px; left:50px; width:auto;
+        text-align: center}
+    </style>
+    <table class="big_table" border="1" bordercolor="#CCCCCC" cellspacing="0" cellpadding="3">
+        <tbody>
+            <tr>
+                @if(isset($matches[1]))
+                @foreach($matches[1] as $key => $value)
+                <td ><a href="javascript:void(0);" onclick="clicks('images{{ $key }}')"><img src="{{ asset($value) }}" style="max-width:100px; max-height:130px"></a></td>
+             
+                @endforeach
+                @endif
+            </tr>
+            
+           
+        </tbody>
+    </table>
+    <br>
+    
+    <br>
+</div>
+
 <div class="form-group col-sm-12 col-lg-12">
     {!! Form::label('Detail', 'Mô tả:', ['id' =>'mo-ta'], ['rel' =>'nofollow']) !!}
     {!! Form::textarea('Detail', null, ['class' => 'form-control', 'id' =>'content']) !!}
@@ -176,6 +210,47 @@
     </div>
 </div>
 <div class="clearfix"></div>
+
+<script type="text/javascript">
+    function clicks(id) {
+
+
+        editor = CKEDITOR.instances.content;
+
+        var documentWrapper = editor.document; // replace by your CKEDitor instance ID
+        var documentNode = documentWrapper.$; // or documentWrapper['$'] ;
+
+        documentNode.getElementById(id).scrollIntoView();
+
+       
+
+      
+        // CKEDITOR.instances.content.find('#adbro').focus();
+        // editor = CKEDITOR.instances.content;
+
+        // // var jqDocument = $(editor.document.$);
+        // var jqDocument = $(editor.document.$);
+
+    
+        // var documentHeight = jqDocument.height();
+
+
+        // // console.log(jqDocument);
+
+        // jqDocument.scrollTop(documentHeight);
+
+        
+        // var edata = editor.getData();
+
+        // var replaced_text = edata.replace("https://icdn.dantri.com.vn/thumb_w/770/2022/05/11/tien-32manh-quan-1652264480967.jpg", "iwant this instead"); // you could also use a regex in the replace 
+
+        // editor.setData(replaced_text);
+       
+    }
+
+    
+</script>
+
 
 
 <script>

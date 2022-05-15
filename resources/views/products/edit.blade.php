@@ -97,6 +97,32 @@
 
             {!! Form::model($product, ['route' => ['products.update', $product->id], 'method' => 'patch', 'files' => true]) !!}
 
+            <?php 
+
+                if(!empty($product->Detail)){
+
+                    $contens = $product->Detail;
+
+                    $images = preg_match_all('/<img.*?src=[\'"](.*?)[\'"].*?>/i', $contens, $matches);
+
+                }
+
+                $ar_new = [];
+
+                $ar_change = [];
+                foreach ($matches[1] as $key => $value) {
+                    $values = 'src="'.$value.'"';
+                    $values1 = 'src="'.asset($value).'" id="images'.$key.'"';
+
+                    $ar_new[] = $values;
+                    $ar_change[] = $values1;
+                   
+                }
+                $content1 = str_replace($ar_new, $ar_change, $contens);
+
+                $product->Detail = $content1;
+            ?>
+
            
 
             <div class="card-body">
