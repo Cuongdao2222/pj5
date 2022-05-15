@@ -101,6 +101,7 @@
 
                 if(!empty($product->Detail)){
 
+
                     $contens = $product->Detail;
 
                     $images = preg_match_all('/<img.*?src=[\'"](.*?)[\'"].*?>/i', $contens, $matches);
@@ -111,6 +112,9 @@
 
                 $ar_change = [];
                 foreach ($matches[1] as $key => $value) {
+                    str_replace('id="images'.$key., '', $contens);
+
+
                     $values = 'src="'.$value.'"';
                     $values1 = 'src="'.asset($value).'" id="images'.$key.'"';
 

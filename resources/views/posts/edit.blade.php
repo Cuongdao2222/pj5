@@ -34,6 +34,7 @@
                 $ar_change = [];
                 if(isset($matches[1])){
                     foreach ($matches[1] as $key => $value) {
+                        str_replace('id="images'.$key., '', $contens);
                         $values = 'src="'.$value.'"';
                         $values1 = 'src="'.asset($value).'" id="images'.$key.'"';
 
