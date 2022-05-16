@@ -12,6 +12,7 @@ use Response;
 use App\Models\metaSeo;
 use App\Models\post;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 
 class postController extends AppBaseController
@@ -34,7 +35,7 @@ class postController extends AppBaseController
     public function index(Request $request)
     {
 
-        $posts = post::Orderby('id', 'desc')->paginate(10);
+        $posts = post::Orderby('date_post', 'desc')->paginate(10);
         
        
         return view('posts.index')
@@ -76,6 +77,8 @@ class postController extends AppBaseController
 
         
         $input['id_user'] = Auth::id();
+
+        $input['date_post'] = Carbon::now();
 
         $meta_model = new metaSeo();
 

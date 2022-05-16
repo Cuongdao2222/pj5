@@ -60,6 +60,7 @@
         <th>Mô tả ngắn</th>
 
         <th>số lượt view</th>
+        <th>ngày viết bài</th>
 
         <th>Hiển thị</th>
         <th>Show ra home</th>
@@ -86,7 +87,9 @@
            <!--  <td class="content">{!! _substr($post->content,240,3) !!}</td>
  -->
              <td>{!! _substr(preg_replace("#<\/p>(<\/h[1-6]>)#", '$1', $post->shortcontent),240,3) !!}</td>
-             <td>{{ $post->views }}</td>   
+             <td>{{ $post->views }}</td>  
+
+             <td>{{ @$post->date_post }}</td>  
 
             <td><a href="javascript:voi(0)" class="active-post" onclick="add_active('{{ $post->id }}','{{ $post->active }}')">{!! $post->active ==1?'<b style="color:red">Hạ xuống</b>':'<b style="color:green">Hiển thị</b>' !!}</a></td>   
              

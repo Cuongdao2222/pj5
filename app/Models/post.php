@@ -28,6 +28,7 @@ class post extends Model
         'id_user',
         'shortcontent',
         'Meta_id',
+        'date_post',
     ];
 
     /**
