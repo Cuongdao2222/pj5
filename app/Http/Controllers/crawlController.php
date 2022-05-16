@@ -20,6 +20,8 @@ use App\Models\filter;
 use DB;
 use App\products1;
 
+use \Carbon\Carbon;
+
 
 class crawlController extends Controller
 {
@@ -34,7 +36,7 @@ class crawlController extends Controller
                 $html = file_get_html(trim($link));
                 $time = strip_tags($html->find('.detail-head time', 0));
                 $post = post::find($value->id);
-                $post->date_post = strtotime($time);
+                $post->date_post = Carbon::parse($time);
                 $post->save();
 
             }
