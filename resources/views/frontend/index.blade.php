@@ -14,6 +14,11 @@
                 border: 1px solid #dddd;
                 position: relative;
             }
+
+            .menus-banner .strongtitle{
+                font-size: 12px !important;
+            }
+
             .Next {
                 position: absolute;
                 right: 0;
@@ -146,7 +151,7 @@
                     </a>
                     <p>
                 <a href="{{ $slider->link }}">{{ $slider->title }}</a></p>
-                    <br>
+                    
                    &nbsp;&nbsp;&nbsp;&nbsp; <a href="{{ $slider->link }}"><strong class="strongtitle">{{ @$slider->slogan }}</strong>
                     @if(!empty($slider->slogan))
                     <span aria-label="Next" class="Next">›</span>
