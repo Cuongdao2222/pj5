@@ -23,6 +23,29 @@ use App\products1;
 
 class crawlController extends Controller
 {
+   
+    public function getDatePost()
+    {
+        $post_link = post::select('link', 'category', 'id')->get();
+        foreach($post_link as $value){
+            if($value->category!=5){
+                $link = 'https://dienmaynguoiviet.vn/'.$value->link.'/';
+
+                $html = file_get_html(trim($link));
+                $time = strip_tags($html->find('.detail-head time', 0));
+                $post = post::find($value->id);
+                $post->date_post = strtotime($time);
+                $post->save();
+
+            }
+            
+
+        }
+        echo "thanh cong";
+
+    }
+
+
     public function filterTech()
     {
         $maygiat = groupProduct::find(2)->product_id;

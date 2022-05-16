@@ -23,7 +23,10 @@
                 position: absolute;
                 left: 4px;
 
-            }   
+            } 
+            .danh-muc1{
+                left: 0px !important;
+            }  
 
             @media only screen and (max-width: 768px) {
               .Next {
@@ -293,7 +296,7 @@
             <div class="prd-promo__top clearfix" >
 
 
-                <a data-cate="0" data-place="1868" href="#" ><img style="cursor:pointer" src="{{ asset('images/background-image/banner-summer.jpg') }}" alt="banner-summer" width="1200" height="90"></a>                
+                <a data-cate="0" data-place="1868" href="#" ><img style="cursor:pointer" src="{{ asset($bannerUnderSale[0]['image']) }}" alt="banner-summer" width="1200" height="90"></a>                
             </div>
 
            <!--  Sale -->

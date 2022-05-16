@@ -5,6 +5,7 @@
     $option[2] = ['name'=>'Banner bên phải slider home', 'size'=>'254px x 254px'];
     $option[3] = ['name'=>'Banner dưới slider home', 'size'=>'690px x 305px'];
     $option[4] = ['name'=>'Banner category', 'size'=>'1200 x 200px'];
+    $option[5] = ['name'=>'Banner trên phần sale home', 'size'=>'1200 x 90'];
 
 ?>
 <div class="form-group col-sm-12">
