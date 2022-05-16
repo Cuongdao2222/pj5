@@ -37,6 +37,9 @@
             .danh-muc1{
                 left: 0px !important;
             }  
+            .homebanner span{
+                text-transform: capitalize;
+            }
 
             @media only screen and (max-width: 768px) {
               .Next {
