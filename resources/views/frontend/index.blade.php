@@ -144,7 +144,7 @@
                     <p>
                 <a href="{{ $slider->link }}">{{ $slider->title }}</a></p>
                     <br>
-                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="{{ $slider->link }}"><strong class="strongtitle">{{ @$slider->slogan }}</strong>
+                   &nbsp;&nbsp;&nbsp;&nbsp; <a href="{{ $slider->link }}"><strong class="strongtitle">{{ @$slider->slogan }}</strong>
                     @if(!empty($slider->slogan))
                     <span aria-label="Next" class="Next">›</span>
                     @endif
