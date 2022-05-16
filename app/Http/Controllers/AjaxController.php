@@ -24,6 +24,8 @@ use App\Models\popup;
 
 use Validator;
 
+use App\Models\banner;
+
 use Illuminate\Support\Facades\Hash;
 
 use Illuminate\Support\Facades\Auth;
@@ -68,6 +70,19 @@ class AjaxController extends Controller
         Session::forget('status-login');
         return redirect()->back();
 
+    }
+
+    public function banner_update_stt(Request $request)
+    {
+        $val = $request->val;
+        if($val != null){
+           
+            $id  = $request->id;
+            $banner = banner::find($id);
+
+            $banner->stt = $val;
+            $banner->save();
+        }    
     }
   
     public function addHotProduct(Request $request)

@@ -67,8 +67,11 @@
                     </tbody>
                 </table>
             </td>
-            <td><span id="order_402"></span>
-                <input type="text" size="5" value="{{ $banner->stt }}">
+            <td>
+               
+                <input id="stt{{ $banner->id }}" type="text" size="5" value="{{ $banner->stt }}" onchange="update_banner_order('{{ $banner->id }}')">
+                 <span id="order_{{ $banner->id }}"></span>
+                
             </td>
             <td>0</td>
             <td>
@@ -84,4 +87,28 @@
       
     </tbody>
 </table>
+<script type="text/javascript">
+    
+    function update_banner_order(id) {
 
+       
+        $.ajax({
+       
+        type: 'GET',
+            url: "{{ route('editBnstt') }}",
+            data: {
+                id: id,
+                val:$('#stt'+id).val(),
+                
+            },
+            success: function(result){
+
+                $('#order_'+id).text('');
+
+                $('#order_'+id).text('Thành công');
+
+                
+            }
+        });
+    }
+</script>
