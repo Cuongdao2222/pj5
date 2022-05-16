@@ -28,7 +28,7 @@ class crawlController extends Controller
    
     public function crawlImageAgain()
     {
-        $post = post::select('link', 'id')->orderBy('date_post','desc')->take(100)->get();
+        $post = post::select('link', 'id')->orderBy('date_post','desc')->take(120)->get();
         foreach($post as $val){
             $links = 'https://dienmaynguoiviet.vn/'.$val->link;
             $html = file_get_html(trim($links));
