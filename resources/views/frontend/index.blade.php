@@ -8,6 +8,13 @@
         
         <link rel="stylesheet" type="text/css" href="{{ asset('css/index.css') }}">
 
+        <style type="text/css">
+            .menus-banner li{
+                padding: 20px 0;
+                border: 1px solid #dddd;
+            }
+        </style>
+
     @endpush
     
 
@@ -117,9 +124,14 @@
                             <img src="{{ asset($slider->image) }}" alt="" data-src="{{ asset($slider->image) }}">
                         </picture>
                     </a>
-                    <p><a href="{{ $slider->link }}">{{ $slider->title }}</a></p>
+                    <p>
+                <a href="{{ $slider->link }}">{{ $slider->title }}</a></p>
                     <br>
-                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="{{ $slider->link }}"><strong class="strongtitle">{{ @$slider->slogan }}</strong></a>
+                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="{{ $slider->link }}"><strong class="strongtitle">{{ @$slider->slogan }}</strong>
+                    @if(!empty($slider->slogan))
+                    <span aria-label="Next">›</span>
+                    @endif
+                   </a>
                 </li>
                 @endforeach
                 @endif
