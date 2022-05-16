@@ -32,7 +32,7 @@ class crawlController extends Controller
         $i =0;
         foreach($post as $val){
             $i++;
-            if($i>91 && $i<121){
+            if($i>81 && $i<91){
                 $links = 'https://dienmaynguoiviet.vn/'.$val->link.'/';
                 $html = file_get_html(trim($links));
                 $imagess = strip_tags($html->find('#image-page', 0));
