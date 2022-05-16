@@ -158,7 +158,7 @@
         <!-- flash sale -->
             <div class="">
                 <div class="flash-sale" style="height: 398px;">
-                    <span id="banner-flash-sale"><a href="#">
+                    <span id="banner-flash-sale"><a href="{{ route('dealFe') }}">
                     <img width="256" src="{{  asset('images/background-image/Flash_Sale_Theme_256x396.jpg')}}" style="width: 256px; height: 396px" alt="banner-fs">
                     </a></span>
                     <div class="flash-product nk-product-of-flash-sales">
