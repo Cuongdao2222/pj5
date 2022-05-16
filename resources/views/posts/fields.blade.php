@@ -62,6 +62,13 @@
 
 </div>
 
+
+<!-- Content Field -->
+<div class="form-group col-sm-12 col-md-12">
+    {!! Form::label('content', 'Content:') !!}
+    {!! Form::textarea('content', null, ['class' => 'form-control content-input']) !!}
+</div>
+
 <div class="col-md-12 col-sm-12">
     
     <div id="article_media_holder">
@@ -94,11 +101,6 @@
     <br>
     
     <br>
-</div>
-<!-- Content Field -->
-<div class="form-group col-sm-12 col-md-12">
-    {!! Form::label('content', 'Content:') !!}
-    {!! Form::textarea('content', null, ['class' => 'form-control content-input']) !!}
 </div>
 
 

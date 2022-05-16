@@ -144,6 +144,12 @@
     {!! Form::textarea('Specifications', null, ['class' => 'form-control', 'id' =>'content-2']) !!}
 </div>
 
+
+<div class="form-group col-sm-12 col-lg-12">
+    {!! Form::label('Detail', 'Mô tả:', ['id' =>'mo-ta'], ['rel' =>'nofollow']) !!}
+    {!! Form::textarea('Detail', null, ['class' => 'form-control', 'id' =>'content']) !!}
+</div>
+
 <div class="col-md-12 col-sm-12">
     
     <div id="article_media_holder">
@@ -178,10 +184,6 @@
     <br>
 </div>
 
-<div class="form-group col-sm-12 col-lg-12">
-    {!! Form::label('Detail', 'Mô tả:', ['id' =>'mo-ta'], ['rel' =>'nofollow']) !!}
-    {!! Form::textarea('Detail', null, ['class' => 'form-control', 'id' =>'content']) !!}
-</div>
 
 <!-- Quantily Field -->
 <div class="form-group col-sm-6">
