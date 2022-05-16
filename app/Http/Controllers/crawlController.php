@@ -29,18 +29,22 @@ class crawlController extends Controller
     public function crawlImageAgain()
     {
         $post = post::select('link', 'id')->orderBy('date_post','desc')->take(120)->get();
+        $i =0;
         foreach($post as $val){
-            $links = 'https://dienmaynguoiviet.vn/'.$val->link;
-            $html = file_get_html(trim($links));
-            $imagess = strip_tags($html->find('#image-page', 0));
-            $images = 'https://dienmaynguoiviet.vn'.$imagess;
+            $i++;
+            if($i>91 && $i<121){
+                $links = 'https://dienmaynguoiviet.vn/'.$val->link.'/';
+                $html = file_get_html(trim($links));
+                $imagess = strip_tags($html->find('#image-page', 0));
+                $images = 'https://dienmaynguoiviet.vn'.$imagess;
 
-            $img  = '/uploads/posts/crawl/'.basename($images);
-            file_put_contents(public_path().$img, file_get_contents($images));
-            $linkss = post::find($val->id);
-            $linkss->image = $img;
+                $img  = '/uploads/posts/crawl/'.basename($images);
+                file_put_contents(public_path().$img, file_get_contents($images));
+                $linkss = post::find($val->id);
+                $linkss->image = $img;
 
-            $linkss->save();
+                $linkss->save();
+            }
 
         }
         echo "thanh cong";
