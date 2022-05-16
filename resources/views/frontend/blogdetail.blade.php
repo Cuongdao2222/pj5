@@ -101,7 +101,7 @@
                 <div class="col-lg-7">
                     <div class="main-blog-list">
                         <div style="width:100%; height: 50px;">
-                            <h1 class="title">{{$name_cate}}</h1>
+                            <h1 class="title">{{  $data->category==5?'':$name_cate}}</h1>
                         </div>
                         
                         <div class="blog-detail">
