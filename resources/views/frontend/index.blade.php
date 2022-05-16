@@ -12,7 +12,12 @@
             .menus-banner li{
                 padding: 20px 0;
                 border: 1px solid #dddd;
+                position: relative;
             }
+            .Next {
+                position: absolute;
+                right: 0;
+            }    
 
             @media only screen and (max-width: 768px) {
               .Next {
@@ -135,7 +140,7 @@
                     <br>
                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="{{ $slider->link }}"><strong class="strongtitle">{{ @$slider->slogan }}</strong>
                     @if(!empty($slider->slogan))
-                    <span aria-label="Next">›</span>
+                    <span aria-label="Next" class="Next">›</span>
                     @endif
                    </a>
                 </li>
