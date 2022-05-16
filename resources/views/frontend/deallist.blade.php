@@ -68,9 +68,7 @@
             <div class="col-md-3 col-6 lists">
                 <div class="item  __cate_1942">
                     <a href="https://dienmaynguoiviet.net/smat-tivi-lg-55nano80tpa-55-inch-4k" data-box="BoxCate" class="main-contain">
-                        <div class="item-label">
-                            <span class="lb-tragop">Trả góp 0%</span>
-                        </div>
+                        <span class="icon_tragop">Trả góp <i>0%</i></span>
                         <div class="item-img item-img_1942">
                             <img class="thumb ls-is-cached lazyloaded" data-src="" alt="{{ $value->name }}" style="width:100%" src="{{ asset($value->image) }}"> 
                         </div>
