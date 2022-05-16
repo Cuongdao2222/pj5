@@ -37,11 +37,19 @@
 </div>
 
 
-<!-- Title Field -->
+<!-- slogan Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('slogan', 'Slogan:') !!}
     {!! Form::text('slogan', null, ['class' => 'form-control']) !!}
 </div>
+
+<!-- stt Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('stt', 'STT:') !!}
+    {!! Form::text('stt', null, ['class' => 'form-control']) !!}
+</div>
+
+
 
 <!-- Link Field -->
 <div class="form-group col-sm-6">

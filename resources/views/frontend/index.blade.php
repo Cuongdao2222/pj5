@@ -13,6 +13,12 @@
                 padding: 20px 0;
                 border: 1px solid #dddd;
             }
+
+            @media only screen and (max-width: 768px) {
+              .Next {
+                display: none;
+              }
+            }
         </style>
 
     @endpush
@@ -112,7 +118,7 @@
         </div>
 
         <section class="menus-banner">
-            <strong class="name-box">Xu hướng mua sắm</strong>
+            <strong class="name-box">Có thể bạn quan tâm</strong>
             <ul>
 
                 @if(!empty($bannerUnderSlider))
@@ -156,9 +162,7 @@
                 $timeDeal_end =  \Carbon\Carbon::create($timeDeal_end);
 
                 $timestamp = $now->diffInSeconds($timeDeal_end);
-        
             }
-
 
         ?>
 

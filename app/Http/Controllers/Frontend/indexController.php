@@ -13,7 +13,7 @@ class indexController extends Controller
     public function index()
     {
 
-        $banners = banners::where('option', 0)->where('active', 1)->get();
+        $banners = banners::where('option', 0)->OrderBy('stt', 'asc')->where('active', 1)->get();
 
         $bannersRight = banners::where('option', 2)->where('active', 1)->get();
 

@@ -68,7 +68,7 @@
                 </table>
             </td>
             <td><span id="order_402"></span>
-                <input type="text" size="5" value="20" onchange="update_banner_order('402', this.value)">
+                <input type="text" size="5" value="{{ $banner->stt }}">
             </td>
             <td>0</td>
             <td>
@@ -84,3 +84,4 @@
       
     </tbody>
 </table>
+
