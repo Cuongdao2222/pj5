@@ -1367,13 +1367,13 @@
                         <h3 class="title">Thông tin</h3>
                         <ul class="footer_list-link">
                             <li>
-                                <a href="/gioi-thieu">Giới thiệu</a>
+                                <a href="{{ route('details', 'gioi-thieu') }}">Giới thiệu</a>
                             </li>
                             <li>
-                                <a href="/lien-he">Liên hệ</a>
+                                <a href="{{ route('details', 'lien-he') }}">Liên hệ</a>
                             </li>
                             <li>
-                                <a href="/nha-phan-phoi-dien-may-uy-tin-chuyen-nghiep">Dự án bán buôn</a>
+                                <a href="{{ route('details', 'nha-phan-phoi-dien-may-uy-tin-chuyen-nghiep') }}">Dự án bán buôn</a>
                             </li>
 
                           
@@ -1397,7 +1397,7 @@
                                 <a href="{{ route('details','huong-dan-mua-dien-may-tra-gop-online-qua-the-tin-dung-tren-trang-web-dien-may-nguoi-viet') }}">Hướng dẫn trả góp</a>
                             </li>
                             <li>
-                                <a href="/page/cach-thuc-thanh-toan">Cách thức thanh toán</a>
+                                <a href="{{ route('details', 'page/cach-thuc-thanh-toan') }}">Cách thức thanh toán</a>
                             </li>
                             <li>
                                 <a href="{{ route('details', 'bang-gia-vat-tu-lap-dat-may-giat') }}">Bảng giá vật tư lắp đặt</a>
@@ -1425,13 +1425,13 @@
                                 <a href="/page/chinh-sach-quy-dinh-chung">Chính sách &amp; quy định chung</a>
                             </li>
                             <li>
-                                <a href="/page/chinh-sach-doi-tra-hang">Chính sách đổi trả sản phẩm</a>
+                                <a href="{{ route('details', 'page/chinh-sach-doi-tra-hang') }}">Chính sách đổi trả sản phẩm</a>
                             </li>
                             <li>
-                                <a href="page/chinh-sach-bao-hanh">Chính sách bảo hành</a>
+                                <a href="{{ route('details', 'page/chinh-sach-bao-hanh') }}">Chính sách bảo hành</a>
                             </li>
                             <li>
-                                <a href="/page/chinh-sach-van-chuyen">Chính sách giao hàng</a>
+                                <a href="{{ route('details', 'page/chinh-sach-van-chuyen') }}">Chính sách giao hàng</a>
                             </li>
                         </ul>
                     </div>

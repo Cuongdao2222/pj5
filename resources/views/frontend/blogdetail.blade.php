@@ -94,7 +94,7 @@
                             <img src="" alt="">
                         </figure>
                         <ul class="ulcatemenu">
-                            <li class="active"><a>{{$name_cate}}</a></li>
+                            <li class="active"><a>{{  $data->category==5?'':$name_cate}}</a></li>
                         </ul>
                     </div>
                 </div>
