@@ -15,9 +15,14 @@
                 position: relative;
             }
 
-            .menus-banner .strongtitle{
-                font-size: 12px !important;
+            .menus-banner .strongtitle, .menus-banner ul li p a {
+                font-size: 14px !important;
+                text-transform: capitalize;
             }
+
+            .menus-banner ul li p {
+                text-align: left !important;
+            }    
 
             .Next {
                 position: absolute;
@@ -26,7 +31,7 @@
 
             .menus-banner .strongtitle {
                 position: absolute;
-                left: 4px;
+                left: 8px;
 
             } 
             .danh-muc1{
@@ -150,9 +155,9 @@
                         </picture>
                     </a>
                     <p>
-                <a href="{{ $slider->link }}">{{ $slider->title }}</a></p>
+               &nbsp; <a href="{{ $slider->link }}">{{ $slider->title }}</a></p>
                     
-                   &nbsp;&nbsp;&nbsp;&nbsp; <a href="{{ $slider->link }}"><strong class="strongtitle">{{ @$slider->slogan }}</strong>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{ $slider->link }}"><strong class="strongtitle">{{ @$slider->slogan }}</strong>
                     @if(!empty($slider->slogan))
                     <span aria-label="Next" class="Next">›</span>
                     @endif
