@@ -6,8 +6,32 @@
         <meta charset="utf-8" />
           <?php  
 
-          $requestcheck = \Request::route();
+            $requestcheck = \Request::route();
 
+            $nameRoute = \Request::route()->getName();
+
+
+
+          ?>
+
+          <?php 
+            if($nameRoute =='homeFe'){
+                $url = $_SERVER["SCRIPT_NAME"];
+                $break = Explode('/', $url);
+                $file = $break[count($break) - 1];
+                $cachefile = public_path().'/images/cache/cached-'.substr_replace($file ,"",-4).'.html';
+                $cachetime = 18000;
+
+                // Serve from the cache if it is younger than $cachetime
+                if (file_exists($cachefile) && time() - $cachetime < filemtime($cachefile)) {
+                    echo "<!-- Cached copy, generated ".date('H:i', filemtime($cachefile))." -->\n";
+                    readfile($cachefile);
+                    exit;
+                }
+                ob_start(); // Start the output buffer
+
+
+            }
           ?>
         @if(isset($meta))
         <title>{{ $meta->meta_title }}</title>
@@ -2004,6 +2028,14 @@ s0.parentNode.insertBefore(s1,s0);
        
     
     </script>
+
+    <?php
+        // Cache the contents to a cache file
+        $cached = fopen($cachefile, 'w');
+        fwrite($cached, ob_get_contents());
+        fclose($cached);
+        ob_end_flush(); // Send the output to the browser
+        ?>
 
 
       
