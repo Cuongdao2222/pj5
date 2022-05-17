@@ -96,25 +96,21 @@
               }
             </script>
 
-            <script type="application/ld+json">
-            {
-              "@context": "https://schema.org",
-              "@type": "WebSite",
-              "url": "https://dienmaynguoiviet.vn",
-              "potentialAction": {
-                "@type": "SearchAction",
-                "target": "https://dienmaynguoiviet.vn/tim?key={search_term_string}",
-                "query-input": "required name=search_term_string"
-              }
-            }
-            </script>
-  
-
-          
-
-
-
         @endif
+
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "url": "https://dienmaynguoiviet.vn",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://dienmaynguoiviet.vn/tim?key={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        }
+        </script>
+  
 
         
         <meta name="robots" content="index,follow" />
@@ -184,6 +180,15 @@
           });
           return false;
         }
+        </script>
+
+        <script>
+         gtag('event', 'page_view', {
+           'send_to': 'AW-971664599',
+           'dynx_itemid':'',
+           'dynx_pagetype':'home',
+           'dynx_totalvalue':0
+         });
         </script>
 
         <!-- Facebook Pixel Code -->
