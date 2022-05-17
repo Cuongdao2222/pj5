@@ -13,37 +13,44 @@
 
 
 
+Route::group(['middleware'=>'HtmlMinifier'], function() { 
+    Route::get('/', 'Frontend\indexController@index')->name('homeFe');
+    Route::get('/tin-khuyen-mai/', 'Frontend\blogController@index')->name('tin');
 
-Route::get('/tin-khuyen-mai/', 'Frontend\blogController@index')->name('tin');
+    Route::get('/tin-tong-hop/', 'Frontend\blogController@index')->name('tin-th');
+    Route::get('/landingpage', function () {
+        return view('frontend.landingpage');
+        
+    })->name('landingpageFe');
 
-Route::get('/tin-tong-hop/', 'Frontend\blogController@index')->name('tin-th');
+    Route::get('/deal', function () {
+        return view('frontend.deallist');
+        
+    })->name('dealFe');
+    Route::get('/lien-he', function () {
+        return view('frontend.lienhe');
+        
+    });
+
+}); 
 
 
-Route::get('/', 'Frontend\indexController@index')->name('homeFe');
+
 Route::get('/ckfinder.html', function () {
     return view('frontend.ckfinder');
     
 })->middleware('auth');
 
 
-Route::get('/landingpage', function () {
-    return view('frontend.landingpage');
-    
-})->name('landingpageFe');
 
-Route::get('/deal', function () {
-    return view('frontend.deallist');
-    
-})->name('dealFe');
+
+
 
 
 // Route::get('filterurl','crawlController@addFilterProduct');
 
 
-Route::get('/lien-he', function () {
-    return view('frontend.lienhe');
-    
-});
+
 
 
 
