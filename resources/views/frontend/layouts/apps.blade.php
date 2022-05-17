@@ -337,6 +337,9 @@
 
              body.theme-lunar-new-year {
                 background:'#'{{ asset($background->background_image)  }};
+            }  
+            .danh-muc1{
+                left: 0px !important;
             }    
 
             @media only screen and (max-width: 768px) {

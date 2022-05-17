@@ -34,9 +34,7 @@
                 left: 8px;
 
             } 
-            .danh-muc1{
-                left: 0px !important;
-            }  
+            
             .homebanner span{
                 text-transform: capitalize;
             }

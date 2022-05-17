@@ -26,6 +26,47 @@ use \Carbon\Carbon;
 class crawlController extends Controller
 {
     
+    public function getImageFalse()
+    {
+        $post = post::select('content', 'id', 'category')->get();
+        $ar_image_false = [];
+
+        foreach($post as $val){
+            if($val->category!=5){
+                preg_match_all('/<img.*?src=[\'"](.*?)[\'"].*?>/i', $val->content, $matches);
+                if(isset($matches[1])){
+                    foreach($matches[1] as $value){
+                        if($value!=null){
+                           
+                                $value = 'http://dienmaynguoiviet.net/'.$value;
+
+                                $file_headers = @get_headers($value);
+
+                                try {
+
+                                   if(is_array($file_headers) && $file_headers[0] != 'HTTP/1.1 200 OK'){
+
+                                        $images = 'https://dienmaynguoiviet.vn/media/product/'.basename($value);
+
+                                        array_push($ar_image_false, $value);
+                                        
+                                   } 
+                                    
+                                } catch (Exception $e) {
+                                    echo "Message: " . $e->getMessage();
+                                }
+                           
+                           
+                        }        
+                    } 
+                        
+                }    
+            }    
+
+        }
+        print_r(array_unique($ar_image_false));
+        
+    }
 
      public function getImageAll()
     {
