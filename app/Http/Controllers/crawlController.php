@@ -25,7 +25,51 @@ use \Carbon\Carbon;
 
 class crawlController extends Controller
 {
-   
+    
+
+     public function getImageAll()
+    {
+       
+        $post = post::select('content', 'id', 'category')->get();
+
+        foreach($post as $val){
+
+            if($val->category!=5){
+                preg_match_all('/<img.*?src=[\'"](.*?)[\'"].*?>/i', $val->content, $matches);
+            
+                if(isset($matches[1])){
+
+                    foreach($matches[1] as $value){
+
+                        if($value !=null){
+
+                            $images = 'https://dienmaynguoiviet.vn/media/news/'.basename($value);
+
+                            $file_headers = @get_headers($images);
+
+                            if($file_headers[0] == 'HTTP/1.1 200 OK'){
+
+                                $images = 'https://dienmaynguoiviet.vn/media/news/'.basename($value);
+
+                            }  
+                            else{
+                                $images = 'https://dienmaynguoiviet.vn/media/lib/'.basename($value);
+                            } 
+                            $img  = '/images/posts/crawl/'.basename($images);
+
+                            file_put_contents(public_path().$img, file_get_contents($images));  
+
+                           
+                        }    
+                    }
+                }
+            }
+
+        
+        }
+        echo "thanh cong";
+       
+    }
     public function crawlImageAgain()
     {
         $post = post::select('link', 'id')->orderBy('date_post','desc')->take(120)->get();
