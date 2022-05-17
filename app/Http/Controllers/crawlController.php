@@ -25,7 +25,50 @@ use \Carbon\Carbon;
 
 class crawlController extends Controller
 {
+    public function getFileAr()
+    {
+        $ar_image = $this->getImageFalse();
+        $ar_false = [];
+        foreach ($ar_image as $key => $value) {
+
+            $images = 'https://dienmaynguoiviet.vn/media/news/'.basename($value);
+            $file_headers = @get_headers($images);
+
+            if($file_headers[0] == 'HTTP/1.1 200 OK'){
+                $images = 'https://dienmaynguoiviet.vn/media/news/'.basename($value);
+            }  
+            else{
+
+                $images = 'https://dienmaynguoiviet.vn/media/lib/'.basename($value);
+                $file_headers = @get_headers($images);
+                if($file_headers[0]== 'HTTP/1.1 200 OK'){
+                    $images = $images;
+                }
+                else{
+                    $images = 'https://dienmaynguoiviet.vn/media/product/'.basename($value);
+                    $file_headers = @get_headers($images);
+                    if($file_headers[0]== 'HTTP/1.1 200 OK'){
+                        $images = $images;
+                    }
+                    else{
+                        $images = '';
+                        array_push($ar_false, $value);
+                    }
+                }
+                
+            } 
+            if(!empty($images)) {
+                $img  = '/images/posts/crawl/'.basename($images);
+                file_put_contents(public_path().$img, file_get_contents($images));    
+            }
+            
+
+           
+        }
+        print_r($ar_false);
+        echo "thanh cong";
     
+    }
     public function getImageFalse()
     {
         $post = post::select('content', 'id', 'category')->get();
@@ -38,7 +81,7 @@ class crawlController extends Controller
                     foreach($matches[1] as $value){
                         if($value!=null){
                            
-                                $value = 'http://dienmaynguoiviet.net/'.$value;
+                                $value = 'http://localhost/pj5/'.$value;
 
                                 $file_headers = @get_headers($value);
 
@@ -64,7 +107,7 @@ class crawlController extends Controller
             }    
 
         }
-        print_r(array_unique($ar_image_false));
+        return(array_unique($ar_image_false));
         
     }
 
