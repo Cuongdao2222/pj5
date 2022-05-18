@@ -61,24 +61,17 @@ class categoryController extends Controller
                 }
             }
 
-        
-            $list_data_group = filter::where('group_product_id', $group_id)->whereIn('id', $filter)->select('value')->get()->toArray();
-
-
 
 
             $findID = groupProduct::where('link', $link)->first();
-
             $id_cate = $findID->id;
-
             $groupProduct_level = $findID->level;
-
-
-
             $ar_list = $this->find_List_Id_Group($id_cate,$groupProduct_level);
 
-
             $parent_cate_id = $ar_list[0]['id'];
+
+
+            $list_data_group = filter::where('group_product_id', $parent_cate_id)->whereIn('id', $filter)->select('value')->get()->toArray();
 
             $filter = filter::where('group_product_id', $parent_cate_id)->select('name', 'id')->get();
 
@@ -91,6 +84,11 @@ class categoryController extends Controller
             $product = [];
 
             $product_search = [];
+
+
+            $checkidgroup = groupProduct::find($group_id);
+
+            $checkidgroup_id = json_decode($checkidgroup->product_id);
 
         
             if(!empty($list_data_group[0]['value'])){
@@ -151,15 +149,13 @@ class categoryController extends Controller
 
                         }
 
-                        $product_search = product::whereIn('id', $result_product)->where('active', 1)->get();
-
-                    
+                        $product_search = product::whereIn('id', $result_product)->whereIn('id', $checkidgroup_id)->where('active', 1)->get();
                     }
 
-                   
                 }
             }
-             return view('frontend.filter', compact('product_search', 'link', 'filter', 'id_cate', 'ar_list', 'groupProduct_level'));
+
+            return view('frontend.filter', compact('product_search', 'link', 'filter', 'id_cate', 'ar_list', 'groupProduct_level'));
 
         }
         else{

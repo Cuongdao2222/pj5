@@ -343,15 +343,10 @@
                     @if(!empty($link))
 
 
-                        @if($groupProduct_level>0)
-
-                                window.location.href = '{{ route('details',$ar_list[0]["link"]) }}?filter=,'+filter+'&group_id={{ @$ar_list[0]["id"] }}&property=,'+propertys+'&link={{ $ar_list[0]["link"] }}';
-
-                            
-                            @else
+                       
                       
                             window.location.href = '{{ route('details',$link) }}?filter=,'+filter+'&group_id={{ @$id_cate  }}&property=,'+propertys+'&link={{$link  }}';
-                            @endif
+                            
                     @endif
 
                 }

@@ -54,8 +54,6 @@ class filterController extends Controller
     
         $list_data_group = filter::where('group_product_id', $group_id)->whereIn('id', $filter)->select('value')->get()->toArray();
 
-
-
         $findID = groupProduct::where('link', $link)->first();
 
         $id_cate = $findID->id;
