@@ -346,8 +346,9 @@
                         <div class="modal-header">
                             <h5>Đặc điểm nổi bật</h5>
                         </div>
+                       
                         <div class="modal-body" style="padding:0 15px">
-                            {!!  $data->Salient_Features  !!} 
+                            {!!    str_replace('Xem thêm', '', $data->Salient_Features)  !!} 
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
