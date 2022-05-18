@@ -25,6 +25,42 @@ use \Carbon\Carbon;
 
 class crawlController extends Controller
 {
+    public function checkPD()
+    {
+       
+        $product = groupProduct::find(4)->product_id;
+
+        $product = json_decode($product);
+
+        $arFalse = [];
+
+        foreach ($product as $key => $value) {
+
+            $name_product = product::find($value)->Name;
+
+            $pos = strpos(strtolower($name_product), 'inverter');
+
+            if ($pos === false) {
+
+                if(strpos(strtolower($name_product), 'invert')===false) {
+
+                    array_push($arFalse, $value);
+
+                }
+                
+            }
+           
+        }
+
+        $group = groupProduct::find(89);
+
+        $group->product_id = json_encode($arFalse);
+
+        $group->save();
+
+        echo "thanh cong";
+
+    }
     public function getFileAr()
     {
         $ar_image = $this->getImageFalse();

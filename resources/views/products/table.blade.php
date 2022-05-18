@@ -6,20 +6,11 @@
         <th>Tên sản phẩm</th>
         <th>Sửa nhanh</th>
         
-       
         <th>Số lượng trong kho</th>
-
-
-        
-
         <th>Hiển thị</th>
         <th>chọn danh mục nhanh</th>
         <th>Sản phẩm Hot</th>
         <th>Sản phẩm Sale</th>
-
-        
-
-
         <th>Quà tặng</th>
         <th>Nhóm sản phẩm</th>
         
