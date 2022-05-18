@@ -328,7 +328,7 @@
                     </div>
                     <div id="thumb-specification-gallery-0" class="item itemTab  is-show-popup" data-gallery-id="specification-gallery" data-color-id="0" data-is-full-spec="True" data-color-order-id="0" data-isfeatureimage="True">
                         <div class="item-border">
-                            <i class="icondetail-thongso"></i>
+                            <i class="icondetail-thongso" data-toggle="modal" data-target="#specifications"></i>
                         </div>
                         <p data-toggle="modal" data-target="#specifications">Thông số kỹ thuật</p>
                     </div>
