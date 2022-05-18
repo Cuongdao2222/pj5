@@ -81,6 +81,8 @@
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
+ 
+
 <div class="wrapper">
     <!-- Main Header -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -90,6 +92,15 @@
                 <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
             </li>
         </ul>
+
+        <div>
+            <form class="form-inline active-pink-3 active-pink-4 " method="get" action="{{ Route('find-product') }}">
+                       
+                <button><i class="fas fa-search" aria-hidden="true"></i></button>
+                <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search"
+                    aria-label="Search" name="search">
+            </form>
+        </div>
 
         <ul class="navbar-nav ml-auto">
             <li class="nav-item dropdown user-menu">
@@ -125,6 +136,8 @@
         </ul>
     </nav>
 
+
+
     <!-- Left side column. contains the logo and sidebar -->
 @include('layouts.sidebar')
 
@@ -138,10 +151,9 @@
     <!-- Main Footer -->
     <footer class="main-footer">
         <div class="float-right d-none d-sm-block">
-            <b>Version</b> 3.1.0
+            <b>Version 3.0 Dienmaynguoiviet</b> 
         </div>
-        <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights
-        reserved.
+        
     </footer>
 </div>
 
