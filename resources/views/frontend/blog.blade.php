@@ -23,63 +23,63 @@
             <ul class="dm_container">
                 <li>
                     <a href="/tu-van-tivi/">
-                    <img src="/template/dienmaynguoiviet/images/tivi.png" alt="">
+                    <img src="{{ asset('images/template/logo/tivi.png') }}" alt="">
                     <span>Tư vấn
                     <br> tivi</span>
                     </a>
                 </li>
                 <li>
                     <a href="/tu-van-tu-lanh/">
-                    <img src="/template/dienmaynguoiviet/images/tu-lanh.png" alt="">
+                    <img src="{{ asset('images/template/logo/tu-lanh.png') }}" alt="">
                     <span>Tư vấn
                     <br> tủ lạnh</span>
                     </a>
                 </li>
                 <li>
                     <a href="/tu-van-may-giat/">
-                    <img src="/template/dienmaynguoiviet/images/may-giat.png" alt="">
+                    <img src="{{ asset('images/template/logo/may-giat.png') }}" alt="">
                     <span> Tư vấn
                     <br> máy giặt</span>
                     </a>
                 </li>
                 <li>
                     <a href="/tu-van-dieu-hoa/">
-                    <img src="/template/dienmaynguoiviet/images/dieu-hoa.png" alt="">
+                    <img src="{{ asset('images/template/logo/dieu-hoa.png') }}" alt="">
                     <span>Tư vấn
                     <br> điều hòa</span>
                     </a>
                 </li>
                 <li>
                     <a href="/tu-van-gia-dung/">
-                    <img src="/template/dienmaynguoiviet/images/gia-dung.png" alt="">
+                    <img src="{{ asset('images/template/logo/gia-dung.png') }}" alt="">
                     <span>Tư vấn
                     <br> gia dụng</span>
                     </a>
                 </li>
                 <li>
                     <a href="/tu-van-mua-sam/">
-                    <img src="/template/dienmaynguoiviet/images/mua-sam.png" alt="">
+                    <img src="{{ asset('images/template/logo/mua-sam.png') }}" alt="">
                     <span>Tư vấn
                     <br> mua sắm</span>
                     </a>
                 </li>
                 <li>
                     <a href="/meo-vat-gia-dinh/">
-                    <img src="/template/dienmaynguoiviet/images/meo-vat.png" alt="">
+                    <img src="{{ asset('images/template/logo/meo-vat.png') }}/template/dienmaynguoiviet/images/meo-vat.png" alt="">
                     <span>Mẹo vặt
                     <br> gia đình</span>
                     </a>
                 </li>
                 <li>
                     <a href="/tin-khuyen-mai/">
-                    <img src="/template/dienmaynguoiviet/images/khuyen-mai.png" alt="">
+                    <img src="{{ asset('images/template/logo/khuyen-mai.png') }}" alt="">
                     <span>Tin
                     <br> Khuyến Mại</span>
                     </a>
                 </li>
                 <li>
                     <a href="">
-                    <img src="/template/dienmaynguoiviet/images/video.png" alt="">
+                    <img src="{{ asset('images/template/logo/video.png') }}" alt="">
                     <span>Video
                     <br>clip</span>
                     </a>
