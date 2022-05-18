@@ -40,9 +40,9 @@ class crawlController extends Controller
 
             $pos = strpos(strtolower($name_product), 'inverter');
 
-            if ($pos === false) {
+            if ($pos == true) {
 
-                if(strpos(strtolower($name_product), 'invert')===false) {
+                if(strpos(strtolower($name_product), 'invert')==true) {
 
                     array_push($arFalse, $value);
 
@@ -52,7 +52,7 @@ class crawlController extends Controller
            
         }
 
-        $group = groupProduct::find(89);
+        $group = groupProduct::find(88);
 
         $group->product_id = json_encode($arFalse);
 
