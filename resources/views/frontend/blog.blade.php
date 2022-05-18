@@ -65,7 +65,7 @@
                 </li>
                 <li>
                     <a href="/meo-vat-gia-dinh/">
-                    <img src="{{ asset('images/template/logo/meo-vat.png') }}/template/dienmaynguoiviet/images/meo-vat.png" alt="">
+                    <img src="{{ asset('images/template/logo/meo-vat.png') }}" alt="">
                     <span>Mẹo vặt
                     <br> gia đình</span>
                     </a>
