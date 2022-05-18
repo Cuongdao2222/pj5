@@ -9,7 +9,11 @@
        
         <th>Số lượng trong kho</th>
 
+
+        
+
         <th>Hiển thị</th>
+        <th>chọn danh mục nhanh</th>
         <th>Sản phẩm Hot</th>
         <th>Sản phẩm Sale</th>
 
@@ -151,6 +155,8 @@
 
             </td>
             <td><input type="checkbox" id="active{{ $product->id }}" name="active" onclick='active({{ $product->id }})'   {{ $product->active==1?'checked':'' }}></td>
+
+            <td><a href="{{ route('group-product-selected', $product->id) }}"class="btn-primary">Sửa</a></td>
 
             <td><input type="checkbox" id="hot{{ $product->id }}" name="hot"  onclick='handleClick({{ $product->id }});' data-id ="{{ get_Group_Product($product->id)[0]??'' }}" {{ in_array($product->id, $list_hot)?'checked':'' }}></td>
             <td><input type="checkbox" id="sale{{ $product->id }}" name="sale"  onclick='saleClick({{ $product->id }});' data-id ="{{ get_Group_Product($product->id)[0]??'' }}" {{ in_array($product->id, $list_sales)?'checked':'' }}></td>
