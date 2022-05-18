@@ -172,8 +172,8 @@
        
 
         <?php 
-            $deal = App\Models\deal::get();
-
+            
+           
             $now  = Carbon\Carbon::now();
 
             if(!empty($deal)&count($deal)>0){
@@ -210,7 +210,7 @@
 
                                 @foreach($deal as $value)
 
-                                @if( $value->active ==1)
+                                @if($value->active ==1)
 
                                 <div class="item">
                                     <a href="{{ route('details', $value->link) }}">
@@ -285,9 +285,6 @@
                                 @endforeach
 
 
-
-                               
-
                             </div>
                         </div>
                     </div>
@@ -312,10 +309,6 @@
 
            <!--  Sale -->
 
-           <?php  
-
-           $product_sale =  DB::table('products')->join('sale_product', 'products.id', '=', 'sale_product.product_id')->join('makers', 'products.Maker', '=', 'makers.id')->get();
-           ?>
 
            @if(count($product_sale)>0)
            
@@ -374,19 +367,12 @@
             $group = App\Models\groupProduct::select('id','name', 'link')->where('parent_id', 0)->get();
 
             $hot = DB::table('hot')->select('product_id')->where('group_id', 2)->get()->pluck('product_id');
-
-           
-           
          ?>   
-
-
-
         <div  class="owl-slider-count" style="display: none;">{{ count($group) }}</div> 
         @foreach($group as $key => $groups)
 
             <?php
 
-               
 
                 $hot = DB::table('hot')->select('product_id')->where('group_id', $groups->id)->get()->pluck('product_id');
 
@@ -519,12 +505,7 @@
             <a data-cate="0" data-place="1864" href="#" class="banner-right"><img style="cursor:pointer" src="#" alt="Theme Giáng Sinh Phải" width="79" height="271"></a>        
         </div>
         
-        <?php  
-
-            $post = App\Models\post::where('active',1)->where('hight_light', 1)->select('link', 'title', 'image')->take(6)->get()->toArray();
-
-        ?>
-                    
+        
         @if(isset($post) && count($post)>0)
         <div class="applications">
             <div class="col1">
