@@ -186,7 +186,7 @@
 
     $imagecontent = App\Models\imagescontent::where('product_id', $product->id)->where('option',1)->get()
 ?>
-@if(isset($product->id)
+@if(isset($product->id))
 <div><a href="{{ route('imagescontent', $product->id) }}?option=1">Thêm ảnh content</a></div>
 
 <table class="big_table" border="1" bordercolor="#CCCCCC" cellspacing="0" cellpadding="3">

@@ -47,6 +47,9 @@
               .Next {
                 display: none;
               }
+              .desk-t{
+                display: none !important;
+              }
             }
         </style>
 
@@ -409,7 +412,7 @@
                 @if(!empty($listGroupsShow))
                 @foreach($listGroupsShow as $valueslist)
 
-                <li data-cate-id="2162" data-prop-value-ids="90016"><a href="{{ route('details', $valueslist->link) }}">{{ @$valueslist->name }}</a></li>
+                <li data-cate-id="2162" data-prop-value-ids="90016" class="desk-t"><a href="{{ route('details', $valueslist->link) }}">{{ @$valueslist->name }}</a></li>
                 @endforeach
                 @endif
             </ul>

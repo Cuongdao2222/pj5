@@ -18,6 +18,12 @@
         background: #ffde00;
     }
 
+    .giohang {
+         background: #52a8d9 !important;
+    }    
+
+    
+
     .modal-body tr{
 
         height: 50px !important;
@@ -497,7 +503,7 @@
                             </div>
                             <div class="clearfix"></div>
                             <div class="installment-purchase pdetail-installment">
-                                <a  class="but-tra-gop" href="javascript:void(0)" onclick="addCartFast({{ $data->id }})">
+                                <a  class="but-tra-gop giohang" href="javascript:void(0)" onclick="addCartFast({{ $data->id }})">
                                 <strong>THÊM VÀO GIỎ HÀNG</strong>
                                 <br>
                                 (Thêm ngay)
@@ -727,8 +733,8 @@
         @endif
         @if((int)$data->Price>3000000)
         <div class="clear space10px credit">
-            <a class="btn-buy txt_center cor5px but-1-gop"  href="{{ route('details', $data->Link)  }}?show=tra-gop" style="background: #ffde00; border-bottom: 0;" >
-            <i class="fa fa-shopping-cart"></i> <span class="txt_15">Trả góp</span>
+            <a class="btn-buy txt_center cor5px but-1-gop giohang"   href="javascript:void(0)" onclick="addCartFast({{ $data->id }})" style="border-bottom: 0;" >
+            <i class="fa fa-shopping-cart"></i> <span class="txt_15">Thêm giỏ hàng</span>
             </a>
             <a class="btn-buy txt_center cor5px"  href="{{ route('details', $data->Link)  }}?show=tra-gop" style="background: #ffde00; border-bottom: 0;">
             <i class="fa fa-shopping-cart"></i> <span class="txt_15" >Trả góp qua thẻ</span>

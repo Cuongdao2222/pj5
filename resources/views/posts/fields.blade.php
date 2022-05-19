@@ -109,12 +109,13 @@
     
     <br>
 </div>
+@if(isset($post->id))
 
 <?php  
 
     $imagecontent = App\Models\imagescontent::where('product_id', $post->id)->where('option',2)->get();
 ?>
-@if(isset($post->id))
+
 <div><a href="{{ route('imagescontent', $post->id) }}?option=2">Thêm ảnh content</a></div>
 
 
