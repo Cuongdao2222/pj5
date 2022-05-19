@@ -209,12 +209,18 @@ class imageController extends AppBaseController
 
                 $input['image'] = $filePath;
 
+                unset($input['_token']);
+
                 $images = imagescontent::create($input);
+
             }
-
-           
-
-            return redirect()->back();
+            if($input['option']==1){
+                return redirect(route('products.edit', $input['product_id']));
+            }
+            else{
+                return redirect(route('posts.edit', $input['product_id']));
+            }
+            
             
         }
     }

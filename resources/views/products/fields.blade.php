@@ -1,4 +1,9 @@
+<style type="text/css">
+    .border1{
+        border: 2px solid #e74032;
 
+    }
+</style>
    
 <?php
     $Group = App\Models\groupProduct::select('id', 'name')->get();
@@ -160,7 +165,7 @@
             <tr>
                 @if(isset($matches[1]))
                 @foreach($matches[1] as $key => $value)
-                <td ><a href="javascript:void(0);" onclick="clicks('images{{ $key }}', '{{ asset($value) }}')"><img src="{{ asset($value) }}" style="max-width:100px; max-height:130px" id="img{{ $key }}"></a></td>
+                <td class="img{{ $key }} tdimg"><a href="javascript:void(0);" onclick="clicks('images{{ $key }}', '{{ asset($value) }}')"><img src="{{ asset($value) }}" style="max-width:100px; max-height:130px" id="img{{ $key }}"></a></td>
              
                 @endforeach
                 @endif
@@ -176,7 +181,32 @@
     
     <br>
 </div>
-<div><a href="{{ route('imagescontent', $product->id) }}">Thêm ảnh content</a></div>
+
+<?php  
+
+    $imagecontent = App\Models\imagescontent::where('product_id', $product->id)->where('option',1)->get()
+?>
+@if(isset($product->id)
+<div><a href="{{ route('imagescontent', $product->id) }}?option=1">Thêm ảnh content</a></div>
+
+<table class="big_table" border="1" bordercolor="#CCCCCC" cellspacing="0" cellpadding="3">
+    <tbody>
+        <tr>
+            @if(isset($imagecontent))
+            @foreach($imagecontent as $key => $values)
+            <td class="img1{{ $key }}"><a href="javascript:void(0);" onclick="click1('images1{{ $key }}', '{{ asset($values->image) }}')"><img src="{{ asset($values->image) }}" style="max-width:100px; max-height:130px" id="img1{{ $key }}"></a></td>
+         
+            @endforeach
+            @endif
+        </tr>
+        
+       
+    </tbody>
+
+</table>
+@endif
+
+
 
 
 <!-- Quantily Field -->
@@ -208,30 +238,35 @@
 <div class="clearfix"></div>
 
 <script type="text/javascript">
+    var activeReplace = [];
+   
     function clicks(id,src) {
         editor = CKEDITOR.instances.content;
         var documentWrapper = editor.document; // replace by your CKEDitor instance ID
         var documentNode = documentWrapper.$; // or documentWrapper['$'] ;
-       
-      
-        // CKEDITOR.instances.content.find('#adbro').focus();
-        // editor = CKEDITOR.instances.content;
-        // // var jqDocument = $(editor.document.$);
-        // var jqDocument = $(editor.document.$);
-    
-        // var documentHeight = jqDocument.height();
-        // // console.log(jqDocument);
-        // jqDocument.scrollTop(documentHeight);
-        
         var edata = editor.getData();
-        var replaced_text = edata.replace(src, "https://icdn.dantri.com.vn/thumb_w/770/2022/05/11/tien-32manh-quan-1652264480967.jpg"); // you could also use a regex in the replace 
-        editor.setData(replaced_text);
         documentNode.getElementById(id).scrollIntoView();
         ids = id.replace('images', 'img');
-        // document.getElementById("img"+id).src = "https://icdn.dantri.com.vn/thumb_w/770/2022/05/11/tien-32manh-quan-1652264480967.jpg";
-        $('#'+ids).attr('src', 'https://icdn.dantri.com.vn/thumb_w/770/2022/05/11/tien-32manh-quan-1652264480967.jpg');
+        $('.tdimg').removeClass('border1');
+        activeReplace.push(src);
+        activeReplace.push(id);
+        activeReplace.push(ids);
+        $('.'+ids).addClass('border1');
+    }
 
-       
+    function click1(id, src) {
+        editor = CKEDITOR.instances.content;
+        var documentWrapper = editor.document; // replace by your CKEDitor instance ID
+        var documentNode = documentWrapper.$; // or documentWrapper['$'] ;
+        var edata = editor.getData();
+        var replaced_text = edata.replace(activeReplace[0], src); // you could also use a regex in the replace 
+        editor.setData(replaced_text);
+        documentNode.getElementById(activeReplace[1]).scrollIntoView();
+        $('#'+activeReplace[2]).attr('src', src);
+        activeReplace.pop();
+        activeReplace.pop();
+        activeReplace.pop();
+        $('.tdimg').removeClass('border1');
     }
     
 </script>
