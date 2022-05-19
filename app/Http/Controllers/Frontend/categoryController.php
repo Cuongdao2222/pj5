@@ -220,7 +220,7 @@ class categoryController extends Controller
                     $Group_product = json_decode($Group_product->product_id);
 
               
-                    $data = product::whereIn('id', $Group_product)->where('active', 1)->orderBy('id', 'desc')->paginate(10);
+                    $data = product::whereIn('id', $Group_product)->where('active', 1)->orderBy('id', 'desc')->paginate(12);
 
                     $numberdata = product::select('id')->whereIn('id', $Group_product)->where('active', 1)->orderBy('id', 'desc')->get()->count();
 

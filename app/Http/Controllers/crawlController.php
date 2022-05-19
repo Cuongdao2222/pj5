@@ -28,20 +28,200 @@ class crawlController extends Controller
 
     public function editProduct()
     {
-        $product = product::select('id')->where('Quantily', -1)->get();
+        $code = "F2721HTTV
+        FM1208N6W
+        FM1209N6W
+        FM1209S6W
+        TH2722SSAK
+        TH2519SSAK
+        TH2113SSAK
+        TH2112SSAV
+        TH2111SSAL
+        T2311DSAL
+        T2351VSAM
+        T2350VS2M
+        T2350VS2W
+        T2395VS2M
+        T2395VS2W
+        T2185VS2M
+        T2185VS2W
+        T2735NWLV
+        S3RF
+        S3WF
+        S5MB
+        DR-80BW
+        T2735NWLV
+        TV2402NTWW
+        TV2402NTWB
+        FV1450H2B
+        FV1450S2B
+        FV1450S3W
+        FV1450S3V
+        FV1408G4W
+        FV1409G4V
+        FV1409S2V
+        FV1409S2W
+        FV1409S3W
+        FV1409S4W
+        FV1408S4W
+        FV1208S4W
+        FV1408S4V
+        T2555VSAB
+        T2313VSAB
+        T2313VS2W
+        T2313VSPM
+        T2351VSAB
+        T2350VSAB
+        T2108VSPM
+        TH2111SSAB
+        F2515RTGW
+        F2515STGW
+        DVHP09B
+        DVHP09W
+        FV1410S4P
+        FV1410S3B
+        FV1410S5W
+        FV1411S3B
+        FV1411S4P
+        FV1411S5W
+        FV1413H3BA
+        FV1413S3WA
+        T2108VSPM2
+        EWF8025EQWA
+        EWF9025BQWA
+        EWF9025BQSA
+        EWF9024BDWB
+        EWF9024ADSA
+        EWF9523ADSA
+        EWF1024BDWA
+        EWW8023AEWA
+        EWW1042AEWA
+        EWF8024D3WB
+        EWF9024D3WB
+        EWF8024P5WB
+        EWF8024P5SB
+        EWF9024P5SB
+        EWF1024P5WB
+        EWF1024P5SB
+        EWF9042R7SB
+        EWF1042R7SB
+        EWF1141R9SB
+        EWW9024P5WB
+        EWW1024P5WB
+        EWW1142Q7WB
+        EDV754H3WB
+        EDV854J3WB
+        EDV854N3SB
+        WA22R8870GV/SV
+        WA16R6380BV/SV
+        WA12T5360BV/SV
+        WA10T5260BY/SV
+        WA90T5260BY/SV
+        WA85T5160BY/SV
+        DF60R8600CG/SV
+        WW90T3040WW/SV
+        DV90T7240BB/SV
+        DV90TA240AX/SV
+        DV90T7240BH/SV
+        DV90TA240AE/SV
+        WD14TP44DSB/SV
+        WD11T734DBX/SV
+        WD95T754DBX/SV
+        WD95T4046CE/SV
+        WW12TP94DSB/SV
+        WW10TP44DSB/SV
+        WW10TP54DSB/SV
+        WW10T634DLX/SV
+        WW10TP44DSH/SV
+        WW10TP54DSH/SV
+        WW10TA046AE/SV
+        WW90TP44DSB/SV
+        WW90TP54DSB/SV
+        WW95TA046AX/SV
+        WW90TP44DSH/SV
+        WW90TP54DSH/SV
+        WW90T634DLE/SV
+        WW95T4040CE/SV
+        WW85T554DAX/SV
+        WW85T554DAW/SV
+        WW85T4040CE/SV
+        WA11T5260BV/SV
+        WA10T5260BV/SV
+        NA-F100A9DRV
+        NA-F90A9DRV
+        NA-F85A9DRV
+        NA-F100A4HRV
+        NA-F100A4GRV
+        NA-F100A4BRV
+        NA-F90A4BRV
+        NA-F90A4HRV
+        NA-F90A4GRV
+        NA-F85A4HRV
+        NA-F85A4GRV
+        NA-V10FX1LVT
+        NA-V90FX1LVT
+        NA-FD12VR1BV
+        NA-FD12XR1LV
+        NA-FD11VR1BV
+        NA-FD11XR1LV
+        NA-FD11AR1GV
+        NA-FD11AR1BV
+        NA-FD10XR1LV
+        NA-FD10VR1BV
+        NA-FD10AR1BV
+        NA-FD10AR1GV
+        NA-FD95V1BRV
+        NA-FD95X1LRV
+        NA-V105FX2BV
+        NA-V10FX2LVT
+        NA-V95FX2BVT
+        NA-V90FX2LVT
+        NA-FD16V1BRV
+        NA-FD14V1BRV
+        NH-E70JA1WVT
+        NH-E80JA1WVT
+        ES-FK1054PV-S
+        ES-FK1054SV-G
+        ES-FK1252PV-S
+        ES-FK1252SV-G
+        ES-FK852EV-W
+        ES-FK852SV-G
+        ES-FK954SV-G
+        ES-W100PV-H
+        ES-W102PV-H
+        ES-W110HV-S
+        ES-W78GV-G
+        ES-W78GV-H
+        ES-W80GV-H
+        ES-W82GV-H
+        ES-W90PV-H
+        ES-W95HV-S
+        ES-X95HV-S
+        ES-X105HV-S
+        ES-Y90HV-S";
 
-        foreach ($product as $key => $value) {
+        $model = explode(PHP_EOL, $code);
 
-            $products = product::find($value->id);
+        foreach ($model as $value) {
 
-            $products->Quantily = 0;
 
-            $products->save();
-           
+            $active = product::select('id')->where('ProductSku', trim($value))->first();
+            if(!empty($active)){
+                $id_active = product::find($active->id);
+                $id_active->Quantily =1;
+                $id_active->active =1;
+                $id_active->save();
+            }
+            else{
+                print_r($value);
+
+            }
+
         }
         echo "thanh cong";
 
     }
+
     public function checkbtu()
     {
         $name = "Điều hòa Mitsubishi MSZ-HL25VA 2 chiều 9000BTU Inverter Gas R410A";

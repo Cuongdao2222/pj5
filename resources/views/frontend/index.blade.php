@@ -206,8 +206,7 @@
                         <div class="col-flash col-flash-2 active">
                             <div id="sync1S" class="slider-banner owl-carousel flash-sale-banner">
 
-                               
-
+                            
                                 @foreach($deal as $value)
 
                                 @if( $value->active ==1)
@@ -403,7 +402,8 @@
         <div class="box-common _cate_1942">
             <ul class="box-common__tab">
                 <li class="active-tab" data-cate-id="1942">{{  @$groups->name }}</li>
-                <!-- <li data-cate-id="2162" data-prop-value-ids="90016">Loa karaoke, Dàn âm thanh</li> -->
+
+                <li data-cate-id="2162" data-prop-value-ids="90016">Loa karaoke, Dàn âm thanh</li>
             </ul>
             <div class="box-common__main relative">
                 <div class="preloader">
