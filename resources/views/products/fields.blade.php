@@ -1,20 +1,15 @@
+
+   
 <?php
     $Group = App\Models\groupProduct::select('id', 'name')->get();
     $maker = App\Models\maker::select('id', 'maker')->get();
-
     $Groups = [];
     $makers  = [];
-
     if(!empty($product)){
-
         $GroupSelected = ($product->toArray())['Group_id'];
-
         $LinkSelected = '/'.($product->toArray())['Link'];
-
         $MakerSelected = ($product->toArray())['Maker'];
-
     }
-
     if(count($Group)>0){
         foreach ($Group as $key => $value) {
             $Groups[$value->id] =  $value->name;
@@ -38,6 +33,7 @@
 
 
 <?php  $url_domain =  Config::get('app.url') ?>
+
 
 <!-- Product Field -->
 <div class="form-group col-sm-6">
@@ -67,7 +63,6 @@
     <div class="link" onclick="removeClick()" style="width: 10%; border: 1px solid red; padding: 5px; margin-top: 10px;">Link khác</div>
 
     <script type="text/javascript">
-
         function toSlug(str) {
             // Chuyển hết sang chữ thường
             str = str.toLowerCase();  
@@ -95,16 +90,12 @@
             // return
             return str;
         }
-
         var slug = '';
-
-
         // lấy slug từ name vào input
         $('#Name').blur(function(){
            slug = $('#Name').val();
            $('#Link').val('/'+toSlug(slug));
         });
-
         $('#Price').change(function(){
             price = $('#Price').val();
             
@@ -114,13 +105,10 @@
             }
            
         });
-
        function numberWithCommas(x) {
-
              x = x.toString().replace(',','');
             return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
-
         function removeClick(){
             
             document.getElementById("Link").removeAttribute("disabled"); 
@@ -128,6 +116,8 @@
         
     </script>
 </div>
+
+
 
 
 
@@ -170,7 +160,7 @@
             <tr>
                 @if(isset($matches[1]))
                 @foreach($matches[1] as $key => $value)
-                <td ><a href="javascript:void(0);" onclick="clicks('images{{ $key }}')"><img src="{{ asset($value) }}" style="max-width:100px; max-height:130px"></a></td>
+                <td ><a href="javascript:void(0);" onclick="clicks('images{{ $key }}', '{{ asset($value) }}')"><img src="{{ asset($value) }}" style="max-width:100px; max-height:130px" id="img{{ $key }}"></a></td>
              
                 @endforeach
                 @endif
@@ -178,11 +168,15 @@
             
            
         </tbody>
+
     </table>
+
+   
     <br>
     
     <br>
 </div>
+<div><a href="{{ route('imagescontent', $product->id) }}">Thêm ảnh content</a></div>
 
 
 <!-- Quantily Field -->
@@ -214,49 +208,37 @@
 <div class="clearfix"></div>
 
 <script type="text/javascript">
-    function clicks(id) {
-
-
+    function clicks(id,src) {
         editor = CKEDITOR.instances.content;
-
         var documentWrapper = editor.document; // replace by your CKEDitor instance ID
         var documentNode = documentWrapper.$; // or documentWrapper['$'] ;
-
-        documentNode.getElementById(id).scrollIntoView();
-
        
-
       
         // CKEDITOR.instances.content.find('#adbro').focus();
         // editor = CKEDITOR.instances.content;
-
         // // var jqDocument = $(editor.document.$);
         // var jqDocument = $(editor.document.$);
-
     
         // var documentHeight = jqDocument.height();
-
-
         // // console.log(jqDocument);
-
         // jqDocument.scrollTop(documentHeight);
-
         
-        // var edata = editor.getData();
+        var edata = editor.getData();
+        var replaced_text = edata.replace(src, "https://icdn.dantri.com.vn/thumb_w/770/2022/05/11/tien-32manh-quan-1652264480967.jpg"); // you could also use a regex in the replace 
+        editor.setData(replaced_text);
+        documentNode.getElementById(id).scrollIntoView();
+        ids = id.replace('images', 'img');
+        // document.getElementById("img"+id).src = "https://icdn.dantri.com.vn/thumb_w/770/2022/05/11/tien-32manh-quan-1652264480967.jpg";
+        $('#'+ids).attr('src', 'https://icdn.dantri.com.vn/thumb_w/770/2022/05/11/tien-32manh-quan-1652264480967.jpg');
 
-        // var replaced_text = edata.replace("https://icdn.dantri.com.vn/thumb_w/770/2022/05/11/tien-32manh-quan-1652264480967.jpg", "iwant this instead"); // you could also use a regex in the replace 
-
-        // editor.setData(replaced_text);
        
     }
-
     
 </script>
 
 
 
 <script>
-
     CKEDITOR.replace( 'content', {
         filebrowserBrowseUrl: '{{ $url_domain }}ckfinder.html',
         filebrowserImageBrowseUrl: '{{ $url_domain }}/ckfinder.html?Type=Images',
@@ -265,7 +247,6 @@
         filebrowserWindowWidth : '1000',
         filebrowserWindowHeight : '700'
     } );
-
     CKEDITOR.replace( 'content-1', {
         filebrowserBrowseUrl: '{{ $url_domain }}ckfinder.html',
         filebrowserImageBrowseUrl: '{{ $url_domain }}/ckfinder.html?Type=Images',
@@ -274,7 +255,6 @@
         filebrowserWindowWidth : '1000',
         filebrowserWindowHeight : '700'
     } );
-
     CKEDITOR.replace( 'content-2', {
         filebrowserBrowseUrl: '{{ $url_domain }}ckfinder.html',
         filebrowserImageBrowseUrl: '{{ $url_domain }}/ckfinder.html?Type=Images',
@@ -283,10 +263,7 @@
         filebrowserWindowWidth : '1000',
         filebrowserWindowHeight : '700'
     } );
-
     
     
-
 </script>
-
 

@@ -9,6 +9,7 @@ use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
+use App\Models\imagescontent;
 
 class imageController extends AppBaseController
 {
@@ -191,5 +192,30 @@ class imageController extends AppBaseController
         Flash::success('Image deleted successfully.');
 
         return redirect(route('images.index'));
+    }
+
+    public function productContentImage(Request $request)
+    {
+        $input = $request->all();
+
+        if ($request->hasFile('image')) {
+
+            $file_upload = $request->file('image');
+
+            foreach ($file_upload as $key => $value) {
+                $name = time() . '_' . $value->getClientOriginalName();
+
+                $filePath = $value->storeAs('uploads/product', $name, 'public');
+
+                $input['image'] = $filePath;
+
+                $images = imagescontent::create($input);
+            }
+
+           
+
+            return redirect()->back();
+            
+        }
     }
 }

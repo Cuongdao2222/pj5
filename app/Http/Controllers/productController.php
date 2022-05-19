@@ -496,6 +496,11 @@ class productController extends AppBaseController
         
     }
 
+    public function imagecontent($id)
+    {
+        return view('products.image', compact('id'));
+    }
+
     
 
     public function search()

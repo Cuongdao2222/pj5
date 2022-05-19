@@ -59,6 +59,9 @@
     
      @if(!empty($metaSeo))
     <div class="btn btn-info seo-click"> Dùng cho SEO </div>
+
+
+
    
     <div class="content px-3">
 
@@ -126,8 +129,6 @@
 
                 $product->Detail = $content1;
             ?>
-
-           
 
             <div class="card-body">
                 <div class="row">

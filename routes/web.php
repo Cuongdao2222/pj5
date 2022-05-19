@@ -164,6 +164,8 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::get('update-permision', 'customnUserController@updatePermision')->name('updatePermission');
 
+    Route::post('productContentImage', 'imageController@productContentImage')->name('imagecontents');
+
 
      Route::post('/addUser', 'customnUserController@addUser')->name('adduser');
 
@@ -226,6 +228,9 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
         return view('funcmore.popup');
         
     })->name('pop-up-show');
+
+    Route::get('imagescontent/{id}', 'productController@imagecontent')->name('imagescontent');
+
 
     Route::get('add-lanfding-pro', 'landingController@addLanding')->name('add-product-landing');
 
