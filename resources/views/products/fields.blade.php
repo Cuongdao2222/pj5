@@ -258,7 +258,7 @@
 <script>
 
     CKEDITOR.replace( 'content', {
-        filebrowserBrowseUrl: '{{ $url_domain }}/ckfinder.html',
+        filebrowserBrowseUrl: '{{ $url_domain }}ckfinder.html',
         filebrowserImageBrowseUrl: '{{ $url_domain }}/ckfinder.html?Type=Images',
         filebrowserUploadUrl: '{{ $url_domain }}/js/core/connector/php/connector.php?command=QuickUpload&type=Files',
         filebrowserImageUploadUrl: '{{ $url_domain }}/js/core/connector/php/connector.php?command=QuickUpload&type=Images',
@@ -267,7 +267,7 @@
     } );
 
     CKEDITOR.replace( 'content-1', {
-        filebrowserBrowseUrl: '{{ $url_domain }}/ckfinder.html',
+        filebrowserBrowseUrl: '{{ $url_domain }}ckfinder.html',
         filebrowserImageBrowseUrl: '{{ $url_domain }}/ckfinder.html?Type=Images',
         filebrowserUploadUrl: '{{ $url_domain }}/js/core/connector/php/connector.php?command=QuickUpload&type=Files',
         filebrowserImageUploadUrl: '{{ $url_domain }}/js/core/connector/php/connector.php?command=QuickUpload&type=Images',
@@ -276,7 +276,7 @@
     } );
 
     CKEDITOR.replace( 'content-2', {
-        filebrowserBrowseUrl: '{{ $url_domain }}/ckfinder.html',
+        filebrowserBrowseUrl: '{{ $url_domain }}ckfinder.html',
         filebrowserImageBrowseUrl: '{{ $url_domain }}/ckfinder.html?Type=Images',
         filebrowserUploadUrl: '{{ $url_domain }}/js/core/connector/php/connector.php?command=QuickUpload&type=Files',
         filebrowserImageUploadUrl: '{{ $url_domain }}/js/core/connector/php/connector.php?command=QuickUpload&type=Images',
