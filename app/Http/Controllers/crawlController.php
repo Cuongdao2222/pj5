@@ -26,6 +26,19 @@ use \Carbon\Carbon;
 class crawlController extends Controller
 {
 
+    public function removeSpaceProductsku()
+    {
+        $product = product::select('ProductSku', 'id')->get();
+        foreach ($product as $key => $value) {
+            $products = product::find($value->id);
+            $products->ProductSku =  str_replace(' ', '',  $products->ProductSku);
+
+            $products->save();
+            
+        }
+        echo "thanh cong";
+
+    }
     public function editProduct()
     {
         $code = "F2721HTTV
@@ -577,7 +590,7 @@ class crawlController extends Controller
                 $id_active->save();
             }
             else{
-                print_r(trim($value));
+                print_r($value);
 
             }
 
