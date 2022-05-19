@@ -38,6 +38,10 @@
             .homebanner span{
                 text-transform: capitalize;
             }
+            .box-common__tab li{
+                background-color: #ff9 !important;
+            
+            }
 
             @media only screen and (max-width: 768px) {
               .Next {
@@ -378,20 +382,16 @@
            
          ?>   
 
-
-
         <div  class="owl-slider-count" style="display: none;">{{ count($group) }}</div> 
         @foreach($group as $key => $groups)
 
             <?php
 
-               
 
                 $hot = DB::table('hot')->select('product_id')->where('group_id', $groups->id)->get()->pluck('product_id');
 
 
                 $data =  DB::table('products')->whereIn('id', $hot)->where('active', 1)->get();
-
 
             ?>
 
@@ -401,9 +401,17 @@
          
         <div class="box-common _cate_1942">
             <ul class="box-common__tab">
-                <li class="active-tab" data-cate-id="1942">{{  @$groups->name }}</li>
+                <li class="active-tab" data-cate-id="1942"><a href="{{  @$groups->link }}">{{  @$groups->name }}</a></li>
+                <?php 
+                    $listGroupsShow = App\Models\groupProduct::select('name', 'link')->where('parent_id', $groups->id)->get();
+                ?>
 
-                <li data-cate-id="2162" data-prop-value-ids="90016">Loa karaoke, Dàn âm thanh</li>
+                @if(!empty($listGroupsShow))
+                @foreach($listGroupsShow as $valueslist)
+
+                <li data-cate-id="2162" data-prop-value-ids="90016"><a href="{{ route('details', $valueslist->link) }}">{{ @$valueslist->name }}</a></li>
+                @endforeach
+                @endif
             </ul>
             <div class="box-common__main relative">
                 <div class="preloader">
