@@ -26,6 +26,31 @@ use \Carbon\Carbon;
 class crawlController extends Controller
 {
 
+    public function editProduct()
+    {
+        $product = product::select('id')->where('Quantily', -1)->get();
+
+        foreach ($product as $key => $value) {
+
+            $products = product::find($value->id);
+
+            $products->Quantily = 0;
+
+            $products->save();
+           
+        }
+        echo "thanh cong";
+
+    }
+    public function checkbtu()
+    {
+        $name = "Điều hòa Mitsubishi MSZ-HL25VA 2 chiều 9000BTU Inverter Gas R410A";
+
+        $strpos = strpos($name, 'BTU');
+
+        print_r($name[$strpos]);
+    }
+
 
     public function checkss()
     {
