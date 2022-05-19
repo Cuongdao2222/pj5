@@ -22,8 +22,6 @@
          background: #52a8d9 !important;
     }    
 
-    
-
     .modal-body tr{
 
         height: 50px !important;
