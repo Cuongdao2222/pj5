@@ -834,11 +834,9 @@
                                         <a href="{{route('details','dieu-hoa-tiet-kiem-dien')}}">
                                             <h3>Điều hòa tiết kiệm điện</h3>
                                         </a>
-                                        <a href="{{route('details','co')}}">
-                                            <h3>Có</h3>
-                                        </a>
+                                        
                                         <a href="{{route('details','co-inverter')}}">
-                                            <h3>Có nverter</h3>
+                                            <h3>Có inverter</h3>
                                         </a>
                                         <a href="{{route('details','khong-inverter')}}">
                                             <h3>Không inverter</h3>
