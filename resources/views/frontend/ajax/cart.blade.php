@@ -5,24 +5,30 @@
 
         $arrPrice = [];
         $key = 0;
+        
     ?>
     @foreach($data_cart as $data)
 
-        <?php    
+        <?php 
+
             $price = (int)$data->price*(int)$data->qty;
             $key++;
             array_push($arrPrice, $price);
+
+            $infoProducts = App\Models\product::find($data->id);
+
+
 
         ?>
 
     <div class="js-item-row product_list_cart" data-variant_id="0" data-item_id="5804" data-item_type="product">
 
         <div class="cart_col_1">
-            <a href="/smart-tivi-lg-43lm5750ptc-43-inch-full-hd/"><img src="https://dienmaynguoiviet.vn/media/product/75_5804_43lm5750ptc_bng.jpg"></a>
+            <a href="{{ route('details', $infoProducts->Link) }}"><img src="{{ asset($infoProducts->Image) }}" style="width: 85px;"></a>
            
         </div>
         <div class="cart_col_2">
-            <a href="/smart-tivi-lg-43lm5750ptc-43-inch-full-hd/"><span class="name">{{ $data->name }}</span></a>
+            <a href="{{ route('details', $infoProducts->Link) }}"><span class="name">{{ $data->name }}</span></a>
             <!--//Kiem tra khuyen mai co lua chon-->
             <ul style="list-style-type: disc;color: #888888;margin-left: 15px;">
             </ul>

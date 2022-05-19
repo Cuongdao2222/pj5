@@ -497,12 +497,13 @@
                             </div>
                             <div class="clearfix"></div>
                             <div class="installment-purchase pdetail-installment">
-                                @if((int)$data['Price']>3000000)
-                                <a target="_blank" class="but-tra-gop" href="{{ route('details', $data->Link)  }}?show=tra-gop" admicro-data-event="101725" admicro-data-auto="1" admicro-data-order="false">
-                                <strong>TRẢ GÓP</strong>
+                                <a  class="but-tra-gop" href="javascript:void(0)" onclick="addCartFast({{ $data->id }})">
+                                <strong>THÊM VÀO GIỎ HÀNG</strong>
                                 <br>
-                                (Công ty tài chính)
+                                (Thêm ngay)
                                 </a>
+                                @if((int)$data['Price']>3000000)
+                               
                                 <a target="_blank" class="but-tra-gop" href="{{ route('details', $data->Link)  }}?show=tra-gop" admicro-data-event="101725" admicro-data-auto="1" admicro-data-order="false">
                                 <strong>TRẢ GÓP QUA THẺ</strong>
                                 <br>
@@ -977,6 +978,33 @@
         });
         
     }
+
+     function addCartFast(id) {
+    
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    
+        $.ajax({
+            type: 'POST',
+            url: "{{ route('addcartfast') }}",
+            data: {
+                product_id: id,
+                   
+            },
+            success: function(result){
+    
+                $('.number-cart').text(result);
+                alert('Thêm sản phẩm vào giỏ hàng thành công !');
+
+            }
+        });
+        
+    }
+
+
     
     $('#carousel').owlCarousel({
         loop:true,

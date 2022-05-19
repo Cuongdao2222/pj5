@@ -342,6 +342,31 @@ class AjaxController extends Controller
        
     }
 
+    public function addCartFast(Request $request)
+    {
+         $id = $request->product_id;
+
+        
+        $data_Product = product::find($id);
+
+        $deal   = deal::where('product_id', $id)->where('active', 1)->get()->first();
+
+        if(!empty($deal)){
+
+            $price = $deal->deal_price;
+
+        }
+        else{
+            $price = $data_Product->Price;
+        }
+             
+        Cart::add(['id' => $id, 'name' => $data_Product->Name,  'qty' => 1, 'price' => $price, 'weight' => '500', 'options' => ['link' => $data_Product->Link]]);
+
+        $data_cart = Cart::content();
+
+        return response(count($data_cart));
+    }
+
     public function removeProductCart(Request $request)
     {
 

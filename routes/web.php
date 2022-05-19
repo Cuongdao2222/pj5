@@ -115,6 +115,8 @@ Auth::routes(['verify' => true]);
 
 Route::post('add-cart', 'AjaxController@addProductToCart')->name('cart');
 
+Route::post('add-cart-fast', 'AjaxController@addCartFast')->name('addcartfast');
+
 Route::post('order-product', 'Frontend\orderController@orderProduct')->name('order');
 
 Route::post('remove-cart', 'AjaxController@removeProductCart')->name('removeCart');
