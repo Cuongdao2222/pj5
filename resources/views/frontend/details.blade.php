@@ -350,7 +350,9 @@
 
                        
                         <div class="modal-body" style="padding:0 15px">
-                            {!!  str_replace(['Xem thêm', ' Xem thêm', '"  Xem thêm"'], '', $data->Salient_Features)  !!} 
+
+                        
+                            {!!  str_replace(['Xem thêm', 'Đặc điểm nổi bật'], '', html_entity_decode($data->Salient_Features))  !!} 
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
