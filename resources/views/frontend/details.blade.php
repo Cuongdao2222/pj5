@@ -348,7 +348,7 @@
                         </div>
                        
                         <div class="modal-body" style="padding:0 15px">
-                           dfgdgdfgfd
+                            {!!  str_replace(['Xem thêm', ' Xem thêm'], '', $data->Salient_Features)  !!} 
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
