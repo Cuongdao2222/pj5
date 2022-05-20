@@ -224,10 +224,6 @@
     {!! Form::select('Maker', $makers, @$MakerSelected, ['class' => 'form-control custom-select']) !!}
 </div>
 
-<div class="btn btn-primary btn-lg"  onclick="code()">click</div>
-
-
-
 
 <!-- Image Field -->
 <div class="form-group col-sm-6">
