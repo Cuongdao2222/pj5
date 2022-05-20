@@ -12,7 +12,7 @@
     $makers  = [];
     if(!empty($product)){
         $GroupSelected = ($product->toArray())['Group_id'];
-        $LinkSelected = '/'.($product->toArray())['Link'];
+        $LinkSelected = ''.($product->toArray())['Link'];
         $MakerSelected = ($product->toArray())['Maker'];
     }
     if(count($Group)>0){
