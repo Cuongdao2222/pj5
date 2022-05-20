@@ -32,14 +32,15 @@
             }
         </style>
 
-    
-
             <?php
-
+            
             require(public_path().'/lib_pay/alepay-v3/config.php');
 
             $errorCode = isset($_GET['errorCode']) ? $_GET['errorCode'] : '';
             $transactionCode = isset($_GET['transactionCode']) ? $_GET['transactionCode'] : '';
+            
+           
+           
             $alepay = new Alepay($config);
             $utils = new AlepayUtils();
             ?>
@@ -58,14 +59,16 @@
 
                                     $data = $alepay->Get_Transaction_data($transactionCode);
                                    
+                                   
                                 ?>
                                 <?php if ($errorCode == '000' || $errorCode == '155') {  ?>
 
+                                   
 
                                     @if($data->message=="Thành công")
 
                                     <?php  
-
+                                       
                                         $data_installment  = App\Models\installment::where('email', $data->buyerEmail)->where('phone', $data->buyerPhone)->get()->last();
                                     ?>
                                     
@@ -110,7 +113,13 @@
                                                 <?php 
 
                                                     $product = App\Models\product::find($data_installment->product_id);
-
+                                                    
+                                                    $qualtyty = $data_installment->qualtity;
+                                                    
+                                                    $product->Quantily = (int)$product->Quantily- (int)$qualtyty;
+                                                    
+                                                    $product->save();
+                                                    
                                                     
                                                 ?>
 

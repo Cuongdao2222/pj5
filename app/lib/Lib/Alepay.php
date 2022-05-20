@@ -251,7 +251,7 @@ class Alepay {
     {
         $data['tokenKey'] = 'yJVzaXsEfDKYvf6D4hineQMHEBI3EF';
         $data['transactionCode'] = $transactionCode;
-        $signature = $this->alepayUtils->makeSignature($data, 'd7hEU8EAha7ReAtgnmpDbfjpbKgdvx');
+        $signature = $this->alepayUtils->makeSignature($data, 'HaG8ImT64DO8Iivg8qWokIwfqC542x');
         $data['signature'] = $signature;
         $data_string = json_encode($data);
         $url =  'https://alepay-v3.nganluong.vn/api/v3/checkout/'. $this->URI['getTransactionInfo'];
