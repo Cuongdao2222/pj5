@@ -9,6 +9,8 @@ use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use App\Models\product;
 use App\Models\metaSeo;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Flash;
 use Response;
 
@@ -349,7 +351,7 @@ class groupProductController extends AppBaseController
 
             }
 
-            return response('thanh cong');
+           
             
         }
         // th xóa ko chọn
@@ -364,7 +366,7 @@ class groupProductController extends AppBaseController
 
                 $this->deleteChild($id, $product_id);
 
-                return response('thanh cong');  
+                
 
 
             } 
@@ -427,10 +429,17 @@ class groupProductController extends AppBaseController
                 
             }
 
-            return response('thanh cong');
+           
 
 
         }
+         $product_tick = product::find($product_id);
+        $product_tick->updated_at = Carbon::now();
+        $product_tick->user_id = Auth::user()->id;
+        $product_tick->save();
+
+         return response('thanh cong');
+
 
     }
 }

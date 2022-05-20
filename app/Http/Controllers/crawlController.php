@@ -25,6 +25,92 @@ use \Carbon\Carbon;
 
 class crawlController extends Controller
 {
+    public function getAllimageContent()
+    {
+        $products = product::select('id')->OrderBy('id', 'asc')->get();
+
+        foreach ($products as $key => $value) {
+
+            $product = product::find($value->id);
+            if($product->id<4176){
+
+                if(!empty($product->Detail)){
+
+                    preg_match_all('/<img.*?src=[\'"](.*?)[\'"].*?>/i', $product->Detail, $matches);
+                
+                    if(isset($matches[1])){
+                        foreach ($matches[1] as $key => $images) {
+
+            
+
+                            $file_headers = @get_headers($images);
+
+                            if(is_array($file_headers)){
+
+                                if(array_key_exists(0, $file_headers) && $file_headers[0] == 'HTTP/1.1 200 OK'){
+                                    $img  = str_replace('https://dienmaynguoiviet.vn/media', '/media', $images);
+
+                                    file_put_contents(public_path().$img, file_get_contents($images));
+                                }
+                               
+
+                                 
+                            }
+
+                           
+                        }
+
+                    }    
+
+                }
+            }
+            
+        } 
+
+        echo "thanh cong";   
+
+    }
+    public function checkContennull($value='')
+    {
+         $products = product::select('id')->OrderBy('id', 'asc')->get();
+
+        foreach ($products as $key => $value) {
+            $product = product::find($value->id);
+
+            if(empty($product->Detail)){
+
+                $url = 'https://dienmaynguoiviet.vn/'.trim($product->Link).'/';
+
+                $html = file_get_html(trim($url));
+                $content  = html_entity_decode($html->find('.emty-content',0));
+
+                if(!empty($content)){
+                    $product->Detail = $content;
+
+                    $product->save();
+                }
+                else{
+                    print_r($url.'<br>');
+                }
+                
+            }
+            
+        }  
+        echo "thanh cong";  
+    }
+    public function removedot()
+    {
+        
+        $products = product::select('id')->OrderBy('id', 'asc')->get();
+
+        foreach ($products as $key => $value) {
+            $product = product::find($value->id);
+            $product->Detail = str_replace('..https://dienmaynguoiviet.vn/media/', 'https://dienmaynguoiviet.vn/media/', $product->Detail);
+            $product->save();
+        }    
+        echo "thanh cong";
+
+    }
     public function crawlProductEdit()
     {
 

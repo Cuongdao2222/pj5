@@ -33,6 +33,8 @@ use Illuminate\Support\Facades\Auth;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
 use DB;
+
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Session;
 use App\Models\rate;
 
@@ -457,7 +459,6 @@ class AjaxController extends Controller
 
                 $filter->save();
 
-                return response('Thêm thành công');
 
             }
 
@@ -483,7 +484,7 @@ class AjaxController extends Controller
 
                         $filter->save();
 
-                        return response('xóa thành công');
+                       
 
                     }
                    
@@ -505,9 +506,14 @@ class AjaxController extends Controller
 
             $filter->save();
 
-            return response('thêm thành công');
+            
 
         }
+        $product_tick = product::find($product_id);
+        $product_tick->updated_at = Carbon::now();
+        $product_tick->user_id = Auth::user()->id;
+        $product_tick->save();
+        return response('thành công');
 
 
     }

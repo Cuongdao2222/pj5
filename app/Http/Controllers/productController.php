@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
 use App\Models\hotProduct;
 use Flash;
+use Illuminate\Support\Facades\Auth;
 use Session;
 
 
@@ -164,6 +165,8 @@ class productController extends AppBaseController
 
         $input['Meta_id'] = $meta_model['id'];
 
+        $input['user_id'] =  Auth::user()->id;
+
         
 
         $product = $this->productRepository->create($input);
@@ -270,8 +273,8 @@ class productController extends AppBaseController
             $input['Image'] = $filePath;
         }
 
-
-
+        $input['user_id'] =  Auth::user()->id;
+        
          
         $product = $this->productRepository->update($input, $id);
 
