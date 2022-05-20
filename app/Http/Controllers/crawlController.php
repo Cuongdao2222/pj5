@@ -25,7 +25,43 @@ use \Carbon\Carbon;
 
 class crawlController extends Controller
 {
+    public function crawlProductEdit()
+    {
 
+        $products = product::select('id')->OrderBy('id', 'asc')->get();
+        foreach ($products as $key => $value) {
+
+            $product = product::find($value->id);
+
+            if(!empty($product->Link)){
+                 $url = 'https://dienmaynguoiviet.vn/'.$product->Link.'/';
+
+                $html = file_get_html(trim($url));
+               
+                $content  = html_entity_decode($html->find('.emty-content .Description',0));
+
+                $contents = str_replace('https://dienmaynguoiviet.vn/media', '/media', $content);
+
+                $contents = str_replace('/media', 'https://dienmaynguoiviet.vn/media', $content);
+
+                $product->Detail = $contents;
+
+                $product->save();
+
+            }
+            else{
+                print_r($value->id.' ');
+            }
+
+            if($value->id>4175){
+                break;
+            }    
+             
+        } 
+   
+        echo "thanh cong";
+           
+    }
     public function removeSpaceProductsku()
     {
         $product = product::select('ProductSku', 'id')->get();
@@ -5502,8 +5538,6 @@ https://dienmaynguoiviet.vn/may-say-lg-dr-80bw-80-kg/';
 
     public function checkimageNulll()
     {
-        
-
         
 
 

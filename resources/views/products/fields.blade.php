@@ -294,7 +294,10 @@
         filebrowserUploadUrl: '{{ $url_domain }}/js/core/connector/php/connector.php?command=QuickUpload&type=Files',
         filebrowserImageUploadUrl: '{{ $url_domain }}/js/core/connector/php/connector.php?command=QuickUpload&type=Images',
         filebrowserWindowWidth : '1000',
-        filebrowserWindowHeight : '700'
+        filebrowserWindowHeight : '700',
+        
+
+
     } );
     CKEDITOR.replace( 'content-1', {
         filebrowserBrowseUrl: '{{ $url_domain }}ckfinder.html',

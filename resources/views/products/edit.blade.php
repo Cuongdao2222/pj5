@@ -114,20 +114,25 @@
                 $ar_new = [];
 
                 $ar_change = [];
-                foreach ($matches[1] as $key => $value) {
-                    str_replace('id="images'.$key.'"','', $contens);
+                if(!empty($matches[1])){
+
+                    foreach ($matches[1] as $key => $value) {
+                        str_replace('id="images'.$key.'"','', $contens);
 
 
-                    $values = 'src="'.$value.'"';
-                    $values1 = 'src="'.asset($value).'" id="images'.$key.'"';
+                        $values = 'src="'.$value.'"';
+                        $values1 = 'src="'.asset($value).'" id="images'.$key.'"';
 
-                    $ar_new[] = $values;
-                    $ar_change[] = $values1;
-                   
+                        $ar_new[] = $values;
+                        $ar_change[] = $values1;
+                       
+                    }
+                    $content1 = str_replace($ar_new, $ar_change, $contens);
+
+                    $product->Detail = $content1;
+
                 }
-                $content1 = str_replace($ar_new, $ar_change, $contens);
-
-                $product->Detail = $content1;
+                
             ?>
 
             <div class="card-body">
