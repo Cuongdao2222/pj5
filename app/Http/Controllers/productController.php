@@ -314,7 +314,7 @@ class productController extends AppBaseController
 
         $resultProduct = [];
 
-        $find_first = Product::select('id')->where('Name','LIKE', '%'. $data .'%')->OrWhere('ProductSku', 'LIKE', '%' . $data . '%')->get()->pluck('id');
+        $find_first = Product::select('id')->where('Name','LIKE', '%'. $data .'%')->OrWhere('ProductSku', 'LIKE', '%' . $data . '%')->OrderBy('id', 'desc')->take(50)->get()->pluck('id');
 
        
 
@@ -333,10 +333,8 @@ class productController extends AppBaseController
 
             $products = Product::whereIn('id', $resultProduct)->paginate(10);
 
-    
             return view('products.index')
             ->with('products', $products);
-
 
         }
         else{
