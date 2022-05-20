@@ -168,18 +168,26 @@
     }
 
     function click1(id, src) {
-        editor = CKEDITOR.instances.content;
-        var documentWrapper = editor.document; // replace by your CKEDitor instance ID
-        var documentNode = documentWrapper.$; // or documentWrapper['$'] ;
-        var edata = editor.getData();
-        var replaced_text = edata.replace(activeReplace[0], src); // you could also use a regex in the replace 
-        editor.setData(replaced_text);
-        documentNode.getElementById(activeReplace[1]).scrollIntoView();
-        $('#'+activeReplace[2]).attr('src', src);
-        activeReplace.pop();
-        activeReplace.pop();
-        activeReplace.pop();
-        $('.tdimg').removeClass('border1');
+        if(activeReplace.length==0){
+            img = '<img src="'+src+'">';
+            CKEDITOR.instances['content'].insertHtml(img);
+        }
+        else{
+            editor = CKEDITOR.instances.content;
+            var documentWrapper = editor.document; // replace by your CKEDitor instance ID
+            var documentNode = documentWrapper.$; // or documentWrapper['$'] ;
+            var edata = editor.getData();
+            var replaced_text = edata.replace(activeReplace[0], src); // you could also use a regex in the replace 
+            editor.setData(replaced_text);
+            documentNode.getElementById(activeReplace[1]).scrollIntoView();
+            $('#'+activeReplace[2]).attr('src', src);
+            activeReplace.pop();
+            activeReplace.pop();
+            activeReplace.pop();
+            $('.tdimg').removeClass('border1');
+        }
+
+        
     }
     
 </script>
