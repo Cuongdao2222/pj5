@@ -45,6 +45,21 @@ class orderController extends Controller
 
         $input['orderId'] = $carts[0]['orderId'];
 
+    
+        // trừ số sản phẩm đã đặt
+
+        $product_subtract = product::find($carts[0]['id']);
+
+        $qty  = $carts[0]['qty'];
+
+        $resultqty = (int)$product_subtract->Quantily- (int)$qty;
+
+        $product_subtract->Quantily = $resultqty;
+
+        $product_subtract->save();
+
+
+
         $carts_mail = $carts;
 
         $carts = json_encode($carts);

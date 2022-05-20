@@ -61,7 +61,6 @@
                                 ?>
                                 <?php if ($errorCode == '000' || $errorCode == '155') {  ?>
 
-                                     
 
                                     @if($data->message=="Thành công")
 
