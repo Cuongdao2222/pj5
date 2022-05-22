@@ -496,14 +496,19 @@
                                 </div>
 
                                 <?php  
-                                    $now = Carbon\Carbon::now();
+                                   
 
-                                    $promotion = promotion_product($datas->id, $now);
+                                    $gift = gift($datas->id);
                                 ?>
                                 
 
-                                @if(!empty($promotion))
-                                    <div class="quatang"><img src="{{ asset($promotion->image) }}"></div>
+                                @if(!empty($gift))
+
+                                    $gift = $gift['gift'];
+
+                                    @foreach($gift as $gifts)
+                                    <div class="quatang"><img src="{{ asset($gifts->image) }}"></div>
+                                    @endforeach
                                 @endif
                                 
                             </a>

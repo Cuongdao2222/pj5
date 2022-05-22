@@ -19,6 +19,46 @@ if (!function_exists('_substrs')) {
     }
 }
 
+
+if (!function_exists('gift')) {
+
+    function gift($id){
+
+        $now = Carbon\Carbon::now();
+
+        $promotion = DB::table('promotion')->where('id_product', $id)->get()->first();
+
+        $gift = [];
+    
+        if(!empty($promotion)){
+            $gifts     = DB::table('group_gift')->where('id', $promotion->id_group_gift)->first();
+
+            $start    = new Carbon\Carbon($gifts->start);
+
+            $end     = new Carbon\Carbon($gifts->end);
+
+
+            if($now->between($start, $end)){
+
+                $gifts_ar = [$gifts->gift1, $gifts->gift2];
+        
+                $gift = DB::table('gifts')->whereIn('id',  $gifts_ar)->get()->toArray();
+
+                $gift =  ['gift'=>$gift, 'gifts'=>$gifts];
+
+                
+            }
+        
+        }
+        return $gift;
+
+
+    }
+ 
+
+}
+
+
 if (!function_exists('convertSlug')) {
 
     function convertSlug($title)

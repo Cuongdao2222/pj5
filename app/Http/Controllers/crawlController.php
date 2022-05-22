@@ -25,6 +25,25 @@ use \Carbon\Carbon;
 
 class crawlController extends Controller
 {
+
+    public function changeQualtity()
+    {
+        $data = DB::table('qualtity')->select('name', 'qty')->get();
+
+        foreach ($data as $key => $value) {
+          
+            $product = product::where('ProductSku', trim($value->name))->select('id')->first();
+
+            if(!empty($product)){
+                $productId = product::find($product->id);
+                $productId->Quantily = $value->qty;
+                $productId->save();
+                DB::table('product_update1')->insert(['product_id'=>$product->id, 'qty'=>$value->qty]);
+            }  
+
+        }
+        echo "thanh cong";
+    }
    public function emptyContent()
    {
         $products = product::select('id', 'Link')->OrderBy('id', 'asc')->where('Detail', '')->get();

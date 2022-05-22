@@ -129,7 +129,7 @@ Route::post('rate-form', 'AjaxController@rateForm')->name('rate-form');
 
 
 
-Route::get('show-viewer-product', 'AjaxController@showViewerProduct')->name('show-viewed-product');
+Route::post('show-viewer-product', 'AjaxController@showViewerProduct')->name('show-viewed-product');
 
 Route::get('/category/{slug}', 'Frontend\categoryController@index')->name('category-product')->middleware('auth');
 
@@ -158,6 +158,8 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
     Route::get('filter-group-id', 'dealController@getProductToGroupId')->name('filter-group-id');
 
     Route::get('fill-product-deal', 'dealController@getProductToName')->name('filter-product-deal');
+
+     Route::get('destroyGroupGift/{id}', 'giftController@destroyGift')->name('destroyGiftGroup');
 
 
     Route::post('/editFastPrice', 'productController@editFastPrice')->name('fast-price');

@@ -335,6 +335,7 @@
              body.theme-lunar-new-year {
                 background-image: url('{{ asset($background->background_image)  }}');
             }    
+             
         </style>
         @else
 
@@ -359,6 +360,26 @@
             }
         </style>
         @endif
+
+        <style type="text/css">
+            
+            .loader {
+              height: 5rem;
+              width: 5rem;
+              border-radius: 50%;
+              border: 10px solid orange;
+              border-top-color: #002147;
+              box-sizing: border-box;
+              background: transparent;
+              animation: loading 1s linear infinite;
+              position: absolute;
+                top: 50%;
+                left: 50%;
+                z-index: 999;
+
+            }
+
+        </style>
 
         @stack('style')
         
@@ -1090,6 +1111,7 @@
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
+                    <div class="loader"></div>
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Thông tin giỏ hàng</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -1254,7 +1276,7 @@
 
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary">Đặt hàng</button>
+                                    <button type="submit" class="btn btn-primary order1">Đặt hàng</button>
                                 </div>
 
 
@@ -1543,7 +1565,7 @@ s0.parentNode.insertBefore(s1,s0);
   <script>
 
 
-
+     $('.loader').hide();
 
     $(function() {
         $("#tags").autocomplete({
@@ -1586,14 +1608,13 @@ s0.parentNode.insertBefore(s1,s0);
   </script>
 
     <script type="text/javascript">
-        
+       
          function topFunction() {
   
            $("html, body").animate({ scrollTop: 0 }, 1000);
             return false;
           
         }
-
 
     </script>
 
@@ -1648,6 +1669,8 @@ s0.parentNode.insertBefore(s1,s0);
     @endif
 
     <script type="text/javascript">
+
+       
 
         $('.register-forms').click(function(){
             $("#Modal-login").modal("hide");
@@ -1778,7 +1801,14 @@ s0.parentNode.insertBefore(s1,s0);
                     event.preventDefault();
                 }
                 else{
-                     return;
+                    var click = 0;
+                    click++;
+
+                    $('.order1').remove();
+                    $('#exampleModal .modal-footer').append('<div  class="btn btn-primary">Đang xử lý đơn hàng</div>')
+                    $('.loader').show();
+                    return;
+                    
                 }
             }
 

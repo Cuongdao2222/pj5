@@ -1,3 +1,4 @@
+
     @if(isset($product_viewer))
     <p class="related__ttl">Sản phẩm đã xem</p>
 

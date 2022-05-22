@@ -9,6 +9,7 @@ use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
+use DB;
 
 class giftController extends AppBaseController
 {
@@ -176,5 +177,24 @@ class giftController extends AppBaseController
         Flash::success('Gift deleted successfully.');
 
         return redirect(route('gifts.index'));
+    }
+
+    public function destroyGift($id)
+    {
+      
+       $check = DB::table('promotion')->where('id_group_gift', $id)->first();
+
+
+       if(empty($check)){
+
+            DB::table('group_gift')->where('id', $id)->delete();
+
+            Flash::success('xóa thành công');
+
+       }
+       else{
+            return redirect()->back();
+             Flash::error('Không thể xóa vì có khuyến mãi đang chạy');
+       }
     }
 }

@@ -12,7 +12,7 @@
 
 
 <?php 
-
+    
     function get_Group_Product($id){
         $data_groupProduct = App\Models\groupProduct::where('level', 0)->get()->pluck('id');
 
@@ -41,6 +41,8 @@
 
     }
     $name_product = App\Models\product::find($id);
+
+
 
     ?>        
 
@@ -81,6 +83,13 @@
         }
 
     }
+    $parentclicks = get_Group_Product($id); 
+
+    $count_child   = App\Models\groupProduct::where('parent_id', 1)->get();
+
+     echo "<pre>";
+
+     print_r(count($count_child));
 
 
 

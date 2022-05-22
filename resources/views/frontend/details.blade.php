@@ -1,6 +1,32 @@
 @extends('frontend.layouts.apps')
 @section('content') 
 <style type="text/css">
+
+    .loader {
+      height: 5rem;
+      width: 5rem;
+      border-radius: 50%;
+      border: 10px solid orange;
+      border-top-color: #002147;
+      box-sizing: border-box;
+      background: transparent;
+      animation: loading 1s linear infinite;
+      position: absolute;
+        top: 50%;
+        left: 45%;
+        z-index: 999;
+        display: none;
+    }
+
+    @keyframes loading {
+      0% {
+        transform: rotate(0deg);
+      }
+      0% {
+        transform: rotate(360deg);
+      }
+    }
+
     div.stars {
     width: auto !important;
     }   
@@ -112,6 +138,7 @@
         
         } 
 </style>
+
 <?php  
     $check_deal = App\Models\deal::select('deal_price')->where('product_id', $data->id)->where('active', 1)->first();
     
@@ -120,7 +147,8 @@
         $data->Price = $check_deal->deal_price;
     
     }
-    
+
+    $gift = gift($data->id);
     
     ?>
 @push('style')
@@ -245,16 +273,9 @@
                                 <div class="pdetail-price-box">
                                     <h3>{{ str_replace(',' ,'.', number_format($data->Price)) }}₫ </h3>
                                 </div>
-                                <!-- <div class="pdetail-promotion">
-                                    <div class="pdetail-promotion-body">
-                                        <ul>
-                                            Tặng máy đánh trứng đa năng Roler RHM-1002 trị giá 790,000đ
-                                            <li>Tặng eVoucher trị giá 200,000đ mua phụ kiện IT, phụ kiện Mobile (có giá trị sử dụng trong 07 ngày). Chi tiết xem <a href="https://mediamart.vn/tin-khuyen-mai/tang-voucher-tri-gia-200-000vnd-mua-cac-san-pham-phu-kien" target="_blank">tại đây</a>.</li>
-                                            <li>TÀI TRỢ TRẢ GÓP 0% LÃI SUẤT (*)</li>
-                                        </ul>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                    </div> -->
+
+                                
+                                
                             </div>
                             <div class="pdetail-status">
                                 <div class="pdetail-stockavailable">
@@ -263,7 +284,7 @@
                                             $status ='Tạm hết hàng';
                                         
                                         }
-                                        elseif($data->Quantily==-1){
+                                        elseif($data->Quantily<=-1){
                                             $status ='Ngừng kinh doanh';
                                         }
                                         else{
@@ -274,6 +295,17 @@
                                         
                                         ?>
                                     <span>{{ $status }}</span>
+                                </div>
+
+                                <div class="pdetail-promotion">
+                                    <div class="pdetail-promotion-body">
+                                        <ul>
+                                            Tặng máy đánh trứng đa năng Roler RHM-1002 trị giá 790,000đ
+                                            <li>Tặng eVoucher trị giá 200,000đ mua phụ kiện IT, phụ kiện Mobile (có giá trị sử dụng trong 07 ngày). Chi tiết xem <a href="https://mediamart.vn/tin-khuyen-mai/tang-voucher-tri-gia-200-000vnd-mua-cac-san-pham-phu-kien" target="_blank">tại đây</a>.</li>
+                                            <li>TÀI TRỢ TRẢ GÓP 0% LÃI SUẤT (*)</li>
+                                        </ul>
+                                        <div class="clearfix"></div>
+                                    </div>
                                 </div>
 
                                 <!-- mobile -->
@@ -500,7 +532,7 @@
                                     </button> -->
                             </div>
                             <div class="clearfix"></div>
-                            <div class="installment-purchase pdetail-installment">
+                            <div class="installment-purchase c">
                                 <a  class="but-tra-gop giohang" href="javascript:void(0)" onclick="addCartFast({{ $data->id }})">
                                 <strong>THÊM VÀO GIỎ HÀNG</strong>
                                 <br>
@@ -519,13 +551,13 @@
                             </div>
                             @else
 
-                            <div class="pdetail-add-to-cart add-to-cart">
+                            <div class="pdetail-add-to-cart add-to-cart pdetail-installment">
                                 <div class="inline">
                                    
                                   
                                     <button type="button" class="btn btn-lg btn-add-cart btn-add-cart redirectCart">Liên hệ</button>
                                 </div>
-                               
+                                 {!!  $data->Specifications  !!} 
                             </div>
                            
                             @endif
@@ -642,27 +674,7 @@
             </div>
             @endif
         </div>
-        <!-- <div class="scrolling_inner">
-            <div class="box03 box03--nopadd scrolling">
-                <a href="/tivi-samsung" class="box03__item addradius">
-                <img class="lazyload" data-src="//cdn.tgdd.vn/Brand/2/Samsung1942-b_51.png" />
-                </a>
-                <a href="/tivi?p=tu-15tr-20tr" class="box03__item addradius">
-                T&#x1EEB; 15tr - 20tr                        </a>
-                <a href="/tivi-crystal-uhd" class="box03__item addradius">
-                Crystal UHD                        </a>
-                <a href="/tivi?g=smart-tivi" class="box03__item addradius">
-                Smart Tivi                        </a>
-                <a href="/tivi?g=50-inch" class="box03__item addradius">
-                50 inch                        </a>
-                <a href="/tivi?g=ultra-hd-4k" class="box03__item addradius">
-                4K                        </a>
-                <a href="/tivi-tro-ly-ao-google-assistant" class="box03__item addradius">
-                Tr&#x1EE3; l&#xFD; &#x1EA3;o Google Assistant                        </a>
-                <a href="/tivi-choi-game" class="box03__item addradius">
-                Ch&#x1A1;i game tr&#xEA;n tivi                        </a>
-            </div>
-            </div> -->
+       
     </div>
     <div class="border7"></div>
     <div class="watched"></div>
@@ -690,33 +702,23 @@
     </div>
     <div class="clear space3px"></div>
     <div class="clear space10px"></div>
-    <?php
-        $now = Carbon\Carbon::now();
-        
-        $promotion = DB::table('promotion')->where('id_product', $data->id)->get()->first();
-        
-        if(!empty($promotion)){
-            $gifts     = DB::table('group_gift')->where('id', $promotion->id_group_gift)->first();
-        
-            $gifts_ar = [$gifts->gift1, $gifts->gift2];
-        
-            $gift = DB::table('gifts')->whereIn('id',  $gifts_ar)->get()->toArray();  
-        
-        }
-         
-        
-        ?>
-    @if(!empty($promotion ))      
+   
+       
+    @if(!empty($gift))   
+
+    <?php  
+        $gifts = $gift['gifts'];
+        $gift = $gift['gift'];
+    ?>
+  
     <div class="promo line_h19">
         <div class="txt_b">Khuyến mại: {{ $gifts->type ==1?'Lựa chọn 1 trong 2 sản phẩm sau':'' }}</div>
         <div style="display: flex;">
-            <img src="{{ @asset($gift1->image) }}" height="30px" width="30px">
-            <p>{{ @$gift1->name??'' }}</p>
+            @foreach($gift as $values)
+            <img src="{{ @asset($values->image) }}" height="30px" width="30px">
+            <p>{{ @$values->name??'' }}</p>
             <br>
-            @if(!empty($gift2->name))
-            <img src="{{ asset($gift2->image) }}" height="30px" width="30px">
-            <p>{{ ($gift2->name)??'' }}</p>
-            @endif
+            @endforeach
         </div>
     </div>
     @endif
@@ -927,23 +929,24 @@
 </script>
 <script type="text/javascript">
     $('.bar-top-left').hide();
-    
-    
+
+     $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
     $.ajax({
-        type: 'GET',
+        type: 'POST',
         url: "{{ route('show-viewed-product') }}",
         data: {
-            product_id: view_product_id,
+            product_id: view_product_id
                
         },
         success: function(result){
-
-          
            // numberCart = result.find($("#number-product-cart").text());
            $('.viewer-product').append(result);
-    
            
-            
         }
     });    
     
@@ -962,6 +965,11 @@
                 product_id: id,
                    
             },
+            beforeSend: function() {
+               
+                $('.loader').show();
+
+            },
             success: function(result){
     
                //  numberProductCart = $(".number-cart").text();
@@ -977,6 +985,7 @@
                 $('.number-cart').text(numberCart);
     
                 $('#exampleModal').modal('show'); 
+                $('.loader').hide();
                 
             }
         });

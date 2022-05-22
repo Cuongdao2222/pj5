@@ -119,6 +119,7 @@
                         <th>Quà 1</th>
                         <th>Quà 2</th>
                         <th>kiểu chọn</th>
+                        <th>Xóa</th>
                     </tr>
                     @isset($list)
                     @foreach($list as $lists)
@@ -131,6 +132,7 @@
                            {{ @$gift2->name }}
                         </td>
                         <td>{{ $lists->type==1?'chọn 1 trong 2 sản phẩm':'chọn toàn bộ sản phẩm' }}</td>
+                        <td><a href="{{ route('destroyGiftGroup', $lists->id) }}">xóa</a></td>
                     </tr>
                     @endforeach   
                     @endif
