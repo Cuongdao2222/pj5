@@ -463,7 +463,23 @@
                 </div>
             </div>
             <div class="content">
-                {!! $data->Detail !!}
+                 
+
+                <?php
+                    $check = DB::table('imagecrawl')->select('image')->where('product_id', $data->id)->where('active',0)->get()->pluck('image')->toArray();
+                    if(isset($check)){
+
+                        
+                        $details = str_replace($check,'http://dienmaynguoiviet.net/uploads/product/crawl/1651119016_5947_qa55q60a_115.jpg', $data->Detail);
+                        
+
+                    }
+                    
+
+                ?>
+
+                 {!!  html_entity_decode($details)  !!}
+                
             </div>
             <div class="show-more">
                 <span>Đọc thêm</span>

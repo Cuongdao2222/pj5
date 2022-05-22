@@ -98,6 +98,21 @@
                     <div class="item-bottom">
                         <a href="#" class="shiping"></a>
                     </div>
+                    <table class="tbl_time" width="100%">
+                        <thead>
+                            <tr>
+                           
+                            <td>Thời gian còn lại</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr bgcolor="#eee">
+                           
+                            <td ><div  class="clock" ><span>40</span>&nbsp;:&nbsp; <span>39</span>&nbsp;:&nbsp; <span>35</span></div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                  
                 </div>
             </div>
@@ -119,9 +134,7 @@
 
   
     <div class="errorcompare" style="display:none;"></div>
-   <!--  <div class="block__banner banner__topzone">
-        <a data-cate="0" data-place="1919" href="https://www.topzone.vn/" onclick="jQuery.ajax({ url: '/bannertracking?bid=48557&r='+ (new Date).getTime(), async: true, cache: false });"><img style="cursor:pointer" src="https://cdn.tgdd.vn/2021/12/banner/Frame4879-1200x120.jpg" alt="Promote Topzone" width="1200" height="120"></a>
-    </div> -->
+  
     <div class="watched"></div>
     <div class="overlay"></div>
 
@@ -236,6 +249,8 @@
             let currentTimeStr =currentHour + ":" + currentMinutes + ":" + currentSeconds;
 
             console.log(currentTimeStr);
+
+            $('.clock').html(currentTimeStr);
 
               // Insert the time string inside the DOM
               document.getElementById("clock").innerHTML = `<h1>Thời gian còn lại ${currentTimeStr}</h1>`;

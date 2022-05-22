@@ -12,6 +12,8 @@
 
 
 <?php 
+
+
     
     function get_Group_Product($id){
         $data_groupProduct = App\Models\groupProduct::where('level', 0)->get()->pluck('id');
@@ -57,43 +59,6 @@
 
 <h2>Sửa danh mục cho sản phẩm {{ $name_product->Name }}</h2>
 
-
-<?php 
-
-    function get_child_of_Parent($parent){
-
-        $count_child   = App\Models\groupProduct::where('parent_id', $parent)->get();
-
-        $ar_child = [];
-
-        if(count($count_child)>0){
-
-            for ($i=0; $i < count($count_child); $i++) { 
-
-                $find = $i==0?$parent:$childs->id;
-                
-                $childs = App\Models\groupProduct::where('parent_id',  $find)->first();
-
-                $ar_child[$i] = $childs->id;
-
-            }
-
-            return $ar_child;
-
-        }
-
-    }
-    $parentclicks = get_Group_Product($id); 
-
-    $count_child   = App\Models\groupProduct::where('parent_id', 1)->get();
-
-     echo "<pre>";
-
-     print_r(count($count_child));
-
-
-
-?>
 
 
 <div class="table-responsive">
