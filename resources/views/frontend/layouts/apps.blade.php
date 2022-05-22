@@ -1412,7 +1412,7 @@
                                 <a href="{{ route('details', 'page/cach-thuc-thanh-toan') }}">Cách thức thanh toán</a>
                             </li>
                             <li>
-                                <a href="{{ route('details', 'bang-gia-vat-tu-lap-dat-may-giat') }}">Bảng giá vật tư lắp đặt</a>
+                                <a href="{{ route('details', 'bang-gia-vat-tu-lap-dat') }}">Bảng giá vật tư lắp đặt</a>
                             </li>
                         </ul>
                     </div>
