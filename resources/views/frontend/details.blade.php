@@ -143,6 +143,9 @@
                 width: 271px;
                 text-align: center;
             }
+            .prod-info{
+                display: none;
+            }
           
 
         
@@ -962,8 +965,7 @@
     
     button_buy_height = $('.scroll-box').offset().top;
     view_more_height  = ($('.view-more-related').offset().top);
-    
-     $(".prod-info").hide();
+ 
                 
     $(".show-more span").bind("click", function(){
         $('.content').css({'height':'auto', 'overflow':'auto' });
