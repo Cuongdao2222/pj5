@@ -53,6 +53,18 @@
             .flash-sale .flash-product .col-flash-2 .item .desc .countdown-flash-sale .time-cd span.hours span{
                 font-size: 18px;
             }
+            .col1-big-img{
+                height: 90%;
+            }
+            .texts{
+                height: 10%;
+            }
+            .texts p{
+               
+                font-size: 25px !important;
+                height: 42px;
+                line-height: 42px !important;
+            }
 
             @media only screen and (max-width: 768px) {
               .Next {
@@ -573,8 +585,11 @@
                         <div class="col1-big-img">
                             <img data-src="{{ asset( $post[0]['image'])  }}" class=" ls-is-cached lazyloaded" alt="{{ $post[0]['title'] }}" src="{{ $post[0]['image'] }}">
                         </div>
+                        <div class="span texts">
+                            <p class="spl-item-title">{{ $post[0]['title'] }}</p>
+                        </div>
 
-                        <p class="spl-item-title">{{ $post[0]['title'] }}</p>
+                        
                        
                     </a>
                     <div class="col1-simple">
