@@ -138,6 +138,7 @@
             .tbl_time_top thead td {
                 font-weight: bold;
             }
+
         
         } 
 </style>
@@ -495,9 +496,7 @@
 
                     }
                     $domain = Request::server ("SERVER_NAME");
-                    
-                    
-
+                   
                 ?>
 
                  {!! html_entity_decode(str_replace('dienmaynguoiviet.vn', $domain, $details))   !!}

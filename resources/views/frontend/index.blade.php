@@ -73,6 +73,10 @@
                 margin-top: 10px !important; 
             } 
 
+             .col1-simple a{
+                display: flex;
+            }
+
             @media only screen and (max-width: 768px) {
               .Next {
                 display: none;
