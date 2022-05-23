@@ -78,10 +78,10 @@
             }
 
               .applications .col1-big{
-                width: 49%;
+                width: 60%;
             }
             .col1-simple{
-                width: 51% !important;
+                width: 40% !important;
             }
 
             @media only screen and (max-width: 768px) {
