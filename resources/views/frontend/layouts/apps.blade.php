@@ -1806,6 +1806,8 @@ s0.parentNode.insertBefore(s1,s0);
 
                     $('.order1').remove();
                     $('#form-sub .btn-secondary').remove();
+
+                    $('#exampleModal .close').hide();
                     
                     $('#exampleModal .modal-footer').append('<div  class="btn btn-primary">Đang xử lý đơn hàng</div>')
                     $('.loader').show();
