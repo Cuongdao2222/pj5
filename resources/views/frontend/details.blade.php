@@ -501,11 +501,11 @@
                         
 
                     }
-                    $domain = Request::server ("SERVER_NAME");
+                    $domain = env('APP_URL');
                    
                 ?>
 
-                 {!! html_entity_decode(str_replace('dienmaynguoiviet.vn', $domain, $details))   !!}
+                 {!! html_entity_decode(str_replace('https://dienmaynguoiviet.vn/', $domain, $details))   !!}
                 
             </div>
             <div class="show-more">
