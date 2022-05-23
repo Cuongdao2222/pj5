@@ -35,7 +35,7 @@
                  height: 42px;   
              }  
 
-            .tbl_time tbody td {
+             #deal_list_page .tbl_time tbody td {
                 font-size: 15px;
                 font-weight: bold;
                 color: #0080cb;

@@ -312,7 +312,7 @@
                                     $product_info = App\Models\product::find($val->product_id);
                                 ?>
                                 <td align="center">
-                                    <img src="{{ asset($product_info->image) }}" width="70">
+                                    <img src="{{ asset($product_info->Image) }}" width="100">
                                     <!--<div><a style="color:green" href="javascript:;" onclick="delete_special(1208)">Xóa bỏ</a></div>-->
                                 </td>
                                 <td>
