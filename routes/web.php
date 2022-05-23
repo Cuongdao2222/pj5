@@ -18,6 +18,8 @@ Route::get('/tin-khuyen-mai/', 'Frontend\blogController@index')->name('tin');
 
 Route::get('/tin-tong-hop/', 'Frontend\blogController@index')->name('tin-th');
 
+Route::get('/tin-tuc-tong-hop/', 'Frontend\blogController@index')->name('tin-th');
+
 
 Route::get('/', 'Frontend\indexController@index')->name('homeFe');
 Route::get('/ckfinder.html', function () {
