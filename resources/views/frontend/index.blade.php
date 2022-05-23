@@ -205,9 +205,9 @@
 
         <!-- flash sale -->
             <div class="">
-                <div class="flash-sale" style="height: 398px;">
+                <div class="flash-sale" style="height: 305px;">
                     <span id="banner-flash-sale"><a href="{{ route('dealFe') }}">
-                    <img width="256" src="{{  asset('images/background-image/Flash_Sale_Theme_256x396.jpg')}}" style="width: 256px; height: 396px" alt="banner-fs">
+                    <img width="256" src="{{  asset('images/background-image/Flash_Sale_Theme_256x396.jpg')}}" style="width: auto; height: 396px" alt="banner-fs">
                     </a></span>
                     <div class="flash-product nk-product-of-flash-sales">
                         <div class="col-flash col-flash-2 active">
@@ -217,6 +217,10 @@
                                 @foreach($deal as $value)
 
                                 @if( $value->active ==1)
+
+                                 <?php 
+                                    $price = App\Models\product::find($value->product_id)->Price;
+                                ?>
 
                                 <div class="item">
                                     <a href="{{ route('details', $value->link) }}">
@@ -229,7 +233,7 @@
                                         <h4 class="title">{{ $value->name }}</h4>
                                         <div class="container-price">
                                                <div>
-                                                    <p class="black-price">{{ @str_replace(',' ,'.', number_format($value->deal_price))}}&#x20AB;</p><span class="price-old">{{ @str_replace(',' ,'.', number_format($value->price)) }}&#x20AB;</span>
+                                                   <span class="price-old">{{ @str_replace(',' ,'.', number_format($price)) }}&#x20AB;</span>
                                                </div>
                                         </div>
                                         <div style="margin-top: 11px">

@@ -36,7 +36,7 @@
         font-size: 14px;
         padding: 8px 5px;
         line-height: 18px;
-        width: 49%;
+        width: 100%;
         border-radius: 5px;
         display: inline-block;
         text-align: center;
@@ -99,12 +99,12 @@
                 height: 30px !important;
             }
             .pdetail-installment table{
-                width: 440px !important;
+                width: 430px !important;
                 overflow: hidden;
             }
             .pdetail-installment{
                 height: 400px;
-                width: 440px;
+                width: 430px;
                 overflow: hidden;
             }
             .pdetail-installment td{
@@ -140,11 +140,24 @@
 </style>
 
 <?php  
-    $check_deal = App\Models\deal::select('deal_price')->where('product_id', $data->id)->where('active', 1)->first();
+    $check_deal = App\Models\deal::select('deal_price','start', 'end')->where('product_id', $data->id)->where('active', 1)->first();
+
+
     
     if(!empty($check_deal) && !empty(!empty($check_deal->deal_price))){
+         $now  = Carbon\Carbon::now();
+        $timeDeal_star = $check_deal->start;
+        $timeDeal_star =  \Carbon\Carbon::create($timeDeal_star);
+        $timeDeal_end = $check_deal->end;
+        $timeDeal_end =  \Carbon\Carbon::create($timeDeal_end);
+        $timestamp = $now->diffInSeconds($timeDeal_end);
+
+        if($now->between($timeDeal_star, $timeDeal_end)){
+            $text = '<b>MUA ONLINE GIÁ SỐC: </b>';
+            $data->Price = $check_deal->deal_price;
+        }
     
-        $data->Price = $check_deal->deal_price;
+        
     
     }
 
@@ -271,7 +284,8 @@
                             </div>
                             <div class="pdetail-price">
                                 <div class="pdetail-price-box">
-                                    <h3>{{ str_replace(',' ,'.', number_format($data->Price)) }}₫ </h3>
+                                    {!! @$text !!}
+                                    <h3> {{ str_replace(',' ,'.', number_format($data->Price)) }}₫ </h3>
                                 </div>
 
                                 
@@ -297,7 +311,7 @@
                                     <span>{{ $status }}</span>
                                 </div>
 
-                                <div class="pdetail-promotion">
+                                <!-- <div class="pdetail-promotion">
                                     <div class="pdetail-promotion-body">
                                         <ul>
                                             Tặng máy đánh trứng đa năng Roler RHM-1002 trị giá 790,000đ
@@ -306,7 +320,7 @@
                                         </ul>
                                         <div class="clearfix"></div>
                                     </div>
-                                </div>
+                                </div> -->
 
                                 <!-- mobile -->
                                 @if($data->Quantily>0)
@@ -470,15 +484,17 @@
                     if(isset($check)){
 
                         
-                        $details = str_replace($check,'http://dienmaynguoiviet.net/uploads/product/crawl/1651119016_5947_qa55q60a_115.jpg', $data->Detail);
+                        $details = str_replace($check,  asset('/images/product/noimage.png'), $data->Detail);
                         
 
                     }
+                    $domain = Request::server ("SERVER_NAME");
+                    
                     
 
                 ?>
 
-                 {!!  html_entity_decode($details)  !!}
+                 {!! html_entity_decode(str_replace('dienmaynguoiviet.vn', $domain, $details))   !!}
                 
             </div>
             <div class="show-more">
@@ -508,9 +524,30 @@
                             </div>
                             </div> -->
                         <div class="pdetail-price">
+                            @if(!empty($text))
+                            <div class="tbl_time_top">
+                                <table class="tbl_time" width="100%">
+                                    <thead>
+                                    <tr>
+                                        
+                                        <td>Thời gian còn lại</td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr bgcolor="#eee">
+                                        <td class="clock"></td>
+                                       
+                                        
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            @endif
+                             {!!  @$text !!}
                             <div class="pdetail-price-box">
+
                                 <h3>
-                                    {{str_replace(',' ,'.', number_format($data->Price))  }}₫
+                                     {{str_replace(',' ,'.', number_format($data->Price))  }}₫
                                 </h3>
                             </div>
                             <!-- <div class="pdetail-promotion">
@@ -548,12 +585,8 @@
                                     </button> -->
                             </div>
                             <div class="clearfix"></div>
-                            <div class="installment-purchase c">
-                                <a  class="but-tra-gop giohang" href="javascript:void(0)" onclick="addCartFast({{ $data->id }})">
-                                <strong>THÊM VÀO GIỎ HÀNG</strong>
-                                <br>
-                                (Thêm ngay)
-                                </a>
+                            <div class="installment-purchase pdetail-installment">
+                                
                                 @if((int)$data['Price']>3000000)
                                
                                 <a target="_blank" class="but-tra-gop" href="{{ route('details', $data->Link)  }}?show=tra-gop" admicro-data-event="101725" admicro-data-auto="1" admicro-data-order="false">
@@ -573,7 +606,8 @@
                                   
                                     <button type="button" class="btn btn-lg btn-add-cart btn-add-cart redirectCart">Liên hệ</button>
                                 </div>
-                                 {!!  $data->Specifications  !!} 
+
+                                {!!  $data->Specifications  !!} 
                             </div>
                            
                             @endif
@@ -690,7 +724,6 @@
             </div>
             @endif
         </div>
-       
     </div>
     <div class="border7"></div>
     <div class="watched"></div>
@@ -749,9 +782,7 @@
         @endif
         @if((int)$data->Price>3000000)
         <div class="clear space10px credit">
-            <a class="btn-buy txt_center cor5px but-1-gop giohang"   href="javascript:void(0)" onclick="addCartFast({{ $data->id }})" style="border-bottom: 0;" >
-            <i class="fa fa-shopping-cart"></i> <span class="txt_15">Thêm giỏ hàng</span>
-            </a>
+           
             <a class="btn-buy txt_center cor5px"  href="{{ route('details', $data->Link)  }}?show=tra-gop" style="background: #ffde00; border-bottom: 0;">
             <i class="fa fa-shopping-cart"></i> <span class="txt_15" >Trả góp qua thẻ</span>
             </a>
@@ -1077,6 +1108,131 @@
             }
         }
     });
+
+    @if(!empty($text))
+
+        // đếm thời gian 
+
+         //document.getElementById('svg').innerHTML = xmlSvg;
+                                        
+        time = '{{ @$timestamp }}';
+        number_deal_product =10;
+        //in time 
+        var h = 12;
+        var i = 0;
+        var s = 0;
+    
+        amount = time //calc milliseconds between dates
+        days = 0;
+        hours = 0;
+        mins = 0;
+        secs = 0;
+        out = "";
+    
+    
+        hours = Math.floor(amount / 3600);
+        amount = amount % 3600;
+        mins = Math.floor(amount / 60);
+        amount = amount % 60;
+        secs = Math.floor(amount);
+            
+            
+    
+    
+        //time run 
+        if(parseInt(time)>0 && parseInt(number_deal_product)>0){
+         h = hours;
+          m = mins;
+          s = secs;
+        }   
+        else{
+            let today =  new Date();
+            h = 99 - parseInt(today.getHours());
+            m = 59 - parseInt(today.getMinutes());
+            s = 59 - parseInt(today.getSeconds());
+            
+        }
+
+        start();    
+        function start()
+        {
+
+              /*BƯỚC 1: LẤY GIÁ TRỊ BAN ĐẦU*/
+              if (h === null)
+              {
+                  h = parseInt($('.hour').text());
+
+              }
+
+              /*BƯỚC 1: CHUYỂN ĐỔI DỮ LIỆU*/
+              // Nếu số giây = -1 tức là đã chạy ngược hết số giây, lúc này:
+              //  - giảm số phút xuống 1 đơn vị
+              //  - thiết lập số giây lại 59
+              if (s === -1){
+                  m -= 1;
+                  s = 59;
+              }
+
+              // Nếu số phút = -1 tức là đã chạy ngược hết số phút, lúc này:
+              //  - giảm số giờ xuống 1 đơn vị
+              //  - thiết lập số phút lại 59
+              if (m === -1){
+                  h -= 1;
+                  m = 59;
+              }
+
+              // Nếu số giờ = -1 tức là đã hết giờ, lúc này:
+              //  - Dừng chương trình
+              //if (h == -1){
+
+                 //clearTimeout(timeout);
+                 //$('#timer-391923717').hide();
+                  //return false;
+
+
+              //}
+
+
+
+              /*BƯỚC 1: HIỂN THỊ ĐỒNG HỒ*/
+
+
+
+              var hour =  h.toString();
+
+              var seconds =  s.toString();
+
+              var minutes =  m.toString();
+
+
+
+              // $('.hourss').text(h<10?'0'+hour:''+hour);
+              // $('.secondss').text(s<10?'0'+seconds:''+seconds);
+              // $('.minutess').text(m<10?'0'+minutes:''+minutes);
+
+            let currentHour = h<10?'0'+hour:''+hour;
+            let currentMinutes = m<10?'0'+minutes:''+minutes;
+            let currentSeconds = s<10?'0'+seconds:''+seconds;
+
+    
+            let currentTimeStr =currentHour + ":" + currentMinutes + ":" + currentSeconds;
+
+          
+
+            $('.clock').html(currentTimeStr);
+
+              // Insert the time string inside the DOM
+           
+
+              /*BƯỚC 1: GIẢM PHÚT XUỐNG 1 GIÂY VÀ GỌI LẠI SAU 1 GIÂY */
+              timeout = setTimeout(function(){
+                  s--;
+                  start();
+
+
+              }, 1000);
+        }
+    @endif    
 </script>
 @endpush
 @endsection
