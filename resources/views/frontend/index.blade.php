@@ -89,7 +89,10 @@
                 width: 140px;;
                 height: auto !important;
                 margin-bottom: 12px;
-            }    
+            }  
+            .applications .spl-item-title {
+                font-size: 13.5px !important;
+            }  
 
 
             @media only screen and (max-width: 768px) {
