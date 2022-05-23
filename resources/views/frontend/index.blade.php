@@ -65,6 +65,13 @@
                 height: 42px;
                 line-height: 42px !important;
             }
+            .applications .spl-item__content {
+                width: 100% !important;
+            }   
+
+            .applications .spl-item__content {
+                margin-top: 10px !important; 
+            } 
 
             @media only screen and (max-width: 768px) {
               .Next {
