@@ -42,6 +42,17 @@
                 background-color: #ff9 !important;
             
             }
+            .flash-product .desc .title{
+                font-weight: bold;
+            }
+
+            .flash-sale .flash-product .col-flash-2 .item .desc h4.title{
+                width: 100%;
+            }
+
+            .flash-sale .flash-product .col-flash-2 .item .desc .countdown-flash-sale .time-cd span.hours span{
+                font-size: 18px;
+            }
 
             @media only screen and (max-width: 768px) {
               .Next {
@@ -207,7 +218,7 @@
             <div class="">
                 <div class="flash-sale" style="height: 305px;">
                     <span id="banner-flash-sale"><a href="{{ route('dealFe') }}">
-                    <img width="256" src="{{  asset('images/background-image/Flash_Sale_Theme_256x396.jpg')}}" style="width: auto; height: 396px" alt="banner-fs">
+                    <img width="256" src="{{  asset('images/background-image/Flash_Sale_Theme_256x396.jpg')}}" style="width: auto; height: 300px" alt="banner-fs">
                     </a></span>
                     <div class="flash-product nk-product-of-flash-sales">
                         <div class="col-flash col-flash-2 active">
@@ -570,7 +581,7 @@
 
                         @for($i=1; $i<count($post); $i++)
 
-                        <a href="{{ route('details', $post[$i]['link']) }}" class="spl-item">
+                        <a href="{{ route('details', $post[$i]['link']) }}" class="">
                             <div class="spl-item__img">
                                 <img data-src="{{ asset($post[$i]['image']) }}" class=" lazyloaded" alt="{{ $post[$i]['title'] }}" src="{{ asset($post[$i]['image']) }}">
                             </div>
