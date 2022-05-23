@@ -464,8 +464,7 @@ class productController extends AppBaseController
 
         $numberdata = 0;
 
-        $find_first = Product::select('id')->where('Name','LIKE', '%'. $datas .'%')->OrWhere('ProductSku', 'LIKE', '%' . $datas . '%')->Where('active', 1)->OrderBy('id', 'desc')->take(50)->get()->pluck('id');
-
+        $find_first = Product::select('id')->where('Name','LIKE', '%'. $datas .'%')->Where('active', 1)->OrWhere('ProductSku', 'LIKE', '%' . $datas . '%')->Where('active', 1)->OrderBy('id', 'desc')->take(50)->get()->pluck('id');
 
 
         if(isset($find_first)){
