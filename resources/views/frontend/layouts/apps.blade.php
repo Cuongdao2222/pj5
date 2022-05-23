@@ -1079,17 +1079,17 @@
                         </span></p>
                        
                         <nav class="nav-list">
-                            <a href="http://dienmaynguoiviet.net/ti-vi">Tivi</a>
-                            <a href="http://dienmaynguoiviet.net/may-giat">Máy giặt</a>
-                            <a href="http://dienmaynguoiviet.net/tu-lanh">Tủ lạnh</a>
-                            <a href="http://dienmaynguoiviet.net/dieu-hoa">Điều hòa</a>
-                            <a href="http://dienmaynguoiviet.net/tu-dong">Tủ đông</a>
-                            <a href="http://dienmaynguoiviet.net/tu-mat">Tủ Mát</a>
-                            <a href="http://dienmaynguoiviet.net/gia-dung">Gia dụng</a>
-                            <a href="http://dienmaynguoiviet.net/may-loc-nuoc">Máy lọc nước</a>
-                            <a href="http://dienmaynguoiviet.net/may-say-quan-ao">Máy sấy quần áo</a>
-                            <a href="http://dienmaynguoiviet.net/may-loc-nuoc-ao-smith">A.O.Smith</a>
-                            <a href="http://dienmaynguoiviet.net/may-cu-trung-bay">Máy cũ, Trưng bày</a>
+                            <a href="{{ route('details','ti-vi') }}">Tivi</a>
+                            <a href="{{ route('details','may-giat') }}">Máy giặt</a>
+                            <a href="{{ route('details','tu-lanh') }}">Tủ lạnh</a>
+                            <a href="{{ route('details','dieu-hoa') }}">Điều hòa</a>
+                            <a href="{{ route('details','tu-dong') }}">Tủ đông</a>
+                            <a href="{{ route('details','tu-mat') }}">Tủ Mát</a>
+                            <a href="{{ route('details','gia-dung') }}">Gia dụng</a>
+                            <a href="{{ route('details','may-loc-nuoc') }}">Máy lọc nước</a>
+                            <a href="{{ route('details','may-say-quan-ao') }}">Máy sấy quần áo</a>
+                            <a href="{{ route('details','may-loc-nuoc-ao-smith') }}">A.O.Smith</a>
+                            <a href="{{ route('details','may-cu-trung-bay') }}">Máy cũ, Trưng bày</a>
                             
                                                         
                             <a href="/deal" class="promotion-menu">
