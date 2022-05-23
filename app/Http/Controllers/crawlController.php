@@ -26,6 +26,18 @@ use \Carbon\Carbon;
 class crawlController extends Controller
 {
 
+    public function checkempty()
+    {
+        $code = product::select('ProductSku', 'Detail')->get();
+
+        foreach ($code as $key => $value) {
+            
+            if(empty($value->Detail)){
+                echo "<pre>";
+                print_r($value->ProductSku);
+            }
+        }
+    }
     public function changeQualtity()
     {
         $data = DB::table('qualtity')->select('name', 'qty')->get();
