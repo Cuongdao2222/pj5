@@ -84,6 +84,14 @@
                 width: 40% !important;
             }
 
+            .applications .spl-item__img {
+
+                width: 140px;;
+                height: auto !important;
+                margin-bottom: 12px;
+            }    
+
+
             @media only screen and (max-width: 768px) {
               .Next {
                 display: none;
