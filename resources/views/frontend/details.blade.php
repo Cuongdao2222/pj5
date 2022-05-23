@@ -135,11 +135,15 @@
             .pdetail-installment td{
                 height: 30px !important;
             }
+            .tbl_time_top thead td {
+                font-weight: bold;
+            }
         
         } 
 </style>
 
 <?php  
+
     $check_deal = App\Models\deal::select('deal_price','start', 'end')->where('product_id', $data->id)->where('active', 1)->first();
 
 
@@ -153,8 +157,10 @@
         $timestamp = $now->diffInSeconds($timeDeal_end);
 
         if($now->between($timeDeal_star, $timeDeal_end)){
+            $price_old = $data->Price;
             $text = '<b>MUA ONLINE GIÁ SỐC: </b>';
             $data->Price = $check_deal->deal_price;
+            $percent = ceil((int)$price_old/$data->Price);
         }
     
         
@@ -529,20 +535,24 @@
                                 <table class="tbl_time" width="100%">
                                     <thead>
                                     <tr>
-                                        
-                                        <td>Thời gian còn lại</td>
+                                        <td align="center">Tiết kiệm</td>
+                                        <td align="center">Đã mua</td>
+                                        <td align="center">Thời gian còn lại</td>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <tr bgcolor="#eee">
-                                        <td class="clock"></td>
-                                       
-                                        
+                                        <td align="center">{{@$percent}}%</td>
+                                        <td align="center">0</td>
+                                        <td align="center"><div id="to_time1205" class="clock" data-id="1205" data-time-left="133131"></div>
+
+                                        </td>
                                     </tr>
                                     </tbody>
                                 </table>
                             </div>
                             @endif
+                            <br>
                              {!!  @$text !!}
                             <div class="pdetail-price-box">
 

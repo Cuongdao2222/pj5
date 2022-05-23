@@ -33,7 +33,14 @@
 
             .list-pro h3 {
                  height: 42px;   
-             }   
+             }  
+
+            .tbl_time tbody td {
+                font-size: 15px;
+                font-weight: bold;
+                color: #0080cb;
+                text-align: center;
+            } 
         </style>
 
     
@@ -68,6 +75,8 @@
 
             <?php 
                 $product = App\Models\product::find($value->product_id);
+                $price_old = $product->Price;
+                $percent = ceil((int)$price_old/(int)$value->deal_price);
             ?>                                                     
             <div class="col-md-3 col-6 lists">
                 <div class="item  __cate_1942">
@@ -105,14 +114,16 @@
                     <table class="tbl_time" width="100%">
                         <thead>
                             <tr>
-                           
+                            <td>Tiết kiệm</td>
+                            <td>Người đã mua</td>
                             <td>Thời gian còn lại</td>
                             </tr>
                         </thead>
                         <tbody>
                             <tr bgcolor="#eee">
-                           
-                            <td ><div  class="clock" ><span>40</span>&nbsp;:&nbsp; <span>39</span>&nbsp;:&nbsp; <span>35</span></div>
+                            <td align="center">{{ @$percent }}%</td>
+                            <td align="center">0</td>
+                            <td align="center"><div  data-time-left="132624" class="clock"></div>
                                 </td>
                             </tr>
                         </tbody>

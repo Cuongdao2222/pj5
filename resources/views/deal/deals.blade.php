@@ -208,6 +208,8 @@
                     <div>
                         
                         <div class="btn btn-primary add-product">Thêm sản phẩm</div>
+
+                        <div class="btn btn-default accepts">Xác nhận</div>
                     </div>
 
                     <br>
@@ -307,15 +309,15 @@
                                 <td>{{ $k }}</td>
 
                                 <?php 
-                                    $price = App\Models\product::find($val->product_id)->Price;
+                                    $product_info = App\Models\product::find($val->product_id);
                                 ?>
                                 <td align="center">
-                                    <img src="{{ asset($val->image) }}" width="70">
+                                    <img src="{{ asset($product_info->image) }}" width="70">
                                     <!--<div><a style="color:green" href="javascript:;" onclick="delete_special(1208)">Xóa bỏ</a></div>-->
                                 </td>
                                 <td>
                                     <div><a href="{{ route('details', $val->link) }}" target="_blank"><b>{{ $val->name }}</b></a></div>
-                                    <div>Giá deal : <b style="color:red;">{{str_replace(',' ,'.', number_format($val->deal_price))}}</b> vnd - Giá thường: <b style="color:red;">{{  str_replace(',' ,'.', number_format($price))   }}</b> </div>
+                                    <div>Giá deal : <b style="color:red;">{{str_replace(',' ,'.', number_format($val->deal_price))}}</b> vnd - Giá thường: <b style="color:red;">{{  str_replace(',' ,'.', number_format($product_info->price))   }}</b> </div>
                                     <div>Số lượng : <b style="color:red;">0</b> - Số tối thiểu cho 1 đơn hàng: <b style="color:red;">0</b></div>
                                     <div>Thời gian : Từ <b style="color:red;">{{ @$val->start }}</b> đến <b style="color:red;">{{ $val->end }}</b> 
                                         ({{ $now->between($val->start, $val->end)?'Đang bắt đầu':'chưa bắt đầu'}})
@@ -342,7 +344,7 @@
                         </tbody>
                     </table>
                     <br>
-                    <div class="btn btn-default accepts">Xác nhận</div>
+                    
                 </div>
                 
             </div>
