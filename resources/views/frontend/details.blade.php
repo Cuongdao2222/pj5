@@ -138,6 +138,11 @@
             .tbl_time_top thead td {
                 font-weight: bold;
             }
+
+            .prod-info .btn-buy{
+                width: 271px;
+                text-align: center;
+            }
           
 
         
