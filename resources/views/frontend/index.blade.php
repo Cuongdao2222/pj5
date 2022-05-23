@@ -77,6 +77,13 @@
                 display: flex;
             }
 
+              .applications .col1-big{
+                width: 49%;
+            }
+            .col1-simple{
+                width: 51% !important;
+            }
+
             @media only screen and (max-width: 768px) {
               .Next {
                 display: none;
@@ -84,6 +91,9 @@
               .desk-t{
                 display: none !important;
               }
+              .col1-simple{
+                    width: 100% !important;
+                }
             }
         </style>
 

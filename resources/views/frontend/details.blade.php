@@ -138,6 +138,7 @@
             .tbl_time_top thead td {
                 font-weight: bold;
             }
+          
 
         
         } 
