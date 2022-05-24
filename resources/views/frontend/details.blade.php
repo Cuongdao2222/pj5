@@ -510,7 +510,7 @@
                    
                 ?>
 
-                 {!! html_entity_decode($details))   !!}
+                 {!! html_entity_decode($details)   !!}
                 
             </div>
             <div class="show-more">
