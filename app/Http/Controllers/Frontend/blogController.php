@@ -11,16 +11,8 @@ class blogController extends Controller
 {
     public function index()
     {
-
-        $data  = Cache::get('data');
-        if(empty($data)){
-
-            $datas = post::select('title','content', 'id','category','image', 'link')->orderBy('date_post','desc')->paginate(10);
-            Cache::put('data',  $datas, $seconds = 10000);
-
-            $data = Cache::get('data');
-
-        }
+         $data = post::select('title','content', 'id','category','image', 'link')->orderBy('date_post','desc')->paginate(10);
+      
         return view('frontend.blog',compact('data'));
     }
     
