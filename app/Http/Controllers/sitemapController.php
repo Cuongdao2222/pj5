@@ -376,9 +376,7 @@ class sitemapController extends Controller
    {
     $blog = post::take(60)->OrderBy('id', 'desc')->get();
 
-    dd($blog );
-
-
+    
        return response()->view('sitemap.childs_blog', [
             'arr_number' => $blog
         ])->header('Content-Type', 'text/xml');
