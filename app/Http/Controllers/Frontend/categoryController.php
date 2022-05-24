@@ -18,6 +18,8 @@ use App\Models\category;
 
 use App\Models\metaSeo;
 
+ use Illuminate\Support\Facades\Cache;
+
 
 use Gloudemans\Shoppingcart\Facades\Cart;
 
@@ -63,7 +65,11 @@ class categoryController extends Controller
 
 
 
-            $findID = groupProduct::where('link', $link)->first();
+            $findID = Cache::rememberForever($cache, function() use ($link) {
+
+                return  product::select('id')->where('Link', $link)->first();
+            });
+
             $id_cate = $findID->id;
             $groupProduct_level = $findID->level;
             $ar_list = $this->find_List_Id_Group($id_cate,$groupProduct_level);
