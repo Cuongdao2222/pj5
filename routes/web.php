@@ -201,6 +201,8 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::post('info-pop-up', 'showController@addPopup')->name('add-popup');
 
+    Route::post('user-edit-pass', 'customnUserController@changePassWord')->name('changepass');
+
     Route::post('add-image-background', 'showController@addBackgroundSite')->name('add-image-background');
 
     Route::get('rate', function () {

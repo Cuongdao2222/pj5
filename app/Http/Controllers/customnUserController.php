@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Support\Facades\Session;
 
+use Illuminate\Support\Facades\Hash;
+
 
 use Flash;
 
@@ -119,6 +121,40 @@ class customnUserController extends Controller
 
        }
         return redirect(route('view-user'));
+    }
+
+    public function changePassWord(Request $request)
+    {
+        $id = Auth::user()->id;
+
+        $password = $request->password;
+
+        $old_password = $request->old_password;
+
+    
+
+
+        $user_info = User::find($id);
+        $hashedPassword = $user_info->password;
+ 
+        if (Hash::check($old_password, trim($hashedPassword))) {
+
+             $user_info->password = bcrypt($password);
+
+             $user_info->save();
+
+             Session::flash('success', 'Đổi mật khẩu thành công');
+
+             print_r('Đổi mật khẩu thành công');
+
+        }
+        else{
+            Session::flash('error', 'Mật khẩu cũ không đúng');
+
+            print_r('Mật khẩu cũ không đúng');
+
+        }
+         // return redirect()->back();
     }
 
    

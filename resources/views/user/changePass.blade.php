@@ -278,31 +278,32 @@
     <div class="header">
         <h2>Đổi passwords</h2>
     </div>
-    <form id="form" class="form">
+
+    @include('flash::message')
+    <form id="form" class="form" method="POST" action="{{ route('changepass') }}">
+        @csrf
         <div class="form-controls">
-            <label for="username">Username</label>
-            <input type="text" placeholder="" id="username" />
-            <i class="fas fa-check-circle"></i>
-            <i class="fas fa-exclamation-circle"></i>
-            <small>Error message</small>
+            <?php $user = Auth::user()->name; ?>
+            <label for="username">Username {{ $user }}</label>
+            
         </div>
         <div class="form-controls">
             <label for="username">Password cũ</label>
-            <input type="password_old" placeholder="" id="password_old" />
+            <input type="password" placeholder="" id="password_old" name="old_password" />
             <i class="fas fa-check-circle"></i>
             <i class="fas fa-exclamation-circle"></i>
             <small>Error message</small>
         </div>
         <div class="form-controls">
             <label for="username">Password</label>
-            <input type="password" placeholder="" id="password" />
+            <input type="password" placeholder="" id="password" name="password" />
             <i class="fas fa-check-circle"></i>
             <i class="fas fa-exclamation-circle"></i>
             <small>Error message</small>
         </div>
         <div class="form-controls">
             <label for="username">Nhập lại password mới</label>
-            <input type="password" placeholder="re-enter" id="password2" />
+            <input type="password" placeholder="re-enter" id="password2" name="re_password" />
             <i class="fas fa-check-circle"></i>
             <i class="fas fa-exclamation-circle"></i>
             <small>Error message</small>
