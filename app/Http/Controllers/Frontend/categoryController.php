@@ -390,7 +390,9 @@ class categoryController extends Controller
                 return view('frontend.installment', compact('data'));
             }
 
-            $other_product = product::where('Group_id',  $data->Group_id)->get();
+             $other_product = Cache::remember('other_product', 50, function() use ($data) {
+                return  product::where('Group_id',  $data->Group_id)->take(10)->get();
+            });
 
             $meta = metaSeo::find($data->Meta_id);
 
