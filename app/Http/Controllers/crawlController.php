@@ -75,7 +75,7 @@ class crawlController extends Controller
         $post = post::select('id', 'Meta_id', 'link')->get();
 
         foreach ($post as $key => $value) {
-            $urls = 'https://dienmaynguoiviet.vn/'.$value->link.'/';
+            $urls = 'http://dienmaynguoiviet.com/'.$value->link.'/';
             $file_headers =@get_headers($urls);
 
             if(!$file_headers || $file_headers[0] == 'HTTP/1.1 404 Not Found'){
