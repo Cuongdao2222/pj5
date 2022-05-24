@@ -271,7 +271,7 @@
                         @isset($images)
                         @foreach($images as $image)
                         <div class="item">
-                            <img src="{{ asset($image->image) }}">
+                            <img src="{{ asset($image->image) }}"  data-src="{{ asset($image->image) }}" class="lazyload">
                         </div>
                         @endforeach
                         @endisset
@@ -291,9 +291,9 @@
                                 <div class="banner-list">
                                     <div class="item banner-item banner-item-1">
                                         <a target="&quot;_blank&quot;" href="#" data-id="1022">
-                                            <picture>
+                                            <!-- <picture>
                                                 <img src="https://thegioidohoacom.s3.ap-southeast-1.amazonaws.com/wp-content/uploads/2019/01/10040348/X4iNCOp-1024x454.jpg" alt="Tết Lớn Khuyến Mại Lớn" width="&quot;640&quot;" height="&quot;150&quot;">
-                                            </picture>
+                                            </picture> -->
                                         </a>
                                     </div>
                                 </div>
@@ -497,18 +497,21 @@
 
                 <?php
                     $check = DB::table('imagecrawl')->select('image')->where('product_id', $data->id)->where('active',0)->get()->pluck('image')->toArray();
+
+                     $details = $data->Detail;
                     if(isset($check)){
 
                         
                         $details = str_replace($check,  asset('/images/product/noimage.png'), $data->Detail);
+                        $details = str_replace('http://dienmaynguoiviet.net', 'https://dienmaynguoiviet.vn', $details);
                         
 
                     }
-                    $domain = env('APP_URL');
+                   
                    
                 ?>
 
-                 {!! html_entity_decode(str_replace('https://dienmaynguoiviet.vn/', $domain, $details))   !!}
+                 {!! html_entity_decode($details)   !!}
                 
             </div>
             <div class="show-more">
