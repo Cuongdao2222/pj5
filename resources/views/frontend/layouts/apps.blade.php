@@ -347,7 +347,13 @@
             }  
             .danh-muc1{
                 left: 0px !important;
-            }    
+            } 
+            .hotlines{
+                position:fixed; 
+                bottom:49px; 
+                right:72px; 
+                z-index:9999   
+            }
 
             @media only screen and (max-width: 768px) {
                   .menus-banner .strongtitle {
@@ -356,6 +362,10 @@
                       -webkit-box-orient: vertical;
                       overflow: hidden;
                       display: -webkit-box;
+                  }  
+                  .hotlines{
+                    bottom:100px; 
+                    right:0; 
                   }  
             }
         </style>
@@ -1491,7 +1501,7 @@
             </div>
         </footer>
 
-        <div style="position:fixed; bottom:49px; right:72px; z-index:9999">   
+        <div class="hotlines">   
         <a href="tel:02473036336"><img src="{{ asset('images/template/tongdai02473036336.png') }}" alt="hotline" style="height:72px; z-index: 999;"></a>
           
         <div class="clear"></div>
