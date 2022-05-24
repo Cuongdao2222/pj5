@@ -503,6 +503,7 @@
 
                         
                         $details = str_replace($check,  asset('/images/product/noimage.png'), $data->Detail);
+                        $details = str_replace('http://dienmaynguoiviet.net', 'https://dienmaynguoiviet.vn', $details);
                         
 
                     }
