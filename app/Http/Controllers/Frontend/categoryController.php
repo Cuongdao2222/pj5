@@ -18,6 +18,8 @@ use App\Models\category;
 
 use App\Models\metaSeo;
 
+use Illuminate\Support\Facades\Cache;
+
 
 use Gloudemans\Shoppingcart\Facades\Cart;
 
@@ -360,8 +362,13 @@ class categoryController extends Controller
     {
         $link = trim($slug);
 
+        $cache = 'findID'.$link;
 
-        $findID = product::where('Link', $link)->first();
+        $findID = Cache::rememberForever($cache, function() use ($link) {
+
+            return  product::select('id')->where('Link', $link)->first();
+        });
+
 
         // chuyển sang category check
 
@@ -370,10 +377,7 @@ class categoryController extends Controller
             return($this->categoryView($slug));
 
         }
-
-
         else{
-
 
             $pageCheck = "product";
             $images = image::where('product_id', $findID->id)->get();
@@ -385,8 +389,11 @@ class categoryController extends Controller
                 return view('frontend.installment', compact('data'));
             }
 
-            $other_product = product::where('Group_id',  $data->Group_id)->get();
+            $other_product = Cache::remember('other_product', 50, function() use ($data) {
+                return  product::where('Group_id',  $data->Group_id)->take(10)->get();
+            });
 
+           
             $meta = metaSeo::find($data->Meta_id);
 
             // đếm số lượt view

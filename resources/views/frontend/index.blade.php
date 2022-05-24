@@ -234,7 +234,7 @@
        
 
         <?php 
-            $deal = App\Models\deal::get();
+            
 
             $now  = Carbon\Carbon::now();
 
@@ -273,10 +273,14 @@
 
                                 @if( $value->active ==1)
 
-                                 <?php 
-                                    $product_saless = App\Models\product::find($value->product_id);
+                                 <?php
 
-                                ?>
+
+                                 Cache::forever('product_saless',App\Models\product::find($value->product_id));
+                                 $product_saless = Cache::get('product_saless');
+
+                               
+                               ?>
 
                                 <div class="item">
                                     <a href="{{ route('details', $value->link) }}">
@@ -351,9 +355,6 @@
                                 @endforeach
 
 
-
-                               
-
                             </div>
                         </div>
                     </div>
@@ -378,10 +379,7 @@
 
            <!--  Sale -->
 
-           <?php  
-
-           $product_sale =  DB::table('products')->join('sale_product', 'products.id', '=', 'sale_product.product_id')->join('makers', 'products.Maker', '=', 'makers.id')->get();
-           ?>
+          
 
            @if(count($product_sale)>0)
            
@@ -450,15 +448,12 @@
 
             <?php
 
-
                 $hot = DB::table('hot')->select('product_id')->where('group_id', $groups->id)->get()->pluck('product_id');
 
-
-                $data =  DB::table('products')->whereIn('id', $hot)->where('active', 1)->get();
-
+                $data = Cache::get('data',  DB::table('products')->whereIn('id', $hot)->where('active', 1)->get());
+                
             ?>
 
-           
         @if(count($data)>0)
 
          
