@@ -497,6 +497,8 @@
 
                 <?php
                     $check = DB::table('imagecrawl')->select('image')->where('product_id', $data->id)->where('active',0)->get()->pluck('image')->toArray();
+
+                     $details = $data->Detail;
                     if(isset($check)){
 
                         
@@ -504,11 +506,11 @@
                         
 
                     }
-                    $domain = env('APP_URL');
+                   
                    
                 ?>
 
-                 {!! html_entity_decode(str_replace('https://dienmaynguoiviet.vn/', $domain, $details))   !!}
+                 {!! html_entity_decode($details))   !!}
                 
             </div>
             <div class="show-more">
