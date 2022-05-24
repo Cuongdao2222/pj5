@@ -27,6 +27,84 @@ use \Carbon\Carbon;
 
 class crawlController extends Controller
 {
+    public function getMetaNUll()
+    {
+        $meta = metaSeo::where('meta_title', 'like', '%Nội dung không tồn tại%')->get();
+        foreach ( $meta as $key => $value) {
+             $post = post::where('Meta_id', $value->id)->first();
+             if(!empty($post)&&!empty($post->link)){
+                $pp = post::find($post->id);
+                $ppl=$pp->link;
+                $urls = 'https://dienmaynguoiviet.vn/'.$ppl;
+                $file_headers = @get_headers($urls);
+                if(!$file_headers || $file_headers[0] == 'HTTP/1.1 404 Not Found'){
+
+                    echo '<pre>';
+                    print_r($urls);
+                }
+                else{
+
+                    $html = file_get_html(trim($urls));
+
+
+                    $keyword = htmlspecialchars($html->find("meta[name=keywords]",0)->getAttribute('content'));
+                    $content = $html->find("meta[name=description]",0) ->getAttribute('content');
+                    $title   = $html-> find("title",0)-> plaintext;
+                
+                    $metas   =  metaSeo::find($value['id']);
+
+                    
+                    $metas->meta_title =$title; 
+                    $metas->meta_content =$content; 
+                    $metas->meta_key_words = strip_tags($keyword); 
+                    $metas->meta_og_title =$title; 
+                    $metas->meta_og_content =$content; 
+
+                    $metas->save();
+
+
+                }
+             }
+        }
+        echo "thanh cong";
+       
+
+    }
+    public function CrawlNameMeta()
+    {
+        $post = post::select('id', 'Meta_id', 'link')->get();
+
+        foreach ($post as $key => $value) {
+            $urls = 'https://dienmaynguoiviet.vn/'.$value->link.'/';
+            $file_headers =@get_headers($urls);
+
+            if(!$file_headers || $file_headers[0] == 'HTTP/1.1 404 Not Found'){
+
+                echo '<pre>';
+                print_r($urls);
+            }
+            else{
+                $html = file_get_html(trim($urls));
+                $keyword = htmlspecialchars($html->find("meta[name=keywords]",0)->getAttribute('content'));
+                $content = $html->find("meta[name=description]",0) ->getAttribute('content');
+                $title   = $html-> find("title",0)-> plaintext;
+            
+                $meta   =  metaSeo::find($value->Meta_id);
+
+                $meta->meta_title =$title; 
+                $meta->meta_content =$content; 
+                $meta->meta_key_words = strip_tags($keyword); 
+                $meta->meta_og_title =$title; 
+                $meta->meta_og_content =$content; 
+
+                $meta->save();
+            }
+        
+            
+        }
+
+       
+    }
     public function allproduct(){
         $id = $_GET['id'];
         $sp  = groupProduct::where('id', $id)->first();
