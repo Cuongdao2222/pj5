@@ -4,7 +4,7 @@
     @if(isset($arr_number))
     @foreach($arr_number as $numbers)
         <sitemap>
-            <loc>https://dienmaynguoiviet.vn/sitemap_pc{{trim($numbers)}}</loc>
+            <loc>https://dienmaynguoiviet.vn/sitemap_pc{{trim($numbers)}}.xml</loc>
             <lastmod>{{ Carbon\Carbon::now()->format('Y-m-d') }}</lastmod>
         </sitemap>
     @endforeach    
