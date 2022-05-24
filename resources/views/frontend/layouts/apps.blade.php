@@ -1491,7 +1491,7 @@
             </div>
         </footer>
 
-        <div style="position:fixed; bottom:76px; right:0; z-index:9999">   
+        <div style="position:fixed; bottom:49px; right:67px; z-index:9999">   
         <a href="tel:02473036336"><img src="{{ asset('images/template/tongdai02473036336.png') }}" alt="hotline" style="height:72px; z-index: 999;"></a>
           
         <div class="clear"></div>
