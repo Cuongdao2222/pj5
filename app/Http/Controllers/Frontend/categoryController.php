@@ -62,13 +62,7 @@ class categoryController extends Controller
                     array_push($new_property, strip_tags($values));
                 }
             }
-
-
-
-            $findID = Cache::rememberForever($cache, function() use ($link) {
-
-                return  product::select('id')->where('Link', $link)->first();
-            });
+            
 
             $id_cate = $findID->id;
             $groupProduct_level = $findID->level;
@@ -366,9 +360,14 @@ class categoryController extends Controller
     {
         $link = trim($slug);
 
+        $cache = 'findID'.$link;
 
-        $findID = product::where('Link', $link)->first();
+        $findID = Cache::rememberForever($cache, function() use ($link) {
 
+            return  product::select('id')->where('Link', $link)->first();
+        });
+
+       
         // chuyển sang category check
 
         if(empty($findID)){
