@@ -62,7 +62,7 @@ class categoryController extends Controller
                     array_push($new_property, strip_tags($values));
                 }
             }
-            
+             $findID = groupProduct::where('link', $link)->first();
 
             $id_cate = $findID->id;
             $groupProduct_level = $findID->level;
