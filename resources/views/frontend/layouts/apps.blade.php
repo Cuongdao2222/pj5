@@ -8,11 +8,15 @@
 
             $requestcheck = \Request::route();
 
-            $nameRoute = \Request::route()->getName();
-
-
+            if(!empty($requestcheck)){
+                 $nameRoute = \Request::route()->getName();
+            }
+            else{
+                 $nameRoute = '';
+            }
 
           ?>
+
 
          
         @if(isset($meta))

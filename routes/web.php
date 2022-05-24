@@ -73,7 +73,7 @@ Route::get('sitemap_pc60.xml', 'sitemapController@sitemapChildProduct');
 
 Route::get('sitemap_article.xml', 'sitemapController@sitemapChildBlog');
 
-Route::get('inCrawl', 'crawlController@allproduct');
+// Route::get('inCrawl', 'crawlController@allproduct');
 
 Route::get('/tin-chi-tiet', function () {
     return view('frontend.blogdetail');
@@ -128,7 +128,6 @@ Route::post('show-cart', 'AjaxController@showProductCart')->name('showCart');
 Route::post('add-cart-number', 'AjaxController@addProductToCartByNumber')->name('addCartNumber');
 
 Route::post('rate-form', 'AjaxController@rateForm')->name('rate-form');
-
 
 
 Route::post('show-viewer-product', 'AjaxController@showViewerProduct')->name('show-viewed-product');
@@ -193,6 +192,11 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
         return view('landing.landing');
         
     })->name('landing');
+
+     Route::get('changepass', function () {
+        return view('user.changepass');
+        
+    });
     
 
     Route::post('info-pop-up', 'showController@addPopup')->name('add-popup');
