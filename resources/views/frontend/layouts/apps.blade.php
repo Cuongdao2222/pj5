@@ -367,6 +367,10 @@
                     bottom:100px; 
                     right:0; 
                   }  
+                  #myBtn-top {
+                    bottom: 28px;
+                    right: 100px
+                  }  
             }
         </style>
         @endif
