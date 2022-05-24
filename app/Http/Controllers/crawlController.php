@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Storage;
 
 use App\Models\product;
 
+
+
 use App\Models\post;
 
 use  App\Models\image;
@@ -25,7 +27,14 @@ use \Carbon\Carbon;
 
 class crawlController extends Controller
 {
+    public function allproduct(){
+        $id = $_GET['id'];
+        $sp  = groupProduct::where('id', $id)->first();
+        $sps =  count(json_decode($sp->product_id));
 
+        print_r($sps);
+
+    }
     public function checkempty()
     {
         $code = product::select('ProductSku', 'Detail')->get();
