@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\post;
+
 class sitemapController extends Controller
 {
    public function index()
@@ -372,7 +374,9 @@ class sitemapController extends Controller
    }
    public function sitemapChildBlog()
    {
-    $blog = blog::take(60)->OrderBy('id', 'desc')->get();
+    $blog = post::take(60)->OrderBy('id', 'desc')->get();
+
+
        return response()->view('sitemap.childs_blog', [
             'arr_number' => $blog
         ])->header('Content-Type', 'text/xml');

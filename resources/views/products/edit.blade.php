@@ -130,7 +130,9 @@
                     $content1 = str_replace($ar_new, $ar_change, $contens);
 
                     $product->Detail = $content1;
-
+                    $product->Detail = str_replace('http://dienmaynguoiviet.net', 'https://dienmaynguoiviet.vn', $product->Detail);
+                    
+                  
                 }
                 
             ?>

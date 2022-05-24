@@ -192,10 +192,15 @@
 
 <table class="big_table" border="1" bordercolor="#CCCCCC" cellspacing="0" cellpadding="3">
     <tbody>
-        <tr>
+        <tr> 
             @if(isset($imagecontent))
             @foreach($imagecontent as $key => $values)
-            <td class="img1{{ $key }}"><a href="javascript:void(0);" onclick="click1('images1{{ $key }}', '{{ asset($values->image) }}')"><img src="{{ asset($values->image) }}" style="max-width:100px; max-height:130px" id="img1{{ $key }}"></a></td>
+            <?php 
+                $images = str_replace('http://dienmaynguoiviet.net', 'https://dienmaynguoiviet.vn', $values->image);
+
+
+            ?> 
+            <td class="img1{{ $key }}"><a href="javascript:void(0);" onclick="click1('images1{{ $key }}', '{{ asset($images) }}')"><img src="{{ asset($images) }}" style="max-width:100px; max-height:130px" id="img1{{ $key }}"></a></td>
          
             @endforeach
             @endif
