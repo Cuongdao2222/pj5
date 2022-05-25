@@ -165,6 +165,9 @@
             <tr>
                 @if(isset($matches[1]))
                 @foreach($matches[1] as $key => $value)
+                <?php 
+                    $value = str_replace(['http://dienmaynguoiviet.net', 'https://dienmaynguoiviet.net'], 'https://dienmaynguoiviet.vn', $value); 
+                ?>
                 <td class="img{{ $key }} tdimg"><a href="javascript:void(0);" onclick="clicks('images{{ $key }}', '{{ asset($value) }}')"><img src="{{ asset($value) }}" style="max-width:100px; max-height:130px" id="img{{ $key }}"></a></td>
              
                 @endforeach
@@ -192,12 +195,14 @@
 
 <table class="big_table" border="1" bordercolor="#CCCCCC" cellspacing="0" cellpadding="3">
     <tbody>
-        <tr> 
+        <tr>
+
             @if(isset($imagecontent))
             @foreach($imagecontent as $key => $values)
             <?php 
                 $images = str_replace(['http://dienmaynguoiviet.net', 'https://dienmaynguoiviet.net'], 'https://dienmaynguoiviet.vn', $values->image);
 
+               
 
             ?> 
             <td class="img1{{ $key }}"><a href="javascript:void(0);" onclick="click1('images1{{ $key }}', '{{ asset($images) }}')"><img src="{{ asset($images) }}" style="max-width:100px; max-height:130px" id="img1{{ $key }}"></a></td>
