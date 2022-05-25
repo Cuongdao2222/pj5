@@ -8,6 +8,7 @@ use App\Models\banners;
 use App\Models\groupProduct;
 use Illuminate\Support\Facades\Cache;
 use App\Models\deal;
+use DB;
 
 
 
@@ -38,9 +39,15 @@ class indexController extends Controller
 
             return deal::get();
          });
-       
+
+        $product_sale =  Cache::remember('product_sale',10, function() {
+
+            return DB::table('products')->join('sale_product', 'products.id', '=', 'sale_product.product_id')->join('makers', 'products.Maker', '=', 'makers.id')->get();;
+         });
+
+        
       
-        return view('frontend.index', compact('banners', 'bannersRight', 'bannerUnderSlider', 'bannerUnderSale','deal'));
+        return view('frontend.index', compact('banners', 'bannersRight', 'bannerUnderSlider', 'bannerUnderSale','deal','product_sale'));
     }
 
      

@@ -375,12 +375,7 @@
                 <a data-cate="0" data-place="1868" href="#" ><img style="cursor:pointer" src="{{ asset($bannerUnderSale[0]['image']) }}" alt="banner-summer" width="1200" height="90"></a>                
             </div>
 
-           <!--  Sale -->
-
-           <?php  
-
-           $product_sale =  DB::table('products')->join('sale_product', 'products.id', '=', 'sale_product.product_id')->join('makers', 'products.Maker', '=', 'makers.id')->get();
-           ?>
+          
 
            @if(count($product_sale)>0)
            
@@ -440,8 +435,6 @@
 
             $hot = DB::table('hot')->select('product_id')->where('group_id', 2)->get()->pluck('product_id');
 
-           
-           
          ?>   
 
         <div  class="owl-slider-count" style="display: none;">{{ count($group) }}</div> 
