@@ -229,6 +229,9 @@
             if(checked == true){
                 active = 1;
             }
+            else{
+                active = 0;
+            }
 
             
             $.ajaxSetup({

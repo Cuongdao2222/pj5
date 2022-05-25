@@ -356,78 +356,75 @@ class groupProductController extends AppBaseController
         }
         // th xóa ko chọn
         else{
+            if($active==0){
+                $level = groupProduct::find($id)->level;
 
-            $level = groupProduct::find($id)->level;
+                if($level==2){
 
-
-
-            
-            if($level==2){
-
-                $this->deleteChild($id, $product_id);
+                    $this->deleteChild($id, $product_id);
 
 
-            } 
-            elseif($level==1){
+                } 
+                elseif($level==1){
 
-                // xoa con level =2
+                    // xoa con level =2
 
-                $all_product_group =  groupProduct::where('parent_id', $id)->where('level', 2)->get()->pluck('id');
+                    $all_product_group =  groupProduct::where('parent_id', $id)->where('level', 2)->get()->pluck('id');
 
-                if(isset($all_product_group)){
+                    if(isset($all_product_group)){
 
-                    foreach ($all_product_group as  $value) {
+                        foreach ($all_product_group as  $value) {
 
-                        $this->deleteChild($value, $product_id);
-                        
-                        
+                            $this->deleteChild($value, $product_id);
+                            
+                            
+                        }
                     }
-                }
 
-                // xoa phan tu cha
+                    // xoa phan tu cha
 
-                $this->deleteChild($id, $product_id);
+                    $this->deleteChild($id, $product_id);
 
-            }  
+                }  
 
-            
-            else{
+                
+                else{
 
-                // neu level bang 0 
+                    // neu level bang 0 
 
-                $all_product_group_level1 =  groupProduct::where('parent_id', $id)->where('level', 1)->get()->pluck('id'); 
+                    $all_product_group_level1 =  groupProduct::where('parent_id', $id)->where('level', 1)->get()->pluck('id'); 
 
-                if(isset($all_product_group_level1)){
+                    if(isset($all_product_group_level1)){
 
-                    foreach($all_product_group_level1 as $value1){
+                        foreach($all_product_group_level1 as $value1){
 
-                        $all_product_group =  groupProduct::where('parent_id', $value1)->where('level', 2)->get()->pluck('id');
+                            $all_product_group =  groupProduct::where('parent_id', $value1)->where('level', 2)->get()->pluck('id');
 
-                        if(isset($all_product_group)){
+                            if(isset($all_product_group)){
 
-                            foreach ($all_product_group as  $value) {
+                                foreach ($all_product_group as  $value) {
 
-                                $this->deleteChild($value, $product_id);
-                                
-                                
+                                    $this->deleteChild($value, $product_id);
+                                    
+                                    
+                                }
                             }
+
+                            // xoa phan tu cha
+
+                            $this->deleteChild($value1, $product_id);
+
                         }
 
-                        // xoa phan tu cha
-
-                        $this->deleteChild($value1, $product_id);
-
                     }
 
+                    // xoa phan tu level bang 0
+
+                    $this->deleteChild($id, $product_id);
+                    
                 }
 
-                // xoa phan tu level bang 0
-
-                $this->deleteChild($id, $product_id);
-                
             }
-
-           
 
 
         }
