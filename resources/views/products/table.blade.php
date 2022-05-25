@@ -9,7 +9,8 @@
         <th>Số lượng trong kho</th>
         <th>Hiển thị</th>
         <th>chọn danh mục nhanh</th>
-        <th>ngày update gần nhất</th>
+
+      
         <th>Sản phẩm Hot</th>
         <th>Sản phẩm Sale</th>
         <th>Quà tặng</th>
@@ -21,6 +22,7 @@
         <tbody>
 
         <?php
+
             //cắt chuỗi khi dài quá
             function substrwords($text, $maxchar, $end='...') {
                 if (strlen($text) > $maxchar || $text == '') {
@@ -108,7 +110,13 @@
 
             <tr>
                 <td><img src="{{ asset($product->Image) }}" width="150px" height="150px"></td>
-            <td><a href="{{ route('products.edit', [$product->id]) }}">{{ $product->Name }}</a></td>
+            <td>
+                <a href="{{ route('products.edit', [$product->id]) }}">{{ $product->Name }}</a>
+                <br>
+                thời gian update :{{ $product->updated_at->format('d/m/Y, H:i:s') }}
+                <br>
+                người update : {{ App\User::find($product->user_id)->name }} 
+            </td>
             <td>
                 
                 <label>Giá</label>
@@ -150,7 +158,7 @@
 
             <td><a href="{{ route('group-product-selected', $product->id) }}"class="btn-primary">Sửa</a></td>
 
-            <td>{{ $product->updated_at->format('d/m/Y, H:i:s') }} </td>
+          
 
             <td><input type="checkbox" id="hot{{ $product->id }}" name="hot"  onclick='handleClick({{ $product->id }});' data-id ="{{ get_Group_Product($product->id)[0]??'' }}" {{ in_array($product->id, $list_hot)?'checked':'' }}></td>
             <td><input type="checkbox" id="sale{{ $product->id }}" name="sale"  onclick='saleClick({{ $product->id }});' data-id ="{{ get_Group_Product($product->id)[0]??'' }}" {{ in_array($product->id, $list_sales)?'checked':'' }}></td>
