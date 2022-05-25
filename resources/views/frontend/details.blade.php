@@ -1,6 +1,15 @@
 @extends('frontend.layouts.apps')
 @section('content') 
 <style type="text/css">
+    #data-pricetotal{
+        width: 194px;
+    }
+    .p-gift {
+        padding: 10px;
+        border: 1px solid #f8810c;
+        border-radius: 3px;
+        margin-top: 10px;
+    }
 
     .loader {
       height: 5rem;
@@ -377,6 +386,8 @@
                                 @endif
                             </div>
                             <div class="clearfix"></div>
+
+
                         </div>
                     </div>
                 </div>
@@ -587,6 +598,20 @@
                                 <span>{{ $status }} </span>
                             </div>
 
+                            <fieldset class="p-gift">
+                                    <legend id="data-pricetotal" style="color: #ff0000;font-size: 18px; font-weight: bold" data-pricetotal="0">
+                                        Khuyến mãi kèm theo
+                                    </legend>
+                                    <!---->
+                                    <div class="detail-offer">
+                                        <div class="select-gift">
+                                            <h4>[Bộ KM] ấm </h4>
+                                        </div>
+                                    </div>
+                                    <div class="img-gift clearfix">
+                                    </div>
+                                </fieldset>
+
 
                             @if($data['Quantily']>0)
                             <div class="pdetail-add-to-cart add-to-cart">
@@ -606,6 +631,8 @@
                                     </button> -->
                             </div>
                             <div class="clearfix"></div>
+
+
                             <div class="installment-purchase pdetail-installment">
                                 
                                 @if((int)$data['Price']>3000000)
@@ -635,6 +662,7 @@
 
                         </div>
                         <div class="clearfix"></div>
+
                          <button type="button" class="btn btn-lg" data-toggle="modal" data-target="#specifications">Xem chi tiết thông số kỹ thuật</button>
                        
                         
