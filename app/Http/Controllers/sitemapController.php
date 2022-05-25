@@ -378,7 +378,7 @@ class sitemapController extends Controller
    }
    public function sitemapChildBlog()
    {
-    $blog = post::take(60)->OrderBy('id', 'desc')->get();
+    $blog = post::take(160)->OrderBy('id', 'desc')->get();
 
     
        return response()->view('sitemap.childs_blog', [
