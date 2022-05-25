@@ -7,7 +7,7 @@
 	@if(isset($product))
     @foreach($product as $products)
     <url>
-		<loc>{{ $products->Link }}</loc>
+		<loc>{{ route('details',$products->Link) }}</loc>
 	</url>	
 	@endforeach    
     @endif
