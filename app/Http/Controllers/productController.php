@@ -42,7 +42,7 @@ class productController extends AppBaseController
     public function index(Request $request)
     {
 
-        $products = product::Orderby('id', 'desc')->paginate(10);
+        $products = product::Orderby('updated_at', 'desc')->paginate(10);
         
         return view('products.index')
             ->with('products', $products);
