@@ -234,8 +234,7 @@
        
 
         <?php 
-            $deal = App\Models\deal::get();
-
+           
             $now  = Carbon\Carbon::now();
 
             if(!empty($deal)&count($deal)>0){
