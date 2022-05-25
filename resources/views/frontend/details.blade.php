@@ -61,7 +61,7 @@
     } 
     @media screen and (max-width: 776px){
         .header__top {
-            background-color: #187A43;
+            background-color: #DD2C44;
             }   
         } 
 
