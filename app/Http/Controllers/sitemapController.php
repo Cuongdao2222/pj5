@@ -12,7 +12,8 @@ class sitemapController extends Controller
 {
    public function index()
    {
-        $number = '77
+        $number = '60
+                77
                 62
                 436
                 73
