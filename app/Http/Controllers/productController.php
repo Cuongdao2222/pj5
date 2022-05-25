@@ -401,6 +401,7 @@ class productController extends AppBaseController
         $product_id = $request->product_id;
         $product = product::find($product_id);
         $product->Quantily = $qualtity;
+         $product->user_id = Auth::user()->id;
 
         $product->save();
         return response('thanh cong');
