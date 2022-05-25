@@ -279,7 +279,17 @@
         <h2>Đổi passwords</h2>
     </div>
 
-    @include('flash::message')
+    @if (session('error'))
+    <div class="alert alert-danger" role="alert">
+            {{ session('error') }}
+    </div>
+@endif
+
+@if (session('success'))
+    <div class="alert alert-success" role="alert">
+        {{ session('success') }}
+    </div>
+@endif
     <form id="form" class="form" method="POST" action="{{ route('changepass') }}">
         @csrf
         <div class="form-controls">
@@ -289,33 +299,33 @@
         </div>
         <div class="form-controls">
             <label for="username">Password cũ</label>
-            <input type="password" placeholder="" id="password_old" name="old_password" />
+            <input type="password" placeholder="" id="password_old" name="old_password" / required>
             <i class="fas fa-check-circle"></i>
             <i class="fas fa-exclamation-circle"></i>
             <small>Error message</small>
         </div>
         <div class="form-controls">
             <label for="username">Password</label>
-            <input type="password" placeholder="" id="password" name="password" />
+            <input type="password" placeholder="" id="password" name="password" / required>
             <i class="fas fa-check-circle"></i>
             <i class="fas fa-exclamation-circle"></i>
             <small>Error message</small>
         </div>
         <div class="form-controls">
             <label for="username">Nhập lại password mới</label>
-            <input type="password" placeholder="re-enter" id="password2" name="re_password" />
+            <input type="password" placeholder="re-enter" id="password2" name="re_password" / required>
             <i class="fas fa-check-circle"></i>
             <i class="fas fa-exclamation-circle"></i>
             <small>Error message</small>
         </div>
-        <button>Submit</button>
+        <button class="submit">Submit</button>
     </form>
 </div>
 <!-- SOCIAL PANEL HTML -->
 <div class="social-panel-container">
     <div class="social-panel">
         <p>Created with <i class="fa fa-heart"></i> by
-            <a target="_blank" href="https://florin-pop.com"">Saksham Bhambota</a>
+            <a target="_blank" href="https://florin-pop.com">Saksham Bhambota</a>
         </p>
         <button class=" close-btn"><i class="fas fa-times"></i></button>
         <h4>Get in touch on</h4>
@@ -343,6 +353,36 @@
         </ul>
     </div>
 </div>
+
+<script type="text/javascript">
+  
+  
+
+    $( ".submit" ).click(function() {
+
+      var rep_password = $('#password2').val();
+      var password = $('#password').val();
+
+      
+
+      if(rep_password==password){
+       
+        return;
+
+       
+      }
+      else{
+         alert('2 mật khẩu không trùng nhau');  
+          event.preventDefault();
+      }
+     
+      
+        
+      });
+    
+
+ 
+</script>
 
 
 @endsection

@@ -117,24 +117,19 @@
                 <br>
                 người update : {{ App\User::find($product->user_id)->name }} 
             </td>
-            <td>
+            <td width="100">
                 
                 <label>Giá</label>
 
                 <div>
                     <input type="" name="flashPrice" value="{{ @str_replace(',' ,'.', number_format($product->Price))}} " id="flashPrice{{$product->id}}">
                 </div>
-                
 
                 <br>
 
                 <div class="btn-primary" onclick="flashPrice('{{ $product->id}}')" id="prices_edit{{ $product->id }}">Sửa</div>
 
-
                 <br>
-
-               
-
 
             </td>
                   
@@ -162,9 +157,6 @@
 
             <td><input type="checkbox" id="hot{{ $product->id }}" name="hot"  onclick='handleClick({{ $product->id }});' data-id ="{{ get_Group_Product($product->id)[0]??'' }}" {{ in_array($product->id, $list_hot)?'checked':'' }}></td>
             <td><input type="checkbox" id="sale{{ $product->id }}" name="sale"  onclick='saleClick({{ $product->id }});' data-id ="{{ get_Group_Product($product->id)[0]??'' }}" {{ in_array($product->id, $list_sales)?'checked':'' }}></td>
-
-          
-
             
             <?php  
 

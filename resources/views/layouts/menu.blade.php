@@ -115,6 +115,14 @@
 </ul>
 @endif
 
+
+<li class="nav-item">
+    <a href="{{ route('changepassview') }}"
+       class="nav-link {{ Request::is('changepassview') ? 'active' : '' }}">
+        <p>Đổi mật khẩu</p>
+    </a>
+</li>
+
 <li class="nav-item">
     <a href="{{ route('makers.index') }}"
        class="nav-link {{ Request::is('makers*') ? 'active' : '' }}">

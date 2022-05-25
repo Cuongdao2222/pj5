@@ -196,7 +196,7 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
      Route::get('changepass', function () {
         return view('user.changepass');
         
-    });
+    })->name('changepassview');
     
 
     Route::post('info-pop-up', 'showController@addPopup')->name('add-popup');

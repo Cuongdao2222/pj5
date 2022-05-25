@@ -25,10 +25,7 @@
     <div class="btn btn-info seo-click"> Dùng cho SEO </div>
    
     <?php  
-
         $products_seo = App\Models\product::select('Meta_id')->where('id',  $id)->first();
-
-
     ?>
     <div class="content px-3">
 

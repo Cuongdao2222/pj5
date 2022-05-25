@@ -145,16 +145,14 @@ class customnUserController extends Controller
 
              Session::flash('success', 'Đổi mật khẩu thành công');
 
-             print_r('Đổi mật khẩu thành công');
-
+       
         }
         else{
             Session::flash('error', 'Mật khẩu cũ không đúng');
 
-            print_r('Mật khẩu cũ không đúng');
-
+           
         }
-         // return redirect()->back();
+         return redirect()->back();
     }
 
    
