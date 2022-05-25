@@ -369,7 +369,6 @@
        
         return;
 
-       
       }
       else{
          alert('2 mật khẩu không trùng nhau');  
