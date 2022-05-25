@@ -71,6 +71,9 @@ Route::get('sitemap.xml', 'sitemapController@index');
 
 Route::get('sitemap_pc60.xml', 'sitemapController@sitemapChildProduct');
 
+
+
+
 Route::get('sitemap_article.xml', 'sitemapController@sitemapChildBlog');
 
 // Route::get('inCrawl', 'crawlController@allproduct');

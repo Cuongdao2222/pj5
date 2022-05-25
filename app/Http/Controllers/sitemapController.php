@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Models\post;
 
+use App\Models\product;
+
 class sitemapController extends Controller
 {
    public function index()
