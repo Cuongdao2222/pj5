@@ -134,7 +134,7 @@
             </td>
                   
             
-            <td>
+            <td style="width: 124px;">
                 <span>sửa nhanh</span>
                 <input type="" name="qualtily" value="{{ $product->Quantily }}" id="qualtity{{ $product->id }}" style="width: 50%;">
 
