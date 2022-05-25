@@ -279,12 +279,16 @@
                 }
                 else{
 
-                   DB::table('viewsite')->increment('views',1);
+                   $incre = DB::table('viewsite')->get()->last();
+
+                   DB::table('viewsite')->where('id', $incre->id)->increment('views', 1);
+
                 }
 
 
             }
 
+    
             //check website mang người dùng đến
 
 
