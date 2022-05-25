@@ -279,7 +279,7 @@
                 }
                 else{
 
-                    App\Models\viewsite::increment('views');
+                   DB::table('viewsite')->increment('views',1);
                 }
 
 

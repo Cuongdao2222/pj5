@@ -313,12 +313,13 @@ class categoryController extends Controller
 
         $sessionView = Session::get($sessionKey);
 
-        $post_view = post::findOrFail($data->id);
+        $post_view = DB::table('posts')->where('id', $data->id);
 
         if (!$sessionView) { //nếu chưa có session
 
             Session::put($sessionKey, 1); //set giá trị cho session
-            $post_view->increment('views');
+
+            $post_view->increment('views', 1);
 
         }
 
@@ -406,7 +407,8 @@ class categoryController extends Controller
             if (!$sessionView) { //nếu chưa có session
 
                 Session::put($sessionKey, 1); //set giá trị cho session
-                $data->increment('views');
+
+                $post_view = DB::table('products')->where('id', $findID->id)->increment('views', 1);
 
             }
 
