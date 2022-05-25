@@ -370,8 +370,9 @@ class sitemapController extends Controller
    public function sitemapChildProduct()
    {
     $product = product::take(60)->OrderBy('id', 'desc')->get();
+
        return response()->view('sitemap.child', [
-            'arr_number' => $product
+            'product' => $product,
         ])->header('Content-Type', 'text/xml');
    }
    public function sitemapChildBlog()
@@ -380,7 +381,7 @@ class sitemapController extends Controller
 
     
        return response()->view('sitemap.childs_blog', [
-            'arr_number' => $blog
+            'blog' => $blog
         ])->header('Content-Type', 'text/xml');
    }
 }
