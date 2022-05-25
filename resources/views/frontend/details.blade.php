@@ -181,7 +181,7 @@
     
     ?>
 @push('style')
-<link rel="stylesheet" type="text/css" href="{{ asset('css/detailsfe.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/detailsfe.css') }}?ver=1">
 @endpush
 <div class="locationbox__overlay"></div>
 <div class="locationbox">
@@ -853,7 +853,7 @@
 
 </div>
 @push('style')
-<link rel="stylesheet" type="text/css" href="{{ asset('css/details.css?v=1') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/details.css') }}?ver=1">
 @endpush
 @push('script')
 <script type="text/javascript">
