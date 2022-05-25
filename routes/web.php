@@ -194,7 +194,7 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
     })->name('landing');
 
      Route::get('changepass', function () {
-        return view('user.changepass');
+        return view('user.changePass');
         
     })->name('changepassview');
     
