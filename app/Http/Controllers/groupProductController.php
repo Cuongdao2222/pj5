@@ -366,8 +366,6 @@ class groupProductController extends AppBaseController
 
                 $this->deleteChild($id, $product_id);
 
-                
-
 
             } 
             elseif($level==1){

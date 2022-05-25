@@ -196,7 +196,7 @@
             @if(isset($imagecontent))
             @foreach($imagecontent as $key => $values)
             <?php 
-                $images = str_replace('http://dienmaynguoiviet.net', 'https://dienmaynguoiviet.vn', $values->image);
+                $images = str_replace(['http://dienmaynguoiviet.net', 'https://dienmaynguoiviet.net'], 'https://dienmaynguoiviet.vn', $values->image);
 
 
             ?> 
