@@ -187,6 +187,13 @@
     }
 
     $gift = gift($data->id);
+
+
+    if(!empty($gift)){
+        $gifts = $gift['gifts'];
+        $gift = $gift['gift'];
+
+    }
     
     ?>
 @push('style')
@@ -598,20 +605,28 @@
                                 <span>{{ $status }} </span>
                             </div>
 
+                            
+                             @if(!empty($gift))
+
                             <fieldset class="p-gift">
                                     <legend id="data-pricetotal" style="color: #ff0000;font-size: 18px; font-weight: bold" data-pricetotal="0">
                                         Khuyến mãi kèm theo
                                     </legend>
                                     <!---->
                                     <div class="detail-offer">
+                                       
+                                        {{ $gifts->type ==1?'Lựa chọn 1 trong 2 sản phẩm sau':'' }}
+                                        @foreach($gift as $valuegift)
                                         <div class="select-gift">
-                                            <h4>[Bộ KM] ấm </h4>
+                                            <h4>{{ $valuegift->name }}</h4>
                                         </div>
+                                        @endforeach
+                                       
                                     </div>
                                     <div class="img-gift clearfix">
                                     </div>
                                 </fieldset>
-
+                             @endif    
 
                             @if($data['Quantily']>0)
                             <div class="pdetail-add-to-cart add-to-cart">
@@ -803,12 +818,6 @@
    
        
     @if(!empty($gift))   
-
-    <?php  
-        $gifts = $gift['gifts'];
-        $gift = $gift['gift'];
-    ?>
-  
     <div class="promo line_h19">
         <div class="txt_b">Khuyến mại: {{ $gifts->type ==1?'Lựa chọn 1 trong 2 sản phẩm sau':'' }}</div>
         <div style="display: flex;">
@@ -819,7 +828,9 @@
             @endforeach
         </div>
     </div>
+
     @endif
+   
     <div class="buy-group">
         @if($data->Quantily>0) 
         @if((int)$data->Price>0)

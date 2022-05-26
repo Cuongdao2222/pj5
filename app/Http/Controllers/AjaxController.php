@@ -582,6 +582,7 @@ class AjaxController extends Controller
 
     public function add_gift(Request $request)
     {
+
         if($request->ajax()){
 
             $input['id_product']       = $request->product_id;
@@ -590,16 +591,23 @@ class AjaxController extends Controller
 
             $group_gift = DB::table('group_gift')->where('id', $input['id_group_gift'])->get()->first();
 
+            if(!empty($group_gift)){
+                $input['start'] =  $group_gift->start;
 
-            $input['start'] =  $group_gift->start;
-
-            $input['end'] =  $group_gift->end;
+                $input['end'] =  $group_gift->end;
 
 
-            $result = DB::table('promotion')->insert($input);
-            
-            return response('thanh cong');
+                $result = DB::table('promotion')->insert($input);
+                
+                return response('thanh cong');
 
+            }
+            else{
+                return response('bạn chưa chọn nhóm khuyến mãi');
+            }
+
+
+           
         }    
     }
 

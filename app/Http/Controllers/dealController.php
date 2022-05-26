@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\product;
 use DB;
+use App\Models\groupProduct;
 
 use App\Models\deal;
 
@@ -21,7 +22,11 @@ class dealController extends Controller
 
         $groupid = $request->group_id;
 
-        $products = product::select('Name', 'Link', 'Price','id')->where('group_id', $groupid)->where('active', 1)->Orderby('id', 'desc')->paginate(10);
+        $groupProduct = groupProduct::find($groupid);
+
+        $ar_product  = json_decode($groupProduct->product_id);    
+
+        $products = product::select('Name', 'Link', 'Price','id')->whereIn('id', $ar_product)->where('active', 1)->Orderby('id', 'desc')->paginate(20);
         return view('frontend.ajax.option_product', compact('products'));
 
     }

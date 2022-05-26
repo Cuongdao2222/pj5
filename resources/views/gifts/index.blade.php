@@ -1,6 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+<style type="text/css">
+    
+    #modal-g .modal-content{
+        width: 860px;
+    }
+</style>
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -8,6 +14,8 @@
                     <h1>Gifts</h1>
 
                     <div><div class="btn btn-primary" onclick="openModal()">tạo nhóm khuyến mãi</div></div>
+
+                    
                 </div>
                 <div class="col-sm-6">
                     <a class="btn btn-primary float-right"
@@ -18,7 +26,36 @@
             </div>
         </div>
     </section>
+<?php    $list = DB::table('group_gift')->get(); ?>
+    
+    @if(isset($list))
+  
+        <select id="group_gift_selelected">
+            <option value="0">Không chọn</option>
+            @foreach($list as $value)
+            <option value="{{ $value->id }}">{{ $value->group_name }}</option>
+            @endforeach
+        </select>
+       
+    
+    <br>
+   
+    <div><div class="btn btn-primary" onclick="openModalProduct()">Thêm danh sách </div></div>
+    <br>
 
+    <table>
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Job Title</th>
+      <th>Twitter</th>
+    </tr>
+  </thead>
+ 
+
+    <div><div class="btn btn-primary" onclick="openModalProducts_view()">xem danh sách sản phẩm  đang khuyến mãi trong nhóm </div></div>
+     @endif
     <div class="content px-3">
 
         @include('flash::message')
@@ -107,7 +144,7 @@
 
             <?php 
 
-                $list = DB::table('group_gift')->get();
+                
 
                 $gifts_list = DB::table('gifts')->select('name')->get()->toArray();
             ?>
@@ -144,6 +181,157 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="modal-g" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Chọn sản phẩm</h5>
+
+                <?php  
+                    $option = App\Models\groupProduct::select('id', 'name')->get();
+                ?>
+
+                <select name="group_product_id" id="group_product_id">
+                    @foreach($option as $val)
+                    <option value="{{$val->id }}">{{ $val->name }}</option>
+                    @endforeach
+                </select>
+                &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+                 <h5 class="modal-title" id="exampleModalLabel">tìm kiếm theo tên hoặc model</h5>
+
+                 <input type="text" name="" id="name_product">
+                 &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp 
+                 <div class="btn-primary accept-find">xác nhận</div>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <?php  
+
+
+                ?>
+                <table id="tb-list" border="1" bordercolor="#CCCCCC">
+                    <tbody>
+                        <tr bgcolor="#EEEEEE" style="font-weight:bold;">
+                            <td style="width:30px">STT</td>
+                            <td>Sản phẩm </td>
+                            <td style="width:150px">Giá bán</td>
+                            
+                            <td style="width:70px">Số lượng</td>
+                            <td style="width:80px">Bảo hành</td>
+                            <td style="width:80px">Chọn</td>
+                        </tr>
+
+                        <?php  
+                            $products = App\Models\product::select('Name', 'Link', 'Price','id', 'Link')->where('group_id', 1)->where('active', 1)->Orderby('id', 'desc')->paginate(10);
+
+                        ?>
+                       <?php  
+
+                            $i = 0
+                        ?>
+                        @if(isset($products))
+
+                        @foreach($products as $val)
+
+                        <?php 
+
+                            $i++;
+                        ?>
+
+                        <tr id="row_{{$val->id}}" class="row-hover">
+                            <td>{{ $i }}</td>
+                            <td>
+                                <b><a href="{{ route('details', $val->Link) }}" class="pop-up">{{ $val->Name }}</a></b> <br>
+                               
+                                <input type="hidden" id="pro_name_{{ $val->id }}" value="{{ $val->id }}">
+                            </td>
+                            <td class="price">
+                                {{ number_format($val->Price , 0, ',', '.')}}  
+                            </td>
+
+                            
+                            <td>
+                                1
+                            </td>
+                            <td>
+                                24 Tháng
+                            </td>
+                            <td>
+                                <input type="button" value="Chọn sản phẩm" class="update-bt-all" ><span id="update_bt_5814" ></span>
+                            </td>
+                        </tr>
+
+                        @endforeach
+                        @endif
+                        
+                       
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary add-view">Xác nhận</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <div class="modal fade" id="modal-productss" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Chọn sản phẩm</h5>
+
+              
+            </div>
+            <div class="modal-body">
+
+                <?php  
+                    $promotion 
+
+                ?>
+                <table id="tb-list" border="1" bordercolor="#CCCCCC">
+                    <tbody>
+                        <tr bgcolor="#EEEEEE" style="font-weight:bold;">
+                            <td style="width:30px">STT</td>
+                            <td>Sản phẩm </td>
+                            <td style="width:150px">Tên</td>
+                            <td style="width:150px">Xóa</td>
+                            
+                        </tr>
+
+                       
+
+                        <tr id="" class="row-hover">
+                            <td></td>
+                            <td>
+                               fghgfh
+                            </td>
+                            <td><a href="">xóa</a></td>
+                           
+                        </tr>
+
+                        
+                        
+                       
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary add-view">Xác nhận</button>
+            </div>
+        </div>
+    </div>
+</div>
+ -->
+<input type="hidden" name="" id="km">
+
 <script type="text/javascript">
 
     $("#date-picker1").datepicker({ dateFormat: 'dd-mm-yy'});
@@ -153,6 +341,10 @@
        
         $('#modal-gift').modal('show');
 
+    }
+
+    function openModalProduct(argument) {
+         $('#modal-g').modal('show');
     }
 
     function selectGift() {
@@ -199,6 +391,107 @@
         });
 
     }
+
+    $('.accept-find').click(function(){
+
+        data = $('#name_product').val();
+
+        $('#modal-product .modal-body').show();
+
+        if(data != null){
+
+            $.ajax({
+
+            type: 'GET',
+                url: "{{ route('filter-product-deal') }}",
+                data: {
+                    data:data,
+                    page:'deal',
+                },
+                success: function(result){
+
+                    $('#tb-list .row-hover').remove();
+                    $('#tb-list tbody').append(result);
+
+                }
+            });
+
+        }
+
+    });
+
+    km =0;
+
+     $("#group_gift_selelected").bind("change", function() {
+        km = $('#group_gift_selelected').val();
+        $('#km').val(km);
+    });   
+
+     $('#km').val(km);
+    function selectProduct(product_id) {
+        
+        km = $('#km').val();
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+       
+        $.ajax({
+           
+            type: 'POST',
+            url: "{{ route('add-gift') }}",
+            data: {
+                
+                product_id:product_id,
+                id_group_gift:km,
+                   
+            },
+            success: function(result){
+                $('#selectProduct'+product_id).val('Đã chọn');
+                alert(result);
+                
+            }
+        });
+        
+     } 
+
+     function openModalProducts_view() {
+         $('#modal-productss').modal('show');
+     }
+
+
+    $("#group_product_id").bind("change", function() {
+
+      
+
+        $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+        $.ajax({
+
+        type: 'GET',
+            url: "{{ route('filter-group-id') }}",
+            data: {
+                group_id: $( "#group_product_id" ).val(),
+                action:$(this).val(),
+                
+            },
+            success: function(result){
+
+                $('#tb-list .row-hover').remove();
+                $('#tb-list tbody').append(result);
+
+               
+            }
+        });
+
+    });
 
 </script>
 
