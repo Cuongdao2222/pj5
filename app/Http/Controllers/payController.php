@@ -17,7 +17,7 @@ class payController extends Controller
 
         $data = $request->all();
 
-        $data['orderDescription'] = 'đơn hàng trả góp';
+        $data['orderDescription'] = $data['product_name'];
 
         $data['currency'] ='VND';
 
