@@ -54,7 +54,7 @@
   </thead>
  
 
-    <div><div class="btn btn-primary" onclick="openModalProducts_view()">xem danh sách sản phẩm  đang khuyến mãi trong nhóm </div></div>
+    
      @endif
     <div class="content px-3">
 
