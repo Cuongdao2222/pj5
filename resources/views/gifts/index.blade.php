@@ -43,18 +43,10 @@
     <div><div class="btn btn-primary" onclick="openModalProduct()">Thêm danh sách </div></div>
     <br>
 
-    <table>
-  <thead>
-    <tr>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Job Title</th>
-      <th>Twitter</th>
-    </tr>
-  </thead>
+   
  
 
-    
+    <div><div class="btn btn-primary" onclick="openModalProducts_view()">xem danh sách sản phẩm  đang khuyến mãi trong nhóm </div></div>
      @endif
     <div class="content px-3">
 
@@ -75,6 +67,18 @@
 
         </div>
     </div>
+
+    @if (session('error'))
+    <div class="alert alert-danger" role="alert">
+            {{ session('error') }}
+    </div>
+@endif
+
+@if (session('success'))
+    <div class="alert alert-success" role="alert">
+        {{ session('success') }}
+    </div>
+@endif
 
 
     <!-- Modal -->

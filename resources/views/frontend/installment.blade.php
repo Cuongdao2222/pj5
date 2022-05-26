@@ -139,7 +139,8 @@
                                name="buyerCity"
                                id="buyerCity" required value="Hà Nội">
 
-                        <input type="hidden" name="product_id" value="{{ $data->id }}">       
+                        <input type="hidden" name="product_id" value="{{ $data->id }}">  
+                        <input type="hidden" name="product_name" value="{{ $data->Name }}">      
 
 
                     </div>
