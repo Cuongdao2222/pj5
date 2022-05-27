@@ -1,3 +1,10 @@
+<style type="text/css">
+    
+    .group_gift{
+        cursor: pointer;
+    }
+</style>
+
 <div class="table-responsive">
     <table class="table" id="products-table">
         <thead>
@@ -207,7 +214,7 @@
                 <td width="120">
                     {!! Form::open(['route' => ['products.destroy', $product->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
-                        <a href="{{ route('products.show', [$product->id]) }}"
+                        <a href="{{ route('details', [$product->Link]) }}"
                            class='btn btn-default btn-xs'>
                             <i class="far fa-eye"></i>
                         </a>
@@ -349,6 +356,8 @@
        
 
     }
+
+
 
     function add_gift_group(product_id) {
 
@@ -605,6 +614,8 @@
         });
        
     } 
+
+   
 
     
     

@@ -46,8 +46,12 @@
    
  
 
-    <div><div class="btn btn-primary" onclick="openModalProducts_view()">xem danh sách sản phẩm  đang khuyến mãi trong nhóm </div></div>
+    <div class="btn-primary group_gift" style="width: 10%;">khuyến mãi cho nhóm</div>
+
+
      @endif
+
+    <br> 
     <div class="content px-3">
 
         @include('flash::message')
@@ -79,6 +83,52 @@
         {{ session('success') }}
     </div>
 @endif
+
+
+<!-- The Modal -->
+<div class="modal" id="Modal_group_gift">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Chọn quà tặng cho nhóm</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                <table id="tb-list" border="1" bordercolor="#CCCCCC">
+                    <tbody>
+                        <tr bgcolor="#EEEEEE" style="font-weight:bold;">
+                            <td style="width:30px">STT</td>
+                            <td>nhóm sản phẩm </td>
+                            <td style="width:80px">nhóm quà tặng</td>
+                            <td style="width:80px">Chọn</td>
+                        </tr>
+                        <tr id="row_4175" class="row-hover">
+                            <td>1</td>
+                            <td>
+                                <b><a href="http://localhost/pj5/smart-tivi-samsung-ua32t4500-32-inch-hd" class="pop-up">Smart tivi Samsung UA32T4500 32 inch HD</a></b> <br>
+                                <input type="hidden" id="pro_name_4175" value="4175">
+                            </td>
+                            <td>
+                                7.180.000
+                            </td>
+                           
+                            <td>
+                                <input type="button" value="Chọn nhóm sản phẩm" class="update-bt-all"><span></span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 
     <!-- Modal -->
@@ -193,10 +243,11 @@
                 <h5 class="modal-title" id="exampleModalLabel">Chọn sản phẩm</h5>
 
                 <?php  
-                    $option = App\Models\groupProduct::select('id', 'name')->get();
+                    $option = App\Models\groupProduct::select('id', 'name')->where('level', 0)->get();
                 ?>
 
                 <select name="group_product_id" id="group_product_id">
+                    <option value="0">Không chọn</option>
                     @foreach($option as $val)
                     <option value="{{$val->id }}">{{ $val->name }}</option>
                     @endforeach
@@ -212,7 +263,9 @@
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
+
+            
+            
 
                 <?php  
 
@@ -495,6 +548,11 @@
             }
         });
 
+    });
+
+     $('.group_gift').click(function(){
+        $('#Modal_group_gift').modal('show');
+        
     });
 
 </script>
