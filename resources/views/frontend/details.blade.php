@@ -86,6 +86,10 @@
             white-space: nowrap;
         }
 
+        .detail h1{
+            padding: 0 15px;
+        }
+
 
 
         .installment-purchase .but-1-gop {
@@ -400,6 +404,7 @@
             <div class="total-imgslider">
                 <a id="show-popup-featured-images-gallery" style="display: block" href="javascript:void(0)"  data-color-id="0" data-toggle="modal" data-target="#Salient_Features">Xem tất cả điểm nổi bật</a>
             </div>
+
             <div class="scrolling_inner">
                 <div class="box01__tab scrolling">
                     <div id="thumb-featured-images-gallery-0" class="item itemTab active " data-gallery-id="featured-images-gallery" data-color-id="0" data-is-full-spec="False" data-color-order-id="0" data-isfeatureimage="True" data-toggle="modal" data-target="#Salient_Features" class="read-full" data-gallery-id="featured-images-gallery">
@@ -414,6 +419,11 @@
                         </div>
                         <p data-toggle="modal" data-target="#specifications">Thông số kỹ thuật</p>
                     </div>
+
+                    <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                        </div>
+
                     <div id="thumb-article-gallery-0" class="item itemTab  is-show-popup" data-gallery-id="article-gallery" data-color-id="0" data-is-full-spec="False" data-color-order-id="0" data-isfeatureimage="True">
                         <div class="item-border">
                             <i class="icondetail-danhgia"></i>
