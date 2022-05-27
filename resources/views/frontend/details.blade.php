@@ -281,9 +281,7 @@
             <div class="box01">
                 <div class="box01__show">
                     <div class="owl-carousel detail-slider" id="carousel">
-                        <div class="item">
-                            <img src="{{ asset($data->Image) }}">
-                        </div>
+                       
                         @isset($images)
                         @foreach($images as $image)
                         <div class="item">
