@@ -267,8 +267,13 @@
 
 
         <!-- flash sale -->
+            <div class="img-flashsale mobiles" style="width: 100%;">
+                        <a href="{{ route('details', 'deal') }}"><img src="{{ asset('images/template/flashsalemb.jpg') }}" style="width: 100%"></a>
+
+                    </div>
             <div class="">
                 <div class="flash-sale" style="height: 305px;">
+                    
                     <span id="banner-flash-sale"><a href="{{ route('dealFe') }}">
                     <img width="256" src="{{  asset('images/background-image/Flash_Sale_Theme_256x396.jpg')}}" style="width: auto; height: 300px" alt="banner-fs">
                     </a></span>
