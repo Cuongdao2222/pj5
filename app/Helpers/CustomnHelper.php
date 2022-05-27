@@ -30,12 +30,12 @@ if (!function_exists('gift')) {
 
         $gift = [];
     
-        if(!empty($promotion)){
+        if(!empty($promotion) && !empty($promotion->id_group_gift)){
             $gifts     = DB::table('group_gift')->where('id', $promotion->id_group_gift)->first();
 
-            $start    = new Carbon\Carbon($gifts->start);
+            $start    = new Carbon\Carbon($promotion->start);
 
-            $end     = new Carbon\Carbon($gifts->end);
+            $end     = new Carbon\Carbon($promotion->end);
 
 
             if($now->between($start, $end)){
@@ -48,6 +48,8 @@ if (!function_exists('gift')) {
 
                 
             }
+
+
         
         }
         return $gift;

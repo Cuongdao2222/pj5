@@ -23,9 +23,8 @@
        {{ number_format($val->Price , 0, ',', '.')}}
     </td>
 
-    <td class="deal-price">
-        
-    </td>
+   
+   
     <td>
         1
     </td>
@@ -33,8 +32,9 @@
         24 Tháng
     </td>
     <td>
-        <input type="button" value="Chọn sản phẩm" class="update-bt-all" onclick="selectProduct('{{$val->id}}')"><span id="update_bt_5814"></span>
+        <input type="button" value="Chọn sản phẩm" class="update-bt-all" onclick="selectProduct('{{$val->id}}')" id="selectProduct{{ $val->id}}"><span></span>
     </td>
+   
 </tr>
 
 @endforeach

@@ -1,6 +1,15 @@
 @extends('frontend.layouts.apps')
 @section('content') 
 <style type="text/css">
+    #data-pricetotal{
+        width: 194px;
+    }
+    .p-gift {
+        padding: 10px;
+        border: 1px solid #f8810c;
+        border-radius: 3px;
+        margin-top: 10px;
+    }
 
     .loader {
       height: 5rem;
@@ -61,7 +70,7 @@
     } 
     @media screen and (max-width: 776px){
         .header__top {
-            background-color: #187A43;
+            background-color: #DD2C44;
             }   
         } 
 
@@ -178,10 +187,17 @@
     }
 
     $gift = gift($data->id);
+
+
+    if(!empty($gift)){
+        $gifts = $gift['gifts'];
+        $gift = $gift['gift'];
+
+    }
     
     ?>
 @push('style')
-<link rel="stylesheet" type="text/css" href="{{ asset('css/detailsfe.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/detailsfe.css') }}?ver=1">
 @endpush
 <div class="locationbox__overlay"></div>
 <div class="locationbox">
@@ -377,6 +393,8 @@
                                 @endif
                             </div>
                             <div class="clearfix"></div>
+
+
                         </div>
                     </div>
                 </div>
@@ -587,6 +605,28 @@
                                 <span>{{ $status }} </span>
                             </div>
 
+                            
+                             @if(!empty($gift))
+
+                            <fieldset class="p-gift">
+                                    <legend id="data-pricetotal" style="color: #ff0000;font-size: 18px; font-weight: bold" data-pricetotal="0">
+                                        Khuyến mãi kèm theo
+                                    </legend>
+                                    <!---->
+                                    <div class="detail-offer">
+                                       
+                                        {{ $gifts->type ==1?'Lựa chọn 1 trong 2 sản phẩm sau':'' }}
+                                        @foreach($gift as $valuegift)
+                                        <div class="select-gift">
+                                            <h4>{{ $valuegift->name }}</h4>
+                                        </div>
+                                        @endforeach
+                                       
+                                    </div>
+                                    <div class="img-gift clearfix">
+                                    </div>
+                                </fieldset>
+                             @endif    
 
                             @if($data['Quantily']>0)
                             <div class="pdetail-add-to-cart add-to-cart">
@@ -606,6 +646,8 @@
                                     </button> -->
                             </div>
                             <div class="clearfix"></div>
+
+
                             <div class="installment-purchase pdetail-installment">
                                 
                                 @if((int)$data['Price']>3000000)
@@ -635,6 +677,7 @@
 
                         </div>
                         <div class="clearfix"></div>
+
                          <button type="button" class="btn btn-lg" data-toggle="modal" data-target="#specifications">Xem chi tiết thông số kỹ thuật</button>
                        
                         
@@ -775,12 +818,6 @@
    
        
     @if(!empty($gift))   
-
-    <?php  
-        $gifts = $gift['gifts'];
-        $gift = $gift['gift'];
-    ?>
-  
     <div class="promo line_h19">
         <div class="txt_b">Khuyến mại: {{ $gifts->type ==1?'Lựa chọn 1 trong 2 sản phẩm sau':'' }}</div>
         <div style="display: flex;">
@@ -791,7 +828,9 @@
             @endforeach
         </div>
     </div>
+
     @endif
+   
     <div class="buy-group">
         @if($data->Quantily>0) 
         @if((int)$data->Price>0)
@@ -853,7 +892,7 @@
 
 </div>
 @push('style')
-<link rel="stylesheet" type="text/css" href="{{ asset('css/details.css?v=1') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/details.css') }}?ver=1">
 @endpush
 @push('script')
 <script type="text/javascript">

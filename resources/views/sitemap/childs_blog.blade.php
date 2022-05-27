@@ -2,9 +2,13 @@
 	<url>
 		<loc>https://dienmaynguoiviet.vn</loc>
 	</url>
+
+
 	@if(isset($blog))
     @foreach($blog as $blogs)
-	<loc>{{ $blogs->Link }}</loc>
+    <url>
+		<loc>{{ route('details', $blogs->link) }}</loc>
+	</url>
 	@endforeach    
     @endif
 

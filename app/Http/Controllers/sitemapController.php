@@ -6,11 +6,14 @@ use Illuminate\Http\Request;
 
 use App\Models\post;
 
+use App\Models\product;
+
 class sitemapController extends Controller
 {
    public function index()
    {
-        $number = '77
+        $number = '60
+                77
                 62
                 436
                 73
@@ -367,18 +370,19 @@ class sitemapController extends Controller
 
    public function sitemapChildProduct()
    {
-    $product = product::take(60)->OrderBy('id', 'desc')->get();
+    $product = product::take(300)->OrderBy('id', 'desc')->get();
+
        return response()->view('sitemap.child', [
-            'arr_number' => $product
+            'product' => $product,
         ])->header('Content-Type', 'text/xml');
    }
    public function sitemapChildBlog()
    {
-    $blog = post::take(60)->OrderBy('id', 'desc')->get();
+    $blog = post::take(160)->OrderBy('id', 'desc')->get();
 
     
        return response()->view('sitemap.childs_blog', [
-            'arr_number' => $blog
+            'blog' => $blog
         ])->header('Content-Type', 'text/xml');
    }
 }
