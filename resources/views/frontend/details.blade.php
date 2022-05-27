@@ -566,9 +566,52 @@
                                 </div>
                             </div>
                             </div> -->
+                            <style type="text/css">
+                                
+                                .crazy-deal-details-right {
+                                    position: relative;
+                                    margin-left: 140px;
+                                    height: 100%;
+                                    display: flex;
+                                    align-items: center;
+                                    flex-direction: row;
+                                    justify-content: space-between;
+                                }
+                                .crazy-deal-details-procressbar{
+                                    width: 90px;
+                                    height: 8px;
+                                    background: #ffd1c2;
+                                    border-radius: 4px;
+                                    display: inline-block;
+                                    margin-right: 6px;
+                                    margin-left: 6px;
+                                }
+                                .crazy-deal-details.pc {
+                                    margin: 8px;
+                                    height: 29px;
+                                    overflow: hidden;
+                                    background-position: 0 0;
+                                    background-repeat: no-repeat;
+                                    background-size: 100% 100%;
+
+                                }    
+                            </style>
                         <div class="pdetail-price">
                             @if(!empty($text))
-                            <div class="tbl_time_top">
+                            <div id="module_flash_sale" class="pdp-block module">
+                                <div class="crazy-deal-details pc" style="background-image:url(https://lzd-img-global.slatic.net/g/tps/tfs/TB14qayJSf2gK0jSZFPXXXsopXa-620-38.png_720x720q80.jpg_.webp); height:38px">
+                                    <div class="crazy-deal-details-right">
+                                        <time class="crazy-deal-details-countdown" data-spm-anchor-id="a2o4n.pdp_revamp.0.i0.89db8552daSXV6">Kết thúc sau <span class="crazy-deal-details-countdown-time clock">12:08:36</span></time>
+                                        <div class="crazy-deal-details-process">
+                                            <div class="crazy-deal-details-procressbar">
+                                                <div class="crazy-deal-details-procressbar-inner" style="width:9%"></div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                           <!--  <div class="tbl_time_top">
                                 <table class="tbl_time" width="100%">
                                     <thead>
                                     <tr>
@@ -587,7 +630,7 @@
                                     </tr>
                                     </tbody>
                                 </table>
-                            </div>
+                            </div> -->
                             @endif
                             <br>
                              {!!  @$text !!}

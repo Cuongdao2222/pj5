@@ -95,6 +95,8 @@
             }  
 
 
+
+
             @media only screen and (max-width: 768px) {
               .Next {
                 display: none;
@@ -105,6 +107,13 @@
               .col1-simple{
                     width: 100% !important;
                 }
+                .detail-slider.owl-carousel {
+                    min-height: auto !impotant;
+                }   
+                 .listproduct .item-img {
+                    height: 166px;
+                    line-height: 166px;
+                } 
             }
         </style>
 
@@ -829,12 +838,12 @@
                 nav:false,
                 navText: ["<i class='fa fa-chevron-left'></i>","<i class='fa fa-chevron-right'></i>"],
                 loop: true,
-                items:1.5,
+                items:2,
                 
                 responsive:{
                    
                     600:{
-                        items:1.5
+                        items:3
                        
                     },
                     1000:{
