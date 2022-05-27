@@ -599,7 +599,7 @@
                         <div class="pdetail-price">
                             @if(!empty($text))
                             <div id="module_flash_sale" class="pdp-block module">
-                                <div class="crazy-deal-details pc" style="background-image:url(https://lzd-img-global.slatic.net/g/tps/tfs/TB14qayJSf2gK0jSZFPXXXsopXa-620-38.png_720x720q80.jpg_.webp); height:38px">
+                                <div class="crazy-deal-details pc" style="background-image:url('{{ asset('images/template/flashsale.png')  }}'); height:38px">
                                     <div class="crazy-deal-details-right">
                                         <time class="crazy-deal-details-countdown" data-spm-anchor-id="a2o4n.pdp_revamp.0.i0.89db8552daSXV6">Kết thúc sau <span class="crazy-deal-details-countdown-time clock">12:08:36</span></time>
                                         <div class="crazy-deal-details-process">
