@@ -26,7 +26,10 @@
             </div>
         </div>
     </section>
-<?php    $list = DB::table('group_gift')->get(); ?>
+<?php    
+    $list = DB::table('group_gift')->get(); 
+    $groupProduct = App\Models\groupProduct::where('level',0)->get();
+?>
     
     @if(isset($list))
   
@@ -104,20 +107,27 @@
                             <td style="width:80px">nhóm quà tặng</td>
                             <td style="width:80px">Chọn</td>
                         </tr>
+                        @if(!empty($list))
+                        <?php 
+                            $k =0;
+                        ?>
+                        @foreach($groupProduct as $lists)
+                        <?php  $k++;?>
                         <tr id="row_4175" class="row-hover">
-                            <td>1</td>
+                            <td>{{ $k }}</td>
                             <td>
-                                <b><a href="http://localhost/pj5/smart-tivi-samsung-ua32t4500-32-inch-hd" class="pop-up">Smart tivi Samsung UA32T4500 32 inch HD</a></b> <br>
-                                <input type="hidden" id="pro_name_4175" value="4175">
+                               {{ $lists->name}}
                             </td>
                             <td>
-                                7.180.000
+                                
                             </td>
                            
                             <td>
                                 <input type="button" value="Chọn nhóm sản phẩm" class="update-bt-all"><span></span>
                             </td>
                         </tr>
+                        @endforeach
+                        @endif
                     </tbody>
                 </table>
             </div>
