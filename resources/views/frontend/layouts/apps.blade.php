@@ -913,7 +913,7 @@
                                 <div class="sub-cate">
                                     <div class="PKLT">
                                         <strong>Thương hiệu</strong>
-                                        <a href="{{route('details','sanaky')}}">
+                                        <a href="{{route('details','tu-dong-sanaky')}}">
                                             <h3>Sanaky</h3>
                                         </a>
                                         <a href="{{route('details','kangaroo')}}">
@@ -967,7 +967,7 @@
                                 <div class="sub-cate">
                                     <div class="PKLT">
                                         <strong>Thương hiệu</strong>
-                                        <a href="{{route('details','sanaky')}}">
+                                        <a href="{{route('details','tu-mat-sanaky')}}">
                                             <h3>Sanaky</h3>
                                         </a>
                                     </div>
