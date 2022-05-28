@@ -122,7 +122,7 @@
                                {{ $lists->name}}
                             </td>
                             <td>
-                                <select id="group_gift_select" data-id="{{ $lists->id }}">
+                                <select class="group_gift_select" data-id="{{ $lists->id }}">
                                     <option value="0">Không chọn</option>
                                     @foreach($list as $value)
                                     <option value="{{ $value->id }}" {{ $lists->group_gift==$value->id?'selected':'' }}>{{ $value->group_name }}</option>
@@ -412,7 +412,7 @@
 
 <script type="text/javascript">
 
-    $('#group_gift_select').bind('change',function(){
+    $('.group_gift_select').bind('change',function(){
         group_product = $(this).attr('data-id');
         group_gift = $(this).val();
         $.ajax({
