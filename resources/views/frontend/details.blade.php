@@ -390,6 +390,29 @@
                                     <span>{{ $status }}</span>
                                 </div>
 
+                                 @if(!empty($gift) && $data->Quantily>0)
+
+                                <fieldset class="p-gift">
+                                        <legend id="data-pricetotal" style="color: #ff0000;font-size: 18px; font-weight: bold" data-pricetotal="0">
+                                            Khuyến mãi kèm theo
+                                        </legend>
+                                        <!---->
+                                        <div class="detail-offer">
+                                           
+                                            {{ $gifts->type ==1?'Lựa chọn 1 trong 2 sản phẩm sau':'' }}
+                                            @foreach($gift as $valuegift)
+                                            <div class="select-gift">
+                                                <img src="{{ asset($valuegift->image) }}" height="30px" width="30px">
+                                                <h4>{{ $valuegift->name }}</h4>
+                                            </div>
+                                            @endforeach
+                                           
+                                        </div>
+                                        <div class="img-gift clearfix">
+                                        </div>
+                                    </fieldset>
+                                 @endif    
+
                                 <!-- <div class="pdetail-promotion">
                                     <div class="pdetail-promotion-body">
                                         <ul>
