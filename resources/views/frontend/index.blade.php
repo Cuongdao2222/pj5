@@ -568,12 +568,12 @@
                                 </div>
 
                                 <?php  
-
-                                    $gift = groupGift($groups->id);
+                                    $gift = gift($datas->id);
+                                    
 
                                     if(empty($gift)){
-
-                                        $gift = gift($datas->id);
+                                        $gift = groupGift($groups->id);
+                                        
                                         if(empty($gift)){
 
                                             $gift =[];

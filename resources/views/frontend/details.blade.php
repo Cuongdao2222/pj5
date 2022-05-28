@@ -230,12 +230,12 @@
         }
     }
 
-          
-    $gift = groupGift($groupProductId);
+    $gift = gift($data->id);      
+    
 
     if(empty($gift)){
-
-        $gift = gift($data->id);
+        $gift = groupGift($groupProductId);
+        
         if(empty($gift)){
 
 
