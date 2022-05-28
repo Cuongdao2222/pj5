@@ -28,6 +28,9 @@
                 position: absolute;
                 right: 0;
             } 
+            .option-gift{
+                display: flex;
+            }
 
             .menus-banner .strongtitle {
                 position: absolute;
@@ -432,6 +435,8 @@
                             </p>
                             
                         </div>
+
+                       
                     </a>
                 </div>
                 @endif
@@ -586,11 +591,13 @@
                                     ?>
 
 
-                                    
-                                    @foreach($gift as $gifts)
+                                    <div class="option-gift">
+                                         @foreach($gift as $gifts)
 
-                                    <div class="quatang"><img src="{{ asset($gifts->image) }}"></div>
-                                    @endforeach
+                                        <div class="quatang"><img src="{{ asset($gifts->image) }}"></div>
+                                        @endforeach
+                                    </div>
+                                   
                                 @endif
                                 
                             </a>

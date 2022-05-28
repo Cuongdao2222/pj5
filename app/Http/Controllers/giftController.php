@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Flash;
 use Response;
 use DB;
+use Carbon\Carbon;
 
 class giftController extends AppBaseController
 {
@@ -177,24 +178,33 @@ class giftController extends AppBaseController
         Flash::success('Gift deleted successfully.');
 
         return redirect(route('gifts.index'));
-    }
+    }   
 
     public function destroyGift($id)
     {
       
-       $check = DB::table('promotion')->where('id_group_gift', $id)->first();
+       $check = DB::table('group_gift')->where('id', $id)->first();
+       $now   = Carbon::now();
 
 
-       if(empty($check)){
+       $start = Carbon::create($check->start);
+       $end   =  Carbon::create($check->end);
 
-            DB::table('group_gift')->where('id', $id)->delete();
 
-            Flash::success('xóa thành công');
+       if(!empty($check) && $now->between($start, $end)){
+
+            Flash::error('Không thể xóa vì có khuyến mãi đang chạy');
+            return redirect()->back();
 
        }
        else{
+            
+             DB::table('group_gift')->where('id', $id)->delete();
+
+            Flash::success('xóa thành công');
+
             return redirect()->back();
-             Flash::error('Không thể xóa vì có khuyến mãi đang chạy');
+             
        }
     }
 }

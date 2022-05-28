@@ -30,10 +30,10 @@ if (!function_exists('groupGift')) {
 
         foreach ($gift_group as  $value) {
             $gifts     = DB::table('group_gift')->where('id', $value->group_gift)->first();
-            if(!empty($gifts)){
-                $start    = new Carbon\Carbon($value->start);
+            if(!empty($gifts) && !empty($gifts->start)){
+                $start    = new Carbon\Carbon($gifts->start);
 
-                $end     = new Carbon\Carbon($value->end);
+                $end     = new Carbon\Carbon($gifts->end);
 
 
                 if($now->between($start, $end)){
