@@ -46,6 +46,9 @@
         top: 50%;
         right: 0;
     }
+    .select-gift{
+        display: flex;
+    }
 
     @keyframes loading {
       0% {
@@ -711,6 +714,7 @@
                                         {{ $gifts->type ==1?'Lựa chọn 1 trong 2 sản phẩm sau':'' }}
                                         @foreach($gift as $valuegift)
                                         <div class="select-gift">
+                                            <img src="{{ asset($valuegift->image) }}" height="30px" width="30px">
                                             <h4>{{ $valuegift->name }}</h4>
                                         </div>
                                         @endforeach
