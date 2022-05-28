@@ -246,7 +246,7 @@
                         	@foreach($data_product as $data)
                             <tr>
                                 <td>
-                                    <img src="{{ asset(@$data->image) }}" alt="">
+                                    <img src="{{ asset(@$data->image) }}" alt="{{ @$data->name }}">
                                     <span class="user-link"><a href="{{  route('details', $data->link) }}" target="_blank">{{ @$data->name }}</a>  </span>
                                     <!-- <span class="user-subhead">Admin</span> -->
                                 </td>

@@ -305,13 +305,20 @@
             <div class="box01">
                 <div class="box01__show">
                     <div class="owl-carousel detail-slider" id="carousel">
+
+                        <div class="item">
+                            <img src="{{ asset($data->Image) }}" alt="@$data->Name">
+                        </div>
                        
                         @isset($images)
                         @foreach($images as $image)
+
+                        @if(trim($image->image) != trim($data->Image))
                         <div class="item">
                             <a href="{{ asset($image->image) }}" data-fancybox="gallery"><img src="{{ asset($image->image) }}"  data-src="{{ asset($image->image) }}" class="lazyload"></a>
                             
                         </div>
+                        @endif
                         @endforeach
                         @endisset
                     </div>
