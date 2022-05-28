@@ -17,7 +17,8 @@
 
           ?>
 
-
+          <meta name="robots" content="index,follow" />
+      
          
         @if(isset($meta))
         <title>{{ $meta->meta_title }}</title>
@@ -123,9 +124,8 @@
   
 
         
-        <meta name="robots" content="index,follow" />
-      
-        <meta name="keywords" content="sieu thi dien may, siêu thị điện máy, mua điện máy giá rẻ, siêu thị điện máy uy tín, siêu thị điện máy trực tuyến"/>
+        
+        
         
         <link rel="alternate" type="application/rss+xml" title="RSS Feed for https://dienmaynguoiviet.vn" href="/product.rss" />
       
