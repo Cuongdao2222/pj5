@@ -420,9 +420,9 @@
                         <p data-toggle="modal" data-target="#specifications">Thông số kỹ thuật</p>
                     </div>
 
-                    <div class="modal-footer">
+                   <!--  <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                        </div>
+                        </div> -->
 
                     <div id="thumb-article-gallery-0" class="item itemTab  is-show-popup" data-gallery-id="article-gallery" data-color-id="0" data-is-full-spec="False" data-color-order-id="0" data-isfeatureimage="True">
                         <div class="item-border">

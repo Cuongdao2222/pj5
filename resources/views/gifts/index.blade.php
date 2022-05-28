@@ -28,7 +28,7 @@
     </section>
 <?php    
     $list = DB::table('group_gift')->get(); 
-    $groupProduct = App\Models\groupProduct::where('level',0)->get();
+    $groupProduct_gift = DB::table('gift_group')->get();
 ?>
     
     @if(isset($list))
@@ -111,7 +111,7 @@
                         <?php 
                             $k =0;
                         ?>
-                        @foreach($groupProduct as $lists)
+                        @foreach($groupProduct_gift as $lists)
                         <?php  $k++;?>
                         <tr id="row_4175" class="row-hover">
                             <td>{{ $k }}</td>
@@ -119,9 +119,14 @@
                                {{ $lists->name}}
                             </td>
                             <td>
-                                
+                                <select id="group_gift_selelected">
+                                    <option value="0">Không chọn</option>
+                                    @foreach($list as $value)
+                                    <option value="{{ $value->id }}">{{ $value->group_name }}</option>
+                                    @endforeach
+                                </select>
                             </td>
-                           
+                                
                             <td>
                                 <input type="button" value="Chọn nhóm sản phẩm" class="update-bt-all"><span></span>
                             </td>
