@@ -20,6 +20,42 @@ if (!function_exists('_substrs')) {
 }
 
 
+
+if (!function_exists('groupGift')) {
+    // id truyền vào là id category của sản phẩm
+    function groupGift($id){
+        $gift_group = DB::table('gift_group')->where('group_product', $id)->get();
+        $now = Carbon\Carbon::now();
+        $gift = [];
+
+        foreach ($gift_group as  $value) {
+            $gifts     = DB::table('group_gift')->where('id', $value->group_gift)->first();
+            if(!empty($gifts)){
+                $start    = new Carbon\Carbon($value->start);
+
+                $end     = new Carbon\Carbon($value->end);
+
+
+                if($now->between($start, $end)){
+
+                    $gifts_ar = [$gifts->gift1, $gifts->gift2];
+            
+                    $gift = DB::table('gifts')->whereIn('id',  $gifts_ar)->get()->toArray();
+
+                    $gift =  ['gift'=>$gift, 'gifts'=>$gifts];
+
+                }
+            }
+
+
+        }
+        return $gift;
+
+    }    
+
+}    
+
+
 if (!function_exists('gift')) {
 
     function gift($id){
@@ -48,15 +84,10 @@ if (!function_exists('gift')) {
 
                 
             }
-
-
         
         }
         return $gift;
-
-
     }
- 
 
 }
 

@@ -167,6 +167,10 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
      Route::get('destroyGroupGift/{id}', 'giftController@destroyGift')->name('destroyGiftGroup');
 
+     Route::get('giftGroupAddProduct', 'AjaxController@giftGroupAdd')->name('giftGroupAdd');
+
+     
+
 
     Route::post('/editFastPrice', 'productController@editFastPrice')->name('fast-price');
 

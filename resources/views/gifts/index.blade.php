@@ -6,6 +6,9 @@
     #modal-g .modal-content{
         width: 860px;
     }
+    .group_gift{
+        cursor: pointer;
+    }
 </style>
     <section class="content-header">
         <div class="container-fluid">
@@ -105,7 +108,7 @@
                             <td style="width:30px">STT</td>
                             <td>nhóm sản phẩm </td>
                             <td style="width:80px">nhóm quà tặng</td>
-                            <td style="width:80px">Chọn</td>
+                            
                         </tr>
                         @if(!empty($list))
                         <?php 
@@ -119,17 +122,15 @@
                                {{ $lists->name}}
                             </td>
                             <td>
-                                <select id="group_gift_selelected">
+                                <select id="group_gift_select" data-id="{{ $lists->id }}">
                                     <option value="0">Không chọn</option>
                                     @foreach($list as $value)
-                                    <option value="{{ $value->id }}">{{ $value->group_name }}</option>
+                                    <option value="{{ $value->id }}" {{ $lists->group_gift==$value->id?'selected':'' }}>{{ $value->group_name }}</option>
                                     @endforeach
                                 </select>
                             </td>
                                 
-                            <td>
-                                <input type="button" value="Chọn nhóm sản phẩm" class="update-bt-all"><span></span>
-                            </td>
+                            
                         </tr>
                         @endforeach
                         @endif
@@ -405,6 +406,28 @@
 <input type="hidden" name="" id="km">
 
 <script type="text/javascript">
+
+    $('#group_gift_select').bind('change',function(){
+        group_product = $(this).attr('data-id');
+        group_gift = $(this).val();
+        $.ajax({
+            type: 'GET',
+            url: "{{ route('giftGroupAdd') }}",
+            data: {
+                    
+                group_product : group_product,
+                group_gift : group_gift
+            },
+            success: function(result){
+
+                
+                alert(result);
+                
+            }
+        });
+
+    })
+    
 
     $("#date-picker1").datepicker({ dateFormat: 'dd-mm-yy'});
     $("#date-picker2").datepicker({ dateFormat: 'dd-mm-yy'});

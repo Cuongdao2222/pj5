@@ -550,6 +550,7 @@
                         
                                 @endif
                                 <strong class="price">{{ @number_format($datas->Price , 0, ',', '.')}}&#x20AB;</strong>
+
                            
                                 <div class="item-rating">
                                     <p>
@@ -562,17 +563,32 @@
                                 </div>
 
                                 <?php  
-                                   
 
-                                    $gift = gift($datas->id);
+                                    $gift = groupGift($groups->id);
+
+                                    if(empty($gift)){
+
+                                        $gift = gift($datas->id);
+                                        if(empty($gift)){
+
+                                            $gift =[];
+                                        }
+                                    }
+
                                 ?>
                                 
 
                                 @if(!empty($gift))
 
-                                    $gift = $gift['gift'];
+                                    <?php 
+                                        $gift = $gift['gift']; 
 
+                                    ?>
+
+
+                                    
                                     @foreach($gift as $gifts)
+
                                     <div class="quatang"><img src="{{ asset($gifts->image) }}"></div>
                                     @endforeach
                                 @endif

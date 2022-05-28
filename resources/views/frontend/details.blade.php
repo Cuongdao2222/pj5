@@ -210,8 +210,38 @@
     
     }
 
-    $gift = gift($data->id);
 
+    $groupProduct = App\Models\groupProduct::select('name', 'link', 'product_id','id')->where('level', 0)->get();
+
+    foreach($groupProduct as $groupProducts ){
+
+        if(!empty(json_decode($groupProducts->product_id))){
+
+            if(in_array($data['id'],json_decode($groupProducts->product_id))){
+
+                $groupName = $groupProducts->name;
+
+                $groupLink = $groupProducts->link;
+
+                $groupProductId =  $groupProducts->id;
+
+                
+            }
+        }
+    }
+
+          
+    $gift = groupGift($groupProductId);
+
+    if(empty($gift)){
+
+        $gift = gift($data->id);
+        if(empty($gift)){
+
+
+            $gift =[];
+        }
+    }
 
     if(!empty($gift)){
         $gifts = $gift['gifts'];
@@ -246,23 +276,7 @@
 </div>
 <section data-id="235791" data-cate-id="1942" class="detail ">
     <ul class="breadcrumb">
-        <?php  
-            $groupProduct = App\Models\groupProduct::select('name', 'link', 'product_id')->where('level', 0)->get();
-
-            foreach($groupProduct as $groupProducts ){
-
-                if(!empty(json_decode($groupProducts->product_id))){
-
-                    if(in_array($data['id'],json_decode($groupProducts->product_id))){
-
-                        $groupName = $groupProducts->name;
-
-                        $groupLink = $groupProducts->link;
-                    }
-                }
-            }
-
-            ?>
+        
         <li>
             <a href="{{route('homeFe')}}">Trang chủ</a>
             <meta property="position" content="1">

@@ -86,6 +86,17 @@ class AjaxController extends Controller
             $banner->save();
         }    
     }
+
+    public function giftGroupAdd(Request $request)
+    {
+        $group_product = $request->group_product;
+        $group_gift    = $request->group_gift;
+        $addGroup      = DB::table('gift_group')->where('group_product', $group_product);
+        $addGroup->update(['group_gift'=>$group_gift]);
+        return response('thanh cong');
+
+
+    }
   
     public function addHotProduct(Request $request)
     {
