@@ -1,4 +1,4 @@
-<url>
+<url xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
 		<loc>https://dienmaynguoiviet.vn</loc>
 	</url>
