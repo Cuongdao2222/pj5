@@ -20,8 +20,7 @@ Route::get('/tin-tong-hop/', 'Frontend\blogController@index')->name('tin-th');
 
 Route::get('/tin-tuc-tong-hop/', 'Frontend\blogController@index')->name('tin-th');
 
-Route::get('/tin-tuc', 'Frontend\blogController@index')->name('tin-ths');
-
+Route::get('/tin-tuc', 'Frontend\blogController@index')->name('tins');
 
 Route::get('/', 'Frontend\indexController@index')->name('homeFe');
 Route::get('/ckfinder.html', function () {
