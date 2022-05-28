@@ -1,5 +1,12 @@
 @extends('frontend.layouts.apps')
 @section('content') 
+@push('style')
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css" />
+
+    
+
+@endpush
 <style type="text/css">
     #data-pricetotal{
         width: 194px;
@@ -25,6 +32,19 @@
         left: 45%;
         z-index: 999;
         display: none;
+    }
+
+    .fa-angle-left{
+
+        position: absolute;
+        top: 50%;
+        left: 0;
+    }
+
+    .fa-angle-right{
+        position: absolute;
+        top: 50%;
+        right: 0;
     }
 
     @keyframes loading {
@@ -289,7 +309,8 @@
                         @isset($images)
                         @foreach($images as $image)
                         <div class="item">
-                            <img src="{{ asset($image->image) }}"  data-src="{{ asset($image->image) }}" class="lazyload">
+                            <a href="{{ asset($image->image) }}" data-fancybox="gallery"><img src="{{ asset($image->image) }}"  data-src="{{ asset($image->image) }}" class="lazyload"></a>
+                            
                         </div>
                         @endforeach
                         @endisset
@@ -946,8 +967,11 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('css/details.css') }}?ver=1">
 @endpush
 @push('script')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js"></script>
 <script type="text/javascript">
+
     $( document ).ready(function() {
+        $('.box01 a').fancybox();
     
         $('.star-click').bind('click',function(){
             id_star = $(this).attr('id');    
@@ -1085,6 +1109,8 @@
     
 </script>
 <script type="text/javascript">
+
+   
     $('.bar-top-left').hide();
 
      $.ajaxSetup({
@@ -1179,9 +1205,10 @@
     $('#carousel').owlCarousel({
         loop:true,
         margin:10,
-        nav:false,
+        nav:true,
         autoplay:true,
         dots:true,
+        navText: ["<i class='fa fa-angle-left'></i>","<i class='fa fa fa-angle-right'></i>"],
        
         responsive:{
             0:{

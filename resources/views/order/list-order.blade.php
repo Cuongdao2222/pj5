@@ -247,7 +247,7 @@
                             <tr>
                                 <td>
                                     <img src="{{ asset(@$data->image) }}" alt="">
-                                    <span class="user-link"><a href="/{{ $data->link }}">{{ @$data->name }}</a>  </span>
+                                    <span class="user-link"><a href="{{  route('details', $data->link) }}" target="_blank">{{ @$data->name }}</a>  </span>
                                     <!-- <span class="user-subhead">Admin</span> -->
                                 </td>
                                 <td>
