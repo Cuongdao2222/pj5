@@ -307,7 +307,7 @@
                     <div class="owl-carousel detail-slider" id="carousel">
 
                         <div class="item">
-                            <img src="{{ asset($data->Image) }}" alt="@$data->Name">
+                            <a href="{{ asset($data->Image) }}" data-fancybox="gallery"><img src="{{ asset($data->Image) }}" alt="@$data->Name"></a>
                         </div>
                        
                         @isset($images)
