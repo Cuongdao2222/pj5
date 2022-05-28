@@ -97,6 +97,19 @@
                 font-size: 13.5px !important;
             }  
 
+            .readmore-btn {
+                background-color: #fff;
+                border-radius: 4px;
+                border: 1px solid #e0e0e0;
+                color: #333;
+                display: block;
+                line-height: 16px;
+                margin: 5px auto 15px;
+                padding: 15px 20px;
+                text-align: center;
+                width: 340px;
+            }
+
 
 
 
@@ -445,6 +458,12 @@
                 
             </div>
             @endif
+
+            <div class="prd-promo__top clearfix" >
+
+
+                <a class="readmore-btn" href="{{ route('sale-home') }}"><span>Xem tất cả</span></a>                
+            </div>
             
         </div>
 

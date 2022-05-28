@@ -34,6 +34,13 @@ Route::get('/landingpage', function () {
     
 })->name('landingpageFe');
 
+
+Route::get('/sale', function () {
+    return view('frontend.sale');
+    
+})->name('sale-home');
+
+
 Route::get('/deal', function () {
     return view('frontend.deallist');
     
