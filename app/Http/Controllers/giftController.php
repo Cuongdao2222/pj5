@@ -134,6 +134,8 @@ class giftController extends AppBaseController
             return redirect(route('gifts.index'));
         }
 
+         $input = $request->all();
+
         if ($request->hasFile('image')) {
 
             $file_upload = $request->file('image');
@@ -145,7 +147,7 @@ class giftController extends AppBaseController
             $input['image'] = $filePath;
         }
 
-        $input = $request->all();
+       
 
         $gift = $this->giftRepository->update($input, $id);
 

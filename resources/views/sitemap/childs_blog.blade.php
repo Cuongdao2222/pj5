@@ -1,4 +1,4 @@
-<url xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
 		<loc>https://dienmaynguoiviet.vn</loc>
 	</url>
@@ -195,4 +195,4 @@
 <url>
 <loc>https://dienmaynguoiviet.vn/huong-dan-nau-va-bao-quan-com-khong-bi-thiu-trong-mua-nong/</loc>
 </url>
-</url>
+</urlset>
