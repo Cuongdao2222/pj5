@@ -36,6 +36,8 @@ class orderController extends Controller
             $carts[$key]['price'] = $data->price;
             $carts[$key]['name'] = $data->name;
             $carts[$key]['qty'] = $data->qty;
+
+            $carts[$key]['gift'] = ($data->options)['gift']??'';
             $price = (int)$data->price*(int)$data->qty;
             array_push($totalPrice, $price);
         }
@@ -57,8 +59,6 @@ class orderController extends Controller
         $product_subtract->Quantily = $resultqty;
 
         $product_subtract->save();
-
-
 
         $carts_mail = $carts;
 
@@ -83,8 +83,6 @@ class orderController extends Controller
                 'orderId'=>$input['orderId'], 'total_price'=>$totalPrice), function($message){
                 $message->to($GLOBALS['mail'], 'Điện máy người việt')->subject('[Điện máy người việt] Đơn hàng mới ');
             });
-
-
 
             unset($GLOBALS['mail']);
 

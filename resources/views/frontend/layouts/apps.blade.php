@@ -509,6 +509,11 @@
                     <?php
                         $cart = Gloudemans\Shoppingcart\Facades\Cart::content();
 
+                        // foreach ($cart as $key => $value) {
+                        //      dd(($value->options)['gift']);
+                        // }
+                       
+
                         $number_cart = count($cart);
                        
                      ?>   

@@ -157,6 +157,7 @@
                 <td width="160px">Thời gian</td>
                 <td>Tỉnh/TP</td>
                 <td>Người mua</td>
+                <td>Quà</td>
                 <td width="100px">Giá trị</td>
                 <td width="140px">
                     Xem tình trạng                               
@@ -172,6 +173,10 @@
             <?php   
                 $address = config('constants.address');
                 $active  = config('constants.active');
+
+
+
+
             ?>
 
            
@@ -188,7 +193,7 @@
                 }
 
             ?>
-            @foreach($order as $orders)
+            @foreach($order as $keys=> $orders)
             <?php $key++; ?>
 
             <tr id="row_5471" onmouseover="this.className='row-hover'" onmouseout="this.className=''" class="">
@@ -201,6 +206,9 @@
 
                     <a href="?opt=order&amp;cus_id=4370">{{ $orders->sex }}: {{ $orders->name  }}</a>
                 </td>
+
+                
+                <td>{{ json_decode($orders->product)[$keys]->gift??'' }}</td>
                 <td align="right"><b></b>{{  str_replace(',' ,'.', number_format($orders->total_price))  }}đ </td>
                 <td style="text-align: center;">
                     {{ $active[$orders->active] }}                           

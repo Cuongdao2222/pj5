@@ -42,7 +42,7 @@ class indexController extends Controller
 
         $product_sale =  Cache::remember('product_sale',10, function() {
 
-            return DB::table('products')->join('sale_product', 'products.id', '=', 'sale_product.product_id')->join('makers', 'products.Maker', '=', 'makers.id')->get();;
+            return DB::table('products')->join('sale_product', 'products.id', '=', 'sale_product.product_id')->join('makers', 'products.Maker', '=', 'makers.id')->get();
          });
 
         

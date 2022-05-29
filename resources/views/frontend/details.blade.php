@@ -400,8 +400,11 @@
                                         <div class="detail-offer">
                                            
                                             {{ $gifts->type ==1?'Lựa chọn 1 trong 2 sản phẩm sau':'' }}
-                                            @foreach($gift as $valuegift)
+                                            @foreach($gift as $key => $valuegift)
                                             <div class="select-gift">
+
+                                                <input type="checkbox" name="gift" value="{{ $valuegift->name }}" class="gift-check">
+                                                
                                                 <img src="{{ asset($valuegift->image) }}" height="30px" width="30px">
                                                 <h4>{{ $valuegift->name }}</h4>
                                             </div>
@@ -429,6 +432,7 @@
                                 <div class="pdetail-add-to-cart add-to-cart">
                                     <div class="inline">
                                         <input type="hidden" name="productId" value="{{ $data->id }}">
+                                        <input type="hidden" name="gift_checked"  id="gift_checked" value="">
                                         <!-- <div class="product-quantity">
                                             <input type="text" class="quantity-field" readonly="readonly" name="qty" value="1">
                                             </div> -->
@@ -735,12 +739,18 @@
                                     <div class="detail-offer">
                                        
                                         {{ $gifts->type ==1?'Lựa chọn 1 trong 2 sản phẩm sau':'' }}
-                                        @foreach($gift as $valuegift)
                                         <div class="select-gift">
+                                            
+                                          
+                                             @foreach($gift as $key => $valuegift)
+                                              @if($gifts->type ==1)<input type="checkbox" name="gift" value="{{ $valuegift->name }}" {{ $key==0?'checked':'' }}> @endif
                                             <img src="{{ asset($valuegift->image) }}" height="30px" width="30px">
                                             <h4>{{ $valuegift->name }}</h4>
+                                            @endforeach
+                                          
+
                                         </div>
-                                        @endforeach
+                                        
                                        
                                     </div>
                                     <div class="img-gift clearfix">
@@ -1017,6 +1027,37 @@
 @push('script')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js"></script>
 <script type="text/javascript">
+    @if(!empty($gift) && $gifts->type ==1)
+    $("input:checkbox").on('click', function() {
+        // in the handler, 'this' refers to the box clicked on
+        var $box = $(this);
+        if ($box.is(":checked")) {
+            // the name of the box is retrieved using the .attr() method
+            // as it is assumed and expected to be immutable
+            var group = "input:checkbox[name='" + $box.attr("name") + "']";
+            // the checked state of the group/box on the other hand will change
+            // and the current value is retrieved using .prop() method
+            $(group).prop("checked", false);
+            $box.prop("checked", true);
+          } else {
+            $box.prop("checked", false);
+          }
+    });
+    @endif
+    var gift_check = ''
+    @if(!empty($gift) && $data->Quantily>0)  
+    gift_check  = '{{ $gift[0]->name }}';
+    $('#gift_checked').val(gift_check);
+    $('input[type="checkbox"]').click(function(){
+            if($(this).is(":checked")){
+                gift_check = $(this).val();
+               
+            }
+
+            $('#gift_checked').val(gift_check);
+           
+        });
+    @endif
 
     $( document ).ready(function() {
         $('.box01 a').fancybox();
@@ -1194,6 +1235,7 @@
             url: "{{ route('cart') }}",
             data: {
                 product_id: id,
+                gift_check:$('#gift_checked').val()
                    
             },
             beforeSend: function() {
