@@ -335,12 +335,21 @@ class groupProductController extends AppBaseController
 
                 foreach ($id_group as $value) {
 
+                 
                     $all_product_group =  groupProduct::find($value);
 
                     if( $all_product_group->product_id != ''){
 
                         $data_product_id = json_decode($all_product_group->product_id);
+
+                         array_push($data_product_id, $product_id);
+
+
+                        $all_product_group->product_id = json_encode(array_unique($data_product_id));
+
+                        $all_product_group->save();
                     }
+
                    
 
                 }
