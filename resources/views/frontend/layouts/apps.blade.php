@@ -358,8 +358,8 @@
             } 
             .hotlines{
                 position:fixed; 
-                bottom:49px; 
-                right:72px; 
+                bottom:16px; 
+                left:72px; 
                 z-index:9999   
             }
 
