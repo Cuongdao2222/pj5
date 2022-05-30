@@ -192,7 +192,7 @@
 
     $check_deal = App\Models\deal::select('deal_price','start', 'end')->where('product_id', $data->id)->where('active', 1)->first();
 
-
+    $deal_check_add = false;
     
     if(!empty($check_deal) && !empty(!empty($check_deal->deal_price))){
          $now  = Carbon\Carbon::now();
@@ -203,6 +203,7 @@
         $timestamp = $now->diffInSeconds($timeDeal_end);
 
         if($now->between($timeDeal_star, $timeDeal_end)){
+            $deal_check_add = true;
             $price_old = $data->Price;
             $text = '<b>MUA ONLINE GIÁ SỐC: </b>';
             $data->Price = $check_deal->deal_price;
@@ -390,7 +391,7 @@
                                     <span>{{ $status }}</span>
                                 </div>
 
-                                 @if(!empty($gift) && $data->Quantily>0)
+                                 @if(!empty($gift) &&  $data->Quantily>0)
 
                                 <fieldset class="p-gift">
                                         <legend id="data-pricetotal" style="color: #ff0000;font-size: 18px; font-weight: bold" data-pricetotal="0">
@@ -729,7 +730,7 @@
                             </div>
 
                             
-                             @if(!empty($gift) && $data->Quantily>0)
+                             @if(!empty($gift) && $data->Quantily>0 && $deal_check_add ==false)
 
                             <fieldset class="p-gift">
                                     <legend id="data-pricetotal" style="color: #ff0000;font-size: 18px; font-weight: bold" data-pricetotal="0">
@@ -947,7 +948,7 @@
     <div class="clear space10px"></div>
    
        
-    @if(!empty($gift) && $data->Quantily>0)   
+    @if(!empty($gift) && $data->Quantily>0 && $deal_check_add ==false)   
     <div class="promo line_h19">
         <div class="txt_b">Khuyến mại: {{ $gifts->type ==1?'Lựa chọn 1 trong 2 sản phẩm sau':'' }}</div>
         <div style="display: flex;">
@@ -1045,7 +1046,7 @@
     });
     @endif
     var gift_check = ''
-    @if(!empty($gift) && $data->Quantily>0)  
+    @if(!empty($gift) && $data->Quantily>0 && $deal_check_add==false)  
     gift_check  = '{{ $gift[0]->name }}';
     $('#gift_checked').val(gift_check);
     $('input[type="checkbox"]').click(function(){
