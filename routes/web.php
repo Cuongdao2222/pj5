@@ -156,6 +156,8 @@ Route::post('get-email-user', 'AjaxController@getEmail')->name('getemail');
 
 Route::post('suggest', 'AjaxController@getProductActive')->name('sugest-click');
 
+Route::post('filter-price-product', 'AjaxController@filterByValue')->name('filter-option');
+
 
 
 
@@ -333,7 +335,7 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::post('add-selected-value-filter', 'AjaxController@addValueSelectFilter')->name('add-value-selected-filter');
 
-    Route::get('filter-price-product', 'AjaxController@filterByValue')->name('filter-option');
+    
 
     Route::post('add-promotion', 'AjaxController@add_promotion')->name('add-promotion');
 

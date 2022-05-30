@@ -8,8 +8,8 @@
             <div class="select">
                 <select id="sort-by-option">
                     <option value="id"  {{ isset($action)&&$action == 'id'?'selected':'' }}>Nổi bật</option>
-                    <option value="desc" {{ isset($action)&&$action == 'desc'?'selected':'' }}>Giá tăng dần</option>
-                    <option value="asc" {{ isset($action)&&$action == 'asc'?'selected':'' }}>Giá giảm dần</option>
+                    <option value="asc" {{ isset($action)&&$action == 'asc'?'selected':'' }}>Giá tăng dần</option>
+                    <option value="desc" {{ isset($action)&&$action == 'desc'?'selected':'' }}>Giá giảm dần</option>
                 </select>
             </div>
         </div>

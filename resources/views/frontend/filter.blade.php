@@ -456,11 +456,17 @@
 
             }
 
-            $( "#sort-by-option" ).bind( "change", function() {
+            $( "#sort-by-option" ).bind("change", function() {
+                
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
 
                 $.ajax({
        
-                type: 'GET',
+                type: 'POST',
                     url: "{{ route('filter-option') }}",
                     data: {
                         json_id_product: $('.lists-id').text(),
@@ -473,7 +479,7 @@
 
                         $('#categoryPage').html(result);
 
-                        console.log(json_id_product)
+                        
 
                     }
                 });
