@@ -475,9 +475,10 @@
                     },
                     success: function(result){
 
-                        $('#categoryPage').html('');
+                        $('.container-productbox').html('');
 
-                        $('#categoryPage').html(result);
+                        $('.container-productbox').html(result);
+
 
                         
 

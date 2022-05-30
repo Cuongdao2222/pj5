@@ -1,24 +1,4 @@
-<section id="categoryPage" class="desktops" data-id="1942" data-name="Tivi" data-template="cate">
-    <div class="box-sort ">
-        @if(count($product_search)>0)
-        <p class="sort-total"><b>{{ count($product_search)}}</b> Sản phẩm <strong class="manu-sort"></strong></p>
-        @endif
-        <div class="sort-select ">
-            <label for="standard-select">Xếp theo</label>
-            <div class="select">
-                <select id="sort-by-option">
-                    <option value="id"  {{ isset($action)&&$action == 'id'?'selected':'' }}>Nổi bật</option>
-                    <option value="asc" {{ isset($action)&&$action == 'asc'?'selected':'' }}>Giá tăng dần</option>
-                    <option value="desc" {{ isset($action)&&$action == 'desc'?'selected':'' }}>Giá giảm dần</option>
-                </select>
-            </div>
-        </div>
-    </div>
-    <div class="clearfix"></div>
-    <div class="container-productbox">
-        <!-- <div id="preloader">
-            <div id="loader"></div>
-            </div> -->
+
         <div class="row list-pro">
             @if(count($product_search)>0)
             <?php $arr_id_pro = []; ?>
@@ -49,7 +29,7 @@
                             <!-- <div class="box-p">
                                 <p class="price-old black">20.900.000&#x20AB;</p>
                                 </div> -->
-                            <strong class="price">{{ number_format($value->Price , 0, ',', '.')}}</strong>
+                            <strong class="price">{{ $value->Price==0?'Liên hệ':number_format(str_replace("\xc2\xa0",'',$value->Price) , 0, ',', '.')}}{{ $value->Price!=0?'đ':''   }}</strong>
                             <!-- <p class="item-gift">Quà <b>1.500.000₫</b></p> -->
                             <div class="item-rating">
                                 <p>
@@ -79,57 +59,7 @@
             <h2>Không tìm thấy sản phẩm</h2>
             @endif
         </div>
-        <!-- <div class="view-more ">
-            <a href="javascript:;">Xem thêm <span class="remain">133</span> Tivi</a>
-            </div> -->
-    </div>
-
-    <script type="text/javascript">
-
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-
-        
-        
-        $( "#sort-by-option" ).bind( "change", function() {
-
-
-                $.ajax({
-       
-                type: 'POST',
-                    url: "{{ route('filter-option') }}",
-                    data: {
-                        json_id_product: $('.lists-id').text(),
-                        action:$(this).val(),
-                        
-                    },
-                    success: function(result){
-
-                        $('#categoryPage').html('');
-
-                        $('#categoryPage').html(result);
-
-                       
-                        
-
-                    }
-                });
-
-            });
-
-    </script>
-
-
-    <div class="errorcompare" style="display:none;"></div>
-    <!--  <div class="block__banner banner__topzone">
-        <a data-cate="0" data-place="1919" href="https://www.topzone.vn/" onclick="jQuery.ajax({ url: '/bannertracking?bid=48557&r='+ (new Date).getTime(), async: true, cache: false });"><img style="cursor:pointer" src="https://cdn.tgdd.vn/2021/12/banner/Frame4879-1200x120.jpg" alt="Promote Topzone" width="1200" height="120"></a>
-        </div> -->
-    <div class="watched"></div>
-    <div class="overlay"></div>
-</section>
+      
 
 
 
