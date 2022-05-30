@@ -7,6 +7,28 @@
             <?php   
                 $id_product = $value->id;
                 array_push($arr_id_pro, $id_product);
+
+                 $check_deal = App\Models\deal::select('deal_price','start', 'end')->where('product_id', $value->id)->where('active', 1)->first();
+
+                $deal_check_add = false;
+                
+                if(!empty($check_deal) && !empty(!empty($check_deal->deal_price))){
+                     $now  = Carbon\Carbon::now();
+                    $timeDeal_star = $check_deal->start;
+                    $timeDeal_star =  \Carbon\Carbon::create($timeDeal_star);
+                    $timeDeal_end = $check_deal->end;
+                    $timeDeal_end =  \Carbon\Carbon::create($timeDeal_end);
+                    $timestamp = $now->diffInSeconds($timeDeal_end);
+
+                    if($now->between($timeDeal_star, $timeDeal_end)){
+                       
+                        $value->Price = $check_deal->deal_price;
+                        
+                    }
+                
+                    
+                
+                }
                 ?>
             <div class="col-md-3 col-6 lists">
                 <div class="item  __cate_1942">
