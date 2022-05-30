@@ -323,11 +323,15 @@ class groupProductController extends AppBaseController
 
         array_push($id_group, $id);
 
+        
     
         if($active==1){
 
 
             if(isset($id_group)){
+
+                $data_product_id = [];
+
 
                 foreach ($id_group as $value) {
 
@@ -337,22 +341,19 @@ class groupProductController extends AppBaseController
 
                         $data_product_id = json_decode($all_product_group->product_id);
                     }
-                    else{
-                        $data_product_id = [];
+                   
 
-                    }
-                    array_push($data_product_id, $product_id);
-
-                    $all_product_group->product_id = json_encode(array_unique($data_product_id));
-
-                    $all_product_group->save();
-                    
                 }
+                array_push($data_product_id, $product_id);
+
+
+                $all_product_group->product_id = json_encode(array_unique($data_product_id));
+
+                $all_product_group->save();
 
             }
 
-           
-            
+        
         }
         // th xóa ko chọn
         else{
