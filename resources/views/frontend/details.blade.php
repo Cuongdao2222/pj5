@@ -1018,13 +1018,13 @@
         .commitment .support a {
             color: #fe0000;
             font-size: 16px;
-            font-weight: 500;
+            font-weight: bold;
             display: block;
             line-height: 30px;
         }
 
         .commitment h5 {
-            font-weight: 500;
+          /*  font-weight: 500;*/
             font-size: 16px;
             text-transform: uppercase;
             margin: 0;
