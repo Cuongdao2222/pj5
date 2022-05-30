@@ -176,13 +176,24 @@
             }
 
             .prod-info .btn-buy{
-                width: 271px;
+                width: 100%;
                 text-align: center;
             }
             .prod-info{
                 display: none;
             }
-          
+            .item{
+                width: 100%;
+                
+            }
+            .box01 .owl-carousel .owl-item{
+                width: 100%;
+
+            }
+            /*.box01 .owl-carousel .owl-item img{
+                width: 100% !important;
+            }
+          */
 
         
         } 
@@ -317,7 +328,7 @@
             </div>
         </div>
     </div>
-    <!--<div class="like-fanpage" data-url="http://www.dienmayxanh.com/tivi/led-4k-samsung-ua50au8100"></div>-->
+    
     <div class="box_main">
         <div class="box_left">
             <div class="box01">
@@ -325,7 +336,7 @@
                     <div class="owl-carousel detail-slider" id="carousel">
 
                         <div class="item">
-                            <a href="{{ asset($data->Image) }}" data-fancybox="gallery"><img src="{{ asset($data->Image) }}" alt="@$data->Name"></a>
+                            <a href="{{ asset($data->Image) }}" data-fancybox="gallery"><img src="{{ asset($data->Image) }}" alt="{{ @$data->Name }}"></a>
                         </div>
                        
                         @isset($images)
@@ -980,13 +991,95 @@
         </div>
         @endif
         @endif
-        Gọi đặt mua:  <span class="txt_b txt_red"><a href="tel:0967025111">098 361 2828</a></span> (sau 17h)<br>
-        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="txt_b txt_red"> <a href="tel:02438615111">091 301 1888</a></span> (sau 17h)
+       
     </div>
     <div class="clear"></div>
+    <br>
+    <style type="text/css">
+        .commitment {
+            border: 1px solid #0083d1;
+            padding: 10px;
+        }
+        .commitment h4 {
+            font-weight: bold;
+            color: #ff9;
+            text-transform: uppercase;
+            font-size: 16px;
+            margin: 0;
+            padding: 10px;
+            background-color: #fe0000;
+            margin: -10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+       .commitment ul {
+            line-height: 25px;
+        }
+        .commitment .support a {
+            color: #fe0000;
+            font-size: 16px;
+            font-weight: 500;
+            display: block;
+            line-height: 30px;
+        }
+
+        .commitment h5 {
+            font-weight: 500;
+            font-size: 16px;
+            text-transform: uppercase;
+            margin: 0;
+            margin-bottom: 10px;
+        }
+        .commitment{
+            width: 100%;
+        }
+        .commitment ul li::before {
+            content: "\f00c";
+            font-weight: 900;
+            font-family: Font Awesome\ 5 Free;
+            font-size: 8px;
+            margin-right: 5px;
+            color: #fff;
+            border: 1px solid #fff;
+            border-radius: 100%;
+            width: 14px;
+            height: 14px;
+            display: inline-block;
+            background-color: #ff3333;
+            line-height: 13px;
+            text-align: center;
+        }
+    </style>
 
     <div class="prod-info-right fr">
-        <h4 class="format txt_13">
+
+        <div>
+            <div class="commitment">
+                <h4>Yên tâm mua sắm</h4>
+                <ul>
+                    <li>Bảo hành tại nhà</li>
+                    <li>Lắp đặt miễn phí</li>
+              (Trừ điều hòa, bình nước nóng)
+                    <li>Thanh toán tại nhà</li>
+                    <li>Giao hàng miễn phí 20km</li>
+                    <li>Giá cạnh tranh nhất thị trường</li>
+                    <li>Đổi mới 100% trong 7 ngày đầu</li>
+                        ( Trừ Sanaky, Sony chỉ bảo hành tại nhà )
+                </ul>
+                <div class="support">
+                  <h5>Tổng Đài mua hàng</h5>
+                    <a href="tel:02473036336">0247.303.6336</a>
+                  <h5>Tổng Đài mua hàng( Sau 17h )</h5>
+                   <a href="tel:0913011888">091.301.1888</a> 
+                   <a href="tel:0983612828">098.361.2828</a>
+                   
+                                          
+                  
+                   
+                </div>
+                </div>
+            </div>
+       <!--  <h4 class="format txt_13">
             <p class="format txt_b">Yên tâm mua sắm:</p>
         </h4>
         <h5 class="format txt_13 txt_n">
@@ -1013,7 +1106,7 @@
             <p><i class="fa fa-check"></i> Đổi mới 100% trong 7 ngày đầu
                 ( Trừ Sanaky, Sony chỉ bảo hành tại nhà )
             </p>
-        </h5>
+        </h5> -->
         <div class="clear"></div>
     </div>
     <!--right-->

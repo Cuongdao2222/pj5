@@ -27,6 +27,26 @@ use \Carbon\Carbon;
 
 class crawlController extends Controller
 {
+
+
+    public function updateQuatity()
+    {
+        $data = DB::table('qualtity')->get();
+        foreach ($data as $key => $value) {
+
+           $product = product::where('ProductSku', trim($value->name))->first();
+
+            if(!empty($product)){
+                $updateProduct = product::find($product->id);
+                $updateProduct->Quantily = $value->qty;
+                $updateProduct->save();
+                DB::table('qualtity1')->insert(['name'=>$value->name, 'qty'=>$value->qty]);
+
+            }
+
+        }
+        echo "thanh cong";
+    }
     public function getMetaNUll()
     {
         $meta = metaSeo::where('meta_title', 'like', '%Nội dung không tồn tại%')->get();
