@@ -22,10 +22,10 @@
                             <h3 >
                                 {{ $value->Name  }}
                             </h3>
-                            <div class="item-compare">
+                            <!-- <div class="item-compare">
                                 <span>55 inch</span>
                                 <span>4K</span>
-                            </div>
+                            </div> -->
                             <!-- <div class="box-p">
                                 <p class="price-old black">20.900.000&#x20AB;</p>
                                 </div> -->
