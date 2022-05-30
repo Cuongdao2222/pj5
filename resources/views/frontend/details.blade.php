@@ -541,7 +541,10 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5>Thông số kỹ thuật</h5>
+                            <button type="button" class="btn btn-secondary mobiles" data-dismiss="modal">x</button>
                         </div>
+
+                        
                         <div class="modal-body" id="thong-so">
                             {!!  $data->Specifications  !!} 
                         </div>
