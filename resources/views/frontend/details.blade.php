@@ -1029,6 +1029,7 @@
             text-transform: uppercase;
             margin: 0;
             margin-bottom: 10px;
+            font-weight: bold;
         }
         .commitment{
             width: 100%;
