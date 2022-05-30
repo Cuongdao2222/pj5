@@ -106,11 +106,40 @@ class crawlController extends Controller
        
     }
     public function allproduct(){
-        $id = $_GET['id'];
-        $sp  = groupProduct::where('id', $id)->first();
-        $sps =  count(json_decode($sp->product_id));
+        $link = $_GET['link'];
 
-        print_r($sps);
+        $sp  = groupProduct::where('link', trim($link))->first();
+        if(!empty($sp)){
+            $sps = groupProduct::find($sp->id);
+
+            $product = json_decode($sps->product_id);
+
+
+            $link = [];
+
+            if(!empty($product)){
+                foreach ($product as $key => $value) {
+                    $products = product::find($value);
+
+                    $links = $products->Link??'';
+                    if($links !=''){
+                         array_push($link, 'https://dienmaynguoiviet.vn/'.$links);
+                    }
+                   
+                }
+            }
+
+            foreach ($link as  $values) {
+                echo $values.'<br>';
+            }
+        }
+        else{
+            echo "không tìm thấy nhóm sản phẩm này";
+        }
+
+        
+
+       
 
     }
     public function checkempty()

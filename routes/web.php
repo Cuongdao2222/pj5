@@ -163,6 +163,8 @@ Route::post('filter-price-product', 'AjaxController@filterByValue')->name('filte
 
 Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
+    Route::get('incrawl', 'crawlController@allproduct');
+
 
     Route::get('update-banner-stt', 'AjaxController@banner_update_stt')->name('editBnstt');
 
