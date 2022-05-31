@@ -657,7 +657,7 @@
                                 
                                 .crazy-deal-details-right {
                                     position: relative;
-                                    margin-left: 140px;
+                                    margin-left: 113px;
                                     height: 100%;
                                     display: flex;
                                     align-items: center;
@@ -673,6 +673,10 @@
                                     margin-right: 6px;
                                     margin-left: 6px;
                                 }
+                                .crazy-deal-details-process{
+                                    font-weight: bold;
+                                    margin-right: 10px;
+                                }
                                 .crazy-deal-details.pc {
                                     margin: 8px;
                                     height: 29px;
@@ -682,6 +686,9 @@
                                     background-size: 100% 100%;
 
                                 }    
+                                .crazy-deal-details-countdown{
+                                    font-weight: bold;
+                                }
                             </style>
                         <div class="pdetail-price">
                             @if(!empty($text))
@@ -690,9 +697,10 @@
                                     <div class="crazy-deal-details-right">
                                         <time class="crazy-deal-details-countdown" data-spm-anchor-id="a2o4n.pdp_revamp.0.i0.89db8552daSXV6">Kết thúc sau <span class="crazy-deal-details-countdown-time clock">12:08:36</span></time>
                                         <div class="crazy-deal-details-process">
-                                            <div class="crazy-deal-details-procressbar">
+                                            Đã bán 0 sản phẩm
+                                            <!-- <div class="crazy-deal-details-procressbar">
                                                 <div class="crazy-deal-details-procressbar-inner" style="width:9%"></div>
-                                            </div>
+                                            </div> -->
                                             
                                         </div>
                                     </div>

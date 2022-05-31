@@ -84,7 +84,7 @@
                 <td valign="top" width="55%">
                     <!--Start don hang-->
                     <div class="pic icon_arrow left"></div>
-                    <div class="text_arrow left">Đơn hàng mới nhất:  (<a href="?opt=order">Xem toàn bộ danh sách</a>)</div>
+                    <div class="text_arrow left">Đơn hàng mới nhất:  (<a href="{{ route('order_list') }}">Xem toàn bộ danh sách</a>)</div>
                     <div class="clear"></div>
                     <div style="border:1px solid #6a8ab9 ">
                         <table width="100%" class="table_public" border="1" bordercolor="#e0e0e0">
