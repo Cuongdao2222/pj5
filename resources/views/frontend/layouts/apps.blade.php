@@ -356,11 +356,19 @@
             .danh-muc1{
                 left: 0px !important;
             } 
+
             .hotlines{
                 position:fixed; 
-                bottom:49px; 
-                right:72px; 
-                z-index:9999   
+                z-index:9999
+            }    
+
+             @media only screen and (min-width: 768px) {
+                .hotlines{
+                   
+                    bottom:16px; 
+                    left:72px; 
+                       
+                }
             }
 
             @media only screen and (max-width: 768px) {
