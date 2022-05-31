@@ -31,16 +31,22 @@
 
                 $item['parent_id'] = $item['id'];
                 $result[] = $item;
-                unset($data[$item['id']]);
+               
                 $child = data_tree($data, $item['id'], $level + 1 );
                 $result = array_merge($result, $child);
+                 unset($data[$item['id']]);
+
+
             }
+            
+
+
         }
         return $result;
     }
-
-
     $list_cat = data_tree($groupProducts, 0);
+
+
 
     $arr_new_list_cat = [];
 
@@ -52,7 +58,8 @@
             $arr_new_list_cat[$value['id']] = str_repeat(html_entity_decode('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'), $value['level']).' - '.$value['name'];
         }  
 
-    }  
+    } 
+   
 
 ?>
 
