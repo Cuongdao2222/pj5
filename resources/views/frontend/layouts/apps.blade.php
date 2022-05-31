@@ -388,6 +388,9 @@
                     right: 100px*/
                     display: none !important;
                   }  
+                  #skw{
+                    border: 1px solid #D92548;
+                  }
             }
         </style>
         @endif
@@ -506,7 +509,7 @@
                     </a>
 
                     <form  class="header__search" method="get" action="{{ route('search-product-frontend') }}">
-                        <input  type="text" class="input-search" id="tags" placeholder="tìm sản phẩm..." name="key" autocomplete="off" maxlength="100" required>
+                        <input  type="text" class="input-search" id="tags" placeholder="Bạn muốn tìm gì..." name="key" autocomplete="off" maxlength="100" required>
                         <button type="submit">
                         <i class="icon-search"></i>
                         </button>
@@ -581,7 +584,7 @@
                     
                     <div class="col-xs-12">
                         <form  class="header__search" method="get" action="{{ route('search-product-frontend') }}">
-                            <input id="skw" type="text" class="input-search" placeholder="tìm sản phẩm..." name="key" autocomplete="off" maxlength="100">
+                            <input id="skw" type="text" class="input-search" placeholder="Bạn muốn tìm gì..." name="key" autocomplete="off" maxlength="100">
                             <button type="submit">
                             <i class="icon-search"></i>
                             </button>
