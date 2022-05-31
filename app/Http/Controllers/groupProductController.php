@@ -317,25 +317,22 @@ class groupProductController extends AppBaseController
 
         $active = $request->active;
 
-
+        // đẩy nhóm con vào nhóm sản phẩm cha
 
         $id_group = $this->find_Parent($id);
 
         array_push($id_group, $id);
 
-        
-    
         if($active==1){
-
 
             if(isset($id_group)){
 
-                $data_product_id = [];
-
+                // nhóm group id của sản phẩm
 
                 foreach ($id_group as $value) {
 
-                 
+                    $data_product_id = [];
+
                     $all_product_group =  groupProduct::find($value);
 
                     if( $all_product_group->product_id != ''){
@@ -349,13 +346,12 @@ class groupProductController extends AppBaseController
                     $all_product_group->product_id = json_encode(array_unique($data_product_id));
 
                     $all_product_group->save();
-                    
 
                 }
                
 
             }
-
+           
         
         }
         // th xóa ko chọn
