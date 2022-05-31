@@ -1082,7 +1082,7 @@
                             </div>
                         </li>
                         <li class="child" data-id="danh-muc9">
-                            <a class="list-mn" href="{{route('details','may-loc-nuoc')}}">
+                            <a class="list-mn" href="{{route('details','may-loc-nuoc-ao-smith')}}">
                             <i class="fa-regular fa-refrigerator"></i>
                             <span>Máy lọc nước</span>
                             </a>
