@@ -1067,6 +1067,15 @@
 
         <div>
             <div class="commitment">
+                <div class="support">
+                  <h5>Tổng Đài mua hàng</h5>
+                    <a href="tel:02473036336">0247.303.6336</a>
+                  <h5>Tổng Đài mua hàng( Sau 17h )</h5>
+                   <a href="tel:0913011888">091.301.1888</a> 
+                   <a href="tel:0983612828">098.361.2828</a>
+                   
+                </div>
+                <br>
                 <h4>Yên tâm mua sắm</h4>
                 <ul>
                     <li>Bảo hành tại nhà</li>
@@ -1078,18 +1087,8 @@
                     <li>Đổi mới 100% trong 7 ngày đầu</li>
                         ( Trừ Sanaky, Sony chỉ bảo hành tại nhà )
                 </ul>
-                <div class="support">
-                  <h5>Tổng Đài mua hàng</h5>
-                    <a href="tel:02473036336">0247.303.6336</a>
-                  <h5>Tổng Đài mua hàng( Sau 17h )</h5>
-                   <a href="tel:0913011888">091.301.1888</a> 
-                   <a href="tel:0983612828">098.361.2828</a>
-                   
-                                          
-                  
-                   
-                </div>
-                </div>
+                
+               
             </div>
        <!--  <h4 class="format txt_13">
             <p class="format txt_b">Yên tâm mua sắm:</p>
