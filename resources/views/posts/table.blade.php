@@ -71,11 +71,7 @@
         </thead>
         <tbody>
 
-            <?php  
-
-                 $user  = App\User::get()->toArray();
-
-            ?>
+          
             
         @foreach($posts as $post)
             @if($post->category!=5)
@@ -94,7 +90,7 @@
             <td><a href="javascript:voi(0)" class="active-post" onclick="add_active('{{ $post->id }}','{{ $post->active }}')">{!! $post->active ==1?'<b style="color:red">Hạ xuống</b>':'<b style="color:green">Hiển thị</b>' !!}</a></td>   
              
              <td><a href="javascript:void(0)" class="hight-light-post"  onclick="add_hight_light('{{ $post->id }}','{{ $post->hight_light }}')" data-id="{{ $post->id }}">{!! $post->hight_light ==1?'<b style="color:red">Hạ xuống</b>':'<b style="color:green">Hiển thị</b>' !!}</a></td>
-             <td>{{ @$user[$post->id_user]['name'] }}</td>
+             <td>{{ App\User::find($product->user_id)->name }} </td>
                 <td width="120">
                     {!! Form::open(['route' => ['posts.destroy', $post->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
