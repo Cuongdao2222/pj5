@@ -9,6 +9,10 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('css/index.css') }}?ver=1">
 
         <style type="text/css">
+
+            .prd-promo{
+                border: 2px solid #D6D5CC;
+            }
             .menus-banner li{
                 padding: 20px 0;
                 border: 1px solid #dddd;
