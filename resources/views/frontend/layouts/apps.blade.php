@@ -3,9 +3,7 @@
 <!DOCTYPE html>
 <html lang="vi-VN">
     <head>
-        <meta charset="utf-8" />
-          <?php  
-
+         <?php  
             $requestcheck = \Request::route();
 
             if(!empty($requestcheck)){
@@ -14,57 +12,47 @@
             else{
                  $nameRoute = '';
             }
-
           ?>
-
-          <meta name="robots" content="index,follow" />
-      
-         
+        <meta charset="utf-8" />
+        <meta name="robots" content="index,follow" />
         @if(isset($meta))
         <title>{{ $meta->meta_title }}</title>
         <meta name="description" content="{{ $meta->meta_content }}"/>
         <meta property="og:title" content="{{ $meta->meta_title }}" />
         <meta property="og:description" content="{{ $meta->meta_content }}" /> 
         <meta name="keywords" content="{{ $meta->meta_key_words??'sieu thi dien may, siêu thị điện máy, mua điện máy giá rẻ, siêu thị điện máy uy tín, siêu thị điện máy trực tuyến' }}"/>
-
-       
         @else
+            @if($nameRoute =='sale-home'||$nameRoute =='dealFe')
+            <title>Khuyến mại lớn, giảm giá mạnh tại Điện Máy Người Việt</title>
+            <meta name="description" content="Hàng ngàn khuyến mại hấp dẫn và giảm giá tại Siêu Thị Điện Máy Người Việt. Liên hệ hotline 0247.303.6336 để biết thêm thông tin chi tiết"/>
+            <meta property="og:title" content="Khuyến mại lớn, giảm giá mạnh tại Điện Máy Người Việt" />
+            <meta property="og:description" content="Hàng ngàn khuyến mại hấp dẫn và giảm giá tại Siêu Thị Điện Máy Người Việt. Liên hệ hotline 0247.303.6336 để biết thêm thông tin chi tiết" /> 
+            <meta name="keywords" content="Khuyến mại lớn, giảm giá mạnh,"/>
+            @else
+             <?php $meta = App\Models\metaSeo::find(5959); ?>
 
-        <?php $meta = App\Models\metaSeo::find(5959); ?>
-
-        <title>{{ $meta->meta_title }}</title>
-        <meta name="description" content="{{ $meta->meta_content }}"/>
-        <meta property="og:title" content="{{ $meta->meta_title }}" />
-        <meta property="og:description" content="{{ $meta->meta_content }}" /> 
-        <meta name="keywords" content="{{ $meta->meta_key_words??'sieu thi dien may, siêu thị điện máy, mua điện máy giá rẻ, siêu thị điện máy uy tín, siêu thị điện máy trực tuyến' }}"/>
+            <title>{{ $meta->meta_title }}</title>
+            <meta name="description" content="{{ $meta->meta_content }}"/>
+            <meta property="og:title" content="{{ $meta->meta_title }}" />
+            <meta property="og:description" content="{{ $meta->meta_content }}" /> 
+            <meta name="keywords" content="{{ $meta->meta_key_words??'sieu thi dien may, siêu thị điện máy, mua điện máy giá rẻ, siêu thị điện máy uy tín, siêu thị điện máy trực tuyến' }}"/>
+            @endif
         @endif
-
         <link rel="shortcut icon" href="{{ asset('uploads/icon/favicon.ico') }}"/>
         <meta name = "google-site-verify" content = "1AH1fN3G7ygWRcOlEQWJyhginaxmT67zTMPP8wnfFD0" />
         <meta name="p:domain_verify" content="109de6686e51e396ddd32475ad614b1f"/>
         <meta name="google-site-verification" content="P-EnxCkmnXXEDeC0FWq-rSxjbSSyy9HeimO6f2Evtyc" />
-
         <meta http-equiv="cache-control" content="no-cache" />
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
         <?php 
-
             $show_meta = $_GET['show']??'';
-
         ?>
-
         @if($show_meta =='')
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-
         @endif
-
-
-
         @if(!empty($pageCheck))
-
             <!-- Google Code dành cho Thẻ tiếp thị lại -->
-            
             <!--------------------------------------------------
             Không thể liên kết thẻ tiếp thị lại với thông tin nhận dạng cá nhân hay đặt thẻ tiếp thị lại trên các trang có liên quan đến danh mục nhạy cảm. Xem thêm thông tin và hướng dẫn về cách thiết lập thẻ trên: http://google.com/ads/remarketingsetup
             --------------------------------------------------->
@@ -92,8 +80,6 @@
             <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/971664599/?value=0&guid=ON&script=0"/>
             </div>
             </noscript>
-
-
             <script type="application/ld+json">
               {
               "@context": "http://schema.org",
@@ -108,7 +94,6 @@
             </script>
 
         @endif
-
         <script type="application/ld+json">
         {
           "@context": "https://schema.org",
@@ -121,18 +106,8 @@
           }
         }
         </script>
-  
-
-        
-        
-        
-        
         <link rel="alternate" type="application/rss+xml" title="RSS Feed for https://dienmaynguoiviet.vn" href="/product.rss" />
-      
-          
         <meta property="og:image" content="{{ asset('images/template/logochuan.jpg') }}" />
-
-
         <!-- Global site tag (gtag.js) - Google Ads: 971664599 -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=AW-971664599"></script>
         <script>
