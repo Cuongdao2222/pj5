@@ -73,7 +73,7 @@
 
             <?php  
 
-                 $user  = App\User::orderBy('id','asc')->get()->toArray();
+                 $user  = App\User::get()->toArray();
 
             ?>
             
@@ -98,7 +98,7 @@
                 <td width="120">
                     {!! Form::open(['route' => ['posts.destroy', $post->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
-                        <a href="{{ route('posts.show', [$post->id]) }}"
+                        <a href="{{ route('details', [$post->link]) }}"
                            class='btn btn-default btn-xs'>
                             <i class="far fa-eye"></i>
                         </a>
