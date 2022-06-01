@@ -988,7 +988,7 @@
         @if($data->Quantily>0) 
         @if((int)$data->Price>0)
         <div class="clear space10px in">
-            <a class="btn-buy txt_center cor5px buy-nows-popup" onclick="addToShoppingCart('pro','3036',document.getElementById('s_quantity').value,'{{ $data->Price}}');" href="javascript:;">
+            <a class="btn-buy txt_center cor5px buy-nows-popup" href="javascript:void(0)">
             <i class="fa fa-shopping-cart"></i> <span class="txt_15" onclick="addToCart({{ $data->id }})">Mua ngay</span>
             </a>
         </div>
