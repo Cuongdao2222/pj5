@@ -199,7 +199,7 @@ class AjaxController extends Controller
         $sugests =[];
 
 
-
+        $now  = Carbon::now();
         foreach($product as $products){
 
             $check_deal = deal::select('deal_price','start', 'end')->where('product_id',  $products->id)->where('active', 1)->first();
@@ -207,7 +207,7 @@ class AjaxController extends Controller
             $deal_check_add = false;
             
             if(!empty($check_deal) && !empty(!empty($check_deal->deal_price))){
-                $now  = Carbon\Carbon::now();
+                
                 $timeDeal_star = $check_deal->start;
                 $timeDeal_star =  \Carbon\Carbon::create($timeDeal_star);
                 $timeDeal_end = $check_deal->end;
