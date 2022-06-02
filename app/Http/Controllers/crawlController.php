@@ -28,7 +28,7 @@ use \Carbon\Carbon;
 class crawlController extends Controller
 {
 
-    public function FunctionName($value='')
+    public function updateProductQua()
     {
       $code = 'NF-N15SRA
         NF-N30ASRA
@@ -171,10 +171,20 @@ class crawlController extends Controller
         EH-HE10VP421';
 
         $model = explode(PHP_EOL, $code);
+        $now   = Carbon::now();
        
         foreach ($model as $key => $value) {
-             $product = product::where('ProductSku', trim($value->name));
+             $product = DB::table('products')->where('ProductSku', trim($value));
+
+             if(!empty($product)){
+                $product->update(['active'=>1, 'updated_at'=>$now]);
+
+             }
+             else{
+                print_r($value);
+             }
         }
+        echo "thanh cong";
 
     }
     public function updateQuatity()
