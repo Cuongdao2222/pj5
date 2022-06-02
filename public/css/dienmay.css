@@ -5053,7 +5053,7 @@ body.dmx-site #loader:before {
 .listproduct h3 {
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
-	-webkit-line-clamp: 2;
+	-webkit-line-clamp: 3;
 	font-size: 14px;
 	line-height: 20px;
 	overflow: hidden;
