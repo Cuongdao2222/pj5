@@ -386,13 +386,11 @@ class categoryController extends Controller
             $pageCheck = "product";
 
           
-           
-
-            $images = Cache::remember('dat',0.5, function() use ($findID){
+            $images = Cache::remember('dat'.$findID->id,10, function() use ($findID){
                 return image::where('product_id', $findID->id)->select('image')->get();
             });
 
-            $data = Cache::remember('data-detail',0.5, function() use ($findID){
+            $data = Cache::remember('data-detail'.$findID->id,0.5, function() use ($findID){
                 return product::findOrFail($findID->id);
             });
 
