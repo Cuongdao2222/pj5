@@ -385,16 +385,20 @@ class categoryController extends Controller
 
             $pageCheck = "product";
 
-            $images = image::where('product_id', $findID->id)->get();
+          
            
 
-            $data = Cache::remember('dat',10, function() use ($findID){
-                return image::where('product_id', $findID->id)->get();
+            $images = Cache::remember('dat',1, function() use ($findID){
+                return image::where('product_id', $findID->id)->select('image')->get();
+            });
+
+            $data = Cache::remember('data-detail',1, function() use ($findID){
+                return product::findOrFail($findID->id);
             });
 
             
 
-            $data =  product::findOrFail($findID->id);
+           
             
             if(!empty($data) && !empty($_GET['show'])&&($_GET['show']=='tra-gop')){
                 
