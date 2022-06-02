@@ -207,7 +207,7 @@ class AjaxController extends Controller
             $deal_check_add = false;
             
             if(!empty($check_deal) && !empty(!empty($check_deal->deal_price))){
-                $now  =Carbon::now();
+                $now  = Carbon\Carbon::now();
                 $timeDeal_star = $check_deal->start;
                 $timeDeal_star =  \Carbon\Carbon::create($timeDeal_star);
                 $timeDeal_end = $check_deal->end;
