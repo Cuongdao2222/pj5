@@ -277,16 +277,16 @@
                                         <?php  
                                             $gift = gift($id_product);
                                             
-
-                                            if(empty($gift)){
-                                                $gift = groupGift($id_cate);
-                                                
+                                            if(!empty($id_cate)){
                                                 if(empty($gift)){
+                                                    $gift = groupGift($id_cate);
+                                                    
+                                                    if(empty($gift)){
 
-                                                    $gift =[];
+                                                        $gift =[];
+                                                    }
                                                 }
-                                            }
-
+                                            }    
                                         ?>
                                         
 

@@ -319,8 +319,7 @@ class productController extends AppBaseController
 
         $find_first = Product::select('id')->where('Name','LIKE', '%'. $data .'%')->OrWhere('ProductSku', 'LIKE', '%' . $data . '%')->OrderBy('id', 'desc')->take(50)->get()->pluck('id');
 
-       
-
+    
         if(isset($find_first)){
 
             foreach ($find_first as  $value) {
