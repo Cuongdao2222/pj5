@@ -612,7 +612,7 @@
 
                      $minutes = 10;
 
-                    $check = Cache::remember('check',$minutes, function() use ($data){
+                    $check = Cache::remember('check',$minutes, function() {
                         return DB::table('imagecrawl')->select('image')->where('product_id', $data->id)->where('active',0)->get()->pluck('image')->toArray();
                     });
 

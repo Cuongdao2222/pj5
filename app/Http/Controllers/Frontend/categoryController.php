@@ -27,8 +27,6 @@ use App\Http\Controllers\Frontend\filterController;
 
 use Session;
 
-
-
 class categoryController extends Controller
 {
 
@@ -384,16 +382,10 @@ class categoryController extends Controller
 
 
             $pageCheck = "product";
+            $images = image::where('product_id', $findID->id)->get();
 
-            $images = Cache::remember('imageDetail',100, function() use ($findID){
-                return image::where('product_id', $findID->id)->get();
-            });
-
-            $data = Cache::remember('datacheckpage',100, function() use ($findID){
-                return product::findOrFail($findID->id);
-            });
-
-             
+            $data =  product::findOrFail($findID->id);
+            
             if(!empty($data) && !empty($_GET['show'])&&($_GET['show']=='tra-gop')){
                 
                 return view('frontend.installment', compact('data'));
