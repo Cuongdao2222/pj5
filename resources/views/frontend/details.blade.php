@@ -609,14 +609,7 @@
                  
 
                 <?php
-
-                     $minutes = 10;
-
-                    $check = Cache::remember('check',$minutes, function() {
-                        return DB::table('imagecrawl')->select('image')->where('product_id', $data->id)->where('active',0)->get()->pluck('image')->toArray();
-                    });
-
-                   
+                    $check = DB::table('imagecrawl')->select('image')->where('product_id', $data->id)->where('active',0)->get()->pluck('image')->toArray();
 
                      $details = $data->Detail;
                     if(isset($check)){
