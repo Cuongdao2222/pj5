@@ -215,7 +215,7 @@ class AjaxController extends Controller
 
                 if($now->between($timeDeal_star, $timeDeal_end)){
                     $deal_check_add = true;
-                    $products->Price = $product->Price;
+                    $products->Price = $check_deal->deal_price;
                 }
             
             }
