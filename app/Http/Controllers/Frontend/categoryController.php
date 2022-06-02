@@ -385,9 +385,8 @@ class categoryController extends Controller
 
             $pageCheck = "product";
 
-            $images = Cache::remember('imageDetail',10, function() use ($findID){
-                return image::where('product_id', $findID->id)->get();
-            });
+            $images = image::where('product_id', $findID->id)->get();
+           
 
             $data = Cache::remember('dat',10, function() use ($findID){
                 return image::where('product_id', $findID->id)->get();
