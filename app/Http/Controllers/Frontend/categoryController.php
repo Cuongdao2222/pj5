@@ -27,6 +27,8 @@ use App\Http\Controllers\Frontend\filterController;
 
 use Session;
 
+
+
 class categoryController extends Controller
 {
 
@@ -382,7 +384,16 @@ class categoryController extends Controller
 
 
             $pageCheck = "product";
-            $images = image::where('product_id', $findID->id)->get();
+
+            $images = Cache::remember('imageDetail',10, function() use ($findID){
+                return image::where('product_id', $findID->id)->get();
+            });
+
+            $data = Cache::remember('dat',10, function() use ($findID){
+                return image::where('product_id', $findID->id)->get();
+            });
+
+            
 
             $data =  product::findOrFail($findID->id);
             
