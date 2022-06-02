@@ -1023,7 +1023,7 @@
                                             <h3>Máy hút bụi</h3>
                                         </a>
                                         <a href="{{route('details','binh-nong-lanh')}}">
-                                            <h3>Bình nóng lạnh</h3>
+                                            <h3>Bình nước nóng</h3>
                                         </a>
                                         <a href="{{route('details','ban-la')}}">
                                             <h3>Bàn là</h3>

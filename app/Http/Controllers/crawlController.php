@@ -28,7 +28,155 @@ use \Carbon\Carbon;
 class crawlController extends Controller
 {
 
+    public function FunctionName($value='')
+    {
+      $code = 'NF-N15SRA
+        NF-N30ASRA
+        NF-N50ASRA
+        SD-P104WRA
+        MK-5076MWRA
+        MK-K51PKRA
+        MX-AC400WRA
+        MJ-DJ31SRA
+        MJ-M176PWRA
+        MJ-L500SRA
+        MJ-DJ01SRA
+        MJ-SJ01WRA
+        MJ-H100WRA
+        MJ-68MWRA
+        MX-SS1BRA
+        MX-GS1WRA
+        MX-V310KRA
+        MX-V300KRA
+        MX-900MWRA
+        MX-GX1561WRA
+        MX-GX1511WRA
+        MX-EX1511WRA
+        MX-EX1561WRA
+        MX-MG5351WRA 
+        MX-MP5151WRA 
+        MX-MG53C1CRA 
+        MX-M300SRA
+        MX-M210SRA
+        MX-M200WRA
+        MX-M200GRA
+        MX-M100WRA
+        MX-M100GRA
+        NC-HU301PZSY
+        NC-BG3000CSY
+        NC-EG4000CSY
+        NC-EG3000CSY
+        NC-EG2200CSY
+        NC-HKD121WRA
+        NC-SK1BRA
+        NC-GK1WRA
+        MK-GB3WRA
+        MK-GH3WRA
+        NB-H3801KRA
+        NB-H3203KRA
+        NT-H900KRA
+        SR-PX184KRA
+        SR-HB184KRA
+        SR-AFM181WRA
+        SR-AFY181WRA
+        SR-CX188SRA
+        SR-CP188NRA
+        SR-CP108NRA
+        SR-CL188WRA
+        SR-CL108WRA
+        SR-MVN187HRA
+        SR-MVN187LRA
+        SR-MVN107HRA
+        SR-MVN107LRA
+        SR-MVP187HRA
+        SR-MVP187NRA
+        SR-MVQ187SRA
+        SR-MVQ187VRA
+        NU-SC100WYUE
+        NU-SC180BYUE
+        NN-DS596BYUE
+        NN-CT655MYUE
+        NN-CT36HBYUE
+        NN-GT65JBYUE
+        NN-GD37HBYUE
+        NN-GF574MYUE
+        NN-GT35HMYUE
+        NN-GM34JMYUE
+        NN-GM24JBYUE
+        NN-ST65JBYUE
+        NN-ST34HMYUE
+        NN-SM33HMYUE
+        NN-ST25JWYUE
+        MC-CG370GN46
+        MC-CG371AN46
+        MC-CG373RN46
+        MC-CG525RN49
+        MC-CJ911RN49
+        MC-CL305BN46
+        MC-CL431AN46
+        MC-CL561AN46
+        MC-CL563RN46
+        MC-CL565KN46
+        MC-CL777HN49
+        MC-CL779RN49
+        MC-SB30JW049
+        MC-CL789RN49
+        MC-CL787TN49
+        MC-CL575KN49
+        MC-CL573AN49
+        MC-CL571GN49
+        MC-YL631RN46
+        MC-YL669GN49
+        MC-YL635TN46
+        MC-YL637SN49
+        AMC-CT1
+        NI-GSE050ARA
+        NI-GWE080WRA
+        NI-GSD071PRA
+        NI-GSD051GRA
+        NI-WT980RRA
+        NI-L700SSGRA
+        NI-WL30VRA
+        NI-U600CARA
+        NI-U400CPRA
+        NI-W650CSLRA
+        NI-W410TSRRA
+        NI-E510TDRA
+        NI-E410TMRA
+        NI-M300TARA
+        NI-M300TVRA
+        NI-M250TPRA
+        NI-317TVRA
+        NI-317TXRA
+        EH-NA98RP645
+        EH-NA98-K645
+        EH-NA65-K645
+        EH-NA45RP645
+        EH-NA27PN645
+        EH-NE81-K645
+        EH-NE71-P645
+        EH-NE65-K645
+        EH-NE20-K645
+        EH-ND57-P645
+        EH-ND57-H645
+        EH-ND64-P645
+        EH-NE11-V645
+        EH-ND30-K645
+        EH-ND30-P645
+        EH-ND21-P645
+        EH-ND13-V645
+        EH-ND12-P645
+        EH-ND11-W645
+        EH-ND11-A645
+        EH-HE10VP421';
 
+        $model = explode(PHP_EOL, $code);
+       
+        foreach ($model as $key => $value) {
+             $product = product::where('ProductSku', trim($value->name));
+        }
+
+    }
     public function updateQuatity()
     {
         $data = DB::table('qualtity')->get();
