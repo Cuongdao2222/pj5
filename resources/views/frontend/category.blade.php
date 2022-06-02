@@ -6,6 +6,7 @@
 
         <link rel="stylesheet" type="text/css" href="{{ asset('css/categories.css') }}?ver=1"> 
          <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}?ver=1"> 
+         <link rel="stylesheet" type="text/css" href="{{ asset('css/home.css') }}?ver=1"> 
 
         <style type="text/css">
             
@@ -14,6 +15,9 @@
             }
             .block-manu{
                 width: 150px;
+            }
+            .option-gift{
+                display: flex;
             }
             
 
@@ -269,6 +273,41 @@
                                             </p>
                                            <!--  <p class="item-rating-total">56</p> -->
                                         </div>
+
+                                        <?php  
+                                            $gift = gift($id_product);
+                                            
+
+                                            if(empty($gift)){
+                                                $gift = groupGift($id_cate);
+                                                
+                                                if(empty($gift)){
+
+                                                    $gift =[];
+                                                }
+                                            }
+
+                                        ?>
+                                        
+
+                                        @if(!empty($gift))
+
+                                            <?php 
+                                                $gifts = $gift['gifts'];
+                                                $gift = $gift['gift']; 
+
+                                            ?>
+
+                                            {{ $gifts->type ==1?'k/m chọn 1 trong 2':'' }}
+                                            <div class="option-gift">
+
+                                                 @foreach($gift as $gifts)
+
+                                                <div class="quatang"><img src="{{ asset($gifts->image) }}"></div>
+                                                @endforeach
+                                            </div>
+                                           
+                                        @endif
 
                                     </div>
                                     

@@ -114,9 +114,6 @@
                 width: 340px;
             }
 
-
-
-
             @media only screen and (max-width: 768px) {
               .Next {
                 display: none;

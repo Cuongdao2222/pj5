@@ -194,13 +194,31 @@ class AjaxController extends Controller
     {
         $products = $request->product;
 
-        $product =   product::select('Link', 'Name', 'Image', 'Price')->where('Name','like','%'.$products.'%' )->where('active', 1)->OrWhere('ProductSku', 'LIKE', '%' . $products . '%')->where('active', 1)->take(5)->get();
+        $product =   product::select('Link', 'Name', 'Image', 'Price', 'id')->where('Name','like','%'.$products.'%' )->where('active', 1)->OrWhere('ProductSku', 'LIKE', '%' . $products . '%')->where('active', 1)->take(5)->get();
 
         $sugests =[];
 
 
 
         foreach($product as $products){
+
+            $check_deal = deal::select('deal_price','start', 'end')->where('product_id',  $products->id)->where('active', 1)->first();
+
+            $deal_check_add = false;
+            
+            if(!empty($check_deal) && !empty(!empty($check_deal->deal_price))){
+                $now  =Carbon::now();
+                $timeDeal_star = $check_deal->start;
+                $timeDeal_star =  \Carbon\Carbon::create($timeDeal_star);
+                $timeDeal_end = $check_deal->end;
+                $timeDeal_end =  \Carbon\Carbon::create($timeDeal_end);
+
+                if($now->between($timeDeal_star, $timeDeal_end)){
+                    $deal_check_add = true;
+                    $products->Price = $check_deal->deal_price;
+                }
+            
+            }
 
             $sugest = '<a href="'.route("details", $products->Link).'"><img src="'.asset($products->Image).'" width="50" style="margin-right:10px;"></a><a class="suggest_link" href="'.route('details', $products->Link).'">'.$products->Name.'</a><br><p>giá: '.number_format($products->Price).'đ</p><br>';
 

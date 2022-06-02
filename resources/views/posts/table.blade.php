@@ -95,7 +95,7 @@
                     {!! Form::open(['route' => ['posts.destroy', $post->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
                         <a href="{{ route('details', [$post->link]) }}"
-                           class='btn btn-default btn-xs'>
+                           class='btn btn-default btn-xs' target="_blank">
                             <i class="far fa-eye"></i>
                         </a>
                         <a href="{{ route('posts.edit', [$post->id]) }}"
