@@ -202,6 +202,24 @@ class AjaxController extends Controller
 
         foreach($product as $products){
 
+            $check_deal = deal::select('deal_price','start', 'end')->where('product_id',  $products->id)->where('active', 1)->first();
+
+            $deal_check_add = false;
+            
+            if(!empty($check_deal) && !empty(!empty($check_deal->deal_price))){
+                $now  = Carbon\Carbon::now();
+                $timeDeal_star = $check_deal->start;
+                $timeDeal_star =  \Carbon\Carbon::create($timeDeal_star);
+                $timeDeal_end = $check_deal->end;
+                $timeDeal_end =  \Carbon\Carbon::create($timeDeal_end);
+
+                if($now->between($timeDeal_star, $timeDeal_end)){
+                    $deal_check_add = true;
+                    $products->Price = $product->Price;
+                }
+            
+            }
+
             $sugest = '<a href="'.route("details", $products->Link).'"><img src="'.asset($products->Image).'" width="50" style="margin-right:10px;"></a><a class="suggest_link" href="'.route('details', $products->Link).'">'.$products->Name.'</a><br><p>giá: '.number_format($products->Price).'đ</p><br>';
 
             array_push($sugests, $sugest);
