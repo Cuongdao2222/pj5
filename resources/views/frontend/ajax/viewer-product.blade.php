@@ -13,7 +13,7 @@
                 <div class="item-label">
                 </div>
                 <div class="item-img">
-                    <img data-src="{{ asset($value->Image) }}" class="lazyload" alt="{{ @$value->Name }}"  height=210>
+                    <img data-src="{{ asset($value->Image) }}" class="lazyload" alt="{{ @$value->Name }}" >
                 </div>
                <!--  <p class='result-label temp1'><img width='20' height='20' class='lazyload' alt='Giảm Sốc' data-src='https://cdn.tgdd.vn/2020/10/content/icon1-50x50.png'><span>Giảm Sốc</span></p> -->
                 <h3>{{ @$value->Name }}</h3>
