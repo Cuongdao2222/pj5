@@ -340,8 +340,8 @@
              @media only screen and (min-width: 768px) {
                 .hotlines{
                    
-                    bottom:16px; 
-                    left:72px; 
+                    bottom:45px; 
+                    right:72px; 
                        
                 }
             }
