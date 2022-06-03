@@ -187,6 +187,23 @@ class crawlController extends Controller
         echo "thanh cong";
 
     }
+
+    public function updateQuatityByTable()
+    {
+        $data = DB::table('qualtity1')->get();
+        foreach ($data as $key => $value) {
+
+            $product = product::find($value->product_id);
+
+            $product->Quantily = $value->qty;
+
+            $product->save();
+           
+
+        }
+        echo "thanh cong";
+    }
+
     public function updateQuatity()
     {
         $data = DB::table('qualtity')->get();
@@ -198,7 +215,7 @@ class crawlController extends Controller
                 $updateProduct = product::find($product->id);
                 $updateProduct->Quantily = $value->qty;
                 $updateProduct->save();
-                DB::table('qualtity1')->insert(['name'=>$value->name, 'qty'=>$value->qty]);
+                DB::table('qualtity1')->insert(['name'=>$value->name, 'qty'=>$value->qty, 'product_id'=>$product->id]);
 
             }
 
