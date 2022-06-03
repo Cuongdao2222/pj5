@@ -1520,7 +1520,7 @@
            
         </style>
 
-        <button onclick="topFunction()" id="myBtn-top" title="Go to top"><i class="fas fa-angle-up"></i></button>
+       <!--  <button onclick="topFunction()" id="myBtn-top" title="Go to top"><i class="fas fa-angle-up"></i></button> -->
         
         <script>
             window.dataLayer = window.dataLayer || [];
