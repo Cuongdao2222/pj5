@@ -82,14 +82,19 @@
             </noscript>
             <script type="application/ld+json">
               {
-              "@context": "http://schema.org",
-              "@type": "Product",
-              "headline": "{{ @$data->Name }}",
-              "datePublished": "{{ $data->created_at->format('Y-m-d') }}",
-              "name": "{{ @$data->Name }}",
-              "image": [
-              "{{ asset($data->Image) }}"
-              ]
+                "@context": "http://schema.org",
+                "@type": "Product",
+                "headline": "{{ @$data->Name }}",
+                "datePublished": "{{ $data->created_at->format('Y-m-d') }}",
+                "name": "{{ @$data->Name }}",
+                "image": [
+                  "{{ asset($data->Image) }}"
+                ],
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.8",
+                    "reviewCount": "10"
+                  }
               }
             </script>
 
