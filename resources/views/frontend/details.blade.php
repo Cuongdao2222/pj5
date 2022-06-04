@@ -192,10 +192,6 @@
             }
 
           
-
-            .support1{
-                height: 250px;
-            }    
             /*.box01 .owl-carousel .owl-item img{
                 width: 100% !important;
             }
