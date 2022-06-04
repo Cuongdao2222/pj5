@@ -37,7 +37,7 @@
                             <span class="lb-tragop">Trả góp 0%</span>
                         </div>
                         <div class="item-img item-img_1942">
-                            <img class="lazyload thumb" data-src="{{ asset($value->Image) }}" alt="{{ asset($value->Name) }}" style="width:100%"> 
+                            <img class="lazyload thumb" data-src="{{ asset($value->Image) }}" alt="{{ $value->Name }}" style="width:100%"> 
                         </div>
                         <div class="items-title">
                            <!--  <p class='result-label temp1'><img width='20' height='20' class='lazyload' alt='Giảm Sốc' data-src=''><span>Giảm Sốc</span></p> -->

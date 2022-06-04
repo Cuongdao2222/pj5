@@ -190,6 +190,14 @@
                 width: 100%;
 
             }
+
+            .support{
+                height: 111px;
+            }
+
+            .support1{
+                height: 250px;
+            }    
             /*.box01 .owl-carousel .owl-item img{
                 width: 100% !important;
             }
@@ -344,7 +352,7 @@
 
                         @if(trim($image->image) != trim($data->Image))
                         <div class="item">
-                            <a href="{{ asset($image->image) }}" data-fancybox="gallery"><img src="{{ asset($image->image) }}"  data-src="{{ asset($image->image) }}" class="lazyload"></a>
+                            <a href="{{ asset($image->image) }}" data-fancybox="gallery"><img src="{{ asset($image->image) }}"  data-src="{{ asset($image->image) }}" class="lazyload" alt="{{ @$data->Name }}"></a>
                             
                         </div>
                         @endif
@@ -1082,17 +1090,20 @@
                    
                 </div>
                 <br>
-                <h4>Yên tâm mua sắm</h4>
-                <ul>
-                    <li>Bảo hành tại nhà</li>
-                    <li>Lắp đặt miễn phí</li>
-              (Trừ điều hòa, bình nước nóng)
-                    <li>Thanh toán tại nhà</li>
-                    <li>Giao hàng miễn phí 20km</li>
-                    <li>Giá cạnh tranh nhất thị trường</li>
-                    <li>Đổi mới 100% trong 7 ngày đầu</li>
-                        ( Trừ Sanaky, Sony chỉ bảo hành tại nhà )
-                </ul>
+                <div class="support1">
+                    <h4>Yên tâm mua sắm</h4>
+                    <ul>
+                        <li>Bảo hành tại nhà</li>
+                        <li>Lắp đặt miễn phí</li>
+                  (Trừ điều hòa, bình nước nóng)
+                        <li>Thanh toán tại nhà</li>
+                        <li>Giao hàng miễn phí 20km</li>
+                        <li>Giá cạnh tranh nhất thị trường</li>
+                        <li>Đổi mới 100% trong 7 ngày đầu</li>
+                            ( Trừ Sanaky, Sony chỉ bảo hành tại nhà )
+                    </ul>
+                </div>
+                
                 
                
             </div>

@@ -101,7 +101,7 @@
 
                     @if(!empty($banner)&& $banner->active ==1)
                      <div class="item">
-                        <a aria-label="slide" data-cate="1942" data-place="1537"><img width=1200  src="{{ asset($banner->image) }}" alt="tivi chung"  ></a>
+                        <a aria-label="slide" data-cate="1942" data-place="1537"><img width=1200  src="{{ asset($banner->image) }}" alt="{{ $banner->title }}"  ></a>
                     </div>
                     @endif
                    
@@ -210,7 +210,7 @@
                                 <a href='{{ route("details", $value->Link ) }}' data-box="BoxCate" class="main-contain">
                                     <span class="icon_tragop">Trả góp <i>0%</i></span>
                                     <div class="item-img item-img_1942">
-                                        <img class="lazyload thumb" data-src="{{ asset($value->Image) }}" alt="{{ asset($value->Name) }}" style="width:100%"> 
+                                        <img class="lazyload thumb" data-src="{{ asset($value->Image) }}" alt="{{ $value->Name }}" style="width:100%"> 
                                     </div>
                                     <div class="items-title">
                                         
