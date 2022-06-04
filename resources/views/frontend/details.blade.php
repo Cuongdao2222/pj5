@@ -130,7 +130,9 @@
         }   
         
         @media screen and (min-width: 777px){
-
+            .style-number-fone{
+                display: flex;
+            }
             #thongso td{
                 height: 30px !important;
             }
@@ -1079,8 +1081,11 @@
                   <h5>Tổng Đài mua hàng</h5>
                     <a href="tel:02473036336">0247.303.6336</a>
                   <h5>Tổng Đài mua hàng( Sau 17h )</h5>
-                   <a href="tel:0913011888">091.301.1888</a> 
-                   <a href="tel:0983612828">098.361.2828</a>
+                  <div class="style-number-fone">
+                        <a href="tel:0913011888">091.301.1888</a>&nbsp; &nbsp; &nbsp; <span>||</span> &nbsp; &nbsp; &nbsp;
+                        <a href="tel:0983612828">098.361.2828</a>
+                  </div>
+                  
                    
                 </div>
                 <br>
