@@ -92,11 +92,19 @@
         }
     } 
     @media screen and (max-width: 776px){
-        .header__top {
-            background-color: #DD2C44;
+            .header__top {
+                background-color: #DD2C44;
             }   
+
+             .commitment ul {
+
+                line-height: 28px !important;
+                margin-top: 10px;
+
+            }    
         } 
 
+       
         .box01__show{
 
             min-height: auto !important;
@@ -487,6 +495,35 @@
 
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="col-md-3 mobile">
+                <div class="commitment">
+                <h4>Yên tâm mua sắm</h4>
+                <ul>
+                    <li>Bảo hành tại nhà</li>
+                    <li>Lắp đặt miễn phí</li>
+              (Trừ điều hòa, bình nước nóng)
+                    <li>Thanh toán tại nhà</li>
+                    <li>Giao hàng miễn phí 20km</li>
+                    <li>Giá cạnh tranh nhất thị trường</li>
+                    <li>Đổi mới 100% trong 7 ngày đầu</li>
+                        ( Trừ Sanaky, Sony chỉ bảo hành tại nhà )
+                </ul>
+                <div class="support">
+                  <h5>Tổng Đài mua hàng</h5>
+                    <a href="tel:02473036336">0247.303.6336</a>
+                  <h5>Tổng Đài mua hàng( Sau 17h )</h5>
+                   <a href="tel:0913011888">091.301.1888</a> 
+                   <a href="tel:0983612828">098.361.2828</a>
+                   
+                                          
+                  
+                   
+                </div>
                 </div>
             </div>
             <div class="total-imgslider">
