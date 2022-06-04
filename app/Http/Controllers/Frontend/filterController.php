@@ -22,8 +22,6 @@ class filterController extends Controller
 
     public function filter()
     {
-
-
       
         $link     = strip_tags($_GET['link']);
 

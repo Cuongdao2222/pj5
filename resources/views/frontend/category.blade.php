@@ -72,6 +72,7 @@
             </div>
         </div>
  -->
+        @if(empty($page_search))
         <div class="bsc-block">
             <section>
                 <ul class="breadcrumb">
@@ -145,10 +146,8 @@
                 </div>       
             </section>
         </div>
+        @endif
         <section id="categoryPage" class="desktops" data-id="1942" data-name="Tivi" data-template="cate">
-
-            
-
             <div class="box-sort ">
                 @if(isset($data))
                 <p class="sort-total"><b>{{ $numberdata }}</b> Sản phẩm <strong class="manu-sort"></strong></p>

@@ -481,18 +481,18 @@ class productController extends AppBaseController
 
         }
 
-
+        $page_search = 'filterFe';
         if(isset($resultProduct)){
 
             $data = Product::whereIn('id', $resultProduct)->paginate(10);
 
-            return view('frontend.category',compact('data','numberdata'));
+            return view('frontend.category',compact('data','numberdata','page_search'));
            
 
         }
         else{
             $data = [];
-            return view('frontend.category', compact('data', 'numberdata'));
+            return view('frontend.category', compact('data', 'numberdata', 'page_search'));
             // Flash::error('Không tìm thấy sản phẩm, vui lòng tìm kiếm lại"');
         }
         
