@@ -128,7 +128,7 @@
             cursor: pointer;
             background: #ffde00;
         }   
-         
+        
         @media screen and (min-width: 777px){
 
             #thongso td{
@@ -191,9 +191,7 @@
 
             }
 
-            .support{
-                height: 111px;
-            }
+          
 
             .support1{
                 height: 250px;
@@ -274,7 +272,7 @@
     
     ?>
 @push('style')
-<link rel="stylesheet" type="text/css" href="{{ asset('css/detailsfe.css') }}?ver=2">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/detailsfe.css') }}?ver=3">
 @endpush
 <div class="locationbox__overlay"></div>
 <div class="locationbox">
@@ -1034,11 +1032,11 @@
             padding: 10px;
             background-color: #fe0000;
             margin: -10px;
-            margin-bottom: 20px;
+            margin-bottom: 0px;
             text-align: center;
         }
        .commitment ul {
-            line-height: 25px;
+            line-height: 3vmin;
         }
         .commitment .support a {
             color: #fe0000;
