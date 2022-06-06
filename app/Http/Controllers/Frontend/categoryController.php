@@ -39,13 +39,13 @@ class categoryController extends Controller
 
         if(!empty($_GET['filter'])){
 
-            $link     = strip_tags($_GET['link'])??'';
+            $link     = !empty($_GET['link'])?strip_tags($_GET['link']):'';
 
-            $group_id =  strip_tags($_GET['group_id'])??'';
+            $group_id =  !empty($_GET['group_id'])?strip_tags($_GET['group_id']):'';
 
-            $filter =   explode(',', $_GET['filter'])??'' ;
+            $filter =   !empty($_GET['filter'])?explode(',', $_GET['filter']):'' ;
 
-            $property = explode(',', $_GET['property'])??'';
+            $property = !empty($_GET['property'])?explode(',', $_GET['property']):'';
 
 
             $new_filter = [];

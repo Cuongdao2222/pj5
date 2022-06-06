@@ -261,7 +261,11 @@
     
 
     if(empty($gift)){
-        $gift = groupGift($groupProductId);
+
+        if(!empty($groupProductId)){
+            $gift = groupGift($groupProductId);
+        }   
+       
         
         if(empty($gift)){
 
