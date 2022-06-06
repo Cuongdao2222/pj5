@@ -564,7 +564,7 @@ function update_order(id){
         },
         success: function(result){
 
-            alert(result);
+            console.log('thanh cong');
         }
     });
 
