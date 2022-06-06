@@ -52,13 +52,13 @@ class categoryController extends Controller
 
             $new_property = [];
 
-            if(isset($filter)){
+            if(!empty($filter)){
                 foreach($filter as $value){
                     array_push($new_filter, strip_tags($value));
                 }
             }
 
-            if(isset($property)){
+            if(!empty($property)){
                 foreach($property as $values){
                     array_push($new_property, strip_tags($values));
                 }
