@@ -290,6 +290,7 @@
                                 <td>Thông tin</td>
                                 <td>Tình trạng</td>
                                 <td>Quản lý</td>
+                                <td>Sắp xếp</td>
                             </tr>
 
                             <?php  
@@ -336,6 +337,15 @@
                                     </div>
                                     <div><a href="javascript:;" onclick="delete_deal('{{ $val->id }}')">xóa</a></div>
                                 </td>
+                                <td>
+                                    <div>
+                                        <input type="text" name="order" value="{{ $val->order }}" class="edit_order{{ $val->id }}">
+                                    </div>
+                                    
+                                    <br>
+                                    <div class="btn-primary" style="width: 20%;" onclick="update_order({{ $val->id }})" class="edit_order{{$val->id}}">sửa</div>
+                                </td>
+
                             </tr>
                             @endforeach
 
@@ -531,6 +541,33 @@ function update_product(id){
     $('#modal-product .modal-body').hide();
 
     $('#edit-deal').val(id);
+}
+
+function update_order(id){
+
+    let val = $('.edit_order'+id).val();
+    console.log(val)
+    $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+    $.ajax({
+
+    type: 'GET',
+        url: "{{ route('order-deal') }}",
+        data: {
+            product_id:id,
+            val: val
+            
+        },
+        success: function(result){
+
+            alert(result);
+        }
+    });
+
 }
 
 

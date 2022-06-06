@@ -37,7 +37,7 @@ class indexController extends Controller
 
         $deal =  Cache::remember('deal',10, function() {
 
-            return deal::get();
+            return deal::OrderBy('order', 'desc')->get();
          });
 
         $product_sale =  Cache::remember('product_sale',10, function() {

@@ -119,6 +119,19 @@ class dealController extends Controller
 
     }
 
+    public function dealOrder(Request $request)
+    {
+        $id = $request->product_id;
+        $val = $request->val;
+        if(!empty($val)){
+            $deal = deal::find($id);
+            $deal->order = $val;
+            $deal->save();
+
+        }
+        return response('thanh cong');
+    }
+
     public function activeDeal(Request $request){
 
         $id = $request->id;
