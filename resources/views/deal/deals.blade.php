@@ -343,7 +343,7 @@
                                     </div>
                                     
                                     <br>
-                                    <div class="btn-primary" style="width: 20%;" onclick="update_order({{ $val->id }})" class="edit_order{{$val->id}}">sửa</div>
+                                    <div class="btn-primary edit_orders{{$val->id}}" style="width: 25%;" onclick="update_order({{ $val->id }})" >sửa</div>
                                 </td>
 
                             </tr>
@@ -563,8 +563,8 @@ function update_order(id){
             
         },
         success: function(result){
-
-            console.log('thanh cong');
+            $('.edit_orders'+id).text('thành công');
+           
         }
     });
 
