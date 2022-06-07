@@ -290,6 +290,7 @@
                                 <td>Thông tin</td>
                                 <td>Tình trạng</td>
                                 <td>Quản lý</td>
+                                <td>Sửa giá deal nhanh</td>
                                 <td>Sắp xếp</td>
                             </tr>
 
@@ -336,6 +337,14 @@
                                         <span><a href="javascript:set_feature('{{  $val->id }}','{{ $val->active }}')">{!! $val->active==0?'<b style="color:green;">Hiển thị</b>':'<b style="color:red">Hạ xuống</b>' !!}</a></span>
                                     </div>
                                     <div><a href="javascript:;" onclick="delete_deal('{{ $val->id }}')">xóa</a></div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <input type="text" name="order" value="{{ $val->deal_price }}" class="edit_price_deal{{ $val->id }}">
+                                    </div>
+                                    
+                                    <br>
+                                    <div class="btn-primary edit_price_deals{{$val->id}}" style="width: 25%;" onclick="edit_price_deal({{ $val->id }})" >sửa</div>
                                 </td>
                                 <td>
                                     <div>
@@ -542,6 +551,25 @@ function update_product(id){
 
     $('#edit-deal').val(id);
 }
+function edit_price_deal(id){
+    let val = $('.edit_price_deal'+id).val();
+    $.ajax({
+
+    type: 'GET',
+        url: "{{ route('editPricedeal') }}",
+        data: {
+            product_id:id,
+            val: val
+            
+        },
+        success: function(result){
+           window.location.reload();
+           
+        }
+    });
+
+}
+
 
 function update_order(id){
 

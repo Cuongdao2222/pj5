@@ -198,6 +198,10 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
     Route::get('deal', 'dealController@index')->name('deal');
 
 
+
+    Route::get('editPricedeal', 'dealController@editDealPrice')->name('editPricedeal');
+
+
     Route::get('post-codinh', function () {
         return view('footerpost.index');
         
