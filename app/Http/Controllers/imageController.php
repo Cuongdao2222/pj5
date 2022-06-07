@@ -191,7 +191,7 @@ class imageController extends AppBaseController
 
         Flash::success('Image deleted successfully.');
 
-        return redirect(route('images.index'));
+        return redirect()->back();
     }
 
     public function productContentImage(Request $request)
