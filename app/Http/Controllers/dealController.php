@@ -136,6 +136,7 @@ class dealController extends Controller
     {
         $id = $request->product_id;
         $val = $request->val;
+        $val = str_replace(['.',','],'', $request->val);
         if(!empty($val)){
             $deal = deal::find($id);
             $deal->deal_price = $val;
