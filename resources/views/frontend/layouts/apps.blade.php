@@ -693,6 +693,9 @@
                                         <a href="{{route('details','tivi-43-inches')}}">
                                             <h3>Tivi 43 inches</h3>
                                         </a>
+                                        <a href="{{route('details','tivi-48-inches')}}">
+                                            <h3>Tivi 48 inches</h3>
+                                        </a>
                                         <a href="{{route('details','tivi-49-inches')}}">
                                             <h3>Tivi 49 inches</h3>
                                         </a>
