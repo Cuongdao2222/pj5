@@ -112,7 +112,7 @@
         }
         </script>
         <link rel="alternate" type="application/rss+xml" title="RSS Feed for https://dienmaynguoiviet.vn" href="/product.rss" />
-        <meta property="og:image" content="{{ asset('images/template/logochuan.jpg') }}" />
+        <meta property="og:image" content="{{ asset('images/template/logo.png') }}" />
         <!-- Global site tag (gtag.js) - Google Ads: 971664599 -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=AW-971664599"></script>
         <script>
@@ -225,7 +225,7 @@
         
         <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}?ver=1"> 
         <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/apps.css') }}?ver=1">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/apps.css') }}?ver=2">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <?php 
@@ -465,7 +465,7 @@
             <div class="header__top desktop header-pc">
                 <section>
                     <a href="{{route('homeFe')}}" class="header__logo">
-                        <img src="{{ asset('images/template/logochuan.jpg') }}">   
+                        <img src="{{ asset('images/template/logo.png') }}">   
                    
                     </a>
                    
@@ -553,16 +553,51 @@
 
             <div class="header__top header__top-mobile mobiles">
                 <section>
-                    <div class="col-xs-12">
-                        <a href="/" class="header__logo">
-                            <img src="{{ asset('images/template/logochuan.jpg') }}">   
+                    <div class="col-xs-12" style="display: flex; height: 63px;">
+                            <div class="col-6">
+                                <a href="/" class="header__logo">
+                                    <img src="{{ asset('images/template/logo.png') }}">   
+                               
+                                </a>
+                            </div>
+                         
+                           
+                            <div class="col-6" style="display:flex">
+                               
+
+                                <div class="col-4 icons-heads icons-2">
+                                    
+
+                                   <a href="tel: 02473036336" class="header__cart ">
+                                         <i class="fa fa-phone phones-customn" aria-hidden="true" style="font-size:22px"></i>
+                                    </a>
+                                </div>
+
+                                <div class="col-4 icons-heads icons-1">
+                                
+                                    <a href="javascript:void(0)" class="header__cart" onclick="showToCart()" style="width: auto;">
+                                        <i class="fa fa-shopping-cart" aria-hidden="true" style="font-size:22px"></i>
+                                        <b id="count_shopping_cart_store"><span class="number-cart">{{ $number_cart }}</span></b>
+                                    </a>
+                                     
+                                </div>
+
+                                <div class="col-4 icons-heads icons-3">
+                                    
+                                    <a href="{{ route('tin') }}" class="header__cart ">
+                                        <i class="fa fa-newspaper" aria-hidden="true" style="font-size:22px"></i>
+                                        
+                                    </a>
+                                </div>
+                            </div>
+                           
+                            
                        
-                        </a>
 
                     </div>
                     
                     
-                    <div class="col-xs-12">
+                    <div class="col-xs-12" style="padding: 15px 10px;">
                         <form  class="header__search" method="get" action="{{ route('search-product-frontend') }}">
                             <input id="skw" type="text" class="input-search" placeholder="Bạn muốn tìm gì..." name="key" autocomplete="off" maxlength="100">
                             <button type="submit">
@@ -573,33 +608,7 @@
                     </div>    
 
                    
-                    <div class="row col-12 all-icons-head">  
-                        <div class="col-4 icons-heads icons-1">
-                            
-                            <a href="javascript:void(0)" class="header__cart" onclick="showToCart()" style="width: auto;">
-                                <i class="fa fa-shopping-cart" aria-hidden="true" style="font-size:22px"></i>
-                                <b id="count_shopping_cart_store"><span class="number-cart">{{ $number_cart }}</span></b>
-                            </a>
-                             
-                        </div>
-
-                        <div class="col-4 icons-heads icons-2">
-                            
-
-                           <a href="tel: 02473036336" class="header__cart ">
-                                 <i class="fa fa-phone phones-customn" aria-hidden="true" style="font-size:22px"></i>
-                            </a>
-                        </div>
-
-                        <div class="col-4 icons-heads icons-3">
-                            
-                            <a href="{{ route('tin') }}" class="header__cart ">
-                                <i class="fa fa-newspaper" aria-hidden="true" style="font-size:22px"></i>
-                                
-                            </a>
-                        </div>
-                        
-                    </div>
+                   
                     
 
                 
@@ -1092,7 +1101,7 @@
                 <section>
 
                     <div class="category mobile">
-                        <p class="category__txts">
+                        <p class="category__txts" style="display:none">
                         <span class="menu-list">
                             <i class="fa fa-bars" aria-hidden="true"></i>
                         </span></p>
