@@ -51,7 +51,7 @@
     <div class="container-productbox">
 
         <?php 
-            $deal = App\Models\deal::get();
+            $deal = App\Models\deal::orderBy('order', 'desc')->get();
             $now  = Carbon\Carbon::now();
             if(!empty($deal)&count($deal)>0){
                 $timeDeal_star = $deal[0]->start;
