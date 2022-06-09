@@ -170,6 +170,10 @@
                     padding: 15px;
                  }
 
+                 .content img{
+                    width: 100% !important;
+                }
+
                  
             }    
 
@@ -190,7 +194,7 @@
     transition: 0.6s ease-out;
     }
     .content img{
-    width: 100% !important;
+    width: 100%;
     }
     .content{
     height: 800px;
