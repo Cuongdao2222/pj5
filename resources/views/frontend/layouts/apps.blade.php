@@ -48,7 +48,7 @@
         <?php 
             $show_meta = $_GET['show']??'';
         ?>
-        @if($show_meta =='')
+        @if($show_meta ==''||$show_meta=='tragop-online')
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
         @endif
         @if(!empty($pageCheck))
