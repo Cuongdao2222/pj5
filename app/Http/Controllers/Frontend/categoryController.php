@@ -65,98 +65,112 @@ class categoryController extends Controller
             }
              $findID = groupProduct::where('link', $link)->first();
 
-            $id_cate = $findID->id;
-            $groupProduct_level = $findID->level;
-            $ar_list = $this->find_List_Id_Group($id_cate,$groupProduct_level);
+            if(!empty($findID)){
 
-            $parent_cate_id = $ar_list[0]['id'];
+                $id_cate = $findID->id;
+                $groupProduct_level = $findID->level;
+                $ar_list = $this->find_List_Id_Group($id_cate,$groupProduct_level);
 
-
-            $list_data_group = filter::where('group_product_id', $parent_cate_id)->whereIn('id', $filter)->select('value')->get()->toArray();
-
-            $filter = filter::where('group_product_id', $parent_cate_id)->select('name', 'id')->get();
-
-            $fill = [];
-
-            $keys =  [];
-
-            $result = [];
-
-            $product = [];
-
-            $product_search = [];
+                $parent_cate_id = $ar_list[0]['id'];
 
 
-            $checkidgroup = groupProduct::find($group_id);
+                $list_data_group = filter::where('group_product_id', $parent_cate_id)->whereIn('id', $filter)->select('value')->get()->toArray();
 
-            $checkidgroup_id = json_decode($checkidgroup->product_id);
+                $filter = filter::where('group_product_id', $parent_cate_id)->select('name', 'id')->get();
 
-        
-            if(!empty($list_data_group[0]['value'])){
+                $fill = [];
+
+                $keys =  [];
+
+                $result = [];
+
+                $product = [];
+
+                $product_search = [];
 
 
-                foreach ($list_data_group as $key => $value) {
-                    foreach($value as $values){
+                $checkidgroup = groupProduct::find($group_id);
 
-                        $arr = json_decode($values, true);
+                $checkidgroup_id = json_decode($checkidgroup->product_id);
 
-                        if(isset($arr)){
+            
+                if(!empty($list_data_group[0]['value'])){
 
-                            array_push($fill, $arr);
 
-                            $keys[] = array_keys($arr);
-                        }
-                    }
+                    foreach ($list_data_group as $key => $value) {
+                        foreach($value as $values){
 
-                }
-                
-                
+                            $arr = json_decode($values, true);
 
-                if(isset($keys)){
-                    foreach($keys as $key1 => $vals){
+                            if(isset($arr)){
 
-                   
-                        foreach($vals as $valu){
+                                array_push($fill, $arr);
 
-                            if(in_array($valu, $property)){
-
-                                $result[] = $fill[$key1][$valu];
+                                $keys[] = array_keys($arr);
                             }
-                        
                         }
 
                     }
                     
-                    if(isset($result)){
+                    
 
-                        foreach ($result as  $res) {
-                            foreach($res as $res1){
-                                $product[] = $res1;
-                            }
-                        }
-                    }
+                    if(isset($keys)){
+                        foreach($keys as $key1 => $vals){
 
-                    $number_key = count($keys);
+                       
+                            foreach($vals as $valu){
 
-                    $number_product    = array_count_values($product);
+                                if(in_array($valu, $property)){
 
-                
-                    if(isset($number_product)){
-                        $result_product = [];
-                        foreach ($number_product as $key => $value) {
-                            if($value == $number_key){
-                                array_push($result_product, $key);
+                                    $result[] = $fill[$key1][$valu];
+                                }
+                            
                             }
 
                         }
+                        
+                        if(isset($result)){
 
-                        $product_search = product::whereIn('id', $result_product)->whereIn('id', $checkidgroup_id)->where('active', 1)->get();
+                            foreach ($result as  $res) {
+                                foreach($res as $res1){
+                                    $product[] = $res1;
+                                }
+                            }
+                        }
+
+                        $number_key = count($keys);
+
+                        $number_product    = array_count_values($product);
+
+                    
+                        if(isset($number_product)){
+                            $result_product = [];
+                            foreach ($number_product as $key => $value) {
+                                if($value == $number_key){
+                                    array_push($result_product, $key);
+                                }
+
+                            }
+
+                            $product_search = product::whereIn('id', $result_product)->whereIn('id', $checkidgroup_id)->where('active', 1)->get();
+                        }
+
                     }
-
                 }
+
+                return view('frontend.filter', compact('product_search', 'link', 'filter', 'id_cate', 'ar_list', 'groupProduct_level'));
+
+            }
+            else{
+                 $data = $this->getDataOfCate($slug);
+
+                return view('frontend.category', with($data));
             }
 
-            return view('frontend.filter', compact('product_search', 'link', 'filter', 'id_cate', 'ar_list', 'groupProduct_level'));
+             
+
+
+            
 
         }
         else{
