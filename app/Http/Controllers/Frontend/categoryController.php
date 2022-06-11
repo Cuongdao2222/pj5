@@ -158,15 +158,19 @@ class categoryController extends Controller
                     }
                 }
 
-                return view('frontend.filter', compact('product_search', 'link', 'filter', 'id_cate', 'ar_list', 'groupProduct_level'));
-
+               
             }
             else{
-                 $data = $this->getDataOfCate($slug);
-
-                return view('frontend.category', with($data));
+                $product_search =[];
+                $id_cate ='';
+                $ar_list =[];
+                $groupProduct_level = 0;
+                
             }
 
+             return view('frontend.filter', compact('product_search', 'link', 'filter', 'id_cate', 'ar_list', 'groupProduct_level'));
+
+           
              
 
 

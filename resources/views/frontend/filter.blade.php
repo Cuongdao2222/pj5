@@ -143,7 +143,7 @@
         </div>
 
         <?php  
-            $propery_url = $_GET['property'];
+            $propery_url = $_GET['property']??'';
 
             $propery_url_id = explode(',',$propery_url);
             
@@ -196,7 +196,7 @@
                 <div class="jsfix scrolling_inner scroll-right">
                     <div><h4>Điện máy nguời việt là địa chỉ bán tivi chính hãng uy tín tại Hà Nội. Chúng tôi cam kết tất cả sản phẩm đều là hàng chính hãng, nguyên đai, nguyên kiện, mới 100%.</h4></div>
                     <div class="box-filter block-scroll-main scrolling">
-                        @if(isset($filter))
+                        @if(isset($filter) && !empty($filters->id))
                         @foreach($filter as $filters)
 
                         
@@ -366,7 +366,7 @@
         </section>
 
         <?php  
-            $propery_url = $_GET['property'];
+            $propery_url = $_GET['property']??'';
 
             // $propery_url_id = explode(',',$propery_url);
 
@@ -382,7 +382,7 @@
 
                 filers_url = filers_url.split(',');
 
-                var propertys =    "{{ $_GET['property'] }}";
+                var propertys =    "{{ $_GET['property']??'' }}";
                 propertys = propertys.split(',');
 
                 property = $('#selectfilter'+filters).val();
