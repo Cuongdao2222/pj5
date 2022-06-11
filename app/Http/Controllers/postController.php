@@ -101,9 +101,11 @@ class postController extends AppBaseController
 
         $post = $this->postRepository->create($input);
 
-        Flash::success('Post saved successfully.');
+        return redirect(route('posts.edit', $post->id));
 
-        return redirect(route('posts.index'));
+        // Flash::success('Post saved successfully.');
+
+        // return redirect(route('posts.index'));
     }
 
     /**

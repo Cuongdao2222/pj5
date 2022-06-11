@@ -11,7 +11,7 @@ class blogController extends Controller
 {
     public function index()
     {
-         $data = post::select('title','content', 'id','category','image', 'link')->orderBy('date_post','desc')->paginate(10);
+         $data = post::select('title','content', 'id','category','image', 'link')->where('active', 1)->orderBy('date_post','desc')->paginate(10);
       
         return view('frontend.blog',compact('data'));
     }

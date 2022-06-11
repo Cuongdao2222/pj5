@@ -165,13 +165,8 @@ class categoryController extends Controller
                     $id_cate ='';
                     $ar_list =[];
                     $groupProduct_level = 0;
-                    
+
                 }
-
-
-
-                
-
                
             }
             else{
@@ -325,7 +320,7 @@ class categoryController extends Controller
     {
         $link = trim($slug);
 
-        $data = post::where('link', $link)->first();
+        $data = post::where('link', $link)->where('active', 1)->first();
 
         if(empty($data)){
             abort('404');
