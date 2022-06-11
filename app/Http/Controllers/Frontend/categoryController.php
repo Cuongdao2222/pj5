@@ -91,72 +91,86 @@ class categoryController extends Controller
 
                 $checkidgroup = groupProduct::find($group_id);
 
-                $checkidgroup_id = json_decode($checkidgroup->product_id);
+                if(!empty($checkidgroup) && !empty($checkidgroup->product_id)){
 
+                    $checkidgroup_id = json_decode($checkidgroup->product_id);
             
-                if(!empty($list_data_group[0]['value'])){
+                    if(!empty($list_data_group[0]['value'])){
 
 
-                    foreach ($list_data_group as $key => $value) {
-                        foreach($value as $values){
+                        foreach ($list_data_group as $key => $value) {
+                            foreach($value as $values){
 
-                            $arr = json_decode($values, true);
+                                $arr = json_decode($values, true);
 
-                            if(isset($arr)){
+                                if(isset($arr)){
 
-                                array_push($fill, $arr);
+                                    array_push($fill, $arr);
 
-                                $keys[] = array_keys($arr);
-                            }
-                        }
-
-                    }
-                    
-                    
-
-                    if(isset($keys)){
-                        foreach($keys as $key1 => $vals){
-
-                       
-                            foreach($vals as $valu){
-
-                                if(in_array($valu, $property)){
-
-                                    $result[] = $fill[$key1][$valu];
+                                    $keys[] = array_keys($arr);
                                 }
-                            
                             }
 
                         }
                         
-                        if(isset($result)){
+                        
 
-                            foreach ($result as  $res) {
-                                foreach($res as $res1){
-                                    $product[] = $res1;
-                                }
-                            }
-                        }
+                        if(isset($keys)){
+                            foreach($keys as $key1 => $vals){
 
-                        $number_key = count($keys);
+                           
+                                foreach($vals as $valu){
 
-                        $number_product    = array_count_values($product);
+                                    if(in_array($valu, $property)){
 
-                    
-                        if(isset($number_product)){
-                            $result_product = [];
-                            foreach ($number_product as $key => $value) {
-                                if($value == $number_key){
-                                    array_push($result_product, $key);
+                                        $result[] = $fill[$key1][$valu];
+                                    }
+                                
                                 }
 
                             }
+                            
+                            if(isset($result)){
 
-                            $product_search = product::whereIn('id', $result_product)->whereIn('id', $checkidgroup_id)->where('active', 1)->get();
+                                foreach ($result as  $res) {
+                                    foreach($res as $res1){
+                                        $product[] = $res1;
+                                    }
+                                }
+                            }
+
+                            $number_key = count($keys);
+
+                            $number_product    = array_count_values($product);
+
+                        
+                            if(isset($number_product)){
+                                $result_product = [];
+                                foreach ($number_product as $key => $value) {
+                                    if($value == $number_key){
+                                        array_push($result_product, $key);
+                                    }
+
+                                }
+
+                                $product_search = product::whereIn('id', $result_product)->whereIn('id', $checkidgroup_id)->where('active', 1)->get();
+                            }
+
                         }
-
                     }
+
                 }
+                else{
+                     $product_search =[];
+                    $id_cate ='';
+                    $ar_list =[];
+                    $groupProduct_level = 0;
+                    
+                }
+
+
+
+                
 
                
             }
@@ -165,7 +179,7 @@ class categoryController extends Controller
                 $id_cate ='';
                 $ar_list =[];
                 $groupProduct_level = 0;
-                
+
             }
 
              return view('frontend.filter', compact('product_search', 'link', 'filter', 'id_cate', 'ar_list', 'groupProduct_level'));
