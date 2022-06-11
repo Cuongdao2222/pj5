@@ -320,7 +320,7 @@ class categoryController extends Controller
     {
         $link = trim($slug);
 
-        $data = post::where('link', $link)->where('active', 1)->first();
+        $data = post::where('link', $link)->first();
 
         if(empty($data)){
             abort('404');
