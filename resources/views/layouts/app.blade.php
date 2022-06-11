@@ -45,7 +45,7 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
        
-   <script src="{{ asset('js/ckeditor/ckeditor.js') }}"></script>
+   <script src="{{ asset('js/ckeditor/ckeditor.js') }}?ver=1"></script>
 <!--    <script src={{ asset('js/ckfinder/ckfinder.js') }}></script> -->
 
    <script
