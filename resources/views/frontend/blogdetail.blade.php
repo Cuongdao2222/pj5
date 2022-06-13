@@ -5,7 +5,7 @@
     @section('content') 
 
 
-    <link rel="stylesheet" type="text/css" href="{{asset('css/dienmay.css')}}?ver=1"> 
+    <link rel="stylesheet" type="text/css" href="{{asset('css/dienmay.css')}}?ver=4"> 
     <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}?">
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}?v=8881288.8883.151">
     <link rel="stylesheet" href="{{ asset('css/customs.css') }}?v=245754.75.52928">
@@ -14,6 +14,12 @@
     
     <!-- end header -->
     <!-- begin main -->
+
+     <style type="text/css">
+        .header__top-mobile{
+            height: 133px;
+        }
+    </style>
     <main class="bg-fff">
         <!-- Begin menu blog -->
         <div class="menu_blog">
