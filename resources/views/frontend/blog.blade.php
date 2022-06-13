@@ -13,8 +13,11 @@
 
         <link rel="stylesheet" type="text/css" href="{{ asset('css/categories.css') }}?ver=1"> 
          <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}?ver=1"> 
-    
-    
+    <style type="text/css">
+        .header__top-mobile{
+            height: 133px;
+        }
+    </style>
     <!-- end header -->
     <!-- begin main -->
     <main class="bg-fff">
