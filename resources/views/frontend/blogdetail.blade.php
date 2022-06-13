@@ -117,7 +117,7 @@
                                
                             </div>
                             <div class="emtry_content Description nd">
-                                {!! $data->shortcontent !!}<br>
+                               
                                 {!! $data->content !!}
                             </div>
                             <div class="blog-related">
@@ -170,8 +170,21 @@
     <!-- end main -->
     <!--<hr>-->
     <!-- begin footer -->
+    @push('js')
+     <script type="text/javascript">
+        $("p").each(function(){
+            if( $(this).find('img')){
+                $(this).addClass('code');
+            } 
+        });
+    </script>
 
+
+    @endpush
+   
     @endsection
+
+
 
 
    
