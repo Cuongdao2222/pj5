@@ -421,22 +421,16 @@
                         <div class="item-img">
                             <img data-src="{{ asset($value->Image) }}"   class="lazyload"  data-src="{{ asset($value->Image) }}" alt="{{ $value->Name }}" width=210 height=210>
                             
-                            
+                        <?php 
+
+                        ?>    
                             
                         </div>
                        
                         <h3>{{ $value->Name }}</h3>
 
-                        <?php  
-                            $infoName  = str_replace($value->ProductSku,'', strstr($value->Name, $value->ProductSku));
-                            if(!empty($infoName)){
-
-                                $arName = explode('inch', $infoName);
-                            }
-                            
-                        ?>
-
-                        <div class="item-compare"><span class="display-tv"> {{ $arName[0] }} inch</span><span class="resolution"> {{ @$arName[1] }}</span></div>
+                       
+                       
                        
                         <strong class="price">{{  @str_replace(',' ,'.', number_format($value->Price))  }}.&#x20AB;</strong>
                         <div class="item-rating">
