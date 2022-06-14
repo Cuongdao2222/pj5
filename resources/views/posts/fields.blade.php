@@ -68,9 +68,16 @@
 
 
 </div>
-
+<style type="text/css">
+    .button{
+        cursor: pointer;
+        border-radius: 5px;
+        padding: 5px;
+    }
+</style>
 
 <!-- Content Field -->
+<div class="btn-primary button" onclick ='removeHref()'>Xóa link content</div>
 <div class="form-group col-sm-12 col-md-12">
     {!! Form::label('content', 'Content:') !!}
     {!! Form::textarea('content', null, ['class' => 'form-control content-input']) !!}
@@ -152,6 +159,9 @@
 
 <script type="text/javascript">
     var activeReplace = [];
+
+
+   
    
     function clicks(id,src) {
         editor = CKEDITOR.instances.content;
@@ -269,7 +279,7 @@
 
 
 
-
+  
     
     CKEDITOR.replace( 'content', {
         filebrowserBrowseUrl: '{{ $url_domain }}/ckfinder.html',
@@ -282,13 +292,26 @@
         on: {
             change: function( evt ) {
 
-                
                 getDataform();
             }
+            
+
         },
 
         
     } );
+
+
+    function removeHref() {
+
+        let content = CKEDITOR.instances.content.getData();
+
+        var regex = /(<\s*a([^>]+)>|<\/\s*a\s*>)/ig;
+
+        contents = content.replace(regex, ""); 
+
+        CKEDITOR.instances.content.setData(contents);
+    }
 
     function setDataForm() {
 
