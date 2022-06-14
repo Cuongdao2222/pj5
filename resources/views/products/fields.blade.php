@@ -4,6 +4,14 @@
 
     }
 </style>
+
+<style type="text/css">
+    .button{
+        cursor: pointer;
+        border-radius: 5px;
+        padding: 5px;
+    }
+</style>
    
 <?php
     $Group = App\Models\groupProduct::select('id', 'name')->get();
