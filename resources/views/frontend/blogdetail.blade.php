@@ -7,7 +7,7 @@
 
     <link rel="stylesheet" type="text/css" href="{{asset('css/dienmay.css')}}?ver=4"> 
     <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}?">
-    <link rel="stylesheet" href="{{ asset('css/styles.css') }}?v=8881288.8883.151">
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}?v=8881288.8883.153">
     <link rel="stylesheet" href="{{ asset('css/customs.css') }}?v=245754.75.52928">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&subset=vietnamese" rel="stylesheet">
     

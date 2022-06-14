@@ -5184,7 +5184,10 @@ border-collapse:collapse;
 border:solid 1px #ddd;
 padding:5px;
 }
-.nd a{font-size:initial;color: #4285f4;}
+.nd a{font-size:initial;
+  color: #4285f4;
+  font-weight: bold;
+}
 .nd{line-height:1.45;}
 .nd table td img{max-width:9999px;} 
 
