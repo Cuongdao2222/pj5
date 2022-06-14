@@ -5077,7 +5077,7 @@ page cart
 
 
 @media (max-width: 768px){
-    .Description table{width:100% !important;}
+    .Description table{width:100% !important !important;}
   	.Description img{width: auto;height:auto;}
 }
 /*end*/
