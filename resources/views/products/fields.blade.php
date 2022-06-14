@@ -139,6 +139,7 @@
     {!! Form::textarea('Specifications', null, ['class' => 'form-control', 'id' =>'content-2']) !!}
 </div>
 
+<div class="btn-primary button" onclick ='removeHref()'>Xóa link content</div>
 
 <div class="form-group col-sm-12 col-lg-12">
     {!! Form::label('Detail', 'Mô tả:', ['id' =>'mo-ta'], ['rel' =>'nofollow']) !!}
@@ -248,6 +249,17 @@
 <div class="clearfix"></div>
 
 <script type="text/javascript">
+
+     function removeHref() {
+
+        let content = CKEDITOR.instances.content.getData();
+
+        var regex = /(<\s*a([^>]+)>|<\/\s*a\s*>)/ig;
+
+        contents = content.replace(regex, ""); 
+
+        CKEDITOR.instances.content.setData(contents);
+    }
 
     function code() {
         CKEDITOR.instances['content'].insertText('cuong');
