@@ -5077,8 +5077,8 @@ page cart
 
 
 @media (max-width: 768px){
-    .Description table{width:100% !important !important;}
-  	.Description img{width: auto;height:auto;}
+    .Description table{width:100% !important;}
+  	.Description img{width: auto;height:auto !important;}
 }
 /*end*/
 .icon_tragop{
