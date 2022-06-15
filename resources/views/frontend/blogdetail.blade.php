@@ -123,8 +123,12 @@
                                
                             </div>
                             <div class="emtry_content Description nd">
-                              
-                                {!! $data->content !!}
+                                <?php 
+
+                                    $content = preg_replace("/<a(.*?)>/", "<a$1 target=\"_blank\">",  $data->content);
+                                ?>
+                            
+                                {!!   $content  !!}
                             </div>
                             <div class="blog-related">
                                 <h3>Tin tức liên quan</h3>
