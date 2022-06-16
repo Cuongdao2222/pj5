@@ -215,7 +215,7 @@
                     {!! Form::open(['route' => ['products.destroy', $product->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
                         <a href="{{ route('details', [$product->Link]) }}"
-                           class='btn btn-default btn-xs'>
+                           class='btn btn-default btn-xs' target="_blank">
                             <i class="far fa-eye"></i>
                         </a>
                         <a href="{{ route('products.edit', [$product->id]) }}"

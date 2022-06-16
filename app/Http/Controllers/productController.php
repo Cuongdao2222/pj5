@@ -73,7 +73,7 @@ class productController extends AppBaseController
 
         if(empty($input['Link'])){
 
-            $input['Link'] = convertSlug($input['Name']);
+            $input['Link'] =  str_replace('/', '', convertSlug($input['Name']));
         }
 
         if(empty($input['Quantily'])){
