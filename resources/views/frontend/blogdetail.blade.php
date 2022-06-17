@@ -195,8 +195,3 @@
 
 
    
-    
-
-
-<!-- Load time: 0.126 seconds  / 4 mb-->
-<!-- Powered by HuraStore 7.4.4, Released: 12-Aug-2018 / Website: www.hurasoft.vn -->

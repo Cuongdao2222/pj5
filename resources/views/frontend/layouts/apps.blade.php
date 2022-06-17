@@ -29,9 +29,10 @@
             <meta property="og:description" content="Hàng ngàn khuyến mại hấp dẫn và giảm giá tại Siêu Thị Điện Máy Người Việt. Liên hệ hotline 0247.303.6336 để biết thêm thông tin chi tiết" /> 
             <meta name="keywords" content="Khuyến mại lớn, giảm giá mạnh,"/>
             @else
+
              <?php $meta = App\Models\metaSeo::find(5959); ?>
 
-            <title>{{ $meta->meta_title }}</title>
+            <title>{{  !empty($name_cates_cate)?$name_cates_cate:$meta->meta_title }}</title>
             <meta name="description" content="{{ $meta->meta_content }}"/>
             <meta property="og:title" content="{{ $meta->meta_title }}" />
             <meta property="og:description" content="{{ $meta->meta_content }}" /> 

@@ -57,7 +57,7 @@
         <th>Title</th>
         <th>Category</th>
         
-        <th>Mô tả ngắn</th>
+       
 
         <th>số lượt view</th>
         <th>ngày viết bài</th>
@@ -80,9 +80,8 @@
             <td>{{ $post->title }}</td>
             <td>{{ @$new_category[$post->category] }}</td>
 
-           <!--  <td class="content">{!! _substr($post->content,240,3) !!}</td>
- -->
-             <td>{!! _substr(preg_replace("#<\/p>(<\/h[1-6]>)#", '$1', $post->shortcontent),240,3) !!}</td>
+        
+            
              <td>{{ $post->views }}</td>  
 
              <td>{{ @$post->date_post }}</td>  
