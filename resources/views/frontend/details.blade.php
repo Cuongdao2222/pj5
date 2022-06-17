@@ -433,11 +433,17 @@
                                             {{ $gifts->type ==1?'Lựa chọn 1 trong 2 sản phẩm sau':'' }}
                                             @foreach($gift as $key => $valuegift)
                                             <div class="select-gift">
+                                                
 
                                                 <input type="checkbox" name="gift" value="{{ $valuegift->name }}" class="gift-check">
                                                 
                                                 <img src="{{ asset($valuegift->image) }}" height="30px" width="30px">
+
+                                                @if($valuegift->id ==5)
+                                                <a href="https://dienmaynguoiviet.vn/khau-trang-loc-khi-lg-puricare-the-he-2-ap551awfa-ajp-may-trang"><h4>{{ $valuegift->name }}</h4></a>
+                                                @else
                                                 <h4>{{ $valuegift->name }}</h4>
+                                                @endif
                                             </div>
                                             @endforeach
                                            
@@ -823,7 +829,13 @@
                                              @foreach($gift as $key => $valuegift)
                                               @if($gifts->type ==1)<input type="checkbox" name="gift" value="{{ $valuegift->name }}" {{ $key==0?'checked':'' }}> @endif
                                             <img src="{{ asset($valuegift->image) }}" height="30px" width="30px">
-                                            <h4>{{ $valuegift->name }}</h4>
+
+                                             @if($valuegift->id ==5)
+                                                <a href="https://dienmaynguoiviet.vn/khau-trang-loc-khi-lg-puricare-the-he-2-ap551awfa-ajp-may-trang"><h4>{{ $valuegift->name }}</h4></a>
+                                                @else
+                                                <h4>{{ $valuegift->name }}</h4>
+                                                @endif
+                                                
                                             @endforeach
                                           
 
@@ -1031,7 +1043,11 @@
         <div style="display: flex;">
             @foreach($gift as $values)
             <img src="{{ @asset($values->image) }}" height="30px" width="30px">
+            @if($values->id==5)
+            <a href=""><p>{{ @$values->name??'' }}</p></a>
+            @else
             <p>{{ @$values->name??'' }}</p>
+            @endif
             <br>
             @endforeach
         </div>

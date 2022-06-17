@@ -78,6 +78,10 @@
 
 <!-- Content Field -->
 <div class="btn-primary button" onclick ='removeHref()'>Xóa link content</div>
+
+<div class="btn-primary button" onclick ='removeHref_byselected()'>Xóa link theo đoạn </div>
+
+
 <div class="form-group col-sm-12 col-md-12">
     {!! Form::label('content', 'Content:') !!}
     {!! Form::textarea('content', null, ['class' => 'form-control content-input']) !!}
@@ -276,30 +280,48 @@
 
 
     });
+   
 
-
-
+   
   
     
-    CKEDITOR.replace( 'content', {
+    editor = CKEDITOR.replace( 'content', {
         filebrowserBrowseUrl: '{{ $url_domain }}/ckfinder.html',
         filebrowserImageBrowseUrl: '{{ $url_domain }}/ckfinder.html?Type=Images',
         filebrowserUploadUrl: '{{ $url_domain }}/js/core/connector/php/connector.php?command=QuickUpload&type=Files',
         filebrowserImageUploadUrl: '{{ $url_domain }}/js/core/connector/php/connector.php?command=QuickUpload&type=Images',
         filebrowserWindowWidth : '1000',
         filebrowserWindowHeight : '700',
-
         on: {
             change: function( evt ) {
 
                 getDataform();
-            }
-            
-
+            },
         },
-
         
-    } );
+    });
+
+    
+
+
+    function removeHref_byselected() {
+
+       
+
+        var regex = /(<\s*a([^>]+)>|<\/\s*a\s*>)/ig;
+
+        text = editor.getSelection().getSelectedText();
+
+        text1 = text.replace(regex, "");
+
+        contents = CKEDITOR.instances.content;
+
+        contentss = contents.getData().replace(text, text1);
+
+      
+        CKEDITOR.instances.content.setData(1);
+
+    }
 
 
     function removeHref() {
