@@ -105,7 +105,7 @@
                 <div class="col-lg-7">
                     <div class="main-blog-list">
                         <div style="width:100%; height: 50px;">
-                            <h1 class="title">Tư vấn mua sắm</h1>
+                            <h1 class="title">{{ $name_cates_cate??'Tư vấn mua sắm' }}</h1>
                         </div>
                         
                         @isset($data)

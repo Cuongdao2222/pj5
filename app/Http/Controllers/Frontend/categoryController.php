@@ -25,6 +25,7 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 
 use App\Http\Controllers\Frontend\filterController;
 
+
 use Session;
 
 
@@ -323,9 +324,14 @@ class categoryController extends Controller
         $data = post::where('link', $link)->first();
 
         if(empty($data)){
-            abort('404');
+            return $this->categoriesBlog($slug);
+
+            die();
+
+            
         }
 
+      
         $category = category::find($data->category);
 
 
@@ -354,6 +360,35 @@ class categoryController extends Controller
         echo view('frontend.blogdetail',compact( 'name_cate', 'related_news', 'meta', 'data'));
 
         die();
+    }
+
+    public function categoriesBlog($slug)
+    {
+        $link = trim($slug);
+
+        $datas = category::where('link', $link)->first();
+
+     
+        if(empty($datas)){
+            abort('404');
+        }
+        $name_cates_cate = '';
+        
+        if($datas->id!=5){
+
+             $name_cates_cate = $datas->namecategory;
+
+        }
+
+        $data = post::where('category', $datas->id)->orderBy('date_post','desc')->orderBy('date_post','desc')->paginate(10);
+
+      
+        echo view('frontend.blog', compact('data','name_cates_cate'));
+
+        die();
+
+
+
     }
 
 
