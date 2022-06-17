@@ -302,24 +302,31 @@
     });
 
     
+    
 
+    
 
-    function removeHref_byselected() {
+    function removeHref_byselected(text1) {
+        // var text1 =  CKEDITOR.instances.content.getSelection().getSelectedText();
 
+        text = /Hà/g;
+        // if(text1===text){
+        //     alert('bằng nhau');
+        // }
+        // else{
+        //     alert('k bằng nhau');
+        // }
        
+        // text1 = text.replace(regex, "");
+
+       let content = CKEDITOR.instances.content.getData();
 
         var regex = /(<\s*a([^>]+)>|<\/\s*a\s*>)/ig;
 
-        text = editor.getSelection().getSelectedText();
+        contents = content.replace(text, ""); 
 
-        text1 = text.replace(regex, "");
+        CKEDITOR.instances.content.setData(contents);
 
-        contents = CKEDITOR.instances.content;
-
-        contentss = contents.getData().replace(text, text1);
-
-      
-        CKEDITOR.instances.content.setData(1);
 
     }
 
