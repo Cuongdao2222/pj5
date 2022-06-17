@@ -79,6 +79,8 @@
 <!-- Content Field -->
 <div class="btn-primary button" onclick ='removeHref()'>Xóa link content</div>
 
+&nbsp &nbsp &nbsp &nbsp
+
 <div class="btn-primary button" onclick ='removeHref_byselected()'>Xóa link theo đoạn </div>
 
 
@@ -307,26 +309,15 @@
     
 
     function removeHref_byselected(text1) {
-        // var text1 =  CKEDITOR.instances.content.getSelection().getSelectedText();
+        var text1 =  CKEDITOR.instances.content.getSelection().getSelectedText();
 
-        text = /Hà/g;
-        // if(text1===text){
-        //     alert('bằng nhau');
-        // }
-        // else{
-        //     alert('k bằng nhau');
-        // }
-       
-        // text1 = text.replace(regex, "");
-
+        text = text1;
+        
        let content = CKEDITOR.instances.content.getData();
-
-        var regex = /(<\s*a([^>]+)>|<\/\s*a\s*>)/ig;
 
         contents = content.replace(text, ""); 
 
-        CKEDITOR.instances.content.setData(contents);
-
+        CKEDITOR.instances.content.insertText(text1);
 
     }
 
