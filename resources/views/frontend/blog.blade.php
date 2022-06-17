@@ -25,7 +25,7 @@
         <div class="menu_blog">
             <ul class="dm_container">
                 <li>
-                    <a href="/tu-van-tivi">
+                    <a href="/tu-van-ti-vi">
                     <img src="{{ asset('images/template/logo/tivi.png') }}" alt="">
                     <span>Tư vấn
                     <br> tivi</span>
