@@ -220,7 +220,14 @@ class AjaxController extends Controller
             
             }
 
-            $sugest = '<a href="'.route("details", $products->Link).'"><img src="'.asset($products->Image).'" width="50" style="margin-right:10px;"></a><a class="suggest_link" href="'.route('details', $products->Link).'">'.$products->Name.'</a><br><p>giá: '.number_format($products->Price).'đ</p><br>';
+            if($products->Price==0){
+                $priceInt = 'Liên hệ';
+            }
+            else{
+                $priceInt = number_format($products->Price).'đ';
+            }
+
+            $sugest = '<a href="'.route("details", $products->Link).'"><img src="'.asset($products->Image).'" width="50" style="margin-right:10px;"></a><a class="suggest_link" href="'.route('details', $products->Link).'">'.$products->Name.'</a><br><p>Giá: '.$priceInt.'</p><br>';
 
             array_push($sugests, $sugest);
         }

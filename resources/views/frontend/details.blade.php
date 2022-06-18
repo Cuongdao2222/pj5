@@ -480,7 +480,7 @@
                                         </button> -->
                                 </div>
                                 <div class="clearfix"></div>
-                                @if((int)$data['Price']>3000000)
+                                @if((int)$data['Price']>=3000000)
                                 <div class="installment-purchase pdetail-installment">
                                    
                                     <a target="_blank"  href="{{ route('details', $data->Link)  }}?show=tra-gop" admicro-data-event="101725" admicro-data-auto="1" admicro-data-order="false" class="but-1-gop">
@@ -870,7 +870,7 @@
 
                             <div class="installment-purchase pdetail-installment">
                                 
-                                @if((int)$data['Price']>3000000)
+                                @if((int)$data['Price']>=3000000)
                                
                                 <a target="_blank" class="but-tra-gop" href="{{ route('details', $data->Link)  }}?show=tra-gop" admicro-data-event="101725" admicro-data-auto="1" admicro-data-order="false">
                                 <strong>TRẢ GÓP QUA THẺ</strong>
@@ -1064,7 +1064,7 @@
             </a>
         </div>
         @endif
-        @if((int)$data->Price>3000000)
+        @if((int)$data->Price>=3000000)
         <div class="clear space10px credit">
            
             <a class="btn-buy txt_center cor5px"  href="{{ route('details', $data->Link)  }}?show=tra-gop" style="background: #ffde00; border-bottom: 0;">
