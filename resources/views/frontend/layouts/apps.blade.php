@@ -394,6 +394,12 @@
 
             }
 
+            #ui-id-2{
+                width: 100%!important;
+                left: 0 !important;
+                padding: 5px;
+            }
+
         </style>
 
         @stack('style')
@@ -1634,7 +1640,46 @@ s0.parentNode.insertBefore(s1,s0);
             },
             html:true,
         });
-    })  
+    });
+
+    $(function() {
+        $("#skw").autocomplete({
+            
+            source: function(request, response) {
+                $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+
+
+                });
+                $.ajax({
+
+                    url: "{{  route('sugest-click')}}",
+                    type: "POST",
+                    data: {
+                        product:$('#tags').val()
+                    },
+                    dataType: "json",
+                    success: function (data) {
+                        var items = data;
+
+                        response(items);
+
+                        console.log(data);
+
+                        $('#ui-id-2').html();
+
+                        $('#ui-id-2').html(data);
+                    
+                    }
+                });
+            },
+            html:true,
+        });
+    }) 
+
+     
 
   
 
