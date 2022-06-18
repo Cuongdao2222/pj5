@@ -1658,7 +1658,7 @@ s0.parentNode.insertBefore(s1,s0);
                     url: "{{  route('sugest-click')}}",
                     type: "POST",
                     data: {
-                        product:$('#tags').val()
+                        product:$('#skw').val()
                     },
                     dataType: "json",
                     success: function (data) {
