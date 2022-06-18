@@ -81,7 +81,7 @@
 
 &nbsp &nbsp &nbsp &nbsp
 
-<div class="btn-primary button" onclick ='removeHref_byselected()'>Xóa link theo đoạn </div>
+<div class="btn-primary button" onclick ='removeHref_byselected()'>Xóa link bôi đen </div>
 
 
 <div class="form-group col-sm-12 col-md-12">
@@ -311,11 +311,6 @@
     function removeHref_byselected(text1) {
         var text1 =  CKEDITOR.instances.content.getSelection().getSelectedText();
 
-        text = text1;
-        
-       let content = CKEDITOR.instances.content.getData();
-
-        contents = content.replace(text, ""); 
 
         CKEDITOR.instances.content.insertText(text1);
 
