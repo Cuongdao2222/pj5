@@ -4039,7 +4039,8 @@ header.header.manusearch .header__search input {
         padding-left: 5px
     }
     .header__cart {
-        padding-left: 5px
+        padding-left: 5px;
+        margin: 0 !important;
     }
     .header__history {
         margin: 0 5px
