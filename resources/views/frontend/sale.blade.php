@@ -57,10 +57,13 @@
 
         <?php 
 
-            $product_sale = Cache::remember('sale_product',10, function() use ($data){
+            $product_sale = Cache::remember('sale_products',10, function(){
 
-                return DB::table('products')->join('sale_product', 'products.id', '=', 'sale_product.product_id')->join('makers', 'products.Maker', '=', 'makers.id')->get()
+                // return DB::table('products')->join('sale_product', 'products.id', '=', 'sale_product.product_id')->join('makers', 'products.Maker', '=', 'makers.id')->get();
+                 return DB::table('products')->where('active',1)->Orderby('id', 'desc')->take(20)->get();
             });    
+
+
 
            
 
@@ -68,7 +71,7 @@
 
         @if(!empty($product_sale))
 
-       
+        
         <div class="row list-pro">
             
             @foreach($product_sale as $value)
