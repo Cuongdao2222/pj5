@@ -194,7 +194,8 @@ class AjaxController extends Controller
     {
         $products = $request->product;
 
-        $product =   product::select('Link', 'Name', 'Image', 'Price', 'id')->where('Name','like','%'.$products.'%' )->where('active', 1)->OrWhere('ProductSku', 'LIKE', '%' . $products . '%')->where('active', 1)->take(5)->get();
+        $product =   product::select('Link', 'Name', 'Image', 'Price', 'id')->where('Name','like','%'.$products.'%' )->where('active', 1)->
+        Orderby('id','desc')->OrWhere('ProductSku', 'LIKE', '%' . $products . '%')->where('active', 1)->Orderby('id','desc')->take(5)->get();
 
         $sugests =[];
 
