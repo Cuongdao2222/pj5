@@ -57,7 +57,12 @@
 
         <?php 
 
-            $product_sale = Cache::get('product_sale',DB::table('products')->join('sale_product', 'products.id', '=', 'sale_product.product_id')->join('makers', 'products.Maker', '=', 'makers.id')->get());
+            $product_sale = Cache::remember('sale_product',10, function() use ($data){
+
+                return DB::table('products')->join('sale_product', 'products.id', '=', 'sale_product.product_id')->join('makers', 'products.Maker', '=', 'makers.id')->get()
+            });    
+
+           
 
         ?>
 
