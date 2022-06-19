@@ -370,7 +370,7 @@ class sitemapController extends Controller
 
    public function sitemapChildProduct()
    {
-    $product = product::take(300)->OrderBy('id', 'desc')->get();
+    $product = product::take(160)->OrderBy('id', 'desc')->get();
 
        return response()->view('sitemap.child', [
             'product' => $product,
