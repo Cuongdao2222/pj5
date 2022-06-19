@@ -228,7 +228,7 @@ class AjaxController extends Controller
                 $priceInt = number_format($products->Price).'đ';
             }
 
-            $sugest = '<a href="'.route("details", $products->Link).'"><img src="'.asset($products->Image).'" width="50" style="margin-right:10px;"></a><a class="suggest_link" href="'.route('details', $products->Link).'">'.$products->Name.'</a><br><p>Giá: '.$priceInt.'</p><br>';
+            $sugest = '<a href="'.route("details", $products->Link).'"><img src="'.asset($products->Image).'" width="50" style="margin-right:10px;"></a><a class="suggest_link" href="'.route('details', $products->Link).'">'.$products->Name.'</a><br> <p style="color:red; font-weight:bold">Giá :'. str_replace(',', '.',$priceInt) .'</p><br>';
 
             array_push($sugests, $sugest);
         }
