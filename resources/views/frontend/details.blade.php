@@ -421,7 +421,7 @@
                                     <span>{{ $status }}</span>
                                 </div>
 
-                                 @if(!empty($gift) &&  $data->Quantily>0)
+                                 @if(!empty($gift) &&  $data->Quantily>0 &&  $data['Price']>0)
 
                                 <fieldset class="p-gift">
                                         <legend id="data-pricetotal" style="color: #ff0000;font-size: 18px; font-weight: bold" data-pricetotal="0">
@@ -813,7 +813,7 @@
                             </div>
 
                             
-                             @if(!empty($gift) && $data->Quantily>0 && $deal_check_add ==false)
+                             @if(!empty($gift) && $data->Quantily>0 && $deal_check_add ==false  &&  $data['Price']>0)
 
                             <fieldset class="p-gift">
                                     <legend id="data-pricetotal" style="color: #ff0000;font-size: 18px; font-weight: bold" data-pricetotal="0">
