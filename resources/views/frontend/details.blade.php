@@ -404,7 +404,7 @@
                             <div class="pdetail-status">
                                 <div class="pdetail-stockavailable">
                                     <?php
-                                        if($data->Quantily==0){
+                                        if($data->Quantily==0||$data['Price']==0){
                                             $status ='Tạm hết hàng';
                                         
                                         }
