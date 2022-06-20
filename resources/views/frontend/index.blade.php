@@ -309,8 +309,8 @@
 
                                    
                                     
-                                    $product_saless = Cache::remember('product_saless',10, function() use ($value) {
-                                        return App\Models\product::find($value->product_id);;
+                                    $product_saless = Cache::remember('product_saless'.$value->product_id,10, function() use ($value) {
+                                        return App\Models\product::find($value->product_id);
                                     });
                                    
 

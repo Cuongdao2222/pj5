@@ -62,7 +62,12 @@ if (!function_exists('gift')) {
 
         $now = Carbon\Carbon::now();
 
-        $promotion = DB::table('promotion')->where('id_product', $id)->get()->first();
+
+        $promotion = Cache::remember('promotion'.$id, 10, function() use ($id) {
+            return DB::table('promotion')->select('id_group_gift', 'start', 'end')->where('id_product', $id)->get()->first();
+        });
+
+        
 
         $gift = [];
     
