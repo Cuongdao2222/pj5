@@ -64,7 +64,7 @@ if (!function_exists('gift')) {
 
 
         $promotion = Cache::remember('promotion'.$id, 10, function() use ($id) {
-            return DB::table('promotion')->select('id_group_gift', 'start', 'end')->select('id_group_gift', 'end', 'start')->where('id_product', $id)->get()->first();
+            return DB::table('promotion')->select('id_group_gift', 'start', 'end')->where('id_product', $id)->get()->first();
         });
 
         
