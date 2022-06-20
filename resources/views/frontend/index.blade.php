@@ -303,10 +303,7 @@
 
                                 @if( $value->active ==1)
 
-                                 <?php 
-                                    $product_saless = App\Models\product::find($value->product_id);
-
-                                ?>
+                                
 
                                 <div class="item">
                                     <a href="{{ route('details', $value->link) }}">
