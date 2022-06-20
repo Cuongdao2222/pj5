@@ -66,7 +66,7 @@ if (!function_exists('gift')) {
 
         $promotion = '';
 
-        $id_all = DB::table('promotion')->where('id_product', $id)->get()->first();
+        $id_all = DB::table('promotion')->where('id_product', $id)->select('id_product')->get()->first();
 
         if(!empty($id_all)){
             $promotion = Cache::remember('promotion'.$id, 10, function() use ($id) {
