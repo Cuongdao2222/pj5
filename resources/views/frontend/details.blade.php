@@ -203,6 +203,12 @@
                 width: 100%;
 
             }
+            .detail h1 {
+                padding: 0 15px;
+            }
+            .box02{
+                display: none;
+            }
 
           
             /*.box01 .owl-carousel .owl-item img{
