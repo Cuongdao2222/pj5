@@ -19,7 +19,7 @@ class indexController extends Controller
         $minutes = 10;
 
         $banners = Cache::remember('banners',$minutes, function() {
-            return banners::where('option', 0)->OrderBy('stt', 'asc')->where('active', 1)->get();
+            return banners::where('option', 0)->OrderBy('stt', 'asc')->where('active', 1)->select('title', 'image', 'title', 'link')->get();
         });
 
         $bannersRight = Cache::remember('bannersRights',$minutes, function() {
