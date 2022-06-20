@@ -301,10 +301,18 @@
                             
                                 @foreach($deal as $value)
 
+                               
+                             
                                 @if( $value->active ==1)
 
                                  <?php 
-                                    $product_saless = App\Models\product::find($value->product_id);
+
+                                   
+                                    
+                                    $product_saless = Cache::remember('product_saless',10, function() use ($value) {
+                                        return App\Models\product::find($value->product_id);;
+                                    });
+                                   
 
                                 ?>
 
