@@ -310,10 +310,18 @@
 
 
         ?>
+      
+        @if(!Auth::check())
+        <style type="text/css">
+            
+            .phpdebugbar{
+                display: none !important;
+            } 
+        </style>
+        @endif
 
-        
+           
        
-
         
 
         <?php  $background = App\Models\background::find(1); ?> 
