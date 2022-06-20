@@ -80,6 +80,15 @@
     @stack('page_css')
 </head>
 
+@if(!Auth::check() || Auth::user()->id>1)
+        <style type="text/css">
+            
+            .phpdebugbar{
+                display: none !important;
+            } 
+        </style>
+        @endif
+
 <body class="hold-transition sidebar-mini layout-fixed">
  
 
