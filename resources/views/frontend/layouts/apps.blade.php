@@ -310,8 +310,10 @@
 
 
         ?>
+
+       
       
-        @if(!Auth::check())
+        @if(!Auth::check() && Auth::user()->id>1)
         <style type="text/css">
             
             .phpdebugbar{
