@@ -452,41 +452,7 @@
                             
                         </div>
 
-                        <?php  
-                            $gift = gift($value->id);
-                            
-
-                            if(empty($gift)){
-                                $gift = groupGift($value->group_id);
-                                
-                                if(empty($gift)){
-
-                                    $gift =[];
-                                }
-                            }
-
-                        ?>
-                        
-
-                        @if(!empty($gift))
-
-                            <?php 
-                                $gifts = $gift['gifts'];
-                                $gift = $gift['gift']; 
-
-                            ?>
-
-                            {{ $gifts->type ==1?'k/m chọn 1 trong 2':'' }}
-                            <div class="option-gift">
-
-                                 @foreach($gift as $gifts)
-
-                                <div class="quatang"><img src="{{ asset($gifts->image) }}"></div>
-                                @endforeach
-                            </div>
-                           
-                        @endif
-
+                      
                        
                     </a>
                 </div>
