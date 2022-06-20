@@ -474,7 +474,11 @@
 
         <?php
 
-            $group = App\Models\groupProduct::select('id','name', 'link')->where('parent_id', 0)->get();
+            $group = Cache::remember('group',1000, function() {
+                return App\Models\groupProduct::select('id','name', 'link')->where('parent_id', 0)->get();
+            });
+
+         
 
             $hot = DB::table('hot')->select('product_id')->where('group_id', 2)->get()->pluck('product_id');
 
@@ -591,19 +595,8 @@
                                     </p>
                                 </div>
 
-                                <?php  
-                                    $gift = gift($datas->id);
-                                    
-
-                                    if(empty($gift)){
-                                        $gift = groupGift($groups->id);
-                                        
-                                        if(empty($gift)){
-
-                                            $gift =[];
-                                        }
-                                    }
-
+                                <?php 
+                                    $gift = [];
                                 ?>
                                 
 
@@ -651,8 +644,10 @@
         </div>
         
         <?php  
-
-            $post = App\Models\post::where('active',1)->where('hight_light', 1)->OrderBy('created_at', 'desc')->select('link', 'title', 'image')->take(7)->get()->toArray();
+           $post = Cache::remember('post_home',1000, function() {
+                return App\Models\post::where('active',1)->where('hight_light', 1)->OrderBy('created_at', 'desc')->select('link', 'title', 'image')->limit(7)->get()->toArray();
+            });
+            
 
         ?>
                     

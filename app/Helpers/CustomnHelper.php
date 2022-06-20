@@ -24,7 +24,15 @@ if (!function_exists('_substrs')) {
 if (!function_exists('groupGift')) {
     // id truyền vào là id category của sản phẩm
     function groupGift($id){
-        $gift_group = DB::table('gift_group')->where('group_product', $id)->get();
+
+        //  $gift_group = Cache::remember('gift_group'.$id,1000,  function() use($id){
+        //    DB::table('gift_group')->where('group_product', $id)->get();
+        // });
+
+          $gift_group = DB::table('gift_group')->where('group_product', $id)->get();
+      
+
+        
         $now = Carbon\Carbon::now();
         $gift = [];
 
