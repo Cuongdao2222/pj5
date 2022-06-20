@@ -68,6 +68,8 @@ class dealController extends Controller
         
         $products   =  product::select('Name', 'Link', 'Price','id', 'Image')->whereIN('id', $ar_products_id)->get()->toArray();
 
+
+
         if(isset($products)){
 
            for ($i=0; $i < count($products) ; $i++) { 
@@ -82,10 +84,27 @@ class dealController extends Controller
 
                 $products_add['product_id'] = $products[$i]['id'];
 
+                $time = DB::table('deal')->select('start', 'end')->first();
+
+                if(!empty($time)){
+                    $products_add['start'] = $time->start;
+
+                    $products_add['end'] = $time->end;
+                }  
+                else{
+                    $products_add['start'] ='';
+
+                     $products_add['end'] ='';
+
+                }  
+              
+
+            
                 if(empty($edit_id)){
                      DB::table('deal')->insert($products_add);
                 }
                 else{
+
                     DB::table('deal')->where('id', $edit_id)->update($products_add);
                 }
                
