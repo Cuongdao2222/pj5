@@ -18,9 +18,15 @@ class indexController extends Controller
     {
         $minutes = 10;
 
-        $banners = Cache::remember('bannersss',100, function() {
-            return banners::where('option','=',0)->take(6)->OrderBy('stt', 'asc')->where('active','=',1)->select('title', 'image', 'title', 'link')->get();
-        });
+        $banners =  Cache::get('baners');
+
+        $deal = Cache::get('deals');
+
+       
+
+        // $banners = Cache::remember('bannersss',100, function() {
+        //     return banners::where('option','=',0)->take(6)->OrderBy('stt', 'asc')->where('active','=',1)->select('title', 'image', 'title', 'link')->get();
+        // });
 
         $bannersRight = Cache::remember('bannersRights',100, function() {
             return banners::where('option', 2)->OrderBy('stt', 'asc')->where('active', 1)->get();
@@ -35,10 +41,7 @@ class indexController extends Controller
         });
 
 
-        $deal =  Cache::remember('deal',10, function() {
-
-            return deal::OrderBy('order', 'desc')->limit(12)->get();
-         });
+      
 
         $product_sale =  Cache::remember('product_sale',10, function() {
 
@@ -48,6 +51,19 @@ class indexController extends Controller
         
       
         return view('frontend.index', compact('banners', 'bannersRight', 'bannerUnderSlider', 'bannerUnderSale','deal','product_sale'));
+    }
+    public function cache()
+    {
+        $banners = banners::where('option','=',0)->take(6)->OrderBy('stt', 'asc')->where('active','=',1)->select('title', 'image', 'title', 'link')->get();
+
+        $deal = deal::OrderBy('order', 'desc')->limit(12)->get();
+       
+        Cache::put('baners',$banners,1000);
+
+        Cache::put('deals',$deal,1000);
+
+        echo "thanh cong";
+
     }
 
      
