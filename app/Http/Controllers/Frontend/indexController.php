@@ -8,6 +8,7 @@ use App\Models\banners;
 use App\Models\groupProduct;
 use Illuminate\Support\Facades\Cache;
 use App\Models\deal;
+use App\Models\product;
 use DB;
 
 
@@ -22,7 +23,19 @@ class indexController extends Controller
 
         $deal = Cache::get('deals');
 
+        $group = Cache::get('groups');
+
        
+        $product_sale = Cache::get('product_sale');
+
+
+
+        if(empty($group)){
+
+            $this->cache();
+        }
+        
+
 
         // $banners = Cache::remember('bannersss',100, function() {
         //     return banners::where('option','=',0)->take(6)->OrderBy('stt', 'asc')->where('active','=',1)->select('title', 'image', 'title', 'link')->get();
@@ -41,29 +54,62 @@ class indexController extends Controller
         });
 
 
-      
-
-        $product_sale =  Cache::remember('product_sale',10, function() {
-
-            return DB::table('products')->join('sale_product', 'products.id', '=', 'sale_product.product_id')->join('makers', 'products.Maker', '=', 'makers.id')->get();
-         });
 
         
       
-        return view('frontend.index', compact('banners', 'bannersRight', 'bannerUnderSlider', 'bannerUnderSale','deal','product_sale'));
+        return view('frontend.index', compact('banners', 'bannersRight', 'bannerUnderSlider', 'bannerUnderSale','deal','product_sale', 'group'));
     }
     public function cache()
     {
+        Cache::flush();
+
+        
         $banners = banners::where('option','=',0)->take(6)->OrderBy('stt', 'asc')->where('active','=',1)->select('title', 'image', 'title', 'link')->get();
 
-        $deal = deal::OrderBy('order', 'desc')->limit(12)->get();
-       
+        $deal = deal::OrderBy('order', 'desc')->get();
+
+        $product_sale = DB::table('products')->join('sale_product', 'products.id', '=', 'sale_product.product_id')->join('makers', 'products.Maker', '=', 'makers.id')->get();
+
+        $groups = groupProduct::select('id','name', 'link')->where('parent_id', 0)->get();
+
+
+
+        foreach ($groups as $key => $value) {
+
+            $hot = DB::table('hot')->select('product_id')->where('group_id', $value->id)->get()->pluck('product_id');
+
+            Cache::put('hot'.$value->id, $hot, 1000);
+
+        }
+
+        foreach ($deal as $key => $deal1) {
+            
+            $deals = product::find($deal1->product_id);
+
+            if($deal1->active ==1){
+                Cache::put('deals'.$deal1->product_id,$deals, 1000);
+
+                // dd(Cache::get('deals'. $deal1->product_id));
+
+            }
+
+
+        }
+
+        $deal_start = $deal->first()->start;
+
+        cache::put('deal_start', $deal_start, 1000);
+
+    
+        Cache::put('groups', $groups, 1000);
+
+        Cache::put('product_sale', $product_sale, 1000);
+        
         Cache::put('baners',$banners,1000);
 
         Cache::put('deals',$deal,1000);
 
-        echo "thanh cong";
-
+    
     }
 
      

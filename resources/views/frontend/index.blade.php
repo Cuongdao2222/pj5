@@ -262,23 +262,25 @@
         <?php 
            
             $now  = Carbon\Carbon::now();
+            
 
-            if(!empty($deal)&count($deal)>0){
+            if(!empty($deal)){
 
-                $timeDeal_star = $deal[0]->start;
+                $timeDeal_star = Cache::get('deal_start');
 
                 $timeDeal_star =  \Carbon\Carbon::create($timeDeal_star);
 
-                $timeDeal_end = $deal[0]->end;
+                $timeDeal_end = $deal->first()->end;
 
                 $timeDeal_end =  \Carbon\Carbon::create($timeDeal_end);
 
                 $timestamp = $now->diffInSeconds($timeDeal_end);
             }
 
+
         ?>
 
-        @if(!empty($deal)&count($deal)>0)
+        @if(!empty($deal))
 
         @if($now->between($timeDeal_star, $timeDeal_end))
 
@@ -305,14 +307,12 @@
                              
                                 @if( $value->active ==1)
 
-                                 <?php 
+                                <?php 
+                                    $product_saless = Cache::get('deals'. $value->product_id);
 
-                                   
-                                    
-                                    $product_saless = Cache::remember('product_saless'.$value->product_id,10, function() use ($value) {
-                                        return App\Models\product::find($value->product_id);
-                                    });
-                                   
+
+
+                                  
 
                                 ?>
 
@@ -415,8 +415,8 @@
             </div>
 
           
-
-           @if(count($product_sale)>0)
+           
+           @if(!empty($product_sale)&&$product_sale->count()>0)
            
             <div class="listproduct slider-promo owl-carousel banner-sale" data-size="20">
 
@@ -471,41 +471,43 @@
             </div>
             
         </div>
+        
 
-        <?php
-
-            $group = Cache::remember('group',1000, function() {
-                return App\Models\groupProduct::select('id','name', 'link')->where('parent_id', 0)->get();
-            });
-
-         
-
-            $hot = DB::table('hot')->select('product_id')->where('group_id', 2)->get()->pluck('product_id');
-
-         ?>   
-
-        <div  class="owl-slider-count" style="display: none;">{{ count($group) }}</div> 
+        <div  class="owl-slider-count" style="display: none;">{{ @$group->count() }}</div> 
         @foreach($group as $key => $groups)
 
             <?php
+                
 
+                $hot = Cache::get('hot'.$groups->id);
 
-                $hot = DB::table('hot')->select('product_id')->where('group_id', $groups->id)->get()->pluck('product_id');
+                $data = Cache::get('data'.$groups->id);
 
+                if(empty($data)){
+                    $datas =  DB::table('products')->whereIn('id', $hot)->where('active', 1)->get();
 
-                $data =  DB::table('products')->whereIn('id', $hot)->where('active', 1)->get();
+                    $datas = Cache::put('data'.$groups->id,  $datas, 1000);
+                }
+
 
             ?>
 
            
-        @if(count($data)>0)
+        @if(!empty($data))
 
          
         <div class="box-common _cate_1942">
             <ul class="box-common__tab">
                 <li class="active-tab" data-cate-id="1942"><a href="{{  @$groups->link }}">{{  @$groups->name }}</a></li>
                 <?php 
-                    $listGroupsShow = App\Models\groupProduct::select('name', 'link')->where('parent_id', $groups->id)->get();
+                    $listGroupsShow = Cache::get('listGroupsShow'.$groups->id);
+
+                    if(empty($listGroupsShow)){
+                        $listGroupsShows =   App\Models\groupProduct::select('name', 'link')->where('parent_id', $groups->id)->get();
+
+                        Cache::put('listGroupsShow'.$groups->id,  $listGroupsShows, 1000);
+                    }
+                     
                 ?>
 
                 @if(!empty($listGroupsShow))
@@ -594,11 +596,7 @@
                                         <i class="fa-solid fa-star"></i>
                                     </p>
                                 </div>
-
-                                <?php 
-                                    $gift = [];
-                                ?>
-                                
+                               
 
                                 @if(!empty($gift))
 
@@ -702,7 +700,21 @@
         <div class="bottom-search">
             <p>Tìm kiếm nhiều:</p>
 
-            <?php  $link =  DB::table('muchsearch')->get();  ?>
+
+
+            <?php 
+
+                $link = Cache::get('link_much');
+
+                if(empty($link)){
+                    $links=   DB::table('muchsearch')->get(); 
+
+                    Cache::put('link_much',  $links, 1000);
+                }
+              
+
+
+             ?>
 
             @isset($link)
             @foreach($link as $links)
