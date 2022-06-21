@@ -493,7 +493,7 @@
             ?>
 
            
-        @if(!empty($data))
+        @if(!empty($data) && $data->count()>0)
 
          
         <div class="box-common _cate_1942">
@@ -596,7 +596,7 @@
                                         <i class="fa-solid fa-star"></i>
                                     </p>
                                 </div>
-                               
+
 
                                 @if(!empty($gift))
 

@@ -17,7 +17,7 @@ class payController extends Controller
 
         $data = $request->all();
 
-        $data['orderDescription'] = $data['product_name'];
+        $data['orderDescription'] = $data['product_name']. ' *Số tiền thanh toán trước trả góp là:'. $data['before_money'].'đ';
 
         $data['currency'] ='VND';
 
@@ -43,10 +43,12 @@ class payController extends Controller
         $data['buyerPhone'] = trim($data['phoneNumber']);
 
         $data['buyerCountry'] = 'Việt Nam';
- 
+
         $installment = new installment();
 
         $installment->price = $data['amount'];
+
+        $installment->pre_price = $data['before_money'];
 
         $installment->email = $data['buyerEmail'];
 

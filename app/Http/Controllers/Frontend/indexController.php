@@ -17,7 +17,7 @@ class indexController extends Controller
 {
     public function index()
     {
-        $minutes = 10;
+       
 
         $banners =  Cache::get('baners');
 
@@ -30,9 +30,18 @@ class indexController extends Controller
 
 
 
-        if(empty($group)){
+        if(empty($group) ||empty($banners)||empty($product_sale)||empty($deal)){
 
             $this->cache();
+
+            $banners =  Cache::get('baners');
+
+            $deal = Cache::get('deals');
+
+            $group = Cache::get('groups');
+
+           
+            $product_sale = Cache::get('product_sale');
         }
         
 
@@ -61,9 +70,8 @@ class indexController extends Controller
     }
     public function cache()
     {
-        Cache::flush();
+       
 
-        
         $banners = banners::where('option','=',0)->take(6)->OrderBy('stt', 'asc')->where('active','=',1)->select('title', 'image', 'title', 'link')->get();
 
         $deal = deal::OrderBy('order', 'desc')->get();
