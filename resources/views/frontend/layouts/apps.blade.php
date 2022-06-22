@@ -30,7 +30,18 @@
             <meta name="keywords" content="Khuyến mại lớn, giảm giá mạnh,"/>
             @else
 
-             <?php $meta = App\Models\metaSeo::find(5959); ?>
+             <?php 
+
+                if(!Cache::has('meta5959')){
+
+                    $metas = App\Models\metaSeo::find(5959); 
+
+                    Cache::put('meta5959', $metas, 1000);
+
+                }
+                
+                $meta = Cache::get('meta5959');
+             ?>
 
             <title>{{  !empty($name_cates_cate)?$name_cates_cate:$meta->meta_title }}</title>
             <meta name="description" content="{{ $meta->meta_content }}"/>
@@ -326,7 +337,10 @@
        
         
 
-        <?php  $background = App\Models\background::find(1); ?> 
+        <?php  
+        
+            $background = App\Models\background::find(1); 
+        ?> 
         @if(!empty($background->background_image))
         <style type="text/css">
             
