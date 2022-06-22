@@ -484,16 +484,24 @@
             <?php
                 
 
-                $hot = Cache::get('hot'.$groups->id);
+                if(empty(Cache::get('hot'.$groups->id))){
 
-                $data = Cache::get('data'.$groups->id);
+                    $hot = DB::table('hot')->select('product_id')->where('group_id', $groups->id)->get()->pluck('product_id');
 
-                if(empty($data)){
+                    Cache::put('hot'.$value->id, $hot, 20);
+
+                }
+                 $hot = Cache::get('hot'.$groups->id);
+
+                if(empty(Cache::get('data'.$groups->id))){
                     $datas =  DB::table('products')->whereIn('id', $hot)->where('active', 1)->get();
 
                     $datas = Cache::put('data'.$groups->id,  $datas, 1000);
                 }
 
+               
+
+                $data = Cache::get('data'.$groups->id);
 
             ?>
 
@@ -505,13 +513,14 @@
             <ul class="box-common__tab">
                 <li class="active-tab" data-cate-id="1942"><a href="{{  @$groups->link }}">{{  @$groups->name }}</a></li>
                 <?php 
-                    $listGroupsShow = Cache::get('listGroupsShow'.$groups->id);
+                    
 
-                    if(empty($listGroupsShow)){
+                    if(empty(Cache::get('listGroupsShow'.$groups->id))){
                         $listGroupsShows =   App\Models\groupProduct::select('name', 'link')->where('parent_id', $groups->id)->get();
 
                         Cache::put('listGroupsShow'.$groups->id,  $listGroupsShows, 1000);
                     }
+                    $listGroupsShow = Cache::get('listGroupsShow'.$groups->id);
                      
                 ?>
 
@@ -602,6 +611,32 @@
                                     </p>
                                 </div>
 
+                                <?php  
+
+                                    if(!Cache::has('gifts_Fe_'.$datas->id)){
+
+                                        $gifts = gift($datas->id);
+        
+
+                                        if(empty($gifts)){
+                                            $gifts = groupGift($groups->id);
+                                            
+                                            if(empty($gifts)){
+
+                                                $gifts =[];
+                                            }
+                                        }
+                                        Cache::put('gifts_Fe_'.$datas->id, $gifts, 200000);
+
+                                    
+
+                                    }
+                                   
+                                    $gift = Cache::get('gifts_Fe_'.$datas->id);
+
+
+                                ?>
+
 
                                 @if(!empty($gift))
 
@@ -647,9 +682,13 @@
         </div>
         
         <?php  
-           $post = Cache::remember('post_home',1000, function() {
+
+
+            $post = Cache::remember('post_home',1000, function() {
                 return App\Models\post::where('active',1)->where('hight_light', 1)->OrderBy('created_at', 'desc')->select('link', 'title', 'image')->limit(7)->get()->toArray();
             });
+
+
             
 
         ?>
@@ -709,15 +748,15 @@
 
             <?php 
 
-                $link = Cache::get('link_much');
+               
 
-                if(empty($link)){
+                if(empty(Cache::get('link_much'))){
                     $links=   DB::table('muchsearch')->get(); 
 
                     Cache::put('link_much',  $links, 1000);
                 }
               
-
+                $link = Cache::get('link_much');
 
              ?>
 
