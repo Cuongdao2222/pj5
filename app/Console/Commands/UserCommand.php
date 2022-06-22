@@ -6,6 +6,8 @@ use Illuminate\Console\Command;
 
 use App\Http\Controllers\crawlController;
 
+use Cache;
+
 class UserCommand extends Command
 {
     /**
@@ -40,6 +42,6 @@ class UserCommand extends Command
     public function handle()
     {
         $crawl = new crawlController();
-        return $crawl->addMetaSeoForGroup();
+        return $crawl->echo1();
     }
 }

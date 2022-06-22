@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Storage;
 
 use App\Models\product;
 
+use Illuminate\Support\Facades\Cache;
+
 
 
 use App\Models\post;
@@ -27,7 +29,18 @@ use \Carbon\Carbon;
 
 class crawlController extends Controller
 {
+    public function echo1(){
+         $value = Cache::get('cron');
 
+         print_r($value);
+       
+    }
+
+    public function echo(){
+        $now = Carbon::now();
+        Cache::put('cron', 1, 58);
+       
+    }
     public function updateProductQua()
     {
       $code = 'NF-N15SRA
