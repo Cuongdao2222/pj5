@@ -759,12 +759,21 @@
                             </style>
                         <div class="pdetail-price">
                             @if(!empty($text))
+                            <?php 
+
+                                if($data->id%2==0){
+                                    $numberDeal = 6;
+                                }
+                                else{
+                                    $numberDeal = 5;
+                                }
+                            ?>
                             <div id="module_flash_sale" class="pdp-block module">
                                 <div class="crazy-deal-details pc" style="background-image:url('{{ asset('images/template/flashsale.png')  }}'); height:38px">
                                     <div class="crazy-deal-details-right">
                                         <time class="crazy-deal-details-countdown" data-spm-anchor-id="a2o4n.pdp_revamp.0.i0.89db8552daSXV6">Kết thúc sau <span class="crazy-deal-details-countdown-time clock">12:08:36</span></time>
                                         <div class="crazy-deal-details-process">
-                                            Đã bán 0 sản phẩm
+                                            Đã bán {{ $numberDeal }} sản phẩm
                                             <!-- <div class="crazy-deal-details-procressbar">
                                                 <div class="crazy-deal-details-procressbar-inner" style="width:9%"></div>
                                             </div> -->

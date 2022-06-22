@@ -86,7 +86,7 @@ class indexController extends Controller
 
             $hot = DB::table('hot')->select('product_id')->where('group_id', $value->id)->get()->pluck('product_id');
 
-            Cache::put('hot'.$value->id, $hot, 1000);
+            Cache::put('hot'.$value->id, $hot, 20);
 
         }
 
@@ -95,7 +95,7 @@ class indexController extends Controller
             $deals = product::find($deal1->product_id);
 
             if($deal1->active ==1){
-                Cache::put('deals'.$deal1->product_id,$deals, 1000);
+                Cache::put('deals'.$deal1->product_id,$deals, 20);
 
                 // dd(Cache::get('deals'. $deal1->product_id));
 
@@ -106,16 +106,16 @@ class indexController extends Controller
 
         $deal_start = $deal->first()->start;
 
-        cache::put('deal_start', $deal_start, 1000);
+        cache::put('deal_start', $deal_start, 20);
 
     
-        Cache::put('groups', $groups, 1000);
+        Cache::put('groups', $groups, 20);
 
-        Cache::put('product_sale', $product_sale, 1000);
+        Cache::put('product_sale', $product_sale, 20);
         
-        Cache::put('baners',$banners,1000);
+        Cache::put('baners',$banners,20);
 
-        Cache::put('deals',$deal,1000);
+        Cache::put('deals',$deal,20);
 
     
     }

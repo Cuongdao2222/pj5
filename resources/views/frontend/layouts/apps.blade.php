@@ -1574,6 +1574,7 @@
       .zalo-chat-widget{  
         bottom: -5px!important;  
         left: 9px!important;  
+        display: none !important;
     }  
   </style>
 
