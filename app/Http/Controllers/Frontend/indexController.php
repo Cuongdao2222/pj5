@@ -93,9 +93,9 @@ class indexController extends Controller
 
         Cache::put('product_sale', $product_sale,1000);
         
-        Cache::put('baners',$banners,20);
+        Cache::put('baners',$banners,1000);
 
-        Cache::put('deals',$deal,20);
+        Cache::put('deals',$deal,1000);
 
     
     }
