@@ -313,7 +313,7 @@
 
                                         $deals = App\Models\product::find($value->product_id);
 
-                                        Cache::put('deals'.$value->product_id,$deals,1000);
+                                        Cache::put('deals'.$value->product_id,$deals,10000);
 
                                     }
                                     $product_saless = Cache::get('deals'. $value->product_id);
@@ -488,7 +488,7 @@
 
                     $hot = DB::table('hot')->select('product_id')->where('group_id', $groups->id)->get()->pluck('product_id');
 
-                    Cache::put('hot'.$groups->id, $hot, 1000);
+                    Cache::put('hot'.$groups->id, $hot, 10000);
 
                 }
                  $hot = Cache::get('hot'.$groups->id);
@@ -496,7 +496,7 @@
                 if(!Cache::has('data'.$groups->id)){
                     $datas =  DB::table('products')->whereIn('id', $hot)->where('active', 1)->get();
 
-                    $datas = Cache::put('data'.$groups->id,  $datas, 1000);
+                    $datas = Cache::put('data'.$groups->id,  $datas, 10000);
                 }
 
                
@@ -518,7 +518,7 @@
                     if(empty(Cache::get('listGroupsShow'.$groups->id))){
                         $listGroupsShows =   App\Models\groupProduct::select('name', 'link')->where('parent_id', $groups->id)->get();
 
-                        Cache::put('listGroupsShow'.$groups->id,  $listGroupsShows, 1000);
+                        Cache::put('listGroupsShow'.$groups->id,  $listGroupsShows, 10000);
                     }
                     $listGroupsShow = Cache::get('listGroupsShow'.$groups->id);
                      
@@ -684,7 +684,7 @@
         <?php  
 
 
-            $post = Cache::remember('post_home',1000, function() {
+            $post = Cache::remember('post_home',10000, function() {
                 return App\Models\post::where('active',1)->where('hight_light', 1)->OrderBy('created_at', 'desc')->select('link', 'title', 'image')->limit(7)->get()->toArray();
             });
 
@@ -753,7 +753,7 @@
                 if(empty(Cache::get('link_much'))){
                     $links=   DB::table('muchsearch')->get(); 
 
-                    Cache::put('link_much',  $links, 1000);
+                    Cache::put('link_much',  $links, 10000);
                 }
               
                 $link = Cache::get('link_much');
