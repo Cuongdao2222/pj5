@@ -1582,7 +1582,7 @@
 
         <div style="position:fixed; bottom:10px !important; left:50% !important;transform: translate(0, -50%) !important;" class="zalo-chat-widget" data-oaid="1329456933344915716" data-welcome-message="Điện Máy Người Việt rất vui khi được hỗ trợ bạn!" data-autopopup="0" data-width="" data-height=""></div>
 
-  @if(Auth::check() || Auth::user()->id>1)<script src="https://sp.zalo.me/plugins/sdk.js"></script> 
+  <script src="https://sp.zalo.me/plugins/sdk.js"></script> 
   <style type="text/css">
       
       .zalo-chat-widget{  
@@ -1592,7 +1592,7 @@
     }  
   </style>
 
-          @endif
+          
 <!--Start of Tawk.to Script-->
 <script type="text/javascript">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
