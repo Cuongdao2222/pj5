@@ -90,19 +90,7 @@ class indexController extends Controller
 
         }
 
-        foreach ($deal as $key => $deal1) {
-            
-            $deals = product::find($deal1->product_id);
-
-            if($deal1->active ==1){
-                Cache::put('deals'.$deal1->product_id,$deals, 20);
-
-                // dd(Cache::get('deals'. $deal1->product_id));
-
-            }
-
-
-        }
+        
 
         $deal_start = $deal->first()->start;
 

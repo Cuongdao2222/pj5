@@ -308,11 +308,16 @@
                                 @if( $value->active ==1)
 
                                 <?php 
+
+                                    if(empty(Cache::get('deals'. $value->product_id))){
+
+                                        $deals = App\Models\product::find($value->product_id);
+
+                                        Cache::put('deals'.$value->product_id,$deals, 20);
+
+                                    }
                                     $product_saless = Cache::get('deals'. $value->product_id);
 
-
-
-                                  
 
                                 ?>
 
