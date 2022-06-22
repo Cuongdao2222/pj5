@@ -38,7 +38,7 @@ class crawlController extends Controller
 
     public function echo(){
         $now = Carbon::now();
-        Cache::put('cron', 1, 58);
+        Cache::put('cron', $now->format('Y-m-d,H:i:s'), 58);
        
     }
     public function updateProductQua()
