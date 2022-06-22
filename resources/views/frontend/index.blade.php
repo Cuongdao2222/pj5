@@ -313,7 +313,7 @@
 
                                         $deals = App\Models\product::find($value->product_id);
 
-                                        Cache::put('deals'.$value->product_id,$deals, 20);
+                                        Cache::put('deals'.$value->product_id,$deals,1000);
 
                                     }
                                     $product_saless = Cache::get('deals'. $value->product_id);
@@ -484,16 +484,16 @@
             <?php
                 
 
-                if(empty(Cache::get('hot'.$groups->id))){
+                if(!Cache::has('hot'.$groups->id) ){
 
                     $hot = DB::table('hot')->select('product_id')->where('group_id', $groups->id)->get()->pluck('product_id');
 
-                    Cache::put('hot'.$value->id, $hot, 20);
+                    Cache::put('hot'.$groups->id, $hot, 1000);
 
                 }
                  $hot = Cache::get('hot'.$groups->id);
 
-                if(empty(Cache::get('data'.$groups->id))){
+                if(!Cache::has('data'.$groups->id)){
                     $datas =  DB::table('products')->whereIn('id', $hot)->where('active', 1)->get();
 
                     $datas = Cache::put('data'.$groups->id,  $datas, 1000);
@@ -626,7 +626,7 @@
                                                 $gifts =[];
                                             }
                                         }
-                                        Cache::put('gifts_Fe_'.$datas->id, $gifts, 200000);
+                                        Cache::put('gifts_Fe_'.$datas->id, $gifts,10000000);
 
                                     
 
