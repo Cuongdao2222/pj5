@@ -613,26 +613,26 @@
 
                                 <?php  
 
-                                    if(!Cache::has('gifts_Fe_'.$datas->id)){
+                                    // if(!Cache::has('gifts_Fe_'.$datas->id)){
 
-                                        $gifts = gift($datas->id);
+                                    //     $gifts = gift($datas->id);
         
 
-                                        if(empty($gifts)){
-                                            $gifts = groupGift($groups->id);
+                                    //     if(empty($gifts)){
+                                    //         $gifts = groupGift($groups->id);
                                             
-                                            if(empty($gifts)){
+                                    //         if(empty($gifts)){
 
-                                                $gifts =[];
-                                            }
-                                        }
-                                        Cache::put('gifts_Fe_'.$datas->id, $gifts,10000000);
+                                    //             $gifts =[];
+                                    //         }
+                                    //     }
+                                    //     Cache::put('gifts_Fe_'.$datas->id, $gifts,10000000);
 
                                     
 
-                                    }
+                                    // }
                                    
-                                    $gift = Cache::get('gifts_Fe_'.$datas->id);
+                                    // $gift = Cache::get('gifts_Fe_'.$datas->id);
 
 
                                 ?>
