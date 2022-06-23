@@ -563,14 +563,20 @@ class AjaxController extends Controller
     {
         $list_id = json_decode($request->json_id_product);
         $action  = $request->action;
+        $idcate = $request->idcate;
+        $check_parent = groupProduct::where('id',  $idcate)->where('parent_id', 0)->first();
+
+        if(!empty($check_parent)){
+            $list_id = json_decode($check_parent->product_id);
+        }
 
        
         if($action =='id'){
-            $product_search   = product::whereIn('id', $list_id)->where('active', 1)->orderBy('id', 'asc')->get();
+            $product_search   = product::whereIn('id', $list_id)->where('active', 1)->where('Price', '>', 0)->orderBy('id', 'asc')->take(12)->get();
         }
         else{
 
-           $product_search   = product::whereIn('id', $list_id)->orderBy('Price', $action)->where('active', 1)->get();
+           $product_search   = product::whereIn('id', $list_id)->orderBy('Price', $action)->where('Price', '>', 0)->where('active', 1)->take(12)->get();
            
         }
         return view('frontend.ajax.product', compact('product_search', 'action'));

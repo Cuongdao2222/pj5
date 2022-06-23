@@ -30,6 +30,8 @@
                 
                 }
                 ?>
+
+             
             <div class="col-md-3 col-6 lists">
                 <div class="item  __cate_1942">
                     <a href='/{{ $value->Link }}' data-box="BoxCate" class="main-contain">
@@ -74,6 +76,7 @@
                         </a> -->
                 </div>
             </div>
+           
             @endif
             @endforeach
             <span class="lists-id">{{ json_encode($arr_id_pro) }}</span>
