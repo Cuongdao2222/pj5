@@ -23,7 +23,16 @@ class payController extends Controller
 
         $data['cancelUrl'] = URL_DEMO;
 
-        $data['amount'] = intval(preg_replace('@\D+@', '', $data['amount']));
+        $data_price =  $data['amountPre'];
+
+        $data_price = str_replace('.', '', $data_price);
+
+        $data_pre_price   = str_replace('.', '',$data['before_money']);
+
+        $data_all_price  = intval($data_price) - intval($data_pre_price);
+
+        $data['amount'] = $data_all_price;
+
 
         $data['orderCode'] = date('dmY') . '_' . uniqid();
 
