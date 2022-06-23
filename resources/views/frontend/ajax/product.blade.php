@@ -1,4 +1,12 @@
+        @if(!empty($check_parent))
+        <style type="text/css">
+            
+            .pagination{
+                display: none;
+            }
 
+        </style>
+        @endif
         <div class="row list-pro">
             @if(count($product_search)>0)
             <?php $arr_id_pro = []; ?>
