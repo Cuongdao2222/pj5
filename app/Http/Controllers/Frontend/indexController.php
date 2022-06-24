@@ -9,6 +9,7 @@ use App\Models\groupProduct;
 use Illuminate\Support\Facades\Cache;
 use App\Models\deal;
 use App\Models\product;
+use Carbon\Carbon;
 use DB;
 
 
@@ -98,6 +99,7 @@ class indexController extends Controller
 
     public function cache1()
     {
+        $now = Carbon::now();
 
         Cache::put('cron', $now->format('Y-m-d,H:i:s'), 58);
 
