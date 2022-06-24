@@ -99,43 +99,40 @@ class indexController extends Controller
 
     public function cache1()
     {
-        $now = Carbon::now();
-
-        Cache::put('cron', $now->format('Y-m-d,H:i:s'), 58);
-
-        // cache::forget('deal_start');
+        
+        cache::forget('deal_start');
 
     
-        // Cache::forget('groups');
+        Cache::forget('groups');
 
-        // Cache::forget('product_sale');
+        Cache::forget('product_sale');
         
-        // Cache::forget('baners');
+        Cache::forget('baners');
 
-        // Cache::forget('deals');
+        Cache::forget('deals');
 
 
-        // $banners = banners::where('option','=',0)->take(6)->OrderBy('stt', 'asc')->where('active','=',1)->select('title', 'image', 'title', 'link')->get();
+        $banners = banners::where('option','=',0)->take(6)->OrderBy('stt', 'asc')->where('active','=',1)->select('title', 'image', 'title', 'link')->get();
 
-        // $deal = deal::OrderBy('order', 'desc')->get();
+        $deal = deal::OrderBy('order', 'desc')->get();
 
-        // $product_sale = DB::table('products')->join('sale_product', 'products.id', '=', 'sale_product.product_id')->join('makers', 'products.Maker', '=', 'makers.id')->get();
+        $product_sale = DB::table('products')->join('sale_product', 'products.id', '=', 'sale_product.product_id')->join('makers', 'products.Maker', '=', 'makers.id')->get();
 
-        // $groups = groupProduct::select('id','name', 'link')->where('parent_id', 0)->get();
+        $groups = groupProduct::select('id','name', 'link')->where('parent_id', 0)->get();
 
-        // $deal_start = $deal->first()->start;
+        $deal_start = $deal->first()->start;
     
 
-        // cache::put('deal_start', $deal_start,10000);
+        cache::put('deal_start', $deal_start,10000);
 
 
-        // Cache::put('groups', $groups,10000);
+        Cache::put('groups', $groups,10000);
 
-        // Cache::put('product_sale', $product_sale,10000);
+        Cache::put('product_sale', $product_sale,10000);
         
-        // Cache::put('baners',$banners,10000);
+        Cache::put('baners',$banners,10000);
 
-        // Cache::put('deals',$deal,10000);
+        Cache::put('deals',$deal,10000);
     }
 
      
