@@ -222,7 +222,20 @@
 
 <?php  
 
-    $check_deal = App\Models\deal::select('deal_price','start', 'end')->where('product_id', $data->id)->where('active', 1)->first();
+        
+         
+         if(!Cache::has('deal_details'.$data->id)){
+
+            $check_deals  =   App\Models\deal::select('deal_price','start', 'end')->where('product_id', $data->id)->where('active', 1)->first();
+
+            Cache::put('deal_details'.$data->id,$check_deals,100);
+             $check_deal = Cache::get('deal_details'.$data->id);
+            
+        }
+        else{
+
+            $check_deal ='';
+        }
 
     $deal_check_add = false;
     
@@ -266,22 +279,25 @@
         }
     }
 
-    $gift = gift($data->id);      
-    
+    if(!Cache::has('gifts_Fe_'.$data['id'])){
 
-    if(empty($gift)){
-
-        if(!empty($groupProductId)){
-            $gift = groupGift($groupProductId);
-        }   
-       
-        
-        if(empty($gift)){
+        $gifts = gift($data['id']);
 
 
-            $gift =[];
+        if(empty($gifts)){
+            $gifts = groupGift($groups->id);
+            
+            if(empty($gifts)){
+
+                $gifts =[];
+            }
         }
+        Cache::put('gifts_Fe_'.$data['id'], $gifts,10000000);
+
     }
+   
+    $gift = Cache::get('gifts_Fe_'.$data['id']);
+
 
     if(!empty($gift)){
         $gifts = $gift['gifts'];

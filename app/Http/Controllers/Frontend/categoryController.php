@@ -446,6 +446,9 @@ class categoryController extends Controller
 
             $pageCheck = "product";
 
+
+
+
           
             $images = Cache::remember('dat'.$findID->id,10, function() use ($findID){
                 return image::where('product_id', $findID->id)->select('image')->get();
@@ -468,7 +471,11 @@ class categoryController extends Controller
                 return  product::where('Group_id',  $data->Group_id)->take(10)->get();
             });
 
-            $meta = metaSeo::find($data->Meta_id);
+
+            $meta = Cache::remember('metaseo-detail'.$data->Meta_id,10000, function() use ($data){
+                return metaSeo::find($data->Meta_id);
+            }); 
+            
 
             // đếm số lượt view
 
