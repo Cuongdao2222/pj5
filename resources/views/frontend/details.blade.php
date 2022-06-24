@@ -284,12 +284,17 @@
         $gifts = gift($data['id']);
 
 
-        if(empty($gifts)){
-            $gifts = groupGift($groups->id);
-            
-            if(empty($gifts)){
+        if(empty($gift)){
 
-                $gifts =[];
+            if(!empty($groupProductId)){
+                $gift = groupGift($groupProductId);
+            }   
+           
+            
+            if(empty($gift)){
+
+
+                $gift =[];
             }
         }
         Cache::put('gifts_Fe_'.$data['id'], $gifts,10000000);
