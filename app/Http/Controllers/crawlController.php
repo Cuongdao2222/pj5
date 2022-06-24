@@ -10,7 +10,9 @@ use App\Models\product;
 
 use Illuminate\Support\Facades\Cache;
 
+use App\Models\deal;
 
+use App\Models\banners;
 
 use App\Models\post;
 
@@ -37,8 +39,27 @@ class crawlController extends Controller
     }
 
     public function echo(){
-        $now = Carbon::now();
-        Cache::put('cron', $now->format('Y-m-d,H:i:s'), 58);
+         $banners = banners::where('option','=',0)->take(6)->OrderBy('stt', 'asc')->where('active','=',1)->select('title', 'image', 'title', 'link')->get();
+
+        $deal = deal::OrderBy('order', 'desc')->get();
+
+        $product_sale = DB::table('products')->join('sale_product', 'products.id', '=', 'sale_product.product_id')->join('makers', 'products.Maker', '=', 'makers.id')->get();
+
+        $groups = groupProduct::select('id','name', 'link')->where('parent_id', 0)->get();
+
+        $deal_start = $deal->first()->start;
+
+        cache::put('deal_start', $deal_start,10000);
+
+    
+        Cache::put('groups', $groups,10000);
+
+        Cache::put('product_sale', $product_sale,10000);
+        
+        Cache::put('baners',$banners,10000);
+
+        Cache::put('deals',$deal,10000);
+
        
     }
     public function updateProductQua()
