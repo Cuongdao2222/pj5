@@ -229,13 +229,11 @@
             $check_deals  =   App\Models\deal::select('deal_price','start', 'end')->where('product_id', $data->id)->where('active', 1)->first();
 
             Cache::put('deal_details'.$data->id,$check_deals,100);
-             $check_deal = Cache::get('deal_details'.$data->id);
+             
             
         }
-        else{
-
-            $check_deal ='';
-        }
+        $check_deal = Cache::get('deal_details'.$data->id);
+       
 
     $deal_check_add = false;
     
