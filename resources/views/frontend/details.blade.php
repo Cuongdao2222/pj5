@@ -279,7 +279,9 @@
         }
     }
 
-    if(!Cache::has('gifts_Fe_'.$data['id'])){
+
+
+    if(!Cache::has('gifts_Fe_sss'.$data['id'])){
 
         $gifts = gift($data['id']);
 
@@ -287,21 +289,24 @@
         if(empty($gift)){
 
             if(!empty($groupProductId)){
-                $gift = groupGift($groupProductId);
+                $gifts = groupGift($groupProductId);
             }   
            
             
-            if(empty($gift)){
+            if(empty($gifts)){
 
 
-                $gift =[];
+                $gifts =[];
             }
         }
-        Cache::put('gifts_Fe_'.$data['id'], $gifts,10000000);
+        Cache::put('gifts_Fe_sss'.$data['id'], $gifts,10000);
 
     }
    
-    $gift = Cache::get('gifts_Fe_'.$data['id']);
+    $gift = Cache::get('gifts_Fe_sss'.$data['id']);
+
+
+   
 
 
     if(!empty($gift)){
