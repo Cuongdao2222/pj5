@@ -1685,7 +1685,6 @@ s0.parentNode.insertBefore(s1,s0);
 
                         response(items);
 
-                        console.log(data);
 
                         $('#ui-id-2').html();
 
