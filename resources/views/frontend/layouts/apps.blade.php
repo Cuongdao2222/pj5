@@ -1640,6 +1640,7 @@ s0.parentNode.insertBefore(s1,s0);
                     url: "{{  route('sugest-click')}}",
                     type: "POST",
                     data: {
+                        "_token": "{{ csrf_token() }}",
                         product:$('#tags').val()
                     },
                     dataType: "json",
