@@ -29,6 +29,24 @@ class indexController extends Controller
        
         $product_sale = Cache::get('product_sale');
 
+         $timeDeal_star = Cache::get('deal_start'); 
+
+        if(\Request::ip()=='118.70.129.255'){
+
+            $this->cache1();
+
+            $banners =  Cache::get('baners');
+
+            $deal = Cache::get('deals');
+
+            $group = Cache::get('groups');
+
+            $timeDeal_star = Cache::get('deal_start'); 
+           
+            $product_sale = Cache::get('product_sale');
+
+        }
+
 
 
         if(empty($group) ||empty($banners)||empty($product_sale)||empty($deal)){
@@ -41,7 +59,8 @@ class indexController extends Controller
 
             $group = Cache::get('groups');
 
-           
+            $timeDeal_star = Cache::get('deal_start'); 
+
             $product_sale = Cache::get('product_sale');
         }
         
@@ -64,10 +83,8 @@ class indexController extends Controller
         });
 
 
-
-        
       
-        return view('frontend.index', compact('banners', 'bannersRight', 'bannerUnderSlider', 'bannerUnderSale','deal','product_sale', 'group'));
+        return view('frontend.index', compact('banners', 'bannersRight', 'bannerUnderSlider', 'bannerUnderSale','deal','product_sale', 'group','timeDeal_star'));
     }
     public function cache()
     {
@@ -135,9 +152,7 @@ class indexController extends Controller
         }
 
     
-
         cache::put('deal_start', $deal_start,10000);
-
 
         Cache::put('groups', $groups,10000);
 
@@ -146,9 +161,9 @@ class indexController extends Controller
         Cache::put('baners',$banners,10000);
 
         Cache::put('deals',$deal,10000);
+
+        
     }
 
      
-
-   
 }
