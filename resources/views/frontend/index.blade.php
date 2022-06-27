@@ -762,7 +762,7 @@
 
             @isset($link)
             @foreach($link as $links)
-            <a href="{{ $links->link }}">• {{@$links->title  }}</a> 
+            <a href="{{ $links->link }}" target="_blank">• {{@$links->title  }}</a> 
             @endforeach
             @endif
            
