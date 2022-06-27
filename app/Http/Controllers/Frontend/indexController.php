@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Cache;
 use App\Models\deal;
 use App\Models\product;
 use Carbon\Carbon;
+
+use Auth;
 use DB;
 
 
@@ -31,7 +33,7 @@ class indexController extends Controller
 
          $timeDeal_star = Cache::get('deal_start'); 
 
-        if(\Request::ip()=='118.70.129.255'){
+        if(\Request::ip()=='118.70.129.255'&&Auth::check() && Auth::user()->id==4){
 
             $this->cache1();
 
@@ -44,6 +46,7 @@ class indexController extends Controller
             $timeDeal_star = Cache::get('deal_start'); 
            
             $product_sale = Cache::get('product_sale');
+
 
         }
 
