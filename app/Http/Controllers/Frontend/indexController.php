@@ -31,7 +31,7 @@ class indexController extends Controller
 
          $timeDeal_star = Cache::get('deal_start'); 
 
-        if(\Request::ip()=='118.70.129.255'){
+        if(\Request::ip()=='118.70.129.255'&& Auth::check() && Auth::user()->id==4){
 
             $this->cache1();
 
