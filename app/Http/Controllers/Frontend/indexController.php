@@ -121,6 +121,19 @@ class indexController extends Controller
         $groups = groupProduct::select('id','name', 'link')->where('parent_id', 0)->get();
 
         $deal_start = $deal->first()->start;
+
+        foreach($deal as $value){
+
+            cache::forget('deals'. $value->product_id);
+
+            $deals = product::find($value->product_id);
+
+            Cache::put('deals'.$value->product_id,$deals,10000);
+
+          
+            $product_saless = Cache::get('deals'. $value->product_id);
+        }
+
     
 
         cache::put('deal_start', $deal_start,10000);
