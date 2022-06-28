@@ -239,88 +239,6 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('css/apps.css') }}?ver=3">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <?php 
-
-            // đếm số lượt view
-
-            $sessionKey = 'view_user';
-
-
-            $sessionView = Session::get($sessionKey);
-
-            if (!$sessionView) { //nếu chưa có session
-
-                Session::put($sessionKey, 1); //set giá trị cho session
-
-                $now = Carbon\Carbon::now();
-
-                $date_count = App\Models\viewsite::get()->last();
-
-                $dt = $date_count->created_at->format('d-m-Y');
-
-                $check = $now->diffInDays($dt);
-
-        
-                if($check>0){
-                    $userview = new  App\Models\viewsite();
-
-                    $userview->views = 1;
-
-                    $userview->save();
-                }
-                else{
-
-                   $incre = DB::table('viewsite')->get()->last();
-
-                   DB::table('viewsite')->where('id', $incre->id)->increment('views', 1);
-
-                }
-
-
-            }
-
-    
-            //check website mang người dùng đến
-
-
-            if (isset($_SERVER['HTTP_REFERER'])) {
-              // Store Referral URL in a variable
-               
-                $char = $_SERVER['HTTP_REFERER'];
-
-                $url = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
-
-                $pos = strpos($char,$url);
-
-
-                if ($pos === false) {
-
-
-                    $refURL = $_SERVER['HTTP_REFERER'];
-
-                    $unique = App\Models\referer::where('website', trim($refURL))->get()->first();
-
-                    if(!empty($unique)){
-
-                        App\Models\referer::find($unique->id)->increment('count');
-                    }
-                    else{
-
-                        $referer = new App\Models\referer();
-
-                        $referer->website = trim($refURL);
-
-                        $referer->save();
-
-                    }
-
-                }
-
-            }
-
-
-        ?>
-
        
       
         @if(!Auth::check() || Auth::user()->id>1)
@@ -1579,7 +1497,7 @@
         </script>
 
 
-        <div style="position:fixed; bottom:10px !important; left:50% !important;transform: translate(0, -50%) !important;" class="zalo-chat-widget" data-oaid="1329456933344915716" data-welcome-message="Điện Máy Người Việt rất vui khi được hỗ trợ bạn!" data-autopopup="0" data-width="" data-height=""></div>
+        <!-- <div style="position:fixed; bottom:10px !important; left:50% !important;transform: translate(0, -50%) !important;" class="zalo-chat-widget" data-oaid="1329456933344915716" data-welcome-message="Điện Máy Người Việt rất vui khi được hỗ trợ bạn!" data-autopopup="0" data-width="" data-height=""></div> -->
 
  
 <!-- Messenger Plugin chat Code -->
