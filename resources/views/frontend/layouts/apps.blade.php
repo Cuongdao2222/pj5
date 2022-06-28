@@ -52,7 +52,6 @@
         @endif
         <link rel="shortcut icon" href="{{ asset('uploads/icon/favicon.ico') }}"/>
         <meta name = "google-site-verify" content = "1AH1fN3G7ygWRcOlEQWJyhginaxmT67zTMPP8wnfFD0" />
-        <meta name="p:domain_verify" content="109de6686e51e396ddd32475ad614b1f"/>
         <meta name="google-site-verification" content="P-EnxCkmnXXEDeC0FWq-rSxjbSSyy9HeimO6f2Evtyc" />
         <meta http-equiv="cache-control" content="no-cache" />
         <meta charset="utf-8">
@@ -1615,7 +1614,7 @@
     </script>
 
 
-    
+
 
 
           
