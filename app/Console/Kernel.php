@@ -27,8 +27,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-         $schedule->command('link:crawl')
-                 ->everyMinute()->appendOutputTo(storage_path('logs/inspire.log'));
+         // $schedule->command('link:crawl')
+         //         ->everyMinute()->appendOutputTo(storage_path('logs/inspire.log'));
          
     }
 
