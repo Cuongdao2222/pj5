@@ -86,7 +86,7 @@ return [
 
     'username' => 'online.dienmaynguoiviet@gmail.com',
 
-    'password' => 'chienbinh92',
+    'password' => 'ejjhieabqwmkobvp',
 
     /*
     |--------------------------------------------------------------------------
