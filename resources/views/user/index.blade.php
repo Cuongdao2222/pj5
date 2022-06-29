@@ -22,7 +22,7 @@
 @section('content')
 
     <?php 
-     $user = DB::table('users')->select('name', 'permision','id')->get(); 
+     $user = DB::table('users')->select('name', 'permision','id', 'email')->get(); 
      $permision = ['chưa cấp quyền','content', 'content+sale', 'admin'];
 
     ?>
