@@ -47,6 +47,7 @@
    <table>
         <tbody><tr>
             <th>Danh sách</th>
+            <th>Email</th>
             <th>Quyền hạn </th>
             <th>Xóa</th>
         </tr>
@@ -57,6 +58,7 @@
         
         <tr>
             <td>{{ $users->name }}</td>
+            <td>{{ @$users->email }}</td>
             
             <td> 
                 <select name="option" onchange="location = this.value;">
