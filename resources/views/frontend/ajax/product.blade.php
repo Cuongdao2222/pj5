@@ -61,8 +61,56 @@
                             <!-- <div class="box-p">
                                 <p class="price-old black">20.900.000&#x20AB;</p>
                                 </div> -->
+
+                                
                             <strong class="price">{{ $value->Price==0?'Liên hệ':number_format(str_replace("\xc2\xa0",'',$value->Price) , 0, ',', '.')}}{{ $value->Price!=0?'đ':''   }}</strong>
-                            <!-- <p class="item-gift">Quà <b>1.500.000₫</b></p> -->
+
+                            <?php  
+
+                                    if(!Cache::has('gifts_Fe_'.$value->id)){
+
+                                        $gifts = gift($value->id);
+        
+
+                                        if(empty($gifts)){
+                                            $gifts = groupGift($groups->id);
+                                            
+                                            if(empty($gifts)){
+
+                                                $gifts =[];
+                                            }
+                                        }
+                                        Cache::put('gifts_Fe_'.$value->id, $gifts,10000000);
+
+                                    
+
+                                    }
+                                   
+                                    $gift = Cache::get('gifts_Fe_'.$value->id);
+
+
+                                ?>
+
+
+                                @if(!empty($gift))
+
+                                    <?php 
+                                        $gifts = $gift['gifts'];
+                                        $gift = $gift['gift']; 
+
+                                    ?>
+
+                                    {{ $gifts->type ==1?'k/m chọn 1 trong 2':'' }}
+                                    <div class="option-gift">
+
+                                         @foreach($gift as $gifts)
+
+                                        <div class="quatang"><img src="{{ asset($gifts->image) }}"></div>
+                                        @endforeach
+                                    </div>
+                                   
+                                @endif
+                          
                             <div class="item-rating">
                                 <p>
                                     <i class="icon-star"></i>
