@@ -88,6 +88,16 @@
                 display: flex;
             }
 
+            .quatang img {
+                height: 36px;
+                margin-top: 2px;
+                max-width: 50px;
+                padding: 2px;
+                border-radius: 3px;
+                box-shadow: 0 0 0px 1px #fff;
+                width: auto !important;
+            }
+
 
             @media screen and (max-width: 776px){
                 .listproduct{
