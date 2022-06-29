@@ -73,7 +73,9 @@
         
 
                                         if(empty($gifts)){
-                                            $gifts = groupGift($groups->id);
+
+
+                                            $gifts = $idcate?groupGift($idcate):'';
                                             
                                             if(empty($gifts)){
 
