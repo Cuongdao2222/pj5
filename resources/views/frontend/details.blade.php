@@ -315,7 +315,7 @@
     
     ?>
 @push('style')
-<link rel="stylesheet" type="text/css" href="{{ asset('css/detailsfe.css') }}?ver=5">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/detailsfe.css') }}?ver=6">
 @endpush
 <div class="locationbox__overlay"></div>
 <div class="locationbox">
