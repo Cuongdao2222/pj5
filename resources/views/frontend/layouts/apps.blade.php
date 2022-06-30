@@ -1546,16 +1546,6 @@
     <!--End of Tawk.to Script-->
 
 
-
-
-
-          
-
-
-
-
-      
-
     <link rel="stylesheet" href="{{asset('css/lib/owl.carousel.min.css')}}">
 
  <script src="{{ asset('js/layout1.js') }}" type="text/javascript"></script>
