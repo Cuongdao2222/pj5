@@ -309,11 +309,18 @@
     
 
     function removeHref_byselected(text1) {
-        var text1 =  CKEDITOR.instances.content.getSelection().getSelectedText();
 
+        check = $('#cke_74').hasClass('cke_button_off');
 
-        CKEDITOR.instances.content.insertText(text1);
+        if(check==true){
+            $( "#cke_74" ).click();
 
+        }
+        else{
+            var text1 =  CKEDITOR.instances.content.getSelection().getSelectedText();
+
+            CKEDITOR.instances.content.insertText(text1);
+        }
     }
 
 
