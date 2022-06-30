@@ -312,6 +312,9 @@
 
         check = $('#cke_74').hasClass('cke_button_off');
 
+        // nếu button xóa link hiển thị thì click1
+        // còn không thì customn click
+
         if(check==true){
             $( "#cke_74" ).click();
 
