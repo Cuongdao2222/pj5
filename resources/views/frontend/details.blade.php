@@ -210,6 +210,11 @@
                 display: none;
             }
 
+            .content img{
+                width: 100% !important;
+                height: auto !important;
+            }
+
           
             /*.box01 .owl-carousel .owl-item img{
                 width: 100% !important;
