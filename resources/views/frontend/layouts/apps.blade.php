@@ -1483,7 +1483,7 @@
 
            .zalo-chat-widget{  
                 bottom: 120px!important;  
-                right: 20px!important;  
+                right: 0px!important;  
             }  
            
         </style>
