@@ -1497,7 +1497,7 @@
         </script>
 
 
-        <div style="position:fixed; bottom:10px !important; left:50% !important;transform: translate(0, -50%) !important;" class="zalo-chat-widget" data-oaid="1329456933344915716" data-welcome-message="Điện Máy Người Việt rất vui khi được hỗ trợ bạn!" data-autopopup="0" data-width="" data-height=""></div>
+        <div style="position:fixed; bottom:10px !important; left:50% !important;transform: translate(0, 0) !important;" class="zalo-chat-widget" data-oaid="1329456933344915716" data-welcome-message="Điện Máy Người Việt rất vui khi được hỗ trợ bạn!" data-autopopup="0" data-width="" data-height=""></div>
 
 
 
