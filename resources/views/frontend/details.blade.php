@@ -104,7 +104,11 @@
                 line-height: 28px !important;
                 margin-top: 10px;
 
-            }    
+            }  
+             .content img{
+                
+                height: auto !important;
+            }  
         } 
 
        
