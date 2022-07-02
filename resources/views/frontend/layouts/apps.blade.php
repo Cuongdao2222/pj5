@@ -1482,7 +1482,7 @@
         <style type="text/css">
 
            .zalo-chat-widget{  
-                bottom: 120px!important;  
+                bottom: 95px!important;  
                 right: 0px!important;  
             }  
            
