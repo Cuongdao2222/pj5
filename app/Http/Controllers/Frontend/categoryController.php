@@ -477,20 +477,20 @@ class categoryController extends Controller
             }); 
             
 
-            // đếm số lượt view
+            // // đếm số lượt view
 
-            $sessionKey = 'product_' . $findID->id;
+            // $sessionKey = 'product_' . $findID->id;
 
-            $sessionView = Session::get($sessionKey);
+            // $sessionView = Session::get($sessionKey);
 
         
-            if (!$sessionView) { //nếu chưa có session
+            // if (!$sessionView) { //nếu chưa có session
 
-                Session::put($sessionKey, 1); //set giá trị cho session
+            //     Session::put($sessionKey, 1); //set giá trị cho session
 
-                $post_view = DB::table('products')->where('id', $findID->id)->increment('views', 1);
+            //     $post_view = DB::table('products')->where('id', $findID->id)->increment('views', 1);
 
-            }
+            // }
 
             return view('frontend.details', compact('data', 'images', 'other_product', 'meta', 'pageCheck'));
         }
