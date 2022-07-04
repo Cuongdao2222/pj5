@@ -1392,9 +1392,8 @@
     
     product_id_item_viewer = toUniqueArray(product_id_item_viewer);
 
-    console.log(product_id_item_viewer);
-    
-    
+     product_id_item_viewer.slice(0, 6);
+
     
     localStorage.setItem('viewed_product', JSON.stringify(product_id_item_viewer));
     
