@@ -1391,6 +1391,8 @@
     product_id_item_viewer.push('{{ $data->id }}');
     
     product_id_item_viewer = toUniqueArray(product_id_item_viewer);
+
+    console.log(product_id_item_viewer);
     
     
     
