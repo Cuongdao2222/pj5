@@ -450,11 +450,11 @@ class categoryController extends Controller
 
 
           
-            $images = Cache::remember('dat'.$findID->id,1000, function() use ($findID){
+            $images = Cache::remember('dat'.$findID->id,10, function() use ($findID){
                 return image::where('product_id', $findID->id)->select('image')->get();
             });
 
-            $data = Cache::remember('data-detail'.$findID->id,1000, function() use ($findID){
+            $data = Cache::remember('data-detail'.$findID->id,10, function() use ($findID){
                 return product::findOrFail($findID->id);
             });
             
