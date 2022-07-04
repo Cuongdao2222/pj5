@@ -193,9 +193,9 @@
         </script>
 
        
-        <noscript><img height="1" width="1" style="display:none"
+       <!--  <noscript><img height="1" width="1" style="display:none"
           src="https://www.facebook.com/tr?id=481349662401312&ev=PageView&noscript=1"
-        /></noscript>
+        /></noscript> -->
         <!-- End Facebook Pixel Code -->
           
          
