@@ -193,7 +193,7 @@
         </script>
 
         <!-- Facebook Pixel Code -->
-        <script>
+       <!--  <script>
           !function(f,b,e,v,n,t,s)
           {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
           n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -204,7 +204,7 @@
           'https://connect.facebook.net/en_US/fbevents.js');
           fbq('init', '481349662401312');
           fbq('track', 'PageView');
-        </script>
+        </script> -->
         <noscript><img height="1" width="1" style="display:none"
           src="https://www.facebook.com/tr?id=481349662401312&ev=PageView&noscript=1"
         /></noscript>
@@ -1507,10 +1507,39 @@
 
   <script src="https://sp.zalo.me/plugins/sdk.js"></script> 
  
+<!-- Messenger Plugin chat Code -->
+    <div id="fb-root"></div>
 
+    <!-- Your Plugin chat code -->
+    <div id="fb-customer-chat" class="fb-customerchat">
+    </div>
+
+    <script>
+      var chatbox = document.getElementById('fb-customer-chat');
+      chatbox.setAttribute("page_id", "101251095983613");
+      chatbox.setAttribute("attribution", "biz_inbox");
+    </script>
+
+    <!-- Your SDK code -->
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          xfbml            : true,
+          version          : 'v14.0'
+        });
+      };
+
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
 
     <!--Start of Tawk.to Script-->
-    <script type="text/javascript">
+   <!--  <script type="text/javascript">
     var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
     (function(){
     var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
@@ -1520,7 +1549,7 @@
     s1.setAttribute('crossorigin','*');
     s0.parentNode.insertBefore(s1,s0);
     })();
-    </script>
+    </script> -->
     <!--End of Tawk.to Script-->
 
 
