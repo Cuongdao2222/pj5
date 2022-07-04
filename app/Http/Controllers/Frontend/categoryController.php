@@ -347,15 +347,15 @@ class categoryController extends Controller
 
         $sessionView = Session::get($sessionKey);
 
-        // $post_view = DB::table('posts')->where('id', $data->id);
+        $post_view = DB::table('posts')->where('id', $data->id);
 
-        // if (!$sessionView) { //nếu chưa có session
+        if (!$sessionView) { //nếu chưa có session
 
-        //     Session::put($sessionKey, 1); //set giá trị cho session
+            Session::put($sessionKey, 1); //set giá trị cho session
 
-        //     $post_view->increment('views', 1);
+            $post_view->increment('views', 1);
 
-        // }
+        }
 
         echo view('frontend.blogdetail',compact( 'name_cate', 'related_news', 'meta', 'data'));
 
