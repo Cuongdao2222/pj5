@@ -454,7 +454,9 @@ class categoryController extends Controller
                 return image::where('product_id', $findID->id)->select('image')->get();
             });
 
-            $data =  product::findOrFail($findID->id);
+            $data = Cache::remember('data-detail'.$findID->id,1000, function() use ($findID){
+                return product::findOrFail($findID->id);
+            });
             
            
             
