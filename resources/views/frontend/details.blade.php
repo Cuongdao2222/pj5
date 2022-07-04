@@ -237,7 +237,7 @@
 
             $check_deals  =   App\Models\deal::select('deal_price','start', 'end')->where('product_id', $data->id)->where('active', 1)->first();
 
-            Cache::put('deal_details'.$data->id,$check_deals,100);
+            Cache::put('deal_details'.$data->id,$check_deals,10000);
              
             
         }
@@ -703,7 +703,7 @@
 
                 <?php
 
-                     $minutes = 10;
+                     $minutes = 1000;
 
                     $check = Cache::remember('check',$minutes, function() use ($data){
                         return DB::table('imagecrawl')->select('image')->where('product_id', $data->id)->where('active',0)->get()->pluck('image')->toArray();
