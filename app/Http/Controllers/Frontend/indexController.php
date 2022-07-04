@@ -33,22 +33,22 @@ class indexController extends Controller
 
          $timeDeal_star = Cache::get('deal_start'); 
 
-        if(\Request::ip()=='118.70.129.255'&&Auth::check() && Auth::user()->id==4){
+        // if(\Request::ip()=='118.70.129.255'&&Auth::check() && Auth::user()->id==4){
 
-            $this->cache1();
+        //     $this->cache1();
 
-            $banners =  Cache::get('baners');
+        //     $banners =  Cache::get('baners');
 
-            $deal = Cache::get('deals');
+        //     $deal = Cache::get('deals');
 
-            $group = Cache::get('groups');
+        //     $group = Cache::get('groups');
 
-            $timeDeal_star = Cache::get('deal_start'); 
+        //     $timeDeal_star = Cache::get('deal_start'); 
            
-            $product_sale = Cache::get('product_sale');
+        //     $product_sale = Cache::get('product_sale');
 
 
-        }
+        // }
 
 
 
