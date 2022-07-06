@@ -243,8 +243,20 @@
         
 
         <?php  
-        
-            $background = App\Models\background::find(1); 
+            
+
+            if(empty(Cache::get('backgrounds1'))){
+
+               
+
+                $backgrounds = App\Models\background::find(1); 
+
+                Cache::put('backgrounds1',$backgrounds,10000);
+
+            }
+
+            $background = Cache::get('backgrounds1');
+            
         ?> 
         @if(!empty($background->background_image))
         <style type="text/css">
