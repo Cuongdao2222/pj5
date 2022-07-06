@@ -350,7 +350,19 @@
                 <div class="item" data-background-color="#CF1F2F" data-order="1">
 
                     <?php 
-                        $banner = App\Models\banners::where('option', 1)->get()->last()
+
+                        if(!Cache::has('banners12')) {
+
+                             $banners = App\Models\banners::where('option', 1)->get()->last();
+
+                          
+
+                            Cache::put('banners12',$banners,10000);
+
+                        }
+
+
+                        $banner = Cache::get('banners12');
                     ?>
 
                     @if(!empty($banner)&& $banner->active ==1)
