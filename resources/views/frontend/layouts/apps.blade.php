@@ -245,9 +245,7 @@
         <?php  
             
 
-            if(empty(Cache::get('backgrounds1'))){
-
-               
+            if(!Cache::has('backgrounds1')) {
 
                 $backgrounds = App\Models\background::find(1); 
 
@@ -369,9 +367,15 @@
 
             $userClient = session()->get('status-login');
 
-            
-            $popup = App\Models\popup::find(4);
+            if(!Cache::has('popup1') ){
 
+                $popups = App\Models\popup::find(4);
+
+                Cache::put('popup1', $popups,10000);
+            }
+
+
+            $popup = Cache::get('popup1');
             
         ?>
         <!-- popup quảng cáo  -->
