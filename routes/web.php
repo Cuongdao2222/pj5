@@ -43,6 +43,12 @@ Route::get('/sale', function () {
     
 })->name('sale-home');
 
+Route::get('/caches', function () {
+    
+    echo ".";
+    
+})->name('testpage');
+
 
 Route::get('/deal', function () {
     return view('frontend.deallist');
