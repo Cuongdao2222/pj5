@@ -272,7 +272,15 @@
     }
 
 
-    $groupProduct = App\Models\groupProduct::select('name', 'link', 'product_id','id')->where('level', 0)->get();
+    if(!Cache::has('groupsProductDetails') ){
+
+        $groupProducts = App\Models\groupProduct::select('name', 'link', 'product_id','id')->where('level', 0)->get();
+
+        Cache::put('groupsProductDetails', $groupProducts, 10000);
+
+    }
+
+    
 
     foreach($groupProduct as $groupProducts ){
 
