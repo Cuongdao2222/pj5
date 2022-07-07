@@ -36,7 +36,7 @@
 
                     $metas = App\Models\metaSeo::find(5959); 
 
-                    Cache::put('meta5959', $metas, 1000);
+                    Cache::put('meta5959', $metas, 100000);
 
                 }
                 
