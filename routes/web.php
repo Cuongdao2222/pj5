@@ -43,11 +43,11 @@ Route::get('/sale', function () {
     
 })->name('sale-home');
 
-Route::get('/caches', function () {
+// Route::get('/caches', function () {
     
-    echo ".";
+//     echo ".";
     
-})->name('testpage');
+// })->name('testpage');
 
 
 Route::get('/deal', function () {
