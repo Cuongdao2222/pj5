@@ -453,7 +453,7 @@ class categoryController extends Controller
 
                 $image_cache = image::where('product_id', $findID->id)->select('image')->get();
 
-                Cache::put('dat'.$findID->id, $image_cache, 10);
+                Cache::put('dat'.$findID->id, $image_cache, 100);
 
             }
 
@@ -465,7 +465,7 @@ class categoryController extends Controller
 
                 $datas = product::findOrFail($findID->id);
 
-                Cache::put('data-detail'.$findID->id, $datas, 10);
+                Cache::put('data-detail'.$findID->id, $datas, 100);
 
             }
 
