@@ -447,16 +447,29 @@ class categoryController extends Controller
             $pageCheck = "product";
 
 
+        
+
+            if(!Cache::has('dat'.$findID->id) ){
+
+                $image_cache = image::where('product_id', $findID->id)->select('image')->get();
+
+                Cache::put('dat'.$findID->id, $image_cache, 10);
+
+            }
+
+            $images = Cache::get('dat'.$findID->id);
 
 
-          
-            $images = Cache::remember('dat'.$findID->id,10, function() use ($findID){
-                return image::where('product_id', $findID->id)->select('image')->get();
-            });
 
-            $data = Cache::remember('data-detail'.$findID->id,10, function() use ($findID){
-                return product::findOrFail($findID->id);
-            });
+            if(!Cache::has('data-detail'.$findID->id) ){
+
+                $datas = product::findOrFail($findID->id);
+
+                Cache::put('data-detail'.$findID->id, $datas, 10);
+
+            }
+
+            $data = Cache::get('data-detail'.$findID->id);
             
            
             
