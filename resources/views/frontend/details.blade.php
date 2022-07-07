@@ -280,6 +280,7 @@
 
     }
 
+    $groupProduct = Cache::get('groupsProductDetails');
     
 
     foreach($groupProduct as $groupProducts ){
@@ -973,7 +974,17 @@
         <div class="col-md-8 clearfix" id="comment_pro">
             <article id="article-comment-2131" itemprop="comment" itemscope="" itemtype="https://schema.org/Comment">
                 <?php 
-                    $comment = App\Models\rate::where('product_id', $data->id)->Where('active', 1)->get();
+                    if(!Cache::has('comment'.$data->id) ){
+
+                        $comments_id = App\Models\rate::where('product_id', $data->id)->Where('active', 1)->get();
+
+                        Cache::put('comment'.$data->id, $comments_id, 10000);
+
+                    }
+
+                    
+
+                    $comment = Cache::get('comment'.$data->id);
                     ?>
                 @if(isset($comment))
                 @foreach($comment as $comments)
