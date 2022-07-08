@@ -327,7 +327,7 @@
     $gift = Cache::get('gifts_Fe_sss'.$data['id']);
 
 
-   
+
 
 
     if(!empty($gift)){
@@ -335,6 +335,11 @@
         $gift = $gift['gift'];
 
     }
+
+      
+    // xóa hết gift ở đây 8/7/2022
+    $gift ='';
+   
     
     ?>
 @push('style')
