@@ -320,7 +320,7 @@
                 $gifts =[];
             }
         }
-        Cache::put('gifts_Fe_sss'.$data['id'], $gifts,10000);
+        Cache::put('gifts_Fe_sss'.$data['id'], $gifts,100);
 
     }
    

@@ -168,5 +168,11 @@ class indexController extends Controller
         
     }
 
+    public function deleteCache()
+    {
+        Cache::flush();
+        echo "thanh cong";
+    }
+
      
 }

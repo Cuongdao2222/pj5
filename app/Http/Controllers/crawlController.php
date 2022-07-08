@@ -31,6 +31,13 @@ use \Carbon\Carbon;
 
 class crawlController extends Controller
 {
+
+    public function deleteCache()
+    {
+        Cache::flush();
+        echo "thanh cong";
+    }
+    
     public function echo1(){
          $value = Cache::get('cron');
 
