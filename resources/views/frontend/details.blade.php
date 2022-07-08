@@ -300,14 +300,14 @@
         }
     }
 
-
+     
 
     if(!Cache::has('gifts_Fe_sss'.$data['id'])){
 
         $gifts = gift($data['id']);
 
 
-        if(empty($gift)){
+        if(empty($gifts)){
 
             if(!empty($groupProductId)){
                 $gifts = groupGift($groupProductId);
@@ -320,11 +320,13 @@
                 $gifts =[];
             }
         }
+        
         Cache::put('gifts_Fe_sss'.$data['id'], $gifts,100);
 
     }
    
     $gift = Cache::get('gifts_Fe_sss'.$data['id']);
+
 
 
 
