@@ -42,11 +42,10 @@
 
                     }
 
-                  
                 ?>
                 <br>
                 <p><img src="{{ asset($data->Image) }}" width="250" alt="{{ $data->Name }}"></p>
-                <p class="txt_u txt_red txt_18"><strong>Giá</strong>: <span class="price_info price_config" data-price="{{ @str_replace(',' ,'.', number_format($data->Price))}}" style="color:#e00; font-weight:bold;">{{!empty($check_deal)?str_replace(',' ,'.', number_format($check_deal->deal_price)):str_replace(',' ,'.', number_format($data->Price)) }}VND</span></p>
+                <p class="txt_u txt_red txt_18"><strong>Giá</strong>: <span class="price_info price_config" data-price="{{ @str_replace(',' ,'.', number_format($data->Price))}}" style="color:#e00; font-weight:bold;">{{!empty($check_deal)?str_replace(',' ,'.', number_format(trim($data->Price))):str_replace(',' ,'.', number_format(trim($data->Price))) }}VND</span></p>
                 <p id="config-info"></p>
                 <p><strong>Bảo hành</strong>: 24 Tháng
                 </p>
