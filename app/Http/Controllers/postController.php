@@ -180,7 +180,7 @@ class postController extends AppBaseController
             $input['image'] = $filePath;
         }
 
-        if($input['category'] != 5){
+        if(empty($input['link'])){
 
             $input['link'] = $this->createSlug($input['title']);
         }    
