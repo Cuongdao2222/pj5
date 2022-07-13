@@ -21,6 +21,7 @@
         <th>Sản phẩm Hot</th>
         <th>Sản phẩm Sale</th>
         <th>Quà tặng</th>
+        <th>Ngày tạo</th>
         <th>Nhóm sản phẩm</th>
         
         <th colspan="3">Action</th>
@@ -64,26 +65,15 @@
 
 
                 if(isset($infoProductOfGroup)){
-
                     foreach($infoProductOfGroup as $key => $val){
-
-
                         if(!empty($val['product_id'])&& in_array($id, json_decode($val['product_id']))){
 
                             array_push($result, $val['id']);
                         }
-                       
-                        
                     }
-
                 }
-                
                 return $result;
-
             } 
-
-            
-
         ?>    
 
         <?php  
@@ -206,7 +196,9 @@
                     @endif
 
                        
-                </select></td>
+                </select>
+            </td>
+            <td>{{ $product->created_at->format('d/m/Y, H:i:s') }}</td>
             <td>{{ get_Group_Product($product->id)[0]??'' }}</td>
 
 
@@ -266,9 +258,6 @@
                     <label for="type">Kiểu chọn:</label><br>
 
                     <input id= "type" name="type" type="checkbox" value="1" /> 1 trong 2<br>
-
-
-                    
                     <label for="username">Chọn quà tặng kèm:</label><br>
                     <select id="gift1">
                         <option value="0">Không chọn</option>
@@ -292,8 +281,6 @@
 
                 </form>
                 @endisset
-
-
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

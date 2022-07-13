@@ -393,10 +393,6 @@
 
                                 @endforeach
 
-
-
-                               
-
                             </div>
                         </div>
                     </div>
@@ -683,13 +679,9 @@
         
         <?php  
 
-
             $post = Cache::remember('post_home',10000, function() {
                 return App\Models\post::where('active',1)->where('hight_light', 1)->OrderBy('created_at', 'desc')->select('link', 'title', 'image')->limit(7)->get()->toArray();
-            });
-
-
-            
+            }); 
 
         ?>
                     
@@ -702,10 +694,6 @@
                     <a href="{{ route('tin') }}" class="readmore-txt blue">Xem thêm</a>
                 </div>
                 <div class="col1__ct" data-size="6">
-
-                    
-
-                    
                     <a href="{{ route('details', $post[0]['link']) }}" class="col1-big">
                         <div class="col1-big-img">
                             <img data-src="{{ asset( $post[0]['image'])  }}" class=" ls-is-cached lazyloaded" alt="{{ $post[0]['title'] }}" src="{{ $post[0]['image'] }}">
@@ -713,9 +701,6 @@
                         <div class="span texts">
                             <p class="spl-item-title">{{ $post[0]['title'] }}</p>
                         </div>
-
-                        
-                       
                     </a>
                     <div class="col1-simple">
 
@@ -731,10 +716,7 @@
                         </a>
 
                         @endfor
-                       
                     </div>
-
-                   
                 </div>
                 <!-- End -->
             </div>
@@ -744,12 +726,7 @@
         <div class="bottom-search">
             <p>Tìm kiếm nhiều:</p>
 
-
-
             <?php 
-
-               
-
                 if(empty(Cache::get('link_much'))){
                     $links=   DB::table('muchsearch')->get(); 
 
@@ -765,15 +742,10 @@
             <a href="{{ $links->link }}" target="_blank">• {{@$links->title  }}</a> 
             @endforeach
             @endif
-           
-
+        
         </div>
         
     </section>
-
-
-
-    
    
     <!-- End -->
     <!-- Hiệu ứng ... rơi -->
@@ -901,19 +873,13 @@
 
               //}
 
-
-
               /*BƯỚC 1: HIỂN THỊ ĐỒNG HỒ*/
-
-
 
               var hour =  h.toString();
 
               var seconds =  s.toString();
 
               var minutes =  m.toString();
-
-
 
               $('.hourss').text(h<10?'0'+hour:''+hour);
               $('.secondss').text(s<10?'0'+seconds:''+seconds);
