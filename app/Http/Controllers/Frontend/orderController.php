@@ -45,7 +45,7 @@ class orderController extends Controller
 
         $input = $request->all();
 
-        $input['orderId'] = $carts[0]['orderId'];
+        $input['orderId'] = !empty($carts[0])?$carts[0]['orderId']:'';
 
     
         // trừ số sản phẩm đã đặt
@@ -74,19 +74,19 @@ class orderController extends Controller
 
         $order::create($input);
 
-        if(!empty($mail)){
+        // if(!empty($mail)){
 
-             $GLOBALS['mail'] = $input["mail"];
+        //      $GLOBALS['mail'] = $input["mail"];
 
-            $success = Mail::send('frontend.mail', array('name'=>$input["name"],'email'=>$input["mail"], 'product'=>$carts_mail, 'address'=>$input['address'],
-            'phone_number'=>$input['phone_number'],
-                'orderId'=>$input['orderId'], 'total_price'=>$totalPrice), function($message){
-                $message->to($GLOBALS['mail'], 'Điện máy người việt')->subject('[Điện máy người việt] Đơn hàng mới ');
-            });
+        //     $success = Mail::send('frontend.mail', array('name'=>$input["name"],'email'=>$input["mail"], 'product'=>$carts_mail, 'address'=>$input['address'],
+        //     'phone_number'=>$input['phone_number'],
+        //         'orderId'=>$input['orderId'], 'total_price'=>$totalPrice), function($message){
+        //         $message->to($GLOBALS['mail'], 'Điện máy người việt')->subject('[Điện máy người việt] Đơn hàng mới ');
+        //     });
 
-            unset($GLOBALS['mail']);
+        //     unset($GLOBALS['mail']);
 
-        }
+        // }
 
         // $success = Mail::send('frontend.mail', array('name'=>$input["name"],'email'=>@$input["mail"], 'product'=>$carts_mail, 'address'=>$input['address'],
         // 'phone_number'=>$input['phone_number'],
