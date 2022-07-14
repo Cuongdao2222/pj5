@@ -228,11 +228,6 @@
 </div>
 
 
-
-
-
-
-
 <!-- Quantily Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('Quantily', 'Số lượng trong kho:') !!}
@@ -249,7 +244,7 @@
 
 
 <!-- Image Field -->
-<div class="form-group col-sm-6">
+<!-- <div class="form-group col-sm-6">
     {!! Form::label('Image', 'Image:') !!}
     <div class="input-group">
         <div class="custom-file">
@@ -257,7 +252,7 @@
             {!! Form::label('Image', 'Choose file', ['class' => 'custom-file-label']) !!}
         </div>
     </div>
-</div>
+</div> -->
 <div class="clearfix"></div>
 @endif
 <script type="text/javascript">

@@ -60,7 +60,7 @@
     ?>
 
  
-
+<div class="btn btn-warning" ><a href="{{ route('products.edit', $product_id) }}">Cơ bản</a></div>
 <div class="btn btn-warning" ><a href="{{ route('group-product-selected', $product_id) }}">Danh mục</a></div>
 <div class="btn btn-warning"><a href="{{ route('products.edit', $product_id) }}?mota={{ $product_id }}">Mô tả</a></div>
 
