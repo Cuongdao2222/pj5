@@ -12,7 +12,6 @@
         padding: 5px;
     }
 </style>
-   
 <?php
     $Group = App\Models\groupProduct::select('id', 'name')->get();
     $maker = App\Models\maker::select('id', 'maker')->get();
@@ -33,12 +32,11 @@
         foreach ($maker as $key => $values) {
             $makers[$values->id] =  $values->maker;
         }
-    }    
+    }  
+    $mota = $_GET['mota']??'';  
+    $specifications_view = $_GET['specifications']??''
     
 ?>
-
-
-   
 
 <!-- <div class="col-md-12">
      <button>Seo sản phẩm</button><br>
@@ -47,6 +45,99 @@
 
 <?php  $url_domain =  Config::get('app.url') ?>
 
+@if(!empty($specifications_view))
+<div class="form-group col-sm-12 col-lg-12">
+    {!! Form::label('Specifications', 'Thông số kỹ thuật:') !!}
+    {!! Form::textarea('Specifications', null, ['class' => 'form-control', 'id' =>'content-2']) !!}
+</div>
+@endif
+
+@if(!empty($mota))
+<div class="btn-primary button" onclick ='removeHref()'>Xóa link content</div>
+
+
+<div class="form-group col-sm-12 col-lg-12">
+    {!! Form::label('Detail', 'Mô tả:', ['id' =>'mo-ta'], ['rel' =>'nofollow']) !!}
+    {!! Form::textarea('Detail', null, ['class' => 'form-control', 'id' =>'content']) !!}
+</div>
+
+    @if(isset($product->id))
+
+    <?php  
+
+        $imagecontent = App\Models\imagescontent::where('product_id', $product->id)->where('option',1)->get()
+    ?>
+
+    <div><a href="{{ route('imagescontent', $product->id) }}?option=1">Thêm ảnh content</a></div>
+
+        <div class="col-md-12 col-sm-12">
+        
+        <div id="article_media_holder">
+        <style type="text/css">
+            a.preview_media{
+            position:relative; /*this is the key*/
+            z-index:24;}
+            a.preview_media:hover{z-index:25; cursor:pointer}
+            a.preview_media span{display: none}
+            a.preview_media:hover span{
+            display:block;
+            position:absolute;
+            top:-120px; left:50px; width:auto;
+            text-align: center}
+        </style>
+        <table class="big_table" border="1" bordercolor="#CCCCCC" cellspacing="0" cellpadding="3">
+            <tbody>
+                <tr>
+                    
+                    @if(isset($matches[1]))
+                    @foreach($matches[1] as $key => $value)
+                    <?php 
+                        $value = str_replace(['http://dienmaynguoiviet.net', 'https://dienmaynguoiviet.net'], 'https://dienmaynguoiviet.vn', $value); 
+                    ?>
+                    <td class="img{{ $key }} tdimg"><a href="javascript:void(0);" onclick="clicks('images{{ $key }}', '{{ asset($value) }}')"><img src="{{ asset($value) }}" style="max-width:100px; max-height:130px" id="img{{ $key }}"></a></td>
+                 
+                    @endforeach
+                    @endif
+                </tr>
+                
+               
+            </tbody>
+
+        </table>
+
+       
+        <br>
+        
+        <br>
+    </div>
+
+    <table class="big_table" border="1" bordercolor="#CCCCCC" cellspacing="0" cellpadding="3">
+        <tbody>
+            <tr>
+
+                @if(isset($imagecontent))
+                @foreach($imagecontent as $key => $values)
+                <?php 
+                    $images = str_replace(['http://dienmaynguoiviet.net', 'https://dienmaynguoiviet.net'], 'https://dienmaynguoiviet.vn', $values->image);
+
+                   
+
+                ?> 
+                <td class="img1{{ $key }}"><a href="javascript:void(0);" onclick="click1('images1{{ $key }}', '{{ asset($images) }}')"><img src="{{ asset($images) }}" style="max-width:100px; max-height:130px" id="img1{{ $key }}"></a></td>
+             
+                @endforeach
+                @endif
+            </tr>
+            
+           
+        </tbody>
+
+    </table>
+    @endif
+
+@endif
+
+@if(empty($specifications_view)&&empty($mota))
 
 <!-- Product Field -->
 <div class="form-group col-sm-6">
@@ -56,7 +147,7 @@
 
 <!-- Productsku Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('ProductSku', 'Productsku:') !!}
+    {!! Form::label('ProductSku', 'Model:') !!}
     {!! Form::text('ProductSku', null, ['class' => 'form-control']) !!}
 </div>
 
@@ -131,100 +222,13 @@
 </div>
 
 
-
-
-
-
-
 <div class="form-group col-sm-12 col-lg-12">
     {!! Form::label('Salient_Features', 'Đặc điểm nổi bật') !!}
     {!! Form::textarea('Salient_Features', null, ['class' => 'form-control', 'id' =>'content-1']) !!}
 </div>
 
 
-<div class="form-group col-sm-12 col-lg-12">
-    {!! Form::label('Specifications', 'Thông số kỹ thuật:') !!}
-    {!! Form::textarea('Specifications', null, ['class' => 'form-control', 'id' =>'content-2']) !!}
-</div>
 
-<div class="btn-primary button" onclick ='removeHref()'>Xóa link content</div>
-
-<div class="form-group col-sm-12 col-lg-12">
-    {!! Form::label('Detail', 'Mô tả:', ['id' =>'mo-ta'], ['rel' =>'nofollow']) !!}
-    {!! Form::textarea('Detail', null, ['class' => 'form-control', 'id' =>'content']) !!}
-</div>
-
-<div class="col-md-12 col-sm-12">
-    
-    <div id="article_media_holder">
-    <style type="text/css">
-        a.preview_media{
-        position:relative; /*this is the key*/
-        z-index:24;}
-        a.preview_media:hover{z-index:25; cursor:pointer}
-        a.preview_media span{display: none}
-        a.preview_media:hover span{
-        display:block;
-        position:absolute;
-        top:-120px; left:50px; width:auto;
-        text-align: center}
-    </style>
-    <table class="big_table" border="1" bordercolor="#CCCCCC" cellspacing="0" cellpadding="3">
-        <tbody>
-            <tr>
-                @if(isset($matches[1]))
-                @foreach($matches[1] as $key => $value)
-                <?php 
-                    $value = str_replace(['http://dienmaynguoiviet.net', 'https://dienmaynguoiviet.net'], 'https://dienmaynguoiviet.vn', $value); 
-                ?>
-                <td class="img{{ $key }} tdimg"><a href="javascript:void(0);" onclick="clicks('images{{ $key }}', '{{ asset($value) }}')"><img src="{{ asset($value) }}" style="max-width:100px; max-height:130px" id="img{{ $key }}"></a></td>
-             
-                @endforeach
-                @endif
-            </tr>
-            
-           
-        </tbody>
-
-    </table>
-
-   
-    <br>
-    
-    <br>
-</div>
-@if(isset($product->id))
-
-<?php  
-
-    $imagecontent = App\Models\imagescontent::where('product_id', $product->id)->where('option',1)->get()
-?>
-
-<div><a href="{{ route('imagescontent', $product->id) }}?option=1">Thêm ảnh content</a></div>
-
-<table class="big_table" border="1" bordercolor="#CCCCCC" cellspacing="0" cellpadding="3">
-    <tbody>
-        <tr>
-
-            @if(isset($imagecontent))
-            @foreach($imagecontent as $key => $values)
-            <?php 
-                $images = str_replace(['http://dienmaynguoiviet.net', 'https://dienmaynguoiviet.net'], 'https://dienmaynguoiviet.vn', $values->image);
-
-               
-
-            ?> 
-            <td class="img1{{ $key }}"><a href="javascript:void(0);" onclick="click1('images1{{ $key }}', '{{ asset($images) }}')"><img src="{{ asset($images) }}" style="max-width:100px; max-height:130px" id="img1{{ $key }}"></a></td>
-         
-            @endforeach
-            @endif
-        </tr>
-        
-       
-    </tbody>
-
-</table>
-@endif
 
 
 
@@ -255,7 +259,7 @@
     </div>
 </div>
 <div class="clearfix"></div>
-
+@endif
 <script type="text/javascript">
 
      function removeHref() {

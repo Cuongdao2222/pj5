@@ -17,55 +17,40 @@
      <?php
 
      function get_Group_Product($id){
-                $data_groupProduct = App\Models\groupProduct::where('level', 0)->get()->pluck('id');
+            $data_groupProduct = App\Models\groupProduct::where('level', 0)->get()->pluck('id');
 
-                $infoProductOfGroup = App\Models\groupProduct::select('product_id', 'id')->whereIn('id', $data_groupProduct)->get()->toArray();
+            $infoProductOfGroup = App\Models\groupProduct::select('product_id', 'id')->whereIn('id', $data_groupProduct)->get()->toArray();
 
-                $result = [];
+            $result = [];
+            if(isset($infoProductOfGroup)){
 
-
-                if(isset($infoProductOfGroup)){
-
-                    foreach($infoProductOfGroup as $key => $val){
+                foreach($infoProductOfGroup as $key => $val){
 
 
-                        if(!empty($val['product_id'])&& in_array($id, json_decode($val['product_id']))){
+                    if(!empty($val['product_id'])&& in_array($id, json_decode($val['product_id']))){
 
-                            array_push($result, $val['id']);
-                        }
-                       
-                        
+                        array_push($result, $val['id']);
                     }
-
+                    
                 }
-
-                
-                return $result;
-
             }
-
+            return $result;
+        }
     ?>        
 
    <!--  <div class="btn btn-warning"><a href="{{ route('metaSeos.edit', 1) }}"></a>Seo</div> -->
+    <div class="btn btn-warning {{ empty($_GET['mota'])?'activess':'' }}" ><a href="{{ route('products.edit', $product->id) }}">Cơ bản</a></div>
    <div class="btn btn-warning" ><a href="{{ route('group-product-selected', $product->id) }}">Danh mục</a></div>
-    <div class="btn btn-warning"><a href="#mo-ta">Mô tả</a></div>
+    <div class="btn btn-warning {{ !empty($_GET['mota'])?'activess':'' }}"><a href="{{ route('products.edit', $product->id) }}?mota={{ $product->id }}">Mô tả</a></div>
     <div class="btn btn-warning" ><a href="{{ route('filter-property') }}?group-product={{ get_Group_Product($product->id)[0]??'' }}&productId={{ $product->id }}">Thông số</a></div>
     <div class="btn btn-warning"><a href="{{ route('images.create') }}?{{ $product->id }}">Ảnh</a></div>
-    <div class="btn btn-warning" ><a href="#mo-ta">Thông số kỹ thuật chi tiết</a></div>
+<!--     <div class="btn btn-warning" ><a href="#mo-ta">Thông số kỹ thuật chi tiết</a></div> -->
     <div class="btn btn-warning" ><a href="{{ route('details', $product->Link) }}" target="_blank">Xem tại web</a></div>
-
     
-
-    
-     @if(!empty($metaSeo))
+    @if(!empty($metaSeo))
     <div class="btn btn-info seo-click"> Dùng cho SEO </div>
-
-
-
    
     <div class="content px-3">
-
-        
         @include('adminlte-templates::common.errors')
 
         <div class="card seo">
@@ -92,7 +77,6 @@
     @endif
 
     <div class="content px-3">
-
 
         @include('adminlte-templates::common.errors')
 

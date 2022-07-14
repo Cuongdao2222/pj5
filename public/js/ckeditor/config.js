@@ -5,6 +5,8 @@
 
 CKEDITOR.editorConfig = function( config ) {
 	config.extraAllowedContent = 'a[*]';
+	config.extraPlugins = 'tableresize';
+
 
 
 	// Define changes to default configuration here. For example:

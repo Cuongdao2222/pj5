@@ -42,24 +42,18 @@
         return $result;
 
     }
-    $name_product = App\Models\product::find($id);
+    $name_product = App\Models\product::find($id);?>
 
 
 
-    ?>        
+<div class="btn btn-warning" ><a href="{{ route('products.edit', $id) }}">Cơ bản</a></div>
+<div class="btn btn-warning activess" ><a href="{{ route('group-product-selected', $id) }}">Danh mục</a></div>
 
-
-<div class="btn btn-warning" ><a href="{{ route('group-product-selected', $id) }}">Danh mục</a></div>
-<div class="btn btn-warning"><a href="{{ route('products.edit', $id) }}#mo-ta">Mô tả</a></div>
+<div class="btn btn-warning"><a href="{{ route('products.edit', $id) }}?mota={{ $id }}">Mô tả</a></div>
 <div class="btn btn-warning" ><a href="{{ route('filter-property') }}?group-product={{ get_Group_Product($id)[0]??'' }}&productId={{ $id }}">Thông số</a></div>
 <div class="btn btn-warning"><a href="{{ route('images.create') }}?{{ $id }}">Ảnh</a></div>
-<div class="btn btn-warning" ><a href="{{ route('products.edit', $id) }}#mo-ta">Thông số kỹ thuật chi tiết</a></div>
-    <div class="btn btn-warning" ><a href="{{ route('details',  $name_product->Link) }}" target="_blank">Xem tại web</a></div>
-
-
+<div class="btn btn-warning" ><a href="{{ route('details',  $name_product->Link) }}" target="_blank">Xem tại web</a></div>
 <h2>Sửa danh mục cho sản phẩm {{ $name_product->Name }}</h2>
-
-
 
 <div class="table-responsive">
    <!--  <div>

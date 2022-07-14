@@ -50,19 +50,18 @@
         $group_id = get_Group_Product($product_id);
         $product_info = App\Models\product::find($product_id);
 
+
+
     ?>
 
+    <div class="btn btn-warning" ><a href="{{ route('products.edit', $product_id) }}">Cơ bản</a></div>
+
     <div class="btn btn-warning" ><a href="{{ route('group-product-selected', $product_id) }}">Danh mục</a></div>
-    <div class="btn btn-warning"><a href="{{ route('products.edit', $product_id) }}#mo-ta">Mô tả</a></div>
-    <div class="btn btn-warning" ><a href="{{ route('filter-property') }}?group-product={{  $group_id[0]??'' }}&productId={{ $product_id }}">Thông số</a></div>
-    <div class="btn btn-warning"><a href="{{ route('images.create') }}?{{ $product_id }}">Ảnh</a></div>
-    <div class="btn btn-warning" ><a href="{{ route('products.edit', $product_id) }}#mo-ta">Thông số kỹ thuật chi tiết</a></div>
+    <div class="btn btn-warning"><a href="{{ route('products.edit', $product_id) }}?mota={{ $product_id }}">Mô tả</a></div>
+    <div class="btn btn-warning" ><a href="{{ route('filter-property') }}?group-product={{ get_Group_Product($product_id)[0]??'' }}&productId={{ $product_id }}">Thông số</a></div>
+    <div class="btn btn-warning activess"><a href="{{ route('images.create') }}?{{ $product_id }}">Ảnh</a></div>
+    <div class="btn btn-warning" ><a href="{{ route('details',  $product_info->Link) }}" target="_blank">Xem tại web</a></div>
    
-    <div class="btn btn-warning" ><a href="{{ route('details', $product_info->Link) }}" target="_blank">Xem tại web</a></div>
-
-
-
-
     <div class="content px-3">
 
         @include('adminlte-templates::common.errors')

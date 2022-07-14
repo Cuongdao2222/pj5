@@ -13,9 +13,8 @@
         </div>
     </section>
 
-
-
-
+    <div class="btn btn-warning" ><a href="#">Cơ bản</a></div>
+   
 
     @if(Session::get('id'))   
 

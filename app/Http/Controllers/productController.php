@@ -171,7 +171,7 @@ class productController extends AppBaseController
 
         $product = $this->productRepository->create($input);
 
-        return redirect()->route('products.edit', $product['id']);
+        return redirect()->route('group-product-selected', $product['id']);
         
         // return Redirect()->back()->with('id', $product['id']);
 
@@ -274,7 +274,6 @@ class productController extends AppBaseController
         }
 
         $input['user_id'] =  Auth::user()->id;
-        
          
         $product = $this->productRepository->update($input, $id);
 
@@ -477,7 +476,6 @@ class productController extends AppBaseController
 
                 array_push($resultProduct, $find_first);
             }
-
 
         }
 

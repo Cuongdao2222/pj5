@@ -215,7 +215,7 @@ class imageController extends AppBaseController
 
             }
             if($input['option']==1){
-                return redirect(route('products.edit', $input['product_id']));
+                return redirect(route('products.edit', $input['product_id']).'?mota=1');
             }
             else{
                 return redirect(route('posts.edit', $input['product_id']));

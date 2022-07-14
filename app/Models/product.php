@@ -67,20 +67,20 @@ class product extends Model
      * @var array
      */
     public static $rules = [
-        'Image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:4096',
+        'Image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:4096',
         'Name' => 'required|unique:products|max:1000',
         'ProductSku' => 'required|unique:products',
-        'Specifications' => 'required',
+       
         'Price' => 'required',
         
     ];
 
     public static $rule = [
         'Image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:4096',
-        'Name' => 'required|max:1000',
-        'ProductSku' => 'required',
-        'Specifications' => 'required',
-        'Price' => 'required',
+        // 'Name' => 'required|max:1000',
+        // 'ProductSku' => 'required',
+        // 'Specifications' => 'required',
+        // 'Price' => 'required|integer',
         
     ];
 

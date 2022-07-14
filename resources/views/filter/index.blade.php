@@ -54,24 +54,22 @@
 
      <?php
         $group_id = $_GET['groupid']??$_GET['group-product'];
-
-
        
         $filter = App\Models\filter::where('group_product_id', $group_id)->get();
+
     ?>
 
+ 
+
 <div class="btn btn-warning" ><a href="{{ route('group-product-selected', $product_id) }}">Danh mục</a></div>
-<div class="btn btn-warning"><a href="{{ route('products.edit', $product_id) }}#mo-ta">Mô tả</a></div>
-<div class="btn btn-warning" ><a href="{{ route('filter-property') }}?group-product={{  $group_id??'' }}&productId={{ $product_id }}">Thông số</a></div>
-<div class="btn btn-warning"><a href="{{ route('images.create') }}?{{ $product_id }}">Ảnh</a></div>
-<div class="btn btn-warning" ><a href="{{ route('products.edit', $product_id) }}#mo-ta">Thông số kỹ thuật chi tiết</a></div>
+<div class="btn btn-warning"><a href="{{ route('products.edit', $product_id) }}?mota={{ $product_id }}">Mô tả</a></div>
+
+<div class="btn btn-warning activess" ><a href="{{ route('filter-property') }}?group-product={{  $group_id??'' }}&productId={{ $product_id }}">Thông số</a></div>
+ <div class="btn btn-warning"><a href="{{ route('images.create') }}?{{ $product_id }}">Ảnh</a></div>
+
 @if(!empty($product_id))
 <div class="btn btn-warning" ><a href="{{ route('details',  $infoProduct->Link) }}" target="_blank">Xem tại web</a></div>
 @endif
-
-
-
-
 
 
 
@@ -91,8 +89,12 @@
     </ul> -->
     <div>
         <input type="hidden" name="current_pro_id" id="current_pro_id" value="4444">
+        <p><a href="{{ route('products.edit', $product_id) }}?={{ $product_id }}"></a></p>
+
+        <p> <a href="{{ route('products.edit', $product_id) }}?specifications={{ $product_id }}">Cập nhật thông số kỹ thuật không cần thuộc tính</a></p>
+
         <p><a href="{{ route('filters.create') }}?groupid={{ $_GET['group-product'] }}&productId={{ $product_id }}">Thêm thuộc tính sản phẩm</a></p>
-       <!--  <p>Hoặc <a href="sell_product.php?id=4444&amp;view=spec&amp;noattr=1&amp;l=vn&amp;popup=1">Cập nhật thông số kỹ thuật không cần thuộc tính</a></p> -->
+        
         <br>
         <table id="tb_padding" border="1" bordercolor="#CCCCCC" style="width:100%">
             <tbody> 
