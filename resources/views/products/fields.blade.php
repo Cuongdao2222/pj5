@@ -34,7 +34,8 @@
         }
     }  
     $mota = $_GET['mota']??'';  
-    $specifications_view = $_GET['specifications']??''
+    $specifications_view = $_GET['specifications']??'';
+    $seo = $_GET['seo']??'';
     
 ?>
 
@@ -137,7 +138,7 @@
 
 @endif
 
-@if(empty($specifications_view)&&empty($mota))
+@if(empty($specifications_view)&&empty($mota)&&empty($seo))
 
 <!-- Product Field -->
 <div class="form-group col-sm-6">
