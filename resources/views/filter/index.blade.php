@@ -61,7 +61,9 @@
 
  
 <div class="btn btn-warning" ><a href="{{ route('products.edit', $product_id) }}">Cơ bản</a></div>
+
 <div class="btn btn-warning" ><a href="{{ route('group-product-selected', $product_id) }}">Danh mục</a></div>
+<div class="btn btn-warning btn-info seo-click"><a href="{{ route('products.edit', $product_id) }}?seo={{ $product_id }}">SEO</a></div>
 <div class="btn btn-warning"><a href="{{ route('products.edit', $product_id) }}?mota={{ $product_id }}">Mô tả</a></div>
 
 <div class="btn btn-warning activess" ><a href="{{ route('filter-property') }}?group-product={{  $group_id??'' }}&productId={{ $product_id }}">Thông số</a></div>
