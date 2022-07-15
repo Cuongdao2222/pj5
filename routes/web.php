@@ -325,6 +325,8 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::get('child-click', 'AjaxController@findChild')->name('filter-child-click');
 
+    Route::get('image-Product-change', 'imageController@updateImageProduct')->name('image-ajax-product');
+
 
     Route::get('add-active-post', 'postController@addActive')->name('add-active-post');
 

@@ -14,9 +14,9 @@
         @foreach($images as $image)
             <tr>
                 <td>{{ $image->image }}</td>
-            <td>{{ $image->link }}</td>
-            <td>{{ $image->product_id }}</td>
-            <td><input type="checkbox"  name="check" value="{{ $image->image }}"></td>
+                <td>{{ $image->link }}</td>
+                <td>{{ $image->product_id }}</td>
+                <td><input type="checkbox"  name="check" value="{{ $image->image }}"></td>
                 <td width="120">
                     {!! Form::open(['route' => ['images.destroy', $image->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

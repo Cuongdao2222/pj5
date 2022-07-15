@@ -50,8 +50,6 @@
         $group_id = get_Group_Product($product_id);
         $product_info = App\Models\product::find($product_id);
 
-
-
     ?>
 
     <div class="btn btn-warning" ><a href="{{ route('products.edit', $product_id) }}">Cơ bản</a></div>
@@ -64,8 +62,22 @@
    
     <div class="content px-3">
 
+
+
         @include('adminlte-templates::common.errors')
 
+        <?php 
+            $imageProduct = (App\Models\product::find($product_id))->Image;
+        ?>
+
+        @if(!empty($imageProduct))
+
+        <h3>ảnh đại diện đang được chọn</h3>
+        <div class="">
+            <img src="{{ asset($imageProduct) }}" style="width: 10%;">
+        </div>
+        <br>
+        @endif
         <div class="card">
 
             {!! Form::open(['route' => 'images.store', 'files' => true]) !!}
@@ -89,10 +101,7 @@
     </div>
 
     <?php 
-
-
         $images = App\Models\image::where('product_id', $product_id)->get();
-       
     ?>
 
 
@@ -103,8 +112,8 @@
             <thead>
             <tr>
                 <th>Image</th>
-            
-            <th>Product Id</th>
+                <th>Product Id</th>
+                <th>Chọn ảnh đại diện</th>
                 <th colspan="3">Action</th>
             </tr>
             </thead>
@@ -112,8 +121,10 @@
             @foreach($images as $image)
                 <tr>
                     <td><img src="{{ asset($image->image) }}" height="150px" width="150px"></td>
+
                 
                 <td>{{ $image->product_id }}</td>
+                <td><input type="checkbox"  name="check" value="{{ $image->image }}"  {{ $image->image==$imageProduct?'checked':'' }}></td>
                     <td width="120">
                         {!! Form::open(['route' => ['images.destroy', $image->id], 'method' => 'delete']) !!}
                         <div class='btn-group'>
@@ -130,10 +141,32 @@
                         {!! Form::close() !!}
                     </td>
                 </tr>
+
             @endforeach
             </tbody>
         </table>
     </div>
     <div><a href="{{ route('products.index') }}">Quay về trang sản phẩm</a></div>
     @endif
+
+    <script type="text/javascript">
+
+         
+        $('input[type="checkbox"]').on('change', function() {
+           $('input[type="checkbox"]').not(this).prop('checked', false);
+
+           $.ajax({
+                type: 'GET',
+                url: "{{ route('image-ajax-product') }}",
+                data: {
+                    product_id: '{{ $product_id }}',
+                    image:$(this).val()
+                },
+                success: function(result){
+                     location.reload();
+                }
+            });
+           
+        });
+    </script>
 @endsection

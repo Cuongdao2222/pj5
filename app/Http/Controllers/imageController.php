@@ -9,6 +9,7 @@ use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
+use App\Models\product;
 use App\Models\imagescontent;
 
 class imageController extends AppBaseController
@@ -223,5 +224,15 @@ class imageController extends AppBaseController
             
             
         }
+    }
+
+    public function updateImageProduct(Request $request)
+    {
+       
+        $product_id = $request->product_id;
+        $image   = $request->image;
+        $data = product::find($product_id);
+        $data->Image = $image;
+        $data->save();
     }
 }
