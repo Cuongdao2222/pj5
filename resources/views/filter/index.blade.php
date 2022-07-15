@@ -265,13 +265,6 @@
 
         <input type="hidden" name="name-child-dbclick" id="name-child-dbclick">
 
-
-
-
-
-
-
-        
                 
     </div>
 

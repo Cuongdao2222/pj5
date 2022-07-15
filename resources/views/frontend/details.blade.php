@@ -11,6 +11,11 @@
     #data-pricetotal{
         width: 194px;
     }
+
+    .modal-body ul li, .content ul li{
+           list-style: disc !important;     
+    }
+
     .content  a{
         font-weight: bold;
     }
@@ -52,6 +57,8 @@
     .select-gift{
         display: flex;
     }
+
+
 
     @keyframes loading {
       0% {
@@ -148,6 +155,9 @@
             .style-number-fone{
                 display: flex;
             }
+            .modal-body{
+                padding: 0 30px !important;
+            }
             #thongso td{
                 height: 30px !important;
             }
@@ -218,8 +228,25 @@
                 width: 100% !important;
                 height: auto !important;
             }
+            .prod-info-left{
+                margin-bottom: 20px !important;
+            }
 
-          
+            .prod-info .fl{
+                margin-bottom: 10px;
+            }
+
+            #vote_avg{
+                margin: 20px 0;
+            }
+            .prod-info .txt_20{
+                font-size: 20px !important;
+            }
+
+            .modal-body .fa-angle-right{
+                display: none !important;
+            }
+
             /*.box01 .owl-carousel .owl-item img{
                 width: 100% !important;
             }
@@ -1096,7 +1123,7 @@
             Tình trạng: <span class="value txt_blue">{{ $status }}</span> | 
         </div>
         <a id="btn-vote" class="txt_555 fl" href="javascript:;" onclick="go_comm()"> Đánh giá: </a>
-        <div class=" totalRate " id="js-total-rating" style="display: inline-block;"><i class="icons icon-star star"><span></span></i></div>
+        <div class=" totalRate " id="js-total-rating" style="display: inline-block;"><i class="icons icon-star star"><span></span></i><i class="icons icon-star star"><span></span></i><i class="icons icon-star star"><span></span></i><i class="icons icon-star star"><span></span></i><i class="icons icon-star star"><span></span></i></div>
         (<span class="reviewCount">0</span>)
     </div>
     <div class="prod-info-left fl">          
