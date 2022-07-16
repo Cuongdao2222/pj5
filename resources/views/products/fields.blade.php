@@ -69,7 +69,7 @@
         $imagecontent = App\Models\imagescontent::where('product_id', $product->id)->where('option',1)->get()
     ?>
 
-    <div><a href="{{ route('imagescontent', $product->id) }}?option=1">Thêm ảnh content</a></div>
+    <div><a href="javascript:void(0)" onclick="clickChangeImageContent()">Thêm ảnh content</a></div>
 
         <div class="col-md-12 col-sm-12">
         
@@ -257,6 +257,35 @@
 <div class="clearfix"></div>
 @endif
 <script type="text/javascript">
+
+    $(document).ready(function() {
+        getContent();
+    });
+    
+    function getContent() {
+         
+        @if (\Session::has('success-content'))
+
+            let item_local_store =  localStorage.getItem('infoDetailsPost');
+
+            CKEDITOR.instances['content'].setData(item_local_store)
+
+        @endif
+        console.log(1);
+    }
+    
+    function clickChangeImageContent() {
+
+        localStorage.removeItem('infoDetailsPost');
+
+        content = CKEDITOR.instances['content'].getData();
+       
+        localStorage.setItem('infoDetailsPost', content);
+      
+        url = '{{ route('imagescontent', $product->id) }}?option=1';
+        $(location).attr('href',url);
+
+    }
 
      function removeHref() {
 

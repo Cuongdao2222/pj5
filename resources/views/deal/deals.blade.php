@@ -306,7 +306,11 @@
                             ?>
                             @isset($products)
                             @foreach($products as $val)
-                            <?php  $k++  ?>
+                            <?php  
+                                $k++ ;
+
+                               
+                            ?>
                             <tr id="row_1208">
                                 <td>{{ $k }}</td>
 
@@ -319,7 +323,7 @@
                                 </td>
                                 <td>
                                     <div><a href="{{ route('details', $val->link) }}" target="_blank"><b>{{ $val->name }}</b></a></div>
-                                    <div>Giá deal : <b style="color:red;">{{  str_replace(',' ,'.', number_format($product_info->Price))   }}</b> vnd - Giá thường: <b style="color:red;">{{  str_replace(',' ,'.', number_format($product_info->Price))   }}</b> </div>
+                                    <div>Giá deal : <b style="color:red;">{{  str_replace(',' ,'.', number_format($val->deal_price))   }}</b> vnd - Giá thường: <b style="color:red;">{{  str_replace(',' ,'.', number_format($product_info->Price))   }}</b> </div>
                                     <div>Số lượng : <b style="color:red;">0</b> - Số tối thiểu cho 1 đơn hàng: <b style="color:red;">0</b></div>
                                     <div>Thời gian : Từ <b style="color:red;">{{ @$val->start }}</b> đến <b style="color:red;">{{ $val->end }}</b> 
                                         ({{ $now->between($val->start, $val->end)?'Đang bắt đầu':'chưa bắt đầu'}})

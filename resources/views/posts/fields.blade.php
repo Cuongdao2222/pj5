@@ -279,14 +279,8 @@
         var file = document.querySelector('#file-image-content').files[0];
         getBase64(file);
 
-
-
     });
    
-
-   
-  
-    
     editor = CKEDITOR.replace( 'content', {
         filebrowserBrowseUrl: '{{ $url_domain }}/ckfinder.html',
         filebrowserImageBrowseUrl: '{{ $url_domain }}/ckfinder.html?Type=Images',
@@ -303,10 +297,7 @@
         
     });
 
-    
-    
 
-    
 
     function removeHref_byselected(text1) {
 

@@ -4,7 +4,7 @@
     @push('style')
 
         <link rel="stylesheet" type="text/css" href="{{ asset('css/home.css') }}?ver=3">
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}?ver=3"> 
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}?ver=4"> 
         
         <link rel="stylesheet" type="text/css" href="{{ asset('css/index.css') }}?ver=2">
 
@@ -118,20 +118,36 @@
               .Next {
                 display: none;
               }
-              .desk-t{
+              /*.desk-t{
                 display: none !important;
-              }
-              .col1-simple{
+              }*/
+                .col1-simple{
                     width: 100% !important;
                 }
                 .detail-slider.owl-carousel {
                     min-height: auto !impotant;
                 }   
-                 .listproduct .item-img {
+                .listproduct .item-img {
                     height: 166px;
                     line-height: 166px;
                 } 
+
+                .box-common .readmore-txt {
+                    background-color: rgb(100, 128, 100);
+                }  
+
+                .box-common__tab li{
+                    min-width: 56px !important;
+                    font-size: 6.5pt !important;
+                }
+                .box-tab-mobile{
+                    margin-top: 16px !important;
+
+                }  
+
             }
+
+            
         </style>
 
     @endpush
@@ -202,15 +218,9 @@
                         
                     </div>
                 </aside>
-
-              
                 <!-- End -->
             </div>
             <div class="preorder-hot"> 
-
-                
-
-
                 @if(isset( $bannersRight ))
 
                 @foreach( $bannersRight as $values)
@@ -218,18 +228,10 @@
                 <a  aria-label="slide" data-cate="0" data-place="1539" href="{{ $values->link }}">
                     <img  src="{{ asset($values->image) }}" data-src="{{ asset($values->image) }}"  alt="{{ $values->title }}" >
                 </a>
-               
                 @endforeach
-
                 @endif
-               
-                
             </div>
-            
-            
-               
         </div>
-
         <section class="menus-banner">
             <strong class="name-box">Có thể bạn quan tâm</strong>
             <ul>
@@ -287,9 +289,9 @@
 
         <!-- flash sale -->
             <div class="img-flashsale mobiles" style="width: 100%;">
-                        <a href="{{ route('details', 'deal') }}"><img src="{{ asset('images/template/flashsalemb.jpg') }}" style="width: 100%"></a>
+                <a href="{{ route('details', 'deal') }}"><img src="{{ asset('images/template/flashsalemb.jpg') }}" style="width: 100%"></a>
 
-                    </div>
+            </div>
             <div class="">
                 <div class="flash-sale" style="height: 305px;">
                     
@@ -400,7 +402,6 @@
             </div>
 
            <!--  end flash  -->
-
          @endif 
          @endif  
 
@@ -411,11 +412,8 @@
 
             <div class="prd-promo__top clearfix" >
 
-
                 <a data-cate="0" data-place="1868" href="#" ><img style="cursor:pointer" src="{{ asset($bannerUnderSale[0]['image']) }}" alt="banner-summer" width="1200"></a>                
             </div>
-
-          
            
            @if(!empty($product_sale)&&$product_sale->count()>0)
            
@@ -438,8 +436,7 @@
                        
                         <h3>{{ $value->Name }}</h3>
 
-                       
-                       
+        
                        
                         <strong class="price">{{  @str_replace(',' ,'.', number_format($value->Price))  }}.&#x20AB;</strong>
                         <div class="item-rating">
@@ -450,12 +447,7 @@
                                 <i class="fa-solid fa-star"></i>
                                 <i class="fa-solid fa-star"></i>
                             </p>
-                            
                         </div>
-
-                       
-
-                       
                     </a>
                 </div>
                 @endif
@@ -466,8 +458,6 @@
             @endif
 
             <div class="prd-promo__top clearfix" >
-
-
                 <a class="readmore-btn" href="{{ route('sale-home') }}"><span>Xem tất cả</span></a>                
             </div>
             
@@ -479,7 +469,6 @@
 
             <?php
                 
-
                 if(!Cache::has('hot'.$groups->id) ){
 
                     $hot = DB::table('hot')->select('product_id')->where('group_id', $groups->id)->get()->pluck('product_id');
@@ -500,24 +489,19 @@
                 $data = Cache::get('data'.$groups->id);
 
             ?>
-
-           
         @if(!empty($data) && $data->count()>0)
 
          
         <div class="box-common _cate_1942">
-            <ul class="box-common__tab">
+            <ul class="box-common__tab box-tab-mobile">
                 <li class="active-tab" data-cate-id="1942"><a href="{{  @$groups->link }}">{{  @$groups->name }}</a></li>
                 <?php 
-                    
-
                     if(empty(Cache::get('listGroupsShow'.$groups->id))){
                         $listGroupsShows =   App\Models\groupProduct::select('name', 'link')->where('parent_id', $groups->id)->get();
 
                         Cache::put('listGroupsShow'.$groups->id,  $listGroupsShows, 10000);
                     }
                     $listGroupsShow = Cache::get('listGroupsShow'.$groups->id);
-                     
                 ?>
 
                 @if(!empty($listGroupsShow))
@@ -533,9 +517,6 @@
                 </div>
                 <div class="box-common__content">
                     <div class="listproduct slider-home owl-carousel" id="banner-product_{{ $key }}" data-size="10">
-
-                       
- 
                         @foreach($data as $datas)
                         @if($datas->active==1)
                         
@@ -576,12 +557,10 @@
                                             $arNames = explode($searchstring, $infoName);
 
                                         }
-
                             
                                     }
                                 ?>
                                
-                                
                                 <div class="item-compare">
                                     @if(!empty($arNames))
                                     <span>{{ @$arNames[0] }} {{ !empty($arNames)?$searchstring:'' }}</span>
@@ -590,9 +569,6 @@
                                     
                                 </div>
                                 
-                               
-
-                        
                                 @endif
                                 <strong class="price">{{ @number_format($datas->Price , 0, ',', '.')}}&#x20AB;</strong>
 
@@ -624,15 +600,10 @@
                                         }
                                         Cache::put('gifts_Fe_'.$datas->id, $gifts,100);
 
-                                    
-
                                     }
                                    
                                     $gift = Cache::get('gifts_Fe_'.$datas->id);
-
-
                                 ?>
-
 
                                 @if(!empty($gift))
 
@@ -809,17 +780,13 @@
         mins = 0;
         secs = 0;
         out = "";
-    
-    
+
         hours = Math.floor(amount / 3600);
         amount = amount % 3600;
         mins = Math.floor(amount / 60);
         amount = amount % 60;
         secs = Math.floor(amount);
             
-            
-    
-    
         //time run 
         if(parseInt(time)>0 && parseInt(number_deal_product)>0){
          h = hours;

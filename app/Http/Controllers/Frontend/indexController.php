@@ -50,8 +50,6 @@ class indexController extends Controller
 
         // }
 
-
-
         if(empty($group) ||empty($banners)||empty($product_sale)||empty($deal)){
 
             $this->cache();
@@ -84,7 +82,6 @@ class indexController extends Controller
         $bannerUnderSale = Cache::remember('bannerUnderSale',10000, function() {
             return banners::where('option', 5)->OrderBy('stt', 'asc')->take(1)->get()->toArray();;
         });
-
 
       
         return view('frontend.index', compact('banners', 'bannersRight', 'bannerUnderSlider', 'bannerUnderSale','deal','product_sale', 'group','timeDeal_star'));
