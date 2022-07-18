@@ -281,9 +281,12 @@
         content = CKEDITOR.instances['content'].getData();
        
         localStorage.setItem('infoDetailsPost', content);
+
+        @if(!empty($product->id))
       
         url = '{{ route('imagescontent', $product->id) }}?option=1';
         $(location).attr('href',url);
+        @endif
 
     }
 
