@@ -564,7 +564,7 @@ class AjaxController extends Controller
         $list_id = json_decode($request->json_id_product);
         $action  = $request->action;
         $idcate = $request->idcate;
-        $check_parent = groupProduct::where('id',  $idcate)->where('parent_id', 0)->first();
+        $check_parent = groupProduct::where('id',  $idcate)->first();
 
         if(!empty($check_parent)){
             $list_id = json_decode($check_parent->product_id);

@@ -446,8 +446,14 @@
 
             // $propery_url_id = explode(',',$propery_url);
 
+             if(!empty($_GET['filter'])){
+                $id_cate = '';
+            }
+
             
         ?>
+
+
 
        
         @push('script')
@@ -569,7 +575,7 @@
                     data: {
                         json_id_product: $('.lists-id').text(),
                         action:$(this).val(),
-                        idcate: {{ $id_cate??'' }}
+                        idcate: '{{ $id_cate??'' }}'
                         
                     },
                     success: function(result){
