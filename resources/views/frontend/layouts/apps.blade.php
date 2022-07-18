@@ -1521,7 +1521,7 @@
 
 
 
-  <script src="https://sp.zalo.me/plugins/sdk.js"></script> 
+  <script src="{{ asset('/js/zalo.js') }}"></script> 
  
 <!-- Messenger Plugin chat Code -->
    <!--  <div id="fb-root"></div> -->
@@ -1554,19 +1554,12 @@
       }(document, 'script', 'facebook-jssdk'));
     </script> -->
 
-    <!--Start of Tawk.to Script-->
-    <script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/5a5afd4a4b401e45400c128a/default';
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
-    })();
-    </script>
+
+     <!--Start of Tawk.to Script-->
+    <script src="{{asset('js/tawto.js')}}"></script>
+   
     <!--End of Tawk.to Script-->
+
 
 
     <link rel="stylesheet" href="{{asset('css/lib/owl.carousel.min.css')}}">
