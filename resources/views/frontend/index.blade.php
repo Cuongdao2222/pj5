@@ -654,7 +654,7 @@
         <?php  
 
             $post = Cache::remember('post_home',10000, function() {
-                return App\Models\post::where('active',1)->where('hight_light', 1)->OrderBy('created_at', 'desc')->select('link', 'title', 'image')->limit(7)->get()->toArray();
+                return App\Models\post::where('active',1)->where('hight_light', 1)->OrderBy('created_at', 'desc')->select('link', 'title', 'image')->limit(5)->get()->toArray();
             }); 
 
         ?>
@@ -673,7 +673,7 @@
                     </div>
                 </a>    
 
-                <div class="col1__ct" data-size="6">
+                <div class="col1__ct" data-size="4">
                     <a href="{{ route('details', $post[0]['link']) }}" class="col1-big">
                         <div class="col1-big-img">
                             <img data-src="{{ asset( $post[0]['image'])  }}" class=" ls-is-cached lazyloaded" alt="{{ $post[0]['title'] }}" src="{{ $post[0]['image'] }}">
