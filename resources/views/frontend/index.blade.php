@@ -13,6 +13,9 @@
             .prd-promo{
                 border: 2px solid #D6D5CC;
             }
+            .text-blog{
+                font-size: 15px !important;
+            }
             .menus-banner li{
                 padding: 20px 0;
                 border: 1px solid #dddd;
@@ -664,14 +667,18 @@
                     <h4 class="title-layout">Tin tức nổi bật</h4>
                     <a href="{{ route('tin') }}" class="readmore-txt blue">Xem thêm</a>
                 </div>
+                <a href="{{ route('details', $post[0]['link']) }}" class="col1-big">
+                    <div class="span texts">
+                        <p class="text-blog">{{ $post[0]['title'] }}</p>
+                    </div>
+                </a>    
+
                 <div class="col1__ct" data-size="6">
                     <a href="{{ route('details', $post[0]['link']) }}" class="col1-big">
                         <div class="col1-big-img">
                             <img data-src="{{ asset( $post[0]['image'])  }}" class=" ls-is-cached lazyloaded" alt="{{ $post[0]['title'] }}" src="{{ $post[0]['image'] }}">
                         </div>
-                        <div class="span texts">
-                            <p class="spl-item-title">{{ $post[0]['title'] }}</p>
-                        </div>
+                        
                     </a>
                     <div class="col1-simple">
 
