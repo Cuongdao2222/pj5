@@ -14,13 +14,13 @@
 
 
 
-Route::get('/tin-khuyen-mai/', 'Frontend\blogController@index')->name('tin');
+Route::get('/tin-khuyen-mai/', 'Frontend\blogController@index')->middleware('cache')->name('tin');
 
-Route::get('/tin-tong-hop/', 'Frontend\blogController@index')->name('tin-th');
+Route::get('/tin-tong-hop/', 'Frontend\blogController@index')->middleware('cache')->name('tin-th');
 
-Route::get('/tin-tuc-tong-hop/', 'Frontend\blogController@index')->name('tin-th');
+Route::get('/tin-tuc-tong-hop/', 'Frontend\blogController@index')->middleware('cache')->name('tin-th');
 
-Route::get('/tin-tuc', 'Frontend\blogController@index')->name('tins');
+Route::get('/tin-tuc', 'Frontend\blogController@index')->middleware('cache')->name('tins');
 
 Route::get('/', 'Frontend\indexController@index')->middleware('cache')->name('homeFe');
 
@@ -96,10 +96,10 @@ Route::get('sitemap_article.xml', 'sitemapController@sitemapChildBlog');
 
 // Route::get('inCrawl', 'crawlController@allproduct');
 
-Route::get('/tin-chi-tiet', function () {
-    return view('frontend.blogdetail');
+// Route::get('/tin-chi-tiet', function () {
+//     return view('frontend.blogdetail');
     
-});
+// });
 
 
 // Route::any('/ckfinder/connector', '\CKSource\CKFinderBridge\Controller\CKFinderController@requestAction')
