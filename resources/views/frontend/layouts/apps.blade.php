@@ -12,6 +12,8 @@
             else{
                  $nameRoute = '';
             }
+            header('Cache-Control: max-age=86400');
+
           ?>
         <meta charset="utf-8" />
         <meta name="robots" content="index,follow" />
