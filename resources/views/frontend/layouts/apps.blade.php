@@ -1,27 +1,4 @@
-<?php 
 
-//if user does not change IP, then ban the IP when more than 10 requests per second are detected in 1 second
-$limitps = 10;
-
-$_SESSION['banip']=0;
-if (!isset($_SESSION['first_request'])){
-    $_SESSION['requests'] = 0;
-    $_SESSION['first_request'] = $_SERVER['REQUEST_TIME'];
-}
-$_SESSION['requests']++;
-if ($_SESSION['requests']>=10 && strtotime($_SERVER['REQUEST_TIME'])-strtotime($_SESSION['first_request'])<=1){
-    //write the IP to a banned_ips.log file and configure your server to retrieve the banned ips from there - now you will be handling this IP outside of PHP
-    $_SESSION['banip']==1;
-}elseif(strtotime($_SERVER['REQUEST_TIME'])-strtotime($_SESSION['first_request']) > 2){
-    $_SESSION['requests'] = 0;
-    $_SESSION['first_request'] = $_SERVER['REQUEST_TIME'];
-}
- 
-if ($_SESSION['banip']==1) {
-    header('HTTP/1.1 503 Service Unavailable');
-    die;
-}
-?>
 
 <!DOCTYPE html>
 <html lang="vi-VN">
