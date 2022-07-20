@@ -22,7 +22,7 @@ Route::get('/tin-tuc-tong-hop/', 'Frontend\blogController@index')->name('tin-th'
 
 Route::get('/tin-tuc', 'Frontend\blogController@index')->name('tins');
 
-Route::get('/', 'Frontend\indexController@index')->name('homeFe');
+Route::get('/', 'Frontend\indexController@index')->middleware('cache')->name('homeFe');
 
 
 Route::get('/cache', 'Frontend\indexController@cache1')->name('cache');
@@ -53,7 +53,7 @@ Route::get('/sale', function () {
 Route::get('/deal', function () {
     return view('frontend.deallist');
     
-})->name('dealFe');
+})->middleware('cache')->name('dealFe');
 
 
 // Route::get('filterurl','crawlController@addFilterProduct');
@@ -155,7 +155,7 @@ Route::post('show-viewer-product', 'AjaxController@showViewerProduct')->name('sh
 
 Route::get('/category/{slug}', 'Frontend\categoryController@index')->name('category-product')->middleware('auth');
 
-Route::get('/{slug}', 'Frontend\categoryController@details')->name('details');
+Route::get('/{slug}', 'Frontend\categoryController@details')->middleware('cache')->name('details');
 
 Route::post('ajax-clent-register', 'AjaxController@registerClient')->name('register-client-fe');
 
