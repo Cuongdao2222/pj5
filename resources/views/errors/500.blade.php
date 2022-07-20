@@ -1,10 +1,6 @@
 <?php 
 
     $page = '500';
-
-   
-
-   
 ?>
 
 @extends('frontend.layouts.apps')
