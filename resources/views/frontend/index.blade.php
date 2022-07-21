@@ -6,7 +6,7 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('css/home.css') }}?ver=3">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}?ver=4"> 
         <link rel="stylesheet" type="text/css" href="{{ asset('css/index.css') }}?ver=2">
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/homes.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/homes.css') }}?ver=1">
 
        
     @endpush
