@@ -622,13 +622,17 @@
 
     @push('script')
 
+
+
     <script type="text/javascript">
+
+        times = ['133456', '100000', '1100', '12000'];
 
         // đếm thời gian 
 
          //document.getElementById('svg').innerHTML = xmlSvg;
                                         
-        time = '{{ @$timestamp }}';
+        time = {{ $timestamp }};
         number_deal_product =10;
         //in time 
         var h = 12;

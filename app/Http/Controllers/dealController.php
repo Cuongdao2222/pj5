@@ -18,6 +18,14 @@ class dealController extends Controller
 
     }
 
+    public function getTimeDeal(Request $request)
+    {
+        $id = $request->product_id;
+        $data = deal::find($id);
+        $ar = [$data->start, $data->end];
+        return $ar;
+    }
+
     public function getProductToGroupId(request $request){
 
         $groupid = $request->group_id;

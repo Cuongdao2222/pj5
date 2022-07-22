@@ -172,6 +172,8 @@ Route::post('filter-price-product', 'AjaxController@filterByValue')->name('filte
 
 Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
+    Route::get('get-time-deal', 'dealController@getTimeDeal')->name('getTimeDeal');
+
     Route::get('incrawl', 'crawlController@allproduct');
 
 

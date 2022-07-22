@@ -192,6 +192,8 @@
     $(document).ready(function() {
          $("#date-picker1" ).datepicker({ dateFormat: 'dd-mm-yy'});
          $("#date-picker2" ).datepicker({ dateFormat: 'dd-mm-yy'});
+         $("#date-picker3" ).datepicker({ dateFormat: 'dd-mm-yy'});
+         $("#date-picker4" ).datepicker({ dateFormat: 'dd-mm-yy'});
     }); 
  
   </script>
@@ -292,6 +294,7 @@
                                 <td>Quản lý</td>
                                 <td>Sửa giá deal nhanh</td>
                                 <td>Sắp xếp</td>
+                                <td>Cài thời gian riêng</td>
                             </tr>
 
                             <?php  
@@ -357,6 +360,20 @@
                                     
                                     <br>
                                     <div class="btn-primary edit_orders{{$val->id}}" style="width: 25%;" onclick="update_order({{ $val->id }})" >sửa</div>
+                                </td>
+                                <td>
+                                    <?php 
+                                        $timeup = $now->diffInSeconds($val->end); 
+
+                                        $hour  = $timeup/3600;
+                                        $timeup = $timeup%3600;
+                                        $minutes = $timeup/60;
+
+                                    ?> 
+
+                                    Còn {{ (int)$hour }} giờ {{ (int)$minutes }} phút nữa 
+                                    <br>
+                                    <a href="javascript:void(0)" onclick="setTimeDeal({{ $val->id }})">Sửa</a>
                                 </td>
 
                             </tr>
@@ -503,7 +520,46 @@
                 </div>
             </div>
         </div>
+
+        <div class="modal fade" id="modalSetTimeDeal" tabindex="-1" role="dialog" aria-labelledby="modalSetTimeDeal" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Cài đặt thời gian cho sản phẩm</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                         Bắt đầu : <input type="text" id="date-picker3" value="{{  str_replace(strstr($deal[0]->start, ','), '', $deal[0]->start) }}">
+
+                          <?php  
+
+                            $start = str_replace(',','',strstr($deal[0]->start, ','));
+
+                            $end    = str_replace(',','',strstr($deal[0]->end, ','));
+                          ?>
+
+                           Giờ: 
+                          <select name="time" id="hours3"><?php echo get_times($default = $start, '+30 minutes'); ?></select>
+                          <br>
+                          <br>
+                          Kết thúc : <input type="text"  id="date-picker4" value="{{ str_replace(strstr($deal[0]->end, ','), '', $deal[0]->end) }}"> Giờ: 
+                          <select name="time" id="hours4">
+                              <?php echo get_times($default = $end, '+30 minutes'); ?>
+                          </select>   
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
+
 </div>
 <input type="hidden" name="edit-deal" id="edit-deal">
 
@@ -541,6 +597,48 @@ function selectProduct(id){
     }
 
 
+}
+
+function setTimeDeal(id) {
+
+    $.ajax({
+
+        type: 'GET',
+        url: "{{ route('getTimeDeal') }}",
+        data: {
+            product_id:id,
+            
+        },
+        success: function(result){
+            start = result[0];
+            end   = result[1];
+            ar_start = start.split(',');
+            start_date = ar_start[0];
+            start_time = ar_start[1];
+
+            ar_end = end.split(',');
+            end_date = ar_end[0];
+            end_time = ar_end[1];
+
+            $('#date-picker3').val(start_date);
+
+            // $('#hours3 option:selected').remove();
+
+
+            $("#hours3 option[value='"+start_time+"']").prop('selected', true);
+
+
+            $('#date-picker4').val(end_date);
+
+
+            $("#hours4 option[value='"+end_time+"']").prop('selected', true);
+
+    
+
+        }
+    });
+
+    $('#modalSetTimeDeal').modal('show');
 }
 
 
