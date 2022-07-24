@@ -174,6 +174,14 @@
                                     }
                                     $product_saless = Cache::get('deals'. $value->product_id);
 
+                                    $timestamp = $now->diffInSeconds($value->end);
+
+                                    $hour =  floor($timestamp/3600);
+                                    $timestamp = floor($timestamp % 3600);
+                                    $minutes =floor($timestamp/60);
+                                    $timestamp = floor($timestamp % 60);
+                                    $seconds =floor($timestamp);
+
 
                                 ?>
 
@@ -217,10 +225,11 @@
                                             <div class="time-cd time-fl time{{ $key }}">
 
                                                 <span class="timestamp" style="display: none;">{{   $now->diffInSeconds($value->end) }}</span>
-                                                
+                                               
+                                               
                                                 <div class="time">
                                                     <span class="hours">
-                                                        <span class="hourss"> 6</span>
+                                                        <span class="hourss"> {{ $hour }}</span>
                                                         
                                                         <div style="margin-top: 2px; width:100%; height:1px; background: #FF3647"></div>
                                                         <span>Giờ</span>
@@ -228,13 +237,13 @@
                                                     <p style="font-size: 28px; line-height: 55px;font-weight: bold;color: #101010; margin: 0 7px" >:</p>
 
                                                     <span class="hours">
-                                                        <span class="minutess"> 6</span>
+                                                        <span class="minutess">{{ $minutes }}</span>
                                                         <div style="margin-top: 2px; width:100%; height:1px; background: #FF3647"></div>
                                                         <span>phút</span>
                                                     </span>
                                                     <p style="font-size: 28px; line-height: 55px;font-weight: bold;color: #101010; margin: 0 7px">:</p>
                                                     <span class="hours">
-                                                        <span class="secondss"> 6</span>
+                                                        <span class="secondss"> {{ $seconds }}</span>
                                                         <div style="margin-top: 2px; width:100%; height:1px; background: #FF3647"></div>
                                                         <span>giây</span>
                                                     </span>
@@ -624,74 +633,26 @@
 
 
     <script type="text/javascript">
-
+      
         loop = {{ $deal->count() }};
 
-        console.log(loop);
 
-        times = [];
+        function runTime(timestamp, key) {
 
-        for (i = 0; i < loop; i++) {
-            timestamps = $('.time'+i+' .timestamp').text();
+            amount = timestamp //calc milliseconds between dates
+        
+            hours = Math.floor(amount / 3600);
+            amount = amount % 3600;
+            mins = Math.floor(amount / 60);
+            amount = amount % 60;
+            secs = Math.floor(amount);
 
-            
-        }
-
-       
-                                        
-        time = {{ $timestamp }};
-        number_deal_product =10;
-        //in time 
-        var h = 12;
-        var i = 0;
-        var s = 0;
-    
-        amount = time //calc milliseconds between dates
-        days = 0;
-        hours = 0;
-        mins = 0;
-        secs = 0;
-        out = "";
-
-        hours = Math.floor(amount / 3600);
-        amount = amount % 3600;
-        mins = Math.floor(amount / 60);
-        amount = amount % 60;
-        secs = Math.floor(amount);
-            
-        //time run 
-        if(parseInt(time)>0 && parseInt(number_deal_product)>0){
-         h = hours;
-          m = mins;
-          s = secs;
-
-        }   
-        else{
-            let today =  new Date();
-            h = 99 - parseInt(today.getHours());
-            m = 59 - parseInt(today.getMinutes());
-            s = 59 - parseInt(today.getSeconds());
-            
-        }
-         h=12; m=6; s=10; m1=0;h1=0;
-        start();  
-       
-
-        function convertTime() {
-                /*BƯỚC 1: LẤY GIÁ TRỊ BAN ĐẦU*/
-              if (h === null)
-              {
-                  h = parseInt($('.hour').text());
-
-              }
-
-              /*BƯỚC 1: CHUYỂN ĐỔI DỮ LIỆU*/
+             /*BƯỚC 1: CHUYỂN ĐỔI DỮ LIỆU*/
               // Nếu số giây = -1 tức là đã chạy ngược hết số giây, lúc này:
               //  - giảm số phút xuống 1 đơn vị
               //  - thiết lập số giây lại 59
               if (s === -1){
                   m -= 1;
-                  m1 -=1;
                  
                   s = 59;
               }
@@ -699,51 +660,69 @@
               // Nếu số phút = -1 tức là đã chạy ngược hết số phút, lúc này:
               //  - giảm số giờ xuống 1 đơn vị
               //  - thiết lập số phút lại 59
-              if (m === -1|m1===-1){
+              if (m === -1){
                   h -= 1;
-                  h1 -= 1;
                   m = 59;
-                  m1 = 59;
-                  
               }
             
-
-        } 
-
-        function start()
-        {
-
-            convertTime();
-              /*BƯỚC 1: HIỂN THỊ ĐỒNG HỒ*/
-
-              var hour =  h.toString();
-              var hour1 =  h1.toString();
-
-              var seconds =  s.toString();
-
-              var minutes =  m.toString();
-
-              var minutes1 =  m1.toString();
-
-
-            $('.time0 .hourss').text(h<10?'0'+hour:''+hour);
-            $('.secondss').text(s<10?'0'+seconds:''+seconds);
-            $('.time0 .minutess').text(m<10?'0'+minutes:''+minutes);
-            $('.time1 .minutess').text(m1<10?'0'+minutes1:''+minutes1);
-            $('.time1 .hourss').text(h1<10?'0'+hour1:''+hour1);
-
-
-    
-
-
-              /*BƯỚC 1: GIẢM PHÚT XUỐNG 1 GIÂY VÀ GỌI LẠI SAU 1 GIÂY */
-              timeout = setTimeout(function(){
-                  s--;
-                  start();
-
-
-              }, 1000);
         }
+
+       
+        times = [];
+                  
+        time = {{ $timestamp }};
+        number_deal_product =10;
+        //in time 
+      
+        setInterval(function(){
+            for (var i = 0 ; i < loop; i++) {
+                run(i);
+            }
+
+        }, 1000);
+
+        function run(key) {
+            var hour =  $('.time'+key+' .hourss').text();
+            var minutes =  $('.time'+key+' .minutess').text();
+            var second =  $('.time'+key+' .secondss').text();
+
+            h =  parseInt(hour);
+            m = parseInt(minutes);
+            s = parseInt(second);
+
+            s--;
+
+
+            /*BƯỚC 1: CHUYỂN ĐỔI DỮ LIỆU*/
+              // Nếu số giây = -1 tức là đã chạy ngược hết số giây, lúc này:
+              //  - giảm số phút xuống 1 đơn vị
+              //  - thiết lập số giây lại 59
+            if (s === -1){
+                  m -= 1;
+                 
+                  s = 59;
+            }
+
+            // Nếu số phút = -1 tức là đã chạy ngược hết số phút, lúc này:
+            //  - giảm số giờ xuống 1 đơn vị
+            //  - thiết lập số phút lại 59
+            if (m === -1){
+                h -= 1;
+                m = 59;
+            }
+
+            hour =  h.toString();
+
+            minutes =  m.toString();
+            
+            seconds =  s.toString();
+            $('.time'+key+' .hourss').text(h<10?'0'+hour:''+hour);
+            $('.time'+key+' .secondss').text(s<10?'0'+seconds:''+seconds);
+            $('.time'+key+' .minutess').text(m<10?'0'+minutes:''+minutes);
+
+           
+        }
+       
                                                                                                                                                                  
         if(window.innerWidth>768){
             $('.bar-top-lefts').show();
