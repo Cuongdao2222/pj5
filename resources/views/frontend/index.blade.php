@@ -681,11 +681,11 @@
             }
 
              if (h < 0){
-                $('time'+key+' .time').hide();
+                $('.time'+key).remove();
 
                 priceSet =  $('.desc-deal'+key+' .price-old').text();
 
-                $('.desc-deal'+key+' .price-old').hide();
+                $('.desc-deal'+key+' .price-old').css('text-decoration','none');
 
                 $('.desc-deal'+key+' .price-new').text(priceSet);
 

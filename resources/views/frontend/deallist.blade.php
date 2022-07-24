@@ -65,13 +65,14 @@
 
         @if(!empty($deal)&count($deal)>0)
 
-        @if($now->between($timeDeal_star, $timeDeal_end))
+        
 
         <div class="row list-pro">
             
              @foreach($deal as $value)
 
-            @if( $value->active ==1)   
+            @if( $value->active ==1&& $now->between($value->start, $value->end))  
+
 
             <?php 
                 $product = App\Models\product::find($value->product_id);
@@ -138,9 +139,6 @@
                                                                                         
         </div>
 
-        
-
-        @endif
 
         @endif
        
