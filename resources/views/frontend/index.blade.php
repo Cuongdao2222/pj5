@@ -141,7 +141,7 @@
 
         @if(!empty($deal))
 
-        @if($now->between($timeDeal_star, $timeDeal_end))
+       
 
 
         <!-- flash sale -->
@@ -161,7 +161,7 @@
 
                                 @foreach($deal as $key => $value)
 
-                                @if( $value->active ==1)
+                                @if( $value->active ==1 && $now->between($value->start, $value->end))
 
                                 <?php 
 
@@ -191,7 +191,7 @@
                                             <img width="327" src="{{ asset($product_saless->Image) }}"  data-src="{{ asset($product_saless->Image) }}" title="{{ $value->name }}">
                                         </div>
                                     </a>
-                                    <div class="desc">
+                                    <div class="desc desc-deal{{$key}}">
                                       <a href="{{ route('details', $value->link) }}">
                                         <h4 class="title">{{ $value->name }}</h4>
                                         <div class="container-price">
@@ -268,7 +268,7 @@
 
            <!--  end flash  -->
          @endif 
-         @endif  
+          
 
 
         <div class="clearfix"></div> 
@@ -637,37 +637,6 @@
         loop = {{ $deal->count() }};
 
 
-        function runTime(timestamp, key) {
-
-            amount = timestamp //calc milliseconds between dates
-        
-            hours = Math.floor(amount / 3600);
-            amount = amount % 3600;
-            mins = Math.floor(amount / 60);
-            amount = amount % 60;
-            secs = Math.floor(amount);
-
-             /*BƯỚC 1: CHUYỂN ĐỔI DỮ LIỆU*/
-              // Nếu số giây = -1 tức là đã chạy ngược hết số giây, lúc này:
-              //  - giảm số phút xuống 1 đơn vị
-              //  - thiết lập số giây lại 59
-              if (s === -1){
-                  m -= 1;
-                 
-                  s = 59;
-              }
-
-              // Nếu số phút = -1 tức là đã chạy ngược hết số phút, lúc này:
-              //  - giảm số giờ xuống 1 đơn vị
-              //  - thiết lập số phút lại 59
-              if (m === -1){
-                  h -= 1;
-                  m = 59;
-              }
-            
-        }
-
-       
         times = [];
                   
         time = {{ $timestamp }};
@@ -710,6 +679,17 @@
                 h -= 1;
                 m = 59;
             }
+
+             if (h < 0){
+                $('time'+key+' .time').hide();
+
+                priceSet =  $('.desc-deal'+key+' .price-old').text();
+
+                $('.desc-deal'+key+' .price-old').hide();
+
+                $('.desc-deal'+key+' .price-new').text(priceSet);
+
+              }  
 
             hour =  h.toString();
 

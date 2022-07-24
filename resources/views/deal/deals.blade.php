@@ -552,7 +552,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-primary accepts-time-deal" onclick="">Save changes</button>
                     </div>
                 </div>
             </div>
@@ -562,6 +562,7 @@
 
 </div>
 <input type="hidden" name="edit-deal" id="edit-deal">
+<input type="hidden" name="time-deal" id="time-deal">
 
 <input type="hidden" name="row" id="row_id">
 <script type="text/javascript">
@@ -632,6 +633,8 @@ function setTimeDeal(id) {
 
 
             $("#hours4 option[value='"+end_time+"']").prop('selected', true);
+
+            $('#time-deal').val(id);
 
     
 
@@ -815,6 +818,31 @@ function set_feature(id, active){
         }
     });
 }
+
+$('.accepts-time-deal').click(function(){
+
+    $.ajax({
+
+    type: 'GET',
+        url: "{{ route('updateTimeDeal') }}",
+        data: {
+            start: $('#date-picker3').val()+','+$('#hours3').val(),
+
+            end:$('#date-picker4').val()+','+$('#hours4').val(),
+            id:$('#time-deal').val()
+           
+            
+        },
+        success: function(result){
+
+           window.location.reload();
+        }
+    });
+
+
+})
+
+
 
 $('.accepts').click(function(){
 

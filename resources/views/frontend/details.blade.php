@@ -286,7 +286,7 @@
         $timeDeal_end =  \Carbon\Carbon::create($timeDeal_end);
         $timestamp = $now->diffInSeconds($timeDeal_end);
 
-        if($now->between($timeDeal_star, $timeDeal_end)){
+        if($now->between($check_deal->start, $check_deal->end)){
             $deal_check_add = true;
             $price_old = $data->Price;
             $text = '<b>MUA ONLINE GIÁ SỐC: </b>';

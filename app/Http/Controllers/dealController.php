@@ -122,6 +122,24 @@ class dealController extends Controller
 
     }
 
+    public function updateTimeDeal(Request $request)
+    {
+        $start = $request->start;
+
+        $end  = $request->end;
+
+        $id  = $request->id;
+
+        $deal = deal::find($id);
+
+        $deal->start = $start;
+
+        $deal->end = $end;
+
+        $deal->save();
+
+    }
+
     public function add_Deal(Request $request)
     {
         $start = $request->start;

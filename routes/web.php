@@ -176,6 +176,7 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::get('incrawl', 'crawlController@allproduct');
 
+    Route::get('updateTimeDeal', 'dealController@updateTimeDeal')->name('updateTimeDeal');
 
     Route::get('update-banner-stt', 'AjaxController@banner_update_stt')->name('editBnstt');
 

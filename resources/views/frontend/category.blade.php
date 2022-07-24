@@ -195,7 +195,7 @@
                                     $timeDeal_end =  \Carbon\Carbon::create($timeDeal_end);
                                     $timestamp = $now->diffInSeconds($timeDeal_end);
 
-                                    if($now->between($timeDeal_star, $timeDeal_end)){
+                                    if($now->between($check_deal->start, $check_deal->end)){
                                        
                                         $value->Price = $check_deal->deal_price;
                                         
