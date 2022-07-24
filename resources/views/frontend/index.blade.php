@@ -159,11 +159,8 @@
                         <div class="col-flash col-flash-2 active">
                             <div id="sync1S" class="slider-banner owl-carousel flash-sale-banner">
 
-                            
-                                @foreach($deal as $value)
+                                @foreach($deal as $key => $value)
 
-                               
-                             
                                 @if( $value->active ==1)
 
                                 <?php 
@@ -217,7 +214,9 @@
                                         </div>
                                         <div style="width: 100%; height: 1px; background: #ECECEC; margin-top: 8px"></div>
                                         <div class="countdown-flash-sale">
-                                            <div class="time-cd time-fl">
+                                            <div class="time-cd time-fl time{{ $key }}">
+
+                                                <span class="timestamp" style="display: none;">{{   $now->diffInSeconds($value->end) }}</span>
                                                 
                                                 <div class="time">
                                                     <span class="hours">
@@ -626,11 +625,19 @@
 
     <script type="text/javascript">
 
-        times = ['133456', '100000', '1100', '12000'];
+        loop = {{ $deal->count() }};
 
-        // đếm thời gian 
+        console.log(loop);
 
-         //document.getElementById('svg').innerHTML = xmlSvg;
+        times = [];
+
+        for (i = 0; i < loop; i++) {
+            timestamps = $('.time'+i+' .timestamp').text();
+
+            
+        }
+
+       
                                         
         time = {{ $timestamp }};
         number_deal_product =10;
@@ -657,6 +664,7 @@
          h = hours;
           m = mins;
           s = secs;
+
         }   
         else{
             let today =  new Date();
@@ -665,12 +673,12 @@
             s = 59 - parseInt(today.getSeconds());
             
         }
+         h=12; m=6; s=10; m1=0;h1=0;
+        start();  
+       
 
-        start();    
-        function start()
-        {
-
-              /*BƯỚC 1: LẤY GIÁ TRỊ BAN ĐẦU*/
+        function convertTime() {
+                /*BƯỚC 1: LẤY GIÁ TRỊ BAN ĐẦU*/
               if (h === null)
               {
                   h = parseInt($('.hour').text());
@@ -683,39 +691,49 @@
               //  - thiết lập số giây lại 59
               if (s === -1){
                   m -= 1;
+                  m1 -=1;
+                 
                   s = 59;
               }
 
               // Nếu số phút = -1 tức là đã chạy ngược hết số phút, lúc này:
               //  - giảm số giờ xuống 1 đơn vị
               //  - thiết lập số phút lại 59
-              if (m === -1){
+              if (m === -1|m1===-1){
                   h -= 1;
+                  h1 -= 1;
                   m = 59;
+                  m1 = 59;
+                  
               }
+            
 
-              // Nếu số giờ = -1 tức là đã hết giờ, lúc này:
-              //  - Dừng chương trình
-              //if (h == -1){
+        } 
 
-                 //clearTimeout(timeout);
-                 //$('#timer-391923717').hide();
-                  //return false;
+        function start()
+        {
 
-
-              //}
-
+            convertTime();
               /*BƯỚC 1: HIỂN THỊ ĐỒNG HỒ*/
 
               var hour =  h.toString();
+              var hour1 =  h1.toString();
 
               var seconds =  s.toString();
 
               var minutes =  m.toString();
 
-              $('.hourss').text(h<10?'0'+hour:''+hour);
-              $('.secondss').text(s<10?'0'+seconds:''+seconds);
-              $('.minutess').text(m<10?'0'+minutes:''+minutes);
+              var minutes1 =  m1.toString();
+
+
+            $('.time0 .hourss').text(h<10?'0'+hour:''+hour);
+            $('.secondss').text(s<10?'0'+seconds:''+seconds);
+            $('.time0 .minutess').text(m<10?'0'+minutes:''+minutes);
+            $('.time1 .minutess').text(m1<10?'0'+minutes1:''+minutes1);
+            $('.time1 .hourss').text(h1<10?'0'+hour1:''+hour1);
+
+
+    
 
 
               /*BƯỚC 1: GIẢM PHÚT XUỐNG 1 GIÂY VÀ GỌI LẠI SAU 1 GIÂY */
