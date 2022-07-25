@@ -362,16 +362,31 @@
                                     <div class="btn-primary edit_orders{{$val->id}}" style="width: 25%;" onclick="update_order({{ $val->id }})" >sửa</div>
                                 </td>
                                 <td>
+
+                                 
+                                   
+                                    
                                     <?php 
+
+
                                         $timeup = $now->diffInSeconds($val->end); 
 
                                         $hour  = $timeup/3600;
                                         $timeup = $timeup%3600;
                                         $minutes = $timeup/60;
+                                    
 
                                     ?> 
 
-                                    Còn {{ (int)$hour }} giờ {{ (int)$minutes }} phút nữa 
+                                   
+
+
+                                    @if($now->between($val->start, $val->end))
+                                    Còn {{ floor($hour) }} giờ {{ (int)$minutes }} phút nữa 
+                                    
+                                    @else
+                                      Hết thời gian deal                                  
+                                     @endif
                                     <br>
                                     <a href="javascript:void(0)" onclick="setTimeDeal({{ $val->id }})">Sửa</a>
                                 </td>
@@ -613,6 +628,7 @@ function setTimeDeal(id) {
         success: function(result){
             start = result[0];
             end   = result[1];
+            console.log(end);
             ar_start = start.split(',');
             start_date = ar_start[0];
             start_time = ar_start[1];

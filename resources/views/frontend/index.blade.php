@@ -160,6 +160,8 @@
                             <div id="sync1S" class="slider-banner owl-carousel flash-sale-banner">
 
                                 @foreach($deal as $key => $value)
+                               
+
 
                                 @if( $value->active ==1 && $now->between($value->start, $value->end))
 
@@ -654,14 +656,10 @@
             var hour =  $('.time'+key+' .hourss').text();
             var minutes =  $('.time'+key+' .minutess').text();
             var second =  $('.time'+key+' .secondss').text();
-
             h =  parseInt(hour);
             m = parseInt(minutes);
             s = parseInt(second);
-
             s--;
-
-
             /*BƯỚC 1: CHUYỂN ĐỔI DỮ LIỆU*/
               // Nếu số giây = -1 tức là đã chạy ngược hết số giây, lúc này:
               //  - giảm số phút xuống 1 đơn vị
@@ -698,9 +696,7 @@
             seconds =  s.toString();
             $('.time'+key+' .hourss').text(h<10?'0'+hour:''+hour);
             $('.time'+key+' .secondss').text(s<10?'0'+seconds:''+seconds);
-            $('.time'+key+' .minutess').text(m<10?'0'+minutes:''+minutes);
-
-           
+            $('.time'+key+' .minutess').text(m<10?'0'+minutes:''+minutes); 
         }
        
                                                                                                                                                                  

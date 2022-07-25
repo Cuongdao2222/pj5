@@ -1689,14 +1689,16 @@
 
               // Nếu số giờ = -1 tức là đã hết giờ, lúc này:
               //  - Dừng chương trình
-              //if (h == -1){
+              if (h == -1){
 
-                 //clearTimeout(timeout);
-                 //$('#timer-391923717').hide();
-                  //return false;
+                $('.crazy-deal-details').remove();
 
+                $('.pdetail-price b').remove();
+                $('.pdetail-price-box b').remove();
+                priceChange = '{{  str_replace(',' ,'.', number_format($price_old))  }}'   ;
+                $('.pdetail-price-box h3').text(priceChange);
 
-              //}
+              }
 
 
 
