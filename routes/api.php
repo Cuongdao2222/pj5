@@ -45,3 +45,5 @@ Route::resource('filters', 'filterAPIController');
 Route::resource('properties', 'propertyAPIController');
 
 Route::resource('gifts', 'giftAPIController');
+
+Route::put('api-update-product/{id}', 'backend\apiController@updateProduct');
