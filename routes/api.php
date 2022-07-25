@@ -36,7 +36,7 @@ Route::resource('group_products', 'group_productAPIController');
 
 Route::resource('makers', 'makerAPIController');
 
-Route::resource('products', 'productAPIController');
+Route::resource('products', 'API\productAPIController');
 
 Route::resource('images', 'imageAPIController');
 
