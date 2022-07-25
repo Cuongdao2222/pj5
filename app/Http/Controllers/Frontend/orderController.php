@@ -50,7 +50,9 @@ class orderController extends Controller
     
         // trừ số sản phẩm đã đặt
 
-        $product_subtract = product::find($carts[0]['id']);
+
+
+        $product_subtract = product::find(array_values(reset($cart))[0]->id);
 
         $qty  = $carts[0]['qty'];
 
@@ -72,7 +74,9 @@ class orderController extends Controller
 
         $order = new Order();
 
-        $order::create($input);
+        $check = $order::create($input);
+
+      
 
         // if(!empty($mail)){
 
