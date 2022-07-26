@@ -1594,13 +1594,19 @@
         $("#tags").autocomplete({
             
             source: function(request, response) {
-               
+                $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+
+
+                });
                 $.ajax({
 
                     url: "{{  route('sugest-click')}}",
                     type: "POST",
                     data: {
-                      
+                        "_token": "{{ csrf_token() }}",
                         product:$('#tags').val()
                     },
                     dataType: "json",
@@ -1624,13 +1630,19 @@
         $("#skw").autocomplete({
             
             source: function(request, response) {
-              
+                $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+
+
+                });
                 $.ajax({
 
                     url: "{{  route('sugest-click')}}",
                     type: "POST",
                     data: {
-                     
+                        _token: "{{ csrf_token() }}",
                         product:$('#skw').val()
                     },
                     dataType: "json",
