@@ -109,7 +109,7 @@ class indexController extends Controller
         
         Cache::put('baners',$banners,10000);
 
-        Cache::put('deals',$deal,10000);
+        Cache::put('deals',$deal,120);
 
     
     }
