@@ -465,7 +465,7 @@ class categoryController extends Controller
 
                 $datas = product::findOrFail($findID->id);
 
-                Cache::put('data-detail'.$findID->id, $datas, 100);
+                Cache::put('data-detail'.$findID->id, $datas, 10);
 
             }
 
