@@ -90,7 +90,6 @@ class indexController extends Controller
     public function cache()
     {
        
-
         $banners = banners::where('option','=',0)->take(6)->OrderBy('stt', 'asc')->where('active','=',1)->select('title', 'image', 'title', 'link')->get();
 
         $deal = deal::OrderBy('order', 'desc')->get();
@@ -109,9 +108,6 @@ class indexController extends Controller
         Cache::put('product_sale', $product_sale,10000);
         
         Cache::put('baners',$banners,10000);
-
-        Cache::put('deals',$deal,600);
-
     
     }
 
