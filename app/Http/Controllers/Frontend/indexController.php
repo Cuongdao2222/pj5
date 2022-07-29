@@ -24,13 +24,12 @@ class indexController extends Controller
 
         $banners =  Cache::get('baners');
 
-        $deal_check = deal::OrderBy('end', 'desc')->take(1)->get();
+        $deal = Cache::get('deals')->orderBy('order', 'desc')->get();
 
-        $deal = deal::OrderBy('order', 'desc')->get();
+        $deal_check = Cache::get('deals')->orderBy('end', 'desc')->get();
 
         $group = Cache::get('groups');
 
-       
         $product_sale = Cache::get('product_sale');
 
          $timeDeal_star = Cache::get('deal_start'); 
@@ -52,7 +51,7 @@ class indexController extends Controller
 
         // }
 
-        if(empty($group) ||empty($banners)||empty($product_sale)||empty($deal)){
+        if(empty($group) ||empty($banners)||empty($product_sale)){
 
             $this->cache();
 
@@ -86,15 +85,12 @@ class indexController extends Controller
         });
 
       
-        return view('frontend.index', compact('banners', 'bannersRight', 'bannerUnderSlider', 'bannerUnderSale','deal','product_sale', 'group','timeDeal_star','deal_check'));
+        return view('frontend.index', compact('banners', 'bannersRight', 'bannerUnderSlider', 'bannerUnderSale','deal','product_sale', 'group','timeDeal_star', 'deal_check'));
     }
     public function cache()
     {
        
-
         $banners = banners::where('option','=',0)->take(6)->OrderBy('stt', 'asc')->where('active','=',1)->select('title', 'image', 'title', 'link')->get();
-
-        $deal_check = deal::OrderBy('end', 'desc')->take(1)->get();
 
         $deal = deal::OrderBy('order', 'desc')->get();
 
@@ -112,9 +108,6 @@ class indexController extends Controller
         Cache::put('product_sale', $product_sale,10000);
         
         Cache::put('baners',$banners,10000);
-
-        Cache::put('deals',$deal,600);
-
     
     }
 
