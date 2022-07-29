@@ -51,7 +51,7 @@ class indexController extends Controller
 
         // }
 
-        if(empty($group) ||empty($banners)||empty($product_sale)||empty($deal)){
+        if(empty($group) ||empty($banners)||empty($product_sale)){
 
             $this->cache();
 
