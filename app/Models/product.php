@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Eloquent as Model;
 
+use Illuminate\Support\Facades\Cache;
+
 /**
  * Class product
  * @package App\Models
@@ -24,10 +26,24 @@ class product extends Model
 {
 
     public $table = 'products';
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::updating(function ($instance) {
+            // update cache content
+            Cache::forget('data-detail'.$instance->slug);
+            Cache::forever('data-detail'.$instance->Link,$instance);
+           
+        });
+
+        static::deleting(function ($instance) {
+            // delete post cache
+            Cache::forget('data-detail'.$instance->Link);
+        });
+    }
     
-
-
-
     public $fillable = [
         'Image',
         'Name',

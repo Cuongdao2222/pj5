@@ -293,9 +293,6 @@
             $data->Price = $check_deal->deal_price;
             $percent = ceil((int)$price_old/$data->Price);
         }
-    
-        
-    
     }
 
 

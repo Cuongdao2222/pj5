@@ -422,6 +422,8 @@ class categoryController extends Controller
 
     public function details($slug)
     {
+        $slug = trim($slug);
+
         $link = trim($slug);
 
         $cache = 'findID'.$link;
@@ -446,9 +448,6 @@ class categoryController extends Controller
 
             $pageCheck = "product";
 
-
-        
-
             if(!Cache::has('dat'.$findID->id) ){
 
                 $image_cache = image::where('product_id', $findID->id)->select('image')->get();
@@ -460,19 +459,12 @@ class categoryController extends Controller
             $images = Cache::get('dat'.$findID->id);
 
 
+            $data = Cache::rememberForever('data-detail'.$slug, function() use($slug) {
 
-            if(!Cache::has('data-detail'.$findID->id) ){
+                return product::where('Link',$slug)->first();
+            });
 
-                $datas = product::findOrFail($findID->id);
 
-                Cache::put('data-detail'.$findID->id, $datas, 10);
-
-            }
-
-            $data = Cache::get('data-detail'.$findID->id);
-            
-           
-            
             if(!empty($data) && !empty($_GET['show'])&&($_GET['show']=='tra-gop')){
                 
                 return view('frontend.installment', compact('data'));

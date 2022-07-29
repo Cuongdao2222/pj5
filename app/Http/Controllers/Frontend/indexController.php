@@ -24,11 +24,12 @@ class indexController extends Controller
 
         $banners =  Cache::get('baners');
 
-        $deal = Cache::get('deals');
+        $deal = Cache::get('deals')->OrderBy('order', 'desc')->get();
+
+        $deal_check = Cache::get('deals')->OrderBy('end', 'desc')->get();
 
         $group = Cache::get('groups');
 
-       
         $product_sale = Cache::get('product_sale');
 
          $timeDeal_star = Cache::get('deal_start'); 
@@ -84,7 +85,7 @@ class indexController extends Controller
         });
 
       
-        return view('frontend.index', compact('banners', 'bannersRight', 'bannerUnderSlider', 'bannerUnderSale','deal','product_sale', 'group','timeDeal_star'));
+        return view('frontend.index', compact('banners', 'bannersRight', 'bannerUnderSlider', 'bannerUnderSale','deal','product_sale', 'group','timeDeal_star', 'deal_check'));
     }
     public function cache()
     {

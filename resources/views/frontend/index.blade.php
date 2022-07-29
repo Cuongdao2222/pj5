@@ -138,11 +138,9 @@
 
 
         ?>
+        
 
-        @if(!empty($deal))
-
-       
-
+        @if($deal_check->count()>0 && $now->between($deal_check[0]->start, $deal_check[0]->end))
 
         <!-- flash sale -->
             <div class="img-flashsale mobiles" style="width: 100%;">
