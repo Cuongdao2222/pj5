@@ -1,2 +1,11 @@
 User-agent: *
 Disallow: /admin
+
+User-agent: SemrushBot
+Crawl-delay: 500
+
+User-agent: AhrefsBot
+Crawl-delay: 500
+
+User-agent: Jooblebot
+Crawl-delay: 500
