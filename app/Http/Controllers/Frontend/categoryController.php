@@ -452,7 +452,7 @@ class categoryController extends Controller
 
                 $image_cache = image::where('product_id', $findID->id)->select('image')->get();
 
-                Cache::put('dat'.$findID->id, $image_cache, 100);
+                Cache::put('dat'.$findID->id, $image_cache, 1000);
 
             }
 
@@ -470,7 +470,7 @@ class categoryController extends Controller
                 return view('frontend.installment', compact('data'));
             }
 
-             $other_product = Cache::remember('other_product', 50, function() use ($data) {
+             $other_product = Cache::remember('other_product', 10000, function() use ($data) {
                 return  product::where('Group_id',  $data->Group_id)->take(10)->get();
             });
 

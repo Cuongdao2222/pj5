@@ -258,23 +258,7 @@
 
 <?php  
 
-        
-         
-         if(!Cache::has('deal_details'.$data->id)){
-
-            $check_deals  =   App\Models\deal::select('deal_price','start', 'end')->where('product_id', $data->id)->where('active', 1)->first();
-
-            
-
-            $check_deals = $check_deals??'';
-
-            Cache::put('deal_details'.$data->id,$check_deals,10);
-             
-            
-        }
-        
-        $check_deal = Cache::get('deal_details'.$data->id);
-       
+    $check_deal = Cache::get('deal_details'.$data->id);
 
     $deal_check_add = false;
     
