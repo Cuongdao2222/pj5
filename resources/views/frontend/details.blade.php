@@ -258,8 +258,9 @@
 
 <?php  
 
-    $check_deal = Cache::get('deal_details'.$data->id);
+    $check_deal = Cache::get('deals')->where('product_id',$data->id)->get()->first();
 
+    
     $deal_check_add = false;
     
     if(!empty($check_deal) && !empty(!empty($check_deal->deal_price))){
