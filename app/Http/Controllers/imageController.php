@@ -9,6 +9,7 @@ use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
+use App\Models\deal;
 use App\Models\product;
 use App\Models\imagescontent;
 
@@ -234,7 +235,17 @@ class imageController extends AppBaseController
         $product_id = $request->product_id;
         $image   = $request->image;
         $data = product::find($product_id);
+
         $data->Image = $image;
         $data->save();
+        $imageDeal = deal::where('product_id', $product_id)->first();
+        if(!empty($imageDeal)){
+            $imageDeal = deal::find($imageDeal->id);
+            $imageDeal->image = $image;
+            $imageDeal->save();
+
+        }
+        
+
     }
 }

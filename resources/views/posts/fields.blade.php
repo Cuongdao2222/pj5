@@ -16,6 +16,7 @@
 <div class="form-group col-sm-6">
     {!! Form::label('title', 'Title:') !!}
     {!! Form::text('title', null, ['class' => 'form-control']) !!}
+    
 </div>
 
 <?php 
@@ -164,6 +165,37 @@
 <div class="clearfix"></div>
 
 <script type="text/javascript">
+
+    $(document).ready(function() {
+
+        $( "#title" ).autocomplete({  
+            source: function( request, response ) {
+                $.ajax({
+                    type: "GET",
+                    url: '{{ route('searTitlePost') }}',
+                    data: {
+                        title: $("#title").val(),
+        
+                    },
+                    dataType: "json",
+                    
+
+                    success: function(data) {
+                      
+                        var items = data;
+
+                        response(items[0]);
+                       
+                    }
+                });
+            
+            },
+            minLength: 3,
+            html:true,  
+            autofocus: true   
+        });  
+
+    });
     var activeReplace = [];
 
 

@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Eloquent as Model;
 
+use Illuminate\Support\Facades\Cache;
+
 /**
  * Class image
  * @package App\Models
@@ -17,6 +19,31 @@ class image extends Model
 {
 
     public $table = 'images';
+
+    public static function boot()
+    {
+          parent::boot();
+
+        static::creating(function ($instance) {
+           // update cache content
+           Cache::forget('image_product'.$instance->product_id);
+           Cache::forever('image_product'.$instance->product_id,$instance);
+        });
+
+        static::updating(function ($instance) {
+           // update cache content
+          
+           Cache::forget('image_product'.$instance->product_id);
+           Cache::forever('image_product'.$instance->product_id,$instance);
+
+
+        });
+
+        static::deleting(function ($instance) {
+           Cache::forget('image_product'.$instance->product_id);
+           Cache::forever('image_product'.$instance->product_id,$instance);
+        });
+    }   
     
 
 

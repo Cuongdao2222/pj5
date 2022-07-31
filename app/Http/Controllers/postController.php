@@ -254,6 +254,26 @@ class postController extends AppBaseController
        }
     }
 
+    public function searchTitle(Request $request)
+    {
+        $title = $request->title;
+
+        $data = post::select('title')->where('title', 'like','%'.$title.'%')->first();
+
+        $datas = [];
+
+        array_push($datas, $data);
+
+        
+
+        if(!empty($data)){
+            return response(json_encode($datas));
+        }
+
+        
+
+    }
+
     public function addHightLight(Request $request)
     {
        $id = $request->id;

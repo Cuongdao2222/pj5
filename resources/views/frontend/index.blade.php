@@ -158,21 +158,17 @@
                             <div id="sync1S" class="slider-banner owl-carousel flash-sale-banner">
 
                                 @foreach($deal as $key => $value)
-
+                                <?php 
+                                    empty($value->active)?'':$value->active;
+                                ?>
 
 
                                 @if( $value->active ==1 && $now->between($value->start, $value->end))
 
                                 <?php 
 
-                                    if(empty(Cache::get('deals'. $value->product_id))){
-
-                                        $deals = App\Models\product::find($value->product_id);
-
-                                        Cache::put('deals'.$value->product_id,$deals,10000);
-
-                                    }
-                                    $product_saless = Cache::get('deals'. $value->product_id);
+                                    
+                                  
 
                                     $timestamp = $now->diffInSeconds($value->end);
 
@@ -188,7 +184,7 @@
                                 <div class="item">
                                     <a href="{{ route('details', $value->link) }}">
                                         <div class="img">
-                                            <img width="327" src="{{ asset($product_saless->Image) }}"  data-src="{{ asset($product_saless->Image) }}" title="{{ $value->name }}">
+                                            <img width="327" src="{{ asset($value->image) }}"  data-src="{{ asset($value->image) }}" title="{{ $value->name }}">
                                         </div>
                                     </a>
                                     <div class="desc desc-deal{{$key}}">
