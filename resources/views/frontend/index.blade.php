@@ -192,7 +192,7 @@
                                         <h4 class="title">{{ $value->name }}</h4>
                                         <div class="container-price">
                                                <div>
-                                                   <span class="price-old">{{ @str_replace(',' ,'.', number_format($product_saless->Price)) }}&#x20AB;</span>
+                                                   <span class="price-old">{{ @str_replace(',' ,'.', number_format($value->price)) }}&#x20AB;</span>
                                                </div>
                                         </div>
                                         <div style="margin-top: 11px">
