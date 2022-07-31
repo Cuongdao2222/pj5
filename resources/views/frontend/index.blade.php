@@ -139,7 +139,7 @@
 
         ?>
         
-
+       
         @if($deal_check->count()>0 && $now->between($deal_check[0]->start, $deal_check[0]->end))
 
         <!-- flash sale -->
@@ -158,12 +158,10 @@
                             <div id="sync1S" class="slider-banner owl-carousel flash-sale-banner">
 
                                 @foreach($deal as $key => $value)
-                                <?php 
-                                    empty($value->active)?'':$value->active;
-                                ?>
+                               
 
 
-                                @if( $value->active ==1 && $now->between($value->start, $value->end))
+                                @if( !empty($value->active) && $value->active ==1 && $now->between($value->start, $value->end))
 
                                 <?php 
 
