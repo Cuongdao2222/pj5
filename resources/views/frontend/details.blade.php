@@ -258,7 +258,7 @@
 
 <?php  
 
-    $check_deal = Cache::get('deals')->where('product_id',$data->id)->get()->first();
+    $check_deal = Cache::get('deals')->where('product_id',$data->id)->where('active',1)->get()->first();
 
     
     $deal_check_add = false;
