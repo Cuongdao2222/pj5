@@ -172,6 +172,8 @@ Route::post('filter-price-product', 'AjaxController@filterByValue')->name('filte
 
 Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
+    Route::get('seachtitlePost', 'postController@searchTitle')->name('searTitlePost');
+
     Route::get('get-time-deal', 'dealController@getTimeDeal')->name('getTimeDeal');
 
     Route::get('incrawl', 'crawlController@allproduct');
@@ -301,8 +303,6 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
     Route::resource('banners', 'bannerController');
 
     Route::get('activeBanner', 'bannerController@activeBanner')->name('active-banner');
-
-    
 
     Route::resource('categories', 'categoryController');
 

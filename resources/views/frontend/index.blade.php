@@ -139,7 +139,7 @@
 
         ?>
         
-
+       
         @if($deal_check->count()>0 && $now->between($deal_check[0]->start, $deal_check[0]->end))
 
         <!-- flash sale -->
@@ -158,21 +158,15 @@
                             <div id="sync1S" class="slider-banner owl-carousel flash-sale-banner">
 
                                 @foreach($deal as $key => $value)
+                               
 
 
-
-                                @if( $value->active ==1 && $now->between($value->start, $value->end))
+                                @if( !empty($value->active) && $value->active ==1 && $now->between($value->start, $value->end))
 
                                 <?php 
 
-                                    if(empty(Cache::get('deals'. $value->product_id))){
-
-                                        $deals = App\Models\product::find($value->product_id);
-
-                                        Cache::put('deals'.$value->product_id,$deals,10000);
-
-                                    }
-                                    $product_saless = Cache::get('deals'. $value->product_id);
+                                    
+                                  
 
                                     $timestamp = $now->diffInSeconds($value->end);
 
@@ -188,7 +182,7 @@
                                 <div class="item">
                                     <a href="{{ route('details', $value->link) }}">
                                         <div class="img">
-                                            <img width="327" src="{{ asset($product_saless->Image) }}"  data-src="{{ asset($product_saless->Image) }}" title="{{ $value->name }}">
+                                            <img width="327" src="{{ asset($value->image) }}"  data-src="{{ asset($value->image) }}" title="{{ $value->name }}">
                                         </div>
                                     </a>
                                     <div class="desc desc-deal{{$key}}">
@@ -196,7 +190,7 @@
                                         <h4 class="title">{{ $value->name }}</h4>
                                         <div class="container-price">
                                                <div>
-                                                   <span class="price-old">{{ @str_replace(',' ,'.', number_format($product_saless->Price)) }}&#x20AB;</span>
+                                                   <span class="price-old">{{ @str_replace(',' ,'.', number_format($value->price)) }}&#x20AB;</span>
                                                </div>
                                         </div>
                                         <div style="margin-top: 11px">
