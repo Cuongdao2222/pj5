@@ -21,11 +21,17 @@ class indexController extends Controller
     public function index()
     {
        
+
         $banners =  Cache::get('baners');
 
-        $deal = Cache::get('deals')->sortByDesc('order');
 
-        $deal_check = Cache::get('deals')->sortByDesc('end');
+
+        $deal = Cache::get('deals')->orderBy('order', 'desc')->get();
+
+        $deal_check = Cache::get('deals')->orderBy('end', 'desc')->get();
+        
+
+
 
         $group = Cache::get('groups');
 
