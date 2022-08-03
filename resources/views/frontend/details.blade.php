@@ -258,7 +258,9 @@
 
 <?php  
 
-    $check_deal = Cache::get('deals')->where('product_id',$data->id);
+    $check_deal = Cache::get('deals')->where('product_id',$data->id)->all();
+
+    $check_deal = reset($check_deal);
 
     
     $deal_check_add = false;
@@ -279,6 +281,8 @@
             $percent = ceil((int)$price_old/$data->Price);
         }
     }
+
+  
 
 
     if(!Cache::has('groupsProductDetails') ){
