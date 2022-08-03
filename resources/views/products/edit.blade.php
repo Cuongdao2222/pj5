@@ -22,6 +22,8 @@
             $infoProductOfGroup = App\Models\groupProduct::select('product_id', 'id')->whereIn('id', $data_groupProduct)->get()->toArray();
 
             $result = [];
+
+
             if(isset($infoProductOfGroup)){
 
                 foreach($infoProductOfGroup as $key => $val){
@@ -31,9 +33,40 @@
 
                         array_push($result, $val['id']);
                     }
+                   
                     
                 }
+
             }
+
+            if($result[0]==8){
+                $data_groupProduct = App\Models\groupProduct::where('level', 2)->get()->pluck('id');
+
+                if(isset($data_groupProduct)){
+
+                    $result = [];
+
+                    $infoProductOfGroup = App\Models\groupProduct::select('product_id', 'id')->whereIn('id', $data_groupProduct)->get()->toArray();
+
+                    if(isset($infoProductOfGroup)){
+
+                        foreach($infoProductOfGroup as $key => $val){
+
+
+                            if(!empty($val['product_id'])&& in_array($id, json_decode($val['product_id']))){
+
+                                array_push($result, $val['id']);
+                            }
+                           
+                            
+                        }
+
+                    }
+                }
+
+
+            }
+
             return $result;
         }
     ?>        

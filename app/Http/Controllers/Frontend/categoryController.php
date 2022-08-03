@@ -256,6 +256,13 @@ class categoryController extends Controller
                 }
 
             }
+            
+            if($parent_cate_id == 8){
+
+                $parent_cate_id = $id_cate;
+
+            }
+
 
             
             $filter = filter::where('group_product_id', $parent_cate_id)->select('name', 'id')->get();
