@@ -24,11 +24,9 @@ class indexController extends Controller
 
         $banners =  Cache::get('baners');
 
+        $deal = Cache::get('deals')->sortByDesc('order');
 
-
-        $deal = '';
-
-        $deal_check = '';
+        $deal_check = Cache::get('deals')->sortByDesc('end');
 
         $group = Cache::get('groups');
 
@@ -74,21 +72,17 @@ class indexController extends Controller
         //     return banners::where('option','=',0)->take(6)->OrderBy('stt', 'asc')->where('active','=',1)->select('title', 'image', 'title', 'link')->get();
         // });
 
-
-
         $bannersRight = Cache::remember('bannersRights',10000, function() {
-            return banners::where('option', 2)->orderBy('stt', 'asc')->where('active', 1)->get();
+            return banners::where('option', 2)->OrderBy('stt', 'asc')->where('active', 1)->get();
         });
 
         $bannerUnderSlider = Cache::remember('bannerUnderSlider',10000, function() {
-            return banners::where('option', 3)->orderBy('stt', 'asc')->where('active', 1)->get();
+            return banners::where('option', 3)->OrderBy('stt', 'asc')->where('active', 1)->get();
         });
 
         $bannerUnderSale = Cache::remember('bannerUnderSale',10000, function() {
-            return banners::where('option', 5)->orderBy('stt', 'asc')->take(1)->get()->toArray();;
+            return banners::where('option', 5)->OrderBy('stt', 'asc')->take(1)->get()->toArray();;
         });
-
-        ;
 
       
         return view('frontend.index', compact('banners', 'bannersRight', 'bannerUnderSlider', 'bannerUnderSale','deal','product_sale', 'group','timeDeal_star', 'deal_check'));
