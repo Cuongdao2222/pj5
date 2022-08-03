@@ -499,7 +499,7 @@
                                                 <img src="{{ asset($valuegift->image) }}" height="30px" width="30px">
 
                                                 @if($valuegift->id ==5)
-                                               
+                                                <a href="https://dienmaynguoiviet.vn/khau-trang-loc-khi-lg-puricare-the-he-2-ap551awfa-ajp-may-trang"><h4>{{ $valuegift->name }}</h4></a>
                                                 @else
                                                 <h4>{{ $valuegift->name }}</h4>
                                                 @endif
