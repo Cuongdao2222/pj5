@@ -45,6 +45,7 @@
             {!! Form::open(['route' => 'filters.store']) !!}
 
             <input type="hidden" name="group_product_id" value="{{ $_GET['groupid']  }}">
+            <input type="hidden" name="productId" value="{{ $_GET['productId']  }}">
 
            
 

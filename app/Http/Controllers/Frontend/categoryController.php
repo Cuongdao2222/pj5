@@ -66,18 +66,29 @@ class categoryController extends Controller
             }
              $findID = groupProduct::where('link', $link)->first();
 
+
             if(!empty($findID)){
 
                 $id_cate = $findID->id;
                 $groupProduct_level = $findID->level;
                 $ar_list = $this->find_List_Id_Group($id_cate,$groupProduct_level);
 
+
+
                 $parent_cate_id = $ar_list[0]['id'];
 
 
                 $list_data_group = filter::where('group_product_id', $parent_cate_id)->whereIn('id', $filter)->select('value')->get()->toArray();
 
+                if($parent_cate_id == 8){
+
+                    $parent_cate_id = $id_cate;
+                }
+
+
                 $filter = filter::where('group_product_id', $parent_cate_id)->select('name', 'id')->get();
+
+
 
                 $fill = [];
 
@@ -91,6 +102,8 @@ class categoryController extends Controller
 
 
                 $checkidgroup = groupProduct::find($group_id);
+
+
 
                 if(!empty($checkidgroup) && !empty($checkidgroup->product_id)){
 
@@ -114,8 +127,6 @@ class categoryController extends Controller
 
                         }
                         
-                        
-
                         if(isset($keys)){
                             foreach($keys as $key1 => $vals){
 
@@ -179,12 +190,6 @@ class categoryController extends Controller
             }
 
              return view('frontend.filter', compact('product_search', 'link', 'filter', 'id_cate', 'ar_list', 'groupProduct_level'));
-
-           
-             
-
-
-            
 
         }
         else{
@@ -256,7 +261,7 @@ class categoryController extends Controller
                 }
 
             }
-            
+
             if($parent_cate_id == 8){
 
                 $parent_cate_id = $id_cate;
