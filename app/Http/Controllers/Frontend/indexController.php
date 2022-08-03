@@ -24,9 +24,9 @@ class indexController extends Controller
 
         $banners =  Cache::get('baners');
 
-        $deal = Cache::get('deals')->orderBy('order', 'desc')->get();
+        $deal = Cache::get('deals')->sortByDesc('order')->get();
 
-        $deal_check = Cache::get('deals')->orderBy('end', 'desc')->get();
+        $deal_check = Cache::get('deals')->sortByDesc('end')->get();
 
         $group = Cache::get('groups');
 
