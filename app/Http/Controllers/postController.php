@@ -258,7 +258,7 @@ class postController extends AppBaseController
     {
         $title = $request->title;
 
-        $data = post::select('title')->where('title', 'like','%'.$title.'%')->first();
+        $data = post::select('title')->where('title',$title)->first();
 
         $datas = [];
 
