@@ -73,22 +73,23 @@ class categoryController extends Controller
                 $groupProduct_level = $findID->level;
                 $ar_list = $this->find_List_Id_Group($id_cate,$groupProduct_level);
 
+                // check sản phẩm là nhóm gia dụng
 
+                if($ar_list[0]['id']==8 && $groupProduct_level==2){
+                    $ar_list[0]['id'] = $id_cate;
+                }
 
                 $parent_cate_id = $ar_list[0]['id'];
 
-
                 $list_data_group = filter::where('group_product_id', $parent_cate_id)->whereIn('id', $filter)->select('value')->get()->toArray();
+
 
                 if($parent_cate_id == 8){
 
                     $parent_cate_id = $id_cate;
                 }
 
-
                 $filter = filter::where('group_product_id', $parent_cate_id)->select('name', 'id')->get();
-
-
 
                 $fill = [];
 
@@ -154,7 +155,6 @@ class categoryController extends Controller
                             $number_key = count($keys);
 
                             $number_product    = array_count_values($product);
-
                         
                             if(isset($number_product)){
                                 $result_product = [];
@@ -172,6 +172,8 @@ class categoryController extends Controller
                     }
 
                 }
+
+
                 else{
                      $product_search =[];
                     $id_cate ='';
@@ -179,6 +181,9 @@ class categoryController extends Controller
                     $groupProduct_level = 0;
 
                 }
+
+
+
                
             }
             else{
@@ -188,6 +193,8 @@ class categoryController extends Controller
                 $groupProduct_level = 0;
 
             }
+
+
 
              return view('frontend.filter', compact('product_search', 'link', 'filter', 'id_cate', 'ar_list', 'groupProduct_level'));
 
