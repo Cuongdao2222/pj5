@@ -258,11 +258,11 @@
 
 <?php  
 
-    $check_deal = Cache::get('deals')->where('product_id',$data->id);
+    $check_deal = '';
 
     if(!empty($check_deal)){
 
-        
+
         $check_deal =  $check_deal->all();
 
 
