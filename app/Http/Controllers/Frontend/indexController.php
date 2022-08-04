@@ -24,26 +24,16 @@ class indexController extends Controller
 
         $banners =  Cache::get('baners');
 
-
         if(!Cache::has('deals')){
-
-
             $deal = deal::get();
 
             Cache::forever('deals',$deal);
 
         }
 
-       
+        $deal = deal::orderBy('order', 'desc')->get()  ;
 
-        $deal = Cache::get('deals')->sortByDesc('order');
-
-
-
-
-        $deal_check = Cache::get('deals')->sortByDesc('end');
-
-
+        $deal_check = deal::orderBy('end', 'desc')->get();
 
         $group = Cache::get('groups');
 
