@@ -258,29 +258,38 @@
 
 <?php  
 
-    $check_deal = Cache::get('deals')->where('product_id',$data->id)->all();
+    $check_deal = App\Models\deal::where('product_id', $data->id)->get();
 
-    $check_deal = reset($check_deal);
+    if(!empty($check_deal)){
 
-    
-    $deal_check_add = false;
-    
-    if(!empty($check_deal) && !empty(!empty($check_deal->deal_price))){
-         $now  = Carbon\Carbon::now();
-        $timeDeal_star = $check_deal->start;
-        $timeDeal_star =  \Carbon\Carbon::create($timeDeal_star);
-        $timeDeal_end = $check_deal->end;
-        $timeDeal_end =  \Carbon\Carbon::create($timeDeal_end);
-        $timestamp = $now->diffInSeconds($timeDeal_end);
+        $check_deal =  $check_deal->all();
 
-        if($now->between($check_deal->start, $check_deal->end)){
-            $deal_check_add = true;
-            $price_old = $data->Price;
-            $text = '<b>MUA ONLINE GIÁ SỐC: </b>';
-            $data->Price = $check_deal->deal_price;
-            $percent = ceil((int)$price_old/$data->Price);
+        if(!empty($check_deal)){
+            $check_deal = reset($check_deal);
         }
+
+        
+        $deal_check_add = false;
+        
+        if(!empty($check_deal) && !empty(!empty($check_deal->deal_price))){
+             $now  = Carbon\Carbon::now();
+            $timeDeal_star = $check_deal->start;
+            $timeDeal_star =  \Carbon\Carbon::create($timeDeal_star);
+            $timeDeal_end = $check_deal->end;
+            $timeDeal_end =  \Carbon\Carbon::create($timeDeal_end);
+            $timestamp = $now->diffInSeconds($timeDeal_end);
+
+            if($now->between($check_deal->start, $check_deal->end)){
+                $deal_check_add = true;
+                $price_old = $data->Price;
+                $text = '<b>MUA ONLINE GIÁ SỐC: </b>';
+                $data->Price = $check_deal->deal_price;
+                $percent = ceil((int)$price_old/$data->Price);
+            }
+        }
+
     }
+
 
   
 
