@@ -260,10 +260,14 @@
 
     $check_deal = Cache::get('deals')->where('product_id',$data->id);
 
+    $check_deal =  $check_deal->all();
+
 
     if(!empty($check_deal)){
         $check_deal = reset($check_deal);
     }
+
+    dd($check_deal->end);
 
     
     $deal_check_add = false;
