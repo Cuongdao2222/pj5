@@ -24,13 +24,13 @@ class image extends Model
     {
           parent::boot();
 
-        static::creating(function ($instance) {
+        static::created(function ($instance) {
            // update cache content
            Cache::forget('image_product'.$instance->product_id);
            Cache::forever('image_product'.$instance->product_id,$instance);
         });
 
-        static::updating(function ($instance) {
+        static::updated(function ($instance) {
            // update cache content
           
            Cache::forget('image_product'.$instance->product_id);
@@ -39,7 +39,7 @@ class image extends Model
 
         });
 
-        static::deleting(function ($instance) {
+        static::deleted(function ($instance) {
            Cache::forget('image_product'.$instance->product_id);
            Cache::forever('image_product'.$instance->product_id,$instance);
         });

@@ -14,23 +14,23 @@ class deal extends Model
      {
           parent::boot();
 
-          static::creating(function ($instance) {
+          static::created(function ($instance) {
                // update cache content
                Cache::forget('deals');
-               Cache::forever('deals',$instance);
+               Cache::forever('deals',$instance->get());
           });
 
-          static::updating(function ($instance) {
+          static::updated(function ($instance) {
                // update cache content
                Cache::forget('deals');
-               Cache::forever('deals',$instance);
+               Cache::forever('deals',$instance->get());
                Cache::forget('deal_details'.$instance->product_id);
                Cache::forever('deal_details'.$instance->product_id,$instance);
           });
 
-          static::deleting(function ($instance) {
+          static::deleted(function ($instance) {
                Cache::forget('deals');
-               Cache::forever('deals',$instance);
+               Cache::forever('deals',$instance->get());
                Cache::forget('deal_details'.$instance->product_id);
                Cache::forever('deal_details'.$instance->product_id,$instance);
           });

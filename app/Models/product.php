@@ -31,14 +31,14 @@ class product extends Model
     {
         parent::boot();
 
-        static::updating(function ($instance) {
+        static::updated(function ($instance) {
             // update cache content
             Cache::forget('data-detail'.$instance->slug);
             Cache::forever('data-detail'.$instance->Link,$instance);
            
         });
 
-        static::deleting(function ($instance) {
+        static::deleted(function ($instance) {
             // delete post cache
             Cache::forget('data-detail'.$instance->Link);
         });

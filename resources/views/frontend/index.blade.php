@@ -141,7 +141,6 @@
         ?>
 
 
-
         @if(!empty($deal_check) && $deal_check->count()>0 && $now->between($deal_check[0]->start, $deal_check[0]->end))
 
 
