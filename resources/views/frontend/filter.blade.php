@@ -233,6 +233,8 @@
 
                         @foreach($filter as $filters)
 
+                        @if(!empty($filters->id))
+
 
                         <?php
                             $propertyId =  App\Models\property::where('filterId', $filters->id)->get();
@@ -250,7 +252,7 @@
                                 @endif
                             </select>
                         </div>
-                        
+                        @endif
                         @endforeach
                         @endif
                     </div>    
