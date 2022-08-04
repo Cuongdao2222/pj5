@@ -135,16 +135,15 @@
 
                 $timestamp = $now->diffInSeconds($timeDeal_end);
             }
+            
 
 
         ?>
-        
 
-        
-       
-        @if(!empty($dealcheck) && $deal_check->count()>0 && $now->between($deal_check[0]->start, $deal_check[0]->end))
 
-       
+
+        @if(!empty($deal_check) && $deal_check->count()>0 && $now->between($deal_check[0]->start, $deal_check[0]->end))
+
 
         <!-- flash sale -->
             <div class="img-flashsale mobiles" style="width: 100%;">

@@ -258,18 +258,15 @@
 
 <?php  
 
-    $check_deal = '';
+    $check_deal = App\Models\deal::where('product_id', $data->id)->get();
 
     if(!empty($check_deal)){
 
-
         $check_deal =  $check_deal->all();
-
 
         if(!empty($check_deal)){
             $check_deal = reset($check_deal);
         }
-
 
         
         $deal_check_add = false;
