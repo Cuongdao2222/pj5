@@ -10,7 +10,7 @@ class apiController extends Controller
 {
     public function updateProduct(Request $request, $slug)
     {
-        $product = product::where('ProductSku')->first();
+        $product = product::where('ProductSku', $slug)->first();
 
         if(!empty($product)&& !empty($product->id)){
 

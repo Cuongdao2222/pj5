@@ -13,14 +13,6 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/user', function () {
-    echo "string";
-    die();
-});
-
-
-
-
 Route::resource('meta_seos', 'metaSeoAPIController');
 
 Route::resource('menus', 'menuAPIController');
@@ -47,4 +39,4 @@ Route::resource('properties', 'propertyAPIController');
 
 Route::resource('gifts', 'giftAPIController');
 
-Route::put('api-update-product/{id}', 'backend\apiController@updateProduct');
+Route::put('api-update-product/{slug}', 'backend\apiController@updateProduct');
