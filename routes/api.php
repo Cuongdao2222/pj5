@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 
 Route::get('/user', function () {
     echo "string";
+    die();
 });
 
 
