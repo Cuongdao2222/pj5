@@ -113,7 +113,8 @@ class indexController extends Controller
         Cache::put('groups', $groups,10000);
 
         Cache::put('product_sale', $product_sale,10000);
-        
+
+
         Cache::put('baners',$banners,10000);
     
     }
@@ -130,41 +131,17 @@ class indexController extends Controller
         
         Cache::forget('baners');
 
-        Cache::forget('deals');
-
-
         $banners = banners::where('option','=',0)->take(6)->OrderBy('stt', 'asc')->where('active','=',1)->select('title', 'image', 'title', 'link')->get();
-
-        $deal = deal::OrderBy('order', 'desc')->get();
 
         $product_sale = DB::table('products')->join('sale_product', 'products.id', '=', 'sale_product.product_id')->join('makers', 'products.Maker', '=', 'makers.id')->get();
 
         $groups = groupProduct::select('id','name', 'link')->where('parent_id', 0)->get();
-
-        $deal_start = $deal->first()->start;
-
-        foreach($deal as $value){
-
-            cache::forget('deals'. $value->product_id);
-
-            $deals = product::find($value->product_id);
-
-            Cache::put('deals'.$value->product_id,$deals,10000);
-
-          
-            $product_saless = Cache::get('deals'. $value->product_id);
-        }
-
-    
-        cache::put('deal_start', $deal_start,10000);
 
         Cache::put('groups', $groups,10000);
 
         Cache::put('product_sale', $product_sale,10000);
         
         Cache::put('baners',$banners,10000);
-
-        Cache::put('deals',$deal,10000);
 
         
     }
