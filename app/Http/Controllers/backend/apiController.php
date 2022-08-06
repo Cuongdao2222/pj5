@@ -5,6 +5,7 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\product;
+use App\Models\apiUpdate;
 
 class apiController extends Controller
 {
@@ -18,13 +19,30 @@ class apiController extends Controller
 
             $product = product::find($id);
 
+            $priceOld = $product->Price;
+
             $product->Price =  $request->Price;
 
             $product->Quantily = $request->Quantily;
 
             $result = $product->save();
 
+
+            $apiUdate = new apiUpdate();
+
+            $apiUdate->model = $slug;
+
+            $apiUdate->qty  = $request->Quantily;
+
+            $apiUdate->price_old = $priceOld;
+
+            $apiUdate->price_new = $request->Price;
+
+            $apiUdate->save();
+
+
             if($result){
+
                 return ['result'=>'update thành công'];
             }
             else{
@@ -34,7 +52,7 @@ class apiController extends Controller
         }
         else{
 
-            return ['result'=>'model sản phẩm không đúng update thất bại'];
+            return ['result'=>'model sản phẩm không đúng, update thất bại'];
         }
 
     }
