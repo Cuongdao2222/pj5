@@ -21,6 +21,8 @@ class apiController extends Controller
 
             $priceOld = $product->Price;
 
+            $qty_old  = $product->Quantily;
+
             $product->Price =  $request->Price;
 
             $product->Quantily = $request->Quantily;
@@ -35,6 +37,8 @@ class apiController extends Controller
             $apiUdate->qty  = $request->Quantily;
 
             $apiUdate->price_old = $priceOld;
+
+            $apiUdate->qty_old = $qty_old;
 
             $apiUdate->price_new = $request->Price;
 
