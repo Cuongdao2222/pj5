@@ -15,6 +15,12 @@ class apiController extends Controller
 
         if(!empty($product)&& !empty($product->id)){
 
+            if(empty($request->Quantily)||empty($request->Price)){
+                 return response()->json([
+                'message' => 'param truyền bị lỗi, xin kiểm tra lại'], 404);
+
+            }
+
             $id = $product->id;
 
             $product = product::find($id);
@@ -42,21 +48,24 @@ class apiController extends Controller
 
             $apiUdate->price_new = $request->Price;
 
-            $apiUdate->save();
+            $update_soft = $apiUdate->save();
 
 
-            if($result){
+            if($result && $update_soft){
 
-                return ['result'=>'update thành công'];
+                return response()->json([
+                'message' => 'update sản phẩm thành công!'], 200);
             }
             else{
-                return ['result'=>'đã xảy ra lỗi trong quá trình update'];
+                return response()->json([
+                'message' => 'có lỗi trong quá trình update, xin kiểm tra lại'], 404);
             }
 
         }
         else{
 
-            return ['result'=>'model sản phẩm không đúng, update thất bại'];
+            return response()->json([
+                'message' => 'Model sản phẩm không đúng, xin kiểm tra lại'], 404);
         }
 
     }
