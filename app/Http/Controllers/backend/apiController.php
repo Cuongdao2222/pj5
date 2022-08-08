@@ -15,7 +15,7 @@ class apiController extends Controller
 
         if(!empty($product)&& !empty($product->id)){
 
-            if(empty($request->Quantily)||empty($request->Price)){
+            if(!isset($request->Quantily)||!isset($request->Price)){
                  return response()->json([
                 'message' => 'param truyền bị lỗi, xin kiểm tra lại'], 404);
 
