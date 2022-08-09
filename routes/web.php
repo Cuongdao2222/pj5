@@ -12,7 +12,7 @@
 */
 
 
-
+Route::get('update-api', 'backend\apiController@updateProductApi');
 
 Route::get('/tin-khuyen-mai/', 'Frontend\blogController@index')->middleware('cache')->name('tin');
 

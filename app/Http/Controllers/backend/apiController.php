@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\product;
 use App\Models\apiUpdate;
+use DB;
 
 class apiController extends Controller
 {
@@ -68,5 +69,34 @@ class apiController extends Controller
                 'message' => 'Model sản phẩm không đúng, xin kiểm tra lại'], 404);
         }
 
+    }
+
+
+    public function updateProductApi(Request $request)
+    {
+        // $data_product = 'UA50AU9000', 'UA50AU8000', 'UA50AU7000';
+        // $data_product = explode($data_product, ',');
+
+        // $check = Product::whereIn('ProductSku',  $data_product)->get();
+        // if($check->count() != count($data_product)){
+
+        //     return response()->json(['message' => 'Model sản phẩm không đúng, xin kiểm tra lại'], 404);
+        // }
+
+        $data = [ ['product'=>'UA50AU9000', 'price'=>5000000, 'qualtity'=>2],  ['product'=>'UA50AU8000', 'price'=>5000001, 'qualtity'=>5]];
+
+
+        foreach ($data as $key => $value) {
+
+            if()
+            
+        }
+
+        $product 
+
+        foreach ($data as $key => $value) {
+            $update_product = DB::table('products')->update($value);
+        }
+        echo "update thanh cong";
     }
 }
