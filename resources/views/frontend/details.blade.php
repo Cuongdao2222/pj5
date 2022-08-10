@@ -429,8 +429,13 @@
                         <div class="item">
                             <a href="{{ asset($data->Image) }}" data-fancybox="gallery"><img src="{{ asset($data->Image) }}" alt="{{ @$data->Name }}"></a>
                         </div>
+
+                        <div class="number-images" style="display: none;">
+                            {{ $images->count() }}
+                        </div>
                        
                         @isset($images)
+
                         @foreach($images as $image)
 
                         @if(!empty($image->image) && trim($image->image) != trim($data->Image))
