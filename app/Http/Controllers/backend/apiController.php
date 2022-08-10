@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\product;
 use App\Models\apiUpdate;
+use Illuminate\Support\Facades\Cache;
 
 class apiController extends Controller
 {
@@ -68,5 +69,12 @@ class apiController extends Controller
                 'message' => 'Model sản phẩm không đúng, xin kiểm tra lại'], 404);
         }
 
+    }
+
+    public function checkDeal()
+    {
+        $deal = Cache::get('deals')->sortByDesc('order');
+
+        dd($deal);
     }
 }
