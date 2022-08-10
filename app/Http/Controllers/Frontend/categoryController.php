@@ -464,9 +464,7 @@ class categoryController extends Controller
 
         else{
 
-
             $pageCheck = "product";
-
 
             if(!Cache::has('image_product'.$findID->id)){
                 
@@ -476,9 +474,6 @@ class categoryController extends Controller
             }
 
             $images = Cache::get('image_product'.$findID->id);
-
-
-
 
             $data = Cache::rememberForever('data-detail'.$slug, function() use($slug) {
 
