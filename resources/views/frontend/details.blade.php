@@ -271,7 +271,7 @@
         
         $deal_check_add = false;
         
-        if(!empty($check_deal) && !empty(!empty($check_deal->deal_price))){
+        if(!empty($check_deal) && !empty(!empty($check_deal->deal_price)) &&$check_deal->active==1){
              $now  = Carbon\Carbon::now();
             $timeDeal_star = $check_deal->start;
             $timeDeal_star =  \Carbon\Carbon::create($timeDeal_star);
@@ -892,9 +892,9 @@
                             <div class="pdetail-stockavailable">
                                 <span>{{ $status }} </span>
                             </div>
-
-                            
-                             @if(!empty($gift) && $data->Quantily>0 && $deal_check_add ==false  &&  $data['Price']>0)
+                        
+                           
+                            @if(!empty($gift) && $data->Quantily>0 && $deal_check_add ==false  &&  $data['Price']>0)
 
                             <fieldset class="p-gift">
                                     <legend id="data-pricetotal" style="color: #ff0000;font-size: 18px; font-weight: bold" data-pricetotal="0">
