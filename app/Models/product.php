@@ -35,13 +35,19 @@ class product extends Model
             // update cache content
             Cache::forget('data-detail'.$instance->slug);
             Cache::forever('data-detail'.$instance->Link,$instance);
+            Cache::forget('product_search');
            
         });
 
         static::deleted(function ($instance) {
             // delete post cache
             Cache::forget('data-detail'.$instance->Link);
+            Cache::forget('product_search');
         });
+
+        static::created(function ($instance) {
+            Cache::forget('product_search');
+        });    
     }
     
     public $fillable = [

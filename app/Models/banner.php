@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Eloquent as Model;
 
+use Illuminate\Support\Facades\Cache;
+
 /**
  * Class banner
  * @package App\Models
@@ -18,7 +20,33 @@ class banner extends Model
 
     public $table = 'banners';
     
+    public static function boot()
+    {
+        parent::boot();
 
+        static::updated(function ($instance) {
+           
+            Cache::forget('bannersRights');
+            Cache::forget('bannerUnderSlider');
+            Cache::forget('bannerUnderSale');
+            Cache::forget('baners');
+           
+        });
+
+        static::deleted(function ($instance) {
+            Cache::forget('bannersRights');
+            Cache::forget('bannerUnderSlider');
+            Cache::forget('bannerUnderSale');
+            Cache::forget('baners');
+        });
+
+        static::created(function ($instance) {
+            Cache::forget('bannersRights');
+            Cache::forget('bannerUnderSlider');
+            Cache::forget('bannerUnderSale');
+            Cache::forget('baners');
+        });    
+    }
 
 
     public $fillable = [

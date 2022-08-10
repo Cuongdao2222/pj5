@@ -41,28 +41,10 @@ class indexController extends Controller
 
          $timeDeal_star = Cache::get('deal_start'); 
 
-        // if(\Request::ip()=='118.70.129.255'&&Auth::check() && Auth::user()->id==4){
 
-        //     $this->cache1();
-
-        //     $banners =  Cache::get('baners');
-
-        //     $deal = Cache::get('deals');
-
-        //     $group = Cache::get('groups');
-
-        //     $timeDeal_star = Cache::get('deal_start'); 
-           
-        //     $product_sale = Cache::get('product_sale');
-
-
-        // }
-
-        if(empty($group) ||empty($banners)||empty($product_sale) ){
+        if(empty($group)||empty($product_sale) ){
 
             $this->cache();
-
-            $banners =  Cache::get('baners');
 
             $deal = Cache::get('deals');
 
@@ -72,32 +54,51 @@ class indexController extends Controller
 
             $product_sale = Cache::get('product_sale');
         }
+
+        if(!Cache::has('baners')){
+
+            $banners =  Cache::rememberForever('baners', function() {
+
+                return banners::where('option','=',0)->take(6)->OrderBy('stt', 'asc')->where('active','=',1)->select('title', 'image', 'title', 'link')->get();
+            });
+        }    
+
+        if(!Cache::has('bannersRights')){
+            $bannersRight = Cache::rememberForever('bannersRights', function() {
+                return banners::where('option', 2)->OrderBy('stt', 'asc')->where('active', 1)->get();
+            });
+        }
+        else{
+            $bannersRight = Cache::get('bannersRights');
+        }
+
+        if(!Cache::has('bannerUnderSlider')){
+            $bannerUnderSlider = Cache::rememberForever('bannerUnderSlider', function() {
+                return banners::where('option', 3)->OrderBy('stt', 'asc')->where('active', 1)->get();
+            });
+
+        }
+        else{
+            $bannerUnderSlider = Cache::get('bannerUnderSlider');
+        }
+
+        if(!Cache::has('bannerUnderSale')){
+
+            $bannerUnderSale = Cache::rememberForever('bannerUnderSale', function() {
+                return banners::where('option', 5)->OrderBy('stt', 'asc')->take(1)->get()->toArray();
+            });
+        }  
+        else{
+            $bannerUnderSale = Cache::get('bannerUnderSale');
+        }  
+
         
-
-
-        // $banners = Cache::remember('bannersss',100, function() {
-        //     return banners::where('option','=',0)->take(6)->OrderBy('stt', 'asc')->where('active','=',1)->select('title', 'image', 'title', 'link')->get();
-        // });
-
-        $bannersRight = Cache::remember('bannersRights',10000, function() {
-            return banners::where('option', 2)->OrderBy('stt', 'asc')->where('active', 1)->get();
-        });
-
-        $bannerUnderSlider = Cache::remember('bannerUnderSlider',10000, function() {
-            return banners::where('option', 3)->OrderBy('stt', 'asc')->where('active', 1)->get();
-        });
-
-        $bannerUnderSale = Cache::remember('bannerUnderSale',10000, function() {
-            return banners::where('option', 5)->OrderBy('stt', 'asc')->take(1)->get()->toArray();;
-        });
-
-      
         return view('frontend.index', compact('banners', 'bannersRight', 'bannerUnderSlider', 'bannerUnderSale','deal','product_sale', 'group','timeDeal_star', 'deal_check'));
     }
     public function cache()
     {
        
-        $banners = banners::where('option','=',0)->take(6)->OrderBy('stt', 'asc')->where('active','=',1)->select('title', 'image', 'title', 'link')->get();
+       
 
         $deal = deal::OrderBy('order', 'desc')->get();
 

@@ -73,8 +73,30 @@ class apiController extends Controller
 
     public function checkDeal()
     {
-        $deal = Cache::get('deals')->sortByDesc('order');
+        Cache::forget('product_search');
 
-        dd($deal);
+        $productss = product::select('Link', 'Name', 'Image', 'Price', 'id', 'ProductSku')->where('active', 1)->get();
+
+        Cache::forever('product_search',$productss);
+
+        $data =  Cache::get('product_search');
+
+        $search = 'Máy giặt LG ';
+
+        $collection = collect($data)->filter(function ($item) use ($search) {
+            return false !== strpos($item->ProductSku, $search);
+        });
+
+        if($collection->count()==0){
+
+            $collection = collect($data)->filter(function ($item) use ($search) {
+                return false !== strpos($item->Name, $search);
+            });
+
+            $collection = $collection->take(6)->sortByDesc('id');
+        }
+
+      
+        dd($collection);
     }
 }

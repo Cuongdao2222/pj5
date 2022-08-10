@@ -194,13 +194,34 @@ class AjaxController extends Controller
 
     public function getProductActive(Request $request)
     {
-        $products = $request->product;
+        $search = $request->product;
 
-        $product =   product::select('Link', 'Name', 'Image', 'Price', 'id')->where('Name','like','%'.$products.'%' )->where('active', 1)->
-        Orderby('id','desc')->OrWhere('ProductSku', 'LIKE', '%' . $products . '%')->where('active', 1)->Orderby('id','desc')->take(5)->get();
+        if(!Cache::has('product_search')){
+
+            $productss = product::select('Link', 'Name', 'Image', 'Price', 'id')->where('active', 1)->get();
+
+            Cache::forever('product_search',$productss);
+
+        }
+
+        $data =  Cache::get('product_search');
+
+        $product = collect($data)->filter(function ($item) use ($search) {
+            return false !== strpos($item->ProductSku, $search);
+        });
+
+        if($product->count()==0){
+
+            $product = collect($data)->filter(function ($item) use ($search) {
+                return false !== strpos($item->Name, $search);
+            });
+
+            
+        }
+
+        $product = $product->take(6)->sortByDesc('id');
 
         $sugests =[];
-
 
         $now  = Carbon::now();
         foreach($product as $products){
