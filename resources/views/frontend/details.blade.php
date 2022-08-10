@@ -448,7 +448,8 @@
                         @else
                         <div class="number-images" style="display: none;">
                             <?php 
-                                print_r($image)
+                                $image = image::where('product_id', $data->id)->select('image')->get();
+                              
                             ?>
                         </div>
 
