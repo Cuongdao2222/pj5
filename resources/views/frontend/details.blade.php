@@ -436,6 +436,10 @@
 
                         @foreach($images as $image)
 
+                        <div class="number-images" style="display: none;">
+                            {{ $image->image }}
+                        </div>
+
                         @if(!empty($image->image) && trim($image->image) != trim($data->Image))
                         <div class="item">
                             <a href="{{ asset($image->image) }}" data-fancybox="gallery"><img src="{{ asset($image->image) }}"  data-src="{{ asset($image->image) }}" class="lazyload" alt="{{ @$data->Name }}"></a>
@@ -443,10 +447,7 @@
                         </div>
                         @endif
                         @endforeach
-                        @else
-                        <div class="number-images" style="display: none;">
-                            {{ $data->id }}
-                        </div>
+                        
                         @endif
                     </div>
                 </div>
