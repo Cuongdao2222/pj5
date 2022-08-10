@@ -1622,7 +1622,6 @@
                     }
                 });
             },
-            minLength: 2,
             html:true,
         });
     });
@@ -1660,7 +1659,6 @@
                     }
                 });
             },
-            minLength: 2,
             html:true,
         });
     }) 
