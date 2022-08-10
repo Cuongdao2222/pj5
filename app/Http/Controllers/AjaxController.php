@@ -34,6 +34,8 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 
 use DB;
 
+use Illuminate\Support\Facades\Cache;
+
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Session;
 use App\Models\rate;
@@ -203,7 +205,7 @@ class AjaxController extends Controller
         $now  = Carbon::now();
         foreach($product as $products){
 
-            $check_deal = deal::select('deal_price','start', 'end')->where('product_id',  $products->id)->where('active', 1)->first();
+            $check_deal =  Cache::get('deals')->where('product_id',  $products->id)->where('active', 1)->first();
 
             $deal_check_add = false;
             

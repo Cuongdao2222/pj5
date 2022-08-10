@@ -31,9 +31,9 @@ class indexController extends Controller
 
         }
 
-        $deal = deal::orderBy('order', 'desc')->get()  ;
+        $deal = Cache::get('deals')->sortByDesc('order');
 
-        $deal_check = deal::orderBy('end', 'desc')->get();
+        $deal_check = Cache::get('deals')->sortByDesc('end');
 
         $group = Cache::get('groups');
 

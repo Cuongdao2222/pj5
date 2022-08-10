@@ -258,7 +258,7 @@
 
 <?php  
 
-    $check_deal = App\Models\deal::where('product_id', $data->id)->get();
+    $check_deal =  Cache::get('deals')->where('product_id', $data->id);
 
     if(!empty($check_deal)){
 
@@ -289,10 +289,6 @@
         }
 
     }
-
-
-  
-
 
     if(!Cache::has('groupsProductDetails') ){
 
