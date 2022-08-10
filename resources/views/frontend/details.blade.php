@@ -449,10 +449,11 @@
                         <div class="number-images" style="display: none;">
                             <?php 
 
+                                Cache::forget('image_product3751');
+                                $image_cache = image::where('product_id', 3751)->select('image')->get();
+                                Cache::forever('image_product3751',$image_cache);
 
-                                print_r($images[0]->image??'1345');
-
-                             
+                                
                             ?>
                         </div>
 
