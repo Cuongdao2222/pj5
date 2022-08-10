@@ -449,7 +449,7 @@
                         <div class="number-images" style="display: none;">
                             <?php 
                                 $image = App\Models\image::where('product_id', 3751)->select('image')->get();
-                                print_r($image[0]->image);
+                                print_r(trim($data->id));
 
                              
                             ?>
