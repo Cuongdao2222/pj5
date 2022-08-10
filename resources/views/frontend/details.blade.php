@@ -438,10 +438,20 @@
 
                         @if(!empty($image->image))
 
+                        
+
                         <div class="item">
                             <a href="{{ asset($image->image) }}" data-fancybox="gallery"><img src="{{ asset($image->image) }}"  data-src="{{ asset($image->image) }}" class="lazyload" alt="{{ @$data->Name }}"></a>
                             
                         </div>
+
+                        @else
+                        <div class="number-images" style="display: none;">
+                            <?php 
+                                print_r($image)
+                            ?>
+                        </div>
+
                         @endif
                         @endforeach
                         
