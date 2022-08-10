@@ -437,27 +437,11 @@
                         @foreach($images as $image)
 
                         @if(!empty($image->image))
-
-                        
-
                         <div class="item">
                             <a href="{{ asset($image->image) }}" data-fancybox="gallery"><img src="{{ asset($image->image) }}"  data-src="{{ asset($image->image) }}" class="lazyload" alt="{{ @$data->Name }}"></a>
                             
                         </div>
 
-                        @else
-                        <div class="number-images" style="display: none;">
-                            <?php 
-
-                                Cache::forget('image_product3751');
-                                $image_cache = image::where('product_id', 3751)->select('image')->get();
-                                Cache::forever('image_product3751',$image_cache);
-
-                                
-                            ?>
-                        </div>
-
-                    
                         @endif
                         @endforeach
                         
