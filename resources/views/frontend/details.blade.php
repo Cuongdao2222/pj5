@@ -436,11 +436,7 @@
 
                         @foreach($images as $image)
 
-                        @if(!empty($image->image) && trim($image->image) != trim($data->Image))
-
-                        <div class="number-images" style="display: none;">
-                            {{ $image->image }}
-                        </div>
+                        @if(!empty($image->image))
 
                         <div class="item">
                             <a href="{{ asset($image->image) }}" data-fancybox="gallery"><img src="{{ asset($image->image) }}"  data-src="{{ asset($image->image) }}" class="lazyload" alt="{{ @$data->Name }}"></a>
