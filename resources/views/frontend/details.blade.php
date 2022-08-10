@@ -430,11 +430,9 @@
                             <a href="{{ asset($data->Image) }}" data-fancybox="gallery"><img src="{{ asset($data->Image) }}" alt="{{ @$data->Name }}"></a>
                         </div>
 
-                        <div class="number-images" style="display: none;">
-                            {{ $images->count() }}
-                        </div>
+                        
                        
-                        @isset($images)
+                        @if(isset($images))
 
                         @foreach($images as $image)
 
@@ -445,7 +443,11 @@
                         </div>
                         @endif
                         @endforeach
-                        @endisset
+                        @else
+                        <div class="number-images" style="display: none;">
+                            {{ $data->id }}
+                        </div>
+                        @endif
                     </div>
                 </div>
             </div>
