@@ -436,9 +436,7 @@
 
                         @foreach($images as $image)
 
-                       <!--  <div class="number-images" style="display: none;">
-                            {{ $image->image }}
-                        </div> -->
+                      
 
                         @if(!empty($image->image) && trim($image->image) != trim($data->Image))
                         <div class="item">
