@@ -1855,20 +1855,22 @@
 
                 alert('vui lòng lựa chọn thành phố');
                 event.preventDefault();   
-
-
             }
+            else if($('#buyer_tel').val().length<10){
+                alert('vui kiểm tra lại trường số điện thoai');
+                event.preventDefault();  
+            }
+            else if($('#buyer_address').val().length==0){
+                alert('vui kiểm tra lại trường địa chỉ');
+                event.preventDefault(); 
+            }
+
             else{
                 if(numberProduct<=0){
                     alert('không thể mua sản phẩm vì trong giỏ hàng ko có sản phẩm')
                     event.preventDefault();
                 }
-                else if($('#buyer_tel-error').text()!=''){
-                    alert('vui lòng kiểm tra lại trường số điện thoại');
-                }
-                else if($('#buyer_address-error').text()!=''){
-                    alert('vui lòng kiểm tra lại trường địa chỉ');
-                }
+               
                 else{
                     var click = 0;
                     click++;
