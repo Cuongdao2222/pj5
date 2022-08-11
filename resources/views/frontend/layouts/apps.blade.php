@@ -1863,6 +1863,12 @@
                     alert('không thể mua sản phẩm vì trong giỏ hàng ko có sản phẩm')
                     event.preventDefault();
                 }
+                else if($('#buyer_tel-error').text()!=''){
+                    alert('vui lòng kiểm tra lại trường số điện thoại');
+                }
+                else if($('#buyer_address-error').text()!=''){
+                    alert('vui lòng kiểm tra lại trường địa chỉ');
+                }
                 else{
                     var click = 0;
                     click++;
