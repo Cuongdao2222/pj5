@@ -153,9 +153,13 @@ class dealController extends Controller
 
             foreach($deal as $value){
 
-                $add_deal = DB::table('deal')->where('id', $value->id);
+                $add_deal = deal::find($value->id);
 
-                $add_deal->update(['start'=>$start, 'end'=>$end]);
+                $add_deal->start = $start;
+
+                $add_deal->end = $end;
+
+                $add_deal->save();
 
 
             }    
