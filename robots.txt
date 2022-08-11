@@ -1,16 +1,20 @@
 User-agent: *
 Disallow: /admins
 
+User-agent: MJ12bot
+Disallow: /
+
 User-agent: SemrushBot
-Crawl-delay: 500
+Disallow: /
 
 User-agent: AhrefsBot
-Crawl-delay: 500
+Disallow: /
 
 User-agent: Jooblebot
-Crawl-delay: 500
+Disallow: /
 
-User-agent: MJ12bot
-Crawl-delay: 500
+User-agent: YandexBot
+Disallow: /
+
 
 
