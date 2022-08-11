@@ -370,7 +370,7 @@ class AjaxController extends Controller
                 }
             }
             $product_viewer = product::whereIn('id', $data_product_id)
-                  ->Orderby('id')->take(25)->get();
+                  ->Orderby('id')->take(12)->get();
 
             
             return view('frontend.ajax.viewer-product', compact('product_viewer'));      
