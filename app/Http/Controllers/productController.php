@@ -16,7 +16,7 @@ use Flash;
 use Illuminate\Support\Facades\Auth;
 use Session;
 
-
+use Illuminate\Support\Facades\Cache;
 use App\Models\searchkey;
 use Response;
 
@@ -418,8 +418,6 @@ class productController extends AppBaseController
         }
 
         // checksearch of client
-
-
         $unique = searchkey::where('search', trim($datas))->get()->first();
 
         if(!empty($unique)){
@@ -436,28 +434,28 @@ class productController extends AppBaseController
 
         }
 
-        //check client search hơn 200 lần
+        // //check client search hơn 200 lần
 
-        $sessionKey = 'userSearch';
+        // $sessionKey = 'userSearch';
 
 
-        $sessionSearch = Session::get($sessionKey);
+        // $sessionSearch = Session::get($sessionKey);
 
-        if (!$sessionSearch) { //nếu chưa có session
+        // if (!$sessionSearch) { //nếu chưa có session
 
-            Session::put($sessionKey, 1);
-        }
-        else{
+        //     Session::put($sessionKey, 1);
+        // }
+        // else{
 
-            $sessionSearch +=1;
-        }  
+        //     $sessionSearch +=1;
+        // }  
 
-        if($sessionSearch>150){
+        // if($sessionSearch>150){
 
-            echo "bạn đang spam phần tìm kiếm?";
+        //     echo "bạn đang spam phần tìm kiếm?";
 
-            die();
-        }
+        //     die();
+        // }
 
 
 
@@ -465,7 +463,24 @@ class productController extends AppBaseController
 
         $numberdata = 0;
 
-        $find_first = Product::select('id')->where('Name','LIKE', '%'. $datas .'%')->Where('active', 1)->OrWhere('ProductSku', 'LIKE', '%' . $datas . '%')->Where('active', 1)->OrderBy('id', 'desc')->take(50)->get()->pluck('id');
+        $data =  Cache::get('product_search');
+
+        $find_first = collect($data)->filter(function ($item) use ($datas) {
+            return false !== strpos($item->ProductSku, $datas);
+        });
+
+        if($find_first->count()==0){
+
+            $find_first = collect($data)->filter(function ($item) use ($datas) {
+                return false !== strpos($item->Name, $datas);
+            });
+
+            
+        }
+
+        $find_first = $find_first->take(50)->sortByDesc('id')->pluck('id');
+
+        // $find_first = Product::select('id')->where('Name','LIKE', '%'. $datas .'%')->Where('active', 1)->OrWhere('ProductSku', 'LIKE', '%' . $datas . '%')->Where('active', 1)->OrderBy('id', 'desc')->take(50)->get()->pluck('id');
 
 
         if(isset($find_first)){
@@ -480,9 +495,13 @@ class productController extends AppBaseController
         }
 
         $page_search = 'filterFe';
-        if(isset($resultProduct)){
 
-            $data = Product::whereIn('id', $resultProduct)->paginate(10);
+       
+        if(isset($resultProduct) && !empty($resultProduct[0])){
+
+            $resultProduct = $resultProduct[0]->toArray();
+
+            $data = Cache::get('product_search')->whereIn('id', $resultProduct)->forPage(1, 20);
 
             return view('frontend.category',compact('data','numberdata','page_search'));
            

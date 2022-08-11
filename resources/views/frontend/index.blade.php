@@ -135,6 +135,8 @@
 
                 $timestamp = $now->diffInSeconds($timeDeal_end);
             }
+
+
             
 
 
@@ -166,10 +168,6 @@
                                 @if( !empty($value->active) && $value->active ==1 && $now->between($value->start, $value->end))
 
                                 <?php 
-
-                                    
-                                  
-
                                     $timestamp = $now->diffInSeconds($value->end);
 
                                     $hour =  floor($timestamp/3600);
@@ -177,7 +175,6 @@
                                     $minutes =floor($timestamp/60);
                                     $timestamp = floor($timestamp % 60);
                                     $seconds =floor($timestamp);
-
 
                                 ?>
 

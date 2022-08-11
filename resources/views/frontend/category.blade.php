@@ -147,6 +147,7 @@
             </section>
         </div>
         @endif
+
         <section id="categoryPage" class="desktops" data-id="1942" data-name="Tivi" data-template="cate">
             <div class="box-sort ">
                 @if(isset($data))
@@ -170,11 +171,12 @@
                     <div id="loader"></div>
                 </div> -->
                 <div class="row list-pro">
+                   
                     @if(isset($data))
                     <?php $arr_id_pro = []; ?>
                    
                     @foreach($data as $value)
-                        @if($value->active==1)
+                        
                             <?php   
 
                                 $id_product = $value->id;
@@ -348,7 +350,7 @@
                                 </a> -->
                             </div>
                         </div>
-                        @endif
+                       
                     @endforeach
 
 

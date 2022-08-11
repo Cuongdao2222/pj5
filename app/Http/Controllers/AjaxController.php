@@ -198,7 +198,7 @@ class AjaxController extends Controller
 
         if(!Cache::has('product_search')){
 
-            $productss = product::select('Link', 'Name', 'Image', 'Price', 'id')->where('active', 1)->get();
+            $productss = product::select('Link', 'Name', 'Image', 'Price', 'id', 'ProductSku')->where('active', 1)->get();
 
             Cache::forever('product_search',$productss);
 
