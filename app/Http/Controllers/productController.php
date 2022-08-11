@@ -314,6 +314,8 @@ class productController extends AppBaseController
 
         $data      = strip_tags($clearData);
 
+        $data = strtoupper($data);
+
         $resultProduct = [];
 
         $find_first = Product::select('id')->where('Name','LIKE', '%'. $data .'%')->OrWhere('ProductSku', 'LIKE', '%' . $data . '%')->OrderBy('id', 'desc')->take(50)->get()->pluck('id');
@@ -411,6 +413,8 @@ class productController extends AppBaseController
         $clearData = trim($request->key);
 
         $datas      = strip_tags($clearData);
+
+        $datas = strtoupper($datas);
 
         if(empty($datas)){
             return redirect()->route('homeFe');
