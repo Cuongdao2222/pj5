@@ -50,17 +50,15 @@ class orderController extends Controller
     
         // trừ số sản phẩm đã đặt
 
+        // $product_subtract = product::find(array_values(reset($cart))[0]->id);
 
+        // $qty  = $carts[0]['qty'];
 
-        $product_subtract = product::find(array_values(reset($cart))[0]->id);
+        // $resultqty = (int)$product_subtract->Quantily- (int)$qty;
 
-        $qty  = $carts[0]['qty'];
+        // $product_subtract->Quantily = $resultqty;
 
-        $resultqty = (int)$product_subtract->Quantily- (int)$qty;
-
-        $product_subtract->Quantily = $resultqty;
-
-        $product_subtract->save();
+        // $product_subtract->save();
 
         $carts_mail = $carts;
 
