@@ -447,9 +447,6 @@
             </div> -->
             <div class="watched"></div>
             <div class="overlay"></div>
-
-           
-           
         </section>
 
         <?php  
@@ -458,13 +455,10 @@
             // $propery_url_id = explode(',',$propery_url);
 
              if(!empty($_GET['filter'])){
-                $id_cate = '';
+                $id_cate = $_GET['group_id']??'';
             }
-
             
         ?>
-
-
 
        
         @push('script')
@@ -521,11 +515,7 @@
                             window.location.href = '{{ route('details',$link) }}';
                         }
                         else{
-
-                            
-                      
                             window.location.href = '{{ route('details',$link) }}?filter=,'+filter+'&group_id={{ @$id_cate }}&property=,'+propertys+'&link={{ $link }}';
-                           
                         }
                         
                     @endif
