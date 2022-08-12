@@ -474,10 +474,10 @@ class categoryController extends Controller
                 $image_cache = image::where('product_id', $findID->id)->select('image')->get();
 
                 Cache::forget('image_product'.$findID->id);
-                
+
                 Cache::forever('image_product'.$findID->id,$image_cache);
             }
-
+           
             $images = Cache::get('image_product'.$findID->id);
 
             $data = Cache::rememberForever('data-detail'.$slug, function() use($slug) {
