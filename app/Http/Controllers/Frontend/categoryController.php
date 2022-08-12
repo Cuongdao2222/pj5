@@ -173,7 +173,6 @@ class categoryController extends Controller
 
                 }
 
-
                 else{
                      $product_search =[];
                     $id_cate ='';
@@ -182,9 +181,6 @@ class categoryController extends Controller
 
                 }
 
-
-
-               
             }
             else{
                 $product_search =[];
@@ -470,6 +466,15 @@ class categoryController extends Controller
                 
                 $image_cache = image::where('product_id', $findID->id)->select('image')->get();
 
+                Cache::forever('image_product'.$findID->id,$image_cache);
+            }
+
+            if(!empty($_GET['cache'])){
+
+                $image_cache = image::where('product_id', $findID->id)->select('image')->get();
+
+                Cache::forget('image_product'.$findID->id);
+                
                 Cache::forever('image_product'.$findID->id,$image_cache);
             }
 
