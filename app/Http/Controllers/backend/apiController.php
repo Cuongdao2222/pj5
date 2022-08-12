@@ -99,4 +99,8 @@ class apiController extends Controller
       
         dd($collection);
     }
+    public function updateListProduct()
+    {
+        
+    }
 }
