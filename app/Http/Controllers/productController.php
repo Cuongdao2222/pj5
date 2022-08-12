@@ -414,6 +414,8 @@ class productController extends AppBaseController
 
         $datas      = strip_tags($clearData);
 
+        $searchName =  ucfirst($datas);
+
         $datas = strtoupper($datas);
 
         if(empty($datas)){
@@ -475,8 +477,9 @@ class productController extends AppBaseController
 
         if($find_first->count()==0){
 
-            $find_first = collect($data)->filter(function ($item) use ($datas) {
-                return false !== strpos($item->Name, $datas);
+
+            $find_first = collect($data)->filter(function ($item) use ($searchName) {
+                return false !== strpos($item->Name, $searchName);
             });
 
             

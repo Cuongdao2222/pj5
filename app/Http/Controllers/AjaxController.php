@@ -196,6 +196,8 @@ class AjaxController extends Controller
     {
         $search = $request->product;
 
+        $searchs = ucfirst($search);
+
         $search = strtoupper($search);
 
         if(!Cache::has('product_search')){
@@ -214,8 +216,9 @@ class AjaxController extends Controller
 
         if($product->count()==0){
 
-            $product = collect($data)->filter(function ($item) use ($search) {
-                return false !== strpos($item->Name, $search);
+            
+            $product = collect($data)->filter(function ($item) use ($searchs) {
+                return false !== strpos($item->Name, $searchs);
             });
 
             
