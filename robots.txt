@@ -10,6 +10,12 @@ Disallow: /admins
 User-agent: Googlebot-Image
 Disallow: /admins
 
+User-agent: AdsBot-Google
+Disallow: /admins
+
+
+
+
 
 
 
