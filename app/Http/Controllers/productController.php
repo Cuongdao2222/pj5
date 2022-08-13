@@ -423,22 +423,32 @@ class productController extends AppBaseController
 
         }
 
+        // thử query
+        
+        if(!Cache::has('product_search')){
+
+            $productss = product::select('Link', 'Name', 'Image', 'Price', 'id', 'ProductSku')->where('active', 1)->get();
+
+            Cache::forever('product_search',$productss);
+
+        }
+
         // checksearch of client
-        $unique = searchkey::where('search', trim($datas))->get()->first();
+        // $unique = searchkey::where('search', trim($datas))->get()->first();
 
-        if(!empty($unique)){
+        // if(!empty($unique)){
 
-            searchkey::find($unique->id)->increment('count');
-        }
-        else{
+        //     searchkey::find($unique->id)->increment('count');
+        // }
+        // else{
 
-            $searchkey = new searchkey();
+        //     $searchkey = new searchkey();
 
-            $searchkey->search = trim($datas);
+        //     $searchkey->search = trim($datas);
 
-            $searchkey->save();
+        //     $searchkey->save();
 
-        }
+        // }
 
         // //check client search hơn 200 lần
 

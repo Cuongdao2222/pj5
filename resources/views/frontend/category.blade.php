@@ -464,7 +464,7 @@
                     data: {
                         json_id_product: $('.lists-id').text(),
                         action:$(this).val(),
-                        idcate: {{ $id_cate??'' }}
+                        idcate: '{{ $id_cate??'' }}'
                         
                     },
                     success: function(result){

@@ -764,6 +764,13 @@
                                         <a href="{{route('details','tu-lanh-funiki')}}">
                                             <h3>Tủ lạnh Funiki</h3>
                                         </a>
+                                        <a href="{{route('details','tu-lanh-mitsubishi')}}">
+                                            <h3>Tủ lạnh Mitsubishi </h3>
+                                        </a>
+
+                                        <a href="{{route('details','tu-lanh-hitachi')}}">
+                                            <h3>Tủ lạnh Hitachi</h3>
+                                        </a>
                                     </div>
                                 </div>
                                 <div class="sub-cate">
