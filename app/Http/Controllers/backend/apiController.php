@@ -101,31 +101,38 @@ class apiController extends Controller
     }
     public function updateProductApi(Request $request)
     {
-        // $data_product = 'UA50AU9000', 'UA50AU8000', 'UA50AU7000';
-        // $data_product = explode($data_product, ',');
 
-        // $check = Product::whereIn('ProductSku',  $data_product)->get();
-        // if($check->count() != count($data_product)){
+        $data = $request->data;
 
-        //     return response()->json(['message' => 'Model sản phẩm không đúng, xin kiểm tra lại'], 404);
-        // }
+        if(!empty($data)){
 
-        $data = [ ['product'=>'UA50AU9000', 'price'=>5000000, 'qualtity'=>2],  ['product'=>'UA50AU8000', 'price'=>5000001, 'qualtity'=>5]];
+             $data = json_decode($data);
 
+            foreach($data as $key => $value) {
 
-        foreach ($data as $key => $value) {
+                dd($value->product);
 
-            $checkmodel = product::where('ProductSku', $value['product'])
+                // $checkmodel = product::where('ProductSku', $value->product)->first();
 
-           
-            
+                // if(empty($checkmodel)){
+
+                //     return response()->json([
+                //     'message' => 'model sản phẩm không đúng, xin kiểm tra lại'], 404);
+
+                // }
+                // $id = $checkmodel->id;
+
+                // $checkmodel->Quantily = $value->qualtily??'';
+
+                // $checkmodel->Price    = $value->price??'';
+
+                // $checkmodel->save();
+
+            }
+            // return response()->json([
+            // 'message' => 'Update sản phẩm thành công'], 200);
+
         }
 
-        $product 
-
-        foreach ($data as $key => $value) {
-            $update_product = DB::table('products')->update($value);
-        }
-        echo "update thanh cong";
     }
 }
