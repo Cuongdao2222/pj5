@@ -7,5 +7,9 @@ Disallow: /admins
 User-agent: Googlebot
 Disallow: /admins
 
+User-agent: Googlebot-Image
+Disallow: /admins
+
+
 
 
