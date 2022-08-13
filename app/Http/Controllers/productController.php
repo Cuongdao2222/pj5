@@ -424,21 +424,21 @@ class productController extends AppBaseController
         }
 
         // checksearch of client
-        $unique = searchkey::where('search', trim($datas))->get()->first();
+        // $unique = searchkey::where('search', trim($datas))->get()->first();
 
-        if(!empty($unique)){
+        // if(!empty($unique)){
 
-            searchkey::find($unique->id)->increment('count');
-        }
-        else{
+        //     searchkey::find($unique->id)->increment('count');
+        // }
+        // else{
 
-            $searchkey = new searchkey();
+        //     $searchkey = new searchkey();
 
-            $searchkey->search = trim($datas);
+        //     $searchkey->search = trim($datas);
 
-            $searchkey->save();
+        //     $searchkey->save();
 
-        }
+        // }
 
         // //check client search hơn 200 lần
 
