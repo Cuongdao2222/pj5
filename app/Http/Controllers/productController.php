@@ -423,6 +423,16 @@ class productController extends AppBaseController
 
         }
 
+        // thử query
+        
+        if(!Cache::has('product_search')){
+
+            $productss = product::select('Link', 'Name', 'Image', 'Price', 'id', 'ProductSku')->where('active', 1)->get();
+
+            Cache::forever('product_search',$productss);
+
+        }
+
         // checksearch of client
         // $unique = searchkey::where('search', trim($datas))->get()->first();
 
