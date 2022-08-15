@@ -34,28 +34,32 @@ class crawlController extends Controller
 
     public function editKeywordsProduct()
     {
-        $products = product::select('Meta_id', 'Name', 'Price', 'id')->get();
+        $Group_products = groupProduct::find(1);
 
-        foreach ($products as $key => $value) {
-
-            $product = product::find($value->id);
-
-            $model = $product->ProductSku;
-
-           
+        $id_product =  json_decode($Group_products->product_id);
 
 
-            $string =  strstr($product->Name, $model, true);
+        foreach ($id_product as $key => $value) {
 
-            $products = $string.' '.$model;
+            $product = product::find($value);
 
-             dd($products);
+            // tìm chuỗi từ vị trí inch để xóa 
 
-            $insert = DB::table('checkname')->insert(['name'=>$products]);
+            if(!empty($product->Name)){
 
+                $name = preg_replace('/[0-9]{1,4} inch /', 'remove ', $product->Name);
+
+                $name = str_replace(strstr($name, 'remove'), '', $name);
+              
+                DB::table('checkname')->insert(['name'=> $product->Name, 'model'=>$product->ProductSku, 'name1'=>$name, 'id_product'=>$value]);
+
+            }
+            
         }
-        echo "thanh cong";
 
+      
+        echo 'thanh cong';
+      
     }
     public function editMetaSeoDB()
     {
