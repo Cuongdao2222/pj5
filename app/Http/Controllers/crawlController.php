@@ -32,6 +32,87 @@ use \Carbon\Carbon;
 class crawlController extends Controller
 {
 
+    public function editKeywordsProduct()
+    {
+        $products = product::select('Meta_id', 'Name', 'Price', 'id')->get();
+
+        foreach ($products as $key => $value) {
+
+            $product = product::find($value->id);
+
+            $model = $product->ProductSku;
+
+           
+
+
+            $string =  strstr($product->Name, $model, true);
+
+            $products = $string.' '.$model;
+
+             dd($products);
+
+            $insert = DB::table('checkname')->insert(['name'=>$products]);
+
+        }
+        echo "thanh cong";
+
+    }
+    public function editMetaSeoDB()
+    {
+        $product = product::select('Meta_id', 'Name', 'Price', 'id')->get();
+
+        // foreach ($product as $key => $value) {
+
+        //     $metaseo =  metaSeo::find($value->Meta_id);
+
+        //     $metaseo->title = $value->Name.
+           
+        // }
+
+        foreach ($product as $key => $value) {
+
+            $product = product::find($value->id);
+
+            $metaseo =  metaSeo::find($product->Meta_id);
+
+            if(!isset($product->Price)){
+                dd($value->id);
+                
+            }
+
+            $Price = $product->Price;
+
+
+
+            //check id trong gia dụng 
+
+            $groupProduct = groupProduct::find(8);
+
+            $giadung = json_decode($groupProduct->product_id);
+
+            $tragop = '';
+
+            if($Price>=3000000 && !in_array($product->id, $giadung)){
+
+                $tragop = ', Trả góp 0%';
+
+            }
+
+            $metaseo->meta_title = $product->Name.' giá rẻ'.$tragop;
+
+            $metaseo->save();
+
+            echo "<pre>";
+
+            echo $value->id;
+
+            echo "</pre>";
+
+        }
+
+        echo'thành công';
+
+    }
     public function deleteCache()
     {
         Cache::flush();
