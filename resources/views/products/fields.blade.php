@@ -146,12 +146,6 @@
     {!! Form::text('Name', null, ['class' => 'form-control','maxlength' => 1000]) !!}
 </div>
 
-<!-- promotion -->
-<div class="form-group col-sm-6">
-    {!! Form::label('Km', 'Khuyến mãi text:') !!}
-    {!! Form::text('promotion', null, ['class' => 'form-control','maxlength' => 100000]) !!}
-</div>
-
 <!-- Productsku Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('ProductSku', 'Model:') !!}
@@ -249,6 +243,12 @@
     {!! Form::select('Maker', $makers, @$MakerSelected, ['class' => 'form-control custom-select']) !!}
 </div>
 
+
+<!-- promotion -->
+<div class="form-group col-sm-6">
+    {!! Form::label('Km', 'Khuyến mãi text:') !!}
+    {!! Form::textarea('promotion', null, ['class' => 'form-control', 'id' =>'promotion']) !!}
+</div>
 
 <!-- Image Field -->
 <!-- <div class="form-group col-sm-6">
@@ -363,10 +363,7 @@
         filebrowserImageUploadUrl: '{{ $url_domain }}/js/core/connector/php/connector.php?command=QuickUpload&type=Images',
         filebrowserWindowWidth : '1000',
         filebrowserWindowHeight : '700',
-        
-
-
-    } );
+    });
     CKEDITOR.replace( 'content-1', {
         filebrowserBrowseUrl: '{{ $url_domain }}ckfinder.html',
         filebrowserImageBrowseUrl: '{{ $url_domain }}/ckfinder.html?Type=Images',
@@ -374,7 +371,7 @@
         filebrowserImageUploadUrl: '{{ $url_domain }}/js/core/connector/php/connector.php?command=QuickUpload&type=Images',
         filebrowserWindowWidth : '1000',
         filebrowserWindowHeight : '700'
-    } );
+    });
     CKEDITOR.replace( 'content-2', {
         filebrowserBrowseUrl: '{{ $url_domain }}ckfinder.html',
         filebrowserImageBrowseUrl: '{{ $url_domain }}/ckfinder.html?Type=Images',
@@ -382,7 +379,16 @@
         filebrowserImageUploadUrl: '{{ $url_domain }}/js/core/connector/php/connector.php?command=QuickUpload&type=Images',
         filebrowserWindowWidth : '1000',
         filebrowserWindowHeight : '700'
-    } );
+    });
+
+    CKEDITOR.replace( 'promotion', {
+        filebrowserBrowseUrl: '{{ $url_domain }}ckfinder.html',
+        filebrowserImageBrowseUrl: '{{ $url_domain }}/ckfinder.html?Type=Images',
+        filebrowserUploadUrl: '{{ $url_domain }}/js/core/connector/php/connector.php?command=QuickUpload&type=Files',
+        filebrowserImageUploadUrl: '{{ $url_domain }}/js/core/connector/php/connector.php?command=QuickUpload&type=Images',
+        filebrowserWindowWidth : '1000',
+        filebrowserWindowHeight : '700'
+    });
     
     
 </script>

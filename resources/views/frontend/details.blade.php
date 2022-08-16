@@ -510,7 +510,7 @@
                                         Khuyến mãi kèm theo
                                     </legend>
 
-                                        {{ @$data->promotion }}
+                                        {!! @$data->promotion !!}
                                        
                                 </fieldset>
                                 @endif
@@ -923,7 +923,7 @@
                                     Khuyến mãi kèm theo
                                 </legend>
 
-                                    {{ @$data->promotion }}
+                                    {!! @$data->promotion !!}
                                    
                             </fieldset>
                             @endif
