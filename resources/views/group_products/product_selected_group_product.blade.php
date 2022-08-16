@@ -115,7 +115,7 @@
             }
 
 
-            if($level==0||$level==1||$level==2){
+            if($level==0||$level==1||$level==2||$level==3){
                  $levelcheck = $parent_id;
 
             }
@@ -137,7 +137,7 @@
                
               <input type="checkbox" id="select{{ $item['id'] }}" name="sale" onclick="selected({{ $item['id'] }})" {{ in_array($item['id'], $data_active)?'checked':''}}>
 
-              <a href="javascript:void(0)"  class="click1" data-id="{{ $item['id'] }}"><?php echo $item['name']?></a>  
+              <a href="javascript:void(0)" class="click1" data-id="{{ $item['id'] }}"><?php echo $item['name']?></a>  
 
               @if($item['level']<count($all_prent))<span class="clicks{{ $item['id'] }}" onclick="showChild('sub{{ $item['id'] }}', 'clicks{{ $item['id'] }}', '{{ $id }}')">+</span>@endif
               
@@ -151,10 +151,6 @@
     ?>
 
     <?php recursiveMenu($id, $groupProductss);  ?>
-
-
-    
-
 
     <div class="modal fade" id="info-modal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -201,8 +197,6 @@
         })
 
         function showChild(id, classs, product_id) {
-
-            
 
             if($('.'+id).is(":visible") ){
                  $('.'+id).hide();
