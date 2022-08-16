@@ -178,7 +178,7 @@
 
                 $group_gift = DB::table('group_gift')->select('id', 'group_name')->get();
 
-                $promotion = DB::table('promotion')->where('id_product', $product->id)->first();
+                $promotion = DB::table('promotion')->where('id_product', $product->id)->get()->last();
 
                 $id_group_gift = $promotion->id_group_gift??'';
 
