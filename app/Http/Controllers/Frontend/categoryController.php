@@ -462,7 +462,9 @@ class categoryController extends Controller
 
             $pageCheck = "product";
 
-            if(!Cache::has('image_product'.$findID->id)){
+            $images = Cache::get('image_product'.$findID->id);
+
+            if(!Cache::has('image_product'.$findID->id)|| empty($images->image)){
                 
                 $image_cache = image::where('product_id', $findID->id)->select('image')->get();
 
@@ -477,8 +479,7 @@ class categoryController extends Controller
 
                 Cache::forever('image_product'.$findID->id,$image_cache);
             }
-           
-            $images = Cache::get('image_product'.$findID->id);
+
 
             $data = Cache::rememberForever('data-detail'.$slug, function() use($slug) {
 

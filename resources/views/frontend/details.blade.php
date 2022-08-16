@@ -426,13 +426,23 @@
                             <a href="{{ asset($data->Image) }}" data-fancybox="gallery"><img src="{{ asset($data->Image) }}" alt="{{ @$data->Name }}"></a>
                         </div>
 
-                        
+                        <?php 
+
+                            if(!Cache::has('image_product')){
+
+                                $images = App\Models\image::where('product_id', $data->id)->select('image')->get();
+                            }  
+                            
+
+                        ?>
                        
                         @if(isset($images))
 
+                       
                         @foreach($images as $image)
 
                         @if(!empty($image->image))
+
                         <div class="item">
                             <a href="{{ asset($image->image) }}" data-fancybox="gallery"><img src="{{ asset($image->image) }}"  data-src="{{ asset($image->image) }}" class="lazyload" alt="{{ @$data->Name }}"></a>
                             

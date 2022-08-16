@@ -27,21 +27,21 @@ class image extends Model
         static::created(function ($instance) {
            // update cache content
            Cache::forget('image_product'.$instance->product_id);
-           Cache::forever('image_product'.$instance->product_id,$instance);
+          
         });
 
         static::updated(function ($instance) {
            // update cache content
           
            Cache::forget('image_product'.$instance->product_id);
-           Cache::forever('image_product'.$instance->product_id,$instance);
+         
 
 
         });
 
         static::deleted(function ($instance) {
            Cache::forget('image_product'.$instance->product_id);
-           Cache::forever('image_product'.$instance->product_id,$instance);
+          
         });
     }   
     
