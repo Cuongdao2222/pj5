@@ -146,6 +146,12 @@
     {!! Form::text('Name', null, ['class' => 'form-control','maxlength' => 1000]) !!}
 </div>
 
+<!-- promotion -->
+<div class="form-group col-sm-6">
+    {!! Form::label('Km', 'Khuyến mãi text:') !!}
+    {!! Form::text('promotion', null, ['class' => 'form-control','maxlength' => 100000]) !!}
+</div>
+
 <!-- Productsku Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('ProductSku', 'Model:') !!}

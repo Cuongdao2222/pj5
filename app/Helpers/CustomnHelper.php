@@ -15,11 +15,9 @@ if (!function_exists('_substrs')) {
               break;
             }
          }
-            return $sub . (($len < strlen($str)) ? '...' : '');
+        return $sub . (($len < strlen($str)) ? '...' : '');
     }
 }
-
-
 
 if (!function_exists('groupGift')) {
     // id truyền vào là id category của sản phẩm
@@ -30,8 +28,6 @@ if (!function_exists('groupGift')) {
         // });
 
           $gift_group = DB::table('gift_group')->where('group_product', $id)->get();
-      
-
         
         $now = Carbon\Carbon::now();
         $gift = [];
@@ -43,7 +39,6 @@ if (!function_exists('groupGift')) {
 
                 $end     = new Carbon\Carbon($gifts->end);
 
-
                 if($now->between($start, $end)){
 
                     $gifts_ar = [$gifts->gift1, $gifts->gift2];
@@ -54,7 +49,6 @@ if (!function_exists('groupGift')) {
 
                 }
             }
-
 
         }
         return $gift;
@@ -72,28 +66,28 @@ if (!function_exists('gift')) {
 
         $promotion = '';
 
+        // Cache::forget('id_checks'.$id);
+
+        // Cache::forget('promotion'.$id);
+
         $id_all = Cache::remember('id_checks'.$id, 10000, function() use ($id) {
             return  DB::table('promotion')->where('id_product', $id)->select('id_product')->get()->first();
         });
 
-       
         if(!empty($id_all)){
             $promotion = Cache::remember('promotion'.$id, 10000, function() use ($id) {
                 return DB::table('promotion')->where('id_product', $id)->select('id_group_gift', 'start', 'end')->get()->first();
             });
         }
 
-
-    
         $gift = [];
     
         if(!empty($promotion) && !empty($promotion->id_group_gift)){
             $gifts     = DB::table('group_gift')->where('id', $promotion->id_group_gift)->first();
 
-            $start    = new Carbon\Carbon($promotion->start);
+            $start    = new Carbon\Carbon($gifts->start);
 
-            $end     = new Carbon\Carbon($promotion->end);
-
+            $end     = new Carbon\Carbon($gifts->end);
 
             if($now->between($start, $end)){
 
@@ -103,7 +97,6 @@ if (!function_exists('gift')) {
 
                 $gift =  ['gift'=>$gift, 'gifts'=>$gifts];
 
-                
             }
         
         }
@@ -147,7 +140,6 @@ if (!function_exists('convertSlug')) {
         $map = array_merge($map, $default);
         return strtolower(preg_replace(array_keys($map), array_values($map), $title));
 
-
     }
 }
 
@@ -155,7 +147,6 @@ if (!function_exists('promotion_product')){
 
     function promotion_product($id, $now)
     {
-        
 
         $promotion = App\Models\promotion::where('id_product', $id)->get()->last(); 
 

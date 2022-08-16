@@ -62,7 +62,8 @@ class product extends Model
         'Maker',
         'Group_id',
         'Price',
-        'Meta_id'
+        'Meta_id',
+        'promotion'
 
     ];
 

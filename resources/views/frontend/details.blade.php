@@ -319,7 +319,7 @@
     }
 
      
-
+    Cache::forget('gifts_Fe_sss'.$data['id']);
     if(!Cache::has('gifts_Fe_sss'.$data['id'])){
 
         $gifts = gift($data['id']);
@@ -504,12 +504,25 @@
                                     <span>{{ $status }}</span>
                                 </div>
 
+                                @if(!empty($data->promotion))
+                                <fieldset class="p-gift">
+                                    <legend id="data-pricetotal" style="color: #ff0000;font-size: 18px; font-weight: bold" data-pricetotal="0">
+                                        Khuyến mãi kèm theo
+                                    </legend>
+
+                                        {{ @$data->promotion }}
+                                       
+                                </fieldset>
+                                @endif
+
                                  @if(!empty($gift) &&  $data->Quantily>0 &&  $data['Price']>0 && $deal_check_add ==false)
 
                                 <fieldset class="p-gift">
                                         <legend id="data-pricetotal" style="color: #ff0000;font-size: 18px; font-weight: bold" data-pricetotal="0">
                                             Khuyến mãi kèm theo
                                         </legend>
+
+                                      
                                         <!---->
                                         <div class="detail-offer">
                                            
@@ -903,8 +916,18 @@
                             <div class="pdetail-stockavailable">
                                 <span>{{ $status }} </span>
                             </div>
+
+                            @if(!empty($data->promotion))
+                            <fieldset class="p-gift">
+                                <legend id="data-pricetotal" style="color: #ff0000;font-size: 18px; font-weight: bold" data-pricetotal="0">
+                                    Khuyến mãi kèm theo
+                                </legend>
+
+                                    {{ @$data->promotion }}
+                                   
+                            </fieldset>
+                            @endif
                         
-                           
                             @if(!empty($gift) && $data->Quantily>0 && $deal_check_add ==false  &&  $data['Price']>0)
 
                             <fieldset class="p-gift">

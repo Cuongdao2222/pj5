@@ -180,6 +180,7 @@
 
                 $promotion = DB::table('promotion')->where('id_product', $product->id)->get()->last();
 
+                
                 $id_group_gift = $promotion->id_group_gift??'';
 
             ?>
