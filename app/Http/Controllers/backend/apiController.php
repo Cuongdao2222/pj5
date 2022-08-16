@@ -49,6 +49,8 @@ class apiController extends Controller
 
             $apiUdate->price_new = $request->Price;
 
+            $apiUdate->user = $request->User;
+
             $update_soft = $apiUdate->save();
 
 
