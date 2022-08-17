@@ -38,33 +38,6 @@
         </div>
         <hr>
 
-        
-
-
-        <?php 
-            $deal = App\Models\deal::get();
-
-            $now  = Carbon\Carbon::now();
-
-            if(!empty($deal)&count($deal)>0){
-
-                $timeDeal_star = $deal[0]->start;
-
-                $timeDeal_star =  \Carbon\Carbon::create($timeDeal_star);
-
-                $timeDeal_end = $deal[0]->end;
-
-                $timeDeal_end =  \Carbon\Carbon::create($timeDeal_end);
-
-                $timestamp = $now->diffInSeconds($timeDeal_end);
-        
-            }
-
-
-        ?>
-
-       
-       
     </div>
 
 
@@ -76,8 +49,6 @@
     <div class="watched"></div>
     <div class="overlay"></div>
 
-   
-   
 </section>
 
 @endsection
