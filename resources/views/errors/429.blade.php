@@ -31,40 +31,10 @@
 <section id="categoryPage" class="desktops" data-id="1942" data-name="Tivi" data-template="cate">
 
     <div class="container-productbox">
-
-
     	<div style="margin-left: 20px;">
             <h2><b>Không tìm thấy link</b></h2>
         </div>
         <hr>
-
-        
-
-
-        <?php 
-            $deal = App\Models\deal::get();
-
-            $now  = Carbon\Carbon::now();
-
-            if(!empty($deal)&count($deal)>0){
-
-                $timeDeal_star = $deal[0]->start;
-
-                $timeDeal_star =  \Carbon\Carbon::create($timeDeal_star);
-
-                $timeDeal_end = $deal[0]->end;
-
-                $timeDeal_end =  \Carbon\Carbon::create($timeDeal_end);
-
-                $timestamp = $now->diffInSeconds($timeDeal_end);
-        
-            }
-
-
-        ?>
-
-       
-       
     </div>
 
 
