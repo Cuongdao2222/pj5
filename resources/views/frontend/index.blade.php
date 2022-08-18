@@ -75,7 +75,7 @@
             }   
 
             .col1-big-img img{
-                width: auto !important;
+               /* width: auto !important;*/
             }
             .col1-big-img{
                 text-align: center;
