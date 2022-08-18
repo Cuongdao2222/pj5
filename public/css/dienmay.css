@@ -14,7 +14,7 @@
 }
 
 .sale-banner{
-    height: 90px;
+   /* height: 90px;*/
     width: auto !important;
 }
 
@@ -12108,8 +12108,8 @@ h1 {
 }
 
 .homebanner-container {
-	width: calc(100% - 350px);
-	height: 370px;
+	width: 100%;
+	height: auto;
 	/*padding: 10px 0 0 10px*/
 }
 
@@ -12126,7 +12126,7 @@ h1 {
 
 #sync1 .item {
 	display: none;
-	height: 300px;
+	/*height: 300px;*/
 	width: 100%
 }
 
@@ -12135,7 +12135,7 @@ h1 {
 }
 
 .homebanner .item img {
-	height: 300px;
+	/*height: 300px;*/
 	width: 100%
 }
 
@@ -12188,7 +12188,7 @@ h1 {
 }
 
 .preorder-hot {
-	display: flex;
+	display: none;
 	flex-wrap: wrap;
 	padding-top: 10px;
 	width: 350px

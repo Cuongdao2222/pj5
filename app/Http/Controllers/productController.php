@@ -492,7 +492,15 @@ class productController extends AppBaseController
                 return false !== strpos($item->Name, $searchName);
             });
 
-            
+            // / search khi tên có viết hoa
+
+            if($find_first->count()==0){
+
+                $find_first = collect($data)->filter(function ($item) use ($datas) {
+                    return false !== strpos($item->Name, $datas);
+                });
+            }
+
         }
 
         $find_first = $find_first->take(50)->sortByDesc('id')->pluck('id');

@@ -363,11 +363,7 @@
                                 </td>
                                 <td>
 
-                                 
-                                   
-                                    
                                     <?php 
-
 
                                         $timeup = $now->diffInSeconds($val->end); 
 
@@ -375,10 +371,7 @@
                                         $timeup = $timeup%3600;
                                         $minutes = $timeup/60;
                                     
-
                                     ?> 
-
-                                   
 
 
                                     @if($now->between($val->start, $val->end))
@@ -626,9 +619,11 @@ function setTimeDeal(id) {
             
         },
         success: function(result){
+
+            console.log(result);
             start = result[0];
             end   = result[1];
-            console.log(end);
+           
             ar_start = start.split(',');
             start_date = ar_start[0];
             start_time = ar_start[1];
@@ -641,7 +636,6 @@ function setTimeDeal(id) {
 
             // $('#hours3 option:selected').remove();
 
-
             $("#hours3 option[value='"+start_time+"']").prop('selected', true);
 
 
@@ -651,8 +645,6 @@ function setTimeDeal(id) {
             $("#hours4 option[value='"+end_time+"']").prop('selected', true);
 
             $('#time-deal').val(id);
-
-    
 
         }
     });

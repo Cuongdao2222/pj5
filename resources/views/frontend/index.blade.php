@@ -3,10 +3,132 @@
 @section('content') 
     @push('style')
 
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/home.css') }}?ver=3">
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}?ver=4"> 
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/index.css') }}?ver=2">
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/homes.css') }}?ver=3">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/home.css') }}?ver=11">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}?ver=10"> 
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/index.css') }}?ver=3">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/homes.css') }}?ver=5">
+        <style type="text/css">
+           /* deal*/
+
+            .titles-time{
+                border-top: 2px solid #ff9;
+                margin-top: 5px;
+                padding-top: 5px;
+                padding-bottom: 5px;
+                background-color: #fb0707;
+                margin-bottom: 7px;
+                display: block;
+                width: 100%;
+                height: 80px;
+            }
+
+            .titles-time h3 {
+                margin: 0;
+                display: inline-block;
+                color: #000000;
+                font-size: 18px;
+                text-transform: uppercase;
+                padding: 0 13px;
+                vertical-align: -3px;
+                float: left;
+                background-color: #ffea26;
+                padding: 5px 13px;
+                border-radius: 4px;
+                line-height: 29px;
+                margin-left: 10px;
+                cursor: pointer;
+            }
+
+            .titles-time .cat-child {
+                padding: 2px 0;
+                display: inline-block;
+                margin-left: 2px;
+            }
+
+            .titles-time .cat-child a {
+                line-height: 36px;
+                color: #000000;
+                background-color: #ff9;
+                padding: 11px 10px;
+                border-radius: 4px;
+            }
+
+            .titles-time .cat-child li {
+                float: left;
+                padding: 0 4px;
+            }
+
+
+
+
+
+
+
+
+            .div-title-news{
+                margin-bottom: 10px;
+            }
+            .texts p {
+                height: 50px;
+                line-height: 32px !important;
+                padding-left: 10px;
+            }   
+
+            .col1-big-img img{
+                width: auto !important;
+            }
+            .col1-big-img{
+                text-align: center;
+            }
+            .big-title-href{
+                height: 100%;
+            }
+            .result-labels{
+                position: absolute ;
+                left: 0;
+            }
+            .icon_sale{
+                
+                padding: 3px;
+                border-radius: 2px;
+                font-size: 10px;
+                color: #000;
+                position: absolute;
+                left: 10px;
+                bottom: 30%;
+                z-index: 1;
+            }
+
+            @media screen and (max-width: 767px) {
+                .result-labels{
+                    top: 43%;
+                   
+                }    
+            }
+
+             @media screen and (min-width: 768px) {
+                .result-labels{
+                    top: 53%;
+                   
+                } 
+                .homebanners{
+
+                    height: auto;
+                } 
+                .homebanner{
+                    height: auto;
+                }   
+
+                #sync1  .owl-item img {
+                    height: 100% !important;
+                    width: 100% !important;
+                } 
+
+                #sync1 .item img{
+                    height: auto !important;
+                }   
+            }
+        </style>
 
        
     @endpush
@@ -43,40 +165,42 @@
             </div>
         </div>
     </div>
+
+     <div class="homebanner-container">
+        <!-- Banner chính -->
+        <aside class="homebanner">
+            <div id="sync1" class="slider-banner owl-carousel homebanners">
+
+                @if(isset($banners))
+
+                @foreach($banners as $value)
+                <div class="item" data-dot="<span>{{ $value->title }}</span>">
+                    <a aria-label="slide" data-cate="0" data-place="1535" href="{{ $value->link }}"><img  src="{{ asset($value->image) }}"  data-src="{{ asset($value->image) }}" alt="{{ $value->title }}"  ></a>
+                </div>
+                @endforeach
+                @endif
+                
+            </div>
+            <div id="sync2" class="slider-banner owl-carousel">
+                @if(isset($banners))
+                @foreach($banners as $value)
+                <div class="item">
+                    <h3>
+                        {{  $value->title }}
+                    </h3>
+                </div>
+                @endforeach
+                @endif
+                
+            </div>
+        </aside>
+        <!-- End -->
+    </div>
     
     <section>
         <div class="bar-top">
            <!--  <div class="bar-top-left-none"></div> -->
-            <div class="homebanner-container">
-                <!-- Banner chính -->
-                <aside class="homebanner">
-                    <div id="sync1" class="slider-banner owl-carousel homebanners">
-
-                        @if(isset($banners))
-
-                        @foreach($banners as $value)
-                        <div class="item" data-dot="<span>{{ $value->title }}</span>">
-                            <a aria-label="slide" data-cate="0" data-place="1535" href="{{ $value->link }}"><img  src="{{ asset($value->image) }}"  data-src="{{ asset($value->image) }}" alt="{{ $value->title }}"  ></a>
-                        </div>
-                        @endforeach
-                        @endif
-                        
-                    </div>
-                    <div id="sync2" class="slider-banner owl-carousel">
-                        @if(isset($banners))
-                        @foreach($banners as $value)
-                        <div class="item">
-                            <h3>
-                                {{  $value->title }}
-                            </h3>
-                        </div>
-                        @endforeach
-                        @endif
-                        
-                    </div>
-                </aside>
-                <!-- End -->
-            </div>
+           
             <div class="preorder-hot"> 
                 @if(isset( $bannersRight ))
 
@@ -122,7 +246,6 @@
            
             $now  = Carbon\Carbon::now();
             
-
             if(!empty($deal)){
 
                 $timeDeal_star = Cache::get('deal_start');
@@ -136,21 +259,48 @@
                 $timestamp = $now->diffInSeconds($timeDeal_end);
             }
 
-
-            
-
-
         ?>
 
 
         @if(!empty($deal_check) && $deal_check->count()>0 && $now->between($deal_check[0]->start, $deal_check[0]->end))
-
-
         <!-- flash sale -->
             <div class="img-flashsale mobiles" style="width: 100%;">
                 <a href="{{ route('details', 'deal') }}"><img src="{{ asset('images/template/flashsalemb.jpg') }}" style="width: 100%"></a>
 
             </div>
+           <!--  <div class="title titles-time">
+                <h3>
+                    <span>12:00</span>
+                    <br>
+                    <span>01:00:59</span>
+                </h3>
+                
+                <ul class="cat-child">
+                    <li>
+                        <h3>
+                            <span>15:00</span>
+                            <br>
+                            <span>Sắp diễn ra</span>
+                        </h3>
+                    </li>
+                    <li>
+                        <h3>
+                            <span>18:00</span>
+                            <br>
+                            <span>Sắp diễn ra</span>
+                        </h3>
+
+                    </li>
+                    <li>
+                        <h3>
+                            <span>21:00</span>
+                            <br>
+                            <span>Sắp diễn ra</span>
+                        </h3>
+                    </li>
+                </ul>
+            </div> -->
+
             <div class="">
                 <div class="flash-sale" style="height: 305px;">
                     
@@ -163,8 +313,6 @@
 
                                 @foreach($deal as $key => $value)
                                
-
-
                                 @if( !empty($value->active) && $value->active ==1 && $now->between($value->start, $value->end))
 
                                 <?php 
@@ -262,8 +410,6 @@
            <!--  end flash  -->
          @endif 
           
-
-
         <div class="clearfix"></div> 
 
         <div class="prd-promo has-banner" style="background-color:#FFF3EE; " data-html-id="3109">
@@ -280,22 +426,17 @@
                 @foreach($product_sale as  $value)
                 @if($value->active==1)
                 <div class="item">
+                    <span class="icon_sale">
+                        <img class="sale-banner ls-is-cached lazyloaded" alt="hot" data-src="{{ asset('images/background-image/201.90.1.png') }}" src="{{ asset('images/background-image/201.90.1.png') }}">
+                    </span>
                     <a href='{{ route('details', $value->Link) }}' class=" main-contain" data-s="OnlineSavingCMS" data-site="2" data-pro="3" data-cache="False" data-name="M&#xE1;y gi&#x1EB7;t LG Inverter 8.5 kg FV1408S4W" data-id="227121" data-price="8840000.0" data-brand="LG" data-cate="M&#xE1;y gi&#x1EB7;t" data-box="BoxHome">
                         <div class="item-label">
                         </div>
                         <div class="item-img">
                             <img data-src="{{ asset($value->Image) }}"   class="lazyload"  data-src="{{ asset($value->Image) }}" alt="{{ $value->Name }}" width=210 height=210>
-                            
-                        <?php 
-
-                        ?>    
-                            
+                        
                         </div>
-                       
                         <h3>{{ $value->Name }}</h3>
-
-        
-                       
                         <strong class="price">{{  @str_replace(',' ,'.', number_format($value->Price))  }}.&#x20AB;</strong>
                         <div class="item-rating">
                             <p>
@@ -385,20 +526,12 @@
                                 <div class="item-img">
                                     <img data-src="{{ asset($datas->Image) }}" class="lazyload"   alt="{{ $datas->Name }}" width=210 height=210>
                                     
-                                    
-
-                                 <!--     <img src="{{ asset('images/saker/'.strtolower($maker->maker??'').'.png') }}" class="item-saker">
- -->
-                                     
                                 </div>
-                             <!--   <p class="result-labels"><img class="sale-banner ls-is-cached lazyloaded" alt="Giảm Sốc" data-src="{{ asset('images/css/sale.png') }}" src="{{ asset('images/css/sale.png') }}"></p> -->
+                               <p class="result-labels"><img class="sale-banner ls-is-cached lazyloaded" alt="hot" data-src="{{ asset('images/background-image/200-3.png') }}" src="{{ asset('images/background-image/200-3.png') }}"></p>
                                 <h3>{{ $datas->Name }}</h3>
                                 @if($groups->id<5)
-
                                 <?php
-                                    
                                         if($groups->id == 1){
-
                                             $searchstring = 'inch';
                                         }
                                         else{
@@ -507,9 +640,9 @@
         </div>
         
         <?php  
-
+           
             $post = Cache::remember('post_home',10000, function() {
-                return App\Models\post::where('active',1)->where('hight_light', 1)->OrderBy('created_at', 'desc')->select('link', 'title', 'image')->limit(5)->get()->toArray();
+                return App\Models\post::where('active',1)->where('hight_light', 1)->OrderBy('created_at', 'desc')->select('link', 'title', 'image')->limit(6)->get()->toArray();
             }); 
 
         ?>
@@ -522,11 +655,15 @@
                     <h4 class="title-layout">Tin tức nổi bật</h4>
                     <a href="{{ route('tin') }}" class="readmore-txt blue">Xem thêm</a>
                 </div>
-                <a href="{{ route('details', $post[0]['link']) }}" class="col1-big">
-                    <div class="span texts">
-                        <p class="text-blog">{{ $post[0]['title'] }}</p>
-                    </div>
-                </a>    
+
+                <div class="col1-big div-title-news">
+                    <a href="{{ route('details', $post[0]['link']) }}" class="col1-big big-title-href">
+                        <div class="span texts">
+                            <p class="text-blog">{{ $post[0]['title'] }}</p>
+                        </div>
+                    </a>
+                </div>
+                    
 
                 <div class="col1__ct" data-size="4">
                     <a href="{{ route('details', $post[0]['link']) }}" class="col1-big">
@@ -745,8 +882,8 @@
             loop:true,
             margin:10,
             nav:true,
-            dots:true,
-            dotsData: true,
+            // dots:true,
+            // dotsData: true,
             navText: ["<i class='fa fa-chevron-left'></i>","<i class='fa fa-chevron-right'></i>"],
             responsive:{
                 0:{

@@ -216,10 +216,18 @@ class AjaxController extends Controller
 
         if($product->count()==0){
 
-            
             $product = collect($data)->filter(function ($item) use ($searchs) {
                 return false !== strpos($item->Name, $searchs);
             });
+
+            // search khi tên có viết hoa
+
+            if($product->count()==0){
+
+                $product = collect($data)->filter(function ($item) use ($search) {
+                    return false !== strpos($item->Name, $search);
+                });
+            }
 
             
         }
