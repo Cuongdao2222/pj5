@@ -85,20 +85,24 @@ if (!function_exists('gift')) {
         if(!empty($promotion) && !empty($promotion->id_group_gift)){
             $gifts     = DB::table('group_gift')->where('id', $promotion->id_group_gift)->first();
 
-            $start    = new Carbon\Carbon($gifts->start);
+            if(!empty($gifts) && !empty($gifts->start)){
 
-            $end     = new Carbon\Carbon($gifts->end);
+                $start    = new Carbon\Carbon($gifts->start);
 
-            if($now->between($start, $end)){
+                $end     = new Carbon\Carbon($gifts->end);
 
-                $gifts_ar = [$gifts->gift1, $gifts->gift2];
-        
-                $gift = DB::table('gifts')->whereIn('id',  $gifts_ar)->get()->toArray();
+                if($now->between($start, $end)){
 
-                $gift =  ['gift'=>$gift, 'gifts'=>$gifts];
+                    $gifts_ar = [$gifts->gift1, $gifts->gift2];
+            
+                    $gift = DB::table('gifts')->whereIn('id',  $gifts_ar)->get()->toArray();
+
+                    $gift =  ['gift'=>$gift, 'gifts'=>$gifts];
+
+                }
 
             }
-        
+            
         }
         return $gift;
     }
