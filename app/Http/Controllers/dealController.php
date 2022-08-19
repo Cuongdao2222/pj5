@@ -215,6 +215,17 @@ class dealController extends Controller
         $deal->save();
     }
 
+    public function addDealFlash(Request $request)
+    {
+        $id = $request->id;
+        $val = $request->val;
+        $deal = deal::find($id);
+        $deal->flash_deal = $val;
+        $result = $deal->save();
+        
+
+    }
+
 
     public function removeDeal(Request $request)
     {

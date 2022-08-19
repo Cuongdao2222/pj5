@@ -299,14 +299,11 @@
                             </tr>
 
                             <?php  
-
-                               
                                 $now = Carbon\Carbon::now();
                                 $products = DB::table('deal')->distinct()->get()->toArray();
 
                                 $k =0;
 
-                               
                             ?>
                             @isset($products)
                             @foreach($products as $val)
@@ -367,10 +364,10 @@
                                     <?php 
 
                                         $timeup = $now->diffInSeconds($val->end); 
-
                                         $hour  = $timeup/3600;
                                         $timeup = $timeup%3600;
                                         $minutes = $timeup/60;
+                                        $flashDealId =  $val->flash_deal;
                                     
                                     ?> 
 
@@ -386,12 +383,12 @@
                                 </td>
 
                                 <td>
-                                    <select class="form-select" id="flash-deal" onchange="changeFlashDeal('{{ $val->id }}')">
+                                    <select  id="flash-deal{{ $val->id }}" class="form-select"  onchange="changeFlashDeal({{ $val->id }})">
                                         <option value="0">Không chọn</option>
-                                        <option value="1">9h</option>
-                                        <option value="2">12h</option>
-                                        <option value="3">14h</option>
-                                        <option value="4">17h</option>
+                                        <option value="1" {{ $flashDealId==1?'selected':'' }}>9h</option>
+                                        <option value="2" {{ $flashDealId==2?'selected':'' }}>12h</option>
+                                        <option value="3" {{ $flashDealId==3?'selected':'' }}>14h</option>
+                                        <option value="4" {{ $flashDealId==4?'selected':'' }}>17h</option>
                                     </select>
                                 </td>
 
@@ -419,12 +416,8 @@
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Chọn sản phẩm</h5>
 
-
-
                         <?php  
-
                        
-
                             $option = App\Models\groupProduct::select('id', 'name')->where('parent_id', 0)->get();
                         ?>
 
@@ -820,12 +813,34 @@ $('.add-deal-price').click(function(){
     
  })
 
-$("#flash-deal").bind("change", function() {
+function changeFlashDeal(id) {
 
-    alert($(this).val());
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $.ajax({
+
+    type: 'POST',
+        url: "{{ route('add-deal-flash') }}",
+        data: {
+            val: $('#flash-deal'+id).val(),
+            id:id,
+            
+        },
+        success: function(result){
+           
+            alert('Thành công');
+            // window.location.reload();
+
+        }
+    });
+
+}   
 
 
-})    
 
 
 function set_feature(id, active){

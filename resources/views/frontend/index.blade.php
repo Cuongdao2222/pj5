@@ -269,15 +269,45 @@
                 <a href="{{ route('details', 'deal') }}"><img src="{{ asset('images/template/flashsalemb.jpg') }}" style="width: 100%"></a>
 
             </div>
+            <?php 
+
+                $time1_start = Carbon\Carbon::createFromDate('19-8-2022, 9:00');
+                $time1 = Carbon\Carbon::createFromDate('19-8-2022, 12:00');
+                $time2_start = Carbon\Carbon::createFromDate('19-8-2022, 12:00');
+                $time2 = Carbon\Carbon::createFromDate('19-8-2022, 14:00');
+                $time3_start = Carbon\Carbon::createFromDate('19-8-2022, 14:00');
+                $time3 = Carbon\Carbon::createFromDate('19-8-2022, 17:00');
+                $time4_start = Carbon\Carbon::createFromDate('19-8-2022, 17:00');
+                $time4 = Carbon\Carbon::createFromDate('19-8-2022, 22:00');
+                $define = [['start'=>'9h', 'endTime'=>$time1, 'startTime'=>$time1_start], ['start'=>'12h', 'endTime'=>$time2, 'startTime'=>$time2_start], ['start'=>'14h', 'endTime'=>$time3, 'startTime'=>$time3_start], ['start'=>'17h', 'endTime'=>$time4, 'startTime'=>$time4_start]];
+
+             
+                // if($now>$startTime){
+                //     dd('lớn hơn');
+
+                // }
+
+    
+            ?>
             <div class="title titles-time">
-                <h3>
-                    <span>9:00</span>
-                    <br>
-                    <span>03:00:59</span>
-                </h3>
-                
+               
                 <ul class="cat-child">
+
+                    @foreach($define as $value)
+
+                    @if($now<$value['endTime'])
+
                     <li>
+                        <h3>
+                            <span>{{ $value['start'] }}</span>
+                            <br>
+                            <span>{{ $now->between($value['startTime'], $value['endTime'])?'03:00:59':'SẮP DIỄN RA'}}</span>
+                        </h3>
+                    </li>
+                    @endif
+                    @endforeach
+
+                   <!--  <li>
                         <h3>
                             <span>12:00</span>
                             <br>
@@ -298,7 +328,7 @@
                             <br>
                             <span>Sắp diễn ra</span>
                         </h3>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
 

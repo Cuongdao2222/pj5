@@ -207,7 +207,7 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::get('deal', 'dealController@index')->name('deal');
 
-
+    Route::post('add-deal-flash', 'dealController@addDealFlash')->name('add-deal-flash');
 
     Route::get('editPricedeal', 'dealController@editDealPrice')->name('editPricedeal');
 
