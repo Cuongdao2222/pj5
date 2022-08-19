@@ -269,24 +269,24 @@
                 <a href="{{ route('details', 'deal') }}"><img src="{{ asset('images/template/flashsalemb.jpg') }}" style="width: 100%"></a>
 
             </div>
-           <!--  <div class="title titles-time">
+            <div class="title titles-time">
                 <h3>
-                    <span>12:00</span>
+                    <span>9:00</span>
                     <br>
-                    <span>01:00:59</span>
+                    <span>03:00:59</span>
                 </h3>
                 
                 <ul class="cat-child">
                     <li>
                         <h3>
-                            <span>15:00</span>
+                            <span>12:00</span>
                             <br>
                             <span>Sắp diễn ra</span>
                         </h3>
                     </li>
                     <li>
                         <h3>
-                            <span>18:00</span>
+                            <span>14:00</span>
                             <br>
                             <span>Sắp diễn ra</span>
                         </h3>
@@ -294,13 +294,13 @@
                     </li>
                     <li>
                         <h3>
-                            <span>21:00</span>
+                            <span>17:00</span>
                             <br>
                             <span>Sắp diễn ra</span>
                         </h3>
                     </li>
                 </ul>
-            </div> -->
+            </div>
 
             <div class="">
                 <div class="flash-sale" style="height: 305px;">

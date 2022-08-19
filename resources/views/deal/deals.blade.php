@@ -295,6 +295,7 @@
                                 <td>Sửa giá deal nhanh</td>
                                 <td>Sắp xếp</td>
                                 <td>Cài thời gian riêng</td>
+                                <td>Flash Deal (theo khung giờ)</td>
                             </tr>
 
                             <?php  
@@ -382,6 +383,16 @@
                                      @endif
                                     <br>
                                     <a href="javascript:void(0)" onclick="setTimeDeal({{ $val->id }})">Sửa</a>
+                                </td>
+
+                                <td>
+                                    <select class="form-select" id="flash-deal" onchange="changeFlashDeal('{{ $val->id }}')">
+                                        <option value="0">Không chọn</option>
+                                        <option value="1">9h</option>
+                                        <option value="2">12h</option>
+                                        <option value="3">14h</option>
+                                        <option value="4">17h</option>
+                                    </select>
                                 </td>
 
                             </tr>
@@ -809,6 +820,14 @@ $('.add-deal-price').click(function(){
     
  })
 
+$("#flash-deal").bind("change", function() {
+
+    alert($(this).val());
+
+
+})    
+
+
 function set_feature(id, active){
 
     $.ajax({
@@ -854,31 +873,33 @@ $('.accepts-time-deal').click(function(){
 
 $('.accepts').click(function(){
 
-      $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-
-        $.ajax({
-
-        type: 'GET',
-            url: "{{ route('result-add') }}",
-            data: {
-                start: $('#date-picker1').val()+','+$('#hours1').val(),
-
-                end:$('#date-picker2').val()+','+$('#hours2').val(),
-               
-                
-            },
-            success: function(result){
-
-               window.location.reload();
+    $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
 
-    
- })
+    $.ajax({
+
+    type: 'GET',
+        url: "{{ route('result-add') }}",
+        data: {
+            start: $('#date-picker1').val()+','+$('#hours1').val(),
+
+            end:$('#date-picker2').val()+','+$('#hours2').val(),
+           
+            
+        },
+        success: function(result){
+
+           window.location.reload();
+        }
+    });
+
+})
+
+
+
 
 $('.accept-find').click(function(){
 
