@@ -58,6 +58,11 @@
                 padding: 0 4px;
             }
 
+            .titles-time .minutes{
+                font-weight: normal;
+                color: #000;
+            }
+
 
 
 
@@ -271,14 +276,14 @@
             </div>
             <?php 
 
-                $time1_start = Carbon\Carbon::createFromDate('19-8-2022, 9:00');
-                $time1 = Carbon\Carbon::createFromDate('19-8-2022, 12:00');
-                $time2_start = Carbon\Carbon::createFromDate('19-8-2022, 12:00');
-                $time2 = Carbon\Carbon::createFromDate('19-8-2022, 14:00');
-                $time3_start = Carbon\Carbon::createFromDate('19-8-2022, 14:00');
-                $time3 = Carbon\Carbon::createFromDate('19-8-2022, 17:00');
-                $time4_start = Carbon\Carbon::createFromDate('19-8-2022, 17:00');
-                $time4 = Carbon\Carbon::createFromDate('19-8-2022, 22:00');
+                $time1_start = Carbon\Carbon::createFromDate('20-8-2022, 9:00');
+                $time1 = Carbon\Carbon::createFromDate('20-8-2022, 12:00');
+                $time2_start = Carbon\Carbon::createFromDate('20-8-2022, 12:00');
+                $time2 = Carbon\Carbon::createFromDate('20-8-2022, 14:00');
+                $time3_start = Carbon\Carbon::createFromDate('20-8-2022, 14:00');
+                $time3 = Carbon\Carbon::createFromDate('20-8-2022, 17:00');
+                $time4_start = Carbon\Carbon::createFromDate('20-8-2022, 17:00');
+                $time4 = Carbon\Carbon::createFromDate('20-8-2022, 22:00');
                 $define = [['start'=>'9h', 'endTime'=>$time1, 'startTime'=>$time1_start], ['start'=>'12h', 'endTime'=>$time2, 'startTime'=>$time2_start], ['start'=>'14h', 'endTime'=>$time3, 'startTime'=>$time3_start], ['start'=>'17h', 'endTime'=>$time4, 'startTime'=>$time4_start]];
 
              
@@ -297,38 +302,32 @@
 
                     @if($now<$value['endTime'])
 
+                    <?php 
+
+                        if($now->between($value['startTime'], $value['endTime'])){
+
+                            $timestamp = $now->diffInSeconds($value['endTime']);
+                            $hour =  floor($timestamp/3600);
+                            $timestamp = floor($timestamp % 3600);
+                            $minutes =floor($timestamp/60);
+                            $timestamp = floor($timestamp % 60);
+                            $seconds =floor($timestamp);
+                        }    
+                    ?>  
+
+                   
+                    
                     <li>
                         <h3>
                             <span>{{ $value['start'] }}</span>
                             <br>
-                            <span>{{ $now->between($value['startTime'], $value['endTime'])?'03:00:59':'SẮP DIỄN RA'}}</span>
+                            <span>{!! $now->between($value['startTime'], $value['endTime'])?'<div class="clock"><span class="hour">'.$hour.'</span>:<span class="minutes">'.$minutes.'</span>:<span class="second">'.$seconds.'</span></div>':'SẮP DIỄN RA' !!}</span>
                         </h3>
                     </li>
                     @endif
                     @endforeach
 
-                   <!--  <li>
-                        <h3>
-                            <span>12:00</span>
-                            <br>
-                            <span>Sắp diễn ra</span>
-                        </h3>
-                    </li>
-                    <li>
-                        <h3>
-                            <span>14:00</span>
-                            <br>
-                            <span>Sắp diễn ra</span>
-                        </h3>
-
-                    </li>
-                    <li>
-                        <h3>
-                            <span>17:00</span>
-                            <br>
-                            <span>Sắp diễn ra</span>
-                        </h3>
-                    </li> -->
+                 
                 </ul>
             </div>
 
