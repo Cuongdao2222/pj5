@@ -779,15 +779,16 @@
         <div class="col-md-8 clearfix" id="comment_pro">
             <article id="article-comment-2131" itemprop="comment" itemscope="" itemtype="https://schema.org/Comment">
                 <?php 
+                   
                     if(!Cache::has('comment'.$data->id) ){
 
                         $comments_id = App\Models\rate::where('product_id', $data->id)->Where('active', 1)->get();
 
-                        Cache::put('comment'.$data->id, $comments_id, 10000);
+                        Cache::forever('comment'.$data->id, $comments_id);
 
                     }
 
-                    
+                  
 
                     $comment = Cache::get('comment'.$data->id);
                     ?>
