@@ -797,6 +797,8 @@
         loop = {{ $deal->count() }};
 
 
+
+
         times = [];
                   
         time = {{ $timestamp }};
@@ -807,8 +809,57 @@
             for (var i = 0 ; i < loop; i++) {
                 run(i);
             }
+            
 
         }, 1000);
+
+        runs();
+
+
+        function runs() {
+
+            var hour =  $('.titles-time .hour').text();
+            var minutes =  $('titles-time .minutes').text();
+            var second =  $('.titles-time .second').text();
+            h =  parseInt(hour);
+            m = parseInt(minutes);
+            s = parseInt(second);
+            s--;
+            /*BƯỚC 1: CHUYỂN ĐỔI DỮ LIỆU*/
+              // Nếu số giây = -1 tức là đã chạy ngược hết số giây, lúc này:
+              //  - giảm số phút xuống 1 đơn vị
+              //  - thiết lập số giây lại 59
+            if (s === -1){
+                  m -= 1;
+                 
+                  s = 59;
+            }
+
+            // Nếu số phút = -1 tức là đã chạy ngược hết số phút, lúc này:
+            //  - giảm số giờ xuống 1 đơn vị
+            //  - thiết lập số phút lại 59
+            if (m === -1){
+                h -= 1;
+                m = 59;
+            }
+
+            
+            hour =  h.toString();
+
+            minutes =  m.toString();
+            
+            seconds =  s.toString();
+          
+            let currentHour = h<10?'0'+hour:''+hour;
+            let currentMinutes = m<10?'0'+minutes:''+minutes;
+            let currentSeconds = s<10?'0'+seconds:''+seconds;
+
+            console.log(currentMinutes);
+    
+            let currentTimeStr ='<span class="hour">'+ currentHour+'</span>:<span class="minutes">'+currentMinutes+'</span>:<span class="second">'+currentSeconds+'</span>';
+            $('.titles-time .clock').html(currentTimeStr);
+           
+        }    
 
         function run(key) {
             var hour =  $('.time'+key+' .hourss').text();
