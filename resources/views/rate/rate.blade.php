@@ -117,7 +117,7 @@
                                     <td width="190">{{$rates->email}}</td>
                                     <td width="130">{{@$rates->star}}</td>
                                     <td>{!! @$rates->content !!}</td>
-                                    <td><a href="{{ route('details', $link->Link) }}">{{ $link->Name??'' }}</a></td>
+                                    <td><a href="{{ route('details', $link->Link) }}" target="_blank">{{ $link->Name??'' }}</a></td>
                                     
                                     <td width="120"><a href="javascript:void(0)" onclick="accept({{ $rates->id }})" data-id="{{ $rates->id }}" class="accept{{ $rates->id}}">{{ $rates->active==1?'Đã duyệt':'duyệt' }}</a></td>
                                     <input type="hidden" name="active" id="active" value="{{ $rates->active }}">
