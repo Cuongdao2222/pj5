@@ -251,6 +251,9 @@
         <?php 
            
             $now  = Carbon\Carbon::now();
+            $now = Carbon\Carbon::createFromDate('20-8-2022, 11:00');
+
+
             
             if(!empty($deal)){
 
@@ -267,43 +270,45 @@
 
         ?>
 
+    
+        <?php 
 
-        @if(!empty($deal_check) && $deal_check->count()>0 && $now->between($deal_check[0]->start, $deal_check[0]->end))
+            $time1_start = Carbon\Carbon::createFromDate('20-8-2022, 9:00');
+            $time1 = Carbon\Carbon::createFromDate('20-8-2022, 12:00');
+            $time2_start = Carbon\Carbon::createFromDate('20-8-2022, 12:00');
+            $time2 = Carbon\Carbon::createFromDate('20-8-2022, 14:00');
+            $time3_start = Carbon\Carbon::createFromDate('20-8-2022, 14:00');
+            $time3 = Carbon\Carbon::createFromDate('20-8-2022, 17:00');
+            $time4_start = Carbon\Carbon::createFromDate('20-8-2022, 17:00');
+            $time4 = Carbon\Carbon::createFromDate('20-8-2022, 22:00');
+            $define = [['start'=>'9h', 'endTime'=>$time1, 'startTime'=>$time1_start], ['start'=>'12h', 'endTime'=>$time2, 'startTime'=>$time2_start], ['start'=>'14h', 'endTime'=>$time3, 'startTime'=>$time3_start], ['start'=>'17h', 'endTime'=>$time4, 'startTime'=>$time4_start]];
+
+        ?>
+
+        @if(!empty($deal_check) && $deal_check->count()>0 && $now->between($deal_check[0]->start, $deal_check[0]->end)||$now>$time1_start && $now < $time4)
         <!-- flash sale -->
             <div class="img-flashsale mobiles" style="width: 100%;">
                 <a href="{{ route('details', 'deal') }}"><img src="{{ asset('images/template/flashsalemb.jpg') }}" style="width: 100%"></a>
 
             </div>
-            <?php 
+            
 
-                $time1_start = Carbon\Carbon::createFromDate('20-8-2022, 9:00');
-                $time1 = Carbon\Carbon::createFromDate('20-8-2022, 12:00');
-                $time2_start = Carbon\Carbon::createFromDate('20-8-2022, 12:00');
-                $time2 = Carbon\Carbon::createFromDate('20-8-2022, 14:00');
-                $time3_start = Carbon\Carbon::createFromDate('20-8-2022, 14:00');
-                $time3 = Carbon\Carbon::createFromDate('20-8-2022, 17:00');
-                $time4_start = Carbon\Carbon::createFromDate('20-8-2022, 17:00');
-                $time4 = Carbon\Carbon::createFromDate('20-8-2022, 22:00');
-                $define = [['start'=>'9h', 'endTime'=>$time1, 'startTime'=>$time1_start], ['start'=>'12h', 'endTime'=>$time2, 'startTime'=>$time2_start], ['start'=>'14h', 'endTime'=>$time3, 'startTime'=>$time3_start], ['start'=>'17h', 'endTime'=>$time4, 'startTime'=>$time4_start]];
+            @if($now>$time1_start && $now < $time4)
 
-             
-                // if($now>$startTime){
-                //     dd('lớn hơn');
-
-                // }
-
-    
-            ?>
             <div class="title titles-time">
                
                 <ul class="cat-child">
+                    <?php 
 
-                    @foreach($define as $value)
+                        $groups_deal = 0;
+
+                    ?>
+                    @foreach($define as $key => $value)
 
                     @if($now<$value['endTime'])
 
                     <?php 
-
+                       
                         if($now->between($value['startTime'], $value['endTime'])){
 
                             $timestamp = $now->diffInSeconds($value['endTime']);
@@ -312,25 +317,31 @@
                             $minutes =floor($timestamp/60);
                             $timestamp = floor($timestamp % 60);
                             $seconds =floor($timestamp);
-                        }    
-                    ?>  
 
-                   
-                    
+                            $groups_deal = $key+1;
+                        }
+
+                    ?>  
                     <li>
                         <h3>
                             <span>{{ $value['start'] }}</span>
                             <br>
-                            <span>{!! $now->between($value['startTime'], $value['endTime'])?'<div class="clock"><span class="hour">'.$hour.'</span>:<span class="minutes">'.$minutes.'</span>:<span class="second">'.$seconds.'</span></div>':'SẮP DIỄN RA' !!}</span>
+                            <span>{!! $now->between($value['startTime'], $value['endTime'])?'<div class="clock"><span class="hour">0'.$hour.'</span>:<span class="minutes">'.$minutes.'</span>:<span class="second">'.$seconds.'</span></div>':'SẮP DIỄN RA' !!}</span>
                         </h3>
                     </li>
                     @endif
                     @endforeach
+                    <?php 
+                        $deal = Cache::get('deals')->where('flash_deal', $groups_deal)->sortByDesc('order');
 
+                    ?>
                  
                 </ul>
             </div>
+            @endif
+            
 
+            @if($deal->count()>0)
             <div class="">
                 <div class="flash-sale" style="height: 305px;">
                     
@@ -343,7 +354,7 @@
 
                                 @foreach($deal as $key => $value)
                                
-                                @if( !empty($value->active) && $value->active ==1 && $now->between($value->start, $value->end))
+                                @if( !empty($value->active) && $value->active ==1 && $now->between($value->start, $value->end)||$value->order>0)
 
                                 <?php 
                                     $timestamp = $now->diffInSeconds($value->end);
@@ -436,9 +447,9 @@
                     </div>
                 </div>
             </div>
-
+            @endif
            <!--  end flash  -->
-         @endif 
+        @endif 
           
         <div class="clearfix"></div> 
 
@@ -809,18 +820,20 @@
             for (var i = 0 ; i < loop; i++) {
                 run(i);
             }
+            runs();
             
-
         }, 1000);
 
-        runs();
+       
 
-
+    
         function runs() {
 
             var hour =  $('.titles-time .hour').text();
-            var minutes =  $('titles-time .minutes').text();
+            var minutes =  $('.titles-time .minutes').text();
             var second =  $('.titles-time .second').text();
+
+
             h =  parseInt(hour);
             m = parseInt(minutes);
             s = parseInt(second);
@@ -854,7 +867,6 @@
             let currentMinutes = m<10?'0'+minutes:''+minutes;
             let currentSeconds = s<10?'0'+seconds:''+seconds;
 
-            console.log(currentMinutes);
     
             let currentTimeStr ='<span class="hour">'+ currentHour+'</span>:<span class="minutes">'+currentMinutes+'</span>:<span class="second">'+currentSeconds+'</span>';
             $('.titles-time .clock').html(currentTimeStr);
