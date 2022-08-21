@@ -8,6 +8,20 @@
 
 @endpush
 
+<?php 
+    
+    $time1_start = Carbon\Carbon::createFromDate('20-8-2022, 9:00');
+    $time1 = Carbon\Carbon::createFromDate('20-8-2022, 12:00');
+    $time2_start = Carbon\Carbon::createFromDate('20-8-2022, 12:00');
+    $time2 = Carbon\Carbon::createFromDate('20-8-2022, 14:00');
+    $time3_start = Carbon\Carbon::createFromDate('20-8-2022, 14:00');
+    $time3 = Carbon\Carbon::createFromDate('20-8-2022, 17:00');
+    $time4_start = Carbon\Carbon::createFromDate('20-8-2022, 17:00');
+    $time4 = Carbon\Carbon::createFromDate('20-8-2022, 22:00');
+    $define = [['start'=>'9h', 'endTime'=>$time1, 'startTime'=>$time1_start], ['start'=>'12h', 'endTime'=>$time2, 'startTime'=>$time2_start], ['start'=>'14h', 'endTime'=>$time3, 'startTime'=>$time3_start], ['start'=>'17h', 'endTime'=>$time4, 'startTime'=>$time4_start]];
+
+?>
+
 <?php  
 
     $check_deal =  Cache::get('deals')->where('product_id', $data->id);
@@ -20,18 +34,36 @@
             $check_deal = reset($check_deal);
         }
 
+         // $now  = Carbon\Carbon::now();
+
+         $now = Carbon\Carbon::createFromDate('20-8-2022, 11:00');
         
         $deal_check_add = false;
+
+        // kiểm tra thời điểm deal
+
+        $check_keys = 0;
+
+        foreach($define as $key => $value){
+
+            if($now->between($value['startTime'], $value['endTime'])){
+                $check_keys = $key+1;
+            }
+
+        }
+       
         
-        if(!empty($check_deal) && !empty(!empty($check_deal->deal_price)) &&$check_deal->active==1||$check_deal->flash_deal>0){
-             $now  = Carbon\Carbon::now();
+        if(!empty($check_deal) && !empty(!empty($check_deal->deal_price)) &&$check_deal->active==1||$check_deal->flash_deal>0||$now>$time1_start && $now < $time4){
+            
             $timeDeal_star = $check_deal->start;
             $timeDeal_star =  \Carbon\Carbon::create($timeDeal_star);
             $timeDeal_end = $check_deal->end;
             $timeDeal_end =  \Carbon\Carbon::create($timeDeal_end);
             $timestamp = $now->diffInSeconds($timeDeal_end);
 
-            if($now->between($check_deal->start, $check_deal->end)){
+            
+
+            if($now->between($check_deal->start, $check_deal->end)||$check_keys>0){
                 $deal_check_add = true;
                 $price_old = $data->Price;
                 $text = '<b>MUA ONLINE GIÁ SỐC: </b>';

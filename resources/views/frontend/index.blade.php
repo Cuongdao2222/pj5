@@ -322,7 +322,7 @@
                         }
 
                     ?>  
-                    <li>
+                    <li onclick="clickDeal({{ $key+1 }})">
                         <h3>
                             <span>{{ $value['start'] }}</span>
                             <br>
@@ -333,6 +333,7 @@
                     @endforeach
                     <?php 
                         $deal = Cache::get('deals')->where('flash_deal', $groups_deal)->sortByDesc('order');
+
 
                     ?>
                  
@@ -872,6 +873,11 @@
             $('.titles-time .clock').html(currentTimeStr);
            
         }    
+
+
+        function clickDeal(id) {
+           alert(id);
+        }
 
         function run(key) {
             var hour =  $('.time'+key+' .hourss').text();
