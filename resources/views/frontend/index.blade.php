@@ -808,9 +808,6 @@
       
         loop = {{ $deal->count() }};
 
-
-
-
         times = [];
                   
         time = {{ $timestamp }};
@@ -884,14 +881,16 @@
 
             $.ajax({
                 type: 'POST',
-                url: "{{ route('show-viewed-product') }}",
+                url: "{{ route('showDealClick') }}",
                 data: {
                     product_id: id
                        
                 },
                 success: function(result){
                    // numberCart = result.find($("#number-product-cart").text());
-                   $('.viewer-product').append(result);
+
+                   console.log(result);
+                   // $('.viewer-product').append(result);
                    
                 }
             });    
