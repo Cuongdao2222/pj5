@@ -933,9 +933,13 @@
                     </div>
                     
                     <h3>{{ $value->Name }}</h3>
-                    <strong class="price">{{  str_replace(',' ,'.', number_format($value->Price))  }}&#x20AB;</strong>
+                        <strong class="price">{{  str_replace(',' ,'.', number_format($value->Price))  }}&#x20AB;</strong>
+                        
+                        <span>+ So sánh</span>
+                        
                     </a>
                 </div>
+               
                 @endif
                 @endforeach
             </div>
