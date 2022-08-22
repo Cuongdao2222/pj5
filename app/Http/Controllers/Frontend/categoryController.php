@@ -448,14 +448,7 @@ class categoryController extends Controller
             return  product::select('id')->where('Link', $link)->first();
         });
 
-        // redirect 301 link
 
-        if($slug =='may-loc-khong-khi-ax60r5080wdsv-60m2'){
-
-            return redirect('https://dienmaynguoiviet.vn/may-loc-khong-khi-samsung-ax60r5080wdsv-60m2', 301); 
-
-        }
-       
         // chuyển sang category check
 
         if(empty($findID)){
