@@ -10,6 +10,8 @@ use App\Models\groupProduct;
 
 use App\Models\deal;
 
+use Illuminate\Support\Facades\Cache;
+
 class dealController extends Controller
 {
     public function index()
@@ -232,6 +234,15 @@ class dealController extends Controller
        $id = $request->id;
 
         DB::table('deal')->delete($id);
+
+    }
+
+    public function showDealByIdClick($value='')
+    {
+        $id = $request->product_id;
+        $deal = Cache::get('deals')->where('flash_deal', $groups_deal)->sortByDesc('order');
+
+        return view('frontend.ajax.dealClick', compact('deal'));
 
     }
 }

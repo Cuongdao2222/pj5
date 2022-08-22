@@ -343,7 +343,7 @@
             
 
             @if($deal->count()>0)
-            <div class="">
+            <div class="deal-view">
                 <div class="flash-sale" style="height: 305px;">
                     
                     <span id="banner-flash-sale"><a href="{{ route('dealFe') }}">
@@ -876,7 +876,26 @@
 
 
         function clickDeal(id) {
-           alert(id);
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                type: 'POST',
+                url: "{{ route('show-viewed-product') }}",
+                data: {
+                    product_id: id
+                       
+                },
+                success: function(result){
+                   // numberCart = result.find($("#number-product-cart").text());
+                   $('.viewer-product').append(result);
+                   
+                }
+            });    
+          
         }
 
         function run(key) {
