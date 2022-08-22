@@ -25,6 +25,9 @@ Route::get('/tin-tuc', 'Frontend\blogController@index')->middleware('cache')->na
 Route::get('/', 'Frontend\indexController@index')->middleware('cache')->name('homeFe');
 
 
+Route::post('showDealClick','dealController@showDealByIdClick')->name('showDealClick');
+
+
 Route::get('/cache', 'Frontend\indexController@cache1')->name('cache');
 Route::get('/ckfinder.html', function () {
     return view('frontend.ckfinder');
@@ -206,8 +209,6 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
 
     Route::get('deal', 'dealController@index')->name('deal');
-
-    Route::post('showDealClick','dealController@showDealByIdClick')->name('showDealClick');
 
     Route::post('add-deal-flash', 'dealController@addDealFlash')->name('add-deal-flash');
 

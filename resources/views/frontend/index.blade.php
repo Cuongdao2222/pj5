@@ -890,6 +890,10 @@
                    // numberCart = result.find($("#number-product-cart").text());
 
                    console.log(result);
+
+                   $('.deal-view').html('');
+
+                   $('.deal-view').append(result);
                    // $('.viewer-product').append(result);
                    
                 }

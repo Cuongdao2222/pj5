@@ -237,10 +237,10 @@ class dealController extends Controller
 
     }
 
-    public function showDealByIdClick($value='')
+    public function showDealByIdClick(Request $request)
     {
         $id = $request->product_id;
-        $deal = Cache::get('deals')->where('flash_deal', $groups_deal)->sortByDesc('order');
+        $deal = Cache::get('deals')->where('flash_deal', $id)->sortByDesc('order');
 
         return view('frontend.ajax.dealClick', compact('deal'));
 

@@ -1,5 +1,10 @@
 @if($deal->count()>0)
 
+<?php 
+
+    $now = Carbon\Carbon::createFromDate('20-8-2022, 11:00');
+?>
+
 <div class="flash-sale" style="height: 305px;">
     
     <span id="banner-flash-sale"><a href="{{ route('dealFe') }}">
