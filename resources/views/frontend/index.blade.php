@@ -889,12 +889,34 @@
                 success: function(result){
                    // numberCart = result.find($("#number-product-cart").text());
 
-                   console.log(result);
-
                    $('.deal-view').html('');
 
-                   $('.deal-view').append(result);
-                   // $('.viewer-product').append(result);
+                   $('.deal-view').html(result);
+
+                    var owl = $(".flash-sale-banner");
+                    owl.owlCarousel({
+                        loop:false,
+                        margin:10,
+                        nav:true,
+                        dots:false,
+                        autoplay:false,
+                        
+                        navText: ["<i class='fa fa-angle-left'></i>","<i class='fa fa fa-angle-right'></i>"],
+                        responsive:{
+                            0:{
+                                items:1
+                            },
+
+                             600:{
+                                items:2
+                            },
+                           
+                            1000:{
+                                items:2
+                            }
+                        }
+                    });
+                  
                    
                 }
             });    

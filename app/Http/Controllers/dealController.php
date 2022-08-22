@@ -242,7 +242,7 @@ class dealController extends Controller
         $id = $request->product_id;
         $deal = Cache::get('deals')->where('flash_deal', $id)->sortByDesc('order');
 
-        return view('frontend.ajax.dealClick', compact('deal'));
+        return view('frontend.ajax.dealClick', compact('deal', 'id'));
 
     }
 }

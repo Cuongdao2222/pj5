@@ -16,7 +16,7 @@
 
                 @foreach($deal as $key => $value)
                
-                @if( !empty($value->active) && $value->active ==1 && $now->between($value->start, $value->end)||$value->order>0)
+                @if( !empty($value->active) && $value->active ==1 && $now->between($value->start, $value->end)||$id>0)
 
                 <?php 
                     $timestamp = $now->diffInSeconds($value->end);
