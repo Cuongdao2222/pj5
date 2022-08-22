@@ -65,7 +65,7 @@
                            <!--  <p>Đã bán <span style="color: #EE1E25">2</span> / 100 sản phẩm</p> -->
                         </div>
                         <div style="width: 100%; height: 1px; background: #ECECEC; margin-top: 8px"></div>
-                        <div class="countdown-flash-sale">
+                        <!-- <div class="countdown-flash-sale">
                             <div class="time-cd time-fl time{{ $key }}">
 
                                 <span class="timestamp" style="display: none;">{{   $now->diffInSeconds($value->end) }}</span>
@@ -95,7 +95,7 @@
                                   
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                       </a>
                     </div>
                 </div>

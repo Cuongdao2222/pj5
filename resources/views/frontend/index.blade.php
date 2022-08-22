@@ -255,10 +255,7 @@
         <?php 
            
             $now  = Carbon\Carbon::now();
-            $now = Carbon\Carbon::createFromDate('20-8-2022, 13:00');
-
-
-            
+           
             if(!empty($deal)){
 
                 $timeDeal_star = Cache::get('deal_start');
@@ -277,14 +274,14 @@
     
         <?php 
 
-            $time1_start = Carbon\Carbon::createFromDate('20-8-2022, 9:00');
-            $time1 = Carbon\Carbon::createFromDate('20-8-2022, 12:00');
-            $time2_start = Carbon\Carbon::createFromDate('20-8-2022, 12:00');
-            $time2 = Carbon\Carbon::createFromDate('20-8-2022, 14:00');
-            $time3_start = Carbon\Carbon::createFromDate('20-8-2022, 14:00');
-            $time3 = Carbon\Carbon::createFromDate('20-8-2022, 17:00');
-            $time4_start = Carbon\Carbon::createFromDate('20-8-2022, 17:00');
-            $time4 = Carbon\Carbon::createFromDate('20-8-2022, 22:00');
+            $time1_start = Carbon\Carbon::createFromDate('22-8-2022, 9:00');
+            $time1 = Carbon\Carbon::createFromDate('22-8-2022, 12:00');
+            $time2_start = Carbon\Carbon::createFromDate('22-8-2022, 12:00');
+            $time2 = Carbon\Carbon::createFromDate('22-8-2022, 14:00');
+            $time3_start = Carbon\Carbon::createFromDate('22-8-2022, 14:00');
+            $time3 = Carbon\Carbon::createFromDate('22-8-2022, 17:00');
+            $time4_start = Carbon\Carbon::createFromDate('22-8-2022, 17:00');
+            $time4 = Carbon\Carbon::createFromDate('22-8-2022, 22:00');
             $define = [['start'=>'9h', 'endTime'=>$time1, 'startTime'=>$time1_start], ['start'=>'12h', 'endTime'=>$time2, 'startTime'=>$time2_start], ['start'=>'14h', 'endTime'=>$time3, 'startTime'=>$time3_start], ['start'=>'17h', 'endTime'=>$time4, 'startTime'=>$time4_start]];
 
         ?>
@@ -338,7 +335,6 @@
                     <?php 
                         $deal = Cache::get('deals')->where('flash_deal', $groups_deal)->sortByDesc('order');
 
-
                     ?>
                  
                 </ul>
@@ -359,7 +355,7 @@
 
                                 @foreach($deal as $key => $value)
                                
-                                @if( !empty($value->active) && $value->active ==1 && $now->between($value->start, $value->end)||$value->order>0)
+                                @if(!empty($value->active) && $value->active ==1 && $now->between($value->start, $value->end)||$value->order>0)
 
                                 <?php 
                                     $timestamp = $now->diffInSeconds($value->end);
@@ -408,7 +404,8 @@
                                            <!--  <p>Đã bán <span style="color: #EE1E25">2</span> / 100 sản phẩm</p> -->
                                         </div>
                                         <div style="width: 100%; height: 1px; background: #ECECEC; margin-top: 8px"></div>
-                                        <div class="countdown-flash-sale">
+
+                                        <!-- <div class="countdown-flash-sale">
                                             <div class="time-cd time-fl time{{ $key }}">
 
                                                 <span class="timestamp" style="display: none;">{{   $now->diffInSeconds($value->end) }}</span>
@@ -438,7 +435,8 @@
                                                   
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
+
                                       </a>
                                     </div>
                                 </div>
