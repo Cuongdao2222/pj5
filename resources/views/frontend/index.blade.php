@@ -10,6 +10,10 @@
         <style type="text/css">
            /* deal*/
 
+            .actives{
+                background: #fff;
+            }
+
             .titles-time{
                 border-top: 2px solid #ff9;
                 margin-top: 5px;
@@ -251,7 +255,7 @@
         <?php 
            
             $now  = Carbon\Carbon::now();
-            $now = Carbon\Carbon::createFromDate('20-8-2022, 11:00');
+            $now = Carbon\Carbon::createFromDate('20-8-2022, 13:00');
 
 
             
@@ -322,7 +326,7 @@
                         }
 
                     ?>  
-                    <li onclick="clickDeal({{ $key+1 }})">
+                    <li onclick="clickDeal({{ $key+1 }})" class=>
                         <h3>
                             <span>{{ $value['start'] }}</span>
                             <br>
@@ -873,6 +877,8 @@
 
 
         function clickDeal(id) {
+
+            $(this).addClass('actives');
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

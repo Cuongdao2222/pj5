@@ -26,7 +26,7 @@
 
     $check_deal =  Cache::get('deals')->where('product_id', $data->id);
 
-    if(!empty($check_deal)){
+    if(!empty($check_deal) && $check_deal->count()>0){
 
         $check_deal =  $check_deal->all();
 
@@ -42,7 +42,8 @@
 
         // kiểm tra thời điểm deal
 
-        $check_keys = 0;
+        $check_keys_product = $check_deal->flash_deal;
+
 
         foreach($define as $key => $value){
 
@@ -61,9 +62,7 @@
             $timeDeal_end =  \Carbon\Carbon::create($timeDeal_end);
             $timestamp = $now->diffInSeconds($timeDeal_end);
 
-            
-
-            if($now->between($check_deal->start, $check_deal->end)||$check_keys>0){
+            if($now->between($check_deal->start, $check_deal->end)||$check_keys_product==$check_keys){
                 $deal_check_add = true;
                 $price_old = $data->Price;
                 $text = '<b>MUA ONLINE GIÁ SỐC: </b>';
