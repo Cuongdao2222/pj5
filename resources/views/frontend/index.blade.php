@@ -334,7 +334,6 @@
                     @endforeach
                     <?php 
                         $deal = Cache::get('deals')->where('flash_deal', $groups_deal)->sortByDesc('order');
-
                     ?>
                  
                 </ul>
