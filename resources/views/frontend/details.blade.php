@@ -5,10 +5,31 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css" />
     <link rel="stylesheet" type="text/css" href="{{ asset('css/detail1fe.css') }}">
 
+    <style type="text/css">
+        .saker{
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+
 
 @endpush
 
-<?php  
+<?php 
+    if(!Cache::has('saker') ){
+
+        $saker = App\Models\maker::get();
+
+       Cache::forever('saker',$saker);
+
+    } 
+
+    $sakers = Cache::get('saker');
+
+    $logoSaker = $sakers->filter(function($item) use($data){
+        return $item->id == $data->Maker;
+    })->first();
 
     $check_deal =  Cache::get('deals')->where('product_id', $data->id);
 
@@ -174,22 +195,28 @@
                 <div class="box01__show">
                     <div class="owl-carousel detail-slider" id="carousel">
 
+                        
                         <div class="item">
-                            <a href="{{ asset($data->Image) }}" data-fancybox="gallery"><img src="{{ asset($data->Image) }}" alt="{{ @$data->Name }}"></a>
+                            <a href="{{ asset($data->Image) }}" data-fancybox="gallery"><img src="{{ asset($data->Image) }}" alt="{{ @$data->Name }}">
+
+                            </a>
+
+                            @if($data->id>4720)
+                            <div class="saker">
+                                <img src="{{ asset('images/saker/'.strtolower($logoSaker->maker).'.png') }}" class="lazyload">
+                            </div>
+                            @endif
                         </div>
 
                         <?php 
-
                             if(!Cache::has('image_product')){
 
                                 $images = App\Models\image::where('product_id', $data->id)->select('image')->get();
                             }  
                             
-
                         ?>
                        
                         @if(isset($images))
-
                        
                         @foreach($images as $image)
 
@@ -197,7 +224,6 @@
 
                         <div class="item">
                             <a href="{{ asset($image->image) }}" data-fancybox="gallery"><img src="{{ asset($image->image) }}"  data-src="{{ asset($image->image) }}" class="lazyload" alt="{{ @$data->Name }}"></a>
-                            
                         </div>
 
                         @endif
