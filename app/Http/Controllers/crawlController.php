@@ -31,6 +31,16 @@ use \Carbon\Carbon;
 
 class crawlController extends Controller
 {
+    public function checkProductSku()
+    {
+        $data  = product::select('ProductSku')->get()->toArray();
+
+        $datas = array_unique($data);
+
+        $check = array_diff($data, $datas);
+
+        dd($check)
+    }
 
     public function editKeywordsProduct()
     {

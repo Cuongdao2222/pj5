@@ -555,4 +555,6 @@ class productController extends AppBaseController
         $search = product::where($array)->get();
         print_r($search);
     }
+
+    
 }
