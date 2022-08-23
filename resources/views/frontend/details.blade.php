@@ -223,7 +223,7 @@
                         @if(!empty($image->image))
 
                         <div class="item">
-                            <a href="{{ asset($image->image) }}" data-fancybox="gallery"><img src="{{ asset($image->image) }}"  data-src="{{ asset($image->image) }}" class="lazyload" alt="{{ @$data->Name }}"></a>
+                            <a href="{{ asset($image->image) }}" data-fancybox="gallery"><img src="{{ asset($image->image) }}"  alt="{{ @$data->Name }}"></a>
                         </div>
 
                         @endif
