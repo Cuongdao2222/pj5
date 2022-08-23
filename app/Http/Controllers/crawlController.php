@@ -33,13 +33,20 @@ class crawlController extends Controller
 {
     public function checkProductSku()
     {
-        $data  = product::select('ProductSku')->get()->toArray();
+        $data  = product::select('ProductSku')->get();
 
-        $datas = array_unique($data);
+        $datas = [];
 
-        $check = array_diff($data, $datas);
+        foreach ($data as $key => $value) {
 
-        dd($check)
+            array_push($datas, trim($value->ProductSku));
+        }
+
+        $datass = array_unique($datas);
+
+        $check = array_diff($datas, $datass);
+
+        dd($check);
     }
 
     public function editKeywordsProduct()

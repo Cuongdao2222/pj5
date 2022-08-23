@@ -46,7 +46,8 @@
                         <div style="margin-top: 11px">
                             <div class="nk-top-stickers"><span class="nk-sticker nk-new">Mới</span></div><div>
                                     <p class="title-shock-price">Giá sốc online</p>
-                                    <span class="price-new">{{ @str_replace(',' ,'.', number_format($value->deal_price)) }}&#x20AB;</span>
+
+                                    <span class="price-new"> xxx.000&#x20AB;</span>
                                 </div>
                         </div>
                         <div class="review_product star">

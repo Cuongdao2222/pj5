@@ -17,6 +17,7 @@
 @endpush
 
 <?php 
+
     if(!Cache::has('saker') ){
 
         $saker = App\Models\maker::get();
@@ -66,9 +67,12 @@
 
         foreach($define as $key => $value){
 
+            $check_keys = 0;
+
             if($now->between($value['startTime'], $value['endTime'])){
                 $check_keys = $key+1;
             }
+            
 
         }
        

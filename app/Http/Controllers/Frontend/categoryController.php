@@ -443,12 +443,13 @@ class categoryController extends Controller
 
         $cache = 'findID'.$link;
 
-        $findID = Cache::rememberForever($cache, function() use ($link) {
+        // $findID = Cache::rememberForever($cache, function() use ($link) {
 
-            return  product::select('id')->where('Link', $link)->first();
-        });
+        //     return  product::select('id')->where('Link', $link)->first();
+        // });
 
-
+        $findID = product::where('Link', $link)->first();
+        
         // chuyển sang category check
 
         if(empty($findID)){

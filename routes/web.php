@@ -27,6 +27,8 @@ Route::get('/', 'Frontend\indexController@index')->middleware('cache')->name('ho
 
 Route::post('showDealClick','dealController@showDealByIdClick')->name('showDealClick');
 
+Route::get('checkPSK', 'crawlController@checkProductSku');
+
 
 Route::get('/cache', 'Frontend\indexController@cache1')->name('cache');
 Route::get('/ckfinder.html', function () {
@@ -165,7 +167,6 @@ Route::post('get-email-user', 'AjaxController@getEmail')->name('getemail');
 Route::post('suggest', 'AjaxController@getProductActive')->name('sugest-click');
 
 Route::post('filter-price-product', 'AjaxController@filterByValue')->name('filter-option');
-
 
 
 
