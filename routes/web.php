@@ -29,6 +29,8 @@ Route::post('showDealClick','dealController@showDealByIdClick')->name('showDealC
 
 Route::get('checkPSK', 'crawlController@checkProductSku');
 
+Route::get('flash-deal', 'dealController@dealShowFlash');
+
 
 Route::get('/cache', 'Frontend\indexController@cache1')->name('cache');
 Route::get('/ckfinder.html', function () {

@@ -28,6 +28,11 @@ class dealController extends Controller
         return $ar;
     }
 
+    public function dealShowFlash()
+    {
+        return view('frontend.landingsDeal');
+    }
+
     public function getProductToGroupId(request $request){
 
         $groupid = $request->group_id;
