@@ -2,7 +2,7 @@
 @section('content') 
 @push('style')
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css" />
+    <link rel="stylesheet" href="{{ asset('css/jquery.fancybox.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/detail1fe.css') }}">
 
     <style type="text/css">
@@ -256,7 +256,7 @@
                         @if(!empty($image->image))
 
                         <div class="item">
-                            <a href="{{ asset($image->image) }}" data-fancybox="gallery"><img src="{{ asset($image->image) }}"  data-src="{{ asset($image->image) }}" class="lazyload" alt="{{ @$data->Name }}"></a>
+                            <a href="{{ asset($image->image) }}" data-fancybox="gallery"><img src="{{ asset($image->image) }}"  alt="{{ @$data->Name }}"></a>
                         </div>
 
                         @endif
@@ -1184,9 +1184,9 @@
 
     $( document ).ready(function() {
     
-        $(".box01 a").fancybox({
-            'hideOnContentClick': true
-        });
+        // $(".box01 a").fancybox({
+        //     'hideOnContentClick': true
+        // });
     
         $('.star-click').bind('click',function(){
             id_star = $(this).attr('id');    
@@ -1325,7 +1325,6 @@
     
 </script>
 <script type="text/javascript">
-
    
     $('.bar-top-left').hide();
 
