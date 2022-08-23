@@ -1147,9 +1147,9 @@
 
     $( document ).ready(function() {
     
-        $(".box01 a").fancybox({
-            'hideOnContentClick': true
-        });
+        // $(".box01 a").fancybox({
+        //     'hideOnContentClick': true
+        // });
     
         $('.star-click').bind('click',function(){
             id_star = $(this).attr('id');    
