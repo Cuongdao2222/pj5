@@ -185,6 +185,9 @@
     .modal-dialog{
         max-width: 800px !important;
     }
+    .center{
+        text-align: center;
+    }
 </style>
 
 <script>
@@ -208,9 +211,7 @@
                 <div class="table-responsive">
 
                     <div>
-                        
-                        <div class="btn btn-primary add-product">Thêm sản phẩm</div>
-
+                      
                         <div class="btn btn-default accepts">Xác nhận</div>
                     </div>
 
@@ -229,7 +230,7 @@
                            ?> 
                             
                           <tr>
-                              <td>Cài đặt thời gian</td>
+                              <td>Thông tin khuyến mãi</td>
                               <td>
 
                                <?php 
@@ -255,7 +256,7 @@
 
                                 ?>
 
-                                  Bắt đầu : <input type="text" id="date-picker1" value="{{  str_replace(strstr($deal[0]->start, ','), '', $deal[0]->start) }}">
+                                  Tên khuyến mãi : <input type="text"  value="" id="name">
 
                                   <?php  
 
@@ -264,14 +265,10 @@
                                     $end    = str_replace(',','',strstr($deal[0]->end, ','));
                                   ?>
 
-                                   Giờ: 
-                                  <select name="time" id="hours1"><?php echo get_times($default = $start, '+30 minutes'); ?></select>
+                                  
                                   <br>
                                   <br>
-                                  Kết thúc : <input type="text"  id="date-picker2" value="{{ str_replace(strstr($deal[0]->end, ','), '', $deal[0]->end) }}"> Giờ: 
-                                  <select name="time" id="hours2">
-                                      <?php echo get_times($default = $end, '+30 minutes'); ?>
-                                  </select>
+                                  Giá km (nhập số) : <input type="text"  value="" id="price">
                               </td>
                           </tr>
 
@@ -287,115 +284,52 @@
                     <table id="tb_padding" border="1" bordercolor="#CCCCCC" style="width:100%">
                         <tbody>
                             <tr style="background-color:#EEE; font-weight:bold;">
-                                <td width="30px">STT</td>
-                                <td width="120px">Ảnh Sản phẩm</td>
-                                <td>Thông tin</td>
-                                <td>Tình trạng</td>
-                                <td>Quản lý</td>
-                                <td>Sửa giá deal nhanh</td>
-                                <td>Sắp xếp</td>
-                                <td>Cài thời gian riêng</td>
-                                <td>Flash Deal (theo khung giờ)</td>
-                            </tr>
-
-                            <?php  
-                                $now = Carbon\Carbon::now();
-                                $products = DB::table('deal')->distinct()->get()->toArray();
-
-                                $k =0;
-
-                            ?>
-                            @isset($products)
-                            @foreach($products as $val)
-                            <?php  
-                                $k++ ;
-
+                                <td width="30px" >STT</td>
+                                <td width="500px" class="center">Tên khuyến mãi</td>
+                                <td class="center">Giá nhập</td>
+                                <td class="center">id</td>
+                                <td class="center">Chi tiết</td>
+                                <td class="center">Sửa</td>
                                
+                            </tr>
+
+                            <?php 
+
+                                $data = DB::table('flash_deal')->get();
+                                $i = 0;
                             ?>
+
+                            @if($data->count()>0)
+                            @foreach($data as $datas)
+
+                            <?php 
+
+                                $i++
+                            ?>
+                           
                             <tr id="row_1208">
-                                <td>{{ $k }}</td>
+                                <td align="center">{{ $i }}</td>
 
-                                <?php 
-                                    $product_info = App\Models\product::find($val->product_id);
-                                ?>
+                              
                                 <td align="center">
-                                    <img src="{{ asset($product_info->Image) }}" width="100" alt="{{ $val->name }}">
-                                    <!--<div><a style="color:green" href="javascript:;" onclick="delete_special(1208)">Xóa bỏ</a></div>-->
-                                </td>
-                                <td>
-                                    <div><a href="{{ route('details', $val->link) }}" target="_blank"><b>{{ $val->name }}</b></a></div>
-                                    <div>Giá deal : <b style="color:red;">{{  str_replace(',' ,'.', number_format($val->deal_price))   }}</b> vnd - Giá thường: <b style="color:red;">{{  str_replace(',' ,'.', number_format($product_info->Price))   }}</b> </div>
-                                    <div>Số lượng : <b style="color:red;">0</b> - Số tối thiểu cho 1 đơn hàng: <b style="color:red;">0</b></div>
-                                    <div>Thời gian : Từ <b style="color:red;">{{ @$val->start }}</b> đến <b style="color:red;">{{ $val->end }}</b> 
-                                        ({{ $now->between($val->start, $val->end)?'Đang bắt đầu':'chưa bắt đầu'}})
-                                    </div>
-                                   
-                                </td>
-                                <td>
-                                    <div>Số đơn hàng : <b style="color:red;">0</b></div>
-                                    <div>Số Sản phẩm đặt mua: <b style="color:red;">0</b></div>
-                                    <div>Lượt xem: <b style="color:red;">0</b></div>
-                                </td>
-                                <td>
-                                    <div><a href="javascript:void(0)" onclick="update_product({{ $val->id }})">Sửa lại</a></div>
-                                    <div id="is_feature_1208">
-                                        <span><a href="javascript:set_feature('{{  $val->id }}','{{ $val->active }}')">{!! $val->active==0?'<b style="color:green;">Hiển thị</b>':'<b style="color:red">Hạ xuống</b>' !!}</a></span>
-                                    </div>
-                                    <div><a href="javascript:;" onclick="delete_deal('{{ $val->id }}')">xóa</a></div>
-                                </td>
-                                <td>
-                                    <div>
-                                        <input type="text" name="order" value="{{ $val->deal_price }}" class="edit_price_deal{{ $val->id }}">
-                                    </div>
-                                    
-                                    <br>
-                                    <div class="btn-primary edit_price_deals{{$val->id}}" style="width: 25%;" onclick="edit_price_deal({{ $val->id }})" >sửa</div>
-                                </td>
-                                <td>
-                                    <div>
-                                        <input type="text" name="order" value="{{ $val->order }}" class="edit_order{{ $val->id }}">
-                                    </div>
-                                    
-                                    <br>
-                                    <div class="btn-primary edit_orders{{$val->id}}" style="width: 25%;" onclick="update_order({{ $val->id }})" >sửa</div>
-                                </td>
-                                <td>
-
-                                    <?php 
-
-                                        $timeup = $now->diffInSeconds($val->end); 
-                                        $hour  = $timeup/3600;
-                                        $timeup = $timeup%3600;
-                                        $minutes = $timeup/60;
-                                        $flashDealId =  $val->flash_deal;
-                                    
-                                    ?> 
-
-
-                                    @if($now->between($val->start, $val->end))
-                                    Còn {{ floor($hour) }} giờ {{ (int)$minutes }} phút nữa 
-                                    
-                                    @else
-                                      Hết thời gian deal                                  
-                                     @endif
-                                    <br>
-                                    <a href="javascript:void(0)" onclick="setTimeDeal({{ $val->id }})">Sửa</a>
+                                    {{ $datas->name  }}
                                 </td>
 
-                                <td>
-                                    <select  id="flash-deal{{ $val->id }}" class="form-select"  onchange="changeFlashDeal({{ $val->id }})">
-                                        <option value="0">Không chọn</option>
-                                        <option value="1" {{ $flashDealId==1?'selected':'' }}>9h</option>
-                                        <option value="2" {{ $flashDealId==2?'selected':'' }}>12h</option>
-                                        <option value="3" {{ $flashDealId==3?'selected':'' }}>14h</option>
-                                        <option value="4" {{ $flashDealId==4?'selected':'' }}>17h</option>
-                                    </select>
+                                <td align="center">
+                                    {{ $datas->price }}
                                 </td>
+                                <td align="center">
+                                    {{ $datas->id }}
+                                </td>
+                                <td align="center">
+                                    <a href="#">Xem </a>
+                                </td>
+                                <td align="center"><a href="javascript:void(0)" onclick="editFLashDeal('{{ $datas->id }}')">sửa</a></td>
 
                             </tr>
-                            @endforeach
 
-                            @endisset
+                            @endforeach
+                            @endif
                            
                         </tbody>
                     </table>
@@ -404,9 +338,6 @@
                 </div>
                 
             </div>
-
-
-
         </div>
 
 
@@ -533,6 +464,40 @@
             </div>
         </div>
 
+
+         <div class="modal fade" id="edit-flash-deal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Sửa khuyến mãi</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <tbody>
+                            <tr>
+                                <td>Thông tin khuyến mãi</td>
+                                <td>
+                                    Tên khuyến mãi : <input type="text" value="" id="name">
+                                    <br>
+                                    <br>
+                                    Giá km (nhập số) : <input type="text" value="" id="price">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary add-deal-price">Xác nhận</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
         <div class="modal fade" id="modalSetTimeDeal" tabindex="-1" role="dialog" aria-labelledby="modalSetTimeDeal" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -584,6 +549,29 @@ $('.add-product').click(function(){
     $('#modal-product').modal('show');
 
 })
+
+
+function editFLashDeal(id) {
+    $.ajax({
+     type: 'GET',
+        url: "{{ route('showDealEdit') }}",
+        data: {
+            deal_id:id,
+            
+        },
+        success: function(result){
+
+            alert(1);
+            // $('#edit-flash-deal .modal-body').html('');
+            // $('#edit-flash-deal .modal-body').html(result);
+            // $('#edit-flash-deal').modal('show');
+        }
+    });
+
+}   
+
+
+
 
 $('.update-bt-all').click(function(){
 
@@ -861,6 +849,49 @@ function set_feature(id, active){
     });
 }
 
+function isInt(value) {
+  var x;
+  if (isNaN(value)) {
+    return false;
+  }
+  x = parseFloat(value);
+  return (x | 0) === x;
+}
+
+$('.accepts').click(function(){
+
+    if($('#name').val()==''){
+        alert('Tên khuyến mãi không được để trống');
+    }
+    else if($('#price').val()==''){
+        alert('Giá khuyến mãi không được để trống');
+    }
+    else if(!isInt($('#price').val())) {
+        alert('Giá khuyến mãi không đúng');
+    }
+    else{
+        
+        $.ajax({
+
+        type: 'GET',
+            url: "{{ route('addDealFlashs') }}", 
+            data: {
+                name: $('#name').val(),
+
+                price:$('#price').val()
+               
+                
+            },
+            success: function(result){
+                
+                window.location.reload();
+              
+            }
+        });
+    }
+
+})
+
 $('.accepts-time-deal').click(function(){
 
     $.ajax({
@@ -886,32 +917,32 @@ $('.accepts-time-deal').click(function(){
 
 
 
-$('.accepts').click(function(){
+// $('.accepts').click(function(){
 
-    $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
+//     $.ajaxSetup({
+//             headers: {
+//                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+//             }
+//         });
 
-    $.ajax({
+//     $.ajax({
 
-    type: 'GET',
-        url: "{{ route('result-add') }}",
-        data: {
-            start: $('#date-picker1').val()+','+$('#hours1').val(),
+//     type: 'GET',
+//         url: "{{ route('result-add') }}",
+//         data: {
+//             start: $('#date-picker1').val()+','+$('#hours1').val(),
 
-            end:$('#date-picker2').val()+','+$('#hours2').val(),
+//             end:$('#date-picker2').val()+','+$('#hours2').val(),
            
             
-        },
-        success: function(result){
+//         },
+//         success: function(result){
 
-           window.location.reload();
-        }
-    });
+//            window.location.reload();
+//         }
+//     });
 
-})
+// })
 
 
 

@@ -27,6 +27,10 @@ class dealController extends Controller
         $ar = [$data->start, $data->end];
         return $ar;
     }
+    public function flashDeal()
+    {
+        return view('flash_deal.deals');
+    }
 
     public function dealShowFlash()
     {
@@ -249,5 +253,32 @@ class dealController extends Controller
 
         return view('frontend.ajax.dealClick', compact('deal', 'id'));
 
+    }
+
+    public function addDealFlashs(Request $request)
+    {
+        $name = $request->name;
+
+        $price = $request->price;
+
+        $data  = ['name'=>$name, 'price'=>$price];
+       
+        DB::table('flash_deal')->insert($data);
+
+        echo "Thành công!";
+
+    }
+
+    public function showDealEdits(Request $request)
+    {
+    
+        $data = DB::table('flash_deal')->where('id', $id)->first();
+
+        if(!empty($data)){
+
+            return view('flash_deal.popup_deal',compact($data));
+        }
+
+    
     }
 }

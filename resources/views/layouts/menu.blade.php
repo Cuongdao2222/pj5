@@ -196,6 +196,13 @@
 </li>
 
 <li class="nav-item">
+    <a href="{{ route('flashDeal') }}"
+       class="nav-link {{ Request::is('flashDeal') ? 'active' : '' }}">
+        <p>Flash Deal</p>
+    </a>
+</li>
+
+<li class="nav-item">
     <a href="{{ route('posts.index') }}"
        class="nav-link {{ Request::is('order_list') ? 'active' : '' }}">
         <p>Bài viết </p>

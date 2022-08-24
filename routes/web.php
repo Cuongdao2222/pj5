@@ -213,10 +213,19 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::get('deal', 'dealController@index')->name('deal');
 
+
+    Route::get('flash-deal', 'dealController@flashDeal')->name('flashDeal');
+
     Route::post('add-deal-flash', 'dealController@addDealFlash')->name('add-deal-flash');
 
     Route::get('editPricedeal', 'dealController@editDealPrice')->name('editPricedeal');
 
+    Route::get('showDealEdit', 'dealController@showDealEdits')->name('showDealEdit');
+
+
+
+
+    Route::get('add-Deal-Flashs', 'dealController@addDealFlashs')->name('addDealFlashs');
 
     Route::get('post-codinh', function () {
         return view('footerpost.index');
