@@ -552,19 +552,25 @@ $('.add-product').click(function(){
 
 
 function editFLashDeal(id) {
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
     $.ajax({
-     type: 'GET',
+     type: 'POST',
         url: "{{ route('showDealEdit') }}",
         data: {
             deal_id:id,
             
         },
-        success: function(result){
+        success: function(data){
 
-            alert(1);
-            // $('#edit-flash-deal .modal-body').html('');
-            // $('#edit-flash-deal .modal-body').html(result);
-            // $('#edit-flash-deal').modal('show');
+            $('#edit-flash-deal .modal-body').html('');
+            $('#edit-flash-deal .modal-body').html(data);
+            $('#edit-flash-deal').modal('show');
         }
     });
 

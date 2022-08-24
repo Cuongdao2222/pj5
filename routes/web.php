@@ -220,7 +220,7 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::get('editPricedeal', 'dealController@editDealPrice')->name('editPricedeal');
 
-    Route::get('showDealEdit', 'dealController@showDealEdits')->name('showDealEdit');
+    Route::post('showDealEdit', 'dealController@showDealEdits')->name('showDealEdit');
 
 
 

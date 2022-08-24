@@ -271,14 +271,14 @@ class dealController extends Controller
 
     public function showDealEdits(Request $request)
     {
+        $id = $request->deal_id;
     
-        $data = DB::table('flash_deal')->where('id', $id)->first();
+        $data = DB::table('flash_deal')->where('id', $id)->get()->first();
 
         if(!empty($data)){
 
-            return view('flash_deal.popup_deal',compact($data));
+            return view('flash_deal.popup_deal',compact('data'));
         }
-
     
     }
 }
