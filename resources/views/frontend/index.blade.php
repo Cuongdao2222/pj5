@@ -522,8 +522,9 @@
                         
                         <div class="item"  data-pos="1">
                             <a href='{{ route('details', $datas->Link) }}'>
+                                @if($datas->Price>=3000000)
                                 <span class="icon_tragop">Trả góp <i>0%</i></span>
-                                
+                                @endif
                                 <div class="item-img">
                                     <img data-src="{{ asset($datas->Image) }}" class="lazyload"   alt="{{ $datas->Name }}" width=210 height=210>
                                     
