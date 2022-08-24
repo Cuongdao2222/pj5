@@ -480,12 +480,24 @@ class categoryController extends Controller
                 Cache::forever('image_product'.$findID->id,$image_cache);
             }
 
+            // $data = Cache::rememberForever('data-detail'.$slug, function() use($slug) {
 
-            $data = Cache::rememberForever('data-detail'.$slug, function() use($slug) {
+            //     return product::where('Link',$slug)->first();
+            // });
 
-                return product::where('Link',$slug)->first();
-            });
+            // kiểm tra link cache có tồn tại hay k
 
+            $data = product::where('Link',$slug)->first();
+
+            if(empty($data)){
+                return abort('404');
+            }
+
+            // end kiem tra check cẩn thận
+
+            // dd($data->Meta_id);
+
+            //end check cache
 
             if(!empty($data) && !empty($_GET['show'])&&($_GET['show']=='tra-gop')){
                 
