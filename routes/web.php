@@ -164,6 +164,9 @@ Route::post('suggest', 'AjaxController@getProductActive')->name('sugest-click');
 Route::post('filter-price-product', 'AjaxController@filterByValue')->name('filter-option');
 
 
+Route::post('filter-price-product-by-page', 'AjaxController@filterByPageFilter')->name('filter-option-by-page');
+
+
 
 
 Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {

@@ -290,9 +290,6 @@
                    
                     @foreach($product_search as $value)
 
-
-                        
-
                             <?php   
 
                                 $id_product = $value->id;
@@ -315,9 +312,7 @@
                                         $value->Price = $check_deal->deal_price;
                                         
                                     }
-                                
                                     
-                                
                                 }
                             ?>
 
@@ -572,7 +567,7 @@
                 $.ajax({
        
                 type: 'POST',
-                    url: "{{ route('filter-option') }}",
+                    url: "{{ route('filter-option-by-page') }}",
                     data: {
                         json_id_product: $('.lists-id').text(),
                         action:$(this).val(),
@@ -585,8 +580,6 @@
 
                         $('.container-productbox').html(result);
 
-
-                        
 
                     }
                 });
