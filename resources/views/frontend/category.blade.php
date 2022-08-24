@@ -80,13 +80,9 @@
 
                     @if(isset($ar_list))
                     @foreach($ar_list as $val)
-
-
                     <li>
                         <a href="{{ route('details', @$val['link']) }}">{{ @$val['name'] }}</a>
                     </li>
-
-                   
                     @endforeach
                     @endif
                 </ul>
@@ -211,7 +207,9 @@
                         <div class="col-md-3 col-6 lists">
                             <div class="item  __cate_1942">
                                 <a href='{{ route("details", $value->Link ) }}' data-box="BoxCate" class="main-contain">
+                                    @if($value->Price>=3000000)
                                     <span class="icon_tragop">Trả góp <i>0%</i></span>
+                                    @endif
                                     <div class="item-img item-img_1942">
                                         <img class="lazyload thumb" data-src="{{ asset($value->Image) }}" alt="{{ $value->Name }}" style="width:100%"> 
                                     </div>
