@@ -10,10 +10,6 @@
         <style type="text/css">
            /* deal*/
 
-            .actives{
-                background: #fff;
-            }
-
             .titles-time{
                 border-top: 2px solid #ff9;
                 margin-top: 5px;
@@ -60,11 +56,6 @@
             .titles-time .cat-child li {
                 float: left;
                 padding: 0 4px;
-            }
-
-            .titles-time .minutes{
-                font-weight: normal;
-                color: #000;
             }
 
 
@@ -255,7 +246,7 @@
         <?php 
            
             $now  = Carbon\Carbon::now();
-           
+            
             if(!empty($deal)){
 
                 $timeDeal_star = Cache::get('deal_start');
@@ -271,78 +262,47 @@
 
         ?>
 
-    
-        <?php 
 
-            $time1_start = Carbon\Carbon::createFromDate('23-8-2022, 9:00');
-            $time1 = Carbon\Carbon::createFromDate('23-8-2022, 12:00');
-            $time2_start = Carbon\Carbon::createFromDate('23-8-2022, 12:00');
-            $time2 = Carbon\Carbon::createFromDate('23-8-2022, 14:00');
-            $time3_start = Carbon\Carbon::createFromDate('23-8-2022, 14:00');
-            $time3 = Carbon\Carbon::createFromDate('23-8-2022, 17:00');
-            $time4_start = Carbon\Carbon::createFromDate('23-8-2022, 17:00');
-            $time4 = Carbon\Carbon::createFromDate('23-8-2022, 22:00');
-            $define = [['start'=>'9h', 'endTime'=>$time1, 'startTime'=>$time1_start], ['start'=>'12h', 'endTime'=>$time2, 'startTime'=>$time2_start], ['start'=>'14h', 'endTime'=>$time3, 'startTime'=>$time3_start], ['start'=>'17h', 'endTime'=>$time4, 'startTime'=>$time4_start]];
-
-        ?>
-
-        @if(!empty($deal_check) && $deal_check->count()>0 && $now->between($deal_check[0]->start, $deal_check[0]->end)||$now>$time1_start && $now < $time4)
+        @if(!empty($deal_check) && $deal_check->count()>0 && $now->between($deal_check[0]->start, $deal_check[0]->end))
         <!-- flash sale -->
             <div class="img-flashsale mobiles" style="width: 100%;">
                 <a href="{{ route('details', 'deal') }}"><img src="{{ asset('images/template/flashsalemb.jpg') }}" style="width: 100%"></a>
 
             </div>
-            
-
-            @if($now>$time1_start && $now < $time4)
-
-            <div class="title titles-time">
-               
+           <!--  <div class="title titles-time">
+                <h3>
+                    <span>12:00</span>
+                    <br>
+                    <span>01:00:59</span>
+                </h3>
+                
                 <ul class="cat-child">
-                    <?php 
-
-                        $groups_deal = 0;
-
-                    ?>
-                    @foreach($define as $key => $value)
-
-                    @if($now<$value['endTime'])
-
-                    <?php 
-                       
-                        if($now->between($value['startTime'], $value['endTime'])){
-
-                            $timestamp = $now->diffInSeconds($value['endTime']);
-                            $hour =  floor($timestamp/3600);
-                            $timestamp = floor($timestamp % 3600);
-                            $minutes =floor($timestamp/60);
-                            $timestamp = floor($timestamp % 60);
-                            $seconds =floor($timestamp);
-
-                            $groups_deal = $key+1;
-                        }
-
-                    ?>  
-                    <li onclick="clickDeal({{ $key+1 }})" class=>
+                    <li>
                         <h3>
-                            <span>{{ $value['start'] }}</span>
+                            <span>15:00</span>
                             <br>
-                            <span>{!! $now->between($value['startTime'], $value['endTime'])?'<div class="clock"><span class="hour">0'.$hour.'</span>:<span class="minutes">'.$minutes.'</span>:<span class="second">'.$seconds.'</span></div>':'SẮP DIỄN RA' !!}</span>
+                            <span>Sắp diễn ra</span>
                         </h3>
                     </li>
-                    @endif
-                    @endforeach
-                    <?php 
-                        $deal = Cache::get('deals')->where('flash_deal', $groups_deal)->sortByDesc('order');
-                    ?>
-                 
-                </ul>
-            </div>
-            @endif
-            
+                    <li>
+                        <h3>
+                            <span>18:00</span>
+                            <br>
+                            <span>Sắp diễn ra</span>
+                        </h3>
 
-            @if($deal->count()>0)
-            <div class="deal-view">
+                    </li>
+                    <li>
+                        <h3>
+                            <span>21:00</span>
+                            <br>
+                            <span>Sắp diễn ra</span>
+                        </h3>
+                    </li>
+                </ul>
+            </div> -->
+
+            <div class="">
                 <div class="flash-sale" style="height: 305px;">
                     
                     <span id="banner-flash-sale"><a href="{{ route('dealFe') }}">
@@ -354,7 +314,7 @@
 
                                 @foreach($deal as $key => $value)
                                
-                                @if(!empty($value->active) && $value->active ==1 && $now->between($value->start, $value->end)||$value->order>0)
+                                @if( !empty($value->active) && $value->active ==1 && $now->between($value->start, $value->end))
 
                                 <?php 
                                     $timestamp = $now->diffInSeconds($value->end);
@@ -403,8 +363,7 @@
                                            <!--  <p>Đã bán <span style="color: #EE1E25">2</span> / 100 sản phẩm</p> -->
                                         </div>
                                         <div style="width: 100%; height: 1px; background: #ECECEC; margin-top: 8px"></div>
-
-                                        <!-- <div class="countdown-flash-sale">
+                                        <div class="countdown-flash-sale">
                                             <div class="time-cd time-fl time{{ $key }}">
 
                                                 <span class="timestamp" style="display: none;">{{   $now->diffInSeconds($value->end) }}</span>
@@ -425,7 +384,7 @@
                                                         <span>phút</span>
                                                     </span>
                                                     <p style="font-size: 28px; line-height: 55px;font-weight: bold;color: #101010; margin: 0 7px">:</p>
-                                                      <span class="hours">
+                                                    <span class="hours">
                                                         <span class="secondss"> {{ $seconds }}</span>
                                                         <div style="margin-top: 2px; width:100%; height:1px; background: #FF3647"></div>
                                                         <span>giây</span>
@@ -434,8 +393,7 @@
                                                   
                                                 </div>
                                             </div>
-                                        </div> -->
-
+                                        </div>
                                       </a>
                                     </div>
                                 </div>
@@ -449,9 +407,9 @@
                     </div>
                 </div>
             </div>
-            @endif
+
            <!--  end flash  -->
-        @endif 
+         @endif 
           
         <div class="clearfix"></div> 
 
@@ -809,6 +767,7 @@
       
         loop = {{ $deal->count() }};
 
+
         times = [];
                   
         time = {{ $timestamp }};
@@ -819,112 +778,8 @@
             for (var i = 0 ; i < loop; i++) {
                 run(i);
             }
-            runs();
-            
+
         }, 1000);
-
-       
-
-    
-        function runs() {
-
-            var hour =  $('.titles-time .hour').text();
-            var minutes =  $('.titles-time .minutes').text();
-            var second =  $('.titles-time .second').text();
-
-
-            h =  parseInt(hour);
-            m = parseInt(minutes);
-            s = parseInt(second);
-            s--;
-            /*BƯỚC 1: CHUYỂN ĐỔI DỮ LIỆU*/
-              // Nếu số giây = -1 tức là đã chạy ngược hết số giây, lúc này:
-              //  - giảm số phút xuống 1 đơn vị
-              //  - thiết lập số giây lại 59
-            if (s === -1){
-                  m -= 1;
-                 
-                  s = 59;
-            }
-
-            // Nếu số phút = -1 tức là đã chạy ngược hết số phút, lúc này:
-            //  - giảm số giờ xuống 1 đơn vị
-            //  - thiết lập số phút lại 59
-            if (m === -1){
-                h -= 1;
-                m = 59;
-            }
-
-            
-            hour =  h.toString();
-
-            minutes =  m.toString();
-            
-            seconds =  s.toString();
-          
-            let currentHour = h<10?'0'+hour:''+hour;
-            let currentMinutes = m<10?'0'+minutes:''+minutes;
-            let currentSeconds = s<10?'0'+seconds:''+seconds;
-
-    
-            let currentTimeStr ='<span class="hour">'+ currentHour+'</span>:<span class="minutes">'+currentMinutes+'</span>:<span class="second">'+currentSeconds+'</span>';
-            $('.titles-time .clock').html(currentTimeStr);
-           
-        }    
-
-
-        function clickDeal(id) {
-
-            $(this).addClass('actives');
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-
-            $.ajax({
-                type: 'POST',
-                url: "{{ route('showDealClick') }}",
-                data: {
-                    product_id: id
-                       
-                },
-                success: function(result){
-                   // numberCart = result.find($("#number-product-cart").text());
-
-                   $('.deal-view').html('');
-
-                   $('.deal-view').html(result);
-
-                    var owl = $(".flash-sale-banner");
-                    owl.owlCarousel({
-                        loop:false,
-                        margin:10,
-                        nav:true,
-                        dots:false,
-                        autoplay:false,
-                        
-                        navText: ["<i class='fa fa-angle-left'></i>","<i class='fa fa fa-angle-right'></i>"],
-                        responsive:{
-                            0:{
-                                items:1
-                            },
-
-                             600:{
-                                items:2
-                            },
-                           
-                            1000:{
-                                items:2
-                            }
-                        }
-                    });
-                  
-                   
-                }
-            });    
-          
-        }
 
         function run(key) {
             var hour =  $('.time'+key+' .hourss').text();

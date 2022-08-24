@@ -48,6 +48,10 @@
 
     $check_deal =  Cache::get('deals')->where('product_id', $data->id);
 
+    // tắt deal tạm thời
+
+    $check_deal = '';
+
     if(!empty($check_deal) && $check_deal->count()>0){
 
         $check_deal =  $check_deal->all();
