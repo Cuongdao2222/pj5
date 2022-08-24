@@ -545,11 +545,7 @@ class AjaxController extends Controller
             else{
 
                 $arr  = json_decode($value, true);
-
                
-
-               
-
                 if(isset($arr[$propertyId])){
 
                     $index_value = array_search($product_id, $arr[$propertyId]);
