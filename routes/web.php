@@ -242,7 +242,7 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
         
     })->name('postcd');
 
-    Route::get('list-flash-deal', 'dealController@viewFlashDeal');
+    Route::get('list-flash-deal', 'dealController@viewFlashDeal')->name('viewFlashDeal');
 
 
     Route::get('home', 'HomeController@index')->name('home-admin');

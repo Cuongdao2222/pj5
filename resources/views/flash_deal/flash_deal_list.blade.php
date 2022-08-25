@@ -218,9 +218,11 @@
 
                     <table class="tb-padding" cellpadding="5" border="1" bordercolor="#CCCCCC">
                         <tbody>
-                            <?php  
+                            <?php 
 
-                                $deal = App\Models\flashdeal::get();
+                                $deal_id =  $_GET['id'];
+
+                                $deal = App\Models\flashdeal::where('flash_deal_id', $deal_id)->get();
 
 
                                 

@@ -323,7 +323,7 @@
                                     {{ $datas->id }}
                                 </td>
                                 <td align="center">
-                                    <a href="#">Xem </a>
+                                    <a href="#"><a href="{{ route('viewFlashDeal')  }}?id={{ $datas->id }}">Xem</a> </a>
                                 </td>
                                 <td align="center"><a href="javascript:void(0)" onclick="editFLashDeal('{{ $datas->id }}')">sửa</a></td>
                                 <td align="center"><a href="javascript:void(0)" onclick="removeFLashDeal('{{ $datas->id }}')">xóa</a></td>
