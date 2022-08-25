@@ -220,12 +220,16 @@
                         <tbody>
                             <?php  
 
-                                $deal = App\Models\deal::get();
+                                $deal = App\Models\flashdeal::get();
 
+
+                                
                             ?>
 
                            <?php 
+
                                 if(!empty($deal) && count($deal)>0){
+
                            ?> 
                             
                           <tr>
@@ -233,8 +237,7 @@
                               <td>
 
                                <?php 
-
-
+                                
                                 function get_times ($default = '19:00', $interval = '+30 minutes') {
 
                                     $output = '';
@@ -278,7 +281,10 @@
                             <?php  
 
                                 }
+
                             ?>
+
+
                       </tbody>
                     </table>
 
@@ -292,19 +298,25 @@
                                 <td>Thông tin</td>
                                 <td>Tình trạng</td>
                                 <td>Quản lý</td>
-                                <td>Sửa giá deal nhanh</td>
+                               
                                 <td>Sắp xếp</td>
-                                <td>Cài thời gian riêng</td>
+                                
                             </tr>
 
                             <?php  
+
+
                                 $now = Carbon\Carbon::now();
-                                $products = DB::table('deal')->distinct()->get()->toArray();
+                                $products = DB::table('deal_flash_product')->distinct()->get()->toArray();
 
                                 $k =0;
-
                             ?>
-                            @isset($products)
+
+                            
+                            @if(!empty($products))
+
+
+
                             @foreach($products as $val)
                             <?php  
                                 $k++ ;
@@ -342,14 +354,7 @@
                                     </div>
                                     <div><a href="javascript:;" onclick="delete_deal('{{ $val->id }}')">xóa</a></div>
                                 </td>
-                                <td>
-                                    <div>
-                                        <input type="text" name="order" value="{{ $val->deal_price }}" class="edit_price_deal{{ $val->id }}">
-                                    </div>
-                                    
-                                    <br>
-                                    <div class="btn-primary edit_price_deals{{$val->id}}" style="width: 25%;" onclick="edit_price_deal({{ $val->id }})" >sửa</div>
-                                </td>
+                                
                                 <td>
                                     <div>
                                         <input type="text" name="order" value="{{ $val->order }}" class="edit_order{{ $val->id }}">
@@ -358,31 +363,11 @@
                                     <br>
                                     <div class="btn-primary edit_orders{{$val->id}}" style="width: 25%;" onclick="update_order({{ $val->id }})" >sửa</div>
                                 </td>
-                                <td>
-
-                                    <?php 
-
-                                        $timeup = $now->diffInSeconds($val->end); 
-                                        $hour  = $timeup/3600;
-                                        $timeup = $timeup%3600;
-                                        $minutes = $timeup/60;
-
-                                    ?> 
-
-                                    @if($now->between($val->start, $val->end))
-                                    Còn {{ floor($hour) }} giờ {{ (int)$minutes }} phút nữa 
-                                    
-                                    @else
-                                      Hết thời gian deal                                  
-                                     @endif
-                                    <br>
-                                    <a href="javascript:void(0)" onclick="setTimeDeal({{ $val->id }})">Sửa</a>
-                                </td>
-
+                                
                             </tr>
                             @endforeach
 
-                            @endisset
+                            @endif
                            
                         </tbody>
                     </table>
@@ -391,8 +376,6 @@
                 </div>
                 
             </div>
-
-
 
         </div>
 
@@ -520,6 +503,10 @@
             </div>
         </div>
 
+
+        @if(!empty($deal)&& !empty($deal[0]))
+
+        
         <div class="modal fade" id="modalSetTimeDeal" tabindex="-1" role="dialog" aria-labelledby="modalSetTimeDeal" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -532,12 +519,12 @@
                     <div class="modal-body">
                          Bắt đầu : <input type="text" id="date-picker3" value="{{  str_replace(strstr($deal[0]->start, ','), '', $deal[0]->start) }}">
 
-                          <?php  
+                        <?php  
 
                             $start = str_replace(',','',strstr($deal[0]->start, ','));
 
                             $end    = str_replace(',','',strstr($deal[0]->end, ','));
-                          ?>
+                        ?>
 
                            Giờ: 
                           <select name="time" id="hours3"><?php echo get_times($default = $start, '+30 minutes'); ?></select>
@@ -556,7 +543,7 @@
                 </div>
             </div>
         </div>
-
+        @endif
     </div>
 
 </div>
@@ -688,7 +675,7 @@ function update_order(id){
     $.ajax({
 
     type: 'GET',
-        url: "{{ route('order-deal') }}",
+        url: "{{ route('order-flash-deal') }}",
         data: {
             product_id:id,
             val: val
@@ -784,7 +771,7 @@ $('.add-deal-price').click(function(){
         $.ajax({
 
         type: 'GET',
-            url: "{{ route('filter-deal-add') }}",
+            url: "{{ route('filter-deal-flash-add') }}",
             data: {
                 data: JSON.stringify(deal_product),
                 edit_id:edit_id,
@@ -835,7 +822,7 @@ function set_feature(id, active){
     $.ajax({
 
     type: 'GET',
-        url: "{{ route('active-deal') }}",
+        url: "{{ route('active-flash-deal') }}",
         data: {
             id: id,
 
@@ -944,7 +931,7 @@ function delete_deal(id){
     $.ajax({
 
     type: 'GET',
-        url: "{{ route('delete-deal') }}",
+        url: "{{ route('removeFlashDeal') }}",
         data: {
             id: id,
             

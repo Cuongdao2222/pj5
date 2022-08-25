@@ -290,6 +290,7 @@
                                 <td class="center">id</td>
                                 <td class="center">Chi tiết</td>
                                 <td class="center">Sửa</td>
+                                <td class="center">Xóa</td>
                                
                             </tr>
 
@@ -325,6 +326,7 @@
                                     <a href="#">Xem </a>
                                 </td>
                                 <td align="center"><a href="javascript:void(0)" onclick="editFLashDeal('{{ $datas->id }}')">sửa</a></td>
+                                <td align="center"><a href="javascript:void(0)" onclick="removeFLashDeal('{{ $datas->id }}')">xóa</a></td>
 
                             </tr>
 
@@ -370,10 +372,6 @@
                     </div>
                     <div class="modal-body">
 
-                        <?php  
-
-
-                        ?>
                         <table id="tb-list" border="1" bordercolor="#CCCCCC">
                             <tbody>
                                 <tr bgcolor="#EEEEEE" style="font-weight:bold;">
@@ -474,23 +472,21 @@
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
+                    <div
                     <div class="modal-body">
                         <tbody>
                             <tr>
                                 <td>Thông tin khuyến mãi</td>
                                 <td>
-                                    Tên khuyến mãi : <input type="text" value="" id="name">
+                                    Tên khuyến mãi : <input type="text" value="" id="names">
                                     <br>
                                     <br>
-                                    Giá km (nhập số) : <input type="text" value="" id="price">
+                                    Giá km (nhập số) : <input type="text" value="" id="prices">
                                 </td>
                             </tr>
                         </tbody>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary add-deal-price">Xác nhận</button>
-                    </div>
+                  
                 </div>
             </div>
         </div>
@@ -550,6 +546,30 @@ $('.add-product').click(function(){
 
 })
 
+function update_deal_price(id) {
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $.ajax({
+     type: 'POST',
+        url: "{{ route('update_deal_price_to_id') }}",
+        data: {
+            id:id,
+            name:$('#names').val(),
+            price:$('#prices').val()
+        },
+        success: function(data){
+            
+            window.location.reload();
+        }
+    });
+
+}
+
 
 function editFLashDeal(id) {
 
@@ -574,7 +594,28 @@ function editFLashDeal(id) {
         }
     });
 
-}   
+} 
+
+function removeFLashDeal(id) {
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $.ajax({
+     type: 'POST',
+        url: "{{ route('removeDealFlash') }}",
+        data: {
+            id:id,
+        },
+        success: function(data){
+            
+            window.location.reload();
+        }
+    });
+}  
 
 
 
@@ -685,7 +726,7 @@ function edit_price_deal(id){
 function update_order(id){
 
     let val = $('.edit_order'+id).val();
-    console.log(val)
+   
     $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

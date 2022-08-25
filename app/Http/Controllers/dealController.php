@@ -117,8 +117,6 @@ class dealController extends Controller
 
                 }  
               
-
-            
                 if(empty($edit_id)){
                      DB::table('deal')->insert($products_add);
                 }
@@ -280,5 +278,38 @@ class dealController extends Controller
             return view('flash_deal.popup_deal',compact('data'));
         }
     
+    }
+
+    public function updateFlashDealToId(Request $request)
+    {
+        $id   = $request->id;
+        $name = $request->name;
+        $price= $request->price;
+        $data = DB::table('flash_deal')->where('id', $id)->get()->first();
+
+        if(!empty($data)){
+
+            $datas  = ['name'=>$name, 'price'=>$price];
+
+            DB::table('flash_deal')->where('id', $id)->update($datas);
+        }
+          
+    }
+
+    public function removeDealFlash(Request $request)
+    {
+        $id   = $request->id;
+
+        $data = DB::table('flash_deal')->where('id', $id)->get()->first();
+
+        if(!empty($data)){
+
+            DB::table('flash_deal')->delete($id);
+        }
+    }
+
+    public function viewFlashDeal()
+    {
+        return view('flash_deal.flash_deal_list');
     }
 }

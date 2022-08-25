@@ -98,6 +98,8 @@ Route::get('sitemap_pc553.xml', 'sitemapController@sitemapChildProduct');
 
 Route::get('update-order-deal', 'dealController@dealOrder')->name('order-deal');
 
+Route::get('update-order-flash-deal', 'flashdealController@dealOrder')->name('order-flash-deal');
+
 Route::get('sitemap_article.xml', 'sitemapController@sitemapChildBlog');
 
 // Route::get('inCrawl', 'crawlController@allproduct');
@@ -194,9 +196,15 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::get('fill-product-deal', 'dealController@getProductToName')->name('filter-product-deal');
 
-     Route::get('destroyGroupGift/{id}', 'giftController@destroyGift')->name('destroyGiftGroup');
+    Route::get('destroyGroupGift/{id}', 'giftController@destroyGift')->name('destroyGiftGroup');
 
-     Route::get('giftGroupAddProduct', 'AjaxController@giftGroupAdd')->name('giftGroupAdd');
+    Route::get('giftGroupAddProduct', 'AjaxController@giftGroupAdd')->name('giftGroupAdd');
+
+    Route::get('giftGroupAddProduct', 'AjaxController@giftGroupAdd')->name('giftGroupAdd');
+
+
+
+
 
     
     Route::post('/editFastPrice', 'productController@editFastPrice')->name('fast-price');
@@ -222,7 +230,9 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::post('showDealEdit', 'dealController@showDealEdits')->name('showDealEdit');
 
+    Route::post('update-deal-price-to-id', 'dealController@updateFlashDealToId')->name('update_deal_price_to_id');
 
+    Route::post('remove-deal-flash', 'dealController@removeDealFlash')->name('removeDealFlash');
 
 
     Route::get('add-Deal-Flashs', 'dealController@addDealFlashs')->name('addDealFlashs');
@@ -231,6 +241,8 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
         return view('footerpost.index');
         
     })->name('postcd');
+
+    Route::get('list-flash-deal', 'dealController@viewFlashDeal');
 
 
     Route::get('home', 'HomeController@index')->name('home-admin');
@@ -351,17 +363,23 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::get('/filter', 'Frontend\filterController@index')->name('filter-property');
 
-     Route::get('/filter-deal-products-add', 'dealController@GetProductbyId')->name('filter-deal-add');
+    Route::get('/filter-deal-products-add', 'dealController@GetProductbyId')->name('filter-deal-add');
 
-     Route::get('/filter-deal-products-add-deal', 'dealController@add_Deal')->name('result-add');
 
-     Route::get('/delete-deal', 'dealController@removeDeal')->name('delete-deal');
+    Route::get('/filter-deal-flash-products-add', 'flashdealController@GetProductbyId')->name('filter-deal-flash-add');
+
+
+    Route::get('/filter-deal-products-add-deal', 'dealController@add_Deal')->name('result-add');
+
+    Route::get('/delete-deal', 'dealController@removeDeal')->name('delete-deal');
+
+    Route::get('/remove-flash-deal', 'flashdealController@removeDeal')->name('removeFlashDeal');
 
 
 
     Route::get('/active-deal', 'dealController@activeDeal')->name('active-deal');
 
-
+    Route::get('/active-flash-deal', 'flashdealController@activeDeal')->name('active-flash-deal');                                            
     //ajax
 
     Route::post('add-selected-value-filter', 'AjaxController@addValueSelectFilter')->name('add-value-selected-filter');
