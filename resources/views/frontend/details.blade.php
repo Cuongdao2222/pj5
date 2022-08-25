@@ -17,7 +17,6 @@
 @endpush
 
 <?php 
-
     if(!Cache::has('saker') ){
 
         $saker = App\Models\maker::get();
@@ -31,28 +30,10 @@
     $logoSaker = $sakers->filter(function($item) use($data){
         return $item->id == $data->Maker;
     })->first();
-    
-    $time1_start = Carbon\Carbon::createFromDate('22-8-2022, 9:00');
-    $time1 = Carbon\Carbon::createFromDate('22-8-2022, 12:00');
-    $time2_start = Carbon\Carbon::createFromDate('22-8-2022, 12:00');
-    $time2 = Carbon\Carbon::createFromDate('22-8-2022, 14:00');
-    $time3_start = Carbon\Carbon::createFromDate('22-8-2022, 14:00');
-    $time3 = Carbon\Carbon::createFromDate('22-8-2022, 17:00');
-    $time4_start = Carbon\Carbon::createFromDate('22-8-2022, 17:00');
-    $time4 = Carbon\Carbon::createFromDate('22-8-2022, 22:00');
-    $define = [['start'=>'9h', 'endTime'=>$time1, 'startTime'=>$time1_start], ['start'=>'12h', 'endTime'=>$time2, 'startTime'=>$time2_start], ['start'=>'14h', 'endTime'=>$time3, 'startTime'=>$time3_start], ['start'=>'17h', 'endTime'=>$time4, 'startTime'=>$time4_start]];
-
-?>
-
-<?php  
 
     $check_deal =  Cache::get('deals')->where('product_id', $data->id);
 
-    // tắt deal tạm thời
-
-    $check_deal = '';
-
-    if(!empty($check_deal) && $check_deal->count()>0){
+    if(!empty($check_deal)){
 
         $check_deal =  $check_deal->all();
 
@@ -60,36 +41,18 @@
             $check_deal = reset($check_deal);
         }
 
-        $now  = Carbon\Carbon::now();
         
         $deal_check_add = false;
-
-        // kiểm tra thời điểm deal
-
-        $check_keys_product = $check_deal->flash_deal;
-
-
-        foreach($define as $key => $value){
-
-            $check_keys = 0;
-
-            if($now->between($value['startTime'], $value['endTime'])){
-                $check_keys = $key+1;
-            }
-            
-
-        }
-       
         
-        if(!empty($check_deal) && !empty(!empty($check_deal->deal_price)) &&$check_deal->active==1||$check_deal->flash_deal>0||$now>$time1_start && $now < $time4){
-            
+        if(!empty($check_deal) && !empty(!empty($check_deal->deal_price)) &&$check_deal->active==1){
+             $now  = Carbon\Carbon::now();
             $timeDeal_star = $check_deal->start;
             $timeDeal_star =  \Carbon\Carbon::create($timeDeal_star);
             $timeDeal_end = $check_deal->end;
             $timeDeal_end =  \Carbon\Carbon::create($timeDeal_end);
             $timestamp = $now->diffInSeconds($timeDeal_end);
 
-            if($now->between($check_deal->start, $check_deal->end)||$check_keys_product==$check_keys){
+            if($now->between($check_deal->start, $check_deal->end)){
                 $deal_check_add = true;
                 $price_old = $data->Price;
                 $text = '<b>MUA ONLINE GIÁ SỐC: </b>';
@@ -941,13 +904,9 @@
                     </div>
                     
                     <h3>{{ $value->Name }}</h3>
-                        <strong class="price">{{  str_replace(',' ,'.', number_format($value->Price))  }}&#x20AB;</strong>
-                        
-                        <span>+ So sánh</span>
-                        
+                    <strong class="price">{{  str_replace(',' ,'.', number_format($value->Price))  }}&#x20AB;</strong>
                     </a>
                 </div>
-               
                 @endif
                 @endforeach
             </div>
