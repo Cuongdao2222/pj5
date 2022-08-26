@@ -10,6 +10,11 @@
         <style type="text/css">
            /* deal*/
 
+
+           .sale-time-flash{
+                margin-bottom: 10px;
+           }
+
             .actives{
                 background: #fff;
             }
@@ -138,6 +143,37 @@
                     height: auto !important;
                 }   
             }
+
+            .banner-outer {
+                height: 50px;
+                position: sticky;
+                top: calc(var(--banner-height-difference) * -1);
+                display: flex;
+                align-items: center;
+                background-color: #fff;
+                z-index: 1;
+            }
+
+            .banner-inner {
+                height: 50px;
+                position: sticky;
+                margin: 0 auto;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                line-height: 1.25;
+                width: 50%;
+                background: #ffc75f;
+                border-radius: 10px;
+                border: 1px solid;
+            }
+            .text-promotion{
+                font-size: 30px;
+                font-weight: bold;
+                color: #153464;
+                text-transform: uppercase;
+            }
         </style>
 
        
@@ -189,216 +225,204 @@
         </aside>
         <!-- End -->
     </div>
+
+    <br>
+
+    <?php 
+        $now  = Carbon\Carbon::now();
+
+        $deal = Cache::get('deals')->sortByDesc('order');
+    ?>
+     <?php 
+        $time1_start = Carbon\Carbon::createFromDate('26-8-2022, 9:00');
+        $time1 = Carbon\Carbon::createFromDate('26-8-2022, 12:00');
+        $time2_start = Carbon\Carbon::createFromDate('26-8-2022, 12:00');
+        $time2 = Carbon\Carbon::createFromDate('26-8-2022, 14:00');
+        $time3_start = Carbon\Carbon::createFromDate('26-8-2022, 14:00');
+        $time3 = Carbon\Carbon::createFromDate('26-8-2022, 17:00');
+        $time4_start = Carbon\Carbon::createFromDate('26-8-2022, 17:00');
+        $time4 = Carbon\Carbon::createFromDate('26-8-2022, 22:00');
+        $define = [['start'=>'9h', 'endTime'=>$time1, 'startTime'=>$time1_start], ['start'=>'12h', 'endTime'=>$time2, 'startTime'=>$time2_start], ['start'=>'14h', 'endTime'=>$time3, 'startTime'=>$time3_start], ['start'=>'17h', 'endTime'=>$time4, 'startTime'=>$time4_start]];
+    ?>
     
     <section>
-      
         <?php 
-            
+            $saleFlash = DB::table('flash_deal')->get();
+        ?>
 
-            $now  = Carbon\Carbon::now();
+        @foreach($saleFlash as $keys => $value)
 
-            $deal = Cache::get('deals');
+        <div class="sale-time-flash">
+            <div class="banner-outer">
+                <div class="banner-inner responsive-wrapper">
+                    <p class="text-promotion">{{ $value->name }}</p>
+                </div>
+            </div>
            
-            if(!empty($deal)){
-
-                $timeDeal_star = Cache::get('deal_start');
-
-                $timeDeal_star =  \Carbon\Carbon::create($timeDeal_star);
-
-                $timeDeal_end = $deal->first()->end;
-
-                $timeDeal_end =  \Carbon\Carbon::create($timeDeal_end);
-
-                $timestamp = $now->diffInSeconds($timeDeal_end);
-            }
-
-
-        ?>
-
-    
-        <?php 
-
-            $time1_start = Carbon\Carbon::createFromDate('26-8-2022, 9:00');
-            $time1 = Carbon\Carbon::createFromDate('26-8-2022, 12:00');
-            $time2_start = Carbon\Carbon::createFromDate('26-8-2022, 12:00');
-            $time2 = Carbon\Carbon::createFromDate('26-8-2022, 14:00');
-            $time3_start = Carbon\Carbon::createFromDate('26-8-2022, 14:00');
-            $time3 = Carbon\Carbon::createFromDate('26-8-2022, 17:00');
-            $time4_start = Carbon\Carbon::createFromDate('26-8-2022, 17:00');
-            $time4 = Carbon\Carbon::createFromDate('26-8-2022, 22:00');
-            $define = [['start'=>'9h', 'endTime'=>$time1, 'startTime'=>$time1_start], ['start'=>'12h', 'endTime'=>$time2, 'startTime'=>$time2_start], ['start'=>'14h', 'endTime'=>$time3, 'startTime'=>$time3_start], ['start'=>'17h', 'endTime'=>$time4, 'startTime'=>$time4_start]];
-
-        ?>
-
-        @if(!empty($deal_check) && $deal_check->count()>0 && $now->between($deal_check[0]->start, $deal_check[0]->end)||$now>$time1_start && $now < $time4)
-        <!-- flash sale -->
+            @if(!empty($deal_check) && $deal_check->count()>0 && $now->between($deal_check[0]->start, $deal_check[0]->end)||$now>$time1_start && $now < $time4)
+            <!-- flash sale -->
             <div class="img-flashsale mobiles" style="width: 100%;">
                 <a href="{{ route('details', 'deal') }}"><img src="{{ asset('images/template/flashsalemb.jpg') }}" style="width: 100%"></a>
 
             </div>
-            
-
             @if($now>$time1_start && $now < $time4)
+                <div class="title titles-time key{{ $keys }}">
+                    <ul class="cat-child">
+                        <?php 
 
-            <div class="title titles-time">
+                            $groups_deal = 0;
+
+                        ?>
+                        @foreach($define as $key => $value)
+
+                        @if($now<$value['endTime'])
+
+                        <?php 
+                           
+                            if($now->between($value['startTime'], $value['endTime'])){
+
+                                $timestamp = $now->diffInSeconds($value['endTime']);
+                                $hour =  floor($timestamp/3600);
+                                $timestamp = floor($timestamp % 3600);
+                                $minutes =floor($timestamp/60);
+                                $timestamp = floor($timestamp % 60);
+                                $seconds =floor($timestamp);
+
+                                $groups_deal = $key+1;
+                            }
+
+                        ?>  
+                        <li onclick="clickDeal({{ $key+1 }})" class=>
+                            <h3>
+                                <span>{{ $value['start'] }}</span>
+                                <br>
+                                <span>{!! $now->between($value['startTime'], $value['endTime'])?'<div class="clock"><span class="hour">0'.$hour.'</span>:<span class="minutes">'.$minutes.'</span>:<span class="second">'.$seconds.'</span></div>':'SẮP DIỄN RA' !!}</span>
+                            </h3>
+                        </li>
+                        @endif
+                        @endforeach
+                        <?php 
+                           
+                            // $deal = Cache::get('deals')->where('flash_deal', $groups_deal)->sortByDesc('order');
+                        ?>
+                     
+                    </ul>
+                </div>
+                @endif
                
-                <ul class="cat-child">
-                    <?php 
+                @if($deal->count()>0)
+                <div class="deal-view">
+                    <div class="flash-sale" style="height: 305px;">
+                        
+                        <span id="banner-flash-sale"><a href="{{ route('dealFe') }}">
+                        <img width="256" src="{{  asset('images/background-image/Flash_Sale_Theme_256x396.jpg')}}" style="width: auto; height: 300px" alt="banner-fs">
+                        </a></span>
+                        <div class="flash-product nk-product-of-flash-sales">
+                            <div class="col-flash col-flash-2 active">
+                                <div id="sync1S" class="slider-banner owl-carousel flash-sale-banner">
 
-                        $groups_deal = 0;
+                                    @foreach($deal as $key => $value)
+                                   
+                                    @if(!empty($value->active) && $value->active ==1 && $now->between($value->start, $value->end)||$value->order>0)
 
-                    ?>
-                    @foreach($define as $key => $value)
+                                    <?php 
+                                        $timestamp = $now->diffInSeconds($value->end);
 
-                    @if($now<$value['endTime'])
+                                        $hour =  floor($timestamp/3600);
+                                        $timestamp = floor($timestamp % 3600);
+                                        $minutes =floor($timestamp/60);
+                                        $timestamp = floor($timestamp % 60);
+                                        $seconds =floor($timestamp);
 
-                    <?php 
-                       
-                        if($now->between($value['startTime'], $value['endTime'])){
+                                    ?>
 
-                            $timestamp = $now->diffInSeconds($value['endTime']);
-                            $hour =  floor($timestamp/3600);
-                            $timestamp = floor($timestamp % 3600);
-                            $minutes =floor($timestamp/60);
-                            $timestamp = floor($timestamp % 60);
-                            $seconds =floor($timestamp);
-
-                            $groups_deal = $key+1;
-                        }
-
-                    ?>  
-                    <li onclick="clickDeal({{ $key+1 }})" class=>
-                        <h3>
-                            <span>{{ $value['start'] }}</span>
-                            <br>
-                            <span>{!! $now->between($value['startTime'], $value['endTime'])?'<div class="clock"><span class="hour">0'.$hour.'</span>:<span class="minutes">'.$minutes.'</span>:<span class="second">'.$seconds.'</span></div>':'SẮP DIỄN RA' !!}</span>
-                        </h3>
-                    </li>
-                    @endif
-                    @endforeach
-                    <?php 
-
-                        $deal = Cache::get('deals')->where('flash_deal', $groups_deal)->sortByDesc('order');
-                    ?>
-                 
-                </ul>
-            </div>
-            @endif
-            
-           
-            @if($deal->count()>0)
-            <div class="deal-view">
-                <div class="flash-sale" style="height: 305px;">
-                    
-                    <span id="banner-flash-sale"><a href="{{ route('dealFe') }}">
-                    <img width="256" src="{{  asset('images/background-image/Flash_Sale_Theme_256x396.jpg')}}" style="width: auto; height: 300px" alt="banner-fs">
-                    </a></span>
-                    <div class="flash-product nk-product-of-flash-sales">
-                        <div class="col-flash col-flash-2 active">
-                            <div id="sync1S" class="slider-banner owl-carousel flash-sale-banner">
-
-                                @foreach($deal as $key => $value)
-                               
-                                @if(!empty($value->active) && $value->active ==1 && $now->between($value->start, $value->end)||$value->order>0)
-
-                                <?php 
-                                    $timestamp = $now->diffInSeconds($value->end);
-
-                                    $hour =  floor($timestamp/3600);
-                                    $timestamp = floor($timestamp % 3600);
-                                    $minutes =floor($timestamp/60);
-                                    $timestamp = floor($timestamp % 60);
-                                    $seconds =floor($timestamp);
-
-                                ?>
-
-                                <div class="item">
-                                    <a href="{{ route('details', $value->link) }}">
-                                        <div class="img">
-                                            <img width="327" src="{{ asset($value->image) }}"  data-src="{{ asset($value->image) }}" title="{{ $value->name }}">
-                                        </div>
-                                    </a>
-                                    <div class="desc desc-deal{{$key}}">
-                                      <a href="{{ route('details', $value->link) }}">
-                                        <h4 class="title">{{ $value->name }}</h4>
-                                        <div class="container-price">
-                                               <div>
-                                                   <span class="price-old">{{ @str_replace(',' ,'.', number_format($value->price)) }}&#x20AB;</span>
-                                               </div>
-                                        </div>
-                                        <div style="margin-top: 11px">
-                                            <div class="nk-top-stickers"><span class="nk-sticker nk-new">Mới</span></div><div>
-                                                    <p class="title-shock-price">Giá sốc online</p>
-                                                    <span class="price-new">{{ @str_replace(',' ,'.', number_format($value->deal_price)) }}&#x20AB;</span>
-                                                </div>
-                                        </div>
-                                        <div class="review_product star">
-                                           <p>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                            </p>
-                                            <div class="line_break">|</div>
-                                                <div class="reviewCount">0 đánh giá</div>
+                                    <div class="item">
+                                        <a href="{{ route('details', $value->link) }}">
+                                            <div class="img">
+                                                <img width="327" src="{{ asset($value->image) }}"  data-src="{{ asset($value->image) }}" title="{{ $value->name }}">
                                             </div>
-                                            <div class="container-timeline">
-                                            <span class="timeline"><span style="width: 2%"></span></span>
-                                           <!--  <p>Đã bán <span style="color: #EE1E25">2</span> / 100 sản phẩm</p> -->
-                                        </div>
-                                        <div style="width: 100%; height: 1px; background: #ECECEC; margin-top: 8px"></div>
+                                        </a>
+                                        <div class="desc desc-deal{{$key}}">
+                                          <a href="{{ route('details', $value->link) }}">
+                                            <h4 class="title">{{ $value->name }}</h4>
+                                            <div class="container-price">
+                                                   <div>
+                                                       <span class="price-old">{{ @str_replace(',' ,'.', number_format($value->price)) }}&#x20AB;</span>
+                                                   </div>
+                                            </div>
+                                            <div style="margin-top: 11px">
+                                                <div class="nk-top-stickers"><span class="nk-sticker nk-new">Mới</span></div><div>
+                                                        <p class="title-shock-price">Giá sốc online</p>
+                                                        <span class="price-new">{{ @str_replace(',' ,'.', number_format($value->deal_price)) }}&#x20AB;</span>
+                                                    </div>
+                                            </div>
+                                            <div class="review_product star">
+                                               <p>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                </p>
+                                                <div class="line_break">|</div>
+                                                    <div class="reviewCount">0 đánh giá</div>
+                                                </div>
+                                                <div class="container-timeline">
+                                                <span class="timeline"><span style="width: 2%"></span></span>
+                                               <!--  <p>Đã bán <span style="color: #EE1E25">2</span> / 100 sản phẩm</p> -->
+                                            </div>
+                                            <div style="width: 100%; height: 1px; background: #ECECEC; margin-top: 8px"></div>
 
-                                        <!-- <div class="countdown-flash-sale">
-                                            <div class="time-cd time-fl time{{ $key }}">
+                                            <!-- <div class="countdown-flash-sale">
+                                                <div class="time-cd time-fl time{{ $key }}">
 
-                                                <span class="timestamp" style="display: none;">{{   $now->diffInSeconds($value->end) }}</span>
-                                               
-                                               
-                                                <div class="time">
-                                                    <span class="hours">
-                                                        <span class="hourss"> {{ $hour }}</span>
-                                                        
-                                                        <div style="margin-top: 2px; width:100%; height:1px; background: #FF3647"></div>
-                                                        <span>Giờ</span>
-                                                    </span>
-                                                    <p style="font-size: 28px; line-height: 55px;font-weight: bold;color: #101010; margin: 0 7px" >:</p>
-
-                                                    <span class="hours">
-                                                        <span class="minutess">{{ $minutes }}</span>
-                                                        <div style="margin-top: 2px; width:100%; height:1px; background: #FF3647"></div>
-                                                        <span>phút</span>
-                                                    </span>
-                                                    <p style="font-size: 28px; line-height: 55px;font-weight: bold;color: #101010; margin: 0 7px">:</p>
-                                                      <span class="hours">
-                                                        <span class="secondss"> {{ $seconds }}</span>
-                                                        <div style="margin-top: 2px; width:100%; height:1px; background: #FF3647"></div>
-                                                        <span>giây</span>
-                                                    </span>
+                                                    <span class="timestamp" style="display: none;">{{   $now->diffInSeconds($value->end) }}</span>
                                                    
-                                                  
+                                                   
+                                                    <div class="time">
+                                                        <span class="hours">
+                                                            <span class="hourss"> {{ $hour }}</span>
+                                                            
+                                                            <div style="margin-top: 2px; width:100%; height:1px; background: #FF3647"></div>
+                                                            <span>Giờ</span>
+                                                        </span>
+                                                        <p style="font-size: 28px; line-height: 55px;font-weight: bold;color: #101010; margin: 0 7px" >:</p>
+
+                                                        <span class="hours">
+                                                            <span class="minutess">{{ $minutes }}</span>
+                                                            <div style="margin-top: 2px; width:100%; height:1px; background: #FF3647"></div>
+                                                            <span>phút</span>
+                                                        </span>
+                                                        <p style="font-size: 28px; line-height: 55px;font-weight: bold;color: #101010; margin: 0 7px">:</p>
+                                                          <span class="hours">
+                                                            <span class="secondss"> {{ $seconds }}</span>
+                                                            <div style="margin-top: 2px; width:100%; height:1px; background: #FF3647"></div>
+                                                            <span>giây</span>
+                                                        </span>
+                                                       
+                                                      
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div> -->
+                                            </div> -->
 
-                                      </a>
+                                          </a>
+                                        </div>
                                     </div>
+
+                                    @endif
+
+                                    @endforeach
+
                                 </div>
-
-                                @endif
-
-                                @endforeach
-
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            @endif
-           <!--  end flash  -->
-        @endif 
-
-
+                @endif
+               <!--  end flash  -->
+            @endif 
+        </div>
+        @endforeach
     </section>
    
     <!-- End -->
@@ -471,9 +495,9 @@
         
             function runs() {
 
-                var hour =  $('.titles-time .hour').text();
-                var minutes =  $('.titles-time .minutes').text();
-                var second =  $('.titles-time .second').text();
+                var hour =  $('.key0 .hour').text();
+                var minutes =  $('.key0 .minutes').text();
+                var second =  $('.key0 .second').text();
 
 
                 h =  parseInt(hour);
@@ -511,7 +535,7 @@
 
         
                 let currentTimeStr ='<span class="hour">'+ currentHour+'</span>:<span class="minutes">'+currentMinutes+'</span>:<span class="second">'+currentSeconds+'</span>';
-                $('.titles-time .clock').html(currentTimeStr);
+                $('.key0 .clock').html(currentTimeStr);
                
             }    
 
