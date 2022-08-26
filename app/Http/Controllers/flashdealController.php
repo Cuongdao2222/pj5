@@ -10,6 +10,8 @@ use App\Models\flashdeal;
 
 use DB; 
 
+use App\Models\deal;
+
 class flashdealController extends Controller
 {
     public function GetProductbyId(request $request)
@@ -22,6 +24,17 @@ class flashdealController extends Controller
        
         $ar_products_id = [];
 
+        $product_id = $request->id_product;
+
+        $check_deal  = deal::where('product_id', $product_id)->where('active', 1)->first();
+
+        if(!empty($check_deal)){
+
+            return '1';
+
+        }
+
+       
         foreach($ar_product as $val){
 
             array_push($ar_products_id, $val->id);
@@ -70,7 +83,7 @@ class flashdealController extends Controller
                 }
            }
         }
-        return  $products_add;
+        return  $product_id;
     }
     public function dealOrder(Request $request)
     {

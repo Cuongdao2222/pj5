@@ -229,19 +229,21 @@
     <br>
 
     <?php 
-        $now  = Carbon\Carbon::now();
+        // $now  = Carbon\Carbon::now();
+
+        $now = Carbon\Carbon::createFromDate('27-8-2022, 11:00');
 
         $deal = Cache::get('deals')->sortByDesc('order');
     ?>
      <?php 
-        $time1_start = Carbon\Carbon::createFromDate('26-8-2022, 9:00');
-        $time1 = Carbon\Carbon::createFromDate('26-8-2022, 12:00');
-        $time2_start = Carbon\Carbon::createFromDate('26-8-2022, 12:00');
-        $time2 = Carbon\Carbon::createFromDate('26-8-2022, 14:00');
-        $time3_start = Carbon\Carbon::createFromDate('26-8-2022, 14:00');
-        $time3 = Carbon\Carbon::createFromDate('26-8-2022, 17:00');
-        $time4_start = Carbon\Carbon::createFromDate('26-8-2022, 17:00');
-        $time4 = Carbon\Carbon::createFromDate('26-8-2022, 22:00');
+        $time1_start = Carbon\Carbon::createFromDate('27-8-2022, 9:00');
+        $time1 = Carbon\Carbon::createFromDate('27-8-2022, 12:00');
+        $time2_start = Carbon\Carbon::createFromDate('27-8-2022, 12:00');
+        $time2 = Carbon\Carbon::createFromDate('27-8-2022, 14:00');
+        $time3_start = Carbon\Carbon::createFromDate('27-8-2022, 14:00');
+        $time3 = Carbon\Carbon::createFromDate('27-8-2022, 17:00');
+        $time4_start = Carbon\Carbon::createFromDate('27-8-2022, 17:00');
+        $time4 = Carbon\Carbon::createFromDate('27-8-2022, 22:00');
         $define = [['start'=>'9h', 'endTime'=>$time1, 'startTime'=>$time1_start], ['start'=>'12h', 'endTime'=>$time2, 'startTime'=>$time2_start], ['start'=>'14h', 'endTime'=>$time3, 'startTime'=>$time3_start], ['start'=>'17h', 'endTime'=>$time4, 'startTime'=>$time4_start]];
     ?>
     
@@ -250,14 +252,15 @@
             $saleFlash = DB::table('flash_deal')->get();
         ?>
 
-        @foreach($saleFlash as $keys => $value)
+        @foreach($saleFlash as $keys => $vals)
 
         <div class="sale-time-flash">
             <div class="banner-outer">
                 <div class="banner-inner responsive-wrapper">
-                    <p class="text-promotion">{{ $value->name }}</p>
+                    <p class="text-promotion">{{ $vals->name }}</p>
                 </div>
             </div>
+
            
             @if(!empty($deal_check) && $deal_check->count()>0 && $now->between($deal_check[0]->start, $deal_check[0]->end)||$now>$time1_start && $now < $time4)
             <!-- flash sale -->
@@ -265,7 +268,10 @@
                 <a href="{{ route('details', 'deal') }}"><img src="{{ asset('images/template/flashsalemb.jpg') }}" style="width: 100%"></a>
 
             </div>
+
+
             @if($now>$time1_start && $now < $time4)
+
                 <div class="title titles-time key{{ $keys }}">
                     <ul class="cat-child">
                         <?php 
@@ -302,7 +308,7 @@
                         @endif
                         @endforeach
                         <?php 
-                           
+                        
                             // $deal = Cache::get('deals')->where('flash_deal', $groups_deal)->sortByDesc('order');
                         ?>
                      
@@ -334,6 +340,8 @@
                                         $timestamp = floor($timestamp % 60);
                                         $seconds =floor($timestamp);
 
+
+
                                     ?>
 
                                     <div class="item">
@@ -353,7 +361,7 @@
                                             <div style="margin-top: 11px">
                                                 <div class="nk-top-stickers"><span class="nk-sticker nk-new">Mới</span></div><div>
                                                         <p class="title-shock-price">Giá sốc online</p>
-                                                        <span class="price-new">{{ @str_replace(',' ,'.', number_format($value->deal_price)) }}&#x20AB;</span>
+                                                        <span class="price-new">{{  ($groups_deal>0 && $keys ==0)?@str_replace(',' ,'.', number_format($value->price)):'xxx.000' }}&#x20AB;</span>
                                                     </div>
                                             </div>
                                             <div class="review_product star">
@@ -478,7 +486,7 @@
 
             times = [];
                       
-            time = {{ $timestamp }};
+            time = {{ $timestamp??15500 }};
             number_deal_product =10;
             //in time 
           

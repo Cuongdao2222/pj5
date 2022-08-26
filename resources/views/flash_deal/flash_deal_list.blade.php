@@ -600,11 +600,21 @@ function selectProduct(id){
         data: {
             data: JSON.stringify(deal_product),
             edit_id:'',
-            id_time:{{ $deal_id??'' }}
+            id_time:{{ $deal_id??'' }},
+            id_product:deal_product[0].id,
             
         },
         success: function(result){
-           window.location.reload();
+
+            if(result=='1'){
+                alert('sản phẩm đã tồn tại deal hàng ngày, vui lòng xem lại!');
+            }
+            else{
+                window.location.reload();
+            }
+            
+           
+
         }
     });
 
