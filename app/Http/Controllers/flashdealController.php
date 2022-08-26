@@ -18,6 +18,7 @@ class flashdealController extends Controller
 
         $edit_id   = $request->edit_id;
 
+        $timeDeal  = $request->id_time;
        
         $ar_products_id = [];
 
@@ -43,8 +44,9 @@ class flashdealController extends Controller
                 $products_add['deal_price'] = str_replace([',','.'],'',$products[$i]['price_deal']);
 
                 $products_add['product_id'] = $products[$i]['id'];
+                $products_add['flash_deal_id'] = $timeDeal;  
 
-                $time = DB::table('deal')->select('start', 'end')->first();
+                $time = DB::table('deal_flash_product')->select('start', 'end')->first();
 
                 if(!empty($time)){
                     $products_add['start'] = $time->start;
@@ -59,19 +61,16 @@ class flashdealController extends Controller
                 } 
 
 
-              
                 if(empty($edit_id)){
-                     DB::table('deal_flash_product')->insert($products_add);
+                    $insert = DB::table('deal_flash_product')->insert($products_add);
                 }
                 else{
 
-                    DB::table('deal_flash_product')->where('id', $edit_id)->update($products_add);
+                   $insert = DB::table('deal_flash_product')->where('id', $edit_id)->update($products_add);
                 }
-               
            }
         }
         return  $products_add;
-
     }
     public function dealOrder(Request $request)
     {
@@ -93,6 +92,15 @@ class flashdealController extends Controller
 
     }
 
+    public function addDealFlash(Request $request)
+    {
+        $id = $request->id;
+        $val = $request->val;
+        $deal = flashdeal::find($id);
+        $deal->flash_deal_time_id = $val;
+        $result = $deal->save();
+    }
+
     public function activeDeal(Request $request){
 
         $id = $request->id;
@@ -111,5 +119,26 @@ class flashdealController extends Controller
         }
 
         $deal->save();
+    }
+    public function getProductToName(Request  $request)
+    {
+        $data = $request->data;
+
+        $page = $request->page;
+
+        $datas = new mainController();
+
+        $products = $datas->findProductByNameOrModel($data);
+
+       
+        return view('frontend.ajax.viewer-click-product', compact('products'));
+         
+
+    }
+
+    public function updateTimeFlashDeal(Request $request)
+    {
+        $time = $request->time;
+        $data = DB::table('date_flash_deal')->where('id', 1)->update(['date' => $time]);
     }
 }

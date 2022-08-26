@@ -224,18 +224,7 @@ class dealController extends Controller
         $deal->save();
     }
 
-    public function addDealFlash(Request $request)
-    {
-        $id = $request->id;
-        $val = $request->val;
-        $deal = deal::find($id);
-        $deal->flash_deal = $val;
-        $result = $deal->save();
-        
-
-    }
-
-
+   
     public function removeDeal(Request $request)
     {
        $id = $request->id;
@@ -257,7 +246,9 @@ class dealController extends Controller
     {
         $name = $request->name;
 
-        $price = $request->price;
+        $price =  str_replace(',', '', $request->price);
+
+        $price =  str_replace('.', '', $price);
 
         $data  = ['name'=>$name, 'price'=>$price];
        

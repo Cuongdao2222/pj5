@@ -12,6 +12,7 @@
     $i++;
 ?>
 
+
 <tr id="row_{{$val->id}}" class="row-hover">
     <td>{{ $i }}</td>
     <td>
@@ -33,6 +34,8 @@
     <td>
         <input type="button" value="Chọn sản phẩm" class="update-bt-all" onclick="select_product_to_table('{{$val->id}}')"><span id="update_bt_5814"></span>
     </td>
+
+    <input type="hidden" name="" id="row_ids" value="{{$val->id}}">
 </tr>
 
 @endforeach

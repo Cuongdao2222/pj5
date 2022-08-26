@@ -200,14 +200,13 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::get('giftGroupAddProduct', 'AjaxController@giftGroupAdd')->name('giftGroupAdd');
 
-    Route::get('giftGroupAddProduct', 'AjaxController@giftGroupAdd')->name('giftGroupAdd');
-
-
-
+    Route::get('fill-product-deal-flash', 'flashdealController@getProductToName')->name('filter-product-deal-flash');
 
 
     
     Route::post('/editFastPrice', 'productController@editFastPrice')->name('fast-price');
+
+    Route::post('update-time-flash-deal', 'flashdealController@updateTimeFlashDeal')->name('update-time-flash-deal');
 
     Route::post('/edit-fast-Qualtity', 'productController@editFastQualtity')->name('edit-fast-qualtity');
 
@@ -224,7 +223,7 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::get('flash-deal', 'dealController@flashDeal')->name('flashDeal');
 
-    Route::post('add-deal-flash', 'dealController@addDealFlash')->name('add-deal-flash');
+    Route::post('add-deal-flash', 'flashdealController@addDealFlash')->name('add-deal-flash');
 
     Route::get('editPricedeal', 'dealController@editDealPrice')->name('editPricedeal');
 

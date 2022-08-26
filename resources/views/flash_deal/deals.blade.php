@@ -210,8 +210,41 @@
                 <br>
                 <div class="table-responsive">
 
+                    <table class="tb-padding" cellpadding="5" border="1" bordercolor="#CCCCCC">
+                        <tbody>
+                            <?php  
+
+                                $deal = App\Models\deal::get();
+                                $time = DB::table('date_flash_deal')->where('id', 1)->first();
+
+                            ?>
+
+                            
+                            @if(!empty($deal) && count($deal)>0)
+                            <tr>
+                                <td>Cài đặt thời gian</td>
+                                <td>
+                                    <input type="text" id="date-picker1" value="{{ $time->date  }}">
+
+                                    <?php  
+
+                                        $start = str_replace(',','',strstr($deal[0]->start, ','));
+
+                                        $end    = str_replace(',','',strstr($deal[0]->end, ','));
+                                    ?>
+                                </td>
+                                <td><div class="btn btn-default accepts-time">Xác nhận</div></td>
+                            </tr>
+
+                            @endif
+                            
+                      </tbody>
+                    </table>
+                    <br>     
+
+
+
                     <div>
-                      
                         <div class="btn btn-default accepts">Xác nhận</div>
                     </div>
 
@@ -228,6 +261,8 @@
                            <?php 
                                 if(!empty($deal) && count($deal)>0){
                            ?> 
+
+
                             
                           <tr>
                               <td>Thông tin khuyến mãi</td>
@@ -544,7 +579,32 @@
 $('.add-product').click(function(){
     $('#modal-product').modal('show');
 
-})
+});
+
+$('.accepts-time').click(function(){
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $.ajax({
+        type: 'POST',
+        url: "{{ route('update-time-flash-deal') }}",
+        data: {
+            
+            time:$('#date-picker1').val(),
+            
+        },
+        success: function(data){
+            
+            window.location.reload();
+        }
+    });
+    
+
+});
 
 function update_deal_price(id) {
 

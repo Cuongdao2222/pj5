@@ -224,8 +224,8 @@
 
                                 $deal = App\Models\flashdeal::where('flash_deal_id', $deal_id)->get();
 
+                                $priceDeal = DB::table('flash_deal')->where('id', $deal_id)->get()->first();
 
-                                
                             ?>
 
                            <?php 
@@ -300,28 +300,24 @@
                                 <td>Thông tin</td>
                                 <td>Tình trạng</td>
                                 <td>Quản lý</td>
-                               
                                 <td>Sắp xếp</td>
+                                <td>Flash Deal (theo khung giờ)</td>
                                 
                             </tr>
 
                             <?php  
-
-
                                 $now = Carbon\Carbon::now();
-                                $products = DB::table('deal_flash_product')->distinct()->get()->toArray();
+                                $products = DB::table('deal_flash_product')->where('flash_deal_id', $deal_id)->distinct()->get()->toArray();
 
                                 $k =0;
                             ?>
 
                             
                             @if(!empty($products))
-
-
-
                             @foreach($products as $val)
                             <?php  
                                 $k++ ;
+                                $flashDealTimeId =  $val->flash_deal_time_id;
 
                                
                             ?>
@@ -364,6 +360,15 @@
                                     
                                     <br>
                                     <div class="btn-primary edit_orders{{$val->id}}" style="width: 25%;" onclick="update_order({{ $val->id }})" >sửa</div>
+                                </td>
+                                <td>
+                                    <select  id="flash-deal{{ $val->id }}" class="form-select"  onchange="changeFlashDeal({{ $val->id }})">
+                                        <option value="0">Không chọn</option>
+                                        <option value="1" {{ $flashDealTimeId==1?'selected':'' }}>9h</option>
+                                        <option value="2" {{ $flashDealTimeId==2?'selected':'' }}>12h</option>
+                                        <option value="3" {{ $flashDealTimeId==3?'selected':'' }}>14h</option>
+                                        <option value="4" {{ $flashDealTimeId==4?'selected':'' }}>17h</option>
+                                    </select>
                                 </td>
                                 
                             </tr>
@@ -423,7 +428,7 @@
                                     <td style="width:150px">Giá bán</td>
                                     <td style="width:150px">Giá Deal</td>
                                     <td style="width:70px">Số lượng</td>
-                                    <td style="width:80px">Bảo hành</td>
+                                   
                                     <td style="width:80px">Chọn</td>
                                 </tr>
 
@@ -476,10 +481,10 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="modal-footer">
+                   <!--  <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="button" class="btn btn-primary add-view">Xác nhận</button>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -574,17 +579,34 @@ $('.update-bt-all').click(function(){
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }
 
+
+
 function selectProduct(id){
 
-    if( $('#row_'+id+' .update-bt-all').val()=='sản phẩm đã được chọn'){
-        alert('bạn đã chọn sản phẩm này rồi');
+    price = '{{ $priceDeal->price }}';
 
-    }
-    else{
-        $('#select-price').modal('show');
-        $('#row_id').val(id)
-    }
+    deal_product.push({price_deal:price, id:id});
 
+    $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+    $.ajax({
+
+    type: 'GET',
+        url: "{{ route('filter-deal-flash-add') }}",
+        data: {
+            data: JSON.stringify(deal_product),
+            edit_id:'',
+            id_time:{{ $deal_id??'' }}
+            
+        },
+        success: function(result){
+           window.location.reload();
+        }
+    });
 
 }
 
@@ -695,36 +717,28 @@ function update_order(id){
 deal_product = [];
 
 
-
-
-
 $('.add-deal-price').click(function(){
 
-    id_row = $('#row_id').val();
+    id_row = $('#row_ids').val();
 
     const price = $('#price-deal').val(); 
 
-   
+    $('#row_'+id_row+' .deal-price').text(numberWithCommas(price));
 
-   $('#row_'+id_row+' .deal-price').text(numberWithCommas(price));
-
-   for (let i = 0; i < deal_product.length; i++) {
+    for (let i = 0; i < deal_product.length; i++) {
 
         if (deal_product[i].id == id_row) {
-
 
             deal_product.splice(deal_product[i], 1);
 
             deal_product.splice(deal_product[i], 1);
           
         }
-        
     }
 
     deal_product.push({price_deal:price, id:id_row});
 
-
-   $('#select-price').modal('hide');
+    $('#select-price').modal('hide');
 
 });
 
@@ -762,31 +776,26 @@ $('.add-deal-price').click(function(){
 
  $('.add-view').click(function(){
 
-        edit_id = $('#edit-deal').val();
+        // edit_id = $('#edit-deal').val();
 
-      $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-
-        $.ajax({
-
-        type: 'GET',
-            url: "{{ route('filter-deal-flash-add') }}",
-            data: {
-                data: JSON.stringify(deal_product),
-                edit_id:edit_id,
-               
-                
-            },
-            success: function(result){
-
-               window.location.reload();
-            }
-        });
-
+        // id_row = $('#row_ids').val();
     
+        // const price = '99000'; 
+
+        // $('#row_'+id_row+' .deal-price').text(numberWithCommas(price));
+
+        // for (let i = 0; i < deal_product.length; i++) {
+
+        //     if (deal_product[i].id == id_row) {
+
+        //         deal_product.splice(deal_product[i], 1);
+
+        //         deal_product.splice(deal_product[i], 1);
+              
+        //     }
+        // }
+
+       
  })
 
 function changeFlashDeal(id) {
@@ -865,10 +874,10 @@ $('.accepts-time-deal').click(function(){
 $('.accepts').click(function(){
 
     $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
 
     $.ajax({
 
@@ -903,7 +912,7 @@ $('.accept-find').click(function(){
         $.ajax({
 
         type: 'GET',
-            url: "{{ route('filter-product-deal') }}",
+            url: "{{ route('filter-product-deal-flash') }}",
             data: {
                 data:data,
                 page:'deal',

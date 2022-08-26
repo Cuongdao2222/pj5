@@ -193,8 +193,11 @@
     <section>
       
         <?php 
-           
+            
+
             $now  = Carbon\Carbon::now();
+
+            $deal = Cache::get('deals');
            
             if(!empty($deal)){
 
@@ -209,19 +212,20 @@
                 $timestamp = $now->diffInSeconds($timeDeal_end);
             }
 
+
         ?>
 
     
         <?php 
 
-            $time1_start = Carbon\Carbon::createFromDate('24-8-2022, 9:00');
-            $time1 = Carbon\Carbon::createFromDate('24-8-2022, 12:00');
-            $time2_start = Carbon\Carbon::createFromDate('24-8-2022, 12:00');
-            $time2 = Carbon\Carbon::createFromDate('24-8-2022, 14:00');
-            $time3_start = Carbon\Carbon::createFromDate('24-8-2022, 14:00');
-            $time3 = Carbon\Carbon::createFromDate('24-8-2022, 17:00');
-            $time4_start = Carbon\Carbon::createFromDate('24-8-2022, 17:00');
-            $time4 = Carbon\Carbon::createFromDate('24-8-2022, 22:00');
+            $time1_start = Carbon\Carbon::createFromDate('26-8-2022, 9:00');
+            $time1 = Carbon\Carbon::createFromDate('26-8-2022, 12:00');
+            $time2_start = Carbon\Carbon::createFromDate('26-8-2022, 12:00');
+            $time2 = Carbon\Carbon::createFromDate('26-8-2022, 14:00');
+            $time3_start = Carbon\Carbon::createFromDate('26-8-2022, 14:00');
+            $time3 = Carbon\Carbon::createFromDate('26-8-2022, 17:00');
+            $time4_start = Carbon\Carbon::createFromDate('26-8-2022, 17:00');
+            $time4 = Carbon\Carbon::createFromDate('26-8-2022, 22:00');
             $define = [['start'=>'9h', 'endTime'=>$time1, 'startTime'=>$time1_start], ['start'=>'12h', 'endTime'=>$time2, 'startTime'=>$time2_start], ['start'=>'14h', 'endTime'=>$time3, 'startTime'=>$time3_start], ['start'=>'17h', 'endTime'=>$time4, 'startTime'=>$time4_start]];
 
         ?>
@@ -273,6 +277,7 @@
                     @endif
                     @endforeach
                     <?php 
+
                         $deal = Cache::get('deals')->where('flash_deal', $groups_deal)->sortByDesc('order');
                     ?>
                  
@@ -280,7 +285,7 @@
             </div>
             @endif
             
-
+           
             @if($deal->count()>0)
             <div class="deal-view">
                 <div class="flash-sale" style="height: 305px;">
@@ -393,8 +398,7 @@
            <!--  end flash  -->
         @endif 
 
-        
-        
+
     </section>
    
     <!-- End -->
@@ -421,7 +425,7 @@
     </div> -->
     <!-- End -->
     
-
+    
      <script src="https://unpkg.com/sweetalert2@7.18.0/dist/sweetalert2.all.js"></script>
     @if (session('success'))
 
@@ -437,247 +441,251 @@
         
     @endif
 
-
+    @if(!empty($deal))
+    
     @push('script')
 
-
-    <script type="text/javascript">
-      
-        loop = {{ $deal->count() }};
-
-        times = [];
-                  
-        time = {{ $timestamp }};
-        number_deal_product =10;
-        //in time 
-      
-        setInterval(function(){
-            for (var i = 0 ; i < loop; i++) {
-                run(i);
-            }
-            runs();
-            
-        }, 1000);
-
-       
-
     
-        function runs() {
-
-            var hour =  $('.titles-time .hour').text();
-            var minutes =  $('.titles-time .minutes').text();
-            var second =  $('.titles-time .second').text();
-
-
-            h =  parseInt(hour);
-            m = parseInt(minutes);
-            s = parseInt(second);
-            s--;
-            /*BƯỚC 1: CHUYỂN ĐỔI DỮ LIỆU*/
-              // Nếu số giây = -1 tức là đã chạy ngược hết số giây, lúc này:
-              //  - giảm số phút xuống 1 đơn vị
-              //  - thiết lập số giây lại 59
-            if (s === -1){
-                  m -= 1;
-                 
-                  s = 59;
-            }
-
-            // Nếu số phút = -1 tức là đã chạy ngược hết số phút, lúc này:
-            //  - giảm số giờ xuống 1 đơn vị
-            //  - thiết lập số phút lại 59
-            if (m === -1){
-                h -= 1;
-                m = 59;
-            }
-
+        <script type="text/javascript">
             
-            hour =  h.toString();
 
-            minutes =  m.toString();
-            
-            seconds =  s.toString();
+
+            loop = {{ $deal->count() }};
+
+            times = [];
+                      
+            time = {{ $timestamp }};
+            number_deal_product =10;
+            //in time 
           
-            let currentHour = h<10?'0'+hour:''+hour;
-            let currentMinutes = m<10?'0'+minutes:''+minutes;
-            let currentSeconds = s<10?'0'+seconds:''+seconds;
+            setInterval(function(){
+                for (var i = 0 ; i < loop; i++) {
+                    run(i);
+                }
+                runs();
+                
+            }, 1000);
 
-    
-            let currentTimeStr ='<span class="hour">'+ currentHour+'</span>:<span class="minutes">'+currentMinutes+'</span>:<span class="second">'+currentSeconds+'</span>';
-            $('.titles-time .clock').html(currentTimeStr);
            
-        }    
+
+        
+            function runs() {
+
+                var hour =  $('.titles-time .hour').text();
+                var minutes =  $('.titles-time .minutes').text();
+                var second =  $('.titles-time .second').text();
 
 
-        function clickDeal(id) {
+                h =  parseInt(hour);
+                m = parseInt(minutes);
+                s = parseInt(second);
+                s--;
+                /*BƯỚC 1: CHUYỂN ĐỔI DỮ LIỆU*/
+                  // Nếu số giây = -1 tức là đã chạy ngược hết số giây, lúc này:
+                  //  - giảm số phút xuống 1 đơn vị
+                  //  - thiết lập số giây lại 59
+                if (s === -1){
+                      m -= 1;
+                     
+                      s = 59;
+                }
 
-            $(this).addClass('actives');
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                // Nếu số phút = -1 tức là đã chạy ngược hết số phút, lúc này:
+                //  - giảm số giờ xuống 1 đơn vị
+                //  - thiết lập số phút lại 59
+                if (m === -1){
+                    h -= 1;
+                    m = 59;
+                }
+
+                
+                hour =  h.toString();
+
+                minutes =  m.toString();
+                
+                seconds =  s.toString();
+              
+                let currentHour = h<10?'0'+hour:''+hour;
+                let currentMinutes = m<10?'0'+minutes:''+minutes;
+                let currentSeconds = s<10?'0'+seconds:''+seconds;
+
+        
+                let currentTimeStr ='<span class="hour">'+ currentHour+'</span>:<span class="minutes">'+currentMinutes+'</span>:<span class="second">'+currentSeconds+'</span>';
+                $('.titles-time .clock').html(currentTimeStr);
+               
+            }    
+
+
+            function clickDeal(id) {
+
+                $(this).addClass('actives');
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
+                $.ajax({
+                    type: 'POST',
+                    url: "{{ route('showDealClick') }}",
+                    data: {
+                        product_id: id
+                           
+                    },
+                    success: function(result){
+                       // numberCart = result.find($("#number-product-cart").text());
+
+                       $('.deal-view').html('');
+
+                       $('.deal-view').html(result);
+
+                        var owl = $(".flash-sale-banner");
+                        owl.owlCarousel({
+                            loop:false,
+                            margin:10,
+                            nav:true,
+                            dots:false,
+                            autoplay:false,
+                            
+                            navText: ["<i class='fa fa-angle-left'></i>","<i class='fa fa fa-angle-right'></i>"],
+                            responsive:{
+                                0:{
+                                    items:1
+                                },
+
+                                 600:{
+                                    items:2
+                                },
+                               
+                                1000:{
+                                    items:2
+                                }
+                            }
+                        });
+                      
+                       
+                    }
+                });    
+            }
+
+            function run(key) {
+                var hour =  $('.time'+key+' .hourss').text();
+                var minutes =  $('.time'+key+' .minutess').text();
+                var second =  $('.time'+key+' .secondss').text();
+                h =  parseInt(hour);
+                m = parseInt(minutes);
+                s = parseInt(second);
+                s--;
+                /*BƯỚC 1: CHUYỂN ĐỔI DỮ LIỆU*/
+                  // Nếu số giây = -1 tức là đã chạy ngược hết số giây, lúc này:
+                  //  - giảm số phút xuống 1 đơn vị
+                  //  - thiết lập số giây lại 59
+                if (s === -1){
+                      m -= 1;
+                     
+                      s = 59;
+                }
+
+                // Nếu số phút = -1 tức là đã chạy ngược hết số phút, lúc này:
+                //  - giảm số giờ xuống 1 đơn vị
+                //  - thiết lập số phút lại 59
+                if (m === -1){
+                    h -= 1;
+                    m = 59;
+                }
+
+                 if (h < 0){
+                    $('.time'+key).remove();
+
+                    priceSet =  $('.desc-deal'+key+' .price-old').text();
+
+                    $('.desc-deal'+key+' .price-old').css('text-decoration','none');
+
+                    $('.desc-deal'+key+' .price-new').text(priceSet);
+
+                  }  
+
+                hour =  h.toString();
+
+                minutes =  m.toString();
+                
+                seconds =  s.toString();
+                $('.time'+key+' .hourss').text(h<10?'0'+hour:''+hour);
+                $('.time'+key+' .secondss').text(s<10?'0'+seconds:''+seconds);
+                $('.time'+key+' .minutess').text(m<10?'0'+minutes:''+minutes); 
+            }
+           
+                                                                                                                                                                     
+            if(window.innerWidth>768){
+                $('.bar-top-lefts').show();
+            } 
+
+
+            $('.banner-sale').owlCarousel({
+                loop:true,
+                items:2.5,
+                margin:10,
+                nav:true,
+                navText: ["<i class='fa fa-chevron-left'></i>","<i class='fa fa-chevron-right'></i>"],
+                responsive:{
+                    0:{
+                        items:2.5
+                    },
+                    600:{
+                        items:2.5
+                    },
+                    1000:{
+                        items:5
+                    }
+                }
+            });
+           
+           
+            $('.homebanners').owlCarousel({
+                loop:true,
+                margin:10,
+                nav:true,
+                // dots:true,
+                // dotsData: true,
+                navText: ["<i class='fa fa-chevron-left'></i>","<i class='fa fa-chevron-right'></i>"],
+                responsive:{
+                    0:{
+                        items:1
+                    },
+
+                     600:{
+                        items:1
+                    },
+                   
+                    1000:{
+                        items:1
+                    }
                 }
             });
 
-            $.ajax({
-                type: 'POST',
-                url: "{{ route('showDealClick') }}",
-                data: {
-                    product_id: id
-                       
-                },
-                success: function(result){
-                   // numberCart = result.find($("#number-product-cart").text());
+            $('.flash-sale-banner').owlCarousel({
+                loop:false,
+                margin:10,
+                nav:true,
+                dots:false,
+                autoplay:false,
+                
+                navText: ["<i class='fa fa-angle-left'></i>","<i class='fa fa fa-angle-right'></i>"],
+                responsive:{
+                    0:{
+                        items:1
+                    },
 
-                   $('.deal-view').html('');
-
-                   $('.deal-view').html(result);
-
-                    var owl = $(".flash-sale-banner");
-                    owl.owlCarousel({
-                        loop:false,
-                        margin:10,
-                        nav:true,
-                        dots:false,
-                        autoplay:false,
-                        
-                        navText: ["<i class='fa fa-angle-left'></i>","<i class='fa fa fa-angle-right'></i>"],
-                        responsive:{
-                            0:{
-                                items:1
-                            },
-
-                             600:{
-                                items:2
-                            },
-                           
-                            1000:{
-                                items:2
-                            }
-                        }
-                    });
-                  
+                     600:{
+                        items:2
+                    },
                    
+                    1000:{
+                        items:2
+                    }
                 }
-            });    
-        }
-
-        function run(key) {
-            var hour =  $('.time'+key+' .hourss').text();
-            var minutes =  $('.time'+key+' .minutess').text();
-            var second =  $('.time'+key+' .secondss').text();
-            h =  parseInt(hour);
-            m = parseInt(minutes);
-            s = parseInt(second);
-            s--;
-            /*BƯỚC 1: CHUYỂN ĐỔI DỮ LIỆU*/
-              // Nếu số giây = -1 tức là đã chạy ngược hết số giây, lúc này:
-              //  - giảm số phút xuống 1 đơn vị
-              //  - thiết lập số giây lại 59
-            if (s === -1){
-                  m -= 1;
-                 
-                  s = 59;
-            }
-
-            // Nếu số phút = -1 tức là đã chạy ngược hết số phút, lúc này:
-            //  - giảm số giờ xuống 1 đơn vị
-            //  - thiết lập số phút lại 59
-            if (m === -1){
-                h -= 1;
-                m = 59;
-            }
-
-             if (h < 0){
-                $('.time'+key).remove();
-
-                priceSet =  $('.desc-deal'+key+' .price-old').text();
-
-                $('.desc-deal'+key+' .price-old').css('text-decoration','none');
-
-                $('.desc-deal'+key+' .price-new').text(priceSet);
-
-              }  
-
-            hour =  h.toString();
-
-            minutes =  m.toString();
-            
-            seconds =  s.toString();
-            $('.time'+key+' .hourss').text(h<10?'0'+hour:''+hour);
-            $('.time'+key+' .secondss').text(s<10?'0'+seconds:''+seconds);
-            $('.time'+key+' .minutess').text(m<10?'0'+minutes:''+minutes); 
-        }
-       
-                                                                                                                                                                 
-        if(window.innerWidth>768){
-            $('.bar-top-lefts').show();
-        } 
-
-
-        $('.banner-sale').owlCarousel({
-            loop:true,
-            items:2.5,
-            margin:10,
-            nav:true,
-            navText: ["<i class='fa fa-chevron-left'></i>","<i class='fa fa-chevron-right'></i>"],
-            responsive:{
-                0:{
-                    items:2.5
-                },
-                600:{
-                    items:2.5
-                },
-                1000:{
-                    items:5
-                }
-            }
-        });
-       
-       
-        $('.homebanners').owlCarousel({
-            loop:true,
-            margin:10,
-            nav:true,
-            // dots:true,
-            // dotsData: true,
-            navText: ["<i class='fa fa-chevron-left'></i>","<i class='fa fa-chevron-right'></i>"],
-            responsive:{
-                0:{
-                    items:1
-                },
-
-                 600:{
-                    items:1
-                },
-               
-                1000:{
-                    items:1
-                }
-            }
-        });
-
-        $('.flash-sale-banner').owlCarousel({
-            loop:false,
-            margin:10,
-            nav:true,
-            dots:false,
-            autoplay:false,
-            
-            navText: ["<i class='fa fa-angle-left'></i>","<i class='fa fa fa-angle-right'></i>"],
-            responsive:{
-                0:{
-                    items:1
-                },
-
-                 600:{
-                    items:2
-                },
-               
-                1000:{
-                    items:2
-                }
-            }
-        });
-    </script>
-    @endpush
+            });
+        </script>
+        @endpush
+    @endif    
 @endsection      
