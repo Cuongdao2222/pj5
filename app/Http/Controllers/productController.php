@@ -499,6 +499,10 @@ class productController extends AppBaseController
                 $find_first = collect($data)->filter(function ($item) use ($datas) {
                     return false !== strpos($item->Name, $datas);
                 });
+
+                if($find_first->count()== 0){
+                   $find_first = product::FullTextSearch('Name', $datas)->select('id', 'Name', 'Price', 'Link', 'Image')->get();
+                }
             }
 
         }
@@ -555,4 +559,6 @@ class productController extends AppBaseController
         $search = product::where($array)->get();
         print_r($search);
     }
+
+    
 }

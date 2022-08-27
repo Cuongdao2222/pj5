@@ -227,6 +227,10 @@ class AjaxController extends Controller
                 $product = collect($data)->filter(function ($item) use ($search) {
                     return false !== strpos($item->Name, $search);
                 });
+
+                if($product->count()== 0){
+                    $product = product::FullTextSearch('Name', $search)->select('id', 'Name', 'Price', 'Link', 'Image')->get();
+                }
             }
 
             
