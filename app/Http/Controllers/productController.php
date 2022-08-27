@@ -497,8 +497,12 @@ class productController extends AppBaseController
             if($find_first->count()==0){
 
                 $find_first = collect($data)->filter(function ($item) use ($datas) {
-                    return false !== strpos($item->Name, $datas);
+                    return false !== stristr($item->Name, $datas);
                 });
+
+                if($find_first->count()== 0){
+                   $find_first = product::FullTextSearch('Name', $datas)->select('id', 'Name', 'Price', 'Link', 'Image')->get();
+                }
             }
 
         }

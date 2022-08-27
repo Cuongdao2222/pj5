@@ -225,8 +225,13 @@ class AjaxController extends Controller
             if($product->count()==0){
 
                 $product = collect($data)->filter(function ($item) use ($search) {
-                    return false !== strpos($item->Name, $search);
+                    return false !== stristr($item->Name, $search);
                 });
+
+                if($product->count()==0){
+
+                    $product = product::FullTextSearch('Name', $datas)->select('id', 'Name', 'Price', 'Link', 'Image')->get();
+                }
             }
 
             
@@ -615,6 +620,28 @@ class AjaxController extends Controller
         return view('frontend.ajax.product', compact('product_search', 'action', 'check_parent','idcate'));
         
     }
+
+    protected function filterByPageFilter(Request $request)
+    {
+
+        $list_id = json_decode($request->json_id_product);
+        $action  = $request->action;
+        $idcate = $request->idcate;
+
+        if($action =='id'){
+            $product_search   = product::whereIn('id', $list_id)->where('active', 1)->where('Price', '>', 0)->orderBy('id', 'asc')->take(50)->get();
+        }
+        else{
+
+           $product_search   = product::whereIn('id', $list_id)->orderBy('Price', $action)->where('Price', '>', 0)->where('active', 1)->take(50)->get();
+           
+        }
+        return view('frontend.ajax.product', compact('product_search', 'action','idcate'));
+
+
+    }
+
+
 
     public function accept_rate(Request $request)
     {
