@@ -228,9 +228,19 @@ class AjaxController extends Controller
                     return false !== stristr($item->Name, $search);
                 });
 
+
                 if($product->count()==0){
 
-                    $product = product::FullTextSearch('Name', $datas)->select('id', 'Name', 'Price', 'Link', 'Image')->get();
+                    // nếu không có thì search bằng thư viện FullTextSearch
+
+                    if($product->count()==0){
+                        // search bằng thư viện FullTextSearch
+                        $product = product::FullTextSearch('Name', $search)->select('id', 'Name', 'Price', 'Link', 'Image')->get();
+                    }   
+                      // nếu không có thì  search tên khi search có dấu
+
+                    $product = product::where('Name', 'like', '%'.$search.'%')->get(); 
+
                 }
             }
 

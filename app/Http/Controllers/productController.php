@@ -501,7 +501,19 @@ class productController extends AppBaseController
                 });
 
                 if($find_first->count()== 0){
-                   $find_first = product::FullTextSearch('Name', $datas)->select('id', 'Name', 'Price', 'Link', 'Image')->get();
+
+                    // nếu không có thì search bằng thư viện FullTextSearch
+
+                    if($find_first->count()==0){
+                        // search bằng thư viện FullTextSearch
+                        $find_first = product::FullTextSearch('Name', $datas)->select('id', 'Name', 'Price', 'Link', 'Image')->get();
+                    }  
+
+                     // nếu không có thì  search tên khi search có dấu
+
+                    $find_first = product::where('Name', 'like', '%'.$datas.'%')->get();
+  
+                   
                 }
             }
 
