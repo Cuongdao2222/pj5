@@ -412,19 +412,17 @@ class productController extends AppBaseController
     {
         $clearData = trim($request->key);
 
-        $datas      = strip_tags($clearData);
+        $clearData = strip_tags($clearData);
 
-        $searchName =  ucfirst($datas);
+        $search = $clearData;
 
-        $datas = strtoupper($datas);
 
-        if(empty($datas)){
-            return redirect()->route('homeFe');
+        $search = str_replace('dieu hoa', 'Điều hòa', $search);
 
-        }
+        $search = str_replace('tu dong', 'Tủ đông', $search);
 
-        // thử query
-        
+        $search = ucfirst($search);
+
         if(!Cache::has('product_search')){
 
             $productss = product::select('Link', 'Name', 'Image', 'Price', 'id', 'ProductSku')->where('active', 1)->get();
@@ -433,96 +431,52 @@ class productController extends AppBaseController
 
         }
 
-        // checksearch of client
-        // $unique = searchkey::where('search', trim($datas))->get()->first();
-
-        // if(!empty($unique)){
-
-        //     searchkey::find($unique->id)->increment('count');
-        // }
-        // else{
-
-        //     $searchkey = new searchkey();
-
-        //     $searchkey->search = trim($datas);
-
-        //     $searchkey->save();
-
-        // }
-
-        // //check client search hơn 200 lần
-
-        // $sessionKey = 'userSearch';
-
-
-        // $sessionSearch = Session::get($sessionKey);
-
-        // if (!$sessionSearch) { //nếu chưa có session
-
-        //     Session::put($sessionKey, 1);
-        // }
-        // else{
-
-        //     $sessionSearch +=1;
-        // }  
-
-        // if($sessionSearch>150){
-
-        //     echo "bạn đang spam phần tìm kiếm?";
-
-        //     die();
-        // }
-
+        $data =  Cache::get('product_search');
 
 
         $resultProduct = [];
 
         $numberdata = 0;
 
-        $data =  Cache::get('product_search');
-
-        $find_first = collect($data)->filter(function ($item) use ($datas) {
-            return false !== strpos($item->ProductSku, $datas);
+        $product = collect($data)->filter(function ($item) use ($search) {
+            return false !== strpos($item->ProductSku, $search);
         });
 
-        if($find_first->count()==0){
+        if($product->count()==0){
 
-
-            $find_first = collect($data)->filter(function ($item) use ($searchName) {
-                return false !== strpos($item->Name, $searchName);
+            $product = collect($data)->filter(function ($item) use ($search) {
+                return false !== strpos($item->Name, $search);
             });
 
-            // / search khi tên có viết hoa
+            // search khi tên có viết hoa
 
-            if($find_first->count()==0){
+            if($product->count()==0){
 
-                $find_first = collect($data)->filter(function ($item) use ($datas) {
-                    return false !== stristr($item->Name, $datas);
+                $product = collect($data)->filter(function ($item) use ($search) {
+                    return false !== stristr($item->Name, $search);
                 });
 
-                if($find_first->count()== 0){
+
+                if($product->count()==0){
 
                     // nếu không có thì search bằng thư viện FullTextSearch
 
-                    if($find_first->count()==0){
+                    if($product->count()==0){
                         // search bằng thư viện FullTextSearch
-                        $find_first = product::FullTextSearch('Name', $datas)->select('id', 'Name', 'Price', 'Link', 'Image')->get();
-
-                        if($find_first->count()==0){
-                             $find_first = product::where('Name', 'like', '%'.$datas.'%')->get();
+                        $product = product::FullTextSearch('Name', $search)->select('id', 'Name', 'Price', 'Link', 'Image')->get();
+                        
+                        if($product->count()==0){
+                            $product = product::where('Name', 'like', '%'.$search.'%')->get();
                         }
-                    }  
-
-                     
+                    } 
+                   
                 }
             }
 
+            
         }
 
-        $find_first = $find_first->take(50)->sortByDesc('id')->pluck('id');
-
-        // $find_first = Product::select('id')->where('Name','LIKE', '%'. $datas .'%')->Where('active', 1)->OrWhere('ProductSku', 'LIKE', '%' . $datas . '%')->Where('active', 1)->OrderBy('id', 'desc')->take(50)->get()->pluck('id');
-
+        $find_first = $product->take(50)->sortByDesc('id')->pluck('id');
 
         if(isset($find_first)){
 
