@@ -196,9 +196,13 @@ class AjaxController extends Controller
     {
         $search = $request->product;
 
-        $searchs = ucfirst($search);
+        $search = str_replace('dieu hoa', 'Điều hòa', $search);
 
-        $search = strtoupper($search);
+        $search = str_replace('tu dong', 'Tủ đông', $search);
+
+        $search = ucfirst($search);
+
+
 
         if(!Cache::has('product_search')){
 
@@ -216,8 +220,8 @@ class AjaxController extends Controller
 
         if($product->count()==0){
 
-            $product = collect($data)->filter(function ($item) use ($searchs) {
-                return false !== strpos($item->Name, $searchs);
+            $product = collect($data)->filter(function ($item) use ($search) {
+                return false !== strpos($item->Name, $search);
             });
 
             // search khi tên có viết hoa
@@ -236,11 +240,12 @@ class AjaxController extends Controller
                     if($product->count()==0){
                         // search bằng thư viện FullTextSearch
                         $product = product::FullTextSearch('Name', $search)->select('id', 'Name', 'Price', 'Link', 'Image')->get();
-                    }   
-                      // nếu không có thì  search tên khi search có dấu
-
-                    $product = product::where('Name', 'like', '%'.$search.'%')->get(); 
-
+                        
+                        if($product->count()==0){
+                            $product = product::where('Name', 'like', '%'.$search.'%')->get();
+                        }
+                    } 
+                   
                 }
             }
 
