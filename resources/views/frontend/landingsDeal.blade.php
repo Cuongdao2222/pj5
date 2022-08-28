@@ -254,18 +254,8 @@
 
         @foreach($saleFlash as $keys => $vals)
 
-        <?php 
-            $flashDeal = App\Models\flashdeal::where('flash_deal_id', $vals->id)->get();
-
-            // check khung gio đang chạy theo thơi gian thuc 
-
-            foreach ($flashDeal as $key => $value) {
-                
-            }
-
-            // $deal = Cache::get('deals')->where('flash_deal', $groups_deal)->sortByDesc('order');
-        ?>
-        @if($flashDeal->count()>0)
+        
+        
         <div class="sale-time-flash">
             <div class="banner-outer">
                 <div class="banner-inner responsive-wrapper">
@@ -309,6 +299,9 @@
                                 $seconds =floor($timestamp);
 
                                 $groups_deal = $key+1;
+                                $flashDeal = App\Models\flashdeal::where('flash_deal_id', $vals->id)->where('flash_deal_time_id', $groups_deal)->where('active',1)->get();
+
+
                             }
 
                         ?>  
@@ -325,6 +318,8 @@
                     </ul>
                 </div>
                 @endif
+
+              
             
                 <div class="deal-view{{ $vals->id }}">
                     <div class="flash-sale" style="height: 305px;">
@@ -433,7 +428,7 @@
                <!--  end flash  -->
             @endif 
         </div>
-        @endif
+        
         @endforeach
     </section>
    
