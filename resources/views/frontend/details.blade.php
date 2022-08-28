@@ -32,6 +32,7 @@
     })->first();
 
     $check_deal =  Cache::get('deals')->where('product_id', $data->id);
+    $now = Carbon\Carbon::createFromDate('28-8-2022, 11:00');
 
     if(!empty($check_deal)){
 
@@ -45,7 +46,7 @@
         $deal_check_add = false;
         
         if(!empty($check_deal) && !empty(!empty($check_deal->deal_price)) &&$check_deal->active==1){
-             $now  = Carbon\Carbon::now();
+             
             $timeDeal_star = $check_deal->start;
             $timeDeal_star =  \Carbon\Carbon::create($timeDeal_star);
             $timeDeal_end = $check_deal->end;
@@ -60,6 +61,55 @@
                 $percent = ceil((int)$price_old/$data->Price);
             }
         }
+        else{
+            // check flash deal
+
+            $date_flashdeal = \Carbon\Carbon::create(DB::table('date_flash_deal')->where('id', 1)->first()->date);
+
+            if($date_flashdeal->isToday()){
+
+                $time1_start = Carbon\Carbon::createFromDate('28-8-2022, 9:00');
+                $time1 = Carbon\Carbon::createFromDate('28-8-2022, 12:00');
+                $time2_start = Carbon\Carbon::createFromDate('28-8-2022, 12:00');
+                $time2 = Carbon\Carbon::createFromDate('28-8-2022, 14:00');
+                $time3_start = Carbon\Carbon::createFromDate('28-8-2022, 14:00');
+                $time3 = Carbon\Carbon::createFromDate('28-8-2022, 17:00');
+                $time4_start = Carbon\Carbon::createFromDate('28-8-2022, 17:00');
+                $time4 = Carbon\Carbon::createFromDate('28-8-2022, 22:00');
+                $define = [['start'=>'9h', 'endTime'=>$time1, 'startTime'=>$time1_start], ['start'=>'12h', 'endTime'=>$time2, 'startTime'=>$time2_start], ['start'=>'14h', 'endTime'=>$time3, 'startTime'=>$time3_start], ['start'=>'17h', 'endTime'=>$time4, 'startTime'=>$time4_start]];
+
+                foreach($define as $key => $value)
+
+                if($now->between($value['startTime'], $value['endTime'])){
+
+                    $groups_deal = $key+1;
+
+                    $flashDeal = App\Models\flashdeal::where('product_id', $data->id)->where('flash_deal_time_id', $groups_deal)->where('active',1)->first();
+
+
+
+                    if(!empty($flashDeal)){
+
+                        $price_flash_deal = DB::table('flash_deal')->where('id', $flashDeal->flash_deal_id)->first();
+                        if(!empty($price_flash_deal)){
+                            $deal_check_add = true;
+                            $price_old = $data->Price;
+                            $text = '<b>MUA ONLINE GIÁ SỐC: </b>';
+                            $data->Price =  $price_flash_deal->price;
+                            $percent = ceil((int)$price_old/$data->Price);
+
+                        }
+
+                    
+                    }
+
+                }
+            }
+
+
+        }
+
+      
 
     }
 
