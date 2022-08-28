@@ -118,10 +118,19 @@
                 .result-labels{
                     top: 43%;
                    
-                }    
+                }   
+                .titles-time h3 {
+                    font-size: 10px;
+                   
+                }     
+                .text-promotion{
+                    font-size: 1.2em !important;
+                }
             }
 
              @media screen and (min-width: 768px) {
+
+
                 .result-labels{
                     top: 53%;
                    

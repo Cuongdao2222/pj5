@@ -11,6 +11,15 @@
             left: 0;
             top: 0;
         }
+
+        .installment-purchase .but-tra-gop {
+            width: calc(50% - 5px);
+        }    
+        .list-shows-click {
+            display: inline-flex !important;
+            width: calc(100% - 25%) !important;
+            border: unset;
+        }
     </style>
 
 
@@ -200,6 +209,8 @@
     <b id="h-provincename" style="display:none!important" data-provinceid="3">Hồ Chí Minh</b>
 </div>
 <section data-id="235791" data-cate-id="1942" class="detail ">
+
+
     <?php 
 
     $useragent=$_SERVER['HTTP_USER_AGENT'];
@@ -214,6 +225,8 @@
     ?>
 
     @if($mobile ==1)
+
+
     <ul class="breadcrumb">
         
         <li>
@@ -420,6 +433,7 @@
                                         </button> -->
                                 </div>
                                 <div class="clearfix"></div>
+
                                 @if((int)$data['Price']>=3000000)
                                 <div class="installment-purchase pdetail-installment">
                                    
@@ -634,7 +648,9 @@
             <div class="border7"></div>
         </div>
         <div class="box_right desktop">
+
             @if($mobile ==0)
+            
             <ul class="breadcrumb">
         
                 <li>
@@ -999,12 +1015,19 @@
                     <h3>{{ $value->Name }}</h3>
                     <strong class="price">{{  str_replace(',' ,'.', number_format($value->Price))  }}&#x20AB;</strong>
                     </a>
+                     <a href="javascript:void(0)" class="item-ss">
+                    <i></i>
+                        so sánh
+                    </a>
                 </div>
+
                 @endif
                 @endforeach
             </div>
             @endif
         </div>
+
+        
     </div>
     <div class="border7"></div>
     <div class="watched"></div>
@@ -1015,6 +1038,7 @@
     <!--#endregion-->
     <!--#region Organization-->
     <!--#endregion-->
+
 </section>
 <div class="prod-info txt_555 fix">
     <span class="name-scroll"> {{ $data->Name }} </span>
@@ -1072,6 +1096,8 @@
         @endif
        
     </div>
+
+    
     <div class="clear"></div>
     <br>
     <style type="text/css">
