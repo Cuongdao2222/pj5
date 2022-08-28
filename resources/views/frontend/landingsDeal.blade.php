@@ -257,6 +257,11 @@
         <?php 
             $flashDeal = App\Models\flashdeal::where('flash_deal_id', $vals->id)->get();
 
+            // check khung gio đang chạy theo thơi gian thuc 
+
+            foreach ($flashDeal as $key => $value) {
+                
+            }
 
             // $deal = Cache::get('deals')->where('flash_deal', $groups_deal)->sortByDesc('order');
         ?>
@@ -284,6 +289,7 @@
                         <?php 
 
                             $groups_deal = 0;
+                            $k = 0;
 
                         ?>
                         @foreach($define as $key => $value)
@@ -291,6 +297,7 @@
                         @if($now<$value['endTime'])
 
                         <?php 
+                            $k++;
                            
                             if($now->between($value['startTime'], $value['endTime'])){
 
@@ -305,7 +312,7 @@
                             }
 
                         ?>  
-                        <li onclick="clickDeal({{ $vals->id }},{{ $key+1 }})" class=>
+                        <li onclick="clickDeal({{ $vals->id }},{{ $key+1 }}, {{ $k }})" class=>
                             <h3>
                                 <span>{{ $value['start'] }}</span>
                                 <br>
@@ -546,7 +553,7 @@
             }    
 
 
-            function clickDeal(flash_deal_id, id) {
+            function clickDeal(flash_deal_id, id, dem) {
 
                 $(this).addClass('actives');
                 $.ajaxSetup({
@@ -560,13 +567,12 @@
                     url: "{{ route('showDealClick') }}",
                     data: {
                         product_id: id,
-                        flash_deal_id:flash_deal_id 
+                        flash_deal_id:flash_deal_id,
+                        key:dem,
                            
                     },
                     success: function(result){
                        // numberCart = result.find($("#number-product-cart").text());
-
-                       $('.deal-view'+flash_deal_id).html('');
 
                        $('.deal-view'+flash_deal_id).html(result);
 

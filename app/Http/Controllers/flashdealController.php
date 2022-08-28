@@ -159,11 +159,11 @@ class flashdealController extends Controller
     {
         $id = $request->product_id;
         $flashDealId = $request->flash_deal_id;
-        $key = 1;
+        $keyss = $request->key;
 
-        $deal = flashdeal::where('flash_deal_id', $flashDealId)->where('flash_deal_time_id', $id)->orderBy('order', 'desc');
+        $deal = flashdeal::where('flash_deal_id', $flashDealId)->where('flash_deal_time_id', $id)->orderBy('order', 'desc')->get();
 
-        return view('frontend.ajax.dealClick', compact('deal', 'id'));
+        return view('frontend.ajax.dealClick', compact('deal', 'id', 'keyss'));
 
     }
 }

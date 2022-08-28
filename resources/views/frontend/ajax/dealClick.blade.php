@@ -1,8 +1,8 @@
-@if($deal->count()>0)
+
 
 <?php 
 
-    $now = Carbon\Carbon::createFromDate('20-8-2022, 11:00');
+    $now = Carbon\Carbon::createFromDate('28-8-2022, 11:00');
 ?>
 
 <div class="flash-sale" style="height: 305px;">
@@ -13,7 +13,7 @@
     <div class="flash-product nk-product-of-flash-sales">
         <div class="col-flash col-flash-2 active">
             <div id="sync1S" class="slider-banner owl-carousel flash-sale-banner">
-
+                @if($deal->count()>0)
                 @foreach($deal as $key => $value)
                
                 @if( !empty($value->active) && $value->active ==1 && $now->between($value->start, $value->end)||$id>0)
@@ -47,7 +47,7 @@
                             <div class="nk-top-stickers"><span class="nk-sticker nk-new">Mới</span></div><div>
                                     <p class="title-shock-price">Giá sốc online</p>
 
-                                    <span class="price-new"> xxx.000&#x20AB;</span>
+                                    <span class="price-new"> {{ $keyss==1?'99.000':'xxx.000' }}&#x20AB;</span>
                                 </div>
                         </div>
                         <div class="review_product star">
@@ -104,10 +104,10 @@
                 @endif
 
                 @endforeach
+                @endif
 
             </div>
         </div>
     </div>
 </div>
 
-@endif
