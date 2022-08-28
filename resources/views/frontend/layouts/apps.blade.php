@@ -245,9 +245,9 @@
         @endif
         <style type="text/css">
             
-            /*.listcompare-click{
-                display: block !important;
-            }*/
+            .listcompare-click{
+                display: none;
+            }
         </style>
 
            

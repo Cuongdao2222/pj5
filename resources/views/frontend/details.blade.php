@@ -1269,6 +1269,13 @@
         // $(".box01 a").fancybox({
         //     'hideOnContentClick': true
         // });
+
+
+        
+
+         $('.item-ss').bind('click',function(){
+            $('.listcompare-click').show();
+        })    
     
         $('.star-click').bind('click',function(){
             id_star = $(this).attr('id');    
