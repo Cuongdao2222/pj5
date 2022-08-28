@@ -254,6 +254,13 @@
 
         @foreach($saleFlash as $keys => $vals)
 
+        <?php 
+            $flashDeal = App\Models\flashdeal::where('flash_deal_id', $vals->id)->get();
+
+
+            // $deal = Cache::get('deals')->where('flash_deal', $groups_deal)->sortByDesc('order');
+        ?>
+        @if($flashDeal->count()>0)
         <div class="sale-time-flash">
             <div class="banner-outer">
                 <div class="banner-inner responsive-wrapper">
@@ -262,7 +269,7 @@
             </div>
 
            
-            @if(!empty($deal_check) && $deal_check->count()>0 && $now->between($deal_check[0]->start, $deal_check[0]->end)||$now>$time1_start && $now < $time4)
+            @if($now>$time1_start && $now < $time4)
             <!-- flash sale -->
             <div class="img-flashsale mobiles" style="width: 100%;">
                 <a href="{{ route('details', 'deal') }}"><img src="{{ asset('images/template/flashsalemb.jpg') }}" style="width: 100%"></a>
@@ -298,7 +305,7 @@
                             }
 
                         ?>  
-                        <li onclick="clickDeal({{ $key+1 }})" class=>
+                        <li onclick="clickDeal({{ $vals->id }},{{ $key+1 }})" class=>
                             <h3>
                                 <span>{{ $value['start'] }}</span>
                                 <br>
@@ -307,17 +314,12 @@
                         </li>
                         @endif
                         @endforeach
-                        <?php 
                         
-                            // $deal = Cache::get('deals')->where('flash_deal', $groups_deal)->sortByDesc('order');
-                        ?>
-                     
                     </ul>
                 </div>
                 @endif
-               
-                @if($deal->count()>0)
-                <div class="deal-view">
+            
+                <div class="deal-view{{ $vals->id }}">
                     <div class="flash-sale" style="height: 305px;">
                         
                         <span id="banner-flash-sale"><a href="{{ route('dealFe') }}">
@@ -327,21 +329,15 @@
                             <div class="col-flash col-flash-2 active">
                                 <div id="sync1S" class="slider-banner owl-carousel flash-sale-banner">
 
-                                    @foreach($deal as $key => $value)
-                                   
-                                    @if(!empty($value->active) && $value->active ==1 && $now->between($value->start, $value->end)||$value->order>0)
+                                    @foreach($flashDeal as $key => $value)
 
                                     <?php 
                                         $timestamp = $now->diffInSeconds($value->end);
-
                                         $hour =  floor($timestamp/3600);
                                         $timestamp = floor($timestamp % 3600);
                                         $minutes =floor($timestamp/60);
                                         $timestamp = floor($timestamp % 60);
                                         $seconds =floor($timestamp);
-
-
-
                                     ?>
 
                                     <div class="item">
@@ -361,7 +357,7 @@
                                             <div style="margin-top: 11px">
                                                 <div class="nk-top-stickers"><span class="nk-sticker nk-new">Mới</span></div><div>
                                                         <p class="title-shock-price">Giá sốc online</p>
-                                                        <span class="price-new">{{  ($groups_deal>0 && $keys ==0)?@str_replace(',' ,'.', number_format($vals->price)):'xxx.000' }}&#x20AB;</span>
+                                                        <span class="price-new">{{  @str_replace(',' ,'.', number_format($vals->price)) }}&#x20AB;</span>
                                                     </div>
                                             </div>
                                             <div class="review_product star">
@@ -417,7 +413,7 @@
                                         </div>
                                     </div>
 
-                                    @endif
+                                  
 
                                     @endforeach
 
@@ -426,10 +422,11 @@
                         </div>
                     </div>
                 </div>
-                @endif
+               
                <!--  end flash  -->
             @endif 
         </div>
+        @endif
         @endforeach
     </section>
    
@@ -494,18 +491,21 @@
                 for (var i = 0 ; i < loop; i++) {
                     run(i);
                 }
-                runs();
+
+                @foreach($define as $key => $value)
+
+                runs('.key{{ $key }}');
+
+                @endforeach
+                
                 
             }, 1000);
 
-           
+            function runs(key) {
 
-        
-            function runs() {
-
-                var hour =  $('.key0 .hour').text();
-                var minutes =  $('.key0 .minutes').text();
-                var second =  $('.key0 .second').text();
+                var hour =  $(key+' .hour').text();
+                var minutes =  $(key+' .minutes').text();
+                var second =  $(key+' .second').text();
 
 
                 h =  parseInt(hour);
@@ -530,7 +530,6 @@
                     m = 59;
                 }
 
-                
                 hour =  h.toString();
 
                 minutes =  m.toString();
@@ -543,12 +542,11 @@
 
         
                 let currentTimeStr ='<span class="hour">'+ currentHour+'</span>:<span class="minutes">'+currentMinutes+'</span>:<span class="second">'+currentSeconds+'</span>';
-                $('.key0 .clock').html(currentTimeStr);
-               
+                $(key+' .clock').html(currentTimeStr);
             }    
 
 
-            function clickDeal(id) {
+            function clickDeal(flash_deal_id, id) {
 
                 $(this).addClass('actives');
                 $.ajaxSetup({
@@ -561,17 +559,18 @@
                     type: 'POST',
                     url: "{{ route('showDealClick') }}",
                     data: {
-                        product_id: id
+                        product_id: id,
+                        flash_deal_id:flash_deal_id 
                            
                     },
                     success: function(result){
                        // numberCart = result.find($("#number-product-cart").text());
 
-                       $('.deal-view').html('');
+                       $('.deal-view'+flash_deal_id).html('');
 
-                       $('.deal-view').html(result);
+                       $('.deal-view'+flash_deal_id).html(result);
 
-                        var owl = $(".flash-sale-banner");
+                        var owl = $('.deal-view'+flash_deal_id+' .flash-sale-banner');
                         owl.owlCarousel({
                             loop:false,
                             margin:10,
@@ -594,8 +593,6 @@
                                 }
                             }
                         });
-                      
-                       
                     }
                 });    
             }

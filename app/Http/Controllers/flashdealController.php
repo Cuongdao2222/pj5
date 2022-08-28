@@ -154,4 +154,16 @@ class flashdealController extends Controller
         $time = $request->time;
         $data = DB::table('date_flash_deal')->where('id', 1)->update(['date' => $time]);
     }
+
+     public function showDealByIdClick(Request $request)
+    {
+        $id = $request->product_id;
+        $flashDealId = $request->flash_deal_id;
+        $key = 1;
+
+        $deal = flashdeal::where('flash_deal_id', $flashDealId)->where('flash_deal_time_id', $id)->orderBy('order', 'desc');
+
+        return view('frontend.ajax.dealClick', compact('deal', 'id'));
+
+    }
 }

@@ -25,7 +25,7 @@ Route::get('/tin-tuc', 'Frontend\blogController@index')->middleware('cache')->na
 Route::get('/', 'Frontend\indexController@index')->middleware('cache')->name('homeFe');
 
 
-Route::post('showDealClick','dealController@showDealByIdClick')->name('showDealClick');
+Route::post('showDealClick','flashdealController@showDealByIdClick')->name('showDealClick');
 
 Route::get('checkPSK', 'crawlController@checkProductSku');
 
