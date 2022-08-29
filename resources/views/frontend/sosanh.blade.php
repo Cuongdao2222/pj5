@@ -1,3 +1,13 @@
+<style type="text/css">
+    td table{
+        width: 50%;
+    }
+    .td-info{
+        padding: 0;
+        text-align: center;
+    }
+</style>
+
 <table id="tb_padding" border="1" bordercolor="#CCCCCC" style="width:100%">
     <tbody> 
 
@@ -49,7 +59,7 @@
 
                                     ?>
 
-                                    <td valign="top">
+                                    <td class="td-info">
                                         <span>  
 
                                             @if(isset($arr_value[$propertys->id])&& in_array($product_id  ,$arr_value[$propertys->id]))
@@ -60,26 +70,34 @@
 
                                        
                                     @endforeach
-                                @else
 
+                                     @foreach($property as $propertys)
 
-                                @foreach($property as $propertys)
+                                    <?php
 
-                                <?php
+                                        $search_arr = $filters->value;
 
-                                    $search_arr = $filters->value;
+                                    ?>
 
-                                   
-                                ?>
+                                    <td class="td-info">
+                                        <span>  
 
-                                <td valign="top"><span><input type="checkbox"> <label for="code" data-id="{{ $propertys->id }}">{{ $propertys->name }}</label></span><br></td>
-                                @endforeach
+                                            @if(isset($arr_value[$propertys->id])&& in_array($product_id  ,$arr_value[$propertys->id]))
+                                                <label for="code" data-id="{{ $propertys->id }}">{{ $propertys->name }}</label>
+                                            @endif
+                                        </span>
+                                    </td>
 
+                                       
+                                    @endforeach
+                              
                                 @endif
                                 
                             @endif
                                 
                             </tr> 
+
+
                         </tbody>
                     </table>
                 </div>
