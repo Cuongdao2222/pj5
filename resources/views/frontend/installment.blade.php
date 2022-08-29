@@ -147,7 +147,10 @@
                         <input type="hidden" name="product_name" value="{{ $data->Name }}">  
                         <input type="hidden" name="amountPre" id="amountPre" value="{{ @str_replace(',' ,'.', number_format($data->Price))}}" >    
 
-
+                        <?php 
+                            session(['priceProduct' => str_replace(',' ,'.', number_format($data->Price))]);
+                            
+                        ?>
                     </div>
                     <div class="row"></div>
                     <div class="col-sm-12" id="alert"></div>
@@ -158,6 +161,7 @@
                         </button>
 
                     </div>
+                   
                 </form>
                 <input type="hidden" name="prePrice" id="prePriceInput" value="0">
             </div>
