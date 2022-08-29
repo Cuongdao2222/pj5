@@ -416,25 +416,26 @@ class productController extends AppBaseController
 
         $search = $clearData;
 
+        if(!empty($search)){
 
-        $search = str_replace('dieu hoa', 'Điều hòa', $search);
+            $search = str_replace('dieu hoa', 'Điều hòa', $search);
 
-        $search = str_replace('tu dong', 'Tủ đông', $search);
+            $search = str_replace('tu dong', 'Tủ đông', $search);
 
-        $search = ucfirst($search);
+            $search = ucfirst($search);
 
-        if(!Cache::has('product_search')){
+            if(!Cache::has('product_search')){
 
-            $productss = product::select('Link', 'Name', 'Image', 'Price', 'id', 'ProductSku')->where('active', 1)->get();
+                $productss = product::select('Link', 'Name', 'Image', 'Price', 'id', 'ProductSku')->where('active', 1)->get();
 
-            Cache::forever('product_search',$productss);
+                Cache::forever('product_search',$productss);
 
-        }
+            }
 
-        $data =  Cache::get('product_search');
+            $data =  Cache::get('product_search');
 
 
-        $resultProduct = [];
+            $resultProduct = [];
 
         $numberdata = 0;
 
@@ -457,64 +458,83 @@ class productController extends AppBaseController
               
             });
 
-            // search khi tên có viết hoa
-
             if($product->count()==0){
 
                 $product = collect($data)->filter(function ($item) use ($search) {
-                    return false !== stristr($item->Name, $search);
+
+                    if(empty($search)){
+
+                       return false;
+                    }
+                    return false !== strpos($item->Name, $search);
+                   
                 });
 
+                // search khi tên có viết hoa
 
                 if($product->count()==0){
 
-                    // nếu không có thì search bằng thư viện FullTextSearch
+                    if(empty($search)){
+
+                       return false;
+                    }
+
+                    $product = collect($data)->filter(function ($item) use ($search) {
+                        return false !== stristr($item->Name, $search);
+                    });
+
 
                     if($product->count()==0){
-                        // search bằng thư viện FullTextSearch
-                        $product = product::FullTextSearch('Name', $search)->select('id', 'Name', 'Price', 'Link', 'Image')->get();
-                        
+
+                        // nếu không có thì search bằng thư viện FullTextSearch
+
                         if($product->count()==0){
-                            $product = product::where('Name', 'like', '%'.$search.'%')->get();
-                        }
-                    } 
-                   
+                            // search bằng thư viện FullTextSearch
+                            $product = product::FullTextSearch('Name', $search)->select('id', 'Name', 'Price', 'Link', 'Image')->get();
+                            
+                            if($product->count()==0){
+                                $product = product::where('Name', 'like', '%'.$search.'%')->get();
+                            }
+                        } 
+                       
+                    }
                 }
             }
-        }
 
-        $find_first = $product->take(50)->sortByDesc('id')->pluck('id');
+            $find_first = $product->take(50)->sortByDesc('id')->pluck('id');
 
-        if(isset($find_first)){
+            if(isset($find_first)){
 
-             $numberdata = count($find_first);
+                 $numberdata = count($find_first);
 
-            foreach ($find_first as  $value) {
+                foreach ($find_first as  $value) {
 
-                array_push($resultProduct, $find_first);
+                    array_push($resultProduct, $find_first);
+                }
+
+            }
+
+            $page_search = 'filterFe';
+
+           
+            if(isset($resultProduct) && !empty($resultProduct[0])){
+
+                $resultProduct = $resultProduct[0]->toArray();
+
+                $data = Cache::get('product_search')->whereIn('id', $resultProduct)->forPage(1, 20);
+
+                return view('frontend.category',compact('data','numberdata','page_search'));
+               
+
+            }
+            else{
+                $data = [];
+                return view('frontend.category', compact('data', 'numberdata', 'page_search'));
+                // Flash::error('Không tìm thấy sản phẩm, vui lòng tìm kiếm lại"');
             }
 
         }
 
-        $page_search = 'filterFe';
-
-       
-        if(isset($resultProduct) && !empty($resultProduct[0])){
-
-            $resultProduct = $resultProduct[0]->toArray();
-
-            $data = Cache::get('product_search')->whereIn('id', $resultProduct)->forPage(1, 20);
-
-            return view('frontend.category',compact('data','numberdata','page_search'));
-           
-
-        }
-        else{
-            $data = [];
-            return view('frontend.category', compact('data', 'numberdata', 'page_search'));
-            // Flash::error('Không tìm thấy sản phẩm, vui lòng tìm kiếm lại"');
-        }
-        
     }
 
     public function imagecontent($id)
