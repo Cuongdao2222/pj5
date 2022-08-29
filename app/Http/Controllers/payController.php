@@ -27,7 +27,7 @@ class payController extends Controller
 
         // xóa session luôn
 
-        $request->session()->forget('priceProduct');
+        // $request->session()->forget('priceProduct');
 
         $data_price = str_replace('.', '', $data_price);
 
