@@ -234,7 +234,7 @@
 
                            ?> 
                             
-                          <tr>
+                          <!-- <tr>
                               <td>Cài đặt thời gian</td>
                               <td>
 
@@ -278,7 +278,7 @@
                                       <?php echo get_times($default = $end, '+30 minutes'); ?>
                                   </select>
                               </td>
-                          </tr>
+                          </tr> -->
 
                             <?php  
 
