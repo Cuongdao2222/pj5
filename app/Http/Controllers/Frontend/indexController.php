@@ -98,23 +98,23 @@ class indexController extends Controller
     public function cache()
     {
        
-       
         $deal = deal::OrderBy('order', 'desc')->get();
 
         $product_sale = DB::table('products')->join('sale_product', 'products.id', '=', 'sale_product.product_id')->join('makers', 'products.Maker', '=', 'makers.id')->get();
 
         $groups = groupProduct::select('id','name', 'link')->where('parent_id', 0)->get();
 
-        $deal_start = $deal->first()->start;
+        if($deal->count()>0){
 
-        cache::put('deal_start', $deal_start,10000);
+            $deal_start = $deal->first()->start;
 
-    
+            cache::put('deal_start', $deal_start,10000);
+
+        }
         Cache::put('groups', $groups,10000);
 
         Cache::put('product_sale', $product_sale,10000);
 
-    
     }
 
     public function cache1()

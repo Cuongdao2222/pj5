@@ -439,13 +439,27 @@ class productController extends AppBaseController
         $numberdata = 0;
 
         $product = collect($data)->filter(function ($item) use ($search) {
-            return false !== strpos($item->ProductSku, $search);
+            //check loi empty ProductSku
+            if(!empty($item->ProductSku)){
+                return false !== strpos($item->ProductSku, $search);
+            }
+            else{
+                return false;
+            }    
         });
 
         if($product->count()==0){
 
             $product = collect($data)->filter(function ($item) use ($search) {
-                return false !== strpos($item->Name, $search);
+                // check loi empty name
+                if(!empty($item->Name)){
+
+                    return false !== strpos($item->Name, $search);
+                }
+                else{
+                    return false;
+                }
+                
             });
 
             // search khi tên có viết hoa
@@ -472,8 +486,6 @@ class productController extends AppBaseController
                    
                 }
             }
-
-            
         }
 
         $find_first = $product->take(50)->sortByDesc('id')->pluck('id');
