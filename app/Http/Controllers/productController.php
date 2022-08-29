@@ -440,26 +440,21 @@ class productController extends AppBaseController
 
         $product = collect($data)->filter(function ($item) use ($search) {
             //check loi empty ProductSku
-            if(!empty($item->ProductSku)){
-                return false !== strpos($item->ProductSku, $search);
-            }
-            else{
+
+            if(empty($search)){
                 return false;
-            }    
+            }
+            
+            return false !== strpos($item->ProductSku, $search);
+           
         });
 
         if($product->count()==0){
 
             $product = collect($data)->filter(function ($item) use ($search) {
-                // check loi empty name
-                if(!empty($item->Name)){
-
-                    return false !== strpos($item->Name, $search);
-                }
-                else{
-                    return false;
-                }
-                
+               
+                return false !== strpos($item->Name, $search);
+              
             });
 
             // search khi tên có viết hoa
