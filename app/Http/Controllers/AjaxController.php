@@ -300,7 +300,7 @@ class AjaxController extends Controller
 
                     if($now->between($value['startTime'], $value['endTime'])){
 
-                        $groups_deal = $key+1;
+                        $groups_deal = $key;
 
                         $flashDeal = flashdeal::where('product_id', $products->id)->where('flash_deal_time_id', $groups_deal)->where('active',1)->first();
 
@@ -493,7 +493,7 @@ class AjaxController extends Controller
 
                 foreach($define as $key => $value){
                     if($now->between($value['startTime'], $value['endTime'])){
-                        $groups_deal = $key+1;
+                        $groups_deal = $key;
 
                         $deal = flashdeal::where('product_id',  $id)->where('flash_deal_time_id', $groups_deal)->where('active',1)->first();
 

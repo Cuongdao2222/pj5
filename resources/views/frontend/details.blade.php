@@ -62,7 +62,10 @@
             $timeDeal_end =  \Carbon\Carbon::create($timeDeal_end);
             $timestamp = $now->diffInSeconds($timeDeal_end);
 
+            
             if($now->between($check_deal->start, $check_deal->end)){
+
+
                 $deal_check_add = true;
                 $price_old = $data->Price;
                 $text = '<b>MUA ONLINE GIÁ SỐC: </b>';
@@ -74,6 +77,7 @@
             // check flash deal
             $date_string_flash_deal = DB::table('date_flash_deal')->where('id', 1)->first()->date;
             $date_flashdeal = \Carbon\Carbon::create($date_string_flash_deal);
+
 
             if($date_flashdeal->isToday()){
 
@@ -88,11 +92,13 @@
                 $time4 = \Carbon\Carbon::createFromDate($add_date.', 22:00');
                 $define = [['start'=>'9h', 'endTime'=>$time1, 'startTime'=>$time1_start], ['start'=>'12h', 'endTime'=>$time2, 'startTime'=>$time2_start], ['start'=>'14h', 'endTime'=>$time3, 'startTime'=>$time3_start], ['start'=>'17h', 'endTime'=>$time4, 'startTime'=>$time4_start]];
 
+
+
                 foreach($define as $key => $value)
 
                 if($now->between($value['startTime'], $value['endTime'])){
 
-                    $groups_deal = $key+1;
+                    $groups_deal = $key;
 
                     $flashDeal = App\Models\flashdeal::where('product_id', $data->id)->where('flash_deal_time_id', $groups_deal)->where('active',1)->first();
 
@@ -107,6 +113,7 @@
                             $text = '<b>MUA ONLINE GIÁ SỐC: </b>';
                             $data->Price =  $price_flash_deal->price;
                             $percent = ceil((int)$price_old/$data->Price);
+                            $timestamp = $now->diffInSeconds($value['endTime']);
 
                         }
 
@@ -117,7 +124,6 @@
             }
         }
 
-      
 
     }
 
