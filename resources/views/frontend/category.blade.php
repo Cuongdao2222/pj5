@@ -223,9 +223,10 @@
                                         foreach($define as $key => $values)
 
                                         if($now->between($values['startTime'], $values['endTime'])){
+                                            
+                                            $groups_deal = $key;
 
-
-                                            $groups_deal = $key+1;
+                                            $groups_deal = $groups_deal+1;
 
                                             $flashDeal = App\Models\flashdeal::where('product_id', $id_product)->where('flash_deal_time_id', $groups_deal)->where('active',1)->first();
 
