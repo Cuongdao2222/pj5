@@ -23,7 +23,11 @@ class payController extends Controller
 
         $data['cancelUrl'] = URL_DEMO;
 
-        $data_price =  $data['amountPre'];
+        $data_price =  session('priceProduct');
+
+        // xóa session luôn
+
+        // $request->session()->forget('priceProduct');
 
         $data_price = str_replace('.', '', $data_price);
 
@@ -32,6 +36,8 @@ class payController extends Controller
         $data_all_price  = intval($data_price) - intval($data_pre_price);
 
         $data['amount'] = $data_all_price;
+
+
 
 
         $data['orderCode'] = date('dmY') . '_' . uniqid();
