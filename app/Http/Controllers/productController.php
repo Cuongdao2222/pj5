@@ -450,6 +450,10 @@ class productController extends AppBaseController
 
             $product = collect($data)->filter(function ($item) use ($search) {
 
+                if(empty($search)){
+
+                   return false;
+                }
                 return false !== strpos($item->Name, $search);
                
             });
@@ -457,6 +461,11 @@ class productController extends AppBaseController
             // search khi tên có viết hoa
 
             if($product->count()==0){
+
+                if(empty($search)){
+                    
+                   return false;
+                }
 
                 $product = collect($data)->filter(function ($item) use ($search) {
                     return false !== stristr($item->Name, $search);
