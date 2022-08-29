@@ -13,12 +13,19 @@
         }
 
         .installment-purchase .but-tra-gop {
-            width: calc(50% - 5px);
+            width: calc(50% - 10px);
         }    
         .list-shows-click {
             display: inline-flex !important;
             width: calc(100% - 25%) !important;
             border: unset;
+        }
+        .pdetail-info p{
+            margin-top: 10px;
+        }
+
+        .installments-but{
+            margin-left: 15px;
         }
     </style>
 
@@ -62,7 +69,7 @@
             $timeDeal_end =  \Carbon\Carbon::create($timeDeal_end);
             $timestamp = $now->diffInSeconds($timeDeal_end);
 
-            
+
             if($now->between($check_deal->start, $check_deal->end)){
 
 
@@ -90,19 +97,20 @@
                 $time3 = \Carbon\Carbon::createFromDate($add_date.', 17:00');
                 $time4_start = \Carbon\Carbon::createFromDate($add_date.', 17:00');
                 $time4 = \Carbon\Carbon::createFromDate($add_date.', 22:00');
+
                 $define = [['start'=>'9h', 'endTime'=>$time1, 'startTime'=>$time1_start], ['start'=>'12h', 'endTime'=>$time2, 'startTime'=>$time2_start], ['start'=>'14h', 'endTime'=>$time3, 'startTime'=>$time3_start], ['start'=>'17h', 'endTime'=>$time4, 'startTime'=>$time4_start]];
 
 
 
                 foreach($define as $key => $value)
 
+                $key = $key+1;  
+
                 if($now->between($value['startTime'], $value['endTime'])){
 
                     $groups_deal = $key;
 
                     $flashDeal = App\Models\flashdeal::where('product_id', $data->id)->where('flash_deal_time_id', $groups_deal)->where('active',1)->first();
-
-
 
                     if(!empty($flashDeal)){
 
@@ -117,10 +125,11 @@
 
                         }
 
-                    
                     }
 
                 }
+
+
             }
         }
 
@@ -738,6 +747,11 @@
                                 .crazy-deal-details-countdown{
                                     font-weight: bold;
                                 }
+
+                                .buy-button-hotline {
+                                    text-align: center;
+                                    margin-top: 1em;
+                                }
                             </style>
                         <div class="pdetail-price">
                             @if(!empty($text))
@@ -880,11 +894,21 @@
                                 @if((int)$data['Price']>=3000000)
                                
                                 <a target="_blank" class="but-tra-gop" href="{{ route('details', $data->Link)  }}?show=tra-gop" admicro-data-event="101725" admicro-data-auto="1" admicro-data-order="false">
+                                <strong>THÊM VÀO </strong>
+                                <br>
+                                <strong>GIỎ HÀNG</strong>
+                                </a>
+
+                                 <a target="_blank" class="but-tra-gop installments-but" href="{{ route('details', $data->Link)  }}?show=tra-gop" admicro-data-event="101725" admicro-data-auto="1" admicro-data-order="false">
                                 <strong>TRẢ GÓP QUA THẺ</strong>
                                 <br>
                                 (Visa, Master, JCB)
                                 </a>
+
+
                                 @endif
+
+                                <div class="buy-button-hotline">Gọi đặt mua <a href="tel:02473036336">0247.303.6336</a></div>
                                 <br><br>
                                 {!!  $data->Specifications  !!} 
                             </div>

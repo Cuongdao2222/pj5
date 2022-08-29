@@ -14,6 +14,9 @@
            .sale-time-flash{
                 margin-bottom: 10px;
            }
+           .text-er{
+                font-weight: bold;
+           }
 
             .actives{
                 background: #fff;
@@ -238,21 +241,27 @@
     <br>
 
     <?php 
-        // $now  = Carbon\Carbon::now();
+        $now  = Carbon\Carbon::now();
 
-        $now = Carbon\Carbon::createFromDate('28-8-2022, 11:00');
+        $date_string_flash_deal = DB::table('date_flash_deal')->where('id', 1)->first()->date;
+        $date_flashdeal = \Carbon\Carbon::create($date_string_flash_deal);
 
         $deal = Cache::get('deals')->sortByDesc('order');
     ?>
-     <?php 
-        $time1_start = Carbon\Carbon::createFromDate('28-8-2022, 9:00');
-        $time1 = Carbon\Carbon::createFromDate('28-8-2022, 12:00');
-        $time2_start = Carbon\Carbon::createFromDate('28-8-2022, 12:00');
-        $time2 = Carbon\Carbon::createFromDate('28-8-2022, 14:00');
-        $time3_start = Carbon\Carbon::createFromDate('28-8-2022, 14:00');
-        $time3 = Carbon\Carbon::createFromDate('28-8-2022, 17:00');
-        $time4_start = Carbon\Carbon::createFromDate('28-8-2022, 17:00');
-        $time4 = Carbon\Carbon::createFromDate('28-8-2022, 22:00');
+
+    @if($date_flashdeal->isToday())
+
+
+    <?php 
+        $add_date = $date_string_flash_deal;
+        $time1_start = \Carbon\Carbon::createFromDate($add_date.', 9:00');
+        $time1 = \Carbon\Carbon::createFromDate($add_date.', 12:00');
+        $time2_start = \Carbon\Carbon::createFromDate($add_date.', 12:00');
+        $time2 = \Carbon\Carbon::createFromDate($add_date.', 14:00');
+        $time3_start = \Carbon\Carbon::createFromDate($add_date.', 14:00');
+        $time3 = \Carbon\Carbon::createFromDate($add_date.', 17:00');
+        $time4_start = \Carbon\Carbon::createFromDate($add_date.', 17:00');
+        $time4 = \Carbon\Carbon::createFromDate($add_date.', 22:00');
         $define = [['start'=>'9h', 'endTime'=>$time1, 'startTime'=>$time1_start], ['start'=>'12h', 'endTime'=>$time2, 'startTime'=>$time2_start], ['start'=>'14h', 'endTime'=>$time3, 'startTime'=>$time3_start], ['start'=>'17h', 'endTime'=>$time4, 'startTime'=>$time4_start]];
     ?>
     
@@ -480,6 +489,8 @@
 
         
     @endif
+
+
 
     @if(!empty($deal))
     
@@ -726,5 +737,9 @@
             });
         </script>
         @endpush
-    @endif    
+    @endif  
+
+    @endif  
+    <!-- end check flashdeal theo thời gian thực -->
+    <div style="text-align: center;"><h3 class="text-er">Chưa đến thời gian Deal khác, xin vui lòng quay lại sau</h3></div>  
 @endsection      
