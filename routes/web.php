@@ -72,6 +72,12 @@ Route::get('/lien-he', function () {
 });
 
 
+Route::get('/sosanh-sp', function () {
+    return view('frontend.sosanh');
+    
+});
+
+
 Route::post('add-lienhe','lienheController@addLienhe')->name('addlienhe');
 
 
