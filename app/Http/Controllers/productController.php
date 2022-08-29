@@ -445,7 +445,12 @@ class productController extends AppBaseController
         if($product->count()==0){
 
             $product = collect($data)->filter(function ($item) use ($search) {
-                return false !== strpos($item->Name, $search);
+                // check loi empty name
+                if(!empty($item->Name)){
+
+                    return false !== strpos($item->Name, $search);
+                }
+                
             });
 
             // search khi tên có viết hoa
@@ -472,8 +477,6 @@ class productController extends AppBaseController
                    
                 }
             }
-
-            
         }
 
         $find_first = $product->take(50)->sortByDesc('id')->pluck('id');
