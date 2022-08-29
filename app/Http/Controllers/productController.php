@@ -424,7 +424,6 @@ class productController extends AppBaseController
 
             $search = ucfirst($search);
 
-            
 
             if(!Cache::has('product_search')){
 
