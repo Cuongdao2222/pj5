@@ -439,7 +439,13 @@ class productController extends AppBaseController
         $numberdata = 0;
 
         $product = collect($data)->filter(function ($item) use ($search) {
-            return false !== strpos($item->ProductSku, $search);
+            //check loi empty ProductSku
+            if(!empty($item->ProductSku)){
+                return false !== strpos($item->ProductSku, $search);
+            }
+            else{
+                return false;
+            }    
         });
 
         if($product->count()==0){
@@ -449,6 +455,9 @@ class productController extends AppBaseController
                 if(!empty($item->Name)){
 
                     return false !== strpos($item->Name, $search);
+                }
+                else{
+                    return false;
                 }
                 
             });
