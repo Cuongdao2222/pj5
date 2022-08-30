@@ -27,6 +27,23 @@
         .installments-but{
             margin-left: 15px;
         }
+
+        .add-card-buttons {
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+            height: 54px;
+           /* padding: 8px 5px;*/
+           line-height: 54px !important;
+
+            line-height: 18px;
+            width: 100%;
+            border-radius: 5px;
+            display: inline-block;
+            text-align: center;
+            cursor: pointer;
+            background: #ffde00;
+        }
     </style>
 
 
@@ -694,7 +711,7 @@
                 <div class="clearfix"></div>
                 <div>
                     <div class="pdetail-info">
-                        <p>Model: <b>{{ @$data->ProductSku  }}</b></p>
+                        <!-- <p>Model: <b>{{ @$data->ProductSku  }}</b></p> -->
                         <!-- <p>Bảo hành: <b>24 Tháng, 1 đổi 1 trong vòng 1 tháng</b></p> -->
                     </div>
                     <div class="scroll-box">
@@ -903,8 +920,12 @@
                                 <br>
                                 (Visa, Master, JCB)
                                 </a>
-
-
+                                @else
+                                 <a target="_blank" class="add-card-buttons" href="{{ route('details', $data->Link)  }}?show=tra-gop" admicro-data-event="101725" admicro-data-auto="1" admicro-data-order="false">
+                                <strong>THÊM VÀO GIỎ HÀNG </strong>
+                              
+                                </a>
+                                
                                 @endif
 
                                 <div class="buy-button-hotline">Gọi đặt mua <a href="tel:02473036336">0247.303.6336</a></div>
@@ -915,8 +936,6 @@
 
                             <div class="pdetail-add-to-cart add-to-cart pdetail-installment specifications-img">
                                 <div class="inline">
-                                   
-                                  
                                     <button type="button" class="btn btn-lg btn-add-cart btn-add-cart redirectCart">Liên hệ</button>
                                 </div>
 

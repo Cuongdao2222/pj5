@@ -46,8 +46,7 @@
                 background-color: #ffea26;
                 padding: 5px 13px;
                 border-radius: 4px;
-                line-height: 29px;
-                margin-left: 10px;
+                
                 cursor: pointer;
             }
 
@@ -67,17 +66,13 @@
 
             .titles-time .cat-child li {
                 float: left;
-                padding: 0 4px;
+                padding-right: 8vw;
             }
 
             .titles-time .minutes{
                 font-weight: normal;
                 color: #000;
             }
-
-
-
-
 
 
 
@@ -117,6 +112,9 @@
                 z-index: 1;
             }
 
+
+           
+
             @media screen and (max-width: 767px) {
                 .result-labels{
                     top: 43%;
@@ -129,10 +127,22 @@
                 .text-promotion{
                     font-size: 1.2em !important;
                 }
+
+                .titles-time .cat-child li{
+                    padding: 0 0.8vw !important;
+                }
+                .banner-outer{
+                    margin-bottom: 10px
+                }
+
+
             }
 
              @media screen and (min-width: 768px) {
-
+                .titles-time h3 {
+                    line-height: 29px;
+                    margin-left: 10px;
+                }    
 
                 .result-labels{
                     top: 53%;
@@ -154,6 +164,8 @@
                 #sync1 .item img{
                     height: auto !important;
                 }   
+
+
             }
 
             .banner-outer {
@@ -738,7 +750,8 @@
         @endpush
     @endif  
 
-    @endif  
+    @else
     <!-- end check flashdeal theo thời gian thực -->
-    <div style="text-align: center;"><h3 class="text-er">Chưa đến thời gian Deal, xin vui lòng quay lại sau</h3></div>  
+    <div style="text-align: center;"><h3 class="text-er">Chưa đến thời gian Deal, xin vui lòng quay lại sau</h3></div> 
+    @endif 
 @endsection      

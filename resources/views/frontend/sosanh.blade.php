@@ -39,13 +39,12 @@
                 <div style="max-height:250px; overflow:auto">
                     <table>
                         <tbody>
+                            <tr>fgfgfg</tr>
                             <tr>
                             @if(isset($property))
 
                                 <?php  
                                     $product_id = $_GET['productId'];
-
-
 
                                 ?>
 
@@ -59,7 +58,7 @@
 
                                     ?>
 
-                                    <td class="td-info">
+                                    <td class="td-info" >
                                         <span>  
 
                                             @if(isset($arr_value[$propertys->id])&& in_array($product_id  ,$arr_value[$propertys->id]))
@@ -71,25 +70,7 @@
                                        
                                     @endforeach
 
-                                     @foreach($property as $propertys)
-
-                                    <?php
-
-                                        $search_arr = $filters->value;
-
-                                    ?>
-
-                                    <td class="td-info">
-                                        <span>  
-
-                                            @if(isset($arr_value[$propertys->id])&& in_array($product_id  ,$arr_value[$propertys->id]))
-                                                <label for="code" data-id="{{ $propertys->id }}">{{ $propertys->name }}</label>
-                                            @endif
-                                        </span>
-                                    </td>
-
-                                       
-                                    @endforeach
+                                    
                               
                                 @endif
                                 
@@ -102,6 +83,54 @@
                     </table>
                 </div>
                 
+            </td>
+
+            <td>
+                <div style="max-height:250px; overflow:auto">
+                    <table>
+                        <tbody>
+                            <tr>
+                            @if(isset($property))
+
+                                <?php  
+                                    $product_id = $_GET['productId'];
+
+                                ?>
+
+                                @if($product_id !=0)
+
+                                    @foreach($property as $propertys)
+
+                                    <?php
+
+                                        $search_arr = $filters->value;
+
+                                    ?>
+
+                                    <td class="td-info" >
+                                        <span>  
+
+                                            @if(isset($arr_value[$propertys->id])&& in_array($product_id  ,$arr_value[$propertys->id]))
+                                                <label for="code" data-id="{{ $propertys->id }}">{{ $propertys->name }}</label>
+                                            @endif
+                                        </span>
+                                    </td>
+
+                                       
+                                    @endforeach
+
+                                    
+                              
+                                @endif
+                                
+                            @endif
+                                
+                            </tr> 
+
+
+                        </tbody>
+                    </table>
+                </div>
             </td>
         </tr>
         @endforeach
