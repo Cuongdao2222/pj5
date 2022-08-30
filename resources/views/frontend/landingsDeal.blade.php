@@ -740,5 +740,5 @@
 
     @endif  
     <!-- end check flashdeal theo thời gian thực -->
-    <div style="text-align: center;"><h3 class="text-er">Chưa đến thời gian Deal khác, xin vui lòng quay lại sau</h3></div>  
+    <div style="text-align: center;"><h3 class="text-er">Chưa đến thời gian Deal, xin vui lòng quay lại sau</h3></div>  
 @endsection      
