@@ -241,7 +241,9 @@
     <br>
 
     <?php 
-        $now  = Carbon\Carbon::now();
+        // $now  = Carbon\Carbon::now();
+
+    $now  = \Carbon\Carbon::createFromDate('30-8-2022, 11:00');
 
         $date_string_flash_deal = DB::table('date_flash_deal')->where('id', 1)->first()->date;
         $date_flashdeal = \Carbon\Carbon::create($date_string_flash_deal);
@@ -273,7 +275,7 @@
         @foreach($saleFlash as $keys => $vals)
 
         
-        
+        @if($now>$time1_start && $now < $time4)
         <div class="sale-time-flash">
             <div class="banner-outer">
                 <div class="banner-inner responsive-wrapper">
@@ -282,7 +284,7 @@
             </div>
 
            
-            @if($now>$time1_start && $now < $time4)
+            
             <!-- flash sale -->
             <div class="img-flashsale mobiles" style="width: 100%;">
                 <a href="{{ route('details', 'deal') }}"><img src="{{ asset('images/template/flashsalemb.jpg') }}" style="width: 100%"></a>
@@ -290,8 +292,7 @@
             </div>
 
 
-            @if($now>$time1_start && $now < $time4)
-
+           
                 <div class="title titles-time key{{ $keys }}">
                     <ul class="cat-child">
                         <?php 
@@ -335,7 +336,7 @@
                         
                     </ul>
                 </div>
-                @endif
+               
 
               
             
@@ -444,9 +445,9 @@
                 </div>
                
                <!--  end flash  -->
-            @endif 
+           
         </div>
-        
+        @endif 
         @endforeach
     </section>
    
