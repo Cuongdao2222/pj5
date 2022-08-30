@@ -380,9 +380,11 @@
                 <div class="deal-view{{ $vals->id }}">
                     <div class="flash-sale" style="height: 305px;">
                         
-                        <span id="banner-flash-sale"><a href="{{ route('dealFe') }}">
-                        <img width="256" src="{{  asset('images/background-image/Flash_Sale_Theme_256x396.jpg')}}" style="width: auto; height: 300px" alt="banner-fs">
-                        </a></span>
+                        <span id="banner-flash-sale">
+                            <a href="{{ route('dealFe') }}">
+                                <img width="256" src="{{  asset('images/background-image/Flash_Sale_Theme_256x396.jpg')}}" style="width: auto; height: 300px" alt="banner-fs">
+                            </a>
+                        </span>
                         <div class="flash-product nk-product-of-flash-sales">
                             <div class="col-flash col-flash-2 active">
                                 <div id="sync1S" class="slider-banner owl-carousel flash-sale-banner">
@@ -405,61 +407,21 @@
                                             </div>
                                         </a>
                                         <div class="desc desc-deal{{$key}}">
-                                          <a href="{{ route('details', $value->link) }}">
-                                            <h4 class="title">{{ $value->name }}</h4>
-                                            <div class="container-price">
+                                            <a href="{{ route('details', $value->link) }}">
+                                                <h4 class="title">{{ $value->name }}</h4>
+                                                <div class="container-price">
                                                    <div>
                                                        <span class="price-old">{{ @str_replace(',' ,'.', number_format($value->price)) }}&#x20AB;</span>
                                                    </div>
-                                            </div>
-                                            <div style="margin-top: 11px">
-                                                
-                                                       
-                                                        <span class="price-new">{{  @str_replace(',' ,'.', number_format($vals->price)) }}&#x20AB;</span>
-                                                    </div>
-                                            </div>
-                                            <div class="review_product star">
-                                              
-                                                
-                                                <div class="container-timeline">
-                                                <span class="timeline"><span style="width: 2%"></span></span>
-                                               <!--  <p>Đã bán <span style="color: #EE1E25">2</span> / 100 sản phẩm</p> -->
-                                            </div>
-                                            <div style="width: 100%; height: 1px; background: #ECECEC; margin-top: 8px"></div>
-
-                                            <!-- <div class="countdown-flash-sale">
-                                                <div class="time-cd time-fl time{{ $key }}">
-
-                                                    <span class="timestamp" style="display: none;">{{   $now->diffInSeconds($value->end) }}</span>
-                                                   
-                                                   
-                                                    <div class="time">
-                                                        <span class="hours">
-                                                            <span class="hourss"> {{ $hour }}</span>
-                                                            
-                                                            <div style="margin-top: 2px; width:100%; height:1px; background: #FF3647"></div>
-                                                            <span>Giờ</span>
-                                                        </span>
-                                                        <p style="font-size: 28px; line-height: 55px;font-weight: bold;color: #101010; margin: 0 7px" >:</p>
-
-                                                        <span class="hours">
-                                                            <span class="minutess">{{ $minutes }}</span>
-                                                            <div style="margin-top: 2px; width:100%; height:1px; background: #FF3647"></div>
-                                                            <span>phút</span>
-                                                        </span>
-                                                        <p style="font-size: 28px; line-height: 55px;font-weight: bold;color: #101010; margin: 0 7px">:</p>
-                                                          <span class="hours">
-                                                            <span class="secondss"> {{ $seconds }}</span>
-                                                            <div style="margin-top: 2px; width:100%; height:1px; background: #FF3647"></div>
-                                                            <span>giây</span>
-                                                        </span>
-                                                       
-                                                      
-                                                    </div>
                                                 </div>
-                                            </div> -->
-
-                                          </a>
+                                                <div style="margin-top: 11px">
+                                                
+                                                    <span class="price-new">{{  @str_replace(',' ,'.', number_format($vals->price)) }}&#x20AB;</span>
+                                                </div>
+                                                
+                                                
+                                               
+                                            </a>
                                         </div>
                                     </div>
 
