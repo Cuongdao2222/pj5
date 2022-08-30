@@ -23,11 +23,11 @@
             }
 
             .titles-time{
-                border-top: 2px solid #ff9;
+               /* border-top: 2px solid #ff9;*/
                 margin-top: 5px;
                 padding-top: 5px;
                 padding-bottom: 5px;
-                background-color: #fb0707;
+               /* background-color: #fb0707;*/
                 margin-bottom: 7px;
                 display: block;
                 width: 100%;
@@ -43,7 +43,7 @@
                 padding: 0 13px;
                 vertical-align: -3px;
                 float: left;
-                background-color: #ffea26;
+                /*background-color: #ffea26;*/
                 padding: 5px 13px;
                 border-radius: 4px;
                 
@@ -112,6 +112,10 @@
                 z-index: 1;
             }
 
+            .flash-sale .flash-product .col-flash-2 .item .desc {
+                width: 100%;
+            }    
+
 
            
 
@@ -120,6 +124,7 @@
                     top: 43%;
                    
                 }   
+
                 .titles-time h3 {
                     font-size: 10px;
                    
@@ -142,8 +147,25 @@
                 .titles-time h3 {
                     line-height: 29px;
                     margin-left: 10px;
-                }    
+                }  
 
+                .flash-sale .flash-product .col-flash-2 .item .desc {
+                    padding: 0;
+                    
+                }     
+
+                .flash-sale .flash-product .col-flash-2 .item {
+
+                    display: block;
+                } 
+
+                .flash-sale .flash-product .col-flash-2 .item .img {
+
+                    width: auto;
+                    height: 10vw;
+                }  
+
+               
                 .result-labels{
                     top: 53%;
                    
@@ -254,6 +276,7 @@
 
     <?php 
         $now  = Carbon\Carbon::now();
+        // $now  = \Carbon\Carbon::createFromDate('30-8-2022, 11:00');
 
         $date_string_flash_deal = DB::table('date_flash_deal')->where('id', 1)->first()->date;
         $date_flashdeal = \Carbon\Carbon::create($date_string_flash_deal);
@@ -327,7 +350,11 @@
                                 $timestamp = floor($timestamp % 60);
                                 $seconds =floor($timestamp);
 
-                                $groups_deal = $key+1;
+                                $groups_deal = $key;
+
+                                $groups_deal+=1;
+
+
                                 $flashDeal = App\Models\flashdeal::where('flash_deal_id', $vals->id)->where('flash_deal_time_id', $groups_deal)->where('active',1)->get();
 
 
@@ -386,22 +413,14 @@
                                                    </div>
                                             </div>
                                             <div style="margin-top: 11px">
-                                                <div class="nk-top-stickers"><span class="nk-sticker nk-new">Mới</span></div><div>
-                                                        <p class="title-shock-price">Giá sốc online</p>
+                                                
+                                                       
                                                         <span class="price-new">{{  @str_replace(',' ,'.', number_format($vals->price)) }}&#x20AB;</span>
                                                     </div>
                                             </div>
                                             <div class="review_product star">
-                                               <p>
-                                                    <i class="fa-solid fa-star"></i>
-                                                    <i class="fa-solid fa-star"></i>
-                                                    <i class="fa-solid fa-star"></i>
-                                                    <i class="fa-solid fa-star"></i>
-                                                    <i class="fa-solid fa-star"></i>
-                                                </p>
-                                                <div class="line_break">|</div>
-                                                    <div class="reviewCount">0 đánh giá</div>
-                                                </div>
+                                              
+                                                
                                                 <div class="container-timeline">
                                                 <span class="timeline"><span style="width: 2%"></span></span>
                                                <!--  <p>Đã bán <span style="color: #EE1E25">2</span> / 100 sản phẩm</p> -->
@@ -621,7 +640,7 @@
                                 },
                                
                                 1000:{
-                                    items:2
+                                    items:4
                                 }
                             }
                         });
@@ -742,7 +761,7 @@
                     },
                    
                     1000:{
-                        items:2
+                        items:4
                     }
                 }
             });
