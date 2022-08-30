@@ -241,15 +241,16 @@
                
             </ul>
         </section>
-       
+
+
 
         <?php 
            
             $now  = Carbon\Carbon::now();
-            
+
             if(!empty($deal)){
 
-                $timeDeal_star = Cache::get('deal_start');
+                $timeDeal_star =$deal->first()->start;
 
                 $timeDeal_star =  \Carbon\Carbon::create($timeDeal_star);
 
@@ -261,6 +262,7 @@
             }
 
         ?>
+
 
 
         @if(!empty($deal_check) && $deal_check->count()>0 && $now->between($deal_check[0]->start, $deal_check[0]->end))
