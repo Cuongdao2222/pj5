@@ -241,9 +241,7 @@
     <br>
 
     <?php 
-        // $now  = Carbon\Carbon::now();
-
-    $now  = \Carbon\Carbon::createFromDate('30-8-2022, 11:00');
+        $now  = Carbon\Carbon::now();
 
         $date_string_flash_deal = DB::table('date_flash_deal')->where('id', 1)->first()->date;
         $date_flashdeal = \Carbon\Carbon::create($date_string_flash_deal);
