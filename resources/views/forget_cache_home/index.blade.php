@@ -217,7 +217,10 @@
         <section class="menus-banner">
             <strong class="name-box">Có thể bạn quan tâm</strong>
             <ul>
+                <?php 
 
+                    dd($group);
+                ?>
                 @if(!empty($bannerUnderSlider))
                 @foreach($bannerUnderSlider as $slider)
                 <li class="col-">
