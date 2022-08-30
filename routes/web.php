@@ -25,7 +25,7 @@ Route::get('/tin-tuc', 'Frontend\blogController@index')->middleware('cache')->na
 Route::get('/', 'Frontend\indexController@index')->middleware('cache')->name('homeFe');
 
 
-Route::get('/cache', 'Frontend\indexController@cache1')->name('cache');
+Route::get('/cache', 'Frontend\indexController@cache')->name('cache');
 Route::get('/ckfinder.html', function () {
     return view('frontend.ckfinder');
     
@@ -170,6 +170,9 @@ Route::post('filter-price-product-by-page', 'AjaxController@filterByPageFilter')
 
 
 Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
+
+
+    Route::get('forget-cache-home', 'backend\indexController@index')->name('test');
 
     Route::get('test', 'backend\apiController@checkDeal')->name('test');
 
