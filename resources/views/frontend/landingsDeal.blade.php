@@ -10,6 +10,9 @@
         <style type="text/css">
            /* deal*/
 
+            .actives-click{
+                color: red !important;
+            }
 
            .sale-time-flash{
                 margin-bottom: 10px;
@@ -49,6 +52,7 @@
                 
                 cursor: pointer;
             }
+
 
             .titles-time .cat-child {
                 padding: 2px 0;
@@ -381,8 +385,8 @@
                             }
 
                         ?>  
-                        <li onclick="clickDeal({{ $vals->id }},{{ $key+1 }}, {{ $k }})" class=>
-                            <h3>
+                        <li onclick="clickDeal({{ $vals->id }},{{ $key+1 }}, {{ $k }})" class='deal{{ $vals->id }}'>
+                            <h3 class="{{  $k==1?'actives-click':'' }}">
                                 <span>{{ $value['start'] }}</span>
                                 <br>
                                 <span>{!! $now->between($value['startTime'], $value['endTime'])?'<div class="clock"><span class="hour">0'.$hour.'</span>:<span class="minutes">'.$minutes.'</span>:<span class="second">'.$seconds.'</span></div>':'SẮP DIỄN RA' !!}</span>
@@ -582,7 +586,12 @@
 
             function clickDeal(flash_deal_id, id, dem) {
 
-                $(this).addClass('actives');
+                // $(this).addClass('actives');
+
+                classname =  $(this).attr('class');
+
+                alert(classname);
+
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
