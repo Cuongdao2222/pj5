@@ -31,22 +31,42 @@ use \Carbon\Carbon;
 
 class crawlController extends Controller
 {
+
+    public function strip_tags_content($string) { 
+        // ----- remove HTML TAGs ----- 
+        $string = preg_replace ('/<[^>]*>/', ' ', $string); 
+        // ----- remove control characters ----- 
+        $string = str_replace("\r", '', $string);
+        $string = str_replace("\n", ' ', $string);
+        $string = str_replace("\t", ' ', $string);
+        // ----- remove multiple spaces ----- 
+        $string = trim(preg_replace('/ {2,}/', ' ', $string));
+        return $string; 
+
+    }
     public function checkProductSku()
     {
-        $data  = product::select('ProductSku')->get();
+        $data  = product::find(4090);
 
-        $datas = [];
+        $html = $data->Specifications;
 
-        foreach ($data as $key => $value) {
-
-            array_push($datas, trim($value->ProductSku));
+        $dom = new \DOMDocument();
+        $dom->loadHTML($html);
+        foreach($dom->getElementsByTagName('td') as $td) {
+            print_r($td->nodeValue . '<br/>');
         }
 
-        $datass = array_unique($datas);
 
-        $check = array_diff($datas, $datass);
 
-        dd($check);
+        // $dom = new \DOMDocument();
+        // $dom->loadHtml($html);
+        // $x = new \DOMXpath($dom);
+        // foreach($x->query('//td') as $td){
+        //     echo strip_tags($td->textContent).'<br>';
+        //     //if just need the text use:
+        //     //echo $td->textContent;
+        // }
+
     }
 
     public function editKeywordsProduct()

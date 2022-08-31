@@ -52,11 +52,7 @@ Route::get('/sale', function () {
     
 })->name('sale-home');
 
-// Route::get('/caches', function () {
-    
-//     echo ".";
-    
-// })->name('testpage');
+Route::get('/caches','crawlController@checkProductSku');
 
 
 Route::get('/deal', function () {
@@ -65,7 +61,7 @@ Route::get('/deal', function () {
 })->middleware('cache')->name('dealFe');
 
 
-// Route::get('filterurl','crawlController@addFilterProduct');
+// Route::get('filterurl',crawlController@addFilterProduct);
 
 
 Route::get('/lien-he', function () {
