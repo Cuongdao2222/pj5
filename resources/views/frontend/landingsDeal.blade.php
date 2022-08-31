@@ -123,7 +123,27 @@
                 .result-labels{
                     top: 43%;
                    
-                }   
+                } 
+
+                .flash-sale .item .img {
+                    width: 100% !important;
+                }    
+
+                .flash-sale .item img {
+                    position: relative;
+                    top: 50%;
+                    transform: inherit;
+                    width: 100% !important;
+                }  
+
+                .flash-sale .flash-product .col-flash-2 .item {
+                    display: block;
+                }    
+
+                .flash-sale .flash-product .col-flash-2 .item .desc {
+                    padding: 0 !important;
+                    text-align: center;
+                 }   
 
                 .titles-time h3 {
                     font-size: 10px;
@@ -594,7 +614,7 @@
                             navText: ["<i class='fa fa-angle-left'></i>","<i class='fa fa fa-angle-right'></i>"],
                             responsive:{
                                 0:{
-                                    items:1
+                                    items:2
                                 },
 
                                  600:{
@@ -715,7 +735,7 @@
                 navText: ["<i class='fa fa-angle-left'></i>","<i class='fa fa fa-angle-right'></i>"],
                 responsive:{
                     0:{
-                        items:1
+                        items:2
                     },
 
                      600:{
