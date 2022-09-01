@@ -1078,8 +1078,8 @@
                     <h3>{{ $value->Name }}</h3>
                     <strong class="price">{{  str_replace(',' ,'.', number_format($value->Price))  }}&#x20AB;</strong>
                     </a>
-                     <a href="javascript:void(0)" class="item-ss">
-                    <i></i>
+                     <a href="javascript:void(0)">
+                    <i class="fa-solid fa-plus"></i>
                         so sánh
                     </a>
                 </div>

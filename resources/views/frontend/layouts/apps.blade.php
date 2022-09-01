@@ -351,7 +351,60 @@
                 padding: 5px;
             }
 
+            .global-compare-group {
+                background: #fff;
+                position: fixed;
+                bottom: 0;
+                left: 30%;
+                width: 800px;
+                -webkit-box-shadow: 3px -2px 11px 1px rgb(0 0 0 / 25%);
+                box-shadow: 3px -2px 11px 1px rgb(0 0 0 / 25%);
+                z-index: 9999;
+                display: none;
+            }
+
+            .global-compare-group .pro-compare-holder {
+                padding: 12px 18px 12px 23px;
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-box-align: center;
+                -ms-flex-align: center;
+                align-items: center;
+                -webkit-box-pack: justify;
+                -ms-flex-pack: justify;
+                justify-content: space-between;
+            }
+
+            .global-compare-group .title {
+                background: #546ce8;
+                padding: 8px 12px;
+            }
+
+            .global-compare-group .compare-pro-holder {
+                width: calc(100% - 200px);
+            }
+
+            .global-compare-group .btn-compare {
+                width: 145px;
+                line-height: 40px;
+                margin-left: 55px;
+                background: #546ce8;
+                color: #fff;
+                font-weight: 600;
+                font-size: 18px;
+                border-radius: 4px;
+                text-align: center;
+                display: block;
+            }
+            .text-22 p{
+                margin-bottom: 0;
+            }
+
         </style>
+
+
+
 
         @stack('style')
         
@@ -513,9 +566,6 @@
                         </div>
                     </div>
 
-
-                    
-                    
                     @endif
 
                                
@@ -1534,11 +1584,33 @@
         </footer>
 
         <div class="hotlines">   
-        <a href="tel:02473036336"><img src="{{ asset('images/template/tongdai02473036336.png') }}" alt="hotline" style="height:72px; z-index: 999;"></a>
-          
-        <div class="clear"></div>
-          
+            <a href="tel:02473036336"><img src="{{ asset('images/template/tongdai02473036336.png') }}" alt="hotline" style="height:72px; z-index: 999;"></a>
+              
+            <div class="clear"></div>
+              
         </div>
+
+        <div class="global-compare-group" style="display: block;">
+            <div class="title text-22 text-white d-flex align-items-center justify-content-between font-600">
+                <p>SO SÁNH SẢN PHẨM</p>
+                <a href="javascript:void(0)" class="close-compare text-white fa fa-times" onclick="compare_close()"></a>
+            </div>
+            <div class="text-center red mt-2 text-18 font-500" id="js-alert"></div>
+            <div class="pro-compare-holder">
+                <div class="compare-pro-holder clearfix" id="js-compare-holder">
+                    <!-- <a href=""><img src="images/product-1.jpg"></a> -->
+                    <a href="javascript:void(0)" class="js-compare-item position-relative" data-id="39839">
+                    <span class="remove-compare js-remove-compare" onclick="removeCompare(this)"></span>
+                    <img src="https://anphat.com.vn/media/product/250_39839_20766_macbook_pro_14inch_2021__mkgt3sa_a.jpg">
+                    </a><a href="javascript:void(0)" class="js-compare-item position-relative" data-id="42072">
+                    <span class="remove-compare js-remove-compare" onclick="removeCompare(this)"></span>
+                    </a>
+                </div>
+                <a href="javascript:void(0)" class="btn-compare" onclick="compare_link()">SO SÁNH</a>
+            </div>
+        </div>
+
+
 
 
         <style type="text/css">
