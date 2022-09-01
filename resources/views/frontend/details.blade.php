@@ -26,6 +26,7 @@
 
         .installments-but{
             margin-left: 15px;
+            border: 1px solid #EA1D34;
         }
 
         .add-card-buttons {
@@ -43,6 +44,21 @@
             text-align: center;
             cursor: pointer;
             background: #ffde00;
+        }
+
+        .add-cart-button{
+            border: 1px solid #EA1D34;
+            background: #fff !important;
+            color: #EA1D34 !important;
+        }
+
+
+        @media screen and (min-width: 768px) {
+            .support {
+                width: 70%;
+                margin: 0 auto;
+                text-align: center;
+            }
         }
     </style>
 
@@ -909,7 +925,7 @@
                                 
                                 @if((int)$data['Price']>=3000000)
                                
-                                <a target="_blank" class="but-tra-gop" href="{{ route('details', $data->Link)  }}?show=tra-gop" admicro-data-event="101725" admicro-data-auto="1" admicro-data-order="false">
+                                <a  class="but-tra-gop add-cart-button" href="javascript:void(0)" onclick="addCartFast({{ $data->id }})" admicro-data-event="101725" admicro-data-auto="1" admicro-data-order="false">
                                 <strong>THÊM VÀO </strong>
                                 <br>
                                 <strong>GIỎ HÀNG</strong>
@@ -921,7 +937,7 @@
                                 (Visa, Master, JCB)
                                 </a>
                                 @else
-                                 <a target="_blank" class="add-card-buttons" href="{{ route('details', $data->Link)  }}?show=tra-gop" admicro-data-event="101725" admicro-data-auto="1" admicro-data-order="false">
+                                 <a target="_blank" class="add-card-buttons add-cart-button" href="javascript:void(0)" onclick="addCartFast({{ $data->id }})">
                                 <strong>THÊM VÀO GIỎ HÀNG </strong>
                               
                                 </a>

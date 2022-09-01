@@ -6,12 +6,19 @@
         padding: 0;
         text-align: center;
     }
+
+    #text{
+        display: none;
+    }
+
 </style>
 
 <table id="tb_padding" border="1" bordercolor="#CCCCCC" style="width:100%">
     <tbody> 
 
         <?php
+
+            $filter = [['name'=>'Tên sản phẩm'], ['name'=>'Ảnh'], ['name'=>'Giá bán'],  ['name'=>'Đặc điểm nổi bật']];
 
             $_GET['groupid'] = 1;
 
@@ -21,64 +28,36 @@
 
             $group_id = $_GET['groupid']??$_GET['group-product'];
 
+            $product_id = 4083;
 
-           
-            $filter = App\Models\filter::where('group_product_id', $group_id)->get();
+            // $filter = App\Models\filter::where('group_product_id', $group_id)->get();
+
+        ?>
+
+        <?php  
+            $product_id = $_GET['productId'];
+            $product = App\Models\product::find($product_id);
+            $info_product = [$product->Name, '<img width="327" src="'.asset($product->Image).'">',  str_replace(',' ,'.', number_format($product->Price)).' đ',  str_replace(array("Đặc điểm nổi bật", " Xem thêm"), '', $product->Salient_Features)];
+
         ?>
         @if(count($filter)>0)
-        @foreach($filter as $filters)
+        @foreach($filter as $key=> $filters)
+        
         <tr>
-            <?php  
-                $arr_value = json_decode($filters->value,true);
-
-
-                $property = App\Models\property::where('filterId', $filters->id)->get();
-            ?>
-            <td width="120px"><b>{{ $filters->name }}</b><br><span style="color:red">Dùng là thông số</span></td>
+            <td width="120px"><b>{{ $filters['name'] }}</b></td>
             <td>
                 <div style="max-height:250px; overflow:auto">
                     <table>
                         <tbody>
-                            <tr>fgfgfg</tr>
                             <tr>
-                            @if(isset($property))
-
-                                <?php  
-                                    $product_id = $_GET['productId'];
-
-                                ?>
-
-                                @if($product_id !=0)
-
-                                    @foreach($property as $propertys)
-
-                                    <?php
-
-                                        $search_arr = $filters->value;
-
-                                    ?>
-
-                                    <td class="td-info" >
-                                        <span>  
-
-                                            @if(isset($arr_value[$propertys->id])&& in_array($product_id  ,$arr_value[$propertys->id]))
-                                                <label for="code" data-id="{{ $propertys->id }}">{{ $propertys->name }}</label>
-                                            @endif
-                                        </span>
-                                    </td>
-
-                                       
-                                    @endforeach
-
-                                    
-                              
-                                @endif
                                 
-                            @endif
-                                
+                                <td class="td-info">
+                                    <span>  
+                                        <label for="code" >{!! $info_product[$key] !!}</label>
+                                    </span>
+                                </td>
+
                             </tr> 
-
-
                         </tbody>
                     </table>
                 </div>
@@ -90,48 +69,20 @@
                     <table>
                         <tbody>
                             <tr>
-                            @if(isset($property))
-
-                                <?php  
-                                    $product_id = $_GET['productId'];
-
-                                ?>
-
-                                @if($product_id !=0)
-
-                                    @foreach($property as $propertys)
-
-                                    <?php
-
-                                        $search_arr = $filters->value;
-
-                                    ?>
-
-                                    <td class="td-info" >
-                                        <span>  
-
-                                            @if(isset($arr_value[$propertys->id])&& in_array($product_id  ,$arr_value[$propertys->id]))
-                                                <label for="code" data-id="{{ $propertys->id }}">{{ $propertys->name }}</label>
-                                            @endif
-                                        </span>
-                                    </td>
-
-                                       
-                                    @endforeach
-
-                                    
-                              
-                                @endif
                                 
-                            @endif
-                                
+                                <td class="td-info">
+                                    <span>  
+                                        <label for="code" >{!! $info_product[$key] !!}</label>
+                                    </span>
+                                </td>
+
                             </tr> 
-
-
                         </tbody>
                     </table>
                 </div>
+                
             </td>
+
         </tr>
         @endforeach
         @endif
