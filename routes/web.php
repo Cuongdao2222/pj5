@@ -70,10 +70,10 @@ Route::get('/lien-he', function () {
 });
 
 
-Route::get('/sosanh-sp', function () {
+Route::get('/so-sanh-sp', function () {
     return view('frontend.sosanh');
     
-});
+})->name('so-sanh');
 
 
 Route::post('add-lienhe','lienheController@addLienhe')->name('addlienhe');
@@ -154,6 +154,8 @@ Route::post('order-product', 'Frontend\orderController@orderProduct')->name('ord
 Route::post('remove-cart', 'AjaxController@removeProductCart')->name('removeCart');
 
 Route::post('show-cart', 'AjaxController@showProductCart')->name('showCart');
+
+Route::post('compare-show-product', 'AjaxController@getCompareProduct')->name('compare-show');
 
 Route::post('add-cart-number', 'AjaxController@addProductToCartByNumber')->name('addCartNumber');
 

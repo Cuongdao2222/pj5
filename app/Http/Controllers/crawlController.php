@@ -32,6 +32,11 @@ use \Carbon\Carbon;
 class crawlController extends Controller
 {
 
+    public function sosanh()
+    {
+        $data = 
+    }
+
     public function strip_tags_content($string) { 
         // ----- remove HTML TAGs ----- 
         $string = preg_replace ('/<[^>]*>/', ' ', $string); 

@@ -248,11 +248,28 @@
             .listcompare-click{
                 display: none;
             }
-        </style>
 
-           
-       
-        
+            .compare-pro-holder a {
+                display: block;
+                width: 160px;
+                margin-right: 35px;
+                float: left;
+            }
+            .compare-pro-holder img{
+                width: 100%;
+            }
+
+            .global-compare-group{
+                display: none;
+            }
+
+            .js-compare-item{
+                padding: 0 10px;
+            }
+            #js-compare-holder img{
+                margin-bottom: 10px;
+            }
+        </style>
 
         <?php  
             
@@ -364,7 +381,7 @@
             }
 
             .global-compare-group .pro-compare-holder {
-                padding: 12px 18px 12px 23px;
+                padding-right: 15px;
                 display: -webkit-box;
                 display: -ms-flexbox;
                 display: flex;
@@ -1590,7 +1607,7 @@
               
         </div>
 
-        <div class="global-compare-group" style="display: block;">
+        <div class="global-compare-group">
             <div class="title text-22 text-white d-flex align-items-center justify-content-between font-600">
                 <p>SO SÁNH SẢN PHẨM</p>
                 <a href="javascript:void(0)" class="close-compare text-white fa fa-times" onclick="compare_close()"></a>
@@ -1598,13 +1615,8 @@
             <div class="text-center red mt-2 text-18 font-500" id="js-alert"></div>
             <div class="pro-compare-holder">
                 <div class="compare-pro-holder clearfix" id="js-compare-holder">
-                    <!-- <a href=""><img src="images/product-1.jpg"></a> -->
-                    <a href="javascript:void(0)" class="js-compare-item position-relative" data-id="39839">
-                    <span class="remove-compare js-remove-compare" onclick="removeCompare(this)"></span>
-                    <img src="https://anphat.com.vn/media/product/250_39839_20766_macbook_pro_14inch_2021__mkgt3sa_a.jpg">
-                    </a><a href="javascript:void(0)" class="js-compare-item position-relative" data-id="42072">
-                    <span class="remove-compare js-remove-compare" onclick="removeCompare(this)"></span>
-                    </a>
+                   
+
                 </div>
                 <a href="javascript:void(0)" class="btn-compare" onclick="compare_link()">SO SÁNH</a>
             </div>
@@ -1701,7 +1713,15 @@
   <script>
 
 
-     $('.loader').hide();
+   
+
+    function compare_close() {
+
+        $('.global-compare-group').hide();
+    }
+
+
+    $('.loader').hide();
 
     $(function() {
         $("#tags").autocomplete({

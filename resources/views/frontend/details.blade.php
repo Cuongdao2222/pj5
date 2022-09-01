@@ -1078,9 +1078,9 @@
                     <h3>{{ $value->Name }}</h3>
                     <strong class="price">{{  str_replace(',' ,'.', number_format($value->Price))  }}&#x20AB;</strong>
                     </a>
-                     <a href="javascript:void(0)">
-                    <i class="fa-solid fa-plus"></i>
-                        so sánh
+                    <a href="javascript:void(0)" class="compare-show" data-id="{{ $value->id }}">
+                        <i class="fa-solid fa-plus"></i>
+                            so sánh
                     </a>
                 </div>
 
@@ -1295,6 +1295,59 @@
 @push('script')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js"></script>
 <script type="text/javascript">
+    let ar_product = [];
+
+    function compare_link() {
+
+        var link = '{{ route("so-sanh") }}?list='+ar_product;
+        
+        location.href = link;
+    }
+
+    $('.compare-show').click(function() {
+
+        // kiểm tra đã tick so sánh hay chưa
+
+        $(this).css('color','red');
+
+        $(this).find('.fa-solid').removeClass('fa-plus');
+
+        $(this).find('.fa-solid').addClass('fa-check');
+
+
+        id = $(this).attr('data-id');
+
+        if(ar_product.length<4){
+            
+            ar_product.push(id);
+        
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                type: 'POST',
+                url: "{{ route('compare-show') }}",
+                data: {
+                    ar_product_id: JSON.stringify(ar_product),
+                       
+                },
+                success: function(result){
+                   $('#js-compare-holder').html('');
+                   $('#js-compare-holder').append(result);
+                }
+            });         
+        }
+        else{
+            alert('không thể thêm sản phẩm để so sánh nữa');
+        }
+
+
+        $('.global-compare-group').show();
+    });
+
     @if(!empty($gift) && $gifts->type ==1)
     $("input:checkbox").on('click', function() {
         // in the handler, 'this' refers to the box clicked on
@@ -1333,8 +1386,6 @@
         //     'hideOnContentClick': true
         // });
 
-
-        
 
          $('.item-ss').bind('click',function(){
             $('.listcompare-click').show();

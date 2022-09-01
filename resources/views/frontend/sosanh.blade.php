@@ -45,6 +45,8 @@
         
         <tr>
             <td width="120px"><b>{{ $filters['name'] }}</b></td>
+
+            
             <td>
                 <div style="max-height:250px; overflow:auto">
                     <table>
@@ -61,7 +63,6 @@
                         </tbody>
                     </table>
                 </div>
-                
             </td>
 
             <td>
@@ -80,7 +81,6 @@
                         </tbody>
                     </table>
                 </div>
-                
             </td>
 
         </tr>

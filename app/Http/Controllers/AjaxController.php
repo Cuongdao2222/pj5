@@ -874,6 +874,21 @@ class AjaxController extends Controller
         }    
     }
 
+    public function getCompareProduct(Request $request)
+    {
+        $product = json_decode($request->ar_product_id);
+
+        if(isset($product)){
+
+            $data  = product::whereIn('id', $product)->select('Name', 'Image')->get();
+
+            return view('frontend.ajax.compare', compact('data'));
+        }
+
+        
+
+    }
+
 }
 
 
