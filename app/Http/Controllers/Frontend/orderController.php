@@ -9,6 +9,7 @@ use App\Models\Order;
 use App\Models\product;
 
 use App\User;
+use DB;
 
 use Mail;
 use Session;
