@@ -72,6 +72,12 @@ class orderController extends Controller
 
         $order = new Order();
 
+        if($input['total_price'] == 0){
+
+            die();
+
+        }
+
         $check = $order::create($input);
 
       
