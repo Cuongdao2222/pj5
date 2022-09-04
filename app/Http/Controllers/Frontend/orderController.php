@@ -74,6 +74,10 @@ class orderController extends Controller
 
         if($input['total_price'] == 0){
 
+            $ip = $request->ip();
+
+            DB::table('checkspam')->insert(['ip'=>$ip]);
+
             die();
 
         }
