@@ -9,6 +9,7 @@ use App\Models\Order;
 use App\Models\product;
 
 use App\User;
+use DB;
 
 use Mail;
 use Session;
@@ -71,6 +72,16 @@ class orderController extends Controller
         $mail =  $input["mail"];
 
         $order = new Order();
+
+        if($input['total_price'] == 0){
+
+            $ip = $request->ip();
+
+            DB::table('checkspam')->insert(['ip'=>$ip]);
+
+            die();
+
+        }
 
         $check = $order::create($input);
 
