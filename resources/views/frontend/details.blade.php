@@ -1382,6 +1382,14 @@
 
     $( document ).ready(function() {
     
+        $(".box01 a").fancybox({
+            'hideOnContentClick': true,
+             buttons : [
+                'zoom',
+                'download',
+                'close'
+              ]
+        });
         // $(".box01 a").fancybox({
         //     'hideOnContentClick': true
         // });
