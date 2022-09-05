@@ -435,6 +435,37 @@ class categoryController extends Controller
        return redirect(route('details', $slug));
     }
 
+
+    public function get_Group_Product($id){
+
+        $data_groupProduct = groupProduct::where('level', 0)->get()->pluck('id');
+
+        $infoProductOfGroup = groupProduct::select('product_id', 'id')->whereIn('id', $data_groupProduct)->get()->toArray();
+
+        $result = [];
+        
+
+
+
+        if(isset($infoProductOfGroup)){
+
+            foreach($infoProductOfGroup as $key => $val){
+
+
+                if(!empty($val['product_id'])&& in_array($id, json_decode($val['product_id']))){
+
+
+
+                    array_push($result, $val['id']);
+                }
+               
+            }
+
+        }
+
+        return $result;
+    }    
+
     public function details($slug)
     {
         $slug = trim($slug);
@@ -457,7 +488,6 @@ class categoryController extends Controller
             return($this->categoryView($slug));
 
         }
-
 
         else{
 
@@ -505,11 +535,38 @@ class categoryController extends Controller
                 return view('frontend.installment', compact('data'));
             }
 
-             $other_product = Cache::remember('other_product', 10000, function() use ($data) {
-                return  product::where('Group_id',  $data->Group_id)->take(10)->get();
+
+            $group_product = Cache::rememberForever('group_product_cache_'.$findID->id, function() use ($findID){
+
+                $group_products = $this->get_Group_Product($findID->id)??0;
+
+                return $group_products;
             });
 
+            $data_cate = 1;
 
+
+            if(!empty($group_product && $group_product[0])){
+
+                $data_cate = $group_product[0];
+
+            }   
+
+
+            $data_group_product = Cache::rememberForever('data_group_product_'.$data_cate, function() use ($data_cate){ 
+
+                $data_group_products = groupProduct::find($data_cate);
+
+                return $data_group_products;
+            });  
+
+            $other_product = Cache::rememberForever('other_product_'.$data_group_product->product_id, function() use ($data_group_product){ 
+
+                return product::whereIn('id',  json_decode($data_group_product->product_id))->take(10)->get();
+            });  
+            
+
+           
             $meta = Cache::remember('metaseo-detail'.$data->Meta_id,10000, function() use ($data){
                 return metaSeo::find($data->Meta_id);
             }); 
