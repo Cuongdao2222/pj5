@@ -1317,7 +1317,7 @@
 
         id = $(this).attr('data-id');
 
-        if(ar_product.length<4){
+        if(ar_product.length<3){
             
             ar_product.push(id);
         

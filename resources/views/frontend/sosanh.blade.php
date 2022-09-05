@@ -64,7 +64,7 @@
 
                         $product = App\Models\product::find($value);
 
-                        $info_products = [$product->Name, '<img width="327" src="'.asset($product->Image).'">',  str_replace(',' ,'.', number_format($product->Price)).' đ',  str_replace(array("Đặc điểm nổi bật", " Xem thêm"), '', $product->Salient_Features)];
+                        $info_products = [$product->Name, '<img width="327" style="width:70%" src="'.asset($product->Image).'">',  str_replace(',' ,'.', number_format($product->Price)).' đ',  str_replace(array("Đặc điểm nổi bật", "Xem thêm"), '',  html_entity_decode($product->Salient_Features))];
 
                         array_push($info_product, $info_products);
                     }
@@ -72,7 +72,7 @@
                 @foreach($filter as $key=> $filters)
                 
                 <tr>
-                    <td width="120px"><b>{{ $filters['name'] }}</b></td>
+                    <td><b>{{ $filters['name'] }}</b></td>
 
                     @foreach($info_product as $info_productss)
 
