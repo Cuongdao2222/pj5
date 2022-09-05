@@ -533,6 +533,25 @@ class productController extends AppBaseController
         return view('products.image', compact('id'));
     }
 
+    public function sosanh()
+    {
+        $data = $_GET['list'];
+
+        if(empty($data)){
+            return abort('404');
+        }
+        else{
+            $data = explode(',', $data);
+            if(!isset($data)){
+                return abort('404');
+            }
+        }
+        return view('frontend.sosanh', compact('data'));
+        
+
+
+    }
+
     
 
     public function search()

@@ -1306,43 +1306,60 @@
 
     $('.compare-show').click(function() {
 
+
+         id = $(this).attr('data-id');
         // kiểm tra đã tick so sánh hay chưa
 
-        $(this).css('color','red');
+        if($(this).find('.fa-solid').hasClass('fa-check')){
 
-        $(this).find('.fa-solid').removeClass('fa-plus');
+            $(this).find('.fa-solid').removeClass('fa-check');
 
-        $(this).find('.fa-solid').addClass('fa-check');
+            $(this).find('.fa-solid').addClass('fa-plus');
 
+            $(this).css('color','#59A0DA');
 
-        id = $(this).attr('data-id');
+            index = ar_product.indexOf(id);
 
-        if(ar_product.length<3){
-            
-            ar_product.push(id);
-        
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-
-            $.ajax({
-                type: 'POST',
-                url: "{{ route('compare-show') }}",
-                data: {
-                    ar_product_id: JSON.stringify(ar_product),
-                       
-                },
-                success: function(result){
-                   $('#js-compare-holder').html('');
-                   $('#js-compare-holder').append(result);
-                }
-            });         
+            if (index !== -1) {
+                ar_product.splice(index, 1);
+            }
         }
         else{
-            alert('không thể thêm sản phẩm để so sánh nữa');
+            $(this).css('color','red');
+
+            $(this).find('.fa-solid').removeClass('fa-plus');
+
+            $(this).find('.fa-solid').addClass('fa-check');
+
+            if(ar_product.length<3){
+
+                ar_product.push(id);
+            } 
+            else{
+                alert('không thể thêm sản phẩm nữa');
+            }    
         }
+
+       
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $.ajax({
+            type: 'POST',
+            url: "{{ route('compare-show') }}",
+            data: {
+                ar_product_id: JSON.stringify(ar_product),
+                   
+            },
+            success: function(result){
+               $('#js-compare-holder').html('');
+               $('#js-compare-holder').append(result);
+            }
+        });         
+        
 
 
         $('.global-compare-group').show();

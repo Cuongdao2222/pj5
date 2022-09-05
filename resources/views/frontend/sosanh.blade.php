@@ -44,18 +44,10 @@
                 <?php
 
                     $filter = [['name'=>'Tên sản phẩm'], ['name'=>'Ảnh'], ['name'=>'Giá bán'],  ['name'=>'Đặc điểm nổi bật']];
-
-                    $_GET['productId'] = 4083;
-
+                
                 ?>
 
-                <?php  
-
-                    $data = $_GET['list'];
-
-                    $data = explode(',', $data);
-
-                ?>
+               
                 @if(count($filter)>0 && isset($data))
 
                 <?php 
@@ -64,7 +56,7 @@
 
                         $product = App\Models\product::find($value);
 
-                        $info_products = [$product->Name, '<img width="327" style="width:70%" src="'.asset($product->Image).'">',  str_replace(',' ,'.', number_format($product->Price)).' đ',  str_replace(array("Đặc điểm nổi bật", "Xem thêm"), '',  html_entity_decode($product->Salient_Features))];
+                        $info_products = [$product->Name, '<img width="327" style="width:50%" src="'.asset($product->Image).'">',  str_replace(',' ,'.', number_format($product->Price)).' đ',  str_replace(array("Đặc điểm nổi bật", "Xem thêm"), '',  html_entity_decode($product->Salient_Features))];
 
                         array_push($info_product, $info_products);
                     }
