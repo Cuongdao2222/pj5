@@ -676,7 +676,7 @@
                             <div class="pdetail-price-box">
 
                                 <h3>
-                                     {{str_replace(',' ,'.', number_format($data->Price))  }}₫
+                                    {{str_replace(',' ,'.', number_format($data->Price))  }}₫
                                 </h3>
                             </div>
                             <!-- <div class="pdetail-promotion">
