@@ -1390,9 +1390,7 @@
                 'close'
               ]
         });
-        // $(".box01 a").fancybox({
-        //     'hideOnContentClick': true
-        // });
+       
 
 
          $('.item-ss').bind('click',function(){
