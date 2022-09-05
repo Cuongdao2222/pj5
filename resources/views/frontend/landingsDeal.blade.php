@@ -73,10 +73,10 @@
                 padding-right: 8vw;
             }
 
-            .titles-time .minutes{
+            /*.titles-time .minutes{
                 font-weight: normal;
                 color: #000;
-            }
+            }*/
 
 
 
@@ -386,7 +386,7 @@
 
                         ?>  
                         <li onclick="clickDeal({{ $vals->id }},{{ $key+1 }}, {{ $k }})" class='deal{{ $vals->id }}'>
-                            <h3 class="{{  $k==1?'actives-click':'' }}">
+                            <h3 class="{{  $k==1?'actives-click':'' }} active_{{ $key+1 }}">
                                 <span>{{ $value['start'] }}</span>
                                 <br>
                                 <span>{!! $now->between($value['startTime'], $value['endTime'])?'<div class="clock"><span class="hour">0'.$hour.'</span>:<span class="minutes">'.$minutes.'</span>:<span class="second">'.$seconds.'</span></div>':'SẮP DIỄN RA' !!}</span>
@@ -590,7 +590,9 @@
 
                 classname =  $(this).attr('class');
 
-                alert(classname);
+                $('.deal'+flash_deal_id+' h3').removeClass('actives-click');
+
+                $('.deal'+flash_deal_id+' .active_'+id).addClass('actives-click');
 
                 $.ajaxSetup({
                     headers: {
