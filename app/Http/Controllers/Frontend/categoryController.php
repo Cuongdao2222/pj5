@@ -234,6 +234,9 @@ class categoryController extends Controller
 
             $parent_cate_id = $ar_list[0]['id'];
 
+            $parent_id_cate = $ar_list[0]['id'];
+
+
             $link   =  $findID->link;
 
             $Group_product = groupProduct::find($id_cate);
@@ -270,8 +273,6 @@ class categoryController extends Controller
                 $parent_cate_id = $id_cate;
 
             }
-
-
             
             $filter = filter::where('group_product_id', $parent_cate_id)->select('name', 'id')->get();
 
@@ -284,10 +285,11 @@ class categoryController extends Controller
                 'slogan'=>$slogan,
                 'meta'=> $meta,
                 'numberdata'=>$numberdata,
-                'groupProduct_level'=>$groupProduct_level
-
+                'groupProduct_level'=>$groupProduct_level,
+                'parent_id_cate'=>$parent_id_cate,
 
             ];
+
 
             return $data;
         }    
