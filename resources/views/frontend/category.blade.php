@@ -154,7 +154,7 @@
 
 
 
-        @if($parent_id_cate==8)
+        @if(!empty($parent_id_cate)&&$parent_id_cate==8)
 
         <select class="option-href" style="width: 35%;">
             <option value="https://dienmaynguoiviet.vn/gia-dung" {{ $id_cate==8?'selected':'' }} >Tất cả sản phẩm</option>
