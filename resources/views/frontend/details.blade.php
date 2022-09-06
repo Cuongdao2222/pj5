@@ -227,10 +227,14 @@
 
                         @if(!empty($image->image) && '_'.basename($image->image) != $image_product)
 
+                        @if( basename($image->image) != basename($data->Image) )
+
                         <div class="item">
                             <a href="{{ asset($image->image) }}" data-fancybox="gallery"><img src="{{ asset($image->image) }}"  alt="{{ @$data->Name }}"></a>
                         </div>
+                        @endif
 
+                        <!-- end check -->
                         @endif
                         @endforeach
                         
