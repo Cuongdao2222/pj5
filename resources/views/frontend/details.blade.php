@@ -195,7 +195,9 @@
                 <div class="box01__show">
                     <div class="owl-carousel detail-slider" id="carousel">
 
-                        
+                        <?php 
+                            $image_product = strstr(basename($data->Image), '_');
+                        ?>
                         <div class="item">
                             <a href="{{ asset($data->Image) }}" data-fancybox="gallery"><img src="{{ asset($data->Image) }}" alt="{{ @$data->Name }}">
 
@@ -213,14 +215,17 @@
 
                                 $images = App\Models\image::where('product_id', $data->id)->select('image')->get();
                             }  
-                            
+
+
                         ?>
-                       
+
                         @if(isset($images))
                        
                         @foreach($images as $image)
 
-                        @if(!empty($image->image))
+                        <!-- check trùng ảnh đại diện -->
+
+                        @if(!empty($image->image) && '_'.basename($image->image) != $image_product)
 
                         <div class="item">
                             <a href="{{ asset($image->image) }}" data-fancybox="gallery"><img src="{{ asset($image->image) }}"  alt="{{ @$data->Name }}"></a>

@@ -19,9 +19,17 @@
             .option-gift{
                 display: flex;
             }
+            .option-href{
+                display: none;
+            }
             
 
             @media screen and (max-width:776px) {
+
+                .option-href{
+                    display: block;
+                }
+
                 .box-filter{
                     display: flex;
                     overflow: auto;
@@ -142,6 +150,31 @@
                 </div>       
             </section>
         </div>
+        @endif
+
+
+
+        @if($parent_id_cate==8)
+
+        <select class="option-href" style="width: 35%;">
+            <option value="https://dienmaynguoiviet.vn/gia-dung" {{ $id_cate==8?'selected':'' }} >Tất cả sản phẩm</option>
+            <option value="https://dienmaynguoiviet.vn/may-hut-bui" {{ $id_cate==101?'selected':'' }}>Máy hút bụi</option>
+            <option value="https://dienmaynguoiviet.vn/binh-nong-lanh" {{ $id_cate==102?'selected':'' }}>Bình nước nóng</option>
+            <option value="https://dienmaynguoiviet.vn/ban-la" {{ $id_cate==103?'selected':'' }}>Bàn là</option>
+            <option value="https://dienmaynguoiviet.vn/may-say-toc" {{ $id_cate==104?'selected':'' }}>Máy sấy tóc</option>
+             <option value="https://dienmaynguoiviet.vn/may-loc-khong-khi" {{ $id_cate==317?'selected':'' }}>Máy lọc không khí</option>
+            <option value="https://dienmaynguoiviet.vn/may-loc-khong-khi-samsung" {{ $id_cate==105?'selected':'' }}>Máy lọc không khí Samsung</option>
+            <option value="https://dienmaynguoiviet.vn/may-loc-khong-khi-sharp" {{ $id_cate==106?'selected':'' }}>Máy lọc không khí Sharp</option>
+            <option value="https://dienmaynguoiviet.vn/noi-com-dien" {{ $id_cate===108?'selected':'' }}>Nồi cơm điện</option>
+            <option value="https://dienmaynguoiviet.vn/lo-vi-song" {{ $id_cate==109?'selected':'' }}>Lò vi sóng</option>
+            <option value="https://dienmaynguoiviet.vn/binh-thuy-dien" {{ $id_cate==110?'selected':'' }}>Bình thủy điện</option>
+            <option value="https://dienmaynguoiviet.vn/am-sieu-toc" {{ $id_cate==111?'selected':'' }}>Ấm siêu tốc</option>
+            <option value="https://dienmaynguoiviet.vn/may-xay-sinh-to" {{ $id_cate==112?'selected':'' }}>Máy xay sinh tố</option>
+            <option value="https://dienmaynguoiviet.vn/may-ep-hoa-qua" {{ $id_cate==113?'selected':'' }}>Máy ép hoa quả</option>
+            <option value="https://dienmaynguoiviet.vn/may-xay-da-nang">Máy xay đa năng</option>
+        </select>
+
+    
         @endif
 
         <section id="categoryPage" class="desktops" data-id="1942" data-name="Tivi" data-template="cate">
@@ -476,6 +509,10 @@
                     }
                 });
 
+            });
+
+             $('.option-href').on('change', function(){
+               window.location = $(this).val();
             });
 
         
