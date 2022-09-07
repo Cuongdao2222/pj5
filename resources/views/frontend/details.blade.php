@@ -576,7 +576,7 @@
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
                         </div> -->
 
-                    <div id="thumb-article-gallery-0" class="item itemTab  is-show-popup" data-gallery-id="article-gallery" data-color-id="0" data-is-full-spec="False" data-color-order-id="0" data-isfeatureimage="True">
+                    <div id="thumb-article-gallery-0" class="item itemTab  is-show-popup scroll-content" data-gallery-id="article-gallery" data-color-id="0" data-is-full-spec="False" data-color-order-id="0" data-isfeatureimage="True">
                         <div class="item-border">
                             <i class="icondetail-danhgia"></i>
                         </div>
@@ -673,7 +673,7 @@
                 <div class="pop">
                 </div>
             </div>
-            <div class="content">
+            <div class="content" id="contents-scroll">
                  
 
                 <?php
@@ -1317,6 +1317,13 @@
         
         location.href = link;
     }
+
+    $('.scroll-content').click(function(){
+
+        $('html, body').animate({
+            scrollTop: $("#contents-scroll").offset().top
+        }, 1000);
+    })
 
     $('.compare-show').click(function() {
 
