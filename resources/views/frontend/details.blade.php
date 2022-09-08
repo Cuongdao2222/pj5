@@ -60,6 +60,25 @@
                 text-align: center;
             }
         }
+
+       @media screen and (max-width: 768px){
+            .global-compare-group{
+                left: 0 !important;
+            }
+            .compare-pro-holder a {
+
+                width: 30%;
+            } 
+            .btn-compare{
+                position: absolute;
+                top: 0;
+                left: 46vw;
+                background: #E5172F !important;
+            } 
+            /*.global-compare-group{
+                width: 100%;
+            }  */
+        }
     </style>
 
 
