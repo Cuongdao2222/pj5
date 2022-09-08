@@ -88,7 +88,8 @@ class dealController extends Controller
         $products   =  product::select('Name', 'Link', 'Price','id', 'Image')->whereIN('id', $ar_products_id)->get()->toArray();
 
 
-
+        $products_add = [];
+        
         if(isset($products)){
 
            for ($i=0; $i < count($products) ; $i++) { 
