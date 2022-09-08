@@ -136,7 +136,7 @@ Route::get('searchquery', 'productController@search')->name('test');
 Route::get('page/{slug}', 'Frontend\categoryController@pageView')->name('page_cd');
 
 
-Route::get('tim', 'productController@FindbyNameOrModelOfFrontend')->name('search-product-frontend');
+Route::get('tim', 'productController@FindbyNameOrModelOfFrontend')->middleware('throttle:60')->name('search-product-frontend');
 
 Auth::routes(['verify' => true]);
 
@@ -171,7 +171,7 @@ Route::post('muchsearch', 'AjaxController@muchSearch')->name('muchSearch');
 
 Route::post('get-email-user', 'AjaxController@getEmail')->name('getemail');
 
-Route::post('suggest', 'AjaxController@getProductActive')->name('sugest-click');
+Route::post('suggest', 'AjaxController@getProductActive')->middleware('throttle:60')->name('sugest-click');
 
 Route::post('filter-price-product', 'AjaxController@filterByValue')->name('filter-option');
 
