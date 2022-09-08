@@ -1712,12 +1712,17 @@
 
   <script>
 
-
-   
-
     function compare_close() {
 
+        ar_product = [];
+
         $('.global-compare-group').hide();
+
+        $('.compare-show .fa-solid').removeClass('fa-check')
+
+        $('.compare-show .fa-solid').addClass('fa-plus');
+
+        $('.compare-show').css('color','#59A0DA');
     }
 
 

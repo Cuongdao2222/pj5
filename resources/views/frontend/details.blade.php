@@ -71,13 +71,15 @@
             } 
             .btn-compare{
                 position: absolute;
-                top: 0;
+                top: 34px;
                 left: 46vw;
                 background: #E5172F !important;
             } 
-            /*.global-compare-group{
-                width: 100%;
-            }  */
+            .global-compare-group .close-compare{
+                position: absolute;
+                top: 10px;
+                left: 94vw;
+            }  
         }
     </style>
 
