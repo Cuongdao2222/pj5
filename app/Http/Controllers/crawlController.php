@@ -34,7 +34,33 @@ class crawlController extends Controller
 
     public function sosanh()
     {
-        $data = 
+
+        $ids = [13,16,12,14,15,41,36,40,287,37,38,39,57,58,59,60,61,77,82,80,79,84,78,83,81,117,116,324,130];
+        
+        foreach ($ids as  $id) {
+            
+            $groupProduct =  groupProduct::find($id);
+
+            $product = json_decode($groupProduct->product_id);
+
+            
+            foreach ($product as $value) {
+
+                if( intval($value)>425){
+                    $products = product::find($value);
+
+                    if(!empty($products)){
+                        $products->id_group_product = $id;
+                        $products->save();
+
+                    }
+                   
+                }
+            
+            }
+        }
+       
+        echo "thanh cong";
     }
 
     public function strip_tags_content($string) { 

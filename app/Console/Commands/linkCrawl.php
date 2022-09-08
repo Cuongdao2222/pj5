@@ -39,6 +39,6 @@ class linkCrawl extends Command
     public function handle()
     {
         $crawl = new crawlController();
-        return $crawl->deleteCache();
+        return $crawl->sosanh();
     }
 }
