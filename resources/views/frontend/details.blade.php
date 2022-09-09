@@ -11,6 +11,9 @@
             left: 0;
             top: 0;
         }
+        .redirectCart{
+            font-weight: bold;
+        }
 
         .installment-purchase .but-tra-gop {
             width: calc(50% - 10px);
