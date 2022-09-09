@@ -71,6 +71,7 @@ class productController extends AppBaseController
     {
         $input = $request->all();
 
+
         if(empty($input['Link'])){
 
             $input['Link'] =  str_replace('/', '', convertSlug($input['Name']));
@@ -85,6 +86,13 @@ class productController extends AppBaseController
 
             $input['Price'] = str_replace(',', '', $input['Price']);
             $input['Price'] = str_replace('.', '', $input['Price']);
+        }
+
+
+        if(!empty($input['InputPrice'])){
+
+            $input['InputPrice'] = str_replace(',', '', $input['InputPrice']);
+            $input['InputPrice'] = str_replace('.', '', $input['InputPrice']);
         }
 
         if(empty($input['Group_id'])){
@@ -231,6 +239,7 @@ class productController extends AppBaseController
 
         $input  = $request->all();
 
+
         if(empty($product->Link)){
 
             $input['Link'] = convertSlug($input['Name']);
@@ -255,6 +264,16 @@ class productController extends AppBaseController
             $input['Price'] = str_replace('.', '', $input['Price']);
         }
 
+
+        if(Auth::user()->id==4 || Auth::user()->id==6){
+            if(!empty($input['InputPrice'])){
+
+                $input['InputPrice'] = str_replace(',', '', $input['InputPrice']);
+                $input['InputPrice'] = str_replace('.', '', $input['InputPrice']);
+            }
+        }
+            
+
         if(!empty($input['Group_id'])){
 
             $input['Group_id'] = 0;
@@ -274,6 +293,7 @@ class productController extends AppBaseController
         }
 
         $input['user_id'] =  Auth::user()->id;
+
          
         $product = $this->productRepository->update($input, $id);
 

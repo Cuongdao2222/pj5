@@ -22,8 +22,9 @@
         <th>Sản phẩm Sale</th>
         <th>Quà tặng</th>
         <th>Ngày tạo</th>
-        <th>Nhóm sản phẩm</th>
-        
+        @if(Auth::user()->id==4 || Auth::user()->id==6)
+        <th>Chênh lệch giá</th>
+        @endif
         <th colspan="3">Action</th>
         </tr>
         </thead>
@@ -200,8 +201,9 @@
                 </select>
             </td>
             <td>{{ $product->created_at->format('d/m/Y, H:i:s') }}</td>
-            <td>{{ get_Group_Product($product->id)[0]??'' }}</td>
-
+            @if(Auth::user()->id==4 || Auth::user()->id==6)
+            <td>{{  str_replace(',' ,'.', number_format(intval($product->Price) - intval($product->InputPrice)))   }}</td>
+            @endif
 
             
                 <td width="120">

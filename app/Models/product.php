@@ -67,7 +67,8 @@ class product extends Model
         'Group_id',
         'Price',
         'Meta_id',
-        'promotion'
+        'promotion',
+        'InputPrice'
 
     ];
 
@@ -85,7 +86,8 @@ class product extends Model
         'Quantily' => 'integer',
         'Maker' => 'string',
         'Group_id' => 'string',
-        'Price' => 'integer'
+        'Price' => 'integer',
+        'InputPrice'=>'integer'
     ];
 
     /**
