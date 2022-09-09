@@ -443,10 +443,17 @@ class AjaxController extends Controller
             $data_product_id = [];
 
             if(isset($clear_data)){
+                $dem = 0;
                 foreach ($clear_data as $value) {
-                    $value = strip_tags($value);
+                    $dem++;
 
-                    array_push($data_product_id, $value);
+                    if($dem<13){
+                        $value = strip_tags($value);
+
+                        array_push($data_product_id, $value);
+
+                    }
+                    break;
 
                 }
             }
