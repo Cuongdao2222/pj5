@@ -187,12 +187,15 @@
             ?>
 
 
-            
             <td>
                 <select id="gift" onchange="add_gift_group({{ $product->id }})">
                     <option value="0">Không chọn</option>
+
+
                     @if(isset($group_gift))
+                    
                     @foreach($group_gift as $value)
+                    
                     <option value="{{ $value->id }}" {{ $id_group_gift == $value->id?'selected':'' }} >{{ $value->group_name }}</option>
                     @endforeach
                     @endif
@@ -370,7 +373,7 @@
             },
             success: function(result){
 
-                alert('thanh cong');
+                alert(result);
                 
             }
         });

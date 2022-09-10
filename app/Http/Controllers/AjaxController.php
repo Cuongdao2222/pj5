@@ -856,11 +856,15 @@ class AjaxController extends Controller
 
             }
             else{
-                return response('bạn chưa chọn nhóm khuyến mãi');
+
+                $input['start'] =  '25-05-2022,08:00';
+
+                $input['end'] =  '26-05-2022,08:00';
+
+                $result = DB::table('promotion')->insert($input);
+
+                return response('đã xóa khuyến mãi của sản phẩm');
             }
-
-
-           
         }    
     }
 
