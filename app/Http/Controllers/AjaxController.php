@@ -842,6 +842,10 @@ class AjaxController extends Controller
 
             $input['id_group_gift'] = $request->id_group_gift;
 
+             Cache::forget('id_checks'.$request->product_id);
+
+            Cache::forget('promotion'.$request->product_id);
+
             $group_gift = DB::table('group_gift')->where('id', $input['id_group_gift'])->get()->first();
 
             if(!empty($group_gift)){
