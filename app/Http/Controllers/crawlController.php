@@ -31,7 +31,35 @@ use \Carbon\Carbon;
 
 class crawlController extends Controller
 {
+    public function addNames()
+    {
+        $product = product::where('id_group_product', NULL)->get()->pluck('id')->toArray();
 
+        foreach ($product as $key => $value) {
+
+            $products = product::find($value);
+
+            if(!empty($products)){
+
+                $name =  $products->Name;
+                
+
+                if(!empty($products->ProductSku)){
+                    $cut    =  strstr($name, $products->ProductSku);
+                    $names = str_replace($cut, '', $name);
+
+                    if(!empty($names)){
+
+                        $products->Names = $names;
+                        $products->save();
+
+                    }
+                }
+            }
+        }
+        echo "thanh cong";
+
+    }
     public function sosanh()
     {
 
