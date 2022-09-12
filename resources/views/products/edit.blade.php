@@ -7,7 +7,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-12">
-                    <h1>Edit Product</h1>
+                    <h1>Sửa sản phẩm  {{ $product->Name }}</h1>
                 </div>
             </div>
         </div>
@@ -82,6 +82,7 @@
     <div class="btn btn-warning"><a href="{{ route('images.create') }}?{{ $product->id }}">Ảnh</a></div>
 <!--     <div class="btn btn-warning" ><a href="#mo-ta">Thông số kỹ thuật chi tiết</a></div> -->
     <div class="btn btn-warning" ><a href="{{ route('details', $product->Link) }}" target="_blank">Xem tại web</a></div>
+    <div class="btn btn-warning check-show" ><a class="" href="javascript:void(0)" onclick="show({{ $product->active==0?1:0  }}, {{ $product->id }})"> {{  $product->active==0?'Ẩn':'Hiển thị' }} </a></div>
     
     @if(!empty($metaSeo) && !empty($_GET['seo']))
     
@@ -173,3 +174,42 @@
         </div>
     </div>
 @endsection
+
+<script type="text/javascript">
+    
+    function show(active, productId) {
+        
+        $.ajax({
+           
+            type: 'POST',
+            url: "{{ route('check-active') }}",
+            data: {
+                product_id: productId,
+                active:active
+                   
+            },
+            success: function(result){
+                if(active==1){
+
+                    text = '<a href="javascript:void(0)" onclick="show(0, {{ $product->id }})"> Hiển thị </a>'
+
+                    $('.check-show a').remove();
+
+                    $('.check-show').append(text);
+                    
+
+                    
+                }
+                else{
+                    text = '<a href="javascript:void(0)" onclick="show(1, {{ $product->id }})"> Ẩn </a>';
+
+                    $('.check-show a').remove();
+
+                    $('.check-show').append(text);
+                   
+                }
+               
+            }
+        });
+    }
+</script>
