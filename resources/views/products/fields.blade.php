@@ -159,6 +159,22 @@
 
 </div>
 
+<!-- Quantily Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('Quantily', 'Số lượng trong kho:') !!}
+    {!! Form::text('Quantily', null, ['class' => 'form-control']) !!}
+</div>
+
+
+
+<!-- Maker Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('Maker', 'Hãng phân phối:') !!}
+    {!! Form::select('Maker', $makers, @$MakerSelected, ['class' => 'form-control custom-select']) !!}
+</div>
+
+
+
 @if(Auth::user()->id ==4 || Auth::user()->id ==6)
 <!-- InputPrice Field -->
 <div class="form-group col-sm-6">
@@ -235,22 +251,6 @@
     {!! Form::label('Salient_Features', 'Đặc điểm nổi bật') !!}
     {!! Form::textarea('Salient_Features', null, ['class' => 'form-control', 'id' =>'content-1']) !!}
 </div>
-
-
-<!-- Quantily Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('Quantily', 'Số lượng trong kho:') !!}
-    {!! Form::text('Quantily', null, ['class' => 'form-control']) !!}
-</div>
-
-
-
-<!-- Maker Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('Maker', 'Hãng phân phối:') !!}
-    {!! Form::select('Maker', $makers, @$MakerSelected, ['class' => 'form-control custom-select']) !!}
-</div>
-
 
 <!-- promotion -->
 <div class="form-group col-sm-6">
