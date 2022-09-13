@@ -895,12 +895,14 @@ class AjaxController extends Controller
 
         if(isset($product)){
 
-            $data  = product::whereIn('id', $product)->select('Name', 'Image')->get();
+            if(count($product)<5){
 
-            return view('frontend.ajax.compare', compact('data'));
+                $data  = product::whereIn('id', $product)->select('Name', 'Image')->get();
+
+                return view('frontend.ajax.compare', compact('data'));
+            }
+            
         }
-
-        
 
     }
 
