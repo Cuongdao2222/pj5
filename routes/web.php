@@ -70,7 +70,7 @@ Route::get('/lien-he', function () {
 });
 
 
-Route::get('/so-sanh-sp','productController@sosanh')->name('so-sanh');
+Route::get('/so-sanh-sp','productController@sosanh')->middleware('throttle:60')->name('so-sanh');
 
 
 Route::post('add-lienhe','lienheController@addLienhe')->name('addlienhe');
