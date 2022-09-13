@@ -55,6 +55,10 @@
             color: #EA1D34 !important;
         }
 
+        .box-compare{
+            margin-left: 15px;
+        }
+
 
         @media screen and (min-width: 768px) {
             .support {
@@ -424,8 +428,6 @@
                                     <h3> {{ str_replace(',' ,'.', number_format($data->Price)) }}₫ </h3>
                                 </div>
 
-                                
-                                
                             </div>
                             <div class="pdetail-status">
                                 <div class="pdetail-stockavailable">
@@ -441,11 +443,13 @@
                                             $status = 'Còn hàng';
                                         }
 
-
-                                        
                                         ?>
                                     <span>{{ $status }}</span>
+
+
                                 </div>
+
+
 
                                 @if(!empty($data->promotion))
                                 <fieldset class="p-gift">
@@ -543,6 +547,8 @@
                                 </div>
                                 @endif
                             </div>
+
+                            
                             <div class="clearfix"></div>
 
 
@@ -761,7 +767,25 @@
                     <meta property="position" content="4">
                 </li>
             </ul>
-            <h1>{{ $data->Name }}</h1>
+
+
+
+            <div class="box-info-name">
+
+                <h1>{{ $data->Name }}</h1>
+
+                
+            </div>
+
+            <br>
+            <div class="box-compare">
+                <a href="javascript:void(0)" class="compare-show" onclick="compareShow({{ $data->id }})">
+                    <i class="fa-solid fa-plus"></i>
+                        so sánh
+                </a>
+            </div>
+            
+
             @endif
             <div class="col-12 pdetail-des">
                 <div class="clearfix"></div>
@@ -893,6 +917,7 @@
                         <div class="pdetail-status">
                             <div class="pdetail-stockavailable">
                                 <span>{{ $status }} </span>
+
                             </div>
 
                             @if(!empty($data->promotion))
@@ -1118,7 +1143,7 @@
                     <h3>{{ $value->Name }}</h3>
                     <strong class="price">{{  str_replace(',' ,'.', number_format($value->Price))  }}&#x20AB;</strong>
                     </a>
-                    <a href="javascript:void(0)" class="compare-show" data-id="{{ $value->id }}">
+                    <a href="javascript:void(0)" class="compare-show" onclick="compareShow({{ $value->id }})">
                         <i class="fa-solid fa-plus"></i>
                             so sánh
                     </a>
@@ -1351,12 +1376,8 @@
         }, 1000);
     })
 
-    $('.compare-show').click(function() {
-
-
-         id = $(this).attr('data-id');
-        // kiểm tra đã tick so sánh hay chưa
-
+    function compareShow(id) {
+       
         if($(this).find('.fa-solid').hasClass('fa-check')){
 
             $(this).find('.fa-solid').removeClass('fa-check');
@@ -1406,11 +1427,12 @@
                $('#js-compare-holder').append(result);
             }
         });         
-        
-
-
+    
         $('.global-compare-group').show();
-    });
+
+    }
+
+    
 
     @if(!empty($gift) && $gifts->type ==1)
     $("input:checkbox").on('click', function() {

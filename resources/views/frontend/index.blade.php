@@ -105,6 +105,26 @@
                     top: 43%;
                    
                 }    
+
+
+                .global-compare-group{
+                    left: 0 !important;
+                }
+                .compare-pro-holder a {
+
+                    width: 30%;
+                } 
+                .btn-compare{
+                    position: absolute;
+                    top: 34px;
+                    left: 46vw;
+                    background: #E5172F !important;
+                } 
+                .global-compare-group .close-compare{
+                    position: absolute;
+                    top: 10px;
+                    left: 94vw;
+                }  
             }
 
              @media screen and (min-width: 768px) {
@@ -451,6 +471,11 @@
                             </p>
                         </div>
                     </a>
+
+                    <a href="javascript:void(0)" class="compare-show" data-id="{{ $value->product_id }}">
+                        <i class="fa-solid fa-plus"></i>
+                            so sánh
+                    </a>
                 </div>
                 @endif
 
@@ -541,6 +566,7 @@
                                     
                                 </div>
                                <p class="result-labels"><img class="sale-banner ls-is-cached lazyloaded" alt="hot" data-src="{{ asset('images/background-image/hot.jpg') }}" src="{{ asset('images/background-image/hot.jpg') }}"></p>
+
                                 <h3>{{ $datas->Name }}</h3>
                                 @if($groups->id<5)
                                 <?php
@@ -628,6 +654,11 @@
                                    
                                 @endif
                                 
+                            </a>
+
+                             <a href="javascript:void(0)" class="compare-show" data-id="{{ $datas->id }}">
+                                <i class="fa-solid fa-plus"></i>
+                                    so sánh
                             </a>
                         </div>
                         @endif
@@ -773,9 +804,81 @@
 
     @push('script')
 
-
-
     <script type="text/javascript">
+
+        let ar_product = [];
+
+        $('.compare-show').click(function() {
+
+            id = $(this).attr('data-id');
+            // kiểm tra đã tick so sánh hay chưa
+
+            if($(this).find('.fa-solid').hasClass('fa-check')){
+
+                $(this).find('.fa-solid').removeClass('fa-check');
+
+                $(this).find('.fa-solid').addClass('fa-plus');
+
+                $(this).css('color','#59A0DA');
+
+                index = ar_product.indexOf(id);
+
+                if (index !== -1) {
+                    ar_product.splice(index, 1);
+                }
+            }
+            else{
+                $(this).css('color','red');
+
+                $(this).find('.fa-solid').removeClass('fa-plus');
+
+                $(this).find('.fa-solid').addClass('fa-check');
+
+                if(ar_product.length<3){
+
+                    ar_product.push(id);
+                } 
+                else{
+                    alert('không thể thêm sản phẩm nữa');
+                }    
+            }
+
+           
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                type: 'POST',
+                url: "{{ route('compare-show') }}",
+                data: {
+                    ar_product_id: JSON.stringify(ar_product),
+                       
+                },
+                success: function(result){
+                   $('#js-compare-holder').html('');
+                   $('#js-compare-holder').append(result);
+                }
+            });         
+            
+
+
+            $('.global-compare-group').show();
+        });
+
+
+        function compare_link() {
+
+            var link = '{{ route("so-sanh") }}?list='+ar_product;
+            
+            location.href = link;
+        }
+
+
+
+
       
         loop = {{ $deal->count() }};
 

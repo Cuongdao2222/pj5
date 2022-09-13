@@ -26,6 +26,11 @@
     td{
         text-align: center;
     }
+
+    .code{
+        color: #BF0000;
+        font-weight: bold;
+    }
     @media only screen and (max-width: 767px) {
      
         .text-h3{
@@ -76,7 +81,7 @@
                                         
                                         <td class="td-info">
                                             <span>  
-                                                <label for="code" >{!! $info_productss[$key] !!}</label>
+                                                <label for="code" class="{{ $key==2?'code':'' }}" >{!! $info_productss[$key] !!}</label>
                                             </span>
                                         </td>
 
