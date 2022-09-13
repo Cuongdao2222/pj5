@@ -562,14 +562,12 @@ class productController extends AppBaseController
         }
         else{
             $data = explode(',', $data);
-            if(!isset($data)){
+            if(!isset($data)||count($data)>4){
                 return abort('404');
             }
         }
         return view('frontend.sosanh', compact('data'));
         
-
-
     }
 
     
