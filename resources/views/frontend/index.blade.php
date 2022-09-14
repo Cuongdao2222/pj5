@@ -113,7 +113,16 @@
                 .result-labels{
                     top: 43%;
                    
-                }    
+                } 
+
+                .listproduct h3 {
+                    line-height: 16px;
+                }
+
+                .title-name{
+                    height: 52px;
+                    margin-top: 5px;
+                }   
 
 
                 .global-compare-group{
@@ -141,6 +150,8 @@
                     top: 53%;
                    
                 } 
+
+
                 .homebanners{
 
                     height: auto;
