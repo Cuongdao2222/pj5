@@ -578,8 +578,9 @@
                                     
                                 </div>
                                <p class="result-labels"><img class="sale-banner ls-is-cached lazyloaded" alt="hot" data-src="{{ asset('images/background-image/hot.jpg') }}" src="{{ asset('images/background-image/hot.jpg') }}"></p>
-
-                                <h3>{{ $datas->Name }}</h3>
+                               <div class="title-name">
+                                    <h3>{{ $datas->Name }}</h3>
+                                </div>
                                 @if($groups->id<5)
                                 <?php
                                         if($groups->id == 1){
