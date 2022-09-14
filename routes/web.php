@@ -14,15 +14,15 @@
 
 
 
-Route::get('/tin-khuyen-mai/', 'Frontend\blogController@index')->middleware('cache')->name('tin');
+Route::get('/tin-khuyen-mai/', 'Frontend\blogController@index')->middleware('cache.headers:public;max_age=14400')->name('tin');
 
-Route::get('/tin-tong-hop/', 'Frontend\blogController@index')->middleware('cache')->name('tin-th');
+Route::get('/tin-tong-hop/', 'Frontend\blogController@index')->middleware('cache.headers:public;max_age=14400')->name('tin-th');
 
-Route::get('/tin-tuc-tong-hop/', 'Frontend\blogController@index')->middleware('cache')->name('tin-th');
+Route::get('/tin-tuc-tong-hop/', 'Frontend\blogController@index')->middleware('cache.headers:public;max_age=14400')->name('tin-th');
 
-Route::get('/tin-tuc', 'Frontend\blogController@index')->middleware('cache')->name('tins');
+Route::get('/tin-tuc', 'Frontend\blogController@index')->middleware('cache.headers:public;max_age=14400')->name('tins');
 
-Route::get('/', 'Frontend\indexController@index')->middleware('cache')->name('homeFe');
+Route::get('/', 'Frontend\indexController@index')->middleware('cache.headers:public;max_age=14400')->name('homeFe');
 
 
 Route::post('showDealClick','flashdealController@showDealByIdClick')->name('showDealClick');
@@ -58,7 +58,7 @@ Route::get('/caches','crawlController@checkProductSku');
 Route::get('/deal', function () {
     return view('frontend.deallist');
     
-})->middleware('cache')->name('dealFe');
+})->middleware('cache.headers:public;max_age=14400')->middleware('cache.headers:public;max_age=14400')->name('dealFe');
 
 
 // Route::get('filterurl',crawlController@addFilterProduct);
@@ -163,7 +163,7 @@ Route::post('show-viewer-product', 'AjaxController@showViewerProduct')->name('sh
 
 Route::get('/category/{slug}', 'Frontend\categoryController@index')->name('category-product')->middleware('auth');
 
-Route::get('/{slug}', 'Frontend\categoryController@details')->middleware('cache')->name('details');
+Route::get('/{slug}', 'Frontend\categoryController@details')->middleware('cache.headers:public;max_age=14400')->name('details');
 
 Route::post('ajax-clent-register', 'AjaxController@registerClient')->name('register-client-fe');
 
