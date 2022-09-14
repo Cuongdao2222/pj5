@@ -1,3 +1,7 @@
+
+
+
+
 @extends('frontend.layouts.apps')
 
 @section('content') 
@@ -20,6 +24,11 @@
                 display: block;
                 width: 100%;
                 height: 80px;
+            }
+
+            .title-name{
+                height: 64px;
+                margin-top: 5px;
             }
 
             .titles-time h3 {
@@ -459,7 +468,10 @@
                             <img data-src="{{ asset($value->Image) }}"   class="lazyload"  data-src="{{ asset($value->Image) }}" alt="{{ $value->Name }}" width=210 height=210>
                         
                         </div>
-                        <h3>{{ $value->Name }}</h3>
+                        <div class="title-name">
+                            <h3>{{ $value->Name }}</h3>
+                        </div>
+                        
                         <strong class="price">{{  @str_replace(',' ,'.', number_format($value->Price))  }}.&#x20AB;</strong>
                         <div class="item-rating">
                             <p>

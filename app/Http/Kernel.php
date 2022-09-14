@@ -30,6 +30,7 @@ class Kernel extends HttpKernel
         'web' => [
             'throttle:250,1',
             \App\Http\Middleware\EncryptCookies::class,
+            \App\Http\Middleware\BlockIpMiddleware::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Session\Middleware\StartSession::class,
             // \Illuminate\Session\Middleware\AuthenticateSession::class,
@@ -55,6 +56,7 @@ class Kernel extends HttpKernel
     protected $routeMiddleware = [
         'cache' =>\App\Http\Middleware\CacheControl::class,
         'auth' => \App\Http\Middleware\Authenticate::class,
+        
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
