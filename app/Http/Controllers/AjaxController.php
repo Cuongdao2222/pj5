@@ -144,8 +144,7 @@ class AjaxController extends Controller
 
            }
         }    
-
-        
+ 
     }
 
     public function getEmail(Request $request)
@@ -197,25 +196,27 @@ class AjaxController extends Controller
     {
         $search = $request->product;
 
-        $search = str_replace('dieu hoa', 'Điều hòa', $search);
-
-        $search = str_replace('tu dong', 'Tủ đông', $search);
-
-        $search = ucfirst($search);
-
-
-
-        if(!Cache::has('product_search')){
-
-            $productss = product::select('Link', 'Name', 'Image', 'Price', 'id', 'ProductSku')->where('active', 1)->get();
-
-            Cache::forever('product_search',$productss);
-
-        }
-
-        $data =  Cache::get('product_search');
-
         if(!empty($search)){
+
+            $search = str_replace('dieu hoa', 'Điều hòa', $search);
+
+            $search = str_replace('tu dong', 'Tủ đông', $search);
+
+            $search = ucfirst($search);
+
+
+
+            if(!Cache::has('product_search')){
+
+                $productss = product::select('Link', 'Name', 'Image', 'Price', 'id', 'ProductSku')->where('active', 1)->get();
+
+                Cache::forever('product_search',$productss);
+
+            }
+
+            $data =  Cache::get('product_search');
+
+            
             $product = collect($data)->filter(function ($item) use ($search) {
                 return false !== strpos($item->ProductSku, $search);
             });
