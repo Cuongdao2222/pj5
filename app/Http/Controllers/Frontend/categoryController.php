@@ -476,12 +476,12 @@ class categoryController extends Controller
 
         $cache = 'findID'.$link;
 
-        // $findID = Cache::rememberForever($cache, function() use ($link) {
+        $findID = Cache::rememberForever($cache, function() use ($link) {
 
-        //     return  product::select('id')->where('Link', $link)->first();
-        // });
+            return  product::select('id')->where('Link', $link)->first();
+        });
 
-        $findID = product::where('Link', $link)->first();
+        // $findID = product::where('Link', $link)->first();
         
         // chuyển sang category check
 
@@ -497,7 +497,9 @@ class categoryController extends Controller
 
             $images = Cache::get('image_product'.$findID->id);
 
-            if(!Cache::has('image_product'.$findID->id)|| empty($images->image)){
+
+
+            if(!Cache::has('image_product'.$findID->id)){
                 
                 $image_cache = image::where('product_id', $findID->id)->select('image')->get();
 
@@ -513,14 +515,14 @@ class categoryController extends Controller
                 Cache::forever('image_product'.$findID->id,$image_cache);
             }
 
-            // $data = Cache::rememberForever('data-detail'.$slug, function() use($slug) {
+            $data = Cache::rememberForever('data-detail'.$slug, function() use($slug) {
 
-            //     return product::where('Link',$slug)->first();
-            // });
+                return product::where('Link',$slug)->first();
+            });
 
             // kiểm tra link cache có tồn tại hay k
 
-            $data = product::where('Link',$slug)->first();
+            
 
             if(empty($data)){
                 return abort('404');

@@ -23,17 +23,30 @@ if (!function_exists('groupGift')) {
     // id truyền vào là id category của sản phẩm
     function groupGift($id){
 
-        //  $gift_group = Cache::remember('gift_group'.$id,1000,  function() use($id){
-        //    DB::table('gift_group')->where('group_product', $id)->get();
+        $gift_group = Cache::remember('gift_group'.$id,1000,  function() use($id){
+            return DB::table('gift_group')->where('group_product', $id)->get();
+        });
+
+
+        // $gift_group  = Cache::remember('gift_groups_'.$id,10000,function() use($id){
+
+        //     DB::table('gift_group')->where('group_product', $id)->get();
         // });
 
-          $gift_group = DB::table('gift_group')->where('group_product', $id)->get();
+
         
         $now = Carbon\Carbon::now();
         $gift = [];
 
         foreach ($gift_group as  $value) {
-            $gifts     = DB::table('group_gift')->where('id', $value->group_gift)->first();
+
+
+            $gifts  = Cache::remember('gifts'.$value->group_gift, 10000,function() use($value){
+
+                DB::table('group_gift')->where('id', $value->group_gift)->first();
+            });
+
+           
             if(!empty($gifts) && !empty($gifts->start)){
                 $start    = new Carbon\Carbon($gifts->start);
 
@@ -66,11 +79,8 @@ if (!function_exists('gift')) {
 
         $promotion = '';
 
-        // Cache::forget('id_checks'.$id);
-
-        // Cache::forget('promotion'.$id);
-
         $id_all = Cache::remember('id_checks'.$id, 10000, function() use ($id) {
+
             return  DB::table('promotion')->where('id_product', $id)->select('id_product')->get()->first();
         });
 
