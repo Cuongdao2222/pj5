@@ -136,7 +136,7 @@ Route::get('searchquery', 'productController@search')->name('test');
 Route::get('page/{slug}', 'Frontend\categoryController@pageView')->name('page_cd');
 
 
-Route::get('tim', 'productController@FindbyNameOrModelOfFrontend')->middleware('throttle:60')->name('search-product-frontend');
+Route::get('tim', 'productController@FindbyNameOrModelOfFrontend')->middleware('cache.headers:public;max_age=14400','throttle:60')->name('search-product-frontend');
 
 Auth::routes(['verify' => true]);
 
