@@ -22,7 +22,7 @@ Route::get('/tin-tuc-tong-hop/', 'Frontend\blogController@index')->middleware('c
 
 Route::get('/tin-tuc', 'Frontend\blogController@index')->middleware('cache.headers:public;max_age=14400')->name('tins');
 
-Route::get('/', 'Frontend\indexController@index')->middleware('cache.headers:public;max_age=14400')->name('homeFe');
+Route::get('/', 'Frontend\indexController@index')->middleware('cache.headers:public;max_age=14400')->middleware('throttle:30')->name('homeFe');
 
 
 Route::post('showDealClick','flashdealController@showDealByIdClick')->name('showDealClick');
@@ -145,7 +145,7 @@ Route::post('show-viewer-product', 'AjaxController@showViewerProduct')->middlewa
 
 Route::get('/category/{slug}', 'Frontend\categoryController@index')->name('category-product')->middleware('auth');
 
-Route::get('/{slug}', 'Frontend\categoryController@details')->middleware('cache.headers:public;max_age=14400')->name('details');
+Route::get('/{slug}', 'Frontend\categoryController@details')->middleware('cache.headers:public;max_age=14400')->middleware('throttle:60')->name('details');
 
 Route::post('ajax-clent-register', 'AjaxController@registerClient')->name('register-client-fe');
 
