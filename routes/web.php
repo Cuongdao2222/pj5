@@ -159,7 +159,7 @@ Route::post('add-cart-number', 'AjaxController@addProductToCartByNumber')->name(
 Route::post('rate-form', 'AjaxController@rateForm')->name('rate-form');
 
 
-Route::post('show-viewer-product', 'AjaxController@showViewerProduct')->name('show-viewed-product');
+Route::post('show-viewer-product', 'AjaxController@showViewerProduct')->middleware('cache.headers:public;max_age=14400','throttle:60')->name('show-viewed-product');
 
 Route::get('/category/{slug}', 'Frontend\categoryController@index')->name('category-product')->middleware('auth');
 
