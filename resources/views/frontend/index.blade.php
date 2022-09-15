@@ -518,12 +518,6 @@
         @foreach($group as $key => $groups)
 
             <?php
-                
-                
-                Cache::forget('hot'.$groups->id);
-
-                Cache::forget('data'.$groups->id);
-
 
                 if(!Cache::has('hot'.$groups->id) ){
 
@@ -539,10 +533,6 @@
 
                     $datas = Cache::put('data'.$groups->id,  $datas, 10000);
                 }
-
-
-
-               
 
                 $data = Cache::get('data'.$groups->id);
 
