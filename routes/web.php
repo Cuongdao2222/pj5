@@ -193,6 +193,8 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::get('fill-product-deal-flash', 'flashdealController@getProductToName')->name('filter-product-deal-flash');
 
+    Route::get('landingpage', 'mainController@landingBe')->name('landing');
+
 
     
     Route::post('/editFastPrice', 'productController@editFastPrice')->name('fast-price');

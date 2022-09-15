@@ -76,4 +76,9 @@ class mainController extends Controller
     {
         return view('funcmore.popup');
     }
+
+    public function landingBe()
+    {
+        return view('landing.landing');
+    }
 }
