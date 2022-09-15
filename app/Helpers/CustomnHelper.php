@@ -38,13 +38,24 @@ if (!function_exists('groupGift')) {
         $now = Carbon\Carbon::now();
         $gift = [];
 
+
+
         foreach ($gift_group as  $value) {
 
+            if(!cache::has('gifts'.$value->group_gift)){
 
-            $gifts  = Cache::remember('gifts'.$value->group_gift, 10000,function() use($value){
+                $gifts  = DB::table('group_gift')->where('id', $value->group_gift)->first();
 
-                DB::table('group_gift')->where('id', $value->group_gift)->first();
-            });
+                if(empty($gifts)){
+                    $gift = '0';
+                }
+
+                Cache::put('gifts'.$value->group_gift, $gifts,10000);
+
+            }
+
+            $gifts  = Cache::get('gifts'.$value->group_gift);
+            
 
            
             if(!empty($gifts) && !empty($gifts->start)){
@@ -89,6 +100,7 @@ if (!function_exists('gift')) {
             $promotion = Cache::remember('promotion'.$id, 10000, function() use ($id) {
                 return DB::table('promotion')->where('id_product', $id)->select('id_group_gift', 'start', 'end')->get()->last();
             });
+
         }
 
 

@@ -146,8 +146,19 @@
     }
 
 
-    // check flashdeal    
-    $date_string_flash_deal = DB::table('date_flash_deal')->where('id', 1)->first()->date;
+    // check flashdeal 
+   
+    if(!cache::has('date_flash_deal')){
+
+        $date_string_flash_deal = DB::table('date_flash_deal')->where('id', 1)->first()->date;
+        cache::put('date_flash_deal', $date_string_flash_deal, 10000);
+    } 
+
+    $date_string_flash_deal = cache::get('date_flash_deal');
+
+    
+    
+
     $date_flashdeal = \Carbon\Carbon::create($date_string_flash_deal);
 
 

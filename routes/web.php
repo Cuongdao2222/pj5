@@ -35,39 +35,24 @@ Route::get('flash-deal', 'dealController@dealShowFlash');
 
 Route::get('/cache', 'Frontend\indexController@cache')->name('cache');
 
-Route::get('/ckfinder.html', function () {
-    return view('frontend.ckfinder');
-    
-})->middleware('auth');
+Route::get('/ckfinder.html', 'mainController@ckfinder')->middleware('auth');
 
 
-Route::get('/landingpage', function () {
-    return view('frontend.landingpage');
-    
-})->name('landingpageFe');
+Route::get('/landingpage', 'mainController@landingpage')->name('landingpageFe');
 
 
-Route::get('/sale', function () {
-    return view('frontend.sale');
-    
-})->name('sale-home');
+Route::get('/sale', 'mainController@sale')->name('sale-home');
 
 Route::get('/caches','crawlController@checkProductSku');
 
 
-Route::get('/deal', function () {
-    return view('frontend.deallist');
-    
-})->middleware('cache.headers:public;max_age=14400')->middleware('cache.headers:public;max_age=14400')->name('dealFe');
+Route::get('/deal', 'mainController@deal')->middleware('cache.headers:public;max_age=14400')->middleware('cache.headers:public;max_age=14400')->name('dealFe');
 
 
 // Route::get('filterurl',crawlController@addFilterProduct);
 
 
-Route::get('/lien-he', function () {
-    return view('frontend.lienhe');
-    
-});
+Route::get('/lien-he', 'mainController@lienhe');
 
 
 Route::get('/so-sanh-sp','productController@sosanh')->middleware('throttle:60')->name('so-sanh');
@@ -76,10 +61,9 @@ Route::get('/so-sanh-sp','productController@sosanh')->middleware('throttle:60')-
 Route::post('add-lienhe','lienheController@addLienhe')->name('addlienhe');
 
 
-Route::get('/result.php', function () {
-    return view('resultAlepay.result');
-    
-});
+Route::get('/result.php', 'mainController@resultAlepay');
+
+
 
 
 Route::post('alepay-pay','payController@payAlepay')->name('alepay');
@@ -118,18 +102,16 @@ Route::get('sitemap_article.xml', 'sitemapController@sitemapChildBlog');
 //     ->name('ckfinder_browser');
 
 
-Route::get('/add-property-filter', function () {
-    return view('filter.add-property');
-})->name('add-property-filter');
+Route::get('/add-property-filter', 'mainController@filterAdd')->name('add-property-filter');
 
 Route::post('filter-search-client', 'Frontend\filterController@filter')->name('client-search');
 
-Route::get('/cache-clear', function () {
-     \Artisan::call('key:generate');
-      \Artisan::call('config:clear');
-     echo "thanh cong";
+// Route::get('/cache-clear', function () {
+//      \Artisan::call('key:generate');
+//       \Artisan::call('config:clear');
+//      echo "thanh cong";
 
-})->middleware('auth');
+// })->middleware('auth');
 
 Route::get('searchquery', 'productController@search')->name('test');
 
@@ -245,10 +227,7 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::get('add-Deal-Flashs', 'dealController@addDealFlashs')->name('addDealFlashs');
 
-    Route::get('post-codinh', function () {
-        return view('footerpost.index');
-        
-    })->name('postcd');
+    Route::get('post-codinh', 'mainController@footerpost')->name('postcd');
 
     Route::get('list-flash-deal', 'dealController@viewFlashDeal')->name('viewFlashDeal');
 
@@ -257,15 +236,8 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::get('delete-link-add', 'showController@deleteLinkAdd')->name('delete-link-add');
 
-     Route::get('landingpage', function () {
-        return view('landing.landing');
-        
-    })->name('landing');
 
-     Route::get('changepass', function () {
-        return view('user.changePass');
-        
-    })->name('changepassview');
+     Route::get('changepass', 'mainController@changepass')->name('changepassview');
     
 
     Route::post('info-pop-up', 'showController@addPopup')->name('add-popup');
@@ -274,19 +246,13 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::post('add-image-background', 'showController@addBackgroundSite')->name('add-image-background');
 
-    Route::get('rate', function () {
-        return view('rate.rate');
-        
-    })->name('rate-client');
+    Route::get('rate', 'mainController@rate')->name('rate-client');
 
     Route::get('/group-product/selected/{id}', 'groupProductController@showProductIdToUrl')->name('group-product-selected');
 
     Route::get('view-user', 'customnUserController@viewUser')->name('view-user');
 
-    Route::get('new-banner', function () {
-        return view('newbanner.banner');
-        
-    })->middleware('auth');
+    Route::get('new-banner', 'mainController@newBanner')->middleware('auth');
 
 
     Route::get('order', 'Frontend\orderController@orderList')->name('order_list');
@@ -305,10 +271,7 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::post('generator_builder/rollback', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@rollback')->name('io_generator_builder_rollback');
 
-    Route::get('show/pop-up', function () {
-        return view('funcmore.popup');
-        
-    })->name('pop-up-show');
+    Route::get('show/pop-up', 'mainController@funcmorePopup')->name('pop-up-show');
 
     Route::get('imagescontent/{id}', 'productController@imagecontent')->name('imagescontent');
 
