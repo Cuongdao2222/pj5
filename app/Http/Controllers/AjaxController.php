@@ -215,128 +215,132 @@ class AjaxController extends Controller
 
         $data =  Cache::get('product_search');
 
-        $product = collect($data)->filter(function ($item) use ($search) {
-            return false !== strpos($item->ProductSku, $search);
-        });
-
-        if($product->count()==0){
-
+        if(!empty($search)){
             $product = collect($data)->filter(function ($item) use ($search) {
-                return false !== strpos($item->Name, $search);
+                return false !== strpos($item->ProductSku, $search);
             });
-
-            // search khi tên có viết hoa
 
             if($product->count()==0){
 
                 $product = collect($data)->filter(function ($item) use ($search) {
-                    return false !== stristr($item->Name, $search);
+                    return false !== strpos($item->Name, $search);
                 });
 
+                // search khi tên có viết hoa
 
                 if($product->count()==0){
 
-                    // nếu không có thì search bằng thư viện FullTextSearch
+                    $product = collect($data)->filter(function ($item) use ($search) {
+                        return false !== stristr($item->Name, $search);
+                    });
+
 
                     if($product->count()==0){
-                        // search bằng thư viện FullTextSearch
-                        $product = product::FullTextSearch('Name', $search)->select('id', 'Name', 'Price', 'Link', 'Image')->get();
-                        
+
+                        // nếu không có thì search bằng thư viện FullTextSearch
+
                         if($product->count()==0){
-                            $product = product::where('Name', 'like', '%'.$search.'%')->get();
-                        }
-                    } 
-                   
-                }
-            }
-
-            
-        }
-
-        $product = $product->take(6)->sortByDesc('id');
-
-        $sugests =[];
-
-        $now  = Carbon::now();
-        foreach($product as $products){
-
-            $check_deal =  Cache::get('deals')->where('product_id',  $products->id)->where('active', 1)->first();
-
-            $deal_check_add = false;
-            
-            if(!empty($check_deal) && !empty(!empty($check_deal->deal_price))){
-                
-                $timeDeal_star = $check_deal->start;
-                $timeDeal_star =  \Carbon\Carbon::create($timeDeal_star);
-                $timeDeal_end = $check_deal->end;
-                $timeDeal_end =  \Carbon\Carbon::create($timeDeal_end);
-
-                if($now->between($check_deal->start, $check_deal->end)){
-                    $deal_check_add = true;
-                    $products->Price = $check_deal->deal_price;
-                }
-            
-            }
-
-            else{
-                // check flash deal
-                $date_string_flash_deal = DB::table('date_flash_deal')->where('id', 1)->first()->date;
-                $date_flashdeal = \Carbon\Carbon::create($date_string_flash_deal);
-
-                if($date_flashdeal->isToday()){
-
-                    $add_date = $date_string_flash_deal;
-                    $time1_start = \Carbon\Carbon::createFromDate($add_date.', 9:00');
-                    $time1 = \Carbon\Carbon::createFromDate($add_date.', 12:00');
-                    $time2_start = \Carbon\Carbon::createFromDate($add_date.', 12:00');
-                    $time2 = \Carbon\Carbon::createFromDate($add_date.', 14:00');
-                    $time3_start = \Carbon\Carbon::createFromDate($add_date.', 14:00');
-                    $time3 = \Carbon\Carbon::createFromDate($add_date.', 17:00');
-                    $time4_start = \Carbon\Carbon::createFromDate($add_date.', 17:00');
-                    $time4 = \Carbon\Carbon::createFromDate($add_date.', 22:00');
-                    $define = [['start'=>'9h', 'endTime'=>$time1, 'startTime'=>$time1_start], ['start'=>'12h', 'endTime'=>$time2, 'startTime'=>$time2_start], ['start'=>'14h', 'endTime'=>$time3, 'startTime'=>$time3_start], ['start'=>'17h', 'endTime'=>$time4, 'startTime'=>$time4_start]];
-
-                    foreach($define as $key => $value)
-
-                    if($now->between($value['startTime'], $value['endTime'])){
-                        
-                        $groups_deal = $key;
-
-                        $groups_deal = $groups_deal+1;
-
-                        $flashDeal = flashdeal::where('product_id', $products->id)->where('flash_deal_time_id', $groups_deal)->where('active',1)->first();
-
-                        if(!empty($flashDeal)){
-
-                            $price_flash_deal = DB::table('flash_deal')->where('id', $flashDeal->flash_deal_id)->first();
-                            if(!empty($price_flash_deal)){
-                                $deal_check_add = true;
-                              
-                                $products->Price =  $price_flash_deal->price;
-                               
+                            // search bằng thư viện FullTextSearch
+                            $product = product::FullTextSearch('Name', $search)->select('id', 'Name', 'Price', 'Link', 'Image')->get();
+                            
+                            if($product->count()==0){
+                                $product = product::where('Name', 'like', '%'.$search.'%')->get();
                             }
-
-                        }
-
+                        } 
+                       
                     }
                 }
 
-
+                
             }
 
-            if($products->Price==0){
-                $priceInt = 'Liên hệ';
-            }
-            else{
-                $priceInt = number_format($products->Price).'đ';
+            $product = $product->take(6)->sortByDesc('id');
+
+            $sugests =[];
+
+            $now  = Carbon::now();
+            foreach($product as $products){
+
+                $check_deal =  Cache::get('deals')->where('product_id',  $products->id)->where('active', 1)->first();
+
+                $deal_check_add = false;
+                
+                if(!empty($check_deal) && !empty(!empty($check_deal->deal_price))){
+                    
+                    $timeDeal_star = $check_deal->start;
+                    $timeDeal_star =  \Carbon\Carbon::create($timeDeal_star);
+                    $timeDeal_end = $check_deal->end;
+                    $timeDeal_end =  \Carbon\Carbon::create($timeDeal_end);
+
+                    if($now->between($check_deal->start, $check_deal->end)){
+                        $deal_check_add = true;
+                        $products->Price = $check_deal->deal_price;
+                    }
+                
+                }
+
+                else{
+                    // check flash deal
+                    $date_string_flash_deal = DB::table('date_flash_deal')->where('id', 1)->first()->date;
+                    $date_flashdeal = \Carbon\Carbon::create($date_string_flash_deal);
+
+                    if($date_flashdeal->isToday()){
+
+                        $add_date = $date_string_flash_deal;
+                        $time1_start = \Carbon\Carbon::createFromDate($add_date.', 9:00');
+                        $time1 = \Carbon\Carbon::createFromDate($add_date.', 12:00');
+                        $time2_start = \Carbon\Carbon::createFromDate($add_date.', 12:00');
+                        $time2 = \Carbon\Carbon::createFromDate($add_date.', 14:00');
+                        $time3_start = \Carbon\Carbon::createFromDate($add_date.', 14:00');
+                        $time3 = \Carbon\Carbon::createFromDate($add_date.', 17:00');
+                        $time4_start = \Carbon\Carbon::createFromDate($add_date.', 17:00');
+                        $time4 = \Carbon\Carbon::createFromDate($add_date.', 22:00');
+                        $define = [['start'=>'9h', 'endTime'=>$time1, 'startTime'=>$time1_start], ['start'=>'12h', 'endTime'=>$time2, 'startTime'=>$time2_start], ['start'=>'14h', 'endTime'=>$time3, 'startTime'=>$time3_start], ['start'=>'17h', 'endTime'=>$time4, 'startTime'=>$time4_start]];
+
+                        foreach($define as $key => $value)
+
+                        if($now->between($value['startTime'], $value['endTime'])){
+                            
+                            $groups_deal = $key;
+
+                            $groups_deal = $groups_deal+1;
+
+                            $flashDeal = flashdeal::where('product_id', $products->id)->where('flash_deal_time_id', $groups_deal)->where('active',1)->first();
+
+                            if(!empty($flashDeal)){
+
+                                $price_flash_deal = DB::table('flash_deal')->where('id', $flashDeal->flash_deal_id)->first();
+                                if(!empty($price_flash_deal)){
+                                    $deal_check_add = true;
+                                  
+                                    $products->Price =  $price_flash_deal->price;
+                                   
+                                }
+
+                            }
+
+                        }
+                    }
+
+
+                }
+
+                if($products->Price==0){
+                    $priceInt = 'Liên hệ';
+                }
+                else{
+                    $priceInt = number_format($products->Price).'đ';
+                }
+
+                $sugest = '<a href="'.route("details", $products->Link).'"><img src="'.asset($products->Image).'" width="50" style="margin-right:10px;"></a><a class="suggest_link" href="'.route('details', $products->Link).'">'.$products->Name.'</a><br> <p style="color:red; font-weight:bold">Giá: '. str_replace(',', '.',$priceInt) .'</p><br>';
+
+                array_push($sugests, $sugest);
             }
 
-            $sugest = '<a href="'.route("details", $products->Link).'"><img src="'.asset($products->Image).'" width="50" style="margin-right:10px;"></a><a class="suggest_link" href="'.route('details', $products->Link).'">'.$products->Name.'</a><br> <p style="color:red; font-weight:bold">Giá: '. str_replace(',', '.',$priceInt) .'</p><br>';
+            return response(json_encode($sugests));
 
-            array_push($sugests, $sugest);
         }
-
-        return response(json_encode($sugests));
+        
     }
 
     public function addSaleProduct(Request $request)
