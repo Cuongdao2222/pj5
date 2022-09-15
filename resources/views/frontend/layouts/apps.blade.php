@@ -1730,6 +1730,8 @@
 
     $(function() {
         $("#tags").autocomplete({
+
+            minLength: 2,
             
             source: function(request, response) {
                 $.ajaxSetup({
@@ -1766,7 +1768,7 @@
 
     $(function() {
         $("#skw").autocomplete({
-            
+            minLength: 2,
             source: function(request, response) {
                 $.ajaxSetup({
                 headers: {
