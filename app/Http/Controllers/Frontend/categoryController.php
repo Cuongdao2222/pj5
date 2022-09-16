@@ -210,7 +210,12 @@ class categoryController extends Controller
 
         $link = trim($slug);
 
-        $findID = groupProduct::where('link', $link)->first();
+        $findID = cache()->remember('findID_link_group'.$link, 1000, function () use($link){
+
+            $findID = groupProduct::where('link', $link)->first()??'';
+
+            return $findID;
+        });
 
 
         if(empty($findID)){
@@ -239,11 +244,26 @@ class categoryController extends Controller
 
             $link   =  $findID->link;
 
-            $Group_product = groupProduct::find($id_cate);
+
+            $Group_product = cache()->remember('groupProduct_cate_child__'.$id_cate, 1000, function () use($id_cate){
+                $Group_product = groupProduct::find($id_cate)??'';
+
+                return  $Group_product;
+
+            });
+
+            
 
             $slogan =  $Group_product->slogan;
 
-            $meta = metaSeo::find($Group_product->Meta_id);
+            $meta = cache()->remember('meta_id_'.$Group_product->Meta_id, 1000, function () use($Group_product){
+
+                $meta = metaSeo::find($Group_product->Meta_id)??'';
+
+                return $meta;
+            });
+
+            
 
             $data =[];
 
@@ -259,11 +279,23 @@ class categoryController extends Controller
 
                     $Group_product = json_decode($Group_product->product_id);
 
-              
-                    $data = product::whereIn('id', $Group_product)->where('active', 1)->orderBy('Quantily', 'desc')->paginate(12);
 
-                    $numberdata = product::select('id')->whereIn('id', $Group_product)->where('active', 1)->orderBy('Quantily', 'desc')->get()->count();
+                    $data = cache()->remember('Group_product__'.$id_cate, 1000, function () use($Group_product){
 
+                        $data = product::whereIn('id', $Group_product)->where('active', 1)->orderBy('Quantily', 'desc')->paginate(12)??'';
+
+                        return $data;
+                    });
+
+                    $numberdata = cache()->remember('numberdata'.$id_cate, 1000, function () use($Group_product){
+
+                        $numberdata = product::select('id')->whereIn('id', $Group_product)->where('active', 1)->orderBy('Quantily', 'desc')->get()->count()??0;
+
+                        return $numberdata;
+
+                    });    
+
+                
                 }
 
             }
@@ -273,8 +305,16 @@ class categoryController extends Controller
                 $parent_cate_id = $id_cate;
 
             }
+
+           $filter =  cache()->remember('group_product_id__'.$parent_cate_id, 1000, function () use($parent_cate_id){
+
+                $filter = filter::where('group_product_id', $parent_cate_id)->select('name', 'id')->get()??'';
+
+                return $filter;
+                
+            });
             
-            $filter = filter::where('group_product_id', $parent_cate_id)->select('name', 'id')->get();
+            
 
             $data = [
                 'data'=>$data,
@@ -299,7 +339,12 @@ class categoryController extends Controller
 
     protected function find_List_Id_Group($id,  $groupProduct_level)
     {
-        $list =  groupProduct::find($id);
+
+        $list = cache()->remember('list_group_pr_'.$id, 1000, function () use($id){
+             $list =  groupProduct::find($id)??'';
+             return $list;
+        });
+       
 
         $ar_list = [];
 
@@ -311,7 +356,13 @@ class categoryController extends Controller
 
                     $list_add = $list->parent_id;
 
-                    $list =  groupProduct::find($list_add);
+                
+                    $list = cache()->remember('list_cache_'.$id, 1000, function () use($list_add){
+
+                        $list =  groupProduct::find($list_add)??'';
+
+                        return $list;
+                    });
 
                     array_push($ar_list, $list_add);
                    
@@ -326,10 +377,16 @@ class categoryController extends Controller
 
         $info_list_category = [];
 
-        $groupProduct_info = groupProduct::select('name','link','id')->whereIn('id', $ar_list)->get()->toArray();
+        $groupProduct_info = cache()->remember('groupProduct_info_'.$id, 1000, function ()  use($ar_list){
+
+             $groupProduct_info = groupProduct::select('name','link','id')->whereIn('id', $ar_list)->get()->toArray()??[];
+
+            return $groupProduct_info;
+        });
+
+        
 
         return $groupProduct_info;
-    
     }
 
    
@@ -478,7 +535,8 @@ class categoryController extends Controller
 
         $findID = Cache::rememberForever($cache, function() use ($link) {
 
-            return  product::select('id')->where('Link', $link)->first();
+            $findID = product::select('id')->where('Link', $link)->first()??'';
+            return  $findID;
         });
 
         // $findID = product::where('Link', $link)->first();

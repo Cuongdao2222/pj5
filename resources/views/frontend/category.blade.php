@@ -98,7 +98,15 @@
         </div>
 
         <?php 
-            $banner = App\Models\banners::where('option', 4)->get()->last();
+
+            $banner = cache()->remember('banner_group_4', 1000, function () {
+
+                $banner = App\Models\banners::where('option', 4)->get()->last()??'';
+
+                return $banner;
+                
+            });
+            
         ?>
         <div class="top-banner">
             <section>
@@ -130,7 +138,13 @@
 
                         
                         <?php
-                            $propertyId =  App\Models\property::where('filterId', $filters->id)->get();
+
+                            $propertyId = cache()->remember('filterId_'.$filters->id, 1000, function () use($filters){
+
+                                $propertyId =  App\Models\property::where('filterId', $filters->id)->get()??'';
+                                return $propertyId;
+                            });
+                           
                         ?>
 
                         <div class="filter-item block-manu ">
@@ -211,8 +225,14 @@
                                 $id_product = $value->id;
                                 array_push($arr_id_pro, $id_product);
 
+                                $check_deal = cache()->remember('check_deal_'.$value->id, 1000, function () use($value){
 
-                                $check_deal = App\Models\deal::select('deal_price','start', 'end')->where('product_id', $value->id)->where('active', 1)->first();
+                                    $check_deal = App\Models\deal::select('deal_price','start', 'end')->where('product_id', $value->id)->where('active', 1)->first()??'';
+
+                                    return $check_deal;
+                                });
+
+                                
 
                                 $deal_check_add = false;
 
@@ -236,7 +256,15 @@
                                 else{
 
                                     // check flash deal
-                                    $date_string_flash_deal = DB::table('date_flash_deal')->where('id', 1)->first()->date;
+                                   
+
+                                    $date_string_flash_deal = cache()->remember('date_flash_deal', 1000, function () {
+
+                                        $date_string_flash_deal = DB::table('date_flash_deal')->where('id', 1)->first()->date??'';
+
+                                        return $date_string_flash_deal;
+                                    });
+
                                     $date_flashdeal = \Carbon\Carbon::create($date_string_flash_deal);
 
                                     if($date_flashdeal->isToday()){
