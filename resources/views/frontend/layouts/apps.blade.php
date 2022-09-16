@@ -232,17 +232,7 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('css/apps.css') }}?ver=3">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-       
-      
-        @if(!Auth::check() || Auth::user()->id>1)
-        <style type="text/css">
-            
-            .phpdebugbar{
-                display: none !important;
-            } 
-        </style>
-
-        @endif
+    
         <style type="text/css">
             
             .listcompare-click{
