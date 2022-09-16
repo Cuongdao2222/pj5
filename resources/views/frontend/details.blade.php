@@ -382,10 +382,15 @@
                         </div>
 
                         <?php 
-                            if(!Cache::has('image_product')){
 
-                                $images = App\Models\image::where('product_id', $data->id)->select('image')->get();
-                            }  
+                            $images_products = Cache::remember('image_product_'.$data->id, 1000, function() use ($data) {
+
+                                $images = App\Models\image::where('product_id', $data->id)->select('image')->get()??'';
+
+                                return $images;
+                            
+                            });
+
 
 
                         ?>

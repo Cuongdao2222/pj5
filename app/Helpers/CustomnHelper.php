@@ -42,22 +42,16 @@ if (!function_exists('groupGift')) {
 
         foreach ($gift_group as  $value) {
 
-            if(!cache::has('gifts'.$value->group_gift)){
 
-                $gifts  = DB::table('group_gift')->where('id', $value->group_gift)->first();
+            $gifts = Cache::remember('gifts'.$value->group_gift, 10000, function() use ($value) {
 
-                if(empty($gifts)){
-                    $gift = '0';
-                }
+                $giftss  = DB::table('group_gift')->where('id', $value->group_gift)->first()??'';
 
-                Cache::put('gifts'.$value->group_gift, $gifts,10000);
-
-            }
-
-            $gifts  = Cache::get('gifts'.$value->group_gift);
+                return $giftss;
             
+            });
 
-           
+        
             if(!empty($gifts) && !empty($gifts->start)){
                 $start    = new Carbon\Carbon($gifts->start);
 
@@ -92,7 +86,8 @@ if (!function_exists('gift')) {
 
         $id_all = Cache::remember('id_checks'.$id, 10000, function() use ($id) {
 
-            return  DB::table('promotion')->where('id_product', $id)->select('id_product')->get()->first();
+            $id_alls = DB::table('promotion')->where('id_product', $id)->select('id_product')->get()->first()??'';
+            return  $id_alls;
         });
 
 
@@ -107,7 +102,15 @@ if (!function_exists('gift')) {
         $gift = [];
     
         if(!empty($promotion) && !empty($promotion->id_group_gift)){
-            $gifts     = DB::table('group_gift')->where('id', $promotion->id_group_gift)->first();
+
+            $gifts = Cache::remember('group_gift__'.$promotion->id_group_gift, 1000, function() use ($promotion) {
+
+                $giftss     = DB::table('group_gift')->where('id', $promotion->id_group_gift)->first()??'';
+
+                return  $giftss;
+            
+            });
+
 
             if(!empty($gifts) && !empty($gifts->start)){
 
@@ -118,8 +121,17 @@ if (!function_exists('gift')) {
                 if($now->between($start, $end)){
 
                     $gifts_ar = [$gifts->gift1, $gifts->gift2];
+
+
+                    $gift = Cache::remember('gifts_id_cache'.$promotion->id_group_gift, 1000, function() use ($gifts_ar) {
+
+                        $gift = DB::table('gifts')->whereIn('id',  $gifts_ar)->get()->toArray()??[];
+
+                        return  $gift;
+                    
+                    });
             
-                    $gift = DB::table('gifts')->whereIn('id',  $gifts_ar)->get()->toArray();
+
 
                     $gift =  ['gift'=>$gift, 'gifts'=>$gifts];
 
