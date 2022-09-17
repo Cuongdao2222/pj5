@@ -57,9 +57,7 @@
         <th>Title</th>
         <th>Category</th>
         
-       
-
-        <th>số lượt view</th>
+    
         <th>ngày viết bài</th>
 
         <th>Hiển thị</th>
@@ -80,9 +78,7 @@
             <td>{{ $post->title }}</td>
             <td>{{ @$new_category[$post->category] }}</td>
 
-        
-            
-             <td>{{ $post->views }}</td>  
+     
 
              <td>{{ @$post->date_post }}</td>  
 
