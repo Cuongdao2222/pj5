@@ -6,6 +6,9 @@ use Closure;
 
 use DB;
 
+use Illuminate\Support\Facades\Cache;
+
+
 class BlockIpMiddleware
 {
     /**
@@ -18,7 +21,13 @@ class BlockIpMiddleware
 
     public function getIpBlock()
     {
-        $ipBlock = DB::table('checkspam')->select('ip')->get();
+        
+        $ipBlock = Cache::rememberForever('checkspam', function () {
+
+            $ipBlock = DB::table('checkspam')->select('ip')->get();
+
+            return $ipBlock;
+        });
 
         $ip = [];
 

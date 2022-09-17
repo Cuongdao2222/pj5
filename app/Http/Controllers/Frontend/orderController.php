@@ -10,6 +10,7 @@ use App\Models\product;
 
 use App\User;
 use DB;
+use Illuminate\Support\Facades\Cache;
 
 use Mail;
 use Session;
@@ -78,6 +79,8 @@ class orderController extends Controller
             $ip = $request->ip();
 
             DB::table('checkspam')->insert(['ip'=>$ip]);
+
+            Cache::forget('checkspam');
 
             die();
 
