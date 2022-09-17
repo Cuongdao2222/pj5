@@ -902,7 +902,16 @@ class AjaxController extends Controller
 
             if(count($product)<5){
 
-                $data  = product::whereIn('id', $product)->select('Name', 'Image')->get();
+
+                if(!Cache::has('product_search')){
+
+                    $productss = product::select('Link', 'Name', 'Image', 'Price', 'id', 'ProductSku')->where('active', 1)->get();
+
+                    Cache::forever('product_search',$productss);
+
+                }
+
+                $data  = Cache::get('product_search')->whereIn('id', $product);
 
                 return view('frontend.ajax.compare', compact('data'));
             }
