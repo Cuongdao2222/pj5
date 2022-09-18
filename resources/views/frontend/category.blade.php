@@ -225,12 +225,10 @@
                                 $id_product = $value->id;
                                 array_push($arr_id_pro, $id_product);
 
-                                $check_deal = cache()->remember('check_deal_'.$value->id, 1000, function () use($value){
 
-                                    $check_deal = App\Models\deal::select('deal_price','start', 'end')->where('product_id', $value->id)->where('active', 1)->first()??'';
+                                $check_deal =  Cache::get('deals')->where('product_id', $value->id);
 
-                                    return $check_deal;
-                                });
+                                
 
                                 
 
