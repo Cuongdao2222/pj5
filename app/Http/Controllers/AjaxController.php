@@ -34,6 +34,8 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 
 use DB;
 
+use App\Models\newProduct;
+
 use Illuminate\Support\Facades\Cache;
 
 use Carbon\Carbon;
@@ -364,6 +366,20 @@ class AjaxController extends Controller
         }
     }
 
+    public function addNewProduct(Request $request)
+    {
+        $addProduct = new newProduct();
+
+        $addProduct->product_id = $request->product_id;
+
+        $addProduct->group_id = $request->group_id;
+
+        $addProduct->save();
+
+        return "thêm thành công sản phẩm có product_id ".$request->product_id;
+
+    }
+
     public function rateForm(Request $request)
     {
         if($request->ajax()){
@@ -398,6 +414,24 @@ class AjaxController extends Controller
             echo "xóa thành công sản phẩm có product_id ".$id;
         }
 
+
+    }
+
+    public function removeNewProduct(Request $request)
+    {
+        $product_id = $request->product_id;
+
+        $product = newProduct::select('id')->where('product_id', $product_id)->first();
+
+        $id = $product->id;
+
+        if(!empty($id)){
+
+            $product->find($id);
+            $product->delete();
+
+            echo "xóa thành công sản phẩm có product_id ".$id;
+        }
 
     }
 

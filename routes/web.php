@@ -374,6 +374,10 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::post('add-sale-product', 'AjaxController@addSaleProduct')->name('add-sale-product');
 
+    Route::post('add-new-product', 'AjaxController@addNewProduct')->name('add-new-product');
+
+    Route::post('remove-new-product', 'AjaxController@removeNewProduct')->name('remove-new-product');
+
     Route::post('remove-sale-product', 'AjaxController@removeSaleProduct')->name('remove-sale-product');
 
      

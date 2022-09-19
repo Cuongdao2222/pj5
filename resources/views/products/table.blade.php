@@ -20,6 +20,7 @@
       
         <th>Sản phẩm Hot</th>
         <th>Sản phẩm Sale</th>
+        <th>Sản phẩm Mới</th>
         <th>Quà tặng</th>
         <th>Ngày tạo</th>
         @if(Auth::user()->id==4 || Auth::user()->id==6)
@@ -82,6 +83,9 @@
             $list_hot = App\Models\hotProduct::select('product_id')->get();
             $list_sale = App\Models\saleProduct::select('product_id')->get();
 
+            $list_new  =  App\Models\newProduct::select('product_id')->get();
+
+
             function convertListToArray($list)
             {   
                 $ar_list = [];
@@ -97,7 +101,7 @@
 
             $list_hot = convertListToArray($list_hot);
             $list_sales = convertListToArray($list_sale);
-            
+            $list_new  = convertListToArray($list_new);
         ?>
 
         <?php  
@@ -155,6 +159,8 @@
 
             <td><input type="checkbox" id="hot{{ $product->id }}" name="hot"  onclick='handleClick({{ $product->id }});' data-id ="{{ get_Group_Product($product->id)[0]??'' }}" {{ in_array($product->id, $list_hot)?'checked':'' }}></td>
             <td><input type="checkbox" id="sale{{ $product->id }}" name="sale"  onclick='saleClick({{ $product->id }});' data-id ="{{ get_Group_Product($product->id)[0]??'' }}" {{ in_array($product->id, $list_sales)?'checked':'' }}></td>
+
+             <td><input type="checkbox" id="new{{ $product->id }}" name="new"  onclick='newClick({{ $product->id }});' data-id ="{{ get_Group_Product($product->id)[0]??'' }}" {{ in_array($product->id, $list_new)?'checked':'' }}></td>
             
             <?php  
 
@@ -421,8 +427,9 @@
 
     }
 
-    
 
+
+  
     function handleClick(id) {
 
         var checked = $('#hot'+id).is(':checked'); 
@@ -466,7 +473,6 @@
             }
         });
 
-        
     }
 
     function flashQualtily(productId) {
@@ -540,6 +546,50 @@
         });
 
     } 
+
+    function newClick(id) {
+
+         var checked = $('#new'+id).is(':checked'); 
+
+        const group_id = $('#new'+id).attr('data-id');
+
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        if(checked == true)
+        $.ajax({
+           
+            type: 'POST',
+            url: "{{ route('add-new-product') }}",
+            data: {
+                product_id: id,
+                group_id: group_id,
+                   
+            },
+            success: function(result){
+                console.log(result);
+            }
+        });
+        else
+        $.ajax({
+           
+            type: 'POST',
+            url: "{{ route('remove-new-product') }}",
+            data: {
+                product_id: id,
+                group_id: group_id,
+                   
+            },
+            success: function(result){
+                console.log(result);
+            }
+        });
+
+    }
 
 
     function active(productId) {
