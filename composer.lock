@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dd27c2eaffd2cabb4b2c011fed665483",
+    "content-hash": "8b2456c0d652be37fc47a80ebb276bb1",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -1345,6 +1345,47 @@
             "time": "2022-03-20T21:51:18+00:00"
         },
         {
+            "name": "hepplerdotnet/fulltextsearch",
+            "version": "1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/HepplerDotNet/FullTextSearch.git",
+                "reference": "1a1ec8df91de4b331ff2edf051cb3143e17e8f7e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/HepplerDotNet/FullTextSearch/zipball/1a1ec8df91de4b331ff2edf051cb3143e17e8f7e",
+                "reference": "1a1ec8df91de4b331ff2edf051cb3143e17e8f7e",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": ">=5.4.0",
+                "php": ">=7.0.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "HepplerDotNet\\FullTextSearch\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Patrick Heppler",
+                    "email": "patrick@heppler.net"
+                }
+            ],
+            "description": "Trait to implement FullTextSearch in Laravel Eloquent",
+            "support": {
+                "issues": "https://github.com/HepplerDotNet/FullTextSearch/issues",
+                "source": "https://github.com/HepplerDotNet/FullTextSearch/tree/1.0"
+            },
+            "time": "2020-05-14T09:23:35+00:00"
+        },
+        {
             "name": "infyomlabs/adminlte-templates",
             "version": "v3.0.3",
             "source": {
@@ -2391,6 +2432,60 @@
                 }
             ],
             "time": "2022-04-17T13:12:02+00:00"
+        },
+        {
+            "name": "matthewbdaly/laravel-etag-middleware",
+            "version": "1.3.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/matthewbdaly/laravel-etag-middleware.git",
+                "reference": "9c874e04b398ec1853c19ea87cecbc06e89a8372"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/matthewbdaly/laravel-etag-middleware/zipball/9c874e04b398ec1853c19ea87cecbc06e89a8372",
+                "reference": "9c874e04b398ec1853c19ea87cecbc06e89a8372",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/http": "^5.5|^6.0|^7.0|^8.0|^9.0",
+                "illuminate/support": "^5.5|^6.0|^7.0|^8.0|^9.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.0",
+                "php-coveralls/php-coveralls": "^2.1",
+                "phpunit/phpunit": "^4.8|^5.2",
+                "squizlabs/php_codesniffer": "^2.8"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Matthewbdaly\\ETagMiddleware\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Matthew Daly",
+                    "email": "450801+matthewbdaly@users.noreply.github.com"
+                }
+            ],
+            "description": "A Laravel middleware for adding ETags to HTTP requests to improve response times",
+            "keywords": [
+                "ETags",
+                "Etag",
+                "http",
+                "laravel",
+                "middleware"
+            ],
+            "support": {
+                "issues": "https://github.com/matthewbdaly/laravel-etag-middleware/issues",
+                "source": "https://github.com/matthewbdaly/laravel-etag-middleware/tree/1.3.5"
+            },
+            "time": "2022-03-14T22:26:26+00:00"
         },
         {
             "name": "monolog/monolog",
