@@ -17,13 +17,13 @@ class payController extends Controller
 
         $data = $request->all();
 
-        $data['orderDescription'] = $data['product_name']. '. *Số tiền thanh toán trước trả góp là: '. $data['before_money'].'đ';
+        $data['orderDescription'] = $data['product_name']. '. *Số tiền thanh toán trước trả góp là: '. $data['before_money'].'đ'.' với số lượng là '.$data['totalItem'].' sản phẩm';
 
         $data['currency'] ='VND';
 
         $data['cancelUrl'] = URL_DEMO;
 
-        $data_price =  session('priceProduct');
+        $data_price =  session('priceProduct')*$data['totalItem'];
 
         // xóa session luôn
 
