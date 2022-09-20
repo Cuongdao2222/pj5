@@ -17,13 +17,13 @@ class payController extends Controller
 
         $data = $request->all();
 
-        $data['orderDescription'] = $data['product_name']. '. *Số tiền thanh toán trước trả góp là: '. $data['before_money'].'đ'.' với số lượng là '.$data['totalItem'].' sản phẩm';
+        $data['orderDescription'] = $data['product_name']. '. *Số tiền thanh toán trước trả góp là: '. $data['before_money'].'đ'.' với số lượng là'.$data['totalItem'].' sản phẩm'  ;
 
         $data['currency'] ='VND';
 
         $data['cancelUrl'] = URL_DEMO;
 
-        $data_price =  intval(str_replace('.', '', session('priceProduct')))*  intval($data['totalItem']);
+        $data_price =  session('priceProduct');
 
         // xóa session luôn
 
@@ -33,7 +33,7 @@ class payController extends Controller
 
         $data_pre_price   = str_replace('.', '',$data['before_money']);
 
-        $data_all_price  = intval($data_price) - intval($data_pre_price);
+        $data_all_price  = (intval($data_price) - intval($data_pre_price))*intval($data['totalItem']);
 
         $data['amount'] = $data_all_price;
 
