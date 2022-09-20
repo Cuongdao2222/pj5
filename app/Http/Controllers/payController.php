@@ -23,7 +23,8 @@ class payController extends Controller
 
         $data['cancelUrl'] = URL_DEMO;
 
-        $data_price =  session('priceProduct')*$data['totalItem'];
+
+        $data_price =  intval(session('priceProduct'))*  intval($data['totalItem']);
 
         // xóa session luôn
 
