@@ -6,6 +6,38 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/detail1fe.css') }}">
 
     <style type="text/css">
+
+        @-webkit-keyframes my {
+             0% { color: #EF0000; } 
+             50% { color: #fff;  } 
+             100% { color: #EF0000;  } 
+         }
+         @-moz-keyframes my { 
+             0% { color: #EF0000;  } 
+             50% { color: #fff;  }
+             100% { color: #EF0000;  } 
+         }
+         @-o-keyframes my { 
+             0% { color: #EF0000; } 
+             50% { color: #fff; } 
+             100% { color: #EF0000;  } 
+         }
+         @keyframes my { 
+             0% { color: #EF0000;  } 
+             50% { color: #fff;  }
+             100% { color: #EF0000;  } 
+         } 
+         .nhapnhay {
+            background:#FDDD39;
+            font-size:18px;
+            font-weight:bold;
+             -webkit-animation: my 1700ms infinite;
+             -moz-animation: my 1700ms infinite; 
+             -o-animation: my 1700ms infinite; 
+             animation: my 1700ms infinite;
+        }
+
+
         .saker{
             position: absolute;
             left: 0;
@@ -57,6 +89,36 @@
 
         .box-compare{
             margin-left: 15px;
+        }
+
+        .box03__item.act {
+            border-color: #2f80ed;
+            color: #2f80ed;
+        }
+
+
+        .box03__item {
+            border: 1px solid #e0e0e0;
+            border-radius: 2px;
+            color: #333;
+            display: inline-block;
+            font-size: 13px;
+            min-width: 67px;
+            padding: 0 15px;
+            text-align: center;
+            margin-bottom: 5px;
+            margin-right: 2px;
+            vertical-align: top;
+            height: 36px;
+            line-height: 36px;
+            position: relative;
+            width: 20%;
+        }
+
+        .desk{
+            display: flex;
+
+            padding: 0 15px;
         }
 
 
@@ -794,6 +856,40 @@
             </div>
 
             <br>
+
+           
+            @if(!empty($data_cate) && $data_cate==1)
+
+            <?php
+
+                $cutModel1 = str_replace('UA', '', $data->ProductSku);
+
+                $cutModel = substr(trim($cutModel1),2);
+
+                $data_model = Cache::get('product_search');
+
+                $relationProduct = collect($data_model)->filter(function ($item) use ($cutModel) {
+                  
+                    return false !== strpos($item->ProductSku, $cutModel);
+                });
+
+               
+                
+            ?>
+            @if($relationProduct->count()>1)
+
+                <div class="scrolling_inner">
+                    <div class="box03 group desk">
+                        @foreach($relationProduct as $relationProducts)
+                        <a href="{{ route('details', $relationProducts->Link) }}" data-index="0" class="box03__item item {{ $relationProducts->ProductSku==$data->ProductSku?'act':'' }}">{{  str_replace( $cutModel, '', $relationProducts->ProductSku)  }} inch</a>
+                        @endforeach
+                    </div>
+                </div>
+            @endif
+                
+            @endif
+
+
             <div class="box-compare">
                 <a href="javascript:void(0)" class="compare-show" onclick="compareShow({{ $data->id }})">
                     <i class="fa-solid fa-plus"></i>
@@ -919,6 +1015,8 @@
                                     {{str_replace(',' ,'.', number_format($data->Price))  }}₫
                                 </h3>
                             </div>
+
+
                             <!-- <div class="pdetail-promotion">
                                 <div class="pdetail-promotion-body">
                                     <ul>
@@ -930,11 +1028,15 @@
                                 </div>
                                 </div> -->
                         </div>
+
+
                         <div class="pdetail-status">
                             <div class="pdetail-stockavailable">
                                 <span>{{ $status }} </span>
 
                             </div>
+
+                            <a href="tel:02473036336"></a><div class="buy-button-hotline nhapnhay btn">Gọi 0247.303.6336 để được giảm thêm</div>
 
                             @if(!empty($data->promotion))
                             <fieldset class="p-gift">
@@ -1025,7 +1127,7 @@
                                 
                                 @endif
 
-                                <div class="buy-button-hotline">Gọi đặt mua <a href="tel:02473036336">0247.303.6336</a></div>
+                                
                                 <br><br>
                                 {!!  $data->Specifications  !!} 
                             </div>

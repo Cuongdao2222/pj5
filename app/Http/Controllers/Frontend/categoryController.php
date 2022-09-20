@@ -650,7 +650,7 @@ class categoryController extends Controller
 
             // }
 
-            return view('frontend.details', compact('data', 'images', 'other_product', 'meta', 'pageCheck'));
+            return view('frontend.details', compact('data', 'images', 'other_product', 'meta', 'pageCheck', 'data_cate'));
         }
     }
 
