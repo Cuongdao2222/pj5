@@ -195,8 +195,8 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::get('landingpage', 'mainController@landingBe')->name('landing');
 
+    Route::get('find-post', 'postController@findPostByValue')->name('findPostAdmin');
 
-    
     Route::post('/editFastPrice', 'productController@editFastPrice')->name('fast-price');
 
     Route::post('update-time-flash-deal', 'flashdealController@updateTimeFlashDeal')->name('update-time-flash-deal');
