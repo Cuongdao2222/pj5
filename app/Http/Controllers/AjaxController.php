@@ -262,6 +262,25 @@ class AjaxController extends Controller
             $sugests =[];
 
             $now  = Carbon::now();
+
+
+
+            $date_string_flash_deal = DB::table('date_flash_deal')->where('id', 1)->first()->date;
+
+            $date_flashdeal = \Carbon\Carbon::create($date_string_flash_deal);
+
+            if($date_flashdeal->isToday()){
+                $add_date = $date_string_flash_deal;
+                $time1_start = \Carbon\Carbon::createFromDate($add_date.', 9:00');
+                $time1 = \Carbon\Carbon::createFromDate($add_date.', 12:00');
+                $time2_start = \Carbon\Carbon::createFromDate($add_date.', 12:00');
+                $time2 = \Carbon\Carbon::createFromDate($add_date.', 14:00');
+                $time3_start = \Carbon\Carbon::createFromDate($add_date.', 14:00');
+                $time3 = \Carbon\Carbon::createFromDate($add_date.', 17:00');
+                $time4_start = \Carbon\Carbon::createFromDate($add_date.', 17:00');
+                $time4 = \Carbon\Carbon::createFromDate($add_date.', 22:00');
+                $define = [['start'=>'9h', 'endTime'=>$time1, 'startTime'=>$time1_start], ['start'=>'12h', 'endTime'=>$time2, 'startTime'=>$time2_start], ['start'=>'14h', 'endTime'=>$time3, 'startTime'=>$time3_start], ['start'=>'17h', 'endTime'=>$time4, 'startTime'=>$time4_start]];
+            }    
             foreach($product as $products){
 
                 $check_deal =  Cache::get('deals')->where('product_id',  $products->id)->where('active', 1)->first();
@@ -284,45 +303,35 @@ class AjaxController extends Controller
 
                 else{
                     // check flash deal
-                    $date_string_flash_deal = DB::table('date_flash_deal')->where('id', 1)->first()->date;
-                    $date_flashdeal = \Carbon\Carbon::create($date_string_flash_deal);
+                    
+                    
 
                     if($date_flashdeal->isToday()){
 
-                        $add_date = $date_string_flash_deal;
-                        $time1_start = \Carbon\Carbon::createFromDate($add_date.', 9:00');
-                        $time1 = \Carbon\Carbon::createFromDate($add_date.', 12:00');
-                        $time2_start = \Carbon\Carbon::createFromDate($add_date.', 12:00');
-                        $time2 = \Carbon\Carbon::createFromDate($add_date.', 14:00');
-                        $time3_start = \Carbon\Carbon::createFromDate($add_date.', 14:00');
-                        $time3 = \Carbon\Carbon::createFromDate($add_date.', 17:00');
-                        $time4_start = \Carbon\Carbon::createFromDate($add_date.', 17:00');
-                        $time4 = \Carbon\Carbon::createFromDate($add_date.', 22:00');
-                        $define = [['start'=>'9h', 'endTime'=>$time1, 'startTime'=>$time1_start], ['start'=>'12h', 'endTime'=>$time2, 'startTime'=>$time2_start], ['start'=>'14h', 'endTime'=>$time3, 'startTime'=>$time3_start], ['start'=>'17h', 'endTime'=>$time4, 'startTime'=>$time4_start]];
+                        foreach($define as $key => $value){
 
-                        foreach($define as $key => $value)
+                            if($now->between($value['startTime'], $value['endTime'])){
+                                
+                                $groups_deal = $key;
 
-                        if($now->between($value['startTime'], $value['endTime'])){
-                            
-                            $groups_deal = $key;
+                                $groups_deal = $groups_deal+1;
 
-                            $groups_deal = $groups_deal+1;
+                                $flashDeal = flashdeal::where('product_id', $products->id)->where('flash_deal_time_id', $groups_deal)->where('active',1)->first();
 
-                            $flashDeal = flashdeal::where('product_id', $products->id)->where('flash_deal_time_id', $groups_deal)->where('active',1)->first();
+                                if(!empty($flashDeal)){
 
-                            if(!empty($flashDeal)){
+                                    $price_flash_deal = DB::table('flash_deal')->where('id', $flashDeal->flash_deal_id)->first();
+                                    if(!empty($price_flash_deal)){
+                                        $deal_check_add = true;
+                                      
+                                        $products->Price =  $price_flash_deal->price;
+                                       
+                                    }
 
-                                $price_flash_deal = DB::table('flash_deal')->where('id', $flashDeal->flash_deal_id)->first();
-                                if(!empty($price_flash_deal)){
-                                    $deal_check_add = true;
-                                  
-                                    $products->Price =  $price_flash_deal->price;
-                                   
                                 }
 
                             }
-
-                        }
+                        }    
                     }
 
 
