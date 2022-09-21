@@ -110,7 +110,7 @@
                     <div class="form-group col-sm-5">     
                         <label class="control-label">Số Lượng <span class="require">(*)</span></label>
 
-                        <input type="text" placeholder="Số Lượng" class="form-control" name="totalItem" id="totalItem" required value="1" readonly>
+                        <input type="text" placeholder="Số Lượng" class="form-control" name="totalItem" id="totalItem" required value="1">
 
                     </div>
 
