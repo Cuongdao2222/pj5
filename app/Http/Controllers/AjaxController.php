@@ -244,10 +244,10 @@ class AjaxController extends Controller
 
                         if($product->count()==0){
                             // search bằng thư viện FullTextSearch
-                            $product = product::FullTextSearch('Name', $search)->select('id', 'Name', 'Price', 'Link', 'Image')->get();
+                            $product = product::FullTextSearch('Name', $search)->select('id', 'Name', 'Price', 'Link', 'Image')->where('active',1)->get();
                             
                             if($product->count()==0){
-                                $product = product::where('Name', 'like', '%'.$search.'%')->get();
+                                $product = product::where('Name', 'like', '%'.$search.'%')->where('active',1)->get();
                             }
                         } 
                        
