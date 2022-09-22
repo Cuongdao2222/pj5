@@ -18,9 +18,9 @@
         <th>chọn danh mục nhanh</th>
 
       
-        <th>Sản phẩm Hot</th>
-        <th>Sản phẩm Sale</th>
-        <th>Sản phẩm Mới</th>
+        <th>Tick sản phẩm</th>
+       <!--  <th>Sản phẩm Sale</th>
+        <th>Sản phẩm Mới</th> -->
         <th>Quà tặng</th>
         <th>Ngày tạo</th>
         @if(Auth::user()->id==4 || Auth::user()->id==6)
@@ -157,10 +157,23 @@
 
           
 
-            <td><input type="checkbox" id="hot{{ $product->id }}" name="hot"  onclick='handleClick({{ $product->id }});' data-id ="{{ get_Group_Product($product->id)[0]??'' }}" {{ in_array($product->id, $list_hot)?'checked':'' }}></td>
-            <td><input type="checkbox" id="sale{{ $product->id }}" name="sale"  onclick='saleClick({{ $product->id }});' data-id ="{{ get_Group_Product($product->id)[0]??'' }}" {{ in_array($product->id, $list_sales)?'checked':'' }}></td>
+            <td style="width:40%">
+                <input type="checkbox" id="hot{{ $product->id }}" name="hot"  onclick='handleClick({{ $product->id }});' data-id ="{{ get_Group_Product($product->id)[0]??'' }}" {{ in_array($product->id, $list_hot)?'checked':'' }}>
+                Sản phẩm Hot
 
-             <td><input type="checkbox" id="new{{ $product->id }}" name="new"  onclick='newClick({{ $product->id }});' data-id ="{{ get_Group_Product($product->id)[0]??'' }}" {{ in_array($product->id, $list_new)?'checked':'' }}></td>
+                <br>
+
+                 <input type="checkbox" id="sale{{ $product->id }}" name="sale"  onclick='saleClick({{ $product->id }});' data-id ="{{ get_Group_Product($product->id)[0]??'' }}" {{ in_array($product->id, $list_sales)?'checked':'' }}>
+                 Sản phẩm Sale
+                <br> 
+
+                  <input type="checkbox" id="new{{ $product->id }}" name="new"  onclick='newClick({{ $product->id }});' data-id ="{{ get_Group_Product($product->id)[0]??'' }}" {{ in_array($product->id, $list_new)?'checked':'' }}>
+                  Sản phẩm Mới
+
+            </td>
+            
+
+            
             
             <?php  
 
@@ -217,25 +230,30 @@
             
                 <td width="120">
                     {!! Form::open(['route' => ['products.destroy', $product->id], 'method' => 'delete']) !!}
-                    <div class='btn-group'>
+                    <div class='btn-group' style="display:block;">
                         <a href="{{ route('details', [$product->Link]) }}"
                            class='btn btn-default btn-xs' target="_blank">
                             <i class="far fa-eye"></i>
                         </a>
+                        <br>
                         <a href="{{ route('products.edit', [$product->id]) }}"
                            class='btn btn-default btn-xs'>
                             <i class="far fa-edit"></i>
                         </a>
+                        <br>
 
                          <a href="{{ route('images.create', [$product->id]) }}"
                            class='btn btn-default btn-xs'>
                             <i class="fas fa-image"></i>
                         </a>
 
+                        <br>
+
                          <a href="{{ route('filter-property') }}?group-product={{ get_Group_Product($product->id)[0]??'' }}&productId={{ $product->id }}"
                            class='btn btn-default btn-xs'>
                             <i class="fa fa-filter"></i>
                         </a>
+                        <br>
 
                         {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
                     </div>
