@@ -263,8 +263,6 @@ class AjaxController extends Controller
 
             $now  = Carbon::now();
 
-
-
             $date_string_flash_deal = DB::table('date_flash_deal')->where('id', 1)->first()->date;
 
             $date_flashdeal = \Carbon\Carbon::create($date_string_flash_deal);

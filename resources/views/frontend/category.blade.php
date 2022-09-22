@@ -383,24 +383,22 @@
                                             // check quà phần tìm kiếm sản phẩm
                                             if(empty($id_cate)){
 
-                                                $groupProduct = App\Models\groupProduct::select('name', 'link', 'product_id','id')->where('level', 0)->get();
+                                                $groupProduct = Cache::remember('groupProduct_level_0',10000,function(){
+                                                    $groupProduct = App\Models\groupProduct::select('name', 'link', 'product_id','id')->where('level', 0)->get();
 
-                                                foreach($groupProduct as $groupProducts ){
+                                                    return $groupProduct??'';
+                                                }); 
+
+                                                foreach($groupProduct as $groupProducts){
 
                                                     if(!empty(json_decode($groupProducts->product_id))){
 
                                                         if(in_array($value->id,json_decode($groupProducts->product_id))){
 
-                                                           
-
                                                             $id_cate =  $groupProducts->id;
-
-                                                            
                                                         }
                                                     }
                                                 }
-
-                                              
 
                                             }
 
