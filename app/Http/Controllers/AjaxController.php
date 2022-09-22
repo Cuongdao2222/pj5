@@ -485,8 +485,6 @@ class AjaxController extends Controller
         if($request->ajax()){
             $clear_data = (array)json_decode($request->product_id);
 
-            
-
                // kiểm tra dữ liệu đầu vào
             $data_product_id = [];
 
@@ -505,12 +503,9 @@ class AjaxController extends Controller
 
                 }
             }
-            $product_viewer = product::whereIn('id', $data_product_id)
-                  ->Orderby('id')->take(12)->get();
-
+            $product_viewer = Cache::get('product_search')->whereIn('id', $data_product_id)->take(12);
             
             return view('frontend.ajax.viewer-product', compact('product_viewer'));      
-
         }    
     }
 

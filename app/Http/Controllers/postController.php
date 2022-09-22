@@ -128,6 +128,28 @@ class postController extends AppBaseController
         return view('posts.show')->with('post', $post);
     }
 
+    public function findPostByValue(Request $request)
+    {
+        $search = $request->searchPost;
+
+
+        if(!empty($search)){
+            $post = post::where('title', 'like', '%'.$search.'%')->paginate(10);
+            if($post->count()==0){
+
+                $categories = DB::table('categories')->where('namecategory', $search)->first();
+
+                $categories = $categories->id;
+
+                 $post = post::where('category', $categories)->paginate(10);
+
+            }
+             return view('posts.index')
+            ->with('posts', $post);
+        }
+
+    }
+
     /**
      * Show the form for editing the specified post.
      *
