@@ -9,22 +9,22 @@
 
         @-webkit-keyframes my {
              0% { color: #EF0000; } 
-             50% { color: #fff;  } 
+             50% { color: #2B883E;  } 
              100% { color: #EF0000;  } 
          }
          @-moz-keyframes my { 
              0% { color: #EF0000;  } 
-             50% { color: #fff;  }
+             50% { color: #2B883E;  }
              100% { color: #EF0000;  } 
          }
          @-o-keyframes my { 
              0% { color: #EF0000; } 
-             50% { color: #fff; } 
+             50% { color: #2B883E; } 
              100% { color: #EF0000;  } 
          }
          @keyframes my { 
              0% { color: #EF0000;  } 
-             50% { color: #fff;  }
+             50% { color: #2B883E;  }
              100% { color: #EF0000;  } 
          } 
          .nhapnhay {
@@ -378,8 +378,8 @@
 
     ?>
 
-    @if($mobile ==1)
 
+    @if($mobile ==1)
 
     <ul class="breadcrumb">
         
@@ -394,6 +394,8 @@
             <meta property="position" content="2">
         </li>
         @endif
+
+
         <!-- <li>
             <span>›</span>
             <a href="/tivi?g=smart-tivi">Smart Tivi</a>
