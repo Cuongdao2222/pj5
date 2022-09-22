@@ -642,7 +642,7 @@
                                                 $gifts =[];
                                             }
                                         }
-                                        Cache::put('gifts_Fe_'.$datas->id, $gifts,100);
+                                        Cache::put('gifts_Fe_'.$datas->id, $gifts,10000);
 
                                     }
                                    
