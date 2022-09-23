@@ -77,11 +77,7 @@
                 background: #fff;
             }  
 
-            .category__all{
-                color: #000;
-                font-weight: bold;
-            } 
-
+            
             .div-title-news{
                 margin-bottom: 10px;
             }

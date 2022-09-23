@@ -239,6 +239,11 @@
                 display: none;
             }
 
+            .category__all{
+                color: #000 !important;
+                font-weight: bold;
+            } 
+
             .compare-pro-holder a {
                 display: block;
                 width: 160px;
@@ -758,18 +763,13 @@
 
                                         <div id="submenu-2" class="submenu" style="display: none;">
                                             <aside>
-                                                <p class="menuitem__title">TỦ LẠNH<a href="/tu-lanh" class="">Xem tất cả</a></p>
-                                                <a href="/tu-lanh-tra-gop-0-phan-tram" class="">Trả góp 0 - 0.5%</a>
-                                                <a href="/tu-lanh?g=tu-150-300-lit" class="">Tủ lạnh từ 150 - 300 lít</a>
-                                                <a href="/tu-lanh?g=tu-301-400-lit" class="">Tủ lạnh từ 301 - 400 lít</a>
-                                                <a href="/tu-lanh?g=tu-lon-side-by-side" class="">Tủ lạnh Side by side</a>
-                                                <a href="/tu-lanh?g=mini" class="">Tủ lạnh Mini</a>
-                                                <a href="/tu-lanh-panasonic" class="">Panasonic</a>
-                                                <a href="/tu-lanh-samsung" class="">Samsung</a>
-                                                <a href="/tu-lanh-toshiba" class="">Toshiba</a>
-                                                <a href="/tu-lanh-aqua-sanyo" class="">Aqua</a>
-                                                <a href="/tu-lanh-lg" class="">LG</a>
-                                                <a href="/tu-lanh?p=tu-8tr-12tr" class="">Từ 8 - 12 triệu</a>
+                                                <strong>Kiểu giặt</strong>
+                                                <a href="{{route('details','may-giat-long-ngang')}}">
+                                                    <h3>Máy giặt lồng ngang</h3>
+                                                </a>
+                                                <a href="{{route('details','may-giat-long-dung')}}">
+                                                    <h3>Máy giặt lồng đứng</h3>
+                                                </a>
                                             </aside>
                                             <aside>
                                                 <p class="menuitem__title">TỦ ĐÔNG, TỦ MÁT<a href="/tu-dong" class="">Xem tất cả</a></p>
