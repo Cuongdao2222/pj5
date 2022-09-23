@@ -96,6 +96,10 @@
             color: #2f80ed;
         }
 
+         .price_market span{
+            text-decoration: line-through
+        }
+
 
         .box03__item {
             border: 1px solid #e0e0e0;
@@ -502,6 +506,8 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="price_giaban price_market">Giá hãng : <span>9.590.000đ </span></div>
                             <div class="pdetail-price">
                                 <div class="pdetail-price-box">
                                     {!! @$text !!}
@@ -1013,6 +1019,8 @@
                              {!!  @$text !!}
                             <div class="pdetail-price-box">
 
+                                 <div class="price_giaban price_market">Giá hãng : <span>9.590.000đ </span></div>
+
                                 <h3>
                                     {{str_replace(',' ,'.', number_format($data->Price))  }}₫
                                 </h3>
@@ -1261,6 +1269,7 @@
                     </div>
                     
                     <h3>{{ $value->Name }}</h3>
+
                     <strong class="price">{{  str_replace(',' ,'.', number_format($value->Price))  }}&#x20AB;</strong>
                     </a>
                     <a href="javascript:void(0)" class="compare-show" onclick="compareShow({{ $value->id }})">

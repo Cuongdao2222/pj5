@@ -606,8 +606,7 @@ class categoryController extends Controller
                 return $group_products;
             });
 
-            dd($group_product);
-
+           
             $data_cate = 1;
 
 

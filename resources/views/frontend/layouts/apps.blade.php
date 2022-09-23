@@ -229,7 +229,7 @@
         
         <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}?ver=1"> 
         <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/apps.css') }}?ver=3">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/apps.css') }}?ver=4">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
     
@@ -662,6 +662,136 @@
                             </a>
                             
                         </li> -->
+
+                        <li class="category">
+    
+
+                        <a href="/danh-muc-nhom-hang" class="category__all"><i class="fa fa-bars" aria-hidden="true"></i> Tất cả danh mục</a>
+                            <div class="bar-top-left" style="display: none;">
+                                <ul class="main-menu">
+                                    <li data-submenu-id="submenu-1">
+                                        <div class="dropdown">
+                                            <span>
+                                            <img src="//cdn.tgdd.vn/mwgcart/mwgcore/ContentMwg/images/DMX/Global/Desktop/LabelHOT.png" alt="label hot" width="26">
+                                            </span>
+                                            <a href="/tivi">Tivi</a>, <a href="/loa-ldp">Smart tivi</a>
+                                        </div>
+                                        <div id="submenu-1" class="submenu" style="display: none;">
+                                            <aside>
+                                                <strong>Thương hiệu</strong>
+                                                <a href="{{route('details','tivi-samsung')}}">
+                                                    <h3>Tivi Samsung</h3>
+                                                </a>
+                                                <a href="{{route('details','tivi-lg')}}">
+                                                    <h3>Tivi LG</h3>
+                                                </a>
+                                                <a href="{{route('details','tivi-sony')}}">
+                                                    <h3>Tivi Sony</h3>
+                                                </a>
+                                                <a href="{{route('details','tivi-tcl')}}">
+                                                    <h3>Tivi TCL</h3>
+                                                </a>
+                                                <a href="{{route('details','tivi-philips')}}">
+                                                    <h3>Tivi Philips</h3>
+                                                </a>
+                                            </aside>
+                                            <aside>
+                                                <strong>Loại tivi</strong>
+                                                <a href="{{route('details','8k')}}">
+                                                    <h3>8K</h3>
+                                                </a>
+                                                <a href="{{route('details','tivi-4k')}}">
+                                                    <h3>4K</h3>
+                                                </a>
+                                                <a href="{{route('details','smart-tivi')}}">
+                                                    <h3>Smart tivi</h3>
+                                                </a>
+                                                <a href="{{route('details','tivi-led')}}">
+                                                    <h3>Tivi Led</h3>
+                                                </a>
+                                                <a href="{{route('details','tivi-oled')}}">
+                                                    <h3>Tivi OLED</h3>
+                                                </a>
+                                                <a href="{{route('details','tivi-qled')}}">
+                                                    <h3>Tivi QLED</h3>
+                                                </a>
+                                                <a href="{{route('details','tivi-frame')}}">
+                                                    <h3>Tivi Frame</h3>
+                                                </a>
+                                                <a href="{{route('details','tivi-neo-qled')}}">
+                                                    <h3>Tivi Neo QLED</h3>
+                                                </a>
+                                            </aside>
+                                            <aside>
+                                                <strong>Kích cỡ tivi</strong>
+                                                <a href="{{route('details','tivi-32-inches')}}">
+                                                    <h3>Tivi 32 inches</h3>
+                                                </a>
+                                                <a href="{{route('details','tivi-43-inches')}}">
+                                                    <h3>Tivi 43 inches</h3>
+                                                </a>
+                                                <a href="{{route('details','tivi-48-inches')}}">
+                                                    <h3>Tivi 48 inches</h3>
+                                                </a>
+                                                <a href="{{route('details','tivi-49-inches')}}">
+                                                    <h3>Tivi 49 inches</h3>
+                                                </a>
+                                                <a href="{{route('details','tivi-50-inches')}}">
+                                                    <h3>Tivi 50 inches</h3>
+                                                </a>
+                                                <a href="{{route('details','tivi-55-inches')}}">
+                                                    <h3>Tivi 55 inches</h3>
+                                                </a>
+                                                <a href="{{route('details','tivi-tu-65-inches-tro-len')}}">
+                                                    <h3>Tivi từ 65 inches trở lên</h3>
+                                                </a>
+                                            </aside>
+                                        </div>
+                                    </li>
+                                    <li data-submenu-id="submenu-2" class="">
+                                        <div class="dropdown">
+                                            <span>
+                                                <i class="icon-tulanh"></i>
+                                            </span>
+                                            <a href="/tu-lanh" class="">Tủ lạnh</a>, <a href="/tu-dong" class="">Tủ đông, Tủ mát</a>
+                                        </div>
+
+                                        <div id="submenu-2" class="submenu" style="display: none;">
+                                            <aside>
+                                                <p class="menuitem__title">TỦ LẠNH<a href="/tu-lanh" class="">Xem tất cả</a></p>
+                                                <a href="/tu-lanh-tra-gop-0-phan-tram" class="">Trả góp 0 - 0.5%</a>
+                                                <a href="/tu-lanh?g=tu-150-300-lit" class="">Tủ lạnh từ 150 - 300 lít</a>
+                                                <a href="/tu-lanh?g=tu-301-400-lit" class="">Tủ lạnh từ 301 - 400 lít</a>
+                                                <a href="/tu-lanh?g=tu-lon-side-by-side" class="">Tủ lạnh Side by side</a>
+                                                <a href="/tu-lanh?g=mini" class="">Tủ lạnh Mini</a>
+                                                <a href="/tu-lanh-panasonic" class="">Panasonic</a>
+                                                <a href="/tu-lanh-samsung" class="">Samsung</a>
+                                                <a href="/tu-lanh-toshiba" class="">Toshiba</a>
+                                                <a href="/tu-lanh-aqua-sanyo" class="">Aqua</a>
+                                                <a href="/tu-lanh-lg" class="">LG</a>
+                                                <a href="/tu-lanh?p=tu-8tr-12tr" class="">Từ 8 - 12 triệu</a>
+                                            </aside>
+                                            <aside>
+                                                <p class="menuitem__title">TỦ ĐÔNG, TỦ MÁT<a href="/tu-dong" class="">Xem tất cả</a></p>
+                                                <a href="/tu-dong-sanaky" class="">Sanaky</a>
+                                                <a href="/tu-dong-kangaroo" class="">Kangaroo</a>
+                                                <a href="/tu-dong-aqua" class="">AQUA</a>
+                                                <a href="/tu-dong-lg" class="">LG</a>
+                                                <a href="/tu-dong-sunhouse" class="">Sunhouse</a>
+                                                <a href="/tu-dong-hoa-phat" class="">Hoà Phát</a>
+                                                <a href="/tu-dong?g=1-ngan-dong-1-ngan-mat" class="">Tủ 1 ngăn đông, một ngăn mát</a>
+                                                <a href="/tu-dong?g=1-ngan-dong" class="">Tủ 1 ngăn đông</a>
+                                                <a href="/tu-dong-inverter" class="">Tủ đông có Inverter</a>
+                                                <a href="/tu-dong?p=tu-5-10-trieu" class="">Tủ đông 5 - 10 triệu</a>
+                                                <a href="/tu-dong?g=duoi-300-lit" class="">Tủ đông dưới 300 lít</a>
+
+                                            </aside>
+                                        </div>
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+                        </li>
                         <li class="child" data-id="danh-muc1">
                             <a class="list-mn" href="{{route('details','ti-vi')}}">
                             <i class="fa-regular fa-refrigerator"></i>

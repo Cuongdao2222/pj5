@@ -8,7 +8,7 @@
     @push('style')
 
         <link rel="stylesheet" type="text/css" href="{{ asset('css/home.css') }}?ver=11">
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}?ver=10"> 
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}?ver=12"> 
         <link rel="stylesheet" type="text/css" href="{{ asset('css/index.css') }}?ver=3">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/homes.css') }}?ver=5">
         <style type="text/css">
@@ -67,12 +67,20 @@
                 padding: 0 4px;
             }
 
+            .bar-top-left {
 
+                position: absolute; 
 
+            }
 
+            .main-menu{
+                background: #fff;
+            }  
 
-
-
+            .category__all{
+                color: #000;
+                font-weight: bold;
+            } 
 
             .div-title-news{
                 margin-bottom: 10px;
@@ -468,6 +476,8 @@
 
                 @foreach($product_sale as  $value)
                 @if($value->active==1)
+
+                
                 <div class="item">
                     <span class="icon_sale">
                         <img class="sale-banner ls-is-cached lazyloaded" alt="hot" data-src="{{ asset('images/background-image/xahang.png') }}" src="{{ asset('images/background-image/xahang.png') }}">
