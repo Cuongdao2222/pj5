@@ -234,6 +234,20 @@
 
     
         <style type="text/css">
+
+            .category__all{
+                padding: 0 !important;
+                width: 100% !important;
+            }
+
+            .category{
+                box-shadow: none !important;
+            }
+
+            .bar-top-left {
+                position: absolute !important;
+                background-color: #fff;
+            }
             
             .listcompare-click{
                 display: none;

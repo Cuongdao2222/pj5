@@ -42,7 +42,7 @@ class indexController extends Controller
          $timeDeal_star = Cache::get('deal_start'); 
 
 
-        if(empty($group)||empty($product_sale) ){
+        if(!Cache::has('groups')||empty($product_sale) ){
 
             $this->cache();
 
@@ -91,6 +91,8 @@ class indexController extends Controller
         else{
             $bannerUnderSale = Cache::get('bannerUnderSale');
         }  
+
+       
 
         
         return view('frontend.index', compact('banners', 'bannersRight', 'bannerUnderSlider', 'bannerUnderSale','deal','product_sale', 'group','timeDeal_star', 'deal_check'));

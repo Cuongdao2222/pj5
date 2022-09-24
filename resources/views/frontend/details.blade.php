@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="{{ asset('css/jquery.fancybox.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/detail1fe.css') }}">
 
+
     <style type="text/css">
 
         @-webkit-keyframes my {
@@ -42,6 +43,9 @@
             position: absolute;
             left: 0;
             top: 0;
+        }
+        .btn-add-cart {
+            width: 50%;
         }
         .redirectCart{
             font-weight: bold;
@@ -603,6 +607,9 @@
                                             <input type="text" class="quantity-field" readonly="readonly" name="qty" value="1">
                                             </div> -->
                                         <button type="button" class="btn btn-lg btn-add-cart btn-add-cart redirectCart" onclick="addToCart({{ $data->id }})">MUA NGAY <br>(Giao hàng tận nơi - Giá tốt - An toàn)</button>
+
+
+                                        <button type="button" class="btn btn-lg btn-add-cart btn-add-cart redirectCart" onclick="addToCart(2221)">Gọi lại cho tôi <br>(Giao hàng tận nơi - Giá tốt - An toàn)</button>
                                     </div>
                                     <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                                         Launch demo modal
@@ -1102,7 +1109,9 @@
                                         <input type="text" class="quantity-field" readonly="readonly" name="qty" value="1">
                                         </div> -->
                                     @if((int)$data['Price']>0)
-                                    <button type="button" class="btn btn-lg btn-add-cart btn-add-cart redirectCart" onclick="addToCart({{ $data->id }})">MUA NGAY <br>(Giao hàng tận nơi - Giá tốt - An toàn)</button>
+                                    <button type="button" class="btn btn-lg btn-add-cart btn-add-cart redirectCart" onclick="addToCart({{ $data->id }})">MUA NGAY <br>(Giao hàng tận nơi - Giá tốt)</button>
+
+                                     <button type="button" class="btn btn-lg btn-add-cart btn-add-cart redirectCart" onclick="addToCart({{ $data->id }})">Gọi lại cho tôi <br>(Tư vấn tận tình, chu đáo)</button>
                                     @else
                                     <button type="button" class="btn btn-lg btn-add-cart btn-add-cart redirectCart">LIÊN HỆ <br></button>
                                     @endif
@@ -1340,6 +1349,8 @@
             <a class="btn-buy txt_center cor5px buy-nows-popup" href="javascript:void(0)">
             <i class="fa fa-shopping-cart"></i> <span class="txt_15" onclick="addToCart({{ $data->id }})">Mua ngay</span>
             </a>
+
+
         </div>
         @endif
         @if((int)$data->Price>=3000000)

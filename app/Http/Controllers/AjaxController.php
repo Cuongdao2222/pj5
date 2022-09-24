@@ -206,8 +206,6 @@ class AjaxController extends Controller
 
             $search = ucfirst($search);
 
-
-
             if(!Cache::has('product_search')){
 
                 $productss = product::select('Link', 'Name', 'Image', 'Price', 'id', 'ProductSku')->where('active', 1)->get();
@@ -301,9 +299,7 @@ class AjaxController extends Controller
 
                 else{
                     // check flash deal
-                    
-                    
-
+                
                     if($date_flashdeal->isToday()){
 
                         foreach($define as $key => $value){

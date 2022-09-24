@@ -12,6 +12,168 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('css/index.css') }}?ver=3">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/homes.css') }}?ver=5">
         <style type="text/css">
+
+            .videos {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .video_big, .video_big .img_video {
+                overflow: hidden;
+                position: relative;
+            }
+
+            .video_big {
+                width: 39.334%;
+                height: 297px;
+                border-radius: 10px;
+            }
+
+            .video_big .img_video {
+                width: 100%;
+                height: 100%;
+                text-align: center;
+            }
+
+            .video_big .img_video:before {
+                content: "\f144";
+                position: absolute;
+                font-family: Font Awesome\ 5 Pro;
+                top: 50%;
+                left: 50%;
+                z-index: 2;
+                transform: translate(-50%,-50%);
+                color: #fff;
+                font-size: 55px;
+                font-style: normal;
+                font-weight: 200;
+                display: none;
+            }
+
+            .video_big .title_video h3, .video_big .title_video p {
+                font-family: Arial,Tahoma,sans-serif;
+                font-size: 16px;
+                color: #fff;
+                display: inline-block;
+                margin: 15px;
+                height: 42px;
+                overflow: hidden;
+                font-weight: 400;
+                line-height: 20px;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+            }
+
+            .video_big .img_video img {
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .video_big .title_video {
+                position: absolute;
+                bottom: 0px;
+                background: linear-gradient(0deg, rgb(0, 0, 0), transparent);
+                height: 100%;
+                width: 100%;
+            }
+
+             .title_video h3, .video_big .title_video p {
+                font-family: Arial, Tahoma, sans-serif;
+                font-size: 16px;
+                color: rgb(255, 255, 255);
+                display: inline-block;
+                margin: 15px;
+                height: 42px;
+                overflow: hidden;
+                font-weight: 400;
+                line-height: 20px;
+                position: absolute;
+                bottom: 0px;
+                left: 0px;
+                right: 0px;
+            }
+
+            .video_big .title_video {
+                position: absolute;
+                bottom: 0;
+                background: linear-gradient(0deg,#000,transparent);
+                height: 100%;
+                width: 100%;
+            }
+
+            .video_small {
+                width: 59.5%;
+                overflow: hidden;
+            }
+
+            .video_small_item .img_video:before {
+                content: "\f144";
+                position: absolute;
+                top: 57%;
+                left: 50%;
+                z-index: 2;
+                transform: translate(-50%,-50%);
+                font-family: Font Awesome\ 5 Pro;
+                font-size: 35px;
+                color: #fff;
+                font-weight: 200;
+            }
+            .video_small_item {
+                width: 32.213%;
+                height: 143px;
+                float: left;
+                margin-left: 8px;
+                margin-bottom: 10px;
+                border-radius: 10px;
+                overflow: hidden;
+                position: relative;
+            }
+
+            .video_small_item .title_video h3, .video_small_item .title_video p {
+                font-family: Arial,Tahoma,sans-serif;
+                font-size: 14px;
+                color: #fff;
+                display: inline-block;
+                margin: 5px 10px;
+                height: 36px;
+                overflow: hidden;
+                font-weight: 400;
+                line-height: 18px;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+            }
+
+            .video_small_item .img_video {
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                position: relative;
+            }
+
+            .video_small_item .img_video img {
+                height: 100%;
+                width: 100%;
+                -o-object-fit: cover;
+                object-fit: cover;
+            }
+
+            .video_small_item .title_video {
+                width: 100%;
+                position: absolute;
+                left: 0;
+                right: 0;
+                z-index: 10;
+                bottom: 0;
+                background: linear-gradient(0deg,#000,transparent);
+                height: 100%;
+            }
+
+
            /* deal*/
 
             .titles-time{
@@ -154,7 +316,6 @@
                     top: 53%;
                    
                 } 
-
 
                 .homebanners{
 
@@ -521,42 +682,39 @@
         
 
         <div  class="owl-slider-count" style="display: none;">{{ @$group->count() }}</div> 
+
+
+
         @foreach($group as $key => $groups)
 
             <?php
-
-                if(!Cache::has('hot'.$groups->id) ){
+                
+                $hot = Cache::rememberForever('hot'.$groups->id, function() use($groups){
 
                     $hot = DB::table('hot')->select('product_id')->where('group_id', $groups->id)->get()->pluck('product_id');
 
-                    Cache::put('hot'.$groups->id, $hot, 10000);
+                    return $hot;
+                });
 
-                }
-                 $hot = Cache::get('hot'.$groups->id);
 
-                if(!Cache::has('data'.$groups->id)){
-                    $datas =  DB::table('products')->whereIn('id', $hot)->where('active', 1)->get();
-
-                    $datas = Cache::put('data'.$groups->id,  $datas, 10000);
-                }
-
-                $data = Cache::get('data'.$groups->id);
-
+                $data = Cache::get('product_search')->whereIn('id', $hot->toArray());
 
             ?>
+
         @if(!empty($data) && $data->count()>0)
 
-         
         <div class="box-common _cate_1942">
             <ul class="box-common__tab box-tab-mobile">
                 <li class="active-tab" data-cate-id="1942"><a href="{{  @$groups->link }}">{{  @$groups->name }}</a></li>
                 <?php 
-                    if(empty(Cache::get('listGroupsShow'.$groups->id))){
-                        $listGroupsShows =   App\Models\groupProduct::select('name', 'link')->where('parent_id', $groups->id)->get();
 
-                        Cache::put('listGroupsShow'.$groups->id,  $listGroupsShows, 10000);
-                    }
-                    $listGroupsShow = Cache::get('listGroupsShow'.$groups->id);
+                    $listGroupsShows = Cache::rememberForever('listGroupsShow'.$groups->id, function() use($groups){
+
+                         $listGroupsShows =   App\Models\groupProduct::select('name', 'link')->where('parent_id', $groups->id)->get();
+
+                        return $listGroupsShows??'';
+                    });
+
                 ?>
 
                 @if(!empty($listGroupsShow))
@@ -573,8 +731,7 @@
                 <div class="box-common__content">
                     <div class="listproduct slider-home owl-carousel" id="banner-product_{{ $key }}" data-size="10">
                         @foreach($data as $datas)
-                        @if($datas->active==1)
-                        
+
                         <div class="item"  data-pos="1">
                             <a href='{{ route('details', $datas->Link) }}'>
                                 @if($datas->Price>=3000000)
@@ -681,7 +838,7 @@
                                     so sánh
                             </a>
                         </div>
-                        @endif
+                        
                         @endforeach
                         
                         
@@ -710,53 +867,39 @@
             }); 
 
         ?>
-                    
         @if(isset($post) && count($post)>0)
-        <div class="applications">
-            <div class="col1">
-                <!-- Tư vấn chọn mua -->
-                <div class="ttl-main">
-                    <h4 class="title-layout">Tin tức nổi bật</h4>
-                    <a href="{{ route('tin') }}" class="readmore-txt blue">Xem thêm</a>
-                </div>
+        <div class="my_utilities">
+            <h2 class="title_pro">Tiện ích dành cho bạn </h2>
+            <a href="{{ route('details', $post[0]['link']) }}" class="see_all">Xem tất cả <i></i></a> 
+            <div class="videos">
+                <a href="{{ route('details', $post[0]['link']) }}" class="video_big not_video " title="{{ $post[0]['title'] }}" idx="5229">
+                    <div class="img_video"> <img src="{{ asset($post[0]['image']) }}" data-src="{{ asset($post[0]['image']) }}" alt="Iphone lock là gì? Các cách kiểm tra Iphone lock dễ dàng" class="lazy loaded" style="width: 100%;" data-was-processed="true"> </div>
+                    <div class="title_video">
+                        <h3> <span>{{ $post[0]['title'] }}</span> </h3>
+                    </div>
+                </a>
 
-                <div class="col1-big div-title-news">
-                    <a href="{{ route('details', $post[0]['link']) }}" class="col1-big big-title-href">
-                        <div class="span texts">
-                            <p class="text-blog">{{ $post[0]['title'] }}</p>
-                        </div>
-                    </a>
-                </div>
-                    
 
-                <div class="col1__ct" data-size="4">
-                    <a href="{{ route('details', $post[0]['link']) }}" class="col1-big">
-                        <div class="col1-big-img">
-                            <img data-src="{{ asset( $post[0]['image'])  }}" class=" ls-is-cached lazyloaded" alt="{{ $post[0]['title'] }}" src="{{ $post[0]['image'] }}">
-                        </div>
-                        
-                    </a>
-                    <div class="col1-simple">
 
-                        @for($i=1; $i<count($post); $i++)
+                <div class="video_small">
 
-                        <a href="{{ route('details', $post[$i]['link']) }}" class="">
-                            <div class="spl-item__img">
-                                <img data-src="{{ asset($post[$i]['image']) }}" class=" lazyloaded" alt="{{ $post[$i]['title'] }}" src="{{ asset($post[$i]['image']) }}">
-                            </div>
-                            <div class="spl-item__content">
-                                <p class="spl-item-title">{{ $post[$i]['title'] }}</p>
+                    @for($i=1; $i<count($post); $i++)
+
+                        <a href="{{ route('details', $post[$i]['link']) }}" class="video_small_item not_video " title="{{ $post[$i]['title'] }}" idx="5228">
+                            <div class="img_video"> <img src="{{ asset($post[$i]['image']) }}" data-src="{{ asset($post[$i]['image']) }}" class="lazy loaded" alt="{{ $post[$i]['title'] }}" data-was-processed="true"> </div>
+                            <div class="title_video">
+                                <h3> <span>{{ $post[$i]['title'] }}</span> </h3>
                             </div>
                         </a>
 
-                        @endfor
-                    </div>
+                    @endfor
+                   
                 </div>
-                <!-- End -->
             </div>
         </div>
-        
-         @endif
+        @endif
+                    
+
         <div class="bottom-search">
             <p>Tìm kiếm nhiều:</p>
 
