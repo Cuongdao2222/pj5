@@ -3,92 +3,9 @@
 @push('style')
 
     <link rel="stylesheet" href="{{ asset('css/jquery.fancybox.css') }}"/>
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/detail1fe.css') }}">
-
-    <style type="text/css">
-        .saker{
-            position: absolute;
-            left: 0;
-            top: 0;
-        }
-        .redirectCart{
-            font-weight: bold;
-        }
-
-        .installment-purchase .but-tra-gop {
-            width: calc(50% - 10px);
-        }    
-        .list-shows-click {
-            display: inline-flex !important;
-            width: calc(100% - 25%) !important;
-            border: unset;
-        }
-        .pdetail-info p{
-            margin-top: 10px;
-        }
-
-        .installments-but{
-            margin-left: 15px;
-            border: 1px solid #EA1D34;
-        }
-
-        .add-card-buttons {
-            text-decoration: none;
-            color: #333;
-            font-size: 14px;
-            height: 54px;
-           /* padding: 8px 5px;*/
-           line-height: 54px !important;
-
-            line-height: 18px;
-            width: 100%;
-            border-radius: 5px;
-            display: inline-block;
-            text-align: center;
-            cursor: pointer;
-            background: #ffde00;
-        }
-
-        .add-cart-button{
-            border: 1px solid #EA1D34;
-            background: #fff !important;
-            color: #EA1D34 !important;
-        }
-
-        .box-compare{
-            margin-left: 15px;
-        }
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/detail1fe.css') }}?ver=2">
 
 
-        @media screen and (min-width: 768px) {
-            .support {
-                width: 70%;
-                margin: 0 auto;
-                text-align: center;
-            }
-        }
-
-       @media screen and (max-width: 768px){
-            .global-compare-group{
-                left: 0 !important;
-            }
-            .compare-pro-holder a {
-
-                width: 30%;
-            } 
-            .btn-compare{
-                position: absolute;
-                top: 34px;
-                left: 46vw;
-                background: #E5172F !important;
-            } 
-            .global-compare-group .close-compare{
-                position: absolute;
-                top: 10px;
-                left: 94vw;
-            }  
-        }
-    </style>
 
 
 @endpush
@@ -369,7 +286,7 @@
                         <?php 
                             $image_product = strstr(basename($data->Image), '_');
                         ?>
-                        <div class="item">
+                        <div class="item img-main">
                             <a href="{{ asset($data->Image) }}" data-fancybox="gallery"><img src="{{ asset($data->Image) }}" alt="{{ @$data->Name }}">
 
                             </a>
