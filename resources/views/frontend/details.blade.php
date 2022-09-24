@@ -3,7 +3,7 @@
 @push('style')
 
     <link rel="stylesheet" href="{{ asset('css/jquery.fancybox.css') }}"/>
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/detail1fe.css') }}?ver=3">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/detail1fe.css') }}?ver=4">
 
 
 

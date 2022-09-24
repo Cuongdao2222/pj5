@@ -101,7 +101,7 @@ width: auto !important;
     }
 
     .img-main img{
-        width: 80%;
+        width: 80% !important;
     }
     .redirectCart{
         font-weight: bold;
