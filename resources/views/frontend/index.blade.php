@@ -684,6 +684,136 @@
         <div  class="owl-slider-count" style="display: none;">{{ @$group->count() }}</div> 
 
 
+        <div class="prd-promo has-banner" style="background-color:#FFF3EE; " data-html-id="3109">
+
+            <div class="prd-promo__top clearfix" >
+
+                <a data-cate="0" data-place="1868" href="#" ><img style="cursor:pointer" src="{{ asset($bannerUnderSale[0]['image']) }}" alt="banner-summer" width="1200"></a>                
+            </div>
+
+            <?php
+                
+
+                $hots = Cache::rememberForever('hots', function(){
+
+                    $hots = App\Models\hotsProduct::select('product_id')->get()->pluck('product_id');
+
+                    return $hots;
+                });
+
+
+                $product_hot = Cache::get('product_search')->whereIn('id', $hots->toArray());
+
+                $new_product = Cache::rememberForever('new_product', function(){
+
+                    $new_product = App\Models\newProduct::select('product_id')->get()->pluck('product_id');
+
+                    return $new_product;
+                });
+
+
+                $product_new = Cache::get('product_search')->whereIn('id', $new_product->toArray());
+            ?>    
+
+            @if(!empty($product_hot)&& $product_hot->count()>0)
+           
+            <div class="listproduct slider-promo owl-carousel banner-sale" data-size="20">
+
+                @foreach($product_hot as $key=>  $values)
+                
+                
+                <div class="item">
+                    <span class="icon_sale">
+                        <img class="sale-banner ls-is-cached lazyloaded" alt="hot" data-src="{{ asset('images/background-image/xahang.png') }}" src="{{ asset('images/background-image/xahang.png') }}">
+                    </span>
+                    <a href='{{ route('details', $values->Link) }}' class=" main-contain" data-s="OnlineSavingCMS" data-site="2" data-pro="3" data-cache="False" data-name="M&#xE1;y gi&#x1EB7;t LG Inverter 8.5 kg FV1408S4W" data-id="227121" data-price="8840000.0" data-brand="LG" data-cate="M&#xE1;y gi&#x1EB7;t" data-box="BoxHome">
+                        <div class="item-label">
+                        </div>
+                        <div class="item-img">
+                            <img data-src="{{ asset($values->Image) }}"   class="lazyload"  data-src="{{ asset($values->Image) }}" alt="{{ $values->Name }}" width=210 height=210>
+                        
+                        </div>
+                        <div class="title-name">
+                            <h3>{{ $values->Name }}</h3>
+                        </div>
+                        
+                        <strong class="price">{{  @str_replace(',' ,'.', number_format($values->Price))  }}.&#x20AB;</strong>
+                        <div class="item-rating">
+                            <p>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </p>
+                        </div>
+                    </a>
+
+                    <a href="javascript:void(0)" class="compare-show" data-id="{{ $values->product_id }}">
+                        <i class="fa-solid fa-plus"></i>
+                            so sánh
+                    </a>
+                </div>
+                @endforeach
+            </div>
+            @endif
+            
+        </div>
+
+
+         <div class="prd-promo has-banner" style="background-color:#FFF3EE; " data-html-id="3109">
+
+            <div class="prd-promo__top clearfix" >
+
+                <a data-cate="0" data-place="1868" href="#" ><img style="cursor:pointer" src="{{ asset($bannerUnderSale[0]['image']) }}" alt="banner-summer" width="1200"></a>                
+            </div>
+
+
+            @if(!empty($product_new)&& $product_new->count()>0)
+               
+            <div class="listproduct slider-promo owl-carousel banner-sale" data-size="20">
+
+                @foreach($product_new as $key=>  $values)
+                
+                
+                <div class="item">
+                    <span class="icon_sale">
+                        <img class="sale-banner ls-is-cached lazyloaded" alt="hot" data-src="{{ asset('images/background-image/xahang.png') }}" src="{{ asset('images/background-image/xahang.png') }}">
+                    </span>
+                    <a href='{{ route('details', $values->Link) }}' class=" main-contain" data-s="OnlineSavingCMS" data-site="2" data-pro="3" data-cache="False" data-name="M&#xE1;y gi&#x1EB7;t LG Inverter 8.5 kg FV1408S4W" data-id="227121" data-price="8840000.0" data-brand="LG" data-cate="M&#xE1;y gi&#x1EB7;t" data-box="BoxHome">
+                        <div class="item-label">
+                        </div>
+                        <div class="item-img">
+                            <img data-src="{{ asset($values->Image) }}"   class="lazyload"  data-src="{{ asset($values->Image) }}" alt="{{ $values->Name }}" width=210 height=210>
+                        
+                        </div>
+                        <div class="title-name">
+                            <h3>{{ $values->Name }}</h3>
+                        </div>
+                        
+                        <strong class="price">{{  @str_replace(',' ,'.', number_format($values->Price))  }}.&#x20AB;</strong>
+                        <div class="item-rating">
+                            <p>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </p>
+                        </div>
+                    </a>
+
+                    <a href="javascript:void(0)" class="compare-show" data-id="{{ $values->product_id }}">
+                        <i class="fa-solid fa-plus"></i>
+                            so sánh
+                    </a>
+                </div>
+                @endforeach
+
+            </div>
+            @endif
+        </div>    
+            
 
         @foreach($group as $key => $groups)
 

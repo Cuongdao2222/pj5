@@ -45,7 +45,7 @@
             top: 0;
         }
         .btn-add-cart {
-            width: 50%;
+            width: calc(100% - 10px);
         }
         .redirectCart{
             font-weight: bold;
@@ -135,6 +135,14 @@
                 width: 70%;
                 margin: 0 auto;
                 text-align: center;
+            }
+
+            .add-to-cart{
+                display: flex;
+            }
+
+            .btn-add-cart{
+                padding: 8px 16px;
             }
         }
 
@@ -747,6 +755,70 @@
                     </div>
                 </div>
             </div>
+
+            <div class="modal fade" id="modal-suport" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabels" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="loader"></div>
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabels">Thông tin khách hàng</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="tbl_list_carts" style="text-align: center;">
+                        <div class="cart_col_1">
+                            <a href="{{  route('details', $data->Link)}}"><img src="{{ asset($data->Image) }}" style="width: 85px;"></a>
+                           
+                        </div>
+                        <div class="cart_col_2">
+                            <a href="{{  route('details', $data->Link)}}"><span class="name">{{ $data->Name }}</span></a>
+                            
+                            
+                        </div>
+                        
+                    </div>
+
+                    <div class="c3_col_1">
+                        <form class="c3_box" id="form-subs" method="post"  action="{{ route('order') }}">
+                            {{ csrf_field() }}
+                            <div class="title_box_cart"> Thông tin khách hàng</div>
+                            <div class="item-form">
+                                <div class="option-group clearfix">
+                                    <div class="step_option">
+                                        <span class="st_opt st_opt_active" data-value="Anh" data-name="sex"></span><span>Anh</span>
+                                    </div>
+                                    <div class="step_option">
+                                        <span class="st_opt" data-value="Chị" data-name="sex"></span><span>Chị</span>
+                                    </div>
+                                    <input type="hidden" name="sex" id="sexs" value="Nam">
+                                </div>
+                                <!--option-group-->
+                            </div>
+                            <div class="item-form">
+                                <input type="text" name="name" id="buyer_names" placeholder="Họ tên">
+                            </div>
+                            <div class="item-form">
+                                <input type="text" name="phone_numbers" id="buyer_tels" value="" placeholder="Số điện thoại">
+                            </div>
+                           
+                            
+                           
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary order1">Gửi thông tin </button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                
+                            </div>
+
+
+                        </form>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
             <div class="block-tab">
                 <div class="bt-overlay"></div>
                 <ul class="block-tab-top">
@@ -854,11 +926,7 @@
                     <a href="/tivi?g=smart-tivi">Smart Tivi</a>
                     <meta property="position" content="3">
                     </li> -->
-                <li>
-                    <span>›</span>
-                    <a href="{{ route('details',$data->Link) }}">{{ $data->Name }}</a>
-                    <meta property="position" content="4">
-                </li>
+               
             </ul>
 
 
@@ -906,10 +974,15 @@
 
 
             <div class="box-compare">
+                 <span style="font-weight: bold; font-size:17px ">Model: {{ $data->ProductSku }} </span> 
+                &nbsp
+
                 <a href="javascript:void(0)" class="compare-show" onclick="compareShow({{ $data->id }})">
                     <i class="fa-solid fa-plus"></i>
                         so sánh
                 </a>
+
+
             </div>
             
 
@@ -1026,7 +1099,10 @@
                              {!!  @$text !!}
                             <div class="pdetail-price-box">
 
-                                 <div class="price_giaban price_market">Giá hãng : <span>9.590.000đ </span></div>
+                                @if(!empty($data->manuPrice))
+
+                                 <div class="price_giaban price_market">Giá hãng : <span>{{ $data->manuPrice }} </span></div>
+                                @endif 
 
                                 <h3>
                                     {{str_replace(',' ,'.', number_format($data->Price))  }}₫
@@ -1058,7 +1134,7 @@
                             @if(!empty($data->promotion))
                             <fieldset class="p-gift">
                                 <legend id="data-pricetotal" style="color: #ff0000;font-size: 18px; font-weight: bold" data-pricetotal="0">
-                                    Khuyến mãi kèm theo
+                                    Khuyến mãi kèm theo 
                                 </legend>
 
                                     {!! @$data->promotion !!}
@@ -1111,11 +1187,12 @@
                                     @if((int)$data['Price']>0)
                                     <button type="button" class="btn btn-lg btn-add-cart btn-add-cart redirectCart" onclick="addToCart({{ $data->id }})">MUA NGAY <br>(Giao hàng tận nơi - Giá tốt)</button>
 
-                                     <button type="button" class="btn btn-lg btn-add-cart btn-add-cart redirectCart" onclick="addToCart({{ $data->id }})">Gọi lại cho tôi <br>(Tư vấn tận tình, chu đáo)</button>
+                                    
                                     @else
                                     <button type="button" class="btn btn-lg btn-add-cart btn-add-cart redirectCart">LIÊN HỆ <br></button>
                                     @endif
                                 </form>
+                                 <button type="button" class="btn btn-lg btn-add-cart btn-add-cart redirectCart" onclick="addToSuport({{ $data->id }})">Gọi lại cho tôi <br>(Tư vấn tận tình, chu đáo)</button>
                                 <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                                     Launch demo modal
                                     </button> -->
@@ -1365,7 +1442,8 @@
        
     </div>
 
-    
+
+
     <div class="clear"></div>
     <br>
     <style type="text/css">
@@ -1781,7 +1859,11 @@
            $('.viewer-product').append(result);
            
         }
-    });    
+    });  
+
+    function addToSuport() {
+          $('#modal-suport').modal('show'); 
+      }  
     
     function addToCart(id) {
     

@@ -6,30 +6,30 @@ use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Support\Facades\Cache;
 
-class newProduct extends Model
+class hotsProduct extends Model
 {
-     public $table = 'new_product';
+    public $table = 'hot_product';
 
-      public static function boot()
+    public static function boot()
     {
         parent::boot();
 
         static::created(function ($instance) {
             // update cache content
-            Cache::forget('new_product');
+            Cache::forget('hots');
          
         });
 
         static::updated(function ($instance) {
            // update cache content
           
-           Cache::forget('new_product');
+           Cache::forget('hots');
            
         });
 
         static::deleted(function ($instance) {
            
-            Cache::forget('new_product');
+            Cache::forget('hots');
         });
-     }    
+    }
 }

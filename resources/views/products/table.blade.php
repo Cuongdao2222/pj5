@@ -3,6 +3,10 @@
     .group_gift{
         cursor: pointer;
     }
+
+    .table td, .table th{
+        padding: 0 !important;
+    }
 </style>
 
 <div class="table-responsive">
@@ -84,6 +88,7 @@
             $list_sale = App\Models\saleProduct::select('product_id')->get();
 
             $list_new  =  App\Models\newProduct::select('product_id')->get();
+            $list_hots   =  App\Models\hotsProduct::select('product_id')->get();
 
 
             function convertListToArray($list)
@@ -102,6 +107,7 @@
             $list_hot = convertListToArray($list_hot);
             $list_sales = convertListToArray($list_sale);
             $list_new  = convertListToArray($list_new);
+            $list_hots = convertListToArray($list_hots);
         ?>
 
         <?php  
@@ -159,7 +165,7 @@
 
             <td style="width:40%">
                 <input type="checkbox" id="hot{{ $product->id }}" name="hot"  onclick='handleClick({{ $product->id }});' data-id ="{{ get_Group_Product($product->id)[0]??'' }}" {{ in_array($product->id, $list_hot)?'checked':'' }}>
-                Sản phẩm Hot
+                Sản phẩm Show Home
 
                 <br>
 
@@ -167,14 +173,15 @@
                  Sản phẩm Sale
                 <br> 
 
-                  <input type="checkbox" id="new{{ $product->id }}" name="new"  onclick='newClick({{ $product->id }});' data-id ="{{ get_Group_Product($product->id)[0]??'' }}" {{ in_array($product->id, $list_new)?'checked':'' }}>
+                <input type="checkbox" id="new{{ $product->id }}" name="new"  onclick='newClick({{ $product->id }});' data-id ="{{ get_Group_Product($product->id)[0]??'' }}" {{ in_array($product->id, $list_new)?'checked':'' }}>
                   Sản phẩm Mới
+                  <br>
+                <input type="checkbox" id="hots{{ $product->id }}" name="hots"  onclick='hotClick({{ $product->id }});' data-id ="{{ get_Group_Product($product->id)[0]??'' }}" {{ in_array($product->id, $list_hots)?'checked':'' }}>
+                  Sản phẩm Hot
 
             </td>
             
 
-            
-            
             <?php  
 
                 $promotion = App\Models\promotion::where('id_product', $product->id)->get()->last(); 
@@ -235,25 +242,25 @@
                            class='btn btn-default btn-xs' target="_blank">
                             <i class="far fa-eye"></i>
                         </a>
-                        <br>
+                        
                         <a href="{{ route('products.edit', [$product->id]) }}"
                            class='btn btn-default btn-xs'>
                             <i class="far fa-edit"></i>
                         </a>
-                        <br>
+                        
 
                          <a href="{{ route('images.create', [$product->id]) }}"
                            class='btn btn-default btn-xs'>
                             <i class="fas fa-image"></i>
                         </a>
 
-                        <br>
+                        
 
                          <a href="{{ route('filter-property') }}?group-product={{ get_Group_Product($product->id)[0]??'' }}&productId={{ $product->id }}"
                            class='btn btn-default btn-xs'>
                             <i class="fa fa-filter"></i>
                         </a>
-                        <br>
+                        
 
                         {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
                     </div>
@@ -597,6 +604,50 @@
            
             type: 'POST',
             url: "{{ route('remove-new-product') }}",
+            data: {
+                product_id: id,
+                group_id: group_id,
+                   
+            },
+            success: function(result){
+                console.log(result);
+            }
+        });
+
+    }
+
+    function hotClick(id) {
+
+         var checked = $('#hots'+id).is(':checked'); 
+
+        const group_id = $('#hots'+id).attr('data-id');
+
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        if(checked == true)
+        $.ajax({
+           
+            type: 'POST',
+            url: "{{ route('add-hots-product') }}",
+            data: {
+                product_id: id,
+                group_id: group_id,
+                   
+            },
+            success: function(result){
+                console.log(result);
+            }
+        });
+        else
+        $.ajax({
+           
+            type: 'POST',
+            url: "{{ route('remove-hots-product') }}",
             data: {
                 product_id: id,
                 group_id: group_id,

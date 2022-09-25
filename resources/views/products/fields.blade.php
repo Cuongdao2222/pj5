@@ -168,6 +168,12 @@
 </div>
 @endif
 
+<div class="form-group col-sm-6">
+    {!! Form::label('manu Price', 'Giá Hãng:') !!}
+    {!! Form::text('manuPrice', null, ['class' => 'form-control']) !!}
+
+</div>
+
 <!-- Quantily Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('Quantily', 'Số lượng trong kho:') !!}

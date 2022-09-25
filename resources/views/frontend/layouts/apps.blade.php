@@ -278,6 +278,79 @@
             #js-compare-holder img{
                 margin-bottom: 10px;
             }
+
+            /*item footer*/
+
+            .max-width {
+                max-width: 1200px;
+                width: 100%;
+                margin: 0 auto;
+                position: relative;
+            }
+            .phone_hotline {
+                width: 100%;
+                background: #f5f5f5;
+                display: flex;
+                justify-content: space-between;
+            }
+            .p_hotline_item {
+                width: 33.34%;
+                text-align: center;
+                position: relative;
+            }
+
+            .p_hotline_item .icon_purchase, .p_hotline_item .icon_security {
+                width: 70px;
+                height: 70px;
+                display: inline-block;
+                vertical-align: middle;
+                background-image: url(//cdn01.dienmaycholon.vn/filewebdmclnew/DMCL21/FE/img/icon.png?f85e2fa…=);
+            }
+
+            .p_hotline_item span {
+                width: 45%;
+                display: inline-block;
+                vertical-align: middle;
+                font-family: Arial,Tahoma,sans-serif;
+                font-size: 14px;
+                color: #333;
+                text-align: left;
+            }
+
+            .p_hotline_item span strong {
+                display: block;
+                font-weight: 700;
+            }
+
+            .p_hotline_item .icon_complain {
+                width: 70px;
+                height: 70px;
+                display: inline-block;
+                vertical-align: middle;
+                background-image: url(//cdn01.dienmaycholon.vn/filewebdmclnew/DMCL21/FE/img/icon.png?f85e2fa…=);
+                background-position: 95.5% 14.5%;
+            }
+
+            .p_hotline_item  .icon_purchase {
+                width: 70px;
+                height: 70px;
+                display: inline-block;
+                vertical-align: middle;
+                background-image: url(//cdn01.dienmaycholon.vn/filewebdmclnew/DMCL21/FE/img/icon.png?f85e2fa…=);
+                background-position: 81.5% 14.5%;
+            }
+
+            .p_hotline_item .icon_security {
+                width: 70px;
+                height: 70px;
+                display: inline-block;
+                vertical-align: middle;
+                background-image: url(//cdn01.dienmaycholon.vn/filewebdmclnew/DMCL21/FE/img/icon.png?f85e2fa…=);
+                background-position: 99% .5%
+            }
+
+           
+            
         </style>
 
         <?php  
@@ -1635,6 +1708,10 @@
                 </li>
             </ul>
        </div>
+
+    <div class="max-width">
+        <div class="phone_hotline"> <a href="tel:028.3950 5060" title="Bảo Hành: 0243.687.9145" class="p_hotline_item"> <i class="icon_security"></i> <span><strong>Bảo Hành: 0243.687.9145</strong> (8h00 - 17h00)</span> </a> <a href="tel:1900.2628" title="Mua hàng: 1900.2628" class="p_hotline_item"> <i class="icon_purchase"></i> <span><strong>Mua hàng: 0247.303.6336</strong> (8h00 - 17h00)</span> </a> <a href="tel:028.3950 5060" title="Khiếu nại:028.3950 5060" class="p_hotline_item"> <i class="icon_complain"></i> <span><strong>Khiếu nại: 0916917949</strong> (8h00 - 17h00)</span> </a> </div>
+    </div>
        
 
         <footer class="footer">
@@ -1667,7 +1744,7 @@
                     </div>
 
                    
-                    <div class="col-md-2 col-footer">
+                    <div class="col-md-3 col-footer">
                         <h3 class="title">Hỗ trợ mua hàng</h3>
                         <ul class="footer_list-link">
                             <li>
@@ -1681,21 +1758,8 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="col-md-2 col-footer">
-                        <h3 class="title">Tổng đài hỗ trợ</h3>
-                        <ul class="footer_list-link">
-                            <li>Mua hàng
-                                <a href="tel:02473036336">0247.303.6336</a>
-                            </li>
-                            <li>CSKH
-                                <a href="tel:0916917949">0916917949</a>
-                            </li>
-                            <li>Bảo hành
-                                <a href="tel:02436879145">0243.687.9145</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-md-3 col-footer">
+                    
+                    <div class="col-md-4 col-footer">
                         <h3 class="title">Chính sách</h3>
                         <ul class="footer_list-link">
                             <li>

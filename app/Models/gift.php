@@ -22,7 +22,8 @@ class gift extends Model
 
     public $fillable = [
         'name',
-        'image'
+        'image',
+        'price'
     ];
 
     /**

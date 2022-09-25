@@ -95,6 +95,12 @@ class productController extends AppBaseController
             $input['InputPrice'] = str_replace('.', '', $input['InputPrice']);
         }
 
+        if(!empty($input['manuPrice'])){
+
+            $input['manuPrice'] = str_replace(',', '', $input['manuPrice']);
+            $input['manuPrice'] = str_replace('.', '', $input['manuPrice']);
+        }
+
         if(empty($input['Group_id'])){
 
             $input['Group_id'] = 0;
@@ -271,6 +277,11 @@ class productController extends AppBaseController
                 $input['InputPrice'] = str_replace(',', '', $input['InputPrice']);
                 $input['InputPrice'] = str_replace('.', '', $input['InputPrice']);
             }
+        }
+        if(!empty($input['manuPrice'])){
+
+            $input['manuPrice'] = str_replace(',', '', $input['manuPrice']);
+            $input['manuPrice'] = str_replace('.', '', $input['manuPrice']);
         }
             
 

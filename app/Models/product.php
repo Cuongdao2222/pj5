@@ -64,6 +64,7 @@ class product extends Model
         'Image',
         'Name',
         'ProductSku',
+        'manuPrice',
         'Link',
         'Detail',
         'Salient_Features',

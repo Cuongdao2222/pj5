@@ -370,7 +370,11 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::post('add-hot-product', 'AjaxController@addHotProduct')->name('add-hot-product');
 
+    Route::post('add-hots-product', 'AjaxController@addHotsProduct')->name('add-hots-product');
+
     Route::post('remove-hot-product', 'AjaxController@removeHotProduct')->name('remove-hot-product');
+
+    Route::post('remove-hots-product', 'AjaxController@removeHotsProduct')->name('remove-hots-product');
 
     Route::post('add-sale-product', 'AjaxController@addSaleProduct')->name('add-sale-product');
 

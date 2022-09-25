@@ -69,6 +69,12 @@ class giftController extends AppBaseController
             $input['image'] = $filePath;
         }
 
+        if(!empty($input['price'])){
+
+            $input['price'] = str_replace(',', '', $request->price);
+            $input['price'] = str_replace('.', '', $input['price']);
+        }
+
         $gift = $this->giftRepository->create($input);
 
         Flash::success('Gift saved successfully.');
@@ -145,6 +151,11 @@ class giftController extends AppBaseController
             $filePath = $file_upload->storeAs('uploads/gift', $name, 'public');
 
             $input['image'] = $filePath;
+        }
+        if(!empty($input['price'])){
+
+            $input['price'] = str_replace(',', '', $request->price);
+            $input['price'] = str_replace('.', '', $input['price']);
         }
 
        

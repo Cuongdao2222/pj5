@@ -14,4 +14,10 @@
         </div>
     </div>
 </div>
+
+<div class="form-group col-sm-6">
+    {!! Form::label('Giá trị sản phẩm', 'Giá trị:') !!}
+    {!! Form::text('price', null, ['class' => 'form-control']) !!}
+</div>
+
 <div class="clearfix"></div>

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Models\hotProduct;
 
+use App\Models\hotsProduct;
+
 use App\Models\saleProduct;
 
 use App\Models\groupProduct;
@@ -120,6 +122,45 @@ class AjaxController extends Controller
             return "thêm thành công sản phẩm có product_id ".$request->product_id;
 
         }
+    }
+
+
+     public function addHotsProduct(Request $request)
+    {
+
+        if($request->ajax())
+        {
+
+            $addProduct = new hotsProduct();
+
+            $addProduct->product_id = $request->product_id;
+
+            $addProduct->group_id = $request->group_id;
+
+            $addProduct->save();
+
+            return "thêm thành công sản phẩm có product_id ".$request->product_id;
+
+        }
+    }
+
+     public function removeHotsProduct(Request $request)
+    {
+        $product_id = $request->product_id;
+
+        $product = hotsProduct::select('id')->where('product_id', $product_id)->first();
+
+        $id = $product->id;
+
+        if(!empty($id)){
+
+            $product->find($id);
+            $product->delete();
+
+            echo "xóa thành công sản phẩm có product_id ".$id;
+        }
+
+
     }
 
     public function registerClient(Request $request)
