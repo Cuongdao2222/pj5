@@ -10,6 +10,8 @@ use Carbon\Carbon;
 
 use DB;
 
+use App\Models\call;
+
 class lienheController extends Controller
 {
     public function addLienhe(Request $request)
@@ -26,5 +28,17 @@ class lienheController extends Controller
         return redirect()->back();
 
 
+    }
+
+    public function callphone(Request $request)
+    {   
+        if(!empty($request->name) && !empty($request->phone)){
+            $callphone = new call();
+            $callphone->name  = strip_tags($request->name);
+            $callphone->phone = strip_tags($request->phone);
+            $callphone->save();
+
+        }
+       
     }
 }

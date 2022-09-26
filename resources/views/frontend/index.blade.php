@@ -275,6 +275,13 @@
                 z-index: 1;
             }
 
+            .banner{
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                margin: 5px 0;
+            }
+
             @media screen and (max-width: 767px) {
                 .result-labels{
                     top: 43%;
@@ -283,6 +290,12 @@
 
                 .listproduct h3 {
                     line-height: 16px;
+                }
+                .banner img{
+                    width: 100%;
+                }
+                .banner a{
+                    padding: 0 5px;
                 }
 
                 .title-name{
@@ -446,9 +459,6 @@
                
             </ul>
         </section>
-
-
-
         <?php 
            
             $now  = Carbon\Carbon::now();
@@ -629,7 +639,7 @@
            
            @if(!empty($product_sale)&&$product_sale->count()>0)
            
-            <div class="listproduct slider-promo owl-carousel banner-sale" data-size="20">
+            <div class="listproduct slider-promo owl-carousel banner-sale" id="banner-sale" data-size="20">
 
                 @foreach($product_sale as  $value)
                 @if($value->active==1)
@@ -716,12 +726,10 @@
             ?>    
 
             @if(!empty($product_hot)&& $product_hot->count()>0)
-           
-            <div class="listproduct slider-promo owl-carousel banner-sale" data-size="20">
+            
+            <div id="banner-hots" class="listproduct slider-promo owl-carousel banner-sale" data-size="20">
 
                 @foreach($product_hot as $key=>  $values)
-                
-                
                 <div class="item">
                     <span class="icon_sale">
                         <img class="sale-banner ls-is-cached lazyloaded" alt="hot" data-src="{{ asset('images/background-image/xahang.png') }}" src="{{ asset('images/background-image/xahang.png') }}">
@@ -771,10 +779,9 @@
 
             @if(!empty($product_new)&& $product_new->count()>0)
                
-            <div class="listproduct slider-promo owl-carousel banner-sale" data-size="20">
+            <div id="banner-new" class="listproduct slider-promo owl-carousel banner-sale" data-size="20">
 
                 @foreach($product_new as $key=>  $values)
-                
                 
                 <div class="item">
                     <span class="icon_sale">
@@ -832,6 +839,20 @@
             ?>
 
         @if(!empty($data) && $data->count()>0)
+
+        <div class="banner"> 
+            <a href="https://dienmaycholon.vn/tu-khoa/giadungphilips" title="Philips gia dụng" class="item" target="_self"> 
+                <img src="//cdn01.dienmaycholon.vn/filewebdmclnew/DMCL21/Picture//Tm/Tm_picture_292/philips-gia-dun_98_390.png.webp" data-src="//cdn01.dienmaycholon.vn/filewebdmclnew/DMCL21/Picture//Tm/Tm_picture_292/philips-gia-dun_98_390.png.webp" class="lazy loaded" alt="Philips gia dụng" data-was-processed="true"> 
+            </a> 
+
+            <a href="https://dienmaycholon.vn/tu-khoa/salegiadungthongminh" title="Gia dụng giảm" class="item" target="_self"> 
+                <img src="//cdn01.dienmaycholon.vn/filewebdmclnew/DMCL21/Picture//Tm/Tm_picture_291/gia-dung-giam_104_390.png.webp" data-src="//cdn01.dienmaycholon.vn/filewebdmclnew/DMCL21/Picture//Tm/Tm_picture_291/gia-dung-giam_104_390.png.webp" class="lazy loaded" alt="Gia dụng giảm" data-was-processed="true"> 
+            </a> 
+
+            <a href="https://dienmaycholon.vn/tu-khoa/xayepchauau" title="Máy xay ép" class="item" target="_self"> 
+                <img src="//cdn01.dienmaycholon.vn/filewebdmclnew/DMCL21/Picture//Tm/Tm_picture_290/may-xay-ep_396_390.png.webp" data-src="//cdn01.dienmaycholon.vn/filewebdmclnew/DMCL21/Picture//Tm/Tm_picture_290/may-xay-ep_396_390.png.webp" class="lazy loaded" alt="Máy xay ép" data-was-processed="true"> 
+            </a> 
+        </div>
 
         <div class="box-common _cate_1942">
             <ul class="box-common__tab box-tab-mobile">
@@ -991,13 +1012,14 @@
         </div>
         
         <?php  
-           
+            
             $post = Cache::remember('post_home',10000, function() {
-                return App\Models\post::where('active',1)->where('hight_light', 1)->OrderBy('created_at', 'desc')->select('link', 'title', 'image')->limit(6)->get()->toArray();
+                return App\Models\post::where('active',1)->where('hight_light', 1)->OrderBy('created_at', 'desc')->select('link', 'title', 'image')->limit(7)->get()->toArray();
             }); 
 
         ?>
         @if(isset($post) && count($post)>0)
+
         <div class="my_utilities">
             <h2 class="title_pro">Tiện ích dành cho bạn </h2>
             <a href="{{ route('details', $post[0]['link']) }}" class="see_all">Xem tất cả <i></i></a> 
@@ -1008,8 +1030,6 @@
                         <h3> <span>{{ $post[0]['title'] }}</span> </h3>
                     </div>
                 </a>
-
-
 
                 <div class="video_small">
 
@@ -1267,7 +1287,8 @@
             
         }
 
-        $('.banner-sale').owlCarousel({
+
+        $('#banner-sale').owlCarousel({
             loop:true,
             items:2.5,
             margin:10,
@@ -1285,8 +1306,8 @@
                 }
             }
         });
-       
-       
+
+
         $('.homebanners').owlCarousel({
             loop:true,
             margin:10,
@@ -1332,6 +1353,44 @@
             }
         });
 
+
+        $('#banner-hots').owlCarousel({
+            loop:false,
+            items:2.5,
+            margin:10,
+            nav:true,
+            navText: ["<i class='fa fa-chevron-left'></i>","<i class='fa fa-chevron-right'></i>"],
+            responsive:{
+                0:{
+                    items:2.5
+                },
+                600:{
+                    items:2.5
+                },
+                1000:{
+                    items:5
+                }
+            }
+        });
+
+        $('#banner-new').owlCarousel({
+            loop:false,
+            items:2.5,
+            margin:10,
+            nav:true,
+            navText: ["<i class='fa fa-chevron-left'></i>","<i class='fa fa-chevron-right'></i>"],
+            responsive:{
+                0:{
+                    items:2.5
+                },
+                600:{
+                    items:2.5
+                },
+                1000:{
+                    items:5
+                }
+            }
+        });
         
     </script>
     @endpush

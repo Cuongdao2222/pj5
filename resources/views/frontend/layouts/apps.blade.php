@@ -410,6 +410,11 @@
                       overflow: hidden;
                       display: -webkit-box;
                   }  
+
+                    .p_hotline_item span {
+                        width: 100%;
+                        text-align: center;
+                    }
                   .hotlines{
                     bottom:100px; 
                     right:0; 
@@ -903,6 +908,92 @@
                                             </aside>
                                         </div>
                                     </li>
+
+                                    <li data-submenu-id="submenu-4" class="">
+                                        <div class="dropdown">
+                                            <span>
+                                                <i class="icon-tulanh"></i>
+                                            </span>
+                                            <a href="/tu-lanh" class="">Điều hòa</a>
+                                        </div>
+
+                                        <div id="submenu-4" class="submenu" style="display: none;">
+                                            <aside>
+                                                <strong>Thương hiệu</strong>
+                                                <a href="{{route('details','dieu-hoa-daikin')}}">
+                                                    <h3>Điều hòa Daikin</h3>
+                                                </a>
+                                                <a href="{{route('details','dieu-hoa-panasonic')}}">
+                                                    <h3>Điều hòa Panasonic</h3>
+                                                </a>
+                                                <a href="{{route('details','dieu-hoa-mitsubishi')}}">
+                                                    <h3>Điều hòa Mitsubishi</h3>
+                                                </a>
+                                                <a href="{{route('details','dieu-hoa-lg')}}">
+                                                    <h3>Điều hòa LG</h3>
+                                                </a>
+                                                <a href="{{route('details','dieu-hoa-sharp')}}">
+                                                    <h3>Điều hòa Sharp</h3>
+                                                </a>
+                                                <a href="{{route('details','dieu-hoa-funiki')}}">
+                                                    <h3>Điều hòa Funiki</h3>
+                                                </a>
+                                                <a href="{{route('details','dieu-hoa-samsung')}}">
+                                                    <h3>Điều hòa Samsung</h3>
+                                                </a>
+                                                <a href="{{route('details','dieu-hoa-nagakawa')}}">
+                                                    <h3>Điều hòa Nagakawa</h3>
+                                                </a>
+                                            </aside>
+
+                                            <aside>
+                                                <strong>Tiết kiệm điện</strong>
+                                                <a href="{{route('details','dieu-hoa-tiet-kiem-dien')}}">
+                                                    <h3>Điều hòa tiết kiệm điện</h3>
+                                                </a>
+                                                
+                                                <a href="{{route('details','co-inverter')}}">
+                                                    <h3>Có inverter</h3>
+                                                </a>
+                                                <a href="{{route('details','khong-inverter')}}">
+                                                    <h3>Không inverter</h3>
+                                                </a>
+
+                                            </aside>
+
+                                            <aside>
+                                                <strong>Tiết kiệm điện</strong>
+                                                <a href="{{route('details','dieu-hoa-tiet-kiem-dien')}}">
+                                                    <h3>Điều hòa tiết kiệm điện</h3>
+                                                </a>
+                                                
+                                                <a href="{{route('details','co-inverter')}}">
+                                                    <h3>Có inverter</h3>
+                                                </a>
+                                                <a href="{{route('details','khong-inverter')}}">
+                                                    <h3>Không inverter</h3>
+                                                </a>
+
+                                            </aside>
+
+                                            <aside>
+                                                <strong>Tiết kiệm điện</strong>
+                                                <a href="{{route('details','dieu-hoa-tiet-kiem-dien')}}">
+                                                    <h3>Điều hòa tiết kiệm điện</h3>
+                                                </a>
+                                                
+                                                <a href="{{route('details','co-inverter')}}">
+                                                    <h3>Có inverter</h3>
+                                                </a>
+                                                <a href="{{route('details','khong-inverter')}}">
+                                                    <h3>Không inverter</h3>
+                                                </a>
+
+                                            </aside>
+                                        </div>
+                                    </li>
+
+
                                     
                                 </ul>
                             </div>

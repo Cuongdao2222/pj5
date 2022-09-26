@@ -104,7 +104,6 @@
             text-decoration: line-through
         }
 
-
         .box03__item {
             border: 1px solid #e0e0e0;
             border-radius: 2px;
@@ -139,6 +138,7 @@
 
             .cartSP{
                 margin-left: 4px;
+                background: #1053A7;
             }
 
             .add-to-cart{
@@ -624,7 +624,7 @@
                                         <button type="button" class="btn btn-lg btn-add-cart btn-add-cart redirectCart" onclick="addToCart({{ $data->id }})">MUA NGAY <br>(Giao hàng tận nơi - Giá tốt - An toàn)</button>
 
 
-                                        <button type="button" class="btn btn-lg btn-add-cart btn-add-cart redirectCart" onclick="addToCart(2221)">Gọi lại cho tôi <br>(Giao hàng tận nơi - Giá tốt - An toàn)</button>
+                                        <button type="button" class="btn btn-lg btn-add-cart btn-add-cart redirectCart" onclick="addToCart(2221)">GỌI LẠI CHO TÔI <br>(Giao hàng tận nơi - Giá tốt - An toàn)</button>
                                     </div>
                                     <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                                         Launch demo modal
@@ -804,10 +804,10 @@
                                 <!--option-group-->
                             </div>
                             <div class="item-form">
-                                <input type="text" name="name" id="buyer_names" placeholder="Họ tên">
+                                <input type="text" name="name" id="buyer_names" placeholder="Họ tên" required>
                             </div>
                             <div class="item-form">
-                                <input type="text" name="phone_numbers" id="buyer_tels" value="" placeholder="Số điện thoại">
+                                <input type="text" name="phone_numbers" id="buyer_tels" value="" placeholder="Số điện thoại" required>
                             </div>
                            
                             
@@ -1208,7 +1208,7 @@
                                     <button type="button" class="btn btn-lg btn-add-cart btn-add-cart redirectCart">LIÊN HỆ <br></button>
                                     @endif
                                 </form>
-                                 <button type="button" class="btn btn-lg btn-add-cart btn-add-cart redirectCart cartSP" onclick="addToSuport({{ $data->id }})">Gọi lại cho tôi <br>(Tư vấn tận tình, chu đáo)</button>
+                                 <button type="button" class="btn btn-lg btn-add-cart btn-add-cart redirectCart cartSP" onclick="addToSuport({{ $data->id }})">GỌI LẠI CHO TÔI <br>(Tư vấn tận tình, chu đáo)</button>
                                 <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                                     Launch demo modal
                                     </button> -->

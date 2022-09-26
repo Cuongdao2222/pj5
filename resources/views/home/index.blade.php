@@ -188,6 +188,53 @@
                             </tbody>
                         </table>
                     </div>
+
+                    <div class="text_arrow left">Khách hàng yêu cầu gọi lại (<a href="?opt=customer&amp;view=customer-contact">Xem toàn bộ danh sách</a>)</div>
+                    <div class="clear"></div>
+                    <div style="border:1px solid #6a8ab9 ">
+                        <table width="100%" class="table_public" border="1" bordercolor="#e0e0e0">
+                            <tbody>
+                                <tr class="table_public_tr">
+                                    <td width="40">STT</td>
+                                    <td width="190">Khách hàng</td>
+                                    <td width="130">Điện thọai</td>
+                                    <td width="130">Sản phẩm</td>
+                                    
+                                    <td width="120">Hoạt động</td>
+                                </tr>
+                                <?php 
+                                    $lienhe = DB::table('lienhe')->take(6)->orderBy('id', 'desc')->get()->toArray();
+                                  
+                                ?>
+
+                                @if(isset($lienhe))
+                                @foreach($lienhe as $lienhes)
+                                <tr>
+                                    <td width="40"></td>
+                                    <td width="190">{{ $lienhes->contact_name }}</td>
+                                    <td width="130">{{ $lienhes->contact_tel }}</td>
+                                    <td width="130">{{ $lienhes->contact_email }}</td>
+                                    
+                                    <td width="130">
+                                        
+                                    </td>
+                                </tr>
+
+                                @endforeach
+
+                                @else
+                                <tr>
+                                    
+
+                                    <td colspan="4">Hiện tại chưa có liên hệ mới nào !</td>
+                                </tr>
+                                @endif    
+                                
+                            </tbody>
+                        </table>
+                    </div>
+
+
                     <!--End khach hang-->
                     <!--Start khach hang đánh giá-->
                     <div>&nbsp;</div>
