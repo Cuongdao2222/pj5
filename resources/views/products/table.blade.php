@@ -5,7 +5,7 @@
     }
 
     .table td, .table th{
-        padding: 0 !important;
+        padding: 0 10px!important;
     }
 </style>
 
@@ -143,8 +143,8 @@
                   
             
             <td style="width: 124px;">
-                <span>sửa nhanh</span>
-                <input type="" name="qualtily" value="{{ $product->Quantily }}" id="qualtity{{ $product->id }}" style="width: 50%;">
+                <label>Sửa</label>
+                <input type="" name="qualtily" value="{{ $product->Quantily }}" id="qualtity{{ $product->id }}" style="width: 100%;">
 
                 <br>
 

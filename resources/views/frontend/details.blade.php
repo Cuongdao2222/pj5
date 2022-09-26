@@ -45,7 +45,7 @@
             top: 0;
         }
         .btn-add-cart {
-            width: calc(100% - 10px);
+            width: calc(100% - 14px);
         }
         .redirectCart{
             font-weight: bold;
@@ -137,12 +137,19 @@
                 text-align: center;
             }
 
+            .cartSP{
+                margin-left: 4px;
+            }
+
             .add-to-cart{
                 display: flex;
             }
 
             .btn-add-cart{
                 padding: 8px 16px;
+            }
+            .padtex{
+                padding: 0 15px;
             }
         }
 
@@ -504,7 +511,7 @@
                     <div>
                         <div class="pdetail-info">
                             <p>Model: <b>{{ @$data->ProductSku  }}</b></p>
-                            <!-- <p>Bảo hành: <b>24 Tháng, 1 đổi 1 trong vòng 1 tháng</b></p> -->
+                           
                         </div>
                         <div class="scroll-box">
                             <div class="boxbanner-32">
@@ -519,7 +526,7 @@
                                 </div>
                             </div>
 
-                            <div class="price_giaban price_market">Giá hãng : <span>9.590.000đ </span></div>
+                           <!--  <div class="price_giaban price_market">Giá hãng : <span>9.590.000đ </span></div> -->
                             <div class="pdetail-price">
                                 <div class="pdetail-price-box">
                                     {!! @$text !!}
@@ -939,6 +946,17 @@
             </div>
 
             <br>
+            <div class="box-compare">
+                 <span style="font-weight: bold; font-size:17px ">Model: {{ $data->ProductSku }} </span> 
+                &nbsp
+
+                <a href="javascript:void(0)" class="compare-show" onclick="compareShow({{ $data->id }})">
+                    <i class="fa-solid fa-plus"></i>
+                        so sánh
+                </a>
+            </div>
+
+            <br>
 
            
             @if(!empty($data_cate) && $data_cate==1)
@@ -957,10 +975,17 @@
                 });
 
                
-                
+                    
             ?>
             @if($relationProduct->count()>1)
+               
+                <?php 
 
+                    $size_tv = str_replace($cutModel, '', $data->ProductSku);
+                   
+                ?>
+                
+                <p class="padtex">Có <strong> {{ $relationProduct->count() }} Kích cỡ màn hình.</strong> Bạn đang chọn <strong>{{ $size_tv }} inch</strong></p>
                 <div class="scrolling_inner">
                     <div class="box03 group desk">
                         @foreach($relationProduct as $relationProducts)
@@ -971,20 +996,6 @@
             @endif
                 
             @endif
-
-
-            <div class="box-compare">
-                 <span style="font-weight: bold; font-size:17px ">Model: {{ $data->ProductSku }} </span> 
-                &nbsp
-
-                <a href="javascript:void(0)" class="compare-show" onclick="compareShow({{ $data->id }})">
-                    <i class="fa-solid fa-plus"></i>
-                        so sánh
-                </a>
-
-
-            </div>
-            
 
             @endif
             <div class="col-12 pdetail-des">
@@ -1101,12 +1112,13 @@
 
                                 @if(!empty($data->manuPrice))
 
-                                 <div class="price_giaban price_market">Giá hãng : <span>{{ $data->manuPrice }} </span></div>
+                                 <div class="price_giaban price_market">Giá hãng : <span>{{str_replace(',' ,'.', number_format($data->manuPrice))}}đ </span></div>
                                 @endif 
 
                                 <h3>
                                     {{str_replace(',' ,'.', number_format($data->Price))  }}₫
                                 </h3>
+                                 
                             </div>
 
 
@@ -1126,8 +1138,12 @@
                         <div class="pdetail-status">
                             <div class="pdetail-stockavailable">
                                 <span>{{ $status }} </span>
+                                &nbsp 
+                                <a href="#" title="#" class="adress_stock"><i class="fa fa-map-marker"></i> Xem hàng tại kho</a>
 
                             </div>
+
+
 
                             <a href="tel:02473036336"></a><div class="buy-button-hotline nhapnhay btn">Gọi 0247.303.6336 để được giảm thêm</div>
 
@@ -1192,7 +1208,7 @@
                                     <button type="button" class="btn btn-lg btn-add-cart btn-add-cart redirectCart">LIÊN HỆ <br></button>
                                     @endif
                                 </form>
-                                 <button type="button" class="btn btn-lg btn-add-cart btn-add-cart redirectCart" onclick="addToSuport({{ $data->id }})">Gọi lại cho tôi <br>(Tư vấn tận tình, chu đáo)</button>
+                                 <button type="button" class="btn btn-lg btn-add-cart btn-add-cart redirectCart cartSP" onclick="addToSuport({{ $data->id }})">Gọi lại cho tôi <br>(Tư vấn tận tình, chu đáo)</button>
                                 <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                                     Launch demo modal
                                     </button> -->

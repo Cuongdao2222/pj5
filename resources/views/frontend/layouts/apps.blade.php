@@ -660,8 +660,6 @@
                          <div class="div-text">
                             <span class="tel-head logins-modal">Đăng nhập</span>
                             <span class="tvbhclient register-form">Đăng ký</span>
-
-                            
                         </div>
                     </div>
 
@@ -679,46 +677,42 @@
             <div class="header__top header__top-mobile mobiles">
                 <section>
                     <div class="col-xs-12" style="display: flex; height: 63px;">
-                            <div class="col-6">
-                                <a href="/" class="header__logo">
-                                    <img src="{{ asset('images/template/logo.png') }}">   
-                               
+                        <div class="col-6">
+                            <a href="/" class="header__logo">
+                                <img src="{{ asset('images/template/logo.png') }}">   
+                           
+                            </a>
+                        </div>
+                     
+                       
+                        <div class="col-6" style="display:flex">
+                           
+
+                            <div class="col-4 icons-heads icons-2">
+                                
+
+                               <a href="tel: 02473036336" class="header__cart ">
+                                     <i class="fa fa-phone phones-customn" aria-hidden="true" style="font-size:22px"></i>
                                 </a>
                             </div>
-                         
-                           
-                            <div class="col-6" style="display:flex">
-                               
 
-                                <div class="col-4 icons-heads icons-2">
-                                    
-
-                                   <a href="tel: 02473036336" class="header__cart ">
-                                         <i class="fa fa-phone phones-customn" aria-hidden="true" style="font-size:22px"></i>
-                                    </a>
-                                </div>
-
-                                <div class="col-4 icons-heads icons-1">
-                                
-                                    <a href="javascript:void(0)" class="header__cart" onclick="showToCart()" style="width: auto;">
-                                        <i class="fa fa-shopping-cart" aria-hidden="true" style="font-size:22px"></i>
-                                        <b id="count_shopping_cart_store"><span class="number-cart">{{ $number_cart }}</span></b>
-                                    </a>
-                                     
-                                </div>
-
-                                <div class="col-4 icons-heads icons-3">
-                                    
-                                    <a href="{{ route('tin') }}" class="header__cart ">
-                                        <i class="fa fa-newspaper" aria-hidden="true" style="font-size:22px"></i>
-                                        
-                                    </a>
-                                </div>
-                            </div>
-                           
+                            <div class="col-4 icons-heads icons-1">
                             
-                       
+                                <a href="javascript:void(0)" class="header__cart" onclick="showToCart()" style="width: auto;">
+                                    <i class="fa fa-shopping-cart" aria-hidden="true" style="font-size:22px"></i>
+                                    <b id="count_shopping_cart_store"><span class="number-cart">{{ $number_cart }}</span></b>
+                                </a>
+                                 
+                            </div>
 
+                            <div class="col-4 icons-heads icons-3">
+                                
+                                <a href="{{ route('tin') }}" class="header__cart ">
+                                    <i class="fa fa-newspaper" aria-hidden="true" style="font-size:22px"></i>
+                                    
+                                </a>
+                            </div>
+                        </div>
                     </div>
                     
                     
@@ -731,12 +725,6 @@
                             <div id="search-result"></div>
                         </form>
                     </div>    
-
-                   
-                   
-                    
-
-                
                 </section>
             </div>
 
@@ -758,7 +746,7 @@
                         <li class="category">
     
 
-                        <a href="/danh-muc-nhom-hang" class="category__all"><i class="fa fa-bars" aria-hidden="true"></i> Tất cả danh mục</a>
+                        <a href="#" class="category__all"><i class="fa fa-bars" aria-hidden="true"></i> Tất cả danh mục</a>
                             <div class="bar-top-left" style="display: none;">
                                 <ul class="main-menu">
                                     <li data-submenu-id="submenu-1">
@@ -845,7 +833,7 @@
                                             <span>
                                                 <i class="icon-tulanh"></i>
                                             </span>
-                                            <a href="/tu-lanh" class="">Tủ lạnh</a>, <a href="/tu-dong" class="">Tủ đông, Tủ mát</a>
+                                            <a href="/tu-lanh" class="">Tủ lạnh</a>
                                         </div>
 
                                         <div id="submenu-2" class="submenu" style="display: none;">
@@ -871,6 +859,46 @@
                                                 <a href="/tu-dong-inverter" class="">Tủ đông có Inverter</a>
                                                 <a href="/tu-dong?p=tu-5-10-trieu" class="">Tủ đông 5 - 10 triệu</a>
                                                 <a href="/tu-dong?g=duoi-300-lit" class="">Tủ đông dưới 300 lít</a>
+
+                                            </aside>
+                                        </div>
+                                    </li>
+
+                                    <li data-submenu-id="submenu-3" class="">
+                                        <div class="dropdown">
+                                            <span>
+                                                <i class="icon-tulanh"></i>
+                                            </span>
+                                            <a href="/tu-lanh" class="">Máy giặt</a>
+                                        </div>
+
+                                        <div id="submenu-3" class="submenu" style="display: none;">
+                                            <aside>
+                                                <strong>Kiểu giặt</strong>
+                                                <a href="{{route('details','may-giat-long-ngang')}}">
+                                                    <h3>Máy giặt lồng ngang</h3>
+                                                </a>
+                                                <a href="{{route('details','may-giat-long-dung')}}">
+                                                    <h3>Máy giặt lồng đứng</h3>
+                                                </a>
+                                            </aside>
+                                            <aside>
+                                                <strong>Thương hiệu</strong>
+                                                <a href="{{route('details','may-giat-electrolux')}}">
+                                                    <h3>Máy giặt Electrolux</h3>
+                                                </a>
+                                                <a href="{{route('details','may-giat-lg')}}">
+                                                    <h3>Máy giặt LG</h3>
+                                                </a>
+                                                <a href="{{route('details','may-giat-panasonic')}}">
+                                                    <h3>Máy giặt Panasonic</h3>
+                                                </a>
+                                                <a href="{{route('details','may-giat-samsung')}}">
+                                                    <h3>Máy giặt Samsung</h3>
+                                                </a>
+                                                <a href="{{route('details','may-giat-sharp')}}">
+                                                    <h3>Máy giặt Sharp</h3>
+                                                </a>
 
                                             </aside>
                                         </div>
