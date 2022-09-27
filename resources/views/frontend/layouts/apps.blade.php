@@ -244,6 +244,10 @@
                 box-shadow: none !important;
             }
 
+            .main-menu{
+                width: 230px;
+            }
+
             .bar-top-left {
                 position: absolute !important;
                 background-color: #fff;
@@ -754,7 +758,7 @@
                                             <span>
                                             <img src="//cdn.tgdd.vn/mwgcart/mwgcore/ContentMwg/images/DMX/Global/Desktop/LabelHOT.png" alt="label hot" width="26">
                                             </span>
-                                            <a href="/tivi">Tivi</a>, <a href="/loa-ldp">Smart tivi</a>
+                                            <a href="/loa-ldp">GIẢM GIÁ ĐẶC BIỆT</a>
                                         </div>
                                         <div id="submenu-1" class="submenu" style="display: none;">
                                             <aside>
@@ -988,8 +992,6 @@
                                         </div>
                                     </li>
 
-
-                                    
                                 </ul>
                             </div>
                         </li>

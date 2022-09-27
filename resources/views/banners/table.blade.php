@@ -5,6 +5,12 @@
     $option[3] = ['name'=>'Banner dưới slider home', 'size'=>'690px x 305px'];
     $option[4] = ['name'=>'Banner category', 'size'=>'1200 x 200px'];
     $option[5] = ['name'=>'Banner trên phần sale home', 'size'=>'1200 x 90'];
+    $option[6] = ['name'=>'Banner home Tivi', 'size'=>'1200 x 90'];
+    $option[7] = ['name'=>'Banner home Máy giặt', 'size'=>'1200 x 90'];
+    $option[8] = ['name'=>'Banner home Tủ lạnh', 'size'=>'1200 x 90'];
+    $option[9] = ['name'=>'Banner home Điều hòa', 'size'=>'1200 x 90'];
+    $option[10] = ['name'=>'Banner home Gia dụng', 'size'=>'1200 x 90'];
+    $option[11] = ['name'=>'Banner home Máy lọc nước', 'size'=>'1200 x 90'];
 
 ?>
 <?php  
