@@ -447,6 +447,10 @@ class productController extends AppBaseController
 
         $search = $clearData;
 
+        if($search === 'oled'){
+            $search = 'tivi oled';
+        }
+
         if(!empty($search)){
 
             $search = str_replace('dieu hoa', 'Điều hòa', $search);

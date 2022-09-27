@@ -245,6 +245,11 @@ class AjaxController extends Controller
 
             $search = str_replace('tu dong', 'Tủ đông', $search);
 
+            if($search === 'oled'){
+                
+                $search = 'tivi oled';
+            }
+
             $search = ucfirst($search);
 
             if(!Cache::has('product_search')){

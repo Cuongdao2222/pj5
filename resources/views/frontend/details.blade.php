@@ -3,6 +3,7 @@
 @push('style')
 
     <link rel="stylesheet" href="{{ asset('css/jquery.fancybox.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/detail1fe.css') }}?ver=4">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/detail1fe.css') }}">
 
 
@@ -456,7 +457,7 @@
                         <?php 
                             $image_product = strstr(basename($data->Image), '_');
                         ?>
-                        <div class="item">
+                        <div class="item img-main">
                             <a href="{{ asset($data->Image) }}" data-fancybox="gallery"><img src="{{ asset($data->Image) }}" alt="{{ @$data->Name }}">
 
                             </a>
