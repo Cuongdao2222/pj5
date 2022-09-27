@@ -39,8 +39,15 @@ class lienheController extends Controller
         $callphone->active = 0;
         $callphone->product_id = $request->product_id;
         $callphone->save();
-
-        
        
     }
+
+    public function updateCall(Request $request, $id)
+    {
+        $callphone = call::find($id);
+        $callphone->active = 1;
+        $callphone->save();
+        return redirect()->back();
+    }
+
 }

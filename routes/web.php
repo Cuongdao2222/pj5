@@ -31,8 +31,6 @@ Route::get('checkPSK', 'crawlController@checkProductSku');
 
 Route::get('flash-deal', 'dealController@dealShowFlash');
 
-
-
 Route::get('/cache', 'Frontend\indexController@cache')->name('cache');
 
 Route::get('/ckfinder.html', 'mainController@ckfinder')->middleware('auth');
@@ -142,7 +140,6 @@ Route::post('add-cart-number', 'AjaxController@addProductToCartByNumber')->name(
 
 Route::post('rate-form', 'AjaxController@rateForm')->name('rate-form');
 
-
 Route::post('show-viewer-product', 'AjaxController@showViewerProduct')->middleware('cache.headers:public;max_age=14400','throttle:60')->name('show-viewed-product');
 
 Route::get('/category/{slug}', 'Frontend\categoryController@index')->name('category-product')->middleware('auth');
@@ -176,6 +173,8 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
     Route::get('get-time-deal', 'dealController@getTimeDeal')->name('getTimeDeal');
 
     Route::get('incrawl', 'crawlController@allproduct');
+
+    Route::get('update-call-phone/{id}', 'lienheController@updateCall')->name('updateCall');
 
     Route::get('updateTimeDeal', 'dealController@updateTimeDeal')->name('updateTimeDeal');
 

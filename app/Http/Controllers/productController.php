@@ -585,7 +585,6 @@ class productController extends AppBaseController
         
     }
 
-    
 
     public function search()
     {

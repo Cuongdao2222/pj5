@@ -161,6 +161,7 @@
                                 </tr>
                                 <?php 
                                     $lienhe = DB::table('lienhe')->take(6)->orderBy('id', 'desc')->get()->toArray();
+                                    $viewcall = DB::table('callphone')->where('active', 0)->take(6)->orderBy('id', 'desc')->get()->toArray();
                                   
                                 ?>
 
@@ -189,7 +190,7 @@
                         </table>
                     </div>
 
-                    <div class="text_arrow left">Khách hàng yêu cầu gọi lại (<a href="?opt=customer&amp;view=customer-contact">Xem toàn bộ danh sách</a>)</div>
+                    <div class="text_arrow left">Khách hàng yêu cầu gọi lại</div>
                     <div class="clear"></div>
                     <div style="border:1px solid #6a8ab9 ">
                         <table width="100%" class="table_public" border="1" bordercolor="#e0e0e0">
@@ -207,25 +208,19 @@
                                   
                                 ?>
 
-                                @if(isset($lienhe))
-                                @foreach($lienhe as $lienhes)
+                                @if(isset($viewcall))
+                                @foreach($viewcall as $viewcalls)
                                 <tr>
                                     <td width="40"></td>
-                                    <td width="190">{{ $lienhes->contact_name }}</td>
-                                    <td width="130">{{ $lienhes->contact_tel }}</td>
-                                    <td width="130">{{ $lienhes->contact_email }}</td>
-                                    
-                                    <td width="130">
-                                        
-                                    </td>
+                                    <td width="190">{{ $viewcalls->name }}</td>
+                                    <td width="130">{{ $viewcalls->phone }}</td>
+                                    <td width="130"><a href="{{ route('details', App\Models\product::find($viewcalls->product_id)->Link) }}" target="_blank">{{ App\Models\product::find($viewcalls->product_id)->Name }}</a></td>
+                                    <td width="130"><a href="{{ route('updateCall', $viewcalls->id) }}">xóa</a></td>
                                 </tr>
-
                                 @endforeach
 
                                 @else
                                 <tr>
-                                    
-
                                     <td colspan="4">Hiện tại chưa có liên hệ mới nào !</td>
                                 </tr>
                                 @endif    
@@ -303,10 +298,7 @@
                         <div class="space"></div>
                         <div style="display:block; padding: 0 45px; width: 68% ;" id="content_1">
                             <?php  
-
                                 $views = App\Models\product::select('Name','views', 'Link')->Orderby('views', 'desc')->take(10)->get();
-
-
                             ?>
 
                             <table cellpadding="5" id="tb_padding" border="1" bordercolor="#CCCCCC" style="border-collapse:collapse;">
