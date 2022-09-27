@@ -436,7 +436,7 @@ class productController extends AppBaseController
 
         $search = $clearData;
 
-        if($search == 'oled'){
+        if($search === 'oled'){
             $search = 'tivi oled';
         }
 
