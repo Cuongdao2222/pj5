@@ -729,11 +729,8 @@
                             <h5>Đặc điểm nổi bật</h5>
                         </div>
 
-
-                       
                         <div class="modal-body" style="padding:0 15px">
 
-                        
                             {!!  str_replace(['Xem thêm', 'Đặc điểm nổi bật'], '', html_entity_decode($data->Salient_Features))  !!} 
                         </div>
                         <div class="modal-footer">
@@ -1938,8 +1935,8 @@
             alert('số điện thoại không đúng định dạng');
         }
         else{
-            name = $('#buyer_names').val();
-            phone = $('#phone_numbers').val();
+            name = $('#buyer_names_call').val();
+            phone = $('#buyer_tels').val();
 
             $.ajaxSetup({
                 headers: {
@@ -1956,7 +1953,6 @@
                     product_id:id,
                        
                 },
-                
                 success: function(result){
         
                     $('#modal-suport').modal('hide'); 

@@ -32,15 +32,15 @@ class lienheController extends Controller
 
     public function callphone(Request $request)
     {   
-        if(!empty($request->name) && !empty($request->phone)){
-            $callphone = new call();
-            $callphone->name  = strip_tags($request->name);
-            $callphone->phone = strip_tags($request->phone);
-            $callphone->active = 0;
-            $callphone->product_id = $request->product_id;
-            $callphone->save();
+        
+        $callphone = new call();
+        $callphone->name  = strip_tags($request->name);
+        $callphone->phone = strip_tags($request->phone);
+        $callphone->active = 0;
+        $callphone->product_id = $request->product_id;
+        $callphone->save();
 
-        }
+        
        
     }
 }
