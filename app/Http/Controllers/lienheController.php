@@ -36,6 +36,8 @@ class lienheController extends Controller
             $callphone = new call();
             $callphone->name  = strip_tags($request->name);
             $callphone->phone = strip_tags($request->phone);
+            $callphone->active = 0;
+            $callphone->product_id = $request->product_id;
             $callphone->save();
 
         }

@@ -478,8 +478,6 @@
                             
                             });
 
-
-
                         ?>
 
                         @if(isset($images))
@@ -624,7 +622,7 @@
                                         <button type="button" class="btn btn-lg btn-add-cart btn-add-cart redirectCart" onclick="addToCart({{ $data->id }})">MUA NGAY <br>(Giao hàng tận nơi - Giá tốt - An toàn)</button>
 
 
-                                        <button type="button" class="btn btn-lg btn-add-cart btn-add-cart redirectCart" onclick="addToCart(2221)">GỌI LẠI CHO TÔI <br>(Giao hàng tận nơi - Giá tốt - An toàn)</button>
+                                        <button type="button" class="btn btn-lg btn-add-cart btn-add-cart redirectCart" onclick="addToSuport(2221)">GỌI LẠI CHO TÔI <br>(Giao hàng tận nơi - Giá tốt - An toàn)</button>
                                     </div>
                                     <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                                         Launch demo modal
@@ -788,8 +786,8 @@
                     </div>
 
                     <div class="c3_col_1">
-                        <form class="c3_box" id="form-subs" method="post"  action="{{ route('order') }}">
-                            {{ csrf_field() }}
+                        <form class="c3_box" id="form-subs">
+                           
                             <div class="title_box_cart"> Thông tin khách hàng</div>
                             <div class="item-form">
                                 <div class="option-group clearfix">
@@ -804,20 +802,17 @@
                                 <!--option-group-->
                             </div>
                             <div class="item-form">
-                                <input type="text" name="name" id="buyer_names" placeholder="Họ tên" required>
+                                <input type="text" name="name" id="buyer_names_call" placeholder="Họ tên" >
                             </div>
                             <div class="item-form">
-                                <input type="text" name="phone_numbers" id="buyer_tels" value="" placeholder="Số điện thoại" required>
+                                <input type="text" name="phone_numbers" id="buyer_tels" value="" placeholder="Số điện thoại" >
                             </div>
                            
-                            
-                           
                             <div class="modal-footer">
-                                <button type="submit" class="btn btn-primary order1">Gửi thông tin </button>
+                                <div  class="btn btn-primary click-sp" onclick="addCallPhone({{ $data->id }})">Gửi thông tin </div>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                 
                             </div>
-
 
                         </form>
                     </div>
@@ -1922,6 +1917,56 @@
             }
         });
         
+    }
+
+    function isValid(p) {
+        var phoneRe = /(84|0[3|5|7|8|9])+([0-9]{8})\b/;
+        var digits = p.replace(/\D/g, "");
+        return phoneRe.test(digits);
+    }
+
+
+    function addCallPhone(id){
+
+        if($('#buyer_names_call').val()==''){
+            alert('vui lòng nhập họ tên');
+        }
+        else if($('#buyer_tels').val()==''){
+            alert('vui lòng nhập số điện thoại')
+        }
+        else if(!isValid($('#buyer_tels').val())){
+            alert('số điện thoại không đúng định dạng');
+        }
+        else{
+            name = $('#buyer_names').val();
+            phone = $('#phone_numbers').val();
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                type: 'POST',
+                url: "{{ route('callphone') }}",
+                data: {
+                    name: name,
+                    phone:phone,
+                    product_id:id,
+                       
+                },
+                
+                success: function(result){
+        
+                    $('#modal-suport').modal('hide'); 
+
+                    alert('Gửi thành công!')
+                    
+                }
+            });
+        }
+
     }
 
      function addCartFast(id) {

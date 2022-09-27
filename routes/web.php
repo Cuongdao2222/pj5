@@ -68,6 +68,8 @@ Route::get('/result.php', 'mainController@resultAlepay');
 
 Route::post('alepay-pay','payController@payAlepay')->name('alepay');
 
+Route::post('recall','lienheController@callphone')->name('callphone');
+
 Route::get('readfile', 'Frontend\indexController@readFile')->name('readfile');
 
 Route::post('login-Fe', 'AjaxController@loginClientsFe')->name('login-Fe');

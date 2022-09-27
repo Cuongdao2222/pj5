@@ -522,12 +522,9 @@
 
                         if(!Cache::has('banners12')) {
 
-                             $banners = App\Models\banners::where('option', 1)->get()->last();
-
-                          
+                            $banners = App\Models\banners::where('option', 1)->get()->last();
 
                             Cache::put('banners12',$banners,10000);
-
                         }
 
 
@@ -591,9 +588,7 @@
         
         @endif
 
-
         <header class="header   theme-lunar-new-year" data-sub="0">
-
 
             <div class="header__top desktop header-pc">
                 <section>
@@ -1829,7 +1824,7 @@
        </div>
 
     <div class="max-width">
-        <div class="phone_hotline"> <a href="tel:028.3950 5060" title="Bảo Hành: 0243.687.9145" class="p_hotline_item"> <i class="icon_security"></i> <span><strong>Bảo Hành: 0243.687.9145</strong> (8h00 - 17h00)</span> </a> <a href="tel:1900.2628" title="Mua hàng: 1900.2628" class="p_hotline_item"> <i class="icon_purchase"></i> <span><strong>Mua hàng: 0247.303.6336</strong> (8h00 - 17h00)</span> </a> <a href="tel:028.3950 5060" title="Khiếu nại:028.3950 5060" class="p_hotline_item"> <i class="icon_complain"></i> <span><strong>Khiếu nại: 0916917949</strong> (8h00 - 17h00)</span> </a> </div>
+        <div class="phone_hotline"> <a href="tel:0243.687.9145" title="Bảo Hành: 0243.687.9145" class="p_hotline_item"> <i class="icon_security"></i> <span><strong>Bảo Hành: 0243.687.9145</strong> (8h00 - 17h00)</span> </a> <a href="tel:0247.303.6336" title="Mua hàng: 0247.303.6336" class="p_hotline_item"> <i class="icon_purchase"></i> <span><strong>Mua hàng: 0247.303.6336</strong> (8h00 - 17h00)</span> </a> <a href="tel:0916917949" title="Khiếu nại:0916917949" class="p_hotline_item"> <i class="icon_complain"></i> <span><strong>Khiếu nại: 0916917949</strong> (8h00 - 17h00)</span> </a> </div>
     </div>
        
 
@@ -2144,10 +2139,6 @@
         // turn off popup
         
         lazyload();
-
-
-
-
 
         $('.box-promotion-close').bind("click", function(){
 
