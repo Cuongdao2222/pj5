@@ -208,8 +208,12 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::post('productContentImage', 'imageController@productContentImage')->name('imagecontents');
 
+    Route::post('/addUser', 'customnUserController@addUser')->name('adduser');
 
-     Route::post('/addUser', 'customnUserController@addUser')->name('adduser');
+
+    Route::post('/add-limit', 'AjaxController@addLimitProduct')->name('add-limit-product');
+
+    Route::post('/remove-limit', 'AjaxController@removeLimitProduct')->name('remove-limit-product');
 
 
     Route::get('deal', 'dealController@index')->name('deal');

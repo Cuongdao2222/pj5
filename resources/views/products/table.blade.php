@@ -178,7 +178,11 @@
                   <br>
                 <input type="checkbox" id="hots{{ $product->id }}" name="hots"  onclick='hotClick({{ $product->id }});' data-id ="{{ get_Group_Product($product->id)[0]??'' }}" {{ in_array($product->id, $list_hots)?'checked':'' }}>
                   Sản phẩm Hot
+                <br>
+                <input type="checkbox" id="limit{{ $product->id }}" name="limit"  onclick="limit({{ $product->id }})" {{  $product->limits ==1?'checked':'' }}>
 
+                Sản phẩm số lượng có hạn
+  
             </td>
             
 
@@ -664,18 +668,17 @@
     function active(productId) {
         var checked = $('#active'+productId).is(':checked'); 
 
+        var active = 0;
+
+        if(checked == true){
+            active = 1;
+        }
 
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-
-        var active = 0;
-
-        if(checked == true){
-            active = 1;
-        }
            
         $.ajax({
            
@@ -696,15 +699,11 @@
 
     function flashPrice(productId) {
       
-
-
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-
-       
            
         $.ajax({
            
@@ -716,19 +715,48 @@
                    
             },
             success: function(result){
-
-
                 $('#prices_edit'+productId).text('thành công');
                 setTimeout(location.reload(), 3000);
               
-
             }
         });
-       
     } 
 
-   
+    function limit(productId) {
 
-    
-    
+        var checked = $('#limit'+productId).is(':checked'); 
+
+        if(checked == true)
+             
+        $.ajax({
+            type: 'POST',
+            url: "{{ route('add-limit-product') }}",
+            data: {
+                product_id: productId,
+                   
+            },
+            success: function(result){
+                alert('thành công');
+              
+            }
+           
+        });
+        else
+        $.ajax({
+           
+            type: 'POST',
+            url: "{{ route('remove-limit-product') }}",
+            data: {
+                product_id: productId,
+                   
+            },
+            success: function(result){
+                alert(' xóa thành cong')
+              
+            }
+           
+        });
+
+    }
+
 </script>

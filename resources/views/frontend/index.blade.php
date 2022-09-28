@@ -855,26 +855,7 @@
                                     $gift = Cache::get('gifts_Fe_'.$datas->id);
                                 ?>
 
-                                @if(!empty($gift))
 
-                                    <?php 
-                                        $gifts = $gift['gifts'];
-                                        $gift = $gift['gift']; 
-
-                                       
-                                    ?>
-
-                                    {{ $gifts->type ==1?'k/m chọn 1 trong 2':'' }}
-                                    <div class="option-gift">
-
-                                         @foreach($gift as $gifts)
-
-                                        <div class="quatang"><img src="{{ asset($gifts->image) }}"></div>
-                                        @endforeach
-                                    </div>
-                                   
-                                @endif
-                                
                             </a>
 
                              <a href="javascript:void(0)" class="compare-show" data-id="{{ $datas->id }}">
@@ -882,12 +863,34 @@
                                     so sánh
                             </a>
 
-                            <span> Quà tặng trị giá <strong>8.000.000<sup>đ</sup></strong> </span>
+
+
+                            @if(!empty($gift))
+                                <?php 
+                                    $gifts = $gift['gifts'];
+                                    $gift = $gift['gift']; 
+
+                                   
+                                ?>
+
+                                {{ $gifts->type ==1?'k/m chọn 1 trong 2':'' }}
+                                <div class="option-gift">
+
+                                     @foreach($gift as $gifts)
+
+                                    <div class="quatang"><img src="{{ asset($gifts->image) }}"></div>
+                                    @endforeach
+                                </div>
+
+                                @if(!empty($gifts->price))
+                                <span> Quà tặng trị giá <strong>{{ @str_replace(',' ,'.', number_format($gifts->price)) }}<sup>đ</sup></strong> </span>
+                                @endif   
+                            @endif
+                            
                         </div>
                         
                         @endforeach
-                        
-                        
+                    
                     </div>
                     <a class="readmore-txt blue" href="{{ route('details', @$groups->link)  }}"><span>Xem tất cả {{ @$groups->name }}</span></a>
                 </div>

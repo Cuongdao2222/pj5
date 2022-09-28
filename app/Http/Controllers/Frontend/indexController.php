@@ -21,7 +21,6 @@ class indexController extends Controller
     public function index()
     {
        
-
         $banners =  Cache::get('baners');
 
         if(!Cache::has('deals')){

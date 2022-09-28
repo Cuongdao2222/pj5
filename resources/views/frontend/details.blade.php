@@ -2,6 +2,44 @@
 @section('content') 
 @push('style')
 
+    <?php 
+
+        $thuonghieu = [1 => 5, 3 => 35, 2 =>56, 4 =>76, 6=>115, 7=>129];
+
+        $namecate = Cache::rememberForever('namecate'.$data_cate, function() use($data_cate){
+
+            $namecate = App\Models\groupProduct::find($data_cate)??'';
+
+            return $namecate;
+        });    
+
+        if(!empty($thuonghieu[$data_cate])){
+
+            $thuonghieuCate = $thuonghieu[$data_cate];
+
+            $ar_groups_info = Cache::rememberForever('ar_groups_info_'.$data->id, function() use($thuonghieuCate, $data_cate, $data){
+
+                $namecate = Cache::get('namecate'.$data_cate);
+
+                $dataThuonghieu = App\Models\groupProduct::where('parent_id', $thuonghieuCate)->get();
+
+                $ar_groups_info = [];
+
+                foreach ($dataThuonghieu as $value) {
+
+                    if (strpos(strtolower($data->Name), strtolower(str_replace($namecate->name, '', $value->name)))>-1) {
+
+                        array_push($ar_groups_info, ['name'=>  $value->name, 'link'=>$value->link]);
+                    }
+                    
+                }
+                return $ar_groups_info;
+            });
+
+        }
+    
+    ?>
+
     <link rel="stylesheet" href="{{ asset('css/jquery.fancybox.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/detail1fe.css') }}?ver=4">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/detail1fe.css') }}">
@@ -88,6 +126,20 @@
             text-align: center;
             cursor: pointer;
             background: #ffde00;
+        }
+
+        .buyonline {
+            padding: 10px 25px;
+            border-radius: 3px;
+            border: 1px dashed #019100;
+            font-size: 14px;
+            color: #019100;
+            display: inline-block;
+            margin: 11px 0;
+        }
+
+        .buyonline p{
+            margin: 0;
         }
 
         ol li::marker {
@@ -493,7 +545,7 @@
             </li> -->
         <li>
             <span>›</span>
-            <a href="{{ route('details',$data->Link) }}">{{ $data->Name }}</a>
+            <a href="{{ route('details',$ar_groups_info[0]['link']) }}">{{ $ar_groups_info[0]['name'] }}</a>
             <meta property="position" content="4">
         </li>
     </ul>
@@ -625,7 +677,7 @@
 
                                 <div class="gift_pro">
                                     <i class="fa-solid fa-gift"></i>
-                                    <span class="ttl"><i class="icon_gift_pro"></i> Quà tặng kèm trị giá 1.000.000đ</span>
+                                    <span class="ttl"><i class="icon_gift_pro"></i> Ưu đãi tặng kèm trị giá 1.000.000đ</span>
                                     <div class="gift_item">
                                         <ul>
                                             <li>
@@ -1004,12 +1056,14 @@
                     <meta property="position" content="2">
                 </li>
                 @endif
-                <!-- <li>
+
+                @if(!empty($thuonghieu[$data_cate])&& !empty($ar_groups_info))
+                <li>
                     <span>›</span>
-                    <a href="/tivi?g=smart-tivi">Smart Tivi</a>
-                    <meta property="position" content="3">
-                    </li> -->
-               
+                    <a href="{{ route('details',$ar_groups_info[0]['link']) }}">{{ $ar_groups_info[0]['name'] }}</a>
+                   
+                </li>
+                @endif
             </ul>
 
 
@@ -1023,6 +1077,14 @@
 
             <br>
             <div class="box-compare">
+
+                @if(!empty($thuonghieu[$data_cate])&& !empty($ar_groups_info))
+                <span style="font-weight: bold; font-size:17px ">Thương hiệu:  <a href="{{ route('details', $ar_groups_info[0]['link']) }}">{{ str_replace($namecate->name, '',  $ar_groups_info[0]['name']) }}</a></span> 
+                @endif
+                &nbsp
+
+
+
                  <span style="font-weight: bold; font-size:17px ">Model: {{ $data->ProductSku }} </span> 
                 &nbsp
 
@@ -1049,8 +1111,6 @@
                   
                     return false !== strpos($item->ProductSku, $cutModel);
                 });
-
-               
                     
             ?>
             @if($relationProduct->count()>1)
@@ -1153,34 +1213,12 @@
                                         <time class="crazy-deal-details-countdown" data-spm-anchor-id="a2o4n.pdp_revamp.0.i0.89db8552daSXV6">Kết thúc sau <span class="crazy-deal-details-countdown-time clock">12:08:36</span></time>
                                         <div class="crazy-deal-details-process">
                                             Đã bán {{ $numberDeal }} sản phẩm
-                                            <!-- <div class="crazy-deal-details-procressbar">
-                                                <div class="crazy-deal-details-procressbar-inner" style="width:9%"></div>
-                                            </div> -->
-                                            
+                                           
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                           <!--  <div class="tbl_time_top">
-                                <table class="tbl_time" width="100%">
-                                    <thead>
-                                    <tr>
-                                        <td align="center">Tiết kiệm</td>
-                                        <td align="center">Đã mua</td>
-                                        <td align="center">Thời gian còn lại</td>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr bgcolor="#eee">
-                                        <td align="center">{{@$percent}}%</td>
-                                        <td align="center">0</td>
-                                        <td align="center"><div id="to_time1205" class="clock" data-id="1205" data-time-left="133131"></div>
-
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div> -->
+                          
                             @endif
                             <br>
                              {!!  @$text !!}
@@ -1223,11 +1261,14 @@
 
                             <a href="tel:02473036336"></a><div class="buy-button-hotline nhapnhay btn">Gọi 0247.303.6336 để được giảm thêm</div>
 
+                            @if($data->limits ==1)
+                            <div class="sticker buyonline"> <p><strong>Số Lượng Có Hạn</strong></p></div>
+                            @endif
+
                             @if(!empty($data->promotion))
 
                             <div class="gift_pro">
-
-                                <span class="ttl"><i class="fa-solid fa-gift"></i> Quà tặng kèm trị giá 1.000.000đ</span>
+                                <span class="ttl"><i class="fa-solid fa-gift"></i> Ưu đãi tặng kèm trị giá 1.000.000đ</span>
                                 <div class="gift_item">
                                     <ul>
                                         <li>
@@ -1245,37 +1286,31 @@
                         
                             @if(!empty($gift) && $data->Quantily>0 && $deal_check_add ==false  &&  $data['Price']>0)
 
-                            <fieldset class="p-gift">
-                                    <legend id="data-pricetotal" style="color: #ff0000;font-size: 18px; font-weight: bold" data-pricetotal="0">
-                                        Khuyến mãi kèm theo
-                                    </legend>
-                                    <!---->
-                                    <div class="detail-offer">
-                                       
-                                        {{ $gifts->type ==1?'Lựa chọn 1 trong 2 sản phẩm sau':'' }}
-                                        <div class="select-gift">
+                            <div class="gift_pro">
+
+                                @foreach($gift as $key => $valuegift)
+                                <span class="ttl"><i class="fa-solid fa-gift"></i> Quà tặng kèm trị giá {{ str_replace(',' ,'.', number_format($valuegift->price)) }}đ</span>
+                                <div class="gift_item">
+                                    <ul>
+                                        <li>
                                             
-                                          
-                                             @foreach($gift as $key => $valuegift)
-                                              @if($gifts->type ==1)<input type="checkbox" name="gift" value="{{ $valuegift->name }}" {{ $key==0?'checked':'' }}> @endif
-                                            <img src="{{ asset($valuegift->image) }}" height="30px" width="30px">
+                                            <div class="gift_info">
+                                               {{ $gifts->type ==1?'Lựa chọn 1 trong 2 sản phẩm sau':'' }}
+                                                <div class="select-gift">
+                                                    
+                                                    @if($gifts->type ==1)<input type="checkbox" name="gift" value="{{ $valuegift->name }}" {{ $key==0?'checked':'' }}> @endif
+                                                    <img src="{{ asset($valuegift->image) }}" height="30px" width="30px">
 
-                                             @if($valuegift->id ==5)
-                                                <a href="https://dienmaynguoiviet.vn/khau-trang-loc-khi-lg-puricare-the-he-2-ap551awfa-ajp-may-trang"><h4>{{ $valuegift->name }}</h4></a>
-                                                @else
-                                                <h4>{{ $valuegift->name }}</h4>
-                                                @endif
-                                                
-                                            @endforeach
-                                          
+                                                        <h4>{{ $valuegift->name }}</h4>
+                                                    
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                @endforeach
+                            </div>
 
-                                        </div>
-                                        
-                                       
-                                    </div>
-                                    <div class="img-gift clearfix">
-                                    </div>
-                                </fieldset>
                              @endif    
 
                             @if($data['Quantily']>0)
@@ -1365,8 +1400,6 @@
                         Cache::forever('comment'.$data->id, $comments_id);
 
                     }
-
-                  
 
                     $comment = Cache::get('comment'.$data->id);
                     ?>

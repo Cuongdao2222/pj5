@@ -26,22 +26,10 @@ if (!function_exists('groupGift')) {
         $gift_group = Cache::remember('gift_group'.$id,1000,  function() use($id){
             return DB::table('gift_group')->where('group_product', $id)->get();
         });
-
-
-        // $gift_group  = Cache::remember('gift_groups_'.$id,10000,function() use($id){
-
-        //     DB::table('gift_group')->where('group_product', $id)->get();
-        // });
-
-
-        
         $now = Carbon\Carbon::now();
         $gift = [];
 
-
-
         foreach ($gift_group as  $value) {
-
 
             $gifts = Cache::remember('gifts'.$value->group_gift, 10000, function() use ($value) {
 
@@ -111,7 +99,6 @@ if (!function_exists('gift')) {
             
             });
 
-
             if(!empty($gifts) && !empty($gifts->start)){
 
                 $start    = new Carbon\Carbon($gifts->start);
@@ -122,7 +109,6 @@ if (!function_exists('gift')) {
 
                     $gifts_ar = [$gifts->gift1, $gifts->gift2];
 
-
                     $gift = Cache::remember('gifts_id_cache'.$promotion->id_group_gift, 1000, function() use ($gifts_ar) {
 
                         $gift = DB::table('gifts')->whereIn('id',  $gifts_ar)->get()->toArray()??[];
@@ -131,8 +117,6 @@ if (!function_exists('gift')) {
                     
                     });
             
-
-
                     $gift =  ['gift'=>$gift, 'gifts'=>$gifts];
 
                 }
