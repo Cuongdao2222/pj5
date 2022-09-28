@@ -1268,7 +1268,10 @@
                             @if(!empty($data->promotion))
 
                             <div class="gift_pro">
-                                <span class="ttl"><i class="fa-solid fa-gift"></i> Ưu đãi tặng kèm trị giá 1.000.000đ</span>
+
+                                @if(!empty($data->GiftPrice))
+                                <span class="ttl"><i class="fa-solid fa-gift"></i> Ưu đãi tặng kèm trị giá {{ str_replace(',' ,'.', number_format($data->GiftPrice)) }}</span>
+                                @endif
                                 <div class="gift_item">
                                     <ul>
                                         <li>

@@ -266,6 +266,12 @@
     {!! Form::textarea('promotion', null, ['class' => 'form-control', 'id' =>'promotion']) !!}
 </div>
 
+<div class="form-group col-sm-6">
+    {!! Form::label('GiftPrice', 'Giá trị quà ước tính:') !!}
+    {!! Form::text('GiftPrice', null, ['class' => 'form-control']) !!}
+
+</div>
+
 <!-- Image Field -->
 <!-- <div class="form-group col-sm-6">
     {!! Form::label('Image', 'Image:') !!}

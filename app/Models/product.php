@@ -76,6 +76,7 @@ class product extends Model
         'Meta_id',
         'promotion',
         'limits',
+        'GiftPrice',
         'InputPrice'
 
     ];
