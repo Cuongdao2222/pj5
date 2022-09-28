@@ -288,6 +288,19 @@
                    
                 } 
 
+                .videos{
+                    display: block;
+                }
+                .video_big{
+                    width: 100%;
+                }
+                .video_small{
+                    width: 100%;
+                }
+                .video_small_item{
+                    width: 100%;
+                }
+
                 .listproduct h3 {
                     line-height: 16px;
                 }
@@ -692,6 +705,10 @@
         
 
         <div  class="owl-slider-count" style="display: none;">{{ @$group->count() }}</div> 
+        <?php
+            $defineBannerGr = [0=>6, 1=>7, 2=>8, 3=>9, 6=>10, 7=>11];
+
+         ?>
 
         @foreach($group as $key => $groups)
 
@@ -710,19 +727,27 @@
 
         @if(!empty($data) && $data->count()>0)
 
+        <?php 
+
+            $banners_group = Cache::rememberForever('banners_groups__'.$defineBannerGr[$key], function() use($defineBannerGr, $key){
+
+                $banners_group = App\Models\banners::where('option', $defineBannerGr[$key])->where('active', 1)->get();
+
+                return $banners_group;
+            });
+
+        ?>
+         @if($banners_group->count()>0)
+
         <div class="banner"> 
-            <a href="https://dienmaycholon.vn/tu-khoa/giadungphilips" title="Philips gia dụng" class="item" target="_self"> 
-                <img src="//cdn01.dienmaycholon.vn/filewebdmclnew/DMCL21/Picture//Tm/Tm_picture_292/philips-gia-dun_98_390.png.webp" data-src="//cdn01.dienmaycholon.vn/filewebdmclnew/DMCL21/Picture//Tm/Tm_picture_292/philips-gia-dun_98_390.png.webp" class="lazy loaded" alt="Philips gia dụng" data-was-processed="true"> 
+            @foreach($banners_group as $value)
+            <a href="{{ $value->link }}" title="{{ $value->title }}" class="item" target="_self"> 
+                <img src="{{ asset($value->image) }}" data-src="{{ asset($value->image) }}" class="lazy loaded" alt="{ $value->title }}" data-was-processed="true"> 
             </a> 
-
-            <a href="https://dienmaycholon.vn/tu-khoa/salegiadungthongminh" title="Gia dụng giảm" class="item" target="_self"> 
-                <img src="//cdn01.dienmaycholon.vn/filewebdmclnew/DMCL21/Picture//Tm/Tm_picture_291/gia-dung-giam_104_390.png.webp" data-src="//cdn01.dienmaycholon.vn/filewebdmclnew/DMCL21/Picture//Tm/Tm_picture_291/gia-dung-giam_104_390.png.webp" class="lazy loaded" alt="Gia dụng giảm" data-was-processed="true"> 
-            </a> 
-
-            <a href="https://dienmaycholon.vn/tu-khoa/xayepchauau" title="Máy xay ép" class="item" target="_self"> 
-                <img src="//cdn01.dienmaycholon.vn/filewebdmclnew/DMCL21/Picture//Tm/Tm_picture_290/may-xay-ep_396_390.png.webp" data-src="//cdn01.dienmaycholon.vn/filewebdmclnew/DMCL21/Picture//Tm/Tm_picture_290/may-xay-ep_396_390.png.webp" class="lazy loaded" alt="Máy xay ép" data-was-processed="true"> 
-            </a> 
+            @endforeach
+            
         </div>
+        @endif
 
         <div class="box-common _cate_1942">
             <ul class="box-common__tab box-tab-mobile">

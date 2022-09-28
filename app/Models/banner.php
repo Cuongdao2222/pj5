@@ -30,6 +30,13 @@ class banner extends Model
             Cache::forget('bannerUnderSlider');
             Cache::forget('bannerUnderSale');
             Cache::forget('baners');
+            Cache::forget('banners_groups__6');
+            Cache::forget('banners_groups__7');
+            Cache::forget('banners_groups__8');
+            Cache::forget('banners_groups__9');
+            Cache::forget('banners_groups__10');
+            Cache::forget('banners_groups__11');
+            
            
         });
 
@@ -38,6 +45,12 @@ class banner extends Model
             Cache::forget('bannerUnderSlider');
             Cache::forget('bannerUnderSale');
             Cache::forget('baners');
+            Cache::forget('banners_groups__6');
+            Cache::forget('banners_groups__7');
+            Cache::forget('banners_groups__8');
+            Cache::forget('banners_groups__9');
+            Cache::forget('banners_groups__10');
+            Cache::forget('banners_groups__11');
         });
 
         static::created(function ($instance) {
@@ -45,6 +58,12 @@ class banner extends Model
             Cache::forget('bannerUnderSlider');
             Cache::forget('bannerUnderSale');
             Cache::forget('baners');
+            Cache::forget('banners_groups__6');
+            Cache::forget('banners_groups__7');
+            Cache::forget('banners_groups__8');
+            Cache::forget('banners_groups__9');
+            Cache::forget('banners_groups__10');
+            Cache::forget('banners_groups__11');
         });    
     }
 
