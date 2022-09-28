@@ -5,7 +5,7 @@
     }
 
     .table td, .table th{
-        padding: 0 10px!important;
+        padding: 0 3.5px!important;
     }
 </style>
 

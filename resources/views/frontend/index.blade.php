@@ -881,6 +881,8 @@
                                 <i class="fa-solid fa-plus"></i>
                                     so sánh
                             </a>
+
+                            <span> Quà tặng trị giá <strong>8.000.000<sup>đ</sup></strong> </span>
                         </div>
                         
                         @endforeach

@@ -60,6 +60,10 @@
             width: calc(100% - 25%) !important;
             border: unset;
         }
+
+        .gift_info  ol{
+            list-style: auto !important;
+        }
         .pdetail-info p{
             margin-top: 10px;
         }
@@ -86,6 +90,37 @@
             background: #ffde00;
         }
 
+        ol li::marker {
+          color: #fff;
+          
+        }
+        ol li {
+           position:relative;
+           font-size:16px;
+           margin-bottom: 10px;
+        }
+        ol li:before {
+            content: "";
+            position: absolute;
+            left: -24px;
+            top: -2px;
+            background-color: #1053A7;
+            z-index: -1;
+            display: inline-block;
+            width: 21px;
+            height: 21px;
+            border-radius: 50%;
+
+        }
+
+        .gift_item ul{
+            margin-left: 15px;
+        }
+
+        .fa-solid{
+            color: #1053A7;
+        }
+
         .add-cart-button{
             border: 1px solid #EA1D34;
             background: #fff !important;
@@ -95,6 +130,37 @@
         .box-compare{
             margin-left: 15px;
         }
+
+
+        .gift_pro .ttl, .gift_pro h3 {
+            padding: 9px 18px;
+            position: relative;
+            display: block;
+            font-weight: 700;
+        }
+
+        .gift_item {
+            padding: 10px 15px;
+            margin-bottom: 5px;
+        }
+
+        
+        .gift_pro {
+            border: 1px solid #dedede;
+            border-radius: 5px;
+            margin-top: 8px;
+        }
+
+        .gift_pro .ttl, .gift_pro h3, .gift_pro h5 {
+            font-family: Arial,Tahoma,sans-serif;
+            font-size: 15px;
+            color: #333;
+            background: #f5f5f5;
+            border-bottom: 1px solid #dedede;
+        }
+
+
+
 
         .box03__item.act {
             border-color: #2f80ed;
@@ -556,6 +622,23 @@
 
 
                                 @if(!empty($data->promotion))
+
+                                <div class="gift_pro">
+                                    <i class="fa-solid fa-gift"></i>
+                                    <span class="ttl"><i class="icon_gift_pro"></i> Quà tặng kèm trị giá 1.000.000đ</span>
+                                    <div class="gift_item">
+                                        <ul>
+                                            <li>
+                                                
+                                                <div class="gift_info">
+                                                    <p>HÀNG TRƯNG BÀY GIÁ SÔC</p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+
                                 <fieldset class="p-gift">
                                     <legend id="data-pricetotal" style="color: #ff0000;font-size: 18px; font-weight: bold" data-pricetotal="0">
                                         Khuyến mãi kèm theo
@@ -1132,7 +1215,7 @@
                             <div class="pdetail-stockavailable">
                                 <span>{{ $status }} </span>
                                 &nbsp 
-                                <a href="#" title="#" class="adress_stock"><i class="fa fa-map-marker"></i> Xem hàng tại kho</a>
+                                <a href="https://goo.gl/maps/TozxKHRZeHfrafMt9" title="#" class="adress_stock"><i class="fa fa-map-marker"></i> Xem hàng tại kho</a>
 
                             </div>
 
@@ -1141,14 +1224,23 @@
                             <a href="tel:02473036336"></a><div class="buy-button-hotline nhapnhay btn">Gọi 0247.303.6336 để được giảm thêm</div>
 
                             @if(!empty($data->promotion))
-                            <fieldset class="p-gift">
-                                <legend id="data-pricetotal" style="color: #ff0000;font-size: 18px; font-weight: bold" data-pricetotal="0">
-                                    Khuyến mãi kèm theo 
-                                </legend>
 
-                                    {!! @$data->promotion !!}
-                                   
-                            </fieldset>
+                            <div class="gift_pro">
+
+                                <span class="ttl"><i class="fa-solid fa-gift"></i> Quà tặng kèm trị giá 1.000.000đ</span>
+                                <div class="gift_item">
+                                    <ul>
+                                        <li>
+                                            
+                                            <div class="gift_info">
+                                               {!! @$data->promotion !!}
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                                    
+                            
                             @endif
                         
                             @if(!empty($gift) && $data->Quantily>0 && $deal_check_add ==false  &&  $data['Price']>0)
@@ -1238,7 +1330,7 @@
                             </div>
                             @else
 
-                            <div class="pdetail-add-to-cart add-to-cart pdetail-installment specifications-img">
+                            <div class="pdetail-add-to-cart pdetail-installment specifications-img">
                                 <div class="inline">
                                     <button type="button" class="btn btn-lg btn-add-cart btn-add-cart redirectCart">Liên hệ</button>
                                 </div>
