@@ -14,15 +14,15 @@
 
 
 
-Route::get('/tin-khuyen-mai/', 'Frontend\blogController@index')->middleware('cache.headers:public;max_age=14400')->name('tin');
+Route::get('/tin-khuyen-mai/', 'Frontend\blogController@index')->middleware('cache.headers:public;max_age=14400;etag')->name('tin');
 
-Route::get('/tin-tong-hop/', 'Frontend\blogController@index')->middleware('cache.headers:public;max_age=14400')->name('tin-th');
+Route::get('/tin-tong-hop/', 'Frontend\blogController@index')->middleware('cache.headers:public;max_age=14400;etag')->name('tin-th');
 
-Route::get('/tin-tuc-tong-hop/', 'Frontend\blogController@index')->middleware('cache.headers:public;max_age=14400')->name('tin-th');
+Route::get('/tin-tuc-tong-hop/', 'Frontend\blogController@index')->middleware('cache.headers:public;max_age=14400;etag')->name('tin-th');
 
-Route::get('/tin-tuc', 'Frontend\blogController@index')->middleware('cache.headers:public;max_age=14400')->name('tins');
+Route::get('/tin-tuc', 'Frontend\blogController@index')->middleware('cache.headers:public;max_age=14400;etag')->name('tins');
 
-Route::get('/', 'Frontend\indexController@index')->middleware('cache.headers:public;max_age=14400')->middleware('throttle:60')->name('homeFe');
+Route::get('/', 'Frontend\indexController@index')->middleware('cache.headers:public;max_age=14400;etag')->middleware('throttle:60')->name('homeFe');
 
 
 Route::post('showDealClick','flashdealController@showDealByIdClick')->name('showDealClick');
@@ -44,7 +44,7 @@ Route::get('/sale', 'mainController@sale')->name('sale-home');
 Route::get('/caches','crawlController@checkProductSku');
 
 
-Route::get('/deal', 'mainController@deal')->middleware('cache.headers:public;max_age=14400')->middleware('cache.headers:public;max_age=14400')->name('dealFe');
+Route::get('/deal', 'mainController@deal')->middleware('cache.headers:public;max_age=14400;etag')->middleware('cache.headers:public;max_age=14400;etag')->name('dealFe');
 
 
 // Route::get('filterurl',crawlController@addFilterProduct);
@@ -118,7 +118,7 @@ Route::get('searchquery', 'productController@search')->name('test');
 Route::get('page/{slug}', 'Frontend\categoryController@pageView')->name('page_cd');
 
 
-Route::get('tim', 'productController@FindbyNameOrModelOfFrontend')->middleware('cache.headers:public;max_age=14400','throttle:60')->name('search-product-frontend');
+Route::get('tim', 'productController@FindbyNameOrModelOfFrontend')->middleware('cache.headers:public;max_age=14400;etag','throttle:60')->name('search-product-frontend');
 
 Auth::routes(['verify' => true]);
 
@@ -140,11 +140,11 @@ Route::post('add-cart-number', 'AjaxController@addProductToCartByNumber')->name(
 
 Route::post('rate-form', 'AjaxController@rateForm')->name('rate-form');
 
-Route::post('show-viewer-product', 'AjaxController@showViewerProduct')->middleware('cache.headers:public;max_age=14400','throttle:60')->name('show-viewed-product');
+Route::post('show-viewer-product', 'AjaxController@showViewerProduct')->middleware('cache.headers:public;max_age=14400;etag','throttle:60')->name('show-viewed-product');
 
 Route::get('/category/{slug}', 'Frontend\categoryController@index')->name('category-product')->middleware('auth');
 
-Route::get('/{slug}', 'Frontend\categoryController@details')->middleware('cache.headers:public;max_age=14400')->middleware('throttle:80')->name('details');
+Route::get('/{slug}', 'Frontend\categoryController@details')->middleware('cache.headers:public;max_age=14400;etag')->middleware('throttle:80')->name('details');
 
 Route::post('ajax-clent-register', 'AjaxController@registerClient')->name('register-client-fe');
 
