@@ -666,7 +666,7 @@
                     <span class="icon_sale">
                         <img class="sale-banner ls-is-cached lazyloaded" alt="hot" data-src="{{ asset('images/background-image/xahang.png') }}" src="{{ asset('images/background-image/xahang.png') }}">
                     </span>
-                    <a href='{{ route('details', $value->Link) }}' class=" main-contain">
+                    <a href='{{ route('details', $value->Link) }}' class=" main-contain" data-s="OnlineSavingCMS" data-site="2" data-pro="3" data-cache="False" data-name="M&#xE1;y gi&#x1EB7;t LG Inverter 8.5 kg FV1408S4W" data-id="227121" data-price="8840000.0" data-brand="LG" data-cate="M&#xE1;y gi&#x1EB7;t" data-box="BoxHome">
                         <div class="item-label">
                         </div>
                         <div class="item-img">
@@ -790,10 +790,6 @@
                                 @if($datas->Price>=3000000)
                                 <span class="icon_tragop">Trả góp <i>0%</i></span>
                                 @endif
-
-                                @if(in_array($datas->id, $hots->toArray()))
-
-                                @endif
                                 <div class="item-img">
                                     <img data-src="{{ asset($datas->Image) }}" class="lazyload"   alt="{{ $datas->Name }}" width=210 height=210>
                                     
@@ -821,7 +817,7 @@
                                 @if(in_array($datas->id, $hots->toArray()))
                                 <p class="result-labels"><img class="sale-banner ls-is-cached lazyloaded" alt="hot" data-src="{{ asset('images/background-image/hot.jpg') }}" src="{{ asset('images/background-image/hot.jpg') }}"></p>
                                 @endif
-                            
+
                                <div class="title-name">
                                     <h3>{{ $datas->Name }}</h3>
                                 </div>
