@@ -44,7 +44,7 @@ Route::get('/sale', 'mainController@sale')->name('sale-home');
 Route::get('/caches','crawlController@checkProductSku');
 
 
-Route::get('/deal', 'mainController@deal')->middleware('cache.headers:public;max_age=14400;etag')->middleware('cache.headers:public;max_age=14400;etag')->name('dealFe');
+Route::get('/deal', 'mainController@deal')->middleware('cache.headers:public;max_age=14400;etag')->name('dealFe');
 
 
 // Route::get('filterurl',crawlController@addFilterProduct);
