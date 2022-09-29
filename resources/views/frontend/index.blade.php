@@ -1,7 +1,3 @@
-
-
-
-
 @extends('frontend.layouts.apps')
 
 @section('content') 
@@ -17,6 +13,10 @@
                 width: 100%;
                 display: flex;
                 justify-content: space-between;
+            }
+            .icons-new{
+                left: 10px;
+                width: 30%;
             }
 
             .news-home{
@@ -368,6 +368,25 @@
 
        
     @endpush
+
+     <?php
+        $hots = Cache::rememberForever('hots', function(){
+
+            $hots = App\Models\hotsProduct::select('product_id')->get()->pluck('product_id');
+
+            return $hots;
+        });
+
+        $new_product = Cache::rememberForever('new_product', function(){
+
+            $new_product = App\Models\newProduct::select('product_id')->get()->pluck('product_id');
+
+            return $new_product;
+        });
+       
+       
+    ?>    
+
     <div class="locationbox__overlay"></div>
     <div class="locationbox">
         <div class="locationbox__item locationbox__item--right" onclick="OpenLocation()">
@@ -660,8 +679,6 @@
 
                 @foreach($product_sale as  $value)
                 @if($value->active==1)
-
-                
                 <div class="item">
                     <span class="icon_sale">
                         <img class="sale-banner ls-is-cached lazyloaded" alt="hot" data-src="{{ asset('images/background-image/xahang.png') }}" src="{{ asset('images/background-image/xahang.png') }}">
@@ -764,9 +781,6 @@
 
                         return $listGroupsShow??'';
                     });
-
-
-
                 ?>
 
                 @if(!empty($listGroupsShows) && $listGroupsShows->count()>0)
@@ -790,30 +804,20 @@
                                 @if($datas->Price>=3000000)
                                 <span class="icon_tragop">Trả góp <i>0%</i></span>
                                 @endif
+
+                                @if(in_array($datas->id, $new_product->toArray()))
+                                
+                                @endif
+                                <span class="icon_tragop icons-new">Model mới</span>
+
+                                 <span class="icon_tragop"></span>
                                 <div class="item-img">
                                     <img data-src="{{ asset($datas->Image) }}" class="lazyload"   alt="{{ $datas->Name }}" width=210 height=210>
                                     
                                 </div>
 
 
-                                <?php
-                                    $hots = Cache::rememberForever('hots', function(){
-
-                                        $hots = App\Models\hotsProduct::select('product_id')->get()->pluck('product_id');
-
-                                        return $hots;
-                                    });
-
-                                    $new_product = Cache::rememberForever('new_product', function(){
-
-                                        $new_product = App\Models\newProduct::select('product_id')->get()->pluck('product_id');
-
-                                        return $new_product;
-                                    });
-                                   
-                                   
-                                ?>    
-
+                               
                                 @if(in_array($datas->id, $hots->toArray()))
                                 <p class="result-labels"><img class="sale-banner ls-is-cached lazyloaded" alt="hot" data-src="{{ asset('images/background-image/hot.jpg') }}" src="{{ asset('images/background-image/hot.jpg') }}"></p>
                                 @endif
