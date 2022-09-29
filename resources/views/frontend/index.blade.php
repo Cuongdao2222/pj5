@@ -806,9 +806,9 @@
                                 @endif
 
                                 @if(in_array($datas->id, $new_product->toArray()))
-                                
-                                @endif
                                 <span class="icon_tragop icons-new">Model mới</span>
+                                @endif
+                                
 
                                  <span class="icon_tragop"></span>
                                 <div class="item-img">
