@@ -308,7 +308,7 @@
                 height: 70px;
                 display: inline-block;
                 vertical-align: middle;
-                background-image: url(//cdn01.dienmaycholon.vn/filewebdmclnew/DMCL21/FE/img/icon.png?f85e2fa…=);
+                background-image: url('{{ asset('media/category/icon.png')  }}');
             }
 
             .p_hotline_item span {
@@ -331,7 +331,7 @@
                 height: 70px;
                 display: inline-block;
                 vertical-align: middle;
-                background-image: url(//cdn01.dienmaycholon.vn/filewebdmclnew/DMCL21/FE/img/icon.png?f85e2fa…=);
+                background-image: url('{{ asset('media/category/icon.png')  }}');
                 background-position: 95.5% 14.5%;
             }
 
@@ -340,7 +340,7 @@
                 height: 70px;
                 display: inline-block;
                 vertical-align: middle;
-                background-image: url(//cdn01.dienmaycholon.vn/filewebdmclnew/DMCL21/FE/img/icon.png?f85e2fa…=);
+                background-image: url('{{ asset('media/category/icon.png')  }}');
                 background-position: 81.5% 14.5%;
             }
 
@@ -349,7 +349,7 @@
                 height: 70px;
                 display: inline-block;
                 vertical-align: middle;
-                background-image: url(//cdn01.dienmaycholon.vn/filewebdmclnew/DMCL21/FE/img/icon.png?f85e2fa…=);
+                background-image: url('{{ asset('media/category/icon.png')  }}');
                 background-position: 99% .5%
             }
             .iconss-sp{
@@ -454,6 +454,10 @@
                 left: 50%;
                 z-index: 999;
 
+            }
+
+            .deal-icon{
+                color: #fe0000;
             }
 
             #ui-id-2{
@@ -758,7 +762,7 @@
 
                                     <li data-submenu-id="submenu-0">
                                         <div class="dropdown">
-                                            
+                                            <i class="fa-solid fa-tags deal-icon"></i>
                                             <a href="/deal">Giảm giá đặc biệt</a>
                                         </div>
                                     </li>    

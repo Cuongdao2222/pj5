@@ -19,6 +19,10 @@
                 justify-content: space-between;
             }
 
+            .news-home{
+                font-size: 22px;
+            }
+
             .video_big, .video_big .img_video {
                 overflow: hidden;
                 position: relative;
@@ -752,19 +756,22 @@
         <div class="box-common _cate_1942">
             <ul class="box-common__tab box-tab-mobile">
                 <li class="active-tab" data-cate-id="1942"><a href="{{  @$groups->link }}">{{  @$groups->name }}</a></li>
-                <?php 
+                <?php
 
                     $listGroupsShows = Cache::rememberForever('listGroupsShow'.$groups->id, function() use($groups){
 
-                         $listGroupsShows =   App\Models\groupProduct::select('name', 'link')->where('parent_id', $groups->id)->get();
+                         $listGroupsShow =   App\Models\groupProduct::select('name', 'link')->where('parent_id', $groups->id)->get();
 
-                        return $listGroupsShows??'';
+                        return $listGroupsShow??'';
                     });
+
+
 
                 ?>
 
-                @if(!empty($listGroupsShow))
-                @foreach($listGroupsShow as $valueslist)
+                @if(!empty($listGroupsShows) && $listGroupsShows->count()>0)
+
+                @foreach($listGroupsShows as $valueslist)
 
                 <li data-cate-id="2162" data-prop-value-ids="90016" class="desk-t"><a href="{{ route('details', $valueslist->link) }}">{{ @$valueslist->name }}</a></li>
                 @endforeach
@@ -944,8 +951,10 @@
         @if(isset($post) && count($post)>0)
 
         <div class="my_utilities">
-            <h2 class="title_pro">Tiện ích dành cho bạn </h2>
-            <a href="{{ route('details', $post[0]['link']) }}" class="see_all">Xem tất cả <i></i></a> 
+            <p class="title_pro news-home">Tin tức nổi bật </p>
+
+            <br>
+           
             <div class="videos">
                 <a href="{{ route('details', $post[0]['link']) }}" class="video_big not_video " title="{{ $post[0]['title'] }}" idx="5229">
                     <div class="img_video"> <img src="{{ asset($post[0]['image']) }}" data-src="{{ asset($post[0]['image']) }}" alt="Iphone lock là gì? Các cách kiểm tra Iphone lock dễ dàng" class="lazy loaded" style="width: 100%;" data-was-processed="true"> </div>
