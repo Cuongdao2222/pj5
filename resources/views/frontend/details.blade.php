@@ -675,7 +675,7 @@
 
                                 @if(!empty($data->promotion))
 
-                                <div class="gift_pro">
+                                <!-- <div class="gift_pro">
                                     <i class="fa-solid fa-gift"></i>
                                     <span class="ttl"><i class="icon_gift_pro"></i> Ưu đãi tặng kèm trị giá 1.000.000đ</span>
                                     <div class="gift_item">
@@ -688,7 +688,7 @@
                                             </li>
                                         </ul>
                                     </div>
-                                </div>
+                                </div> -->
 
 
                                 <fieldset class="p-gift">
@@ -758,7 +758,7 @@
                                         <button type="button" class="btn btn-lg btn-add-cart btn-add-cart redirectCart" onclick="addToCart({{ $data->id }})">MUA NGAY <br>(Giao hàng tận nơi - Giá tốt - An toàn)</button>
 
 
-                                        <button type="button" class="btn btn-lg btn-add-cart btn-add-cart redirectCart" onclick="addToSuport(2221)">GỌI LẠI CHO TÔI <br>(Giao hàng tận nơi - Giá tốt - An toàn)</button>
+                                        <button type="button" class="btn btn-lg btn-add-cart btn-add-cart redirectCart cartSP" onclick="addToSuport(2221)">GỌI LẠI CHO TÔI <br>(Tư vấn tận tình, chu đáo)</button>
                                     </div>
                                     <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                                         Launch demo modal
