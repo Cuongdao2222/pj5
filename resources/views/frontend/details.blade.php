@@ -671,28 +671,9 @@
                                         ?>
                                     <span>{{ $status }}</span>
 
-
                                 </div>
 
-
-
                                 @if(!empty($data->promotion))
-
-                                <!-- <div class="gift_pro">
-                                    <i class="fa-solid fa-gift"></i>
-                                    <span class="ttl"><i class="icon_gift_pro"></i> Ưu đãi tặng kèm trị giá 1.000.000đ</span>
-                                    <div class="gift_item">
-                                        <ul>
-                                            <li>
-                                                
-                                                <div class="gift_info">
-                                                    <p>HÀNG TRƯNG BÀY GIÁ SÔC</p>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div> -->
-
 
                                 <fieldset class="p-gift">
                                     <legend id="data-pricetotal" style="color: #ff0000;font-size: 18px; font-weight: bold" data-pricetotal="0">

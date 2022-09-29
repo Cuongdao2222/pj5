@@ -200,8 +200,9 @@
                                     <td width="190">Khách hàng</td>
                                     <td width="130">Điện thọai</td>
                                     <td width="130">Sản phẩm</td>
-                                    
+                                    <td>Thời gian</td>
                                     <td width="120">Hoạt động</td>
+
                                 </tr>
                                 <?php 
                                     $lienhe = DB::table('lienhe')->take(6)->orderBy('id', 'desc')->get()->toArray();
@@ -215,6 +216,7 @@
                                     <td width="190">{{ $viewcalls->name }}</td>
                                     <td width="130">{{ $viewcalls->phone }}</td>
                                     <td width="130"><a href="{{ route('details', App\Models\product::find($viewcalls->product_id)->Link) }}" target="_blank">{{ App\Models\product::find($viewcalls->product_id)->Name }}</a></td>
+                                    <td>{{ $viewcalls->created_at }}</td>
                                     <td width="130"><a href="{{ route('updateCall', $viewcalls->id) }}">xóa</a></td>
                                 </tr>
                                 @endforeach
