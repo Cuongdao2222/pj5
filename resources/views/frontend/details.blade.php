@@ -1259,7 +1259,7 @@
 
 
 
-                            <a href="tel:02473036336"></a><div class="buy-button-hotline nhapnhay btn">Gọi 0247.303.6336 để được giảm thêm</div>
+                            <!-- <a href="tel:02473036336"></a><div class="buy-button-hotline nhapnhay btn">Gọi 0247.303.6336 để được giảm thêm</div> -->
 
                             @if($data->limits ==1)
                             <div class="sticker buyonline"> <p><strong>Số Lượng Có Hạn</strong></p></div>
