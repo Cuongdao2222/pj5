@@ -655,23 +655,7 @@
 
                             </div>
                             <div class="pdetail-status">
-                                <div class="pdetail-stockavailable">
-                                    <?php
-                                        if($data->Quantily==0||$data['Price']==0){
-                                            $status ='Tạm hết hàng';
-                                        
-                                        }
-                                        elseif($data->Quantily<=-1){
-                                            $status ='Ngừng kinh doanh';
-                                        }
-                                        else{
-                                            $status = 'Còn hàng';
-                                        }
-
-                                        ?>
-                                    <span>{{ $status }}</span>
-
-                                </div>
+                               
 
                                 @if(!empty($data->promotion))
 
@@ -1078,7 +1062,27 @@
                 </a>
             </div>
 
-            <br>
+            <hr>
+             <div class="pdetail-stockavailable">
+                <?php
+                    if($data->Quantily==0||$data['Price']==0){
+                        $status ='Tạm hết hàng';
+                    
+                    }
+                    elseif($data->Quantily<=-1){
+                        $status ='Ngừng kinh doanh';
+                    }
+                    else{
+                        $status = 'Còn hàng';
+                    }
+
+                    ?>
+                <span>{{ $status }}</span>
+
+                &nbsp 
+                <a href="https://goo.gl/maps/TozxKHRZeHfrafMt9" title="#" class="adress_stock"><i class="fa fa-map-marker"></i> Xem hàng tại kho</a>
+
+            </div>
 
            
             @if(!empty($data_cate) && $data_cate==1)
@@ -1232,17 +1236,9 @@
                                 </div> -->
                         </div>
 
-
+                        <div class="clearfix"></div>
                         <div class="pdetail-status">
-                            <div class="pdetail-stockavailable">
-                                <span>{{ $status }} </span>
-                                &nbsp 
-                                <a href="https://goo.gl/maps/TozxKHRZeHfrafMt9" title="#" class="adress_stock"><i class="fa fa-map-marker"></i> Xem hàng tại kho</a>
-
-                            </div>
-
-
-
+                           
                             <!-- <a href="tel:02473036336"></a><div class="buy-button-hotline nhapnhay btn">Gọi 0247.303.6336 để được giảm thêm</div> -->
 
                             @if($data->limits ==1)
