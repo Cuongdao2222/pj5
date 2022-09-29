@@ -675,7 +675,8 @@
         /*end dot*/
 
         #sync1 {
-            position:relative
+            position:relative;
+            height: 100%;
         }
         .owl-prev{
             position: absolute;
