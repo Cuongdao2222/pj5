@@ -544,7 +544,7 @@
             <meta property="position" content="3">
             </li> -->
 
-        @if(!empty($ar_groups_info && !empty($ar_groups_info[0])))    
+        @if(!empty($ar_groups_info) && !empty($ar_groups_info[0]))    
         <li>
             <span>›</span>
             <a href="{{ route('details',$ar_groups_info[0]['link']) }}">{{ $ar_groups_info[0]['name'] }}</a>
