@@ -22,7 +22,7 @@ Route::get('/tin-tuc-tong-hop/', 'Frontend\blogController@index')->middleware('c
 
 Route::get('/tin-tuc', 'Frontend\blogController@index')->middleware('cache.headers:public;max_age=14400;etag')->name('tins');
 
-Route::get('/', 'Frontend\indexController@index')->middleware('cache.headers:public;max_age=14400;etag')->name('homeFe');
+Route::get('/', 'Frontend\indexController@index')->middleware('cache.headers:public;max_age=14400;etag')->middleware('throttle:60')->name('homeFe');
 
 
 Route::post('showDealClick','flashdealController@showDealByIdClick')->name('showDealClick');
