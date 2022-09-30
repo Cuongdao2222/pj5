@@ -1811,7 +1811,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div id="tbl_list_carts">
+                        <div id="tbl_list_cartss">
                             
                         </div>
 
@@ -2554,7 +2554,7 @@
 
 
          $("#exampleModal").on("hidden.bs.modal", function () {
-            $('#tbl_list_carts').html('');
+            $('#tbl_list_cartss').html('');
         });
 
         function showToCart() {
@@ -2572,7 +2572,7 @@
                   
                    // numberCart = result.find("#number-product-cart").text();
 
-                    $('#tbl_list_carts').append(result);
+                    $('#tbl_list_cartss').append(result);
 
                    
                     $('#exampleModal').modal('show'); 

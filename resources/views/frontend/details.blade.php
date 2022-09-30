@@ -2026,7 +2026,7 @@
                
                // numberCart = result.find(numberProductCart);
     
-                $('#tbl_list_carts').append(result);
+                $('#tbl_list_cartss').append(result);
     
                 const numberCart = $('#number-product-cart').text();
     

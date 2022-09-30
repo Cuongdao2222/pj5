@@ -84,9 +84,9 @@
               
                // numberCart = result.find("#number-product-cart").text();
 
-               $('#tbl_list_carts').html('');
+               $('#tbl_list_cartss').html('');
 
-                $('#tbl_list_carts').append(result);
+                $('#tbl_list_cartss').append(result);
 
                 const numberCart = $('#number-product-cart').text();
 
@@ -122,9 +122,9 @@
                 },
                 success: function(result){
 
-                    $('#tbl_list_carts').html('');
+                    $('#tbl_list_cartss').html('');
 
-                    $('#tbl_list_carts').append(result);
+                    $('#tbl_list_cartss').append(result);
 
                     const numberCart = $('#number-product-cart').text();
 
@@ -157,9 +157,9 @@
                 },
                 success: function(result){
 
-                    $('#tbl_list_carts').html('');
+                    $('#tbl_list_cartss').html('');
 
-                    $('#tbl_list_carts').append(result);
+                    $('#tbl_list_cartss').append(result);
 
                     const numberCart = $('#number-product-cart').text();
 
