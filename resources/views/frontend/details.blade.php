@@ -40,6 +40,20 @@
     
     ?>
 
+    <?php
+    if($data->Quantily==0||$data['Price']==0){
+        $status ='Tạm hết hàng';
+    
+    }
+    elseif($data->Quantily<=-1){
+        $status ='Ngừng kinh doanh';
+    }
+    else{
+        $status = 'Còn hàng';
+    }
+
+    ?>
+
     <link rel="stylesheet" href="{{ asset('css/jquery.fancybox.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/detail1fe.css') }}?ver=4">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/detail1fe.css') }}">
@@ -77,15 +91,18 @@
              animation: my 1700ms infinite;
         }
 
+        .status-mobile{
+            color: #218838;
+            font-weight: bold;
+        }
+
 
         .saker{
             position: absolute;
             left: 0;
             top: 0;
         }
-        .btn-add-cart {
-            width: calc(100% - 14px);
-        }
+        
         .redirectCart{
             font-weight: bold;
         }
@@ -250,6 +267,10 @@
             padding: 0 15px;
         }
 
+        .cartSP{
+             background: #1053A7;
+        }
+
 
         @media screen and (min-width: 768px) {
             .support {
@@ -260,7 +281,7 @@
 
             .cartSP{
                 margin-left: 4px;
-                background: #1053A7;
+               
             }
 
             .add-to-cart{
@@ -273,6 +294,9 @@
             .padtex{
                 padding: 0 15px;
             }
+            .btn-add-cart {
+                width: calc(100% - 14px);
+            }
         }
 
        @media screen and (max-width: 768px){
@@ -282,7 +306,8 @@
             .compare-pro-holder a {
 
                 width: 30%;
-            } 
+            }
+
             .btn-compare{
                 position: absolute;
                 top: 34px;
@@ -636,19 +661,18 @@
                            
                         </div>
                         <div class="scroll-box">
-                            <div class="boxbanner-32">
+                            <!-- <div class="boxbanner-32">
                                 <div class="banner-list">
                                     <div class="item banner-item banner-item-1">
                                         <a target="&quot;_blank&quot;" href="#" data-id="1022">
-                                            <!-- <picture>
+                                            <picture>
                                                 <img src="https://thegioidohoacom.s3.ap-southeast-1.amazonaws.com/wp-content/uploads/2019/01/10040348/X4iNCOp-1024x454.jpg" alt="Tết Lớn Khuyến Mại Lớn" width="&quot;640&quot;" height="&quot;150&quot;">
-                                            </picture> -->
+                                            </picture>
                                         </a>
                                     </div>
                                 </div>
                             </div>
-
-                           <!--  <div class="price_giaban price_market">Giá hãng : <span>9.590.000đ </span></div> -->
+ -->
                             <div class="pdetail-price">
                                 <div class="pdetail-price-box">
                                     {!! @$text !!}
@@ -656,8 +680,11 @@
                                 </div>
 
                             </div>
+
                             <div class="pdetail-status">
-                               
+                                <div class="pdetail-stockavailable">
+                                    <span>{{ $status }}</span>
+                                </div>
 
                                 @if(!empty($data->promotion))
 
@@ -751,15 +778,12 @@
 
                                 <div class="pdetail-add-to-cart add-to-cart">
                                     <div class="inline">
-                                       
-                                      
                                         <button type="button" class="btn btn-lg btn-add-cart btn-add-cart redirectCart">Liên hệ</button>
                                     </div>
                                    
                                 </div>
                                 @endif
                             </div>
-
                             
                             <div class="clearfix"></div>
 
@@ -1066,19 +1090,7 @@
 
             <hr>
              <div class="pdetail-stockavailable stock">
-                <?php
-                    if($data->Quantily==0||$data['Price']==0){
-                        $status ='Tạm hết hàng';
-                    
-                    }
-                    elseif($data->Quantily<=-1){
-                        $status ='Ngừng kinh doanh';
-                    }
-                    else{
-                        $status = 'Còn hàng';
-                    }
 
-                    ?>
                 <span>{{ $status }}</span>
 
                 &nbsp 
