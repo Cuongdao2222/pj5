@@ -395,7 +395,6 @@
 
             if(!empty($flashDeal)){
 
-            
                 $price_flash_deal = DB::table('flash_deal')->where('id', $flashDeal->flash_deal_id)->first();
                 if(!empty($price_flash_deal)){
                     $deal_check_add = true;
@@ -1212,7 +1211,8 @@
                           
                             @endif
                             <br>
-                             {!!  @$text !!}
+                             {!!  @$text??'<b>GIÁ ONLINE</b>' !!}
+
                             <div class="pdetail-price-box">
 
                                 @if(!empty($data->manuPrice))
