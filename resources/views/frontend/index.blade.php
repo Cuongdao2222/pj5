@@ -6,7 +6,7 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('css/home.css') }}?ver=15">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}?ver=12"> 
         <link rel="stylesheet" type="text/css" href="{{ asset('css/index.css') }}?ver=3">
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/homes.css') }}?ver=6">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/homes.css') }}?ver=8">
     @endpush
 
      <?php
@@ -449,15 +449,11 @@
                                 <span class="icon_tragop icons-new">Model mới</span>
                                 @endif
                                 
-
-                                 <span class="icon_tragop"></span>
                                 <div class="item-img">
                                     <img data-src="{{ asset($datas->Image) }}" class="lazyload"   alt="{{ $datas->Name }}" width=210 height=210>
                                     
                                 </div>
 
-
-                               
                                 @if(in_array($datas->id, $hots->toArray()))
                                 <p class="result-labels"><img class="sale-banner ls-is-cached lazyloaded" alt="hot" data-src="{{ asset('images/background-image/hot.jpg') }}" src="{{ asset('images/background-image/hot.jpg') }}"></p>
                                 @endif
