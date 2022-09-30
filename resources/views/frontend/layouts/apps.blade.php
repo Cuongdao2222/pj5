@@ -452,7 +452,7 @@
             }
 
             .deal-icon{
-                color: #fe0000;
+                color: #fe0000 !important;
             }
 
             #ui-id-2{
