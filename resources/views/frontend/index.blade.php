@@ -4,7 +4,7 @@
     @push('style')
 
         <link rel="stylesheet" type="text/css" href="{{ asset('css/home.css') }}?ver=15">
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}?ver=12"> 
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}?ver=14"> 
         <link rel="stylesheet" type="text/css" href="{{ asset('css/index.css') }}?ver=3">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/homes.css') }}?ver=8">
     @endpush
@@ -306,7 +306,7 @@
           
         <div class="clearfix"></div> 
 
-        <div class="prd-promo has-banner" style="background-color:#FFF3EE; " data-html-id="3109">
+        <div class="prd-promo has-banner" style="background-color:#FFF;" data-html-id="3109">
 
             <div class="prd-promo__top clearfix" >
 
