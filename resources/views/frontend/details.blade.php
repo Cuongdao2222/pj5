@@ -1508,7 +1508,7 @@
     <div class="vote" id="vote_avg">
         <div class="fl" style="padding:0 5px 0 0;">
             Model: <span class="value txt_blue">{{ $data->ProductSku }}</span> | 
-            Tình trạng: <span class="value txt_blue">{{ $status }}</span> | 
+            Tình trạng: <span class="value txt_blue">{{ @$status }}</span> | 
         </div>
         <a id="btn-vote" class="txt_555 fl" href="javascript:;" onclick="go_comm()"> Đánh giá: </a>
         <div class=" totalRate " id="js-total-rating" style="display: inline-block;"><i class="icons icon-star star"><span></span></i><i class="icons icon-star star"><span></span></i><i class="icons icon-star star"><span></span></i><i class="icons icon-star star"><span></span></i><i class="icons icon-star star"><span></span></i></div>
