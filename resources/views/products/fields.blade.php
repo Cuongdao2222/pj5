@@ -159,14 +159,6 @@
 
 </div>
 
-@if(Auth::user()->id ==4 || Auth::user()->id ==6)
-<!-- InputPrice Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('Input Price', 'Giá đầu vào:') !!}
-    {!! Form::text('InputPrice', null, ['class' => 'form-control']) !!}
-
-</div>
-@endif
 
 <div class="form-group col-sm-6">
     {!! Form::label('manu Price', 'Giá Hãng:') !!}
@@ -252,6 +244,12 @@
         }       
         
     </script>
+</div>
+
+<!-- Link Redirect Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('Link Redirect', 'Link Redirect:') !!}
+    {!! Form::text('LinkRedirect', null, ['class' => 'form-control']) !!}
 </div>
 
 

@@ -77,7 +77,8 @@ class product extends Model
         'promotion',
         'limits',
         'GiftPrice',
-        'InputPrice'
+        'LinkRedirect',
+        
 
     ];
 
@@ -108,9 +109,7 @@ class product extends Model
         'Image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:4096',
         'Name' => 'required|unique:products|max:1000',
         'ProductSku' => 'required|unique:products',
-       
         'Price' => 'required',
-        
     ];
 
     public static $rule = [

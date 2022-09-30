@@ -598,6 +598,10 @@ class categoryController extends Controller
                 return view('frontend.installment', compact('data'));
             }
 
+            if(!empty($data->LinkRedirect)){
+
+                return redirect($data->LinkRedirect, 301); 
+            }
 
             $group_product = Cache::rememberForever('group_product_cache_'.$findID->id, function() use ($findID){
 
@@ -634,22 +638,6 @@ class categoryController extends Controller
                 return metaSeo::find($data->Meta_id);
             }); 
             
-
-            // // đếm số lượt view
-
-            // $sessionKey = 'product_' . $findID->id;
-
-            // $sessionView = Session::get($sessionKey);
-
-        
-            // if (!$sessionView) { //nếu chưa có session
-
-            //     Session::put($sessionKey, 1); //set giá trị cho session
-
-            //     $post_view = DB::table('products')->where('id', $findID->id)->increment('views', 1);
-
-            // }
-
             return view('frontend.details', compact('data', 'images', 'other_product', 'meta', 'pageCheck', 'data_cate'));
         }
     }
