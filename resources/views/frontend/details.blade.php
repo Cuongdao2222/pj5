@@ -164,6 +164,9 @@
             border-radius: 50%;
 
         }
+        .stock{
+            padding: 0 15px;
+        }
 
         .gift_item ul{
             margin-left: 15px;
@@ -1063,7 +1066,7 @@
             </div>
 
             <hr>
-             <div class="pdetail-stockavailable">
+             <div class="pdetail-stockavailable stock">
                 <?php
                     if($data->Quantily==0||$data['Price']==0){
                         $status ='Tạm hết hàng';
