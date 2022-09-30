@@ -1272,9 +1272,9 @@
                             <div class="gift_pro">
 
                                 @foreach($gift as $key => $valuegift)
-                                @if(!empty($valuegift->price))
-                                <span class="ttl"><i class="fa-solid fa-gift"></i> Quà tặng kèm trị giá {{ str_replace(',' ,'.', number_format($valuegift->price)) }}đ</span>
-                                @endif
+                               
+                                <span class="ttl"><i class="fa-solid fa-gift"></i> Quà tặng @if(!empty($valuegift->price)) kèm trị giá {{ str_replace(',' ,'.', number_format($valuegift->price)) }}đ  @endif</span>
+                               
                                 <div class="gift_item">
                                     <ul>
                                         <li>
