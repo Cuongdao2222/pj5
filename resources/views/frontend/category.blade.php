@@ -2,8 +2,8 @@
 
 @section('content') 
     @push('style')
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/categorycs.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/category.css') }}?ver=1"> 
-
         <link rel="stylesheet" type="text/css" href="{{ asset('css/categories.css') }}?ver=1"> 
          <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}?ver=12"> 
          <link rel="stylesheet" type="text/css" href="{{ asset('css/home.css') }}?ver=1"> 

@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 use App\Models\product;
 
+use App\Models\css;
+
+use Illuminate\Support\Facades\Storage;
+
+
 class mainController extends Controller
 {
     public function findProductByNameOrModel($data)
@@ -80,5 +85,44 @@ class mainController extends Controller
     public function landingBe()
     {
         return view('landing.landing');
+    }
+
+    public function addCss()
+    {
+       
+        return view('css.index');
+    }
+    public function readFileCss($id)
+    {
+
+        $page = ['homecs.css', 'categorycs.css', 'detailscs.css'];
+
+        $exists = Storage::disk('public')->exists('css/'.$page[$id]);
+
+
+        if($exists){
+
+            $contents = Storage::disk('public')->get('css/'.$page[$id]);
+
+            return view('css.fileCss', compact('contents','id'));
+
+           
+        }
+    }
+
+    public function saveCss(Request $request)
+    {
+        $content = $request->css;
+        $file    = $request->file;
+
+        $css     = new css();
+
+        $css->file = $file;
+        $css->content =  $content;
+        $css->save();
+
+        Storage::disk('public')->put('css/'.$file, $content);
+
+        return redirect()->back();
     }
 }

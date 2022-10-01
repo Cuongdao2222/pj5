@@ -131,7 +131,7 @@
 </li>
 
 <li class="nav-item">
-    <a href="#"
+    <a href="{{ route('addcss') }}"
        class="nav-link {{ Request::is('makers*') ? 'active' : '' }}">
         <p>Sửa css trang</p>
     </a>

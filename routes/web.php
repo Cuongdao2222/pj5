@@ -196,6 +196,12 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::get('landingpage', 'mainController@landingBe')->name('landing');
 
+    Route::get('add-css', 'mainController@addCss')->name('addcss');
+
+    Route::get('readfile-css/{id}', 'mainController@readFileCss')->name('readCss');
+
+    Route::post('save-css','mainController@saveCss')->name('saveCss');
+
     Route::get('find-post', 'postController@findPostByValue')->name('findPostAdmin');
 
     Route::post('/editFastPrice', 'productController@editFastPrice')->name('fast-price');
