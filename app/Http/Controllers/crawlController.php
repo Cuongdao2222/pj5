@@ -103,6 +103,8 @@ class crawlController extends Controller
         return $string; 
 
     }
+
+   
     public function checkProductSku()
     {
         $data  = product::find(4090);
@@ -110,11 +112,23 @@ class crawlController extends Controller
         $html = $data->Specifications;
 
         $dom = new \DOMDocument();
-        $dom->loadHTML($html);
-        foreach($dom->getElementsByTagName('td') as $td) {
-            print_r($td->nodeValue . '<br/>');
-        }
 
+        $html = mb_convert_encoding($html , 'HTML-ENTITIES', 'UTF-8'); //convert sang tiếng việt cho dom
+
+        $dom->loadHTML($html);
+
+        $ar = ['Cổng AV', 'Kết nối Internet', 'Cổng HDMI', 'Tương tác thông minh', 'Công nghệ âm thanh', 'Tổng công suất loa'];
+
+        foreach($dom->getElementsByTagName('td') as $td) {
+
+            foreach ($ar as $key => $value) {
+
+                if(strpos($td->nodeValue, $value)>-1){
+                    print_r($td->nodeValue . '<br/>');
+                }
+            }
+           
+        }
 
 
         // $dom = new \DOMDocument();
