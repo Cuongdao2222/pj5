@@ -56,8 +56,6 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/detailcs.css') }}">
     <link rel="stylesheet" href="{{ asset('css/jquery.fancybox.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/detail1fe.css') }}?ver=4">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/detail1fe.css') }}">
-
 
     <style type="text/css">
 
@@ -105,6 +103,9 @@
         
         .redirectCart{
             font-weight: bold;
+        }
+        .but-carsp{
+            background-color: #1053A7 !important;
         }
 
         .installment-purchase .but-tra-gop {
@@ -297,6 +298,10 @@
             .btn-add-cart {
                 width: calc(100% - 14px);
             }
+
+            .prod-info .btn-buy{
+                width: calc(50% - 10px);
+            }
         }
 
        @media screen and (max-width: 768px){
@@ -365,8 +370,6 @@
 
 
             if($now->between($check_deal->start, $check_deal->end)){
-
-
                 $deal_check_add = true;
                 $price_old = $data->Price;
                 $text = '<b>MUA ONLINE GIÁ SỐC: </b>';
@@ -503,7 +506,7 @@
     
     ?>
 @push('style')
-<link rel="stylesheet" type="text/css" href="{{ asset('css/detailsfe.css') }}?ver=6">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/detailsfe.css') }}?ver=7">
 @endpush
 <div class="locationbox__overlay"></div>
 <div class="locationbox">
@@ -542,8 +545,6 @@
         }
     
     }
-
-   
 
     ?>
 
@@ -797,28 +798,24 @@
 
             <div class="col-md-3 mobile">
                 <div class="commitment">
-                <h4>Yên tâm mua sắm</h4>
-                <ul>
-                    <li>Bảo hành tại nhà</li>
-                    <li>Lắp đặt miễn phí</li>
-              (Trừ điều hòa, bình nước nóng)
-                    <li>Thanh toán tại nhà</li>
-                    <li>Giao hàng miễn phí 20km</li>
-                    <li>Giá cạnh tranh nhất thị trường</li>
-                    <li>Đổi mới 100% trong 7 ngày đầu</li>
-                        ( Trừ Sanaky, Sony chỉ bảo hành tại nhà )
-                </ul>
-                <div class="support">
-                  <h5>Tổng Đài mua hàng</h5>
-                    <a href="tel:02473036336">0247.303.6336</a>
-                  <h5>Tổng Đài mua hàng( Sau 17h )</h5>
-                   <a href="tel:0913011888">091.301.1888</a> 
-                   <a href="tel:0983612828">098.361.2828</a>
-                   
-                                          
-                  
-                   
-                </div>
+                    <h4>Yên tâm mua sắm</h4>
+                    <ul>
+                        <li>Bảo hành tại nhà</li>
+                        <li>Lắp đặt miễn phí</li>
+                  (Trừ điều hòa, bình nước nóng)
+                        <li>Thanh toán tại nhà</li>
+                        <li>Giao hàng miễn phí 20km</li>
+                        <li>Giá cạnh tranh nhất thị trường</li>
+                        <li>Đổi mới 100% trong 7 ngày đầu</li>
+                            ( Trừ Sanaky, Sony chỉ bảo hành tại nhà )
+                    </ul>
+                    <div class="support">
+                      <h5>Tổng Đài mua hàng</h5>
+                        <a href="tel:02473036336">0247.303.6336</a>
+                      <h5>Tổng Đài mua hàng( Sau 17h )</h5>
+                       <a href="tel:0913011888">091.301.1888</a> 
+                       <a href="tel:0983612828">098.361.2828</a>
+                    </div>
                 </div>
             </div>
             <div class="total-imgslider">
@@ -1013,15 +1010,11 @@
 
                      $details = $data->Detail;
                     if(isset($check)){
-
-                        
                         $details = str_replace($check,  asset('/images/product/noimage.png'), $data->Detail);
                         $details = str_replace(['http://dienmaynguoiviet.net', 'https://dienmaynguoiviet.net'], 'https://dienmaynguoiviet.vn', $details);
                         $details = preg_replace("/<a(.*?)>/", "<a$1 target=\"_blank\">",  $details);
-                        
 
                     }
-                   
                    
                 ?>
 
@@ -1559,7 +1552,9 @@
             <i class="fa fa-shopping-cart"></i> <span class="txt_15" onclick="addToCart({{ $data->id }})">Mua ngay</span>
             </a>
 
-
+            <a class="btn-buy txt_center cor5px buy-nows-popup but-carsp" href="javascript:void(0)">
+            <i class="fa fa-phone"></i> <span class="txt_15" onclick="addToSuport({{ $data->id }})">Gọi lại cho tôi</span>
+            </a>
         </div>
         @endif
         @if((int)$data->Price>=3000000)
@@ -1568,13 +1563,17 @@
             <a class="btn-buy txt_center cor5px"  href="{{ route('details', $data->Link)  }}?show=tra-gop" style="background: #ffde00; border-bottom: 0;">
             <i class="fa fa-shopping-cart"></i> <span class="txt_15" >Trả góp qua thẻ</span>
             </a>
+
+            <a class="btn-buy txt_center cor5px"  href="javascript:void(0)" style="border-bottom: 0;" onclick="addCartFast({{ $data->id }})">
+            <i class="fa fa-shopping-cart"></i> <span class="txt_15">Thêm vào giỏ hàng</span>
+            </a>
         </div>
         @endif
+
+
         @endif
        
     </div>
-
-
 
     <div class="clear"></div>
     <br>
@@ -1664,38 +1663,8 @@
                             ( Trừ Sanaky, Sony chỉ bảo hành tại nhà )
                     </ul>
                 </div>
-                
-                
-               
             </div>
-       <!--  <h4 class="format txt_13">
-            <p class="format txt_b">Yên tâm mua sắm:</p>
-        </h4>
-        <h5 class="format txt_13 txt_n">
-            <p><i class="fa fa-check"></i> Bảo hành tại nhà</p>
-        </h5>
-        <h5 class="format txt_13 txt_n">
-            <p><i class="fa fa-check"></i> Gọi đặt mua: <span class="txt_b txt_red">02473036336</span> (cả dịp Lễ, Tết)</p>
-        </h5>
-        <h5 class="format txt_13 txt_n">
-            <p><i class="fa fa-check"></i> Giao hàng miễn phí 20km</p>
-        </h5>
-        <h5 class="format txt_13 txt_n">
-            <p><i class="fa fa-check"></i> Lắp đặt miễn phí
-                (Trừ điều hòa, bình nước nóng)
-            </p>
-        </h5>
-        <h5 class="format txt_13 txt_n">
-            <p><i class="fa fa-check"></i> Thanh toán tại nhà</p>
-        </h5>
-        <h5 class="format txt_13 txt_n">
-            <p><i class="fa fa-check"></i> Giá cạnh tranh nhất thị trường</p>
-        </h5>
-        <h5 class="format txt_13 txt_n">
-            <p><i class="fa fa-check"></i> Đổi mới 100% trong 7 ngày đầu
-                ( Trừ Sanaky, Sony chỉ bảo hành tại nhà )
-            </p>
-        </h5> -->
+      
         <div class="clear"></div>
     </div>
     <!--right-->
@@ -1827,9 +1796,7 @@
               ]
         });
        
-
-
-         $('.item-ss').bind('click',function(){
+        $('.item-ss').bind('click',function(){
             $('.listcompare-click').show();
         })    
     
@@ -1867,7 +1834,6 @@
     
             }
            
-    
         }); 
     
     });  
