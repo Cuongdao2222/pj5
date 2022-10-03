@@ -403,6 +403,7 @@
                     return $hot;
                 });
 
+
                 $data = Cache::get('product_search')->whereIn('id', $hot->toArray());
 
             ?>
