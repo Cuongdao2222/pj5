@@ -1247,7 +1247,6 @@
                                 <b>Rẻ hơn</b>
 
                                 <?php 
-
                                     $discount =  round(((intval($data->manuPrice) - intval($data->Price))/intval($data->manuPrice))*100)
                                 ?>
 
