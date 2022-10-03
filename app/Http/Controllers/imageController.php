@@ -66,7 +66,7 @@ class imageController extends AppBaseController
             foreach ($file_upload as $key => $value) {
                 $name = time() . '_' . $value->getClientOriginalName();
 
-                $filePath = $value->storeAs('uploads/product', $name, 'public');
+                $filePath = $value->storeAs('uploads/product', $name, 'ftp');
 
                 $input['image'] = $filePath;
 

@@ -15,6 +15,7 @@ use App\Models\hotProduct;
 use Flash;
 use Illuminate\Support\Facades\Auth;
 use Session;
+use Illuminate\Support\Facades\Storage;
 
 use Illuminate\Support\Facades\Cache;
 use App\Models\searchkey;
@@ -159,7 +160,8 @@ class productController extends AppBaseController
 
             $filePath = $file_upload->storeAs('uploads/product', $name, 'public');
 
-    
+            Storage::disk('ftp')->put($filePath, fopen($file_upload, 'r+'));
+      
             $input['Image'] = $filePath;
         }
 
