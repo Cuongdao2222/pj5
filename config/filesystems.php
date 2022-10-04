@@ -71,7 +71,7 @@ return [
             'host' => env('FTP_HOST'),
             'username' => env('FTP_USERNAME'),
             'password' => env('FTP_PASSWORD'),
-            'root' => 'public_html/images_dienmaynguoiviet' // for example: /public_html/images
+            'root' => 'public_html/images_dienmaynguoiviet/public' // for example: /public_html/images
         ],
 
     ],
