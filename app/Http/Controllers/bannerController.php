@@ -63,7 +63,7 @@ class bannerController extends AppBaseController
 
             $name = time() . '_' . $file_upload->getClientOriginalName();
 
-            $filePath = $file_upload->storeAs('uploads/banner', $name, 'public');
+            $filePath = $file_upload->storeAs('uploads/banner', $name, 'ftp');
 
             $input['image'] = $filePath;
         }
@@ -145,7 +145,7 @@ class bannerController extends AppBaseController
 
             $name = time() . '_' . $file_upload->getClientOriginalName();
 
-            $filePath = $file_upload->storeAs('uploads/banner', $name, 'public');
+            $filePath = $file_upload->storeAs('uploads/banner', $name, 'ftp');
 
             $input['image'] = $filePath;
         }

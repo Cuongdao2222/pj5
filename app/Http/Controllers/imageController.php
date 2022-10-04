@@ -156,7 +156,7 @@ class imageController extends AppBaseController
 
             $name = time() . '_' . $file_upload->getClientOriginalName();
 
-            $filePath = $file_upload->storeAs('uploads/product', $name, 'public');
+            $filePath = $file_upload->storeAs('uploads/product', $name, 'ftp');
 
             $input['image'] = $filePath;
 

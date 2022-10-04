@@ -28,7 +28,7 @@ class showController extends Controller
 
             $name = time() . '_' . $file_upload->getClientOriginalName();
 
-            $filePath = $file_upload->storeAs('images/banner-popup', $name, 'public');
+            $filePath = $file_upload->storeAs('images/banner-popup', $name, 'ftp');
 
             $input['image'] = $filePath;
         }
@@ -59,7 +59,7 @@ class showController extends Controller
 
             $name = time() . '_' . $file_upload->getClientOriginalName();
 
-            $filePath = $file_upload->storeAs('images/background-image', $name, 'public');
+            $filePath = $file_upload->storeAs('images/background-image', $name, 'ftp');
 
             $input['background_image'] = $filePath;
 

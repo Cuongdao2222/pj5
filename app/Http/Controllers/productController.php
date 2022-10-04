@@ -158,7 +158,7 @@ class productController extends AppBaseController
 
             $name = time() . '_' . $file_upload->getClientOriginalName();
 
-            $filePath = $file_upload->storeAs('uploads/product', $name, 'public');
+            $filePath = $file_upload->storeAs('uploads/product', $name, 'ftp');
 
             Storage::disk('ftp')->put($filePath, fopen($file_upload, 'r+'));
       
@@ -312,7 +312,7 @@ class productController extends AppBaseController
 
             $name = time() . '_' . $file_upload->getClientOriginalName();
 
-            $filePath = $file_upload->storeAs('uploads/product', $name, 'public');
+            $filePath = $file_upload->storeAs('uploads/product', $name, 'ftp');
 
             $input['Image'] = $filePath;
         }

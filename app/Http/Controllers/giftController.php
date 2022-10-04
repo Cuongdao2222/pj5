@@ -64,7 +64,7 @@ class giftController extends AppBaseController
 
             $name = time() . '_' . $file_upload->getClientOriginalName();
 
-            $filePath = $file_upload->storeAs('uploads/gift', $name, 'public');
+            $filePath = $file_upload->storeAs('uploads/gift', $name, 'ftp');
 
             $input['image'] = $filePath;
         }
@@ -148,7 +148,7 @@ class giftController extends AppBaseController
 
             $name = time() . '_' . $file_upload->getClientOriginalName();
 
-            $filePath = $file_upload->storeAs('uploads/gift', $name, 'public');
+            $filePath = $file_upload->storeAs('uploads/gift', $name, 'ftp');
 
             $input['image'] = $filePath;
         }

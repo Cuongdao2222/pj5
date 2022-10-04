@@ -69,7 +69,7 @@ class postController extends AppBaseController
 
             $name = time() . '_' . $file_upload->getClientOriginalName();
 
-            $filePath = $file_upload->storeAs('uploads', $name, 'public');
+            $filePath = $file_upload->storeAs('uploads', $name, 'ftp');
 
             $input['image'] = $filePath;
         }
@@ -197,7 +197,7 @@ class postController extends AppBaseController
 
             $name = time() . '_' . $file_upload->getClientOriginalName();
 
-            $filePath = $file_upload->storeAs('uploads', $name, 'public');
+            $filePath = $file_upload->storeAs('uploads', $name, 'ftp');
 
             $input['image'] = $filePath;
         }
