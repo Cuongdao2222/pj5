@@ -2133,7 +2133,7 @@
     
     
     $('.listproduct').owlCarousel({
-        loop:true,
+        loop:false,
     
         margin:10,
         nav:false,
@@ -2142,7 +2142,7 @@
                 items:1.5
             },
             600:{
-                items:1.5
+                items:3
             },
             1000:{
                 items:5
