@@ -468,7 +468,7 @@
                                 @endif
 
                                 @if(in_array($datas->id, $new_product->toArray()))
-                                <span class="icon_tragop icons-new">Model mới</span>
+                                <span class="icon_tragop icons-new">Model 2022</span>
                                 @endif
                                 
                                 <div class="item-img">
