@@ -272,6 +272,14 @@
              background: #1053A7;
         }
 
+        .discount_percent {
+            color: #fff;
+            background: #007bff;
+            display: inline-block;
+            vertical-align: middle;
+            padding: 2px 5px;
+        }
+
 
         @media screen and (min-width: 768px) {
             .support {
@@ -1216,18 +1224,34 @@
                           
                             @endif
                             <br>
-                             {!!  @$text??'<b>GIÁ ONLINE</b>' !!}
 
+                            @if(!empty($data->manuPrice))
+
+                            <div class="price_giaban price_market">Giá hãng : <span>{{str_replace(',' ,'.', number_format($data->manuPrice))}}đ </span></div>
+
+
+                            @endif 
+
+                            
+
+                            {!!  @$text??'<b>GIÁ ONLINE</b>' !!}
+                           
+                            
                             <div class="pdetail-price-box">
-
-                                @if(!empty($data->manuPrice))
-
-                                 <div class="price_giaban price_market">Giá hãng : <span>{{str_replace(',' ,'.', number_format($data->manuPrice))}}đ </span></div>
-                                @endif 
 
                                 <h3>
                                     {{str_replace(',' ,'.', number_format($data->Price))  }}₫
                                 </h3>
+
+                                @if(!empty($data->manuPrice))
+                                <b>Rẻ hơn</b>
+
+                                <?php 
+                                    $discount =  round(((intval($data->manuPrice) - intval($data->Price))/intval($data->manuPrice))*100)
+                                ?>
+
+                                <span class="discount_percent">-{{ $discount }}%</span>
+                                @endif 
                                  
                             </div>
 

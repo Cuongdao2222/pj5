@@ -25,7 +25,28 @@
         });
        
        
-    ?>    
+    ?> 
+
+    <style type="text/css">
+        .price_market {
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 4px;
+            font-size: 12px;
+            color: #707070;
+            text-decoration: line-through;
+        }
+
+        .discount_percent {
+            color: #fff;
+            background: #007bff;
+            display: inline-block;
+            vertical-align: middle;
+            padding: 2px 5px;
+            font-size: 12px;
+            border-radius: 4px;
+        }
+    </style>   
 
     <div class="locationbox__overlay"></div>
     <div class="locationbox">
@@ -374,13 +395,14 @@
         @foreach($group as $key => $groups)
 
             <?php
-                
+               
                 $hot = Cache::rememberForever('hot'.$groups->id, function() use($groups){
 
                     $hot = DB::table('hot')->select('product_id')->where('group_id', $groups->id)->get()->pluck('product_id');
 
                     return $hot;
                 });
+
 
                 $data = Cache::get('product_search')->whereIn('id', $hot->toArray());
 
@@ -446,7 +468,7 @@
                                 @endif
 
                                 @if(in_array($datas->id, $new_product->toArray()))
-                                <span class="icon_tragop icons-new">Model mới</span>
+                                <span class="icon_tragop icons-new">Model 2022</span>
                                 @endif
                                 
                                 <div class="item-img">
@@ -493,6 +515,20 @@
                                 
                                 @endif
                                 <strong class="price">{{ @number_format($datas->Price , 0, ',', '.')}}&#x20AB;</strong>
+
+
+
+                                @if(!empty($datas->manuPrice))
+
+                                <?php
+                                $discount =  round(((intval($datas->manuPrice) - intval($datas->Price))/intval($datas->manuPrice))*100)
+                                ?>
+                                
+                                <span class="price_market">{{ @number_format($datas->manuPrice , 0, ',', '.')}} <sup>đ</sup></span>
+
+                                <span class="discount_percent">-{{ $discount }}%</span>
+
+                                @endif
 
                            
                                 <div class="item-rating">
