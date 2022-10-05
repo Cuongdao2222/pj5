@@ -120,6 +120,10 @@
         .gift_info  ol{
             list-style: auto !important;
         }
+
+        strong a{
+            font-weight: bold !important;
+        }
         .pdetail-info p{
             margin-top: 10px;
         }
