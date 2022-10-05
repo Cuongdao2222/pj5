@@ -55,7 +55,7 @@
     ?>
 
     <link rel="stylesheet" href="{{ asset('css/jquery.fancybox.css') }}"/>
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/detail1fe.css') }}?ver=4">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/detail1fe.css') }}?ver=5">
 
     <style type="text/css">
 
@@ -418,7 +418,6 @@
             $check_deal = reset($check_deal);
         }
 
-        
         $deal_check_add = false;
         
         if(!empty($check_deal) && !empty(!empty($check_deal->deal_price)) &&$check_deal->active==1){
