@@ -235,9 +235,19 @@
 
 
 
-        .box03__item.act {
+        .box03 .label {
             border-color: #2f80ed;
             color: #2f80ed;
+        }
+
+        .box03 .act{
+            border-color: #2f80ed;
+           
+        }
+
+         .box03 .act span{
+           
+            color: #2f80ed !important;
         }
 
          .price_market span{
@@ -271,6 +281,49 @@
         .cartSP{
              background: #1053A7;
         }
+
+        .one_size {
+            display: inline-block;
+            border: 1px solid rgb(222, 222, 222);
+            border-radius: 5px;
+            padding: 0px;
+            cursor: pointer;
+            box-sizing: border-box;
+            margin: 6px 3px 0px;
+        }
+
+        .one_size .container-detail {
+            padding: 0px 5px;
+        }
+
+        .container-detail {
+            display: block;
+            position: relative;
+            text-align: center;
+            cursor: pointer;
+            margin: 2px 4px;
+        }
+
+        .container-detail .size-pro {
+            font-family: Arial, Tahoma, sans-serif;
+            font-size: 14px;
+            color: rgb(51, 51, 51);
+            margin-left: 0px;
+            padding-left: 0px;
+        }
+
+
+        .one_size .container-detail .price-pro {
+            display: block;
+            font-size: 14px;
+            color: rgb(51, 51, 51);
+            font-weight: 400;
+            line-height: 20px;
+        }
+
+
+
+
 
         .discount_percent {
             color: #fff;
@@ -388,7 +441,6 @@
         
     }
 
-
     // check flashdeal 
    
     if(!cache::has('date_flash_deal')){
@@ -399,8 +451,6 @@
 
     $date_string_flash_deal = cache::get('date_flash_deal');
 
-    
-    
 
     $date_flashdeal = \Carbon\Carbon::create($date_string_flash_deal);
 
@@ -1126,11 +1176,16 @@
                 
                 <p class="padtex">Có <strong> {{ $relationProduct->count() }} Kích cỡ màn hình.</strong> Bạn đang chọn <strong>{{ $size_tv }} inch</strong></p>
                 <div class="scrolling_inner">
+                    @foreach($relationProduct->chunk(4) as $chunk)
                     <div class="box03 group desk">
-                        @foreach($relationProduct as $relationProducts)
-                        <a href="{{ route('details', $relationProducts->Link) }}" data-index="0" class="box03__item item {{ $relationProducts->ProductSku==$data->ProductSku?'act':'' }}">{{  str_replace( $cutModel, '', $relationProducts->ProductSku)  }} inch</a>
+                        @foreach ($chunk as $relationProducts)
+
+                            <a class="one_size  {{ $relationProducts->ProductSku==$data->ProductSku?'act':'' }}" href="{{ route('details', $relationProducts->Link) }}"><label class="container-detail"><span class="size-pro">{{  str_replace( $cutModel, '', $relationProducts->ProductSku)  }} inch</span><span class="price-pro">{{ str_replace(',' ,'.', number_format(@$relationProducts->Price))  }}đ</span></label></a>
+                        
                         @endforeach
+                       
                     </div>
+                    @endforeach
                 </div>
             @endif
                 
@@ -1426,7 +1481,7 @@
                         <span class="comment-author-name" itemprop="name">
                         <a href="#" class="comment-author-link" rel="external nofollow" itemprop="url">{{ $comments->name }}</a>
                         </span> 
-                    <p class="comment-meta"><time class="comment-time" itemprop="datePublished"><a class="comment-time-link" href="https://nguyenhung.net/comment-trong-html.html#comment-2131" itemprop="url">{{ $comments->created_at->format('d/m/Y, H:i' )  }}</a></time></p>
+                    <p class="comment-meta"><time class="comment-time" itemprop="datePublished"><a class="comment-time-link" href="javascript:voi(0)" itemprop="url">{{ $comments->created_at->format('d/m/Y, H:i' )  }}</a></time></p>
                 </header>
                 <div class="comment-content" itemprop="text">
                     <p>{!!  $comments->content  !!}</p>
