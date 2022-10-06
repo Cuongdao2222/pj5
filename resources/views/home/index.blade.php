@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<link rel="stylesheet" type="text/css" href="{{ asset('css/colorbox') }}">
+
 <style type="text/css">
 
     .div-box {
@@ -35,7 +35,7 @@
     }
 
     #tabMenuDmPro .bgg {
-        background: url(../images/bgg_tk.gif);
+        
         height: 29px;
         width: 100%;
         border-left: 0 solid #b1b1b1;
@@ -501,14 +501,7 @@
                });
            }
         
-        $(function(){
-        	$('.thickbox').colorbox({
-        	    iframe: true,
-                   fixed : true,
-                   width:'70%',
-                   height:'80%'
-        	});
-        });
+       
     </script>   
     <input type="hidden" id="current_use1" value="1">
     <script>
