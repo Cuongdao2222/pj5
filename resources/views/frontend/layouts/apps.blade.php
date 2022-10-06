@@ -1014,10 +1014,7 @@
                                             <aside>
                                                 <strong>Tiết kiệm điện</strong>
                                                 <hr>
-                                                <a href="{{route('details','dieu-hoa-tiet-kiem-dien')}}">
-                                                    <h3>Điều hòa tiết kiệm điện</h3>
-                                                </a>
-                                                
+                                               
                                                 <a href="{{route('details','co-inverter')}}">
                                                     <h3>Có inverter</h3>
                                                 </a>
@@ -1430,9 +1427,6 @@
                                     <div class="PKLT">
                                         <strong>Thương hiệu</strong>
 
-                                        <a href="{{route('details','tu-lanh-hitachi')}}">
-                                            <h3>Tủ lạnh Hitachi</h3>
-                                        </a>
                                         <a href="{{route('details','tu-lanh-panasonic')}}">
                                             <h3>Tủ lạnh Panasonic</h3>
                                         </a>
@@ -2247,13 +2241,18 @@
             
         </script>
 
+        <a href="https://zalo.me/0983612828">
+            <div style="position: fixed; bottom: 52px; left: 52px; transform: translate(0px, 0px) !important; z-index: 2147483644; border: none; visibility: visible; right: 0px; width: 60px; height: 60px;" class="zalo-chat-widget"data-welcome-message="Điện Máy Người Việt rất vui khi được hỗ trợ bạn!" data-autopopup="0" data-width="" data-height="">
+                <img src="https://page.widget.zalo.me/static/images/2.0/Logo.svg">
+            </div>
+        </a>
 
-        <div style="position:fixed; bottom:0 !important; left:50% !important;transform: translate(0, 0) !important;" class="zalo-chat-widget" data-oaid="1329456933344915716" data-welcome-message="Điện Máy Người Việt rất vui khi được hỗ trợ bạn!" data-autopopup="0" data-width="" data-height=""></div>
-
-
-
-
-  <script src="{{ asset('/js/zalo.js') }}"></script> 
+        <a href="https://zalo.me/0913011888">
+            <div style="position: fixed; bottom: 28px !important; left: 52px !important; transform: translate(0px, 0px) !important; z-index: 2147483644; border: none; visibility: visible; right: 0px; width: 60px; height: 60px;" class="zalo-chat-widget"data-welcome-message="Điện Máy Người Việt rất vui khi được hỗ trợ bạn!" data-autopopup="0" data-width="" data-height="">
+                <img src="https://page.widget.zalo.me/static/images/2.0/Logo.svg">
+            </div>
+        </a>
+       
  
 <!-- Messenger Plugin chat Code -->
    <!--  <div id="fb-root"></div> -->
