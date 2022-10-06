@@ -1014,10 +1014,7 @@
                                             <aside>
                                                 <strong>Tiết kiệm điện</strong>
                                                 <hr>
-                                                <a href="{{route('details','dieu-hoa-tiet-kiem-dien')}}">
-                                                    <h3>Điều hòa tiết kiệm điện</h3>
-                                                </a>
-                                                
+                                               
                                                 <a href="{{route('details','co-inverter')}}">
                                                     <h3>Có inverter</h3>
                                                 </a>
@@ -1430,9 +1427,6 @@
                                     <div class="PKLT">
                                         <strong>Thương hiệu</strong>
 
-                                        <a href="{{route('details','tu-lanh-hitachi')}}">
-                                            <h3>Tủ lạnh Hitachi</h3>
-                                        </a>
                                         <a href="{{route('details','tu-lanh-panasonic')}}">
                                             <h3>Tủ lạnh Panasonic</h3>
                                         </a>
