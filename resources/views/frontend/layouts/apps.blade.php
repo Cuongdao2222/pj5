@@ -2081,31 +2081,7 @@
 
        <!--  Endmodal -->
 
-       <div class="listcompare-click container">
-           <ul class="listcompare list-shows-click" data-catename="tủ lạnh">
-                <li id="258002">
-                    <a href="javascript:void(0)" id="258002">
-                        <img src="https://cdn.tgdd.vn/Products/Images/1943/258002/electrolux-inverter-541-lit-eqe6000a-b-1.-600x600.jpg" alt="">
-                        <h3>Tủ lạnh Electrolux Inverter 541 lít EQE6000A-B</h3>
-                    </a>
-                    <span class="remove-ic-compare" onclick="removeCompare(258002,event);"><i class="iconcate-closess"></i></span>
-                </li>
-                <li id="114397">
-                    <a href="javascript:void(0)" id="114397">
-                        <img src="https://cdn.tgdd.vn/Products/Images/1943/114397/aqua-aqr-ig525am-gb-300x300.jpg" alt="">
-                        <h3>Tủ lạnh Aqua Inverter 456 lít AQR-IG525AM GB</h3>
-                    </a>
-                    <span class="remove-ic-compare" onclick="removeCompare(114397,event);"><i class="iconcate-closess"></i></span>
-                </li>
-                <li id="230652">
-                    <a href="javascript:void(0)" id="230652">
-                        <img src="https://cdn.tgdd.vn/Products/Images/1943/230652/sharp-sj-fxp480vg-ch-16-300x300.jpg" alt="">
-                        <h3>Tủ lạnh Sharp Inverter 401 lít SJ-FXP480VG-CH</h3>
-                    </a>
-                    <span class="remove-ic-compare" onclick="removeCompare(230652,event);"><i class="iconcate-closess"></i></span>
-                </li>
-            </ul>
-       </div>
+      
 
     <div class="max-width">
         <div class="phone_hotline"> <a href="tel:0243.687.9145" title="Bảo Hành: 0243.687.9145" class="p_hotline_item"> <i class="icon_security"></i> <span><strong>Bảo Hành: 0243.687.9145</strong> (8h00 - 17h00)</span> </a> <a href="tel:0247.303.6336" title="Mua hàng: 0247.303.6336" class="p_hotline_item"> <i class="icon_purchase"></i> <span><strong>Mua hàng: 0247.303.6336</strong> (8h00 - 17h00)</span> </a> <a href="tel:0916917949" title="Khiếu nại:0916917949" class="p_hotline_item"> <i class="icon_complain"></i> <span><strong>Khiếu nại: 091.691.7949</strong> (8h00 - 17h00)</span> </a> </div>
