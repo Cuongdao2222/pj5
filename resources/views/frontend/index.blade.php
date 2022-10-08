@@ -440,7 +440,7 @@
 
                     $listGroupsShows = Cache::rememberForever('listGroupsShow'.$groups->id, function() use($groups){
 
-                         $listGroupsShow =   App\Models\groupProduct::select('name', 'link')->where('parent_id', $groups->id)->get();
+                         $listGroupsShow =   App\Models\groupProduct::select('name', 'link')->where('parent_id', $groups->id)->take(5)->get();
 
                         return $listGroupsShow??'';
                     });
