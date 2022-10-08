@@ -411,13 +411,14 @@
         @if(!empty($data) && $data->count()>0)
 
         <?php 
+            if(!empty($defineBannerGr[$key])){
+                $banners_group = Cache::rememberForever('banners_groups__'.$defineBannerGr[$key], function() use($defineBannerGr, $key){
 
-            $banners_group = Cache::rememberForever('banners_groups__'.$defineBannerGr[$key], function() use($defineBannerGr, $key){
+                    $banners_group = App\Models\banners::where('option', $defineBannerGr[$key])->where('active', 1)->get();
 
-                $banners_group = App\Models\banners::where('option', $defineBannerGr[$key])->where('active', 1)->get();
-
-                return $banners_group;
-            });
+                    return $banners_group;
+                });
+            }
 
         ?>
          @if($banners_group->count()>0)
