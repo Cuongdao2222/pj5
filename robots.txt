@@ -1,6 +1,18 @@
 User-agent: *
 Disallow: /
 
+User-agent: Bingbot
+Disallow: /admins
+
+User-agent: Googlebot
+Disallow: /admins
+
+User-agent: Googlebot-Image
+Disallow: /admins
+
+User-agent: AdsBot-Google
+Disallow: /admins
+
 
 
 
