@@ -19,6 +19,8 @@
 
     $i =0 ;
 
+    
+
 ?>
 <select name="option" onchange="location = this.value;">
     @foreach($option as $key => $options)
