@@ -1148,7 +1148,7 @@
                 <span>{{ $status }}</span>
 
                 &nbsp 
-                <a href="https://goo.gl/maps/TozxKHRZeHfrafMt9" title="#" class="adress_stock"><i class="fa fa-map-marker"></i> Xem hàng tại kho</a>
+                <a href="https://goo.gl/maps/TozxKHRZeHfrafMt9" title="#" class="adress_stock"><i class="fa fa-map-marker"></i> Địa chỉ kho hàng</a>
 
             </div>
 
