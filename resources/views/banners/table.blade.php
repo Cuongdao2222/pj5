@@ -1,16 +1,16 @@
 <?php 
-    $option[0] = ['name'=>'Banner slide home', 'size'=>'1920px x 630px'];
-    $option[1] = ['name'=>'Banner top', 'size'=>'1920px x 44px'];
-    $option[2] = ['name'=>'Banner bên phải slider home', 'size'=>'254px x 254px'];
-    $option[3] = ['name'=>'Banner dưới slider home', 'size'=>'690px x 305px'];
-    $option[4] = ['name'=>'Banner category', 'size'=>'1200 x 200px'];
-    $option[5] = ['name'=>'Banner trên phần sale home', 'size'=>'1200 x 90'];
-    $option[6] = ['name'=>'Banner home Tivi', 'size'=>'1200 x 90'];
-    $option[7] = ['name'=>'Banner home Máy giặt', 'size'=>'1200 x 90'];
-    $option[8] = ['name'=>'Banner home Tủ lạnh', 'size'=>'1200 x 90'];
-    $option[9] = ['name'=>'Banner home Điều hòa', 'size'=>'1200 x 90'];
-    $option[10] = ['name'=>'Banner home Gia dụng', 'size'=>'1200 x 90'];
-    $option[11] = ['name'=>'Banner home Máy lọc nước', 'size'=>'1200 x 90'];
+    $option[0] = ['name'=>'Banner slide home', 'size'=>'1920px - 630px'];
+    $option[1] = ['name'=>'Banner top', 'size'=>'1920px - 44px'];
+    $option[2] = ['name'=>'Banner bên phải slider home', 'size'=>'254px - 254px'];
+    $option[3] = ['name'=>'Banner dưới slider home', 'size'=>'170px - 87px'];
+    $option[4] = ['name'=>'Banner category', 'size'=>'800px - 200px'];
+    $option[5] = ['name'=>'Banner trên phần sale home', 'size'=>'1200px - 90px'];
+    $option[6] = ['name'=>'Banner home Tivi', 'size'=>'390px - 120px'];
+    $option[7] = ['name'=>'Banner home Máy giặt', 'size'=>'390px - 120px'];
+    $option[8] = ['name'=>'Banner home Tủ lạnh', 'size'=>'390px - 120px'];
+    $option[9] = ['name'=>'Banner home Điều hòa', 'size'=>'390px - 120px'];
+    $option[10] = ['name'=>'Banner home Gia dụng', 'size'=>'390px - 120px'];
+    $option[11] = ['name'=>'Banner home Máy lọc nước', 'size'=>'390px - 120px'];
 
 ?>
 <?php  
@@ -22,7 +22,7 @@
 ?>
 <select name="option" onchange="location = this.value;">
     @foreach($option as $key => $options)
-    <option value="{{ route('banners.index') }}?option={{ $key }}" {{ $key == $optionss?'selected':''  }}>{{ $options['name'] }}</option>
+    <option value="{{ route('banners.index') }}?option={{ $key }}" {{ $key == $optionss?'selected':''  }}>{{ $options['name'] }} ({{ $options['size'] }})  </option>
  
     @endforeach
 </select>
