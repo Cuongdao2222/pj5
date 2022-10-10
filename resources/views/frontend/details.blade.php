@@ -446,6 +446,8 @@
     }
 
     // check flashdeal 
+
+
    
     if(!cache::has('date_flash_deal')){
 
