@@ -46,6 +46,12 @@
             font-size: 12px;
             border-radius: 4px;
         }
+
+        .icons-tra-gops{
+            background-color: #ddd;
+            color: #000;
+            border: none; 
+        }
     </style>   
 
     <div class="locationbox__overlay"></div>
@@ -471,7 +477,7 @@
                         <div class="item"  data-pos="1">
                             <a href='{{ route('details', $datas->Link) }}'>
                                 @if($datas->Price>=3000000)
-                                <span class="icon_tragop">Trả góp <i>0%</i></span>
+                                <span class="icon_tragop icons-tra-gops">Trả góp <i>0%</i></span>
                                 @endif
 
                                 @if(in_array($datas->id, $new_product->toArray()))

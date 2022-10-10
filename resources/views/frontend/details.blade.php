@@ -100,6 +100,7 @@
             left: 0;
             top: 0;
         }
+
         
         .redirectCart{
             font-weight: bold;
