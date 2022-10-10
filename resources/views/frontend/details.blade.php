@@ -1651,9 +1651,8 @@
             </a>
         </div>
         @endif
-        @endif
 
-        <br>
+         <br>
 
         <div>
             
@@ -1662,6 +1661,9 @@
             <i class="icondetail-thongso"></i> <span class="txt_15">Thông số kỹ thuật</span>
             </a>
         </div>
+        @endif
+
+       
 
         
        
