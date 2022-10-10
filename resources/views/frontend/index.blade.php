@@ -440,7 +440,7 @@
 
                     $listGroupsShows = Cache::rememberForever('listGroupsShow'.$groups->id, function() use($groups){
 
-                         $listGroupsShow =   App\Models\groupProduct::select('name', 'link')->where('parent_id', $groups->id)->get();
+                         $listGroupsShow =   App\Models\groupProduct::select('name', 'link')->where('parent_id', $groups->id)->take(4)->get();
 
                         return $listGroupsShow??'';
                     });
@@ -450,7 +450,13 @@
 
                 @foreach($listGroupsShows as $valueslist)
 
-                <li data-cate-id="2162" data-prop-value-ids="90016" class="desk-t"><a href="{{ route('details', $valueslist->link) }}">{{ @$valueslist->name }}</a></li>
+                <?php 
+
+
+                ?>
+
+                <li data-cate-id="2162" data-prop-value-ids="90016" class="desk-t"><a href="{{ route('details', $valueslist->link) }}">
+                    {{ @str_replace('quần áo', '', $valueslist->name)  }}</a></li>
                 @endforeach
                 @endif
             </ul>
