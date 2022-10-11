@@ -1013,6 +1013,10 @@
                    
                 } 
 
+                .icons-new{
+                    width: 43%;
+                }
+
                 .videos{
                     display: block;
                 }

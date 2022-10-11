@@ -98,6 +98,12 @@
                 width: auto !important;
             }
 
+            .icons-tra-gops{
+                background-color: #ddd;
+                color: #000;
+                border: none; 
+            }
+
 
             @media screen and (max-width: 776px){
                 .listproduct{
@@ -320,7 +326,7 @@
                         <div class="col-md-3 col-6 lists">
                             <div class="item  __cate_1942">
                                 <a href='{{ route("details", $value->Link ) }}' data-box="BoxCate" class="main-contain">
-                                     <span class="icon_tragop">Trả góp <i>0%</i></span>
+                                     <span class="icon_tragop icons-tra-gops">Trả góp <i>0%</i></span>
                                     <div class="item-img item-img_1942">
                                         <img class="lazyload thumb" data-src="{{ asset($value->Image) }}" alt="{{ asset($value->Name) }}" style="width:100%"> 
                                     </div>

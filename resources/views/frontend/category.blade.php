@@ -22,6 +22,11 @@
             .option-href{
                 display: none;
             }
+            .icons-tra-gops{
+                background-color: #ddd;
+                color: #000;
+                border: none; 
+            }
             
 
             @media screen and (max-width:776px) {
@@ -312,7 +317,7 @@
                             <div class="item  __cate_1942">
                                 <a href='{{ route("details", $value->Link ) }}' data-box="BoxCate" class="main-contain">
                                     @if($value->Price>=3000000)
-                                    <span class="icon_tragop">Trả góp <i>0%</i></span>
+                                    <span class="icon_tragop icons-tra-gops">Trả góp <i>0%</i></span>
                                     @endif
                                     <div class="item-img item-img_1942">
                                         <img class="lazyload thumb" data-src="{{ asset($value->Image) }}" alt="{{ $value->Name }}" style="width:100%"> 

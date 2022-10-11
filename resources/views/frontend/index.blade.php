@@ -46,6 +46,12 @@
             font-size: 12px;
             border-radius: 4px;
         }
+
+        .icons-tra-gops{
+            background-color: #ddd;
+            color: #000;
+            border: none; 
+        }
     </style>   
 
     <div class="locationbox__overlay"></div>
@@ -411,13 +417,14 @@
         @if(!empty($data) && $data->count()>0)
 
         <?php 
+            if(!empty($defineBannerGr[$key])){
+                $banners_group = Cache::rememberForever('banners_groups__'.$defineBannerGr[$key], function() use($defineBannerGr, $key){
 
-            $banners_group = Cache::rememberForever('banners_groups__'.$defineBannerGr[$key], function() use($defineBannerGr, $key){
+                    $banners_group = App\Models\banners::where('option', $defineBannerGr[$key])->where('active', 1)->get();
 
-                $banners_group = App\Models\banners::where('option', $defineBannerGr[$key])->where('active', 1)->get();
-
-                return $banners_group;
-            });
+                    return $banners_group;
+                });
+            }
 
         ?>
          @if($banners_group->count()>0)
@@ -439,7 +446,7 @@
 
                     $listGroupsShows = Cache::rememberForever('listGroupsShow'.$groups->id, function() use($groups){
 
-                         $listGroupsShow =   App\Models\groupProduct::select('name', 'link')->where('parent_id', $groups->id)->get();
+                         $listGroupsShow =   App\Models\groupProduct::select('name', 'link')->where('parent_id', $groups->id)->take(4)->get();
 
                         return $listGroupsShow??'';
                     });
@@ -449,7 +456,13 @@
 
                 @foreach($listGroupsShows as $valueslist)
 
-                <li data-cate-id="2162" data-prop-value-ids="90016" class="desk-t"><a href="{{ route('details', $valueslist->link) }}">{{ @$valueslist->name }}</a></li>
+                <?php 
+
+
+                ?>
+
+                <li data-cate-id="2162" data-prop-value-ids="90016" class="desk-t"><a href="{{ route('details', $valueslist->link) }}">
+                    {{ @str_replace('quần áo', '', $valueslist->name)  }}</a></li>
                 @endforeach
                 @endif
             </ul>
@@ -464,7 +477,7 @@
                         <div class="item"  data-pos="1">
                             <a href='{{ route('details', $datas->Link) }}'>
                                 @if($datas->Price>=3000000)
-                                <span class="icon_tragop">Trả góp <i>0%</i></span>
+                                <span class="icon_tragop icons-tra-gops">Trả góp <i>0%</i></span>
                                 @endif
 
                                 @if(in_array($datas->id, $new_product->toArray()))
@@ -478,6 +491,8 @@
 
                                 @if(in_array($datas->id, $hots->toArray()))
                                 <p class="result-labels"><img class="sale-banner ls-is-cached lazyloaded" alt="hot" data-src="{{ asset('images/background-image/hot.jpg') }}" src="{{ asset('images/background-image/hot.jpg') }}"></p>
+                                @else
+                                <div style="height: 30px;"></div>
                                 @endif
 
                                <div class="title-name">

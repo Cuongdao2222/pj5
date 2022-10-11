@@ -100,6 +100,7 @@
             left: 0;
             top: 0;
         }
+
         
         .redirectCart{
             font-weight: bold;
@@ -445,6 +446,8 @@
     }
 
     // check flashdeal 
+
+
    
     if(!cache::has('date_flash_deal')){
 
@@ -1148,7 +1151,7 @@
                 <span>{{ $status }}</span>
 
                 &nbsp 
-                <a href="https://goo.gl/maps/TozxKHRZeHfrafMt9" title="#" class="adress_stock"><i class="fa fa-map-marker"></i> Xem hàng tại kho</a>
+                <a href="https://goo.gl/maps/TozxKHRZeHfrafMt9" title="#" class="adress_stock"><i class="fa fa-map-marker"></i> Địa chỉ kho hàng</a>
 
             </div>
 
@@ -1652,8 +1655,20 @@
         </div>
         @endif
 
+         <br>
 
+        <div>
+            
+            <a class="btn-buy txt_center cor5px"  href="javascript:void(0)" style="border-bottom: 0; background: #CCD0D3;
+    color: #000;"  data-toggle="modal" data-target="#specifications">
+            <i class="icondetail-thongso"></i> <span class="txt_15">Thông số kỹ thuật</span>
+            </a>
+        </div>
         @endif
+
+       
+
+        
        
     </div>
 
