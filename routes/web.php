@@ -231,6 +231,8 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::get('editPricedeal', 'dealController@editDealPrice')->name('editPricedeal');
 
+     Route::get('edit-price-flash-deal', 'flashdealController@editFlashDealPrice')->name('editFlashPricedeal');
+
     Route::post('showDealEdit', 'dealController@showDealEdits')->name('showDealEdit');
 
     Route::post('update-deal-price-to-id', 'dealController@updateFlashDealToId')->name('update_deal_price_to_id');

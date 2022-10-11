@@ -23,8 +23,7 @@
 
             return $new_product;
         });
-       
-       
+
     ?> 
 
     <style type="text/css">
@@ -163,8 +162,12 @@
             </ul>
         </section>
         <?php 
+
+
            
             $now  = Carbon\Carbon::now();
+
+           
 
             if(!empty($deal)){
 
@@ -178,6 +181,8 @@
 
                 $timestamp = $now->diffInSeconds($timeDeal_end);
             }
+
+
 
         ?>
 

@@ -460,7 +460,6 @@
 
     $date_flashdeal = \Carbon\Carbon::create($date_string_flash_deal);
 
-
     if($date_flashdeal->isToday()){
 
         $add_date = $date_string_flash_deal;
@@ -486,13 +485,12 @@
             $flashDeal = App\Models\flashdeal::where('product_id', $data->id)->where('flash_deal_time_id', $groups_deal)->where('active',1)->first();
 
             if(!empty($flashDeal)){
-
                 $price_flash_deal = DB::table('flash_deal')->where('id', $flashDeal->flash_deal_id)->first();
                 if(!empty($price_flash_deal)){
                     $deal_check_add = true;
                     $price_old = $data->Price;
                     $text = '<b>MUA ONLINE GIÁ SỐC: </b>';
-                    $data->Price =  $price_flash_deal->price;
+                    $data->Price =  !empty($price_flash_deal->price)?$price_flash_deal->price:$flashDeal->deal_price;
                     $percent = ceil((int)$price_old/$data->Price);
                     $timestamp = $now->diffInSeconds($value['endTime']);
 

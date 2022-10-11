@@ -298,6 +298,7 @@
                                 <td width="30px">STT</td>
                                 <td width="120px">Ảnh Sản phẩm</td>
                                 <td>Thông tin</td>
+                                <td>Giá</td>
                                 <td>Tình trạng</td>
                                 <td>Quản lý</td>
                                 <td>Sắp xếp</td>
@@ -340,6 +341,19 @@
                                     </div>
                                    
                                 </td>
+
+                                <td>
+                                   <!--  Giá Deal -->
+                                    <div>
+                                        <input type="text" name="order" value="{{ $val->deal_price }}" class="edit_price_deal{{ $val->id }}">
+                                    </div>
+                                    
+                                    <br>
+                                    <div class="btn-primary edit_price_deal{{$val->id}}" style="width: 25%;" onclick="edit_price_deal({{ $val->id }})" >sửa</div>
+                                </td>
+
+                                
+
                                 <td>
                                     <div>Số đơn hàng : <b style="color:red;">0</b></div>
                                     <div>Số Sản phẩm đặt mua: <b style="color:red;">0</b></div>
@@ -678,10 +692,11 @@ function update_product(id){
 }
 function edit_price_deal(id){
     let val = $('.edit_price_deal'+id).val();
+
     $.ajax({
 
     type: 'GET',
-        url: "{{ route('editPricedeal') }}",
+        url: "{{ route('editFlashPricedeal') }}",
         data: {
             product_id:id,
             val: val

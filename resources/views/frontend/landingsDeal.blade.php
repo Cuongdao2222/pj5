@@ -443,14 +443,10 @@
                                                     <span class="price-new">{{  @str_replace(',' ,'.', number_format($vals->price)) }}&#x20AB;</span>
                                                 </div>
                                                 
-                                                
-                                               
                                             </a>
                                         </div>
                                     </div>
-
                                   
-
                                     @endforeach
 
                                 </div>

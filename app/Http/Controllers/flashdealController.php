@@ -97,6 +97,22 @@ class flashdealController extends Controller
         }
         return response('thanh cong');
     }
+
+    public function editFlashDealPrice(Request $request)
+    {
+        $id = $request->product_id;
+        $val = $request->val;
+        $val = str_replace(['.',','],'', $request->val);
+        if(!empty($val)){
+            $deal = flashdeal::find($id);
+            $deal->deal_price = trim($val);
+            $deal->save();
+
+        }
+        return response('thanh cong');
+    }
+
+
     public function removeDeal(Request $request)
     {
        $id = $request->id;
