@@ -97,7 +97,7 @@
 
                 @foreach($banners as $value)
                 <div class="item" data-dot="<span>{{ $value->title }}</span>">
-                    <a aria-label="slide" data-cate="0" data-place="1535" href="{{ $value->link }}"><img  src="{{ asset($value->image) }}"  data-src="{{ asset($value->image) }}" alt="{{ $value->title }}"  ></a>
+                    <a aria-label="slide" data-cate="0" data-place="1535" href="{{ $value->link }}" target="_blank"><img  src="{{ asset($value->image) }}"  data-src="{{ asset($value->image) }}" alt="{{ $value->title }}"  ></a>
                 </div>
                 @endforeach
                 @endif
