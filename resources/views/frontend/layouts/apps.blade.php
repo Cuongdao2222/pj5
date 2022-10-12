@@ -229,7 +229,7 @@
         
         <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}?ver=1"> 
         <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/apps.css') }}?ver=7">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/apps.css') }}?ver=10">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
     
@@ -258,7 +258,7 @@
             }
 
             .category__all{
-                color: #000 !important;
+                color: #fff !important;
                 font-weight: bold;
             } 
 

@@ -4,7 +4,7 @@
     @push('style')
         <link rel="stylesheet" type="text/css" href="{{ asset('css/category.css') }}?ver=1"> 
 
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/categories.css') }}?ver=2"> 
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/categories.css') }}?ver=3"> 
          <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}?ver=15"> 
          <link rel="stylesheet" type="text/css" href="{{ asset('css/home.css') }}?ver=1"> 
 

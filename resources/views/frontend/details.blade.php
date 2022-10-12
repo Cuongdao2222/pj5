@@ -1660,7 +1660,7 @@
         <div>
             
             <a class="btn-buy txt_center cor5px"  href="javascript:void(0)" style="border-bottom: 0; background: #CCD0D3;
-    color: #000;"  data-toggle="modal" data-target="#specifications">
+    color: #000; width: calc(100% - 15px); padding: 0;"  data-toggle="modal" data-target="#specifications">
             <i class="icondetail-thongso"></i> <span class="txt_15">Thông số kỹ thuật</span>
             </a>
         </div>
