@@ -5096,9 +5096,9 @@ body.dmx-site #loader:before {
 }
 
 .listproduct .price {
-	color: #222;
+	color: #D82A20 !important;
 	display: block;
-	font-size: 16px;
+	font-size: 22px;
 	font-weight: bold;
 	line-height: 18px;
 	margin-bottom: 5px
