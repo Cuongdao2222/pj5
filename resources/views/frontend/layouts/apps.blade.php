@@ -451,6 +451,10 @@
 
             }
 
+            .tin-km{
+                padding: 5px 8px;
+            }
+
             .deal-icon{
                 color: #fe0000 !important;
             }
@@ -670,10 +674,10 @@
 
                     @endif
 
-                               
-                    <a href="{{ route('tin') }}" class="header__history">Tin tức khuyến mãi</a>
-                    <!-- <div class="bordercol"></div> -->
-
+                    <div class="fas-phones">          
+                        <a href="{{ route('tin') }}" class="header__history tin-km">Tin tức khuyến mãi</a>
+                        <!-- <div class="bordercol"></div> -->
+                    </div>
                 </section>
             </div>
 
