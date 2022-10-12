@@ -54,6 +54,7 @@
 
     ?>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/detailscs.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}?ver=19"> 
     <link rel="stylesheet" href="{{ asset('css/jquery.fancybox.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/detail1fe.css') }}?ver=5">
 
@@ -99,6 +100,20 @@
             position: absolute;
             left: 0;
             top: 0;
+        }
+
+        .owl-dots{
+            display: flex;
+        }
+
+        .owl-dots{
+            width: 500px;
+            height: 40px;
+        }
+
+        .owl-dot img{
+            width: 100%;
+            height: 100%;
         }
 
         
@@ -701,15 +716,20 @@
                         @if(!empty($image->image) && '_'.basename($image->image) != $image_product)
 
                         @if( basename($image->image) != basename($data->Image) )
+                       
 
-                        <div class="item">
+                        <div class="item" data-dot="<img src='{{ asset($image->image) }}'></img>">
                             <a href="{{ asset($image->image) }}" data-fancybox="gallery"><img src="{{ asset($image->image) }}"  alt="{{ @$data->Name }}"></a>
                         </div>
+                      
                         @endif
 
                         <!-- end check -->
                         @endif
                         @endforeach
+
+                        
+                       
                         
                         @endif
                     </div>
@@ -948,65 +968,65 @@
             </div>
 
             <div class="modal fade" id="modal-suport" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabels" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="loader"></div>
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabels">Thông tin khách hàng</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div id="tbl_list_carts" style="text-align: center;">
-                        <div class="cart_col_1">
-                            <a href="{{  route('details', $data->Link)}}"><img src="{{ asset($data->Image) }}" style="width: 85px;"></a>
-                           
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="loader"></div>
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabels">Thông tin khách hàng</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
-                        <div class="cart_col_2">
-                            <a href="{{  route('details', $data->Link)}}"><span class="name">{{ $data->Name }}</span></a>
-                            
-                            
-                        </div>
-                        
-                    </div>
-
-                    <div class="c3_col_1">
-                        <form class="c3_box" id="form-subs">
-                           
-                            <div class="title_box_cart"> Thông tin khách hàng</div>
-                            <div class="item-form">
-                                <div class="option-group clearfix">
-                                    <div class="step_option">
-                                        <span class="st_opt st_opt_active" data-value="Anh" data-name="sex"></span><span>Anh</span>
-                                    </div>
-                                    <div class="step_option">
-                                        <span class="st_opt" data-value="Chị" data-name="sex"></span><span>Chị</span>
-                                    </div>
-                                    <input type="hidden" name="sex" id="sexs" value="Nam">
+                        <div class="modal-body">
+                            <div id="tbl_list_carts" style="text-align: center;">
+                                <div class="cart_col_1">
+                                    <a href="{{  route('details', $data->Link)}}"><img src="{{ asset($data->Image) }}" style="width: 85px;"></a>
+                                   
                                 </div>
-                                <!--option-group-->
-                            </div>
-                            <div class="item-form">
-                                <input type="text" name="name" id="buyer_names_call" placeholder="Họ tên" >
-                            </div>
-                            <div class="item-form">
-                                <input type="text" name="phone_numbers" id="buyer_tels" value="" placeholder="Số điện thoại" >
-                            </div>
-                           
-                            <div class="modal-footer">
-                                <div  class="btn btn-primary click-sp" onclick="addCallPhone({{ $data->id }})">Gửi thông tin </div>
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <div class="cart_col_2">
+                                    <a href="{{  route('details', $data->Link)}}"><span class="name">{{ $data->Name }}</span></a>
+                                    
+                                    
+                                </div>
                                 
                             </div>
 
-                        </form>
+                            <div class="c3_col_1">
+                                <form class="c3_box" id="form-subs">
+                                   
+                                    <div class="title_box_cart"> Thông tin khách hàng</div>
+                                    <div class="item-form">
+                                        <div class="option-group clearfix">
+                                            <div class="step_option">
+                                                <span class="st_opt st_opt_active" data-value="Anh" data-name="sex"></span><span>Anh</span>
+                                            </div>
+                                            <div class="step_option">
+                                                <span class="st_opt" data-value="Chị" data-name="sex"></span><span>Chị</span>
+                                            </div>
+                                            <input type="hidden" name="sex" id="sexs" value="Nam">
+                                        </div>
+                                        <!--option-group-->
+                                    </div>
+                                    <div class="item-form">
+                                        <input type="text" name="name" id="buyer_names_call" placeholder="Họ tên" >
+                                    </div>
+                                    <div class="item-form">
+                                        <input type="text" name="phone_numbers" id="buyer_tels" value="" placeholder="Số điện thoại" >
+                                    </div>
+                                   
+                                    <div class="modal-footer">
+                                        <div  class="btn btn-primary click-sp" onclick="addCallPhone({{ $data->id }})">Gửi thông tin </div>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                        
                     </div>
                 </div>
-                
             </div>
-        </div>
-    </div>
             <div class="block-tab">
                 <div class="bt-overlay"></div>
                 <ul class="block-tab-top">
@@ -1658,7 +1678,7 @@
         <div>
             
             <a class="btn-buy txt_center cor5px"  href="javascript:void(0)" style="border-bottom: 0; background: #CCD0D3;
-    color: #000;"  data-toggle="modal" data-target="#specifications">
+    color: #000; width: calc(100% - 15px); padding: 0;"  data-toggle="modal" data-target="#specifications">
             <i class="icondetail-thongso"></i> <span class="txt_15">Thông số kỹ thuật</span>
             </a>
         </div>
@@ -1774,6 +1794,8 @@
 @push('script')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js"></script>
 <script type="text/javascript">
+
+
     let ar_product = [];
 
     function compare_link() {
@@ -2178,11 +2200,14 @@
 
     
     $('#carousel').owlCarousel({
-        loop:true,
         margin:10,
         nav:true,
         autoplay:true,
         dots:true,
+        dotsData:true,
+        dotsEach:1,
+
+        
         navText: ["<i class='fa fa-angle-left'></i>","<i class='fa fa fa-angle-right'></i>"],
        
         responsive:{
@@ -2199,6 +2224,13 @@
             }
         }
     });
+
+    var owl = $('#carousel');
+
+    owl.on('changed.owl.carousel', function(event) {
+
+        console.log(1);
+    })
     
     
     

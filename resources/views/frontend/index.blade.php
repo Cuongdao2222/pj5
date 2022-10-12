@@ -2,9 +2,9 @@
 
 @section('content') 
     @push('style')
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/homecs.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/home.css') }}?ver=15">
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}?ver=14"> 
+
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/home.css') }}?ver=18">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}?ver=19"> 
         <link rel="stylesheet" type="text/css" href="{{ asset('css/index.css') }}?ver=3">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/homes.css') }}?ver=8">
     @endpush
@@ -24,6 +24,8 @@
             return $new_product;
         });
 
+       
+       
     ?> 
 
     <style type="text/css">
@@ -96,7 +98,7 @@
 
                 @foreach($banners as $value)
                 <div class="item" data-dot="<span>{{ $value->title }}</span>">
-                    <a aria-label="slide" data-cate="0" data-place="1535" href="{{ $value->link }}"><img  src="{{ asset($value->image) }}"  data-src="{{ asset($value->image) }}" alt="{{ $value->title }}"  ></a>
+                    <a aria-label="slide" data-cate="0" data-place="1535" href="{{ $value->link }}" target="_blank"><img  src="{{ asset($value->image) }}"  data-src="{{ asset($value->image) }}" alt="{{ $value->title }}"  ></a>
                 </div>
                 @endforeach
                 @endif
@@ -408,7 +410,7 @@
           
         <div class="clearfix"></div> 
 
-        <div class="prd-promo has-banner" style="background-color:#FFF;" data-html-id="3109">
+        <div class="prd-promo has-banner" style="background: #DC00BD;;" data-html-id="3109">
 
             <div class="prd-promo__top clearfix" >
 
@@ -565,7 +567,7 @@
                                 </div>
 
                                 @if(in_array($datas->id, $hots->toArray()))
-                                <p class="result-labels"><img class="sale-banner ls-is-cached lazyloaded" alt="hot" data-src="{{ asset('images/background-image/hot.jpg') }}" src="{{ asset('images/background-image/hot.jpg') }}"></p>
+                                <p class="result-labels"><img class="sale-banner ls-is-cached lazyloaded" alt="hot" data-src="{{ asset('images/background-image/i-con-hot.gif') }}" src="{{ asset('images/background-image/i-con-hot.gif') }}"></p>
                                 @else
                                 <div style="height: 30px;"></div>
                                 @endif

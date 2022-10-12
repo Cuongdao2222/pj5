@@ -34,14 +34,6 @@
                 margin-left:20px ;
             }
 
-            .list-pro .price {
-                color: #222;
-                display: block;
-                font-size: 16px;
-                font-weight: bold;
-                line-height: 18px;
-                margin-bottom: 5px;
-            }
 
             .list-pro .item-compare span{
                 border: 1px solid #e0e0e0;

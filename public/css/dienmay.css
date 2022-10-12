@@ -2963,7 +2963,13 @@ strong.choose-province {
 }
 
 .header__top {
-	background-color: #DD2C44;
+	background-color: #D800BA !important;
+}
+
+.fas-phones{
+	width: 125px !important;
+    border: 1px solid #fff;
+    border-radius: 4px;
 }
 
 .header__top section {
@@ -3957,6 +3963,9 @@ header.header.manusearch .header__search input {
 	.header__cart {
 		margin: 0 !important;
 
+	}
+	.listproduct .price{
+		margin-top: 3px;
 	}
 }
 
@@ -5096,9 +5105,9 @@ body.dmx-site #loader:before {
 }
 
 .listproduct .price {
-	color: #222;
+	color: #D82A20 !important;
 	display: block;
-	font-size: 16px;
+	font-size: 22px;
 	font-weight: bold;
 	line-height: 18px;
 	margin-bottom: 5px
