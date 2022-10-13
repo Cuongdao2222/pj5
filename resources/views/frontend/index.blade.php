@@ -414,13 +414,15 @@
                
                 $hot = Cache::rememberForever('hot'.$groups->id, function() use($groups){
 
-                    $hot = DB::table('hot')->select('product_id')->where('group_id', $groups->id)->get()->pluck('product_id');
+                    $hot = DB::table('hot')->select('product_id')->where('group_id', $groups->id)->orderBy('orders', 'asc')->get()->pluck('product_id');
 
                     return $hot;
+
+                    
                 });
 
 
-                $data = Cache::get('product_search')->whereIn('id', $hot->toArray());
+                $data = App\Models\product::whereIn('id', $hot->toArray())->get();
 
             ?>
 

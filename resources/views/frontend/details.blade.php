@@ -287,6 +287,15 @@
              background: #1053A7;
         }
 
+        .box-info-name{
+            height: 40px;
+        }
+
+        .box-compare{
+            height: 34px;
+        }
+
+
         .one_size {
             display: inline-block;
             border: 1px solid rgb(222, 222, 222);
