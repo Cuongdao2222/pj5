@@ -421,8 +421,8 @@
                     
                 });
 
+                $data = Cache::get('product_search')->whereIn('id', $hot->toArray())->sortByDesc('orders_hot');
 
-                $data = App\Models\product::whereIn('id', $hot->toArray())->get();
 
             ?>
 

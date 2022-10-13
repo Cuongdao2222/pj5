@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Models\hotProduct;
 
+use App\Models\product;
+
 class hotController extends Controller
 {
     public function index()
@@ -20,6 +22,12 @@ class hotController extends Controller
         $order = $request->val;
 
         $hot = hotProduct::find($id);
+
+        $product  = product::find($hot->product_id);
+
+        $product->orders_hot =$order;
+
+        $product->save();
 
         $hot->orders = $order;
 
