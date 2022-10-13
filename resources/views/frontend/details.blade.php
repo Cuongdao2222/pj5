@@ -101,21 +101,7 @@
             top: 0;
         }
 
-        .owl-dots{
-            display: flex;
-        }
-
-        .owl-dots{
-            width: 500px;
-            height: 40px;
-        }
-
-        .owl-dot img{
-            width: 100%;
-            height: 100%;
-        }
-
-        
+       
         .redirectCart{
             font-weight: bold;
         }
@@ -450,6 +436,7 @@
 
             if($now->between($check_deal->start, $check_deal->end)){
                 $deal_check_add = true;
+               
                 $price_old = $data->Price;
                 $text = '<b>MUA ONLINE GIÁ SỐC: </b>';
                 $data->Price = $check_deal->deal_price;
@@ -717,9 +704,8 @@
                         @if(!empty($image->image) && '_'.basename($image->image) != $image_product)
 
                         @if( basename($image->image) != basename($data->Image) )
-                       
 
-                        <div class="item" data-dot="<img src='{{ asset($image->image) }}'></img>">
+                        <div class="item">
                             <a href="{{ asset($image->image) }}" data-fancybox="gallery"><img src="{{ asset($image->image) }}"  alt="{{ @$data->Name }}"></a>
                         </div>
                       
@@ -729,9 +715,6 @@
                         @endif
                         @endforeach
 
-                        
-                       
-                        
                         @endif
                     </div>
                 </div>
@@ -745,18 +728,7 @@
                            
                         </div>
                         <div class="scroll-box">
-                            <!-- <div class="boxbanner-32">
-                                <div class="banner-list">
-                                    <div class="item banner-item banner-item-1">
-                                        <a target="&quot;_blank&quot;" href="#" data-id="1022">
-                                            <picture>
-                                                <img src="https://thegioidohoacom.s3.ap-southeast-1.amazonaws.com/wp-content/uploads/2019/01/10040348/X4iNCOp-1024x454.jpg" alt="Tết Lớn Khuyến Mại Lớn" width="&quot;640&quot;" height="&quot;150&quot;">
-                                            </picture>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
- -->
+                           
                             <div class="pdetail-price">
                                 <div class="pdetail-price-box">
                                     {!! @$text !!}
@@ -816,17 +788,7 @@
                                     </fieldset>
                                  @endif    
 
-                                <!-- <div class="pdetail-promotion">
-                                    <div class="pdetail-promotion-body">
-                                        <ul>
-                                            Tặng máy đánh trứng đa năng Roler RHM-1002 trị giá 790,000đ
-                                            <li>Tặng eVoucher trị giá 200,000đ mua phụ kiện IT, phụ kiện Mobile (có giá trị sử dụng trong 07 ngày). Chi tiết xem <a href="https://mediamart.vn/tin-khuyen-mai/tang-voucher-tri-gia-200-000vnd-mua-cac-san-pham-phu-kien" target="_blank">tại đây</a>.</li>
-                                            <li>TÀI TRỢ TRẢ GÓP 0% LÃI SUẤT (*)</li>
-                                        </ul>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </div> -->
-
+                              
                                 <!-- mobile -->
                                 @if($data->Quantily>0)
                                 <div class="pdetail-add-to-cart add-to-cart">
@@ -1305,11 +1267,16 @@
                             @endif
                             <br>
 
-                            @if(!empty($data->manuPrice))
+                            @if(!empty($data->manuPrice) || !empty($price_old))
 
+                            @if(!empty($price_old))
+
+                                <div class="price_giaban price_market">Giá gốc : <span>{{str_replace(',' ,'.', number_format($price_old))}}đ </span></div>
+                                <br>
+                            @else    
                             <div class="price_giaban price_market">Giá hãng : <span>{{str_replace(',' ,'.', number_format($data->manuPrice))}}đ </span></div>
-
-
+                            <br>
+                            @endif
                             @endif 
 
                             
@@ -1323,11 +1290,12 @@
                                     {{str_replace(',' ,'.', number_format($data->Price))  }}₫
                                 </h3>
 
-                                @if(!empty($data->manuPrice))
+                                @if(!empty($data->manuPrice) || !empty($price_old))
                                 <b>Rẻ hơn</b>
 
                                 <?php 
-                                    $discount =  round(((intval($data->manuPrice) - intval($data->Price))/intval($data->manuPrice))*100)
+
+                                    $discount = !empty($price_old)?round(((intval($price_old) - intval($data->Price))/intval($data->Price))*100):round(((intval($data->manuPrice) - intval($data->Price))/intval($data->manuPrice))*100)
                                 ?>
 
                                 <span class="discount_percent">-{{ $discount }}%</span>
@@ -2205,7 +2173,7 @@
         nav:true,
         autoplay:true,
         dots:true,
-        dotsData:true,
+       
         dotsEach:1,
 
         
@@ -2226,15 +2194,6 @@
         }
     });
 
-    var owl = $('#carousel');
-
-    owl.on('changed.owl.carousel', function(event) {
-
-        console.log(1);
-    })
-    
-    
-    
     
     $('.listproduct').owlCarousel({
         loop:false,

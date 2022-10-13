@@ -914,8 +914,9 @@
             }
 
             .title-name{
-                height: 64px;
+                /*height: 64px;*/
                 margin-top: 5px;
+                margin-bottom: 9px;
             }
 
             .titles-time h3 {

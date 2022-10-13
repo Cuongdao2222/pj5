@@ -3,8 +3,8 @@
 @section('content') 
     @push('style')
 
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/home.css') }}?ver=18">
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}?ver=19"> 
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/home.css') }}?ver=20">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}?ver=20"> 
         <link rel="stylesheet" type="text/css" href="{{ asset('css/index.css') }}?ver=3">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/homes.css') }}?ver=8">
     @endpush
@@ -51,6 +51,9 @@
             background-color: #ddd;
             color: #000;
             border: none; 
+        }
+        .icons-promotion-per{
+            height: 42px;
         }
     </style>   
 
@@ -259,6 +262,13 @@
                                         <div class="container-price">
                                                <div>
                                                    <span class="price-old">{{ @str_replace(',' ,'.', number_format($value->price)) }}&#x20AB;</span>
+                                                   &nbsp
+
+                                                   <?php
+                                                        $discount_deal =  round(((intval($value->price) - intval($value->deal_price))/intval($value->price))*100)
+                                                    ?>
+                                                    
+                                                    <span class="discount_percent">-{{ $discount_deal }}%</span>
                                                </div>
                                         </div>
                                         <div style="margin-top: 11px">
@@ -529,22 +539,24 @@
                                 </div>
                                 
                                 @endif
-                                <strong class="price">{{ @number_format($datas->Price , 0, ',', '.')}}&#x20AB;</strong>
+                                <div class="icons-promotion-per">
+                                    
+                                    <strong class="price">{{ @number_format($datas->Price , 0, ',', '.')}}&#x20AB;</strong>
 
+                                    @if(!empty($datas->manuPrice))
 
+                                    <?php
+                                    $discount =  round(((intval($datas->manuPrice) - intval($datas->Price))/intval($datas->manuPrice))*100)
+                                    ?>
+                                    
+                                    <span class="price_market">{{ @number_format($datas->manuPrice , 0, ',', '.')}} <sup>đ</sup></span>
 
-                                @if(!empty($datas->manuPrice))
+                                    <span class="discount_percent">-{{ $discount }}%</span>
 
-                                <?php
-                                $discount =  round(((intval($datas->manuPrice) - intval($datas->Price))/intval($datas->manuPrice))*100)
-                                ?>
+                                    @endif
+
+                                </div>
                                 
-                                <span class="price_market">{{ @number_format($datas->manuPrice , 0, ',', '.')}} <sup>đ</sup></span>
-
-                                <span class="discount_percent">-{{ $discount }}%</span>
-
-                                @endif
-
                            
                                 <div class="item-rating">
                                     <p>

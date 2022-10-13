@@ -5184,7 +5184,8 @@ body.dmx-site #loader:before {
 
 .listproduct .item-compare {
 	font-size: 0;
-	margin-bottom: 5px
+	margin-bottom: 5px;
+	height: 28px;
 }
 
 .listproduct .item-compare span {
