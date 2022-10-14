@@ -223,6 +223,9 @@
 
                                 if(!empty($check_deal)){
 
+
+                                    $check_deal = reset($check_deal);
+
                                     $check_deal = reset($check_deal);
 
                                     if(!empty($check_deal->deal_price)){
