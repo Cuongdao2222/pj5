@@ -200,24 +200,32 @@
 
                                 $check_deal =  Cache::get('deals')->where('product_id', $value->id);
 
+                                
+
                                 $deal_check_add = false;
 
                                 $now  = Carbon\Carbon::now();
-                                
-                                if(!empty($check_deal) && !empty(!empty($check_deal->deal_price))){
-                                     
-                                    $timeDeal_star = $check_deal->start;
-                                    $timeDeal_star =  \Carbon\Carbon::create($timeDeal_star);
-                                    $timeDeal_end = $check_deal->end;
-                                    $timeDeal_end =  \Carbon\Carbon::create($timeDeal_end);
-                                    $timestamp = $now->diffInSeconds($timeDeal_end);
 
-                                    if($now->between($check_deal->start, $check_deal->end)){
-                                       
-                                        $value->Price = $check_deal->deal_price;
-                                        
+                                if(!empty($check_deal)){
+
+                                    $check_deal = reset($check_deal);
+
+                                    if(!empty($check_deal->deal_price)){
+
+                                        $timeDeal_star = $check_deal->start;
+                                        $timeDeal_star =  \Carbon\Carbon::create($timeDeal_star);
+                                        $timeDeal_end = $check_deal->end;
+                                        $timeDeal_end =  \Carbon\Carbon::create($timeDeal_end);
+                                        $timestamp = $now->diffInSeconds($timeDeal_end);
+
+                                        if($now->between($check_deal->start, $check_deal->end)){
+                                           
+                                            $value->Price = $check_deal->deal_price;
+                                            
+                                        }
+
                                     }
-                                
+                                    
                                 }
                                 else{
 

@@ -434,7 +434,7 @@
 
         $deal_check_add = false;
         
-        if(!empty($check_deal) && !empty(!empty($check_deal->deal_price)) &&$check_deal->active==1){
+        if(!empty($check_deal) && !empty($check_deal->deal_price) &&$check_deal->active==1){
              
             $timeDeal_star = $check_deal->start;
             $timeDeal_star =  \Carbon\Carbon::create($timeDeal_star);
