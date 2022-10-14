@@ -334,7 +334,7 @@ class categoryController extends Controller
                 'numberdata'=>$numberdata,
                 'groupProduct_level'=>$groupProduct_level,
                 'parent_id_cate'=>$parent_id_cate,
-                'page'=>$page,
+                'page'=>$page??1,
 
             ];
 
