@@ -71,6 +71,17 @@
         </div>
 
         <?php 
+             $filtername = '';
+
+            if(!empty($ar_list[1]['name'])){
+
+                $convert = ['Thương hiệu'=>'Hãng Sản Xuất', 'Kích cỡ tivi'=>'Kích Thước', 'Loại tivi'=>'Loại Tivi', 'Kiểu giặt'=>'Loại Máy Giặt', 'Khối lượng giặt'=>'Khối lượng giặt', 'Dung tích' => 'Dung tích', 'Loại tủ'=>'Kiểu tủ','Công suất'=>'Công suất làm lạnh'];
+
+                $filtername = $convert[$ar_list[1]['name']]??'';
+
+                
+            }
+            
 
             $banner = cache()->remember('banner_group_4', 1000, function () {
 
@@ -120,6 +131,8 @@
                            
                         ?>
 
+                        @if($filters->name !=  $filtername)
+
                         <div class="filter-item block-manu ">
                             <select class="form-control" id="selectfilter{{ $filters->id }}" name="selectfilter" onchange='mySelectHandler("{{ $filters->id }}")'>
                                 <option value="0">{{ $filters->name }}</option>
@@ -130,6 +143,8 @@
                                 @endif
                             </select>
                         </div>
+
+                        @endif
                         
                         @endforeach
                         @endif
