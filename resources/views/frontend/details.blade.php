@@ -1767,7 +1767,7 @@
 
 </div>
 @push('style')
-<link rel="stylesheet" type="text/css" href="{{ asset('css/details.css') }}?ver=3">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/details.css') }}?ver=4">
 @endpush
 @push('script')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js"></script>
