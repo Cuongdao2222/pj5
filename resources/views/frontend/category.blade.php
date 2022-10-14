@@ -274,8 +274,6 @@
                                 }
                             ?>
 
-                           
-
                         <div class="col-md-3 col-6 lists">
                             <div class="item  __cate_1942">
                                 <a href='{{ route("details", $value->Link ) }}' data-box="BoxCate" class="main-contain">
