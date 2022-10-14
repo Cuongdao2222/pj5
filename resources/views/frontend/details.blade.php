@@ -1304,7 +1304,7 @@
 
                                 <?php 
 
-                                    $discount = !empty($price_old)?round(((intval($price_old) - intval($data->Price))/intval($data->Price))*100):round(((intval($data->manuPrice) - intval($data->Price))/intval($data->manuPrice))*100)
+                                    $discount = !empty($price_old)?round(((intval($price_old) - intval($data->Price))/intval($price_old))*100):round(((intval($data->manuPrice) - intval($data->Price))/intval($data->manuPrice))*100)
                                 ?>
 
                                 <span class="discount_percent">-{{ $discount }}%</span>
