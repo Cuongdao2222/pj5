@@ -213,7 +213,7 @@
                                 $id_product = $value->id;
                                 array_push($arr_id_pro, $id_product);
 
-                                $check_deal =  Cache::get('deals')->where('product_id', $value->id);
+                                $check_deal =  Cache::get('deals')->where('product_id', $value->id)->where('active',1);
 
                                 
 
