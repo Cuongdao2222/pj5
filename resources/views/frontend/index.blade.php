@@ -161,7 +161,7 @@
     </div>
     <div class="deal-view1">
         <div class="flash-sale" style="height: 305px;">
-            <span id="banner-flash-sale"> <a href="http://localhost/pj5/deal"> <img width="256" src="http://localhost/pj5/images/background-image/Flash_Sale_Theme_256x396.jpg" style="width: auto; height: 300px" alt="banner-fs"> </a> </span> 
+            <span id="banner-flash-sale"> <a href="{{ route('dealFe') }}"> <img width="256" src="{{ asset('images/background-image/Flash_Sale_Theme_256x396.jpg') }}  " style="width: auto; height: 300px" alt="banner-fs"> </a> </span> 
             <div class="flash-product nk-product-of-flash-sales">
                 <div class="col-flash col-flash-2 active">
                     <div id="sync1S" class="slider-banner owl-carousel flash-sale-banner owl-loaded owl-drag">
@@ -1052,6 +1052,31 @@
                
                 1000:{
                     items:1
+                }
+            }
+        });
+
+        
+
+        $('#sync1S').owlCarousel({
+            loop:false,
+            margin:10,
+            nav:true,
+            dots:false,
+            autoplay:false,
+            
+            navText: ["<i class='fa fa-angle-left'></i>","<i class='fa fa fa-angle-right'></i>"],
+            responsive:{
+                0:{
+                    items:1
+                },
+
+                 600:{
+                    items:2
+                },
+               
+                1000:{
+                    items:2
                 }
             }
         });
