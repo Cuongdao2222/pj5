@@ -36,7 +36,13 @@ class indexController extends Controller
 
         $group = Cache::get('groups');
 
-        $product_sale = Cache::get('product_sale');
+        
+        $product_sale = Cache::rememberForever('product_sale', function() {
+
+            $product_sale = DB::table('products')->join('sale_product', 'products.id', '=', 'sale_product.product_id')->join('makers', 'products.Maker', '=', 'makers.id')->Orderby('sale_product.updated_at','desc')->get();
+
+            return $product_sale??'';
+        });
 
          $timeDeal_star = Cache::get('deal_start'); 
 
@@ -52,6 +58,7 @@ class indexController extends Controller
             $timeDeal_star = Cache::get('deal_start'); 
 
             $product_sale = Cache::get('product_sale');
+
         }
 
         if(!Cache::has('baners')){
@@ -92,8 +99,6 @@ class indexController extends Controller
         }  
 
        
-
-        
         return view('frontend.index', compact('banners', 'bannersRight', 'bannerUnderSlider', 'bannerUnderSale','deal','product_sale', 'group','timeDeal_star', 'deal_check'));
     }
     public function cache()
@@ -101,7 +106,6 @@ class indexController extends Controller
        
         $deal = deal::OrderBy('order', 'desc')->get();
 
-        $product_sale = DB::table('products')->join('sale_product', 'products.id', '=', 'sale_product.product_id')->join('makers', 'products.Maker', '=', 'makers.id')->get();
 
         $groups = groupProduct::select('id','name', 'link')->where('parent_id', 0)->get();
 
@@ -114,7 +118,7 @@ class indexController extends Controller
         }
         Cache::put('groups', $groups,10000);
 
-        Cache::put('product_sale', $product_sale,10000);
+       
 
     }
 

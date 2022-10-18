@@ -296,6 +296,7 @@
                                 $check_deal = App\Models\deal::select('deal_price','start', 'end')->where('product_id', $value->id)->where('active', 1)->first();
 
                                 $deal_check_add = false;
+
                                 
                                 if(!empty($check_deal) && !empty(!empty($check_deal->deal_price))){
                                      $now  = Carbon\Carbon::now();
@@ -312,6 +313,10 @@
                                     }
                                     
                                 }
+
+                                
+
+
                             ?>
 
 

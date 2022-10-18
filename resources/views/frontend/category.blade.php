@@ -53,39 +53,7 @@
    
 
         <div class="locationbox__overlay"></div>
-        <!-- <div class="locationbox">
-            <div class="locationbox__item locationbox__item--right" onclick="OpenLocation()">
-                <p>Chọn địa chỉ nhận hàng</p>
-                <a class="cls-location" href="javascript:void(0)">Đóng</a>
-            </div>
-            <div class="locationbox__item" id="lc_title"><i class="icondetail-address-white"></i><span> Vui lòng đợi trong giây lát...</span></div>
-            <div class="locationbox__popup" id="lc_pop--choose">
-                <div class="locationbox__popup--cnt locationbox__popup--choose">
-                    <div class="locationbox__popup--chooseDefault">
-                        <div class="lds-ellipsis">
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <b id="h-provincename" style="display:none!important" data-provinceid="3">Hồ Chí Minh</b>
-        </div> -->
-        <!-- <div class="locationbox__popup new-popup hide" id="lc_pop--sugg">
-            <div class="locationbox__popup--cnt locationbox__popup--suggestion new-locale">
-                <div class="flex-block">
-                    <i class="icon-location"></i>
-                    <p>Hãy chọn <b>địa chỉ cụ thể</b> để chúng tôi cung cấp <b>chính xác</b> th&#x1EDD;i gian giao h&#xE0;ng v&#xE0; t&#xEC;nh tr&#x1EA1;ng h&#xE0;ng.</p>
-                </div>
-                <div class="btn-block">
-                    <a href="javascript:;" class="btn-location" onclick="OpenLocation()"><b>Chọn địa chỉ</b></a>
-                    <a href="javascript:;" class="btn-location gray" onclick="SkipLocation()"><b>Đóng</b></a>
-                </div>
-            </div>
-        </div>
- -->
+        
         @if(empty($page_search))
         <div class="bsc-block">
             <section>
@@ -104,6 +72,17 @@
         </div>
 
         <?php 
+             $filtername = '';
+
+            if(!empty($ar_list[1]['name'])){
+
+                $convert = ['Thương hiệu'=>'Hãng Sản Xuất', 'Kích cỡ tivi'=>'Kích Thước', 'Loại tivi'=>'Loại Tivi', 'Kiểu giặt'=>'Loại Máy Giặt', 'Khối lượng giặt'=>'Khối lượng giặt', 'Dung tích' => 'Dung tích', 'Loại tủ'=>'Kiểu tủ','Công suất'=>'Công suất làm lạnh'];
+
+                $filtername = $convert[$ar_list[1]['name']]??'';
+
+                
+            }
+            
 
             $banner = cache()->remember('banner_group_4', 1000, function () {
 
@@ -153,6 +132,8 @@
                            
                         ?>
 
+                        @if($filters->name !=  $filtername)
+
                         <div class="filter-item block-manu ">
                             <select class="form-control" id="selectfilter{{ $filters->id }}" name="selectfilter" onchange='mySelectHandler("{{ $filters->id }}")'>
                                 <option value="0">{{ $filters->name }}</option>
@@ -163,6 +144,8 @@
                                 @endif
                             </select>
                         </div>
+
+                        @endif
                         
                         @endforeach
                         @endif
@@ -231,31 +214,37 @@
                                 $id_product = $value->id;
                                 array_push($arr_id_pro, $id_product);
 
-
-                                $check_deal =  Cache::get('deals')->where('product_id', $value->id);
-
-                                
+                                $check_deal =  Cache::get('deals')->where('product_id', $value->id)->where('active',1);
 
                                 
 
                                 $deal_check_add = false;
 
                                 $now  = Carbon\Carbon::now();
-                                
-                                if(!empty($check_deal) && !empty(!empty($check_deal->deal_price))){
-                                     
-                                    $timeDeal_star = $check_deal->start;
-                                    $timeDeal_star =  \Carbon\Carbon::create($timeDeal_star);
-                                    $timeDeal_end = $check_deal->end;
-                                    $timeDeal_end =  \Carbon\Carbon::create($timeDeal_end);
-                                    $timestamp = $now->diffInSeconds($timeDeal_end);
 
-                                    if($now->between($check_deal->start, $check_deal->end)){
-                                       
-                                        $value->Price = $check_deal->deal_price;
-                                        
+                                if(!empty($check_deal)){
+
+
+                                    $check_deal = reset($check_deal);
+
+                                    $check_deal = reset($check_deal);
+
+                                    if(!empty($check_deal->deal_price)){
+
+                                        $timeDeal_star = $check_deal->start;
+                                        $timeDeal_star =  \Carbon\Carbon::create($timeDeal_star);
+                                        $timeDeal_end = $check_deal->end;
+                                        $timeDeal_end =  \Carbon\Carbon::create($timeDeal_end);
+                                        $timestamp = $now->diffInSeconds($timeDeal_end);
+
+                                        if($now->between($check_deal->start, $check_deal->end)){
+                                           
+                                            $value->Price = $check_deal->deal_price;
+                                            
+                                        }
+
                                     }
-                                
+                                    
                                 }
                                 else{
 
@@ -311,8 +300,6 @@
                                 
                                 }
                             ?>
-
-                           
 
                         <div class="col-md-3 col-6 lists">
                             <div class="item  __cate_1942">
@@ -490,7 +477,18 @@
            
             @if(\Request::route()->getName()!='search-product-frontend' && !empty($data))
 
-            {{ @$data->links() }}
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <?php 
+
+                        $limit =  floor(intval($numberdata)/12); 
+                    ?>
+                    @for($i=0; $i<=$limit; $i++)
+                    <li class="page-item {{  $page==$i+1?'active':'' }} " ><a class="page-link" href="{{ route('details',$link) }}?page={{ $i+1 }}">{{ $i+1 }}</a></li>
+                    @endfor
+                   
+                </ul>
+            </nav>
 
             @endif
         </section>

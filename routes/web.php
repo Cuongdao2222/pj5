@@ -168,6 +168,10 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::get('test', 'backend\apiController@checkDeal')->name('test');
 
+    Route::get('hot-list', 'hotController@index')->name('host-list');
+
+    Route::post('update-order-hot','hotController@hotOrderProduct')->name('order-hot');
+
     Route::get('seachtitlePost', 'postController@searchTitle')->name('searTitlePost');
 
     Route::get('get-time-deal', 'dealController@getTimeDeal')->name('getTimeDeal');

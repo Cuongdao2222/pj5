@@ -3,13 +3,24 @@
 @section('content') 
     @push('style')
 
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/home.css') }}?ver=18">
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}?ver=19"> 
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/home.css') }}?ver=21">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}?ver=20"> 
         <link rel="stylesheet" type="text/css" href="{{ asset('css/index.css') }}?ver=3">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/homes.css') }}?ver=8">
     @endpush
 
      <?php
+
+
+        if(!Cache::has('product_search')){
+
+            $productss = App\Models\product::select('Link', 'Name', 'Image', 'Price', 'id', 'ProductSku')->where('active', 1)->get();
+
+            Cache::forever('product_search',$productss);
+
+        }    
+
+
         $hots = Cache::rememberForever('hots', function(){
 
             $hots = App\Models\hotsProduct::select('product_id')->get()->pluck('product_id');
@@ -52,6 +63,9 @@
             background-color: #ddd;
             color: #000;
             border: none; 
+        }
+        .icons-promotion-per{
+            height: 42px;
         }
     </style>   
 
@@ -336,6 +350,13 @@
                                         <div class="container-price">
                                                <div>
                                                    <span class="price-old">{{ @str_replace(',' ,'.', number_format($value->price)) }}&#x20AB;</span>
+                                                   &nbsp
+
+                                                   <?php
+                                                        $discount_deal =  round(((intval($value->price) - intval($value->deal_price))/intval($value->price))*100)
+                                                    ?>
+                                                    
+                                                    <span class="discount_percent">-{{ $discount_deal }}%</span>
                                                </div>
                                         </div>
                                         <div style="margin-top: 11px">
@@ -481,13 +502,16 @@
                
                 $hot = Cache::rememberForever('hot'.$groups->id, function() use($groups){
 
-                    $hot = DB::table('hot')->select('product_id')->where('group_id', $groups->id)->get()->pluck('product_id');
+                    $hot = DB::table('hot')->select('product_id')->where('group_id', $groups->id)->orderBy('orders', 'asc')->get()->pluck('product_id');
 
                     return $hot;
+
+                    
                 });
 
 
-                $data = Cache::get('product_search')->whereIn('id', $hot->toArray());
+                $data = Cache::get('product_search')->whereIn('id', $hot->toArray())->sortByDesc('orders_hot');
+
 
             ?>
 
@@ -606,22 +630,24 @@
                                 </div>
                                 
                                 @endif
-                                <strong class="price">{{ @number_format($datas->Price , 0, ',', '.')}}&#x20AB;</strong>
+                                <div class="icons-promotion-per">
+                                    
+                                    <strong class="price">{{ @number_format($datas->Price , 0, ',', '.')}}&#x20AB;</strong>
 
+                                    @if(!empty($datas->manuPrice))
 
+                                    <?php
+                                    $discount =  round(((intval($datas->manuPrice) - intval($datas->Price))/intval($datas->manuPrice))*100)
+                                    ?>
+                                    
+                                    <span class="price_market">{{ @number_format($datas->manuPrice , 0, ',', '.')}} <sup>đ</sup></span>
 
-                                @if(!empty($datas->manuPrice))
+                                    <span class="discount_percent">-{{ $discount }}%</span>
 
-                                <?php
-                                $discount =  round(((intval($datas->manuPrice) - intval($datas->Price))/intval($datas->manuPrice))*100)
-                                ?>
+                                    @endif
+
+                                </div>
                                 
-                                <span class="price_market">{{ @number_format($datas->manuPrice , 0, ',', '.')}} <sup>đ</sup></span>
-
-                                <span class="discount_percent">-{{ $discount }}%</span>
-
-                                @endif
-
                            
                                 <div class="item-rating">
                                     <p>
@@ -990,16 +1016,16 @@
 
         $('#banner-sale').owlCarousel({
             loop:true,
-            items:2.5,
+            
             margin:10,
             nav:true,
             navText: ["<i class='fa fa-chevron-left'></i>","<i class='fa fa-chevron-right'></i>"],
             responsive:{
                 0:{
-                    items:2.5
+                    items:2
                 },
                 600:{
-                    items:2.5
+                    items:2
                 },
                 1000:{
                     items:5

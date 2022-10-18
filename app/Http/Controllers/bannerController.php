@@ -30,7 +30,7 @@ class bannerController extends AppBaseController
     public function index(Request $request)
     {
         $option = empty($request->option)?0:$request->option;
-        $banners = $this->bannerRepository->allQuery(['option'=>$option])->paginate(10);
+        $banners = $this->bannerRepository->allQuery(['option'=>$option])->orderBy('id','desc')->paginate(10);
 
         return view('banners.index')
             ->with('banners', $banners);

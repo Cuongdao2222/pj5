@@ -190,13 +190,13 @@ class categoryController extends Controller
 
             }
 
-
-
              return view('frontend.filter', compact('product_search', 'link', 'filter', 'id_cate', 'ar_list', 'groupProduct_level'));
 
         }
         else{
             $data = $this->getDataOfCate($slug);
+
+
 
             return view('frontend.category', with($data));
         }
@@ -279,15 +279,22 @@ class categoryController extends Controller
 
                     $Group_product = json_decode($Group_product->product_id);
 
+                    $page = !empty($_GET['page'])?$_GET['page']:1;
 
-                    $data = cache()->remember('Group_product__'.$id_cate, 1000, function () use($Group_product){
+                   
+                    $limit = 12;
 
-                        $data = product::whereIn('id', $Group_product)->where('active', 1)->orderBy('Quantily', 'desc')->paginate(12)??'';
+                   
+                    $data = cache()->remember('data_'.$id_cate.'_'.$page, 100, function () use($Group_product, $limit, $page){
+
+                        $data = product::whereIn('id', $Group_product)->where('active', 1)->orderBy('id', 'desc')->limit($limit)->offset(($page - 1) * $limit)->get();
 
                         return $data;
-                    });
 
-                    $numberdata = cache()->remember('numberdata'.$id_cate, 1000, function () use($Group_product){
+                    });  
+                        
+                
+                    $numberdata = cache()->remember('numberdata'.$id_cate, 100, function () use($Group_product){
 
                         $numberdata = product::select('id')->whereIn('id', $Group_product)->where('active', 1)->orderBy('Quantily', 'desc')->get()->count()??0;
 
@@ -327,6 +334,7 @@ class categoryController extends Controller
                 'numberdata'=>$numberdata,
                 'groupProduct_level'=>$groupProduct_level,
                 'parent_id_cate'=>$parent_id_cate,
+                'page'=>$page??1,
 
             ];
 
@@ -405,8 +413,6 @@ class categoryController extends Controller
             
         }
 
-        
-
         $category = category::find($data->category);
 
 
@@ -431,6 +437,7 @@ class categoryController extends Controller
         //     $post_view->increment('views', 1);
 
         // }
+
 
         echo view('frontend.blogdetail',compact( 'name_cate', 'related_news', 'meta', 'data'));
 
