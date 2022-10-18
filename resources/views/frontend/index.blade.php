@@ -10,6 +10,17 @@
     @endpush
 
      <?php
+
+
+        if(!Cache::has('product_search')){
+
+            $productss = App\Models\product::select('Link', 'Name', 'Image', 'Price', 'id', 'ProductSku')->where('active', 1)->get();
+
+            Cache::forever('product_search',$productss);
+
+        }    
+
+
         $hots = Cache::rememberForever('hots', function(){
 
             $hots = App\Models\hotsProduct::select('product_id')->get()->pluck('product_id');
@@ -420,6 +431,7 @@
 
                     
                 });
+
 
                 $data = Cache::get('product_search')->whereIn('id', $hot->toArray())->sortByDesc('orders_hot');
 
