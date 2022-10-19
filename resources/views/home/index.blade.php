@@ -77,6 +77,10 @@
     <style type="text/css">
         .div-box table { width:100%;}
     </style>
+
+    @if( Auth::user()->id ==1)
+    <div><a href="javascript:void(0)" onclick="testApi()"><button>testApi</button></a></div>
+    @endif
     <table width="100%">
         <tbody>
             <tr>
@@ -479,12 +483,58 @@
         </tbody>
     </table>
     <script type="text/javascript">
+        function testApi() {
+            $.ajax({
+                type: 'POST',
+                dataType:"jsonp",
+                url: 'https://dienmaynguoiviet.gencrm.com/modules/api/insert',
+                headers:{         
+                  'Authorization' : 'Basic Z2VuY3JtX2drczpnZW5jcm1fZ2tzQDIwMTYj',
+                  
+                },
+                data:{
+                        
+                    "api_id":"qr4SP88JRWzDzd/u4AyG8djhaaj5eJHfFiudnB2klPQ=",
+                    "vcustomers_insert_individual": {
+                        "di_dong": "0987654321",
+                        "ten_khach_hang": "cuong test api" 
+                    },
+                    "hop_dong": [
+                        {
+                            "col162": "12 tháng",
+                            "col112": "Hợp đồng mua bán",
+                            "col142": "19/10/2022",
+                            "col121": "Hợp đồng mua bán",
+                            "col132": "CHOGIAOHANG",
+                            "chi_tiet": [
+                                {
+                                    "ma_nsp": "65UP7550PTC",
+                                    "ten_nsp": "Smart tivi LG 65UP7550PTC 65 inch 4K",
+                                    "ma_sp": "65UP7550PTC",
+                                    "ten_sp": "LG 65UP7550PTC",
+                                    "don_gia": "500000",
+                                    "so_luong": "1"
+                                }
+                            ]
+                        }
+                    ]
+                        
+                },
+                dataType: 'json',
+                success: function (data, status, xhr) {
+                    alert('thành công')
+                }
+            });
+
+
+        }
+
         function home_report(w){
-        	$.get("/admin/ajax/report_home.php", {
-        	    action : w
-        	}, function(data) {
-        	    $("#home_report_"+w).html(data);
-        	} );
+            $.get("/admin/ajax/report_home.php", {
+                action : w
+            }, function(data) {
+                $("#home_report_"+w).html(data);
+            } );
         }
         
            function report_top_article(type, period, holder, limit, from_date, to_date){
