@@ -144,7 +144,7 @@ Route::post('show-viewer-product', 'AjaxController@showViewerProduct')->middlewa
 
 Route::get('/category/{slug}', 'Frontend\categoryController@index')->name('category-product')->middleware('auth');
 
-Route::get('/{slug}', 'Frontend\categoryController@details')->middleware('cache.headers:public;max_age=14400;etag')->middleware('throttle:80')->name('details');
+Route::get('/{slug}', 'Frontend\categoryController@details')->middleware('throttle:80')->name('details');
 
 Route::post('ajax-clent-register', 'AjaxController@registerClient')->name('register-client-fe');
 
