@@ -1159,6 +1159,8 @@
                   
                     return false !== strpos($item->ProductSku, $cutModel);
                 });
+
+
                     
             ?>
             @if($relationProduct->count()>1)
@@ -1174,6 +1176,16 @@
                     @foreach($relationProduct->chunk(4) as $chunk)
                     <div class="box03 group desk">
                         @foreach ($chunk as $relationProducts)
+                            <?php 
+                                $check_deals_pd =  Cache::get('deals')->where('product_id', $relationProducts->id)->first();
+
+                                if(!empty($check_deals_pd)){
+
+                                    $relationProducts->Price = $check_deals_pd['deal_price'];
+
+                                }
+
+                            ?>
 
                             <a class="one_size  {{ $relationProducts->ProductSku==$data->ProductSku?'act':'' }}" href="{{ route('details', $relationProducts->Link) }}"><label class="container-detail"><span class="size-pro">{{  str_replace( $cutModel, '', $relationProducts->ProductSku)  }} inch</span><span class="price-pro">{{ str_replace(',' ,'.', number_format(@$relationProducts->Price))  }}đ</span></label></a>
                         

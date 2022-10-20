@@ -96,21 +96,28 @@
                                 <tr class="table_public_tr">
                                     <td width="40">STT</td>
                                     <td width="190">Khách hàng</td>
-                                    <td width="130">Thời gian đặt hàng</td>
+                                    <td width="100">Thời gian đặt hàng</td>
+
+                                    <td width="130">Quà tặng của đơn hàng</td>
                                     <td>Giá trị đơn hàng</td>
                                     <td width="120">Xem chi tiết</td>
                                 </tr>
                                 <?php 
                                     $key =0;
+
+                                   
                                 ?>
                                 @if(isset($order))
-                                    @foreach($order as $orders)
+                                    @foreach($order as $keys => $orders)
                                     <?php $key++; ?>
                                 <tr>
                                    
                                     <td width="40">{{ $key }}</td>
                                     <td width="190">{{ @$orders->name }}</td>
+                                    
                                     <td width="130">{{ @$orders->created_at }}</td>
+
+                                    <td>{{ json_decode($orders->product)[$keys]->gift??'' }}</td>
                                     <td>{{str_replace(',' ,'.', number_format($orders->total_price)) }}</td>
                                     <td width="120"><a href="{{ route('order_list_view', $orders->id) }}">Xem</a></td>
                                     

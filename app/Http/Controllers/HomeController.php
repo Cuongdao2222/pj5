@@ -25,7 +25,7 @@ class HomeController extends Controller
     
     public function index()
     {
-        $order = Order::select('id', 'name', 'created_at', 'total_price')->where('active', 0)->get();
+        $order = Order::where('active', 0)->get();
         return view('home.index', compact('order'));
     }
     
