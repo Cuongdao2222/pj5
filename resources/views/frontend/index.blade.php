@@ -7,6 +7,7 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}?ver=20"> 
         <link rel="stylesheet" type="text/css" href="{{ asset('css/index.css') }}?ver=3">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/homes.css') }}?ver=8">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/homecs.css') }}?ver=8">
     @endpush
 
      <?php
