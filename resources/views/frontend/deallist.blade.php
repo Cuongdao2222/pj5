@@ -122,7 +122,17 @@
                         <tbody>
                             <tr bgcolor="#eee">
                             <td align="center">{{ @$percent }}%</td>
-                            <td align="center">0</td>
+
+                            <?php 
+
+                                if($value->id%2==0){
+                                    $numberDeal = 6;
+                                }
+                                else{
+                                    $numberDeal = 5;
+                                }
+                            ?>
+                            <td align="center">{{ $numberDeal }}</td>
                            
                                 <?php 
 
