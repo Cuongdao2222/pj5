@@ -931,7 +931,7 @@ class AjaxController extends Controller
 
             }
             else{
-                 Flash::error('Không thể tạo vì khuyến mãi trùng thời gian với một khuyến mãi khác');
+                 // Flash::error('Không thể tạo vì khuyến mãi trùng thời gian với một khuyến mãi khác');
                  return redirect()->back();
             }
 
