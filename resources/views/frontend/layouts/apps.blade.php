@@ -2463,8 +2463,7 @@
 
     <script type="text/javascript">
 
-       
-
+    
         $('.register-forms').click(function(){
             $("#Modal-login").modal("hide");
             $("#Modal-register").modal("show");
@@ -2620,9 +2619,8 @@
             
         });
 
-       
 
-        
+       
 
         $('.menu-list .fa-bars').bind("click", function(){
             if($('.nav-list').is(":visible")){

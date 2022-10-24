@@ -113,6 +113,8 @@ Route::post('filter-search-client', 'Frontend\filterController@filter')->name('c
 
 // })->middleware('auth');
 
+ Route::post('search-compare', 'productController@searchPdCompare')->name('search-pd-compare');
+
 Route::get('searchquery', 'productController@search')->name('test');
 
 Route::get('page/{slug}', 'Frontend\categoryController@pageView')->name('page_cd');

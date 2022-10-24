@@ -577,6 +577,21 @@ class productController extends AppBaseController
 
     }
 
+    public function searchPdCompare(Request $request)
+    {
+
+
+        $clearData = trim($request->search);
+
+        $clearData = strip_tags($clearData);
+
+        $search = $clearData;
+
+        $product = product::where('Name', 'like', '%'.$search.'%')->Orwhere('ProductSku', $search)->first();
+
+        return  $product;
+    }
+
     public function imagecontent($id)
     {
         return view('products.image', compact('id'));
