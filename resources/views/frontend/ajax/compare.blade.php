@@ -49,11 +49,13 @@
 </div>
 
 <script type="text/javascript">
-    var id_name = '';
+    var id_name = [];
 
     $('.add-search-popup').click(function () {
 
-        var id_name = $(this).attr('id');
+         id_names = $(this).attr('id');
+
+         id_name.push(id_names);
 
        $('#modal-search-pd').show();
 
@@ -81,8 +83,15 @@
            
             success: function (data) {
 
-               console.log(id_name);
-            
+               let classname =  id_name[0]??'';
+               $('#'+classname).html('');
+               html = '<img src="https://dienmaynguoiviet.vn/'+data.Image+'"> <span>'+data.Name+'</span>';
+               $('#'+classname).append(html);
+               $('#modal-search-pd').modal().hide();
+               id_name = [];
+
+               ar_product.push(data.id);
+              
             }
         });
     }
