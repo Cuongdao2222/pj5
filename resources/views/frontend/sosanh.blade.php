@@ -48,48 +48,87 @@
 
                 <?php
 
-                    $filter = [['name'=>'Tên sản phẩm'], ['name'=>'Ảnh'], ['name'=>'Giá bán'],  ['name'=>'Đặc điểm nổi bật']];
+                    $data_id = 4;
+
+                    $ar_gr[1] = ['Kích cỡ màn hình', 'Độ phân giải', 'Nơi sản xuất', 'Cổng HDMI', 'Công nghệ xử lý hình ảnh', 'Kích thước có chân, đặt bàn', 'Kích thước không chân, treo tường'];
+                    $ar_gr[2] = ['Khối lượng giặt', 'Khối lượng sấy', 'Tốc độ quay vắt', 'Kiểu động cơ', 'Lồng giặt', 'Công nghệ giặt', 'Kích thước - Khối lượng', 'Nơi sản xuất'];
+                    $ar_gr[3] = ['Dung tích sử dụng', 'Dung tích ngăn đá', 'Dung tích ngăn lạnh', 'Công nghệ Inverter', 'Kiểu tủ', 'Kích thước - Khối lượng', 'Nơi sản xuất'];
+                    $ar_gr[4] = ['Loại máy', 'Công suất làm lạnh', 'Công suất sưởi ấm', 'Phạm vi làm lạnh hiệu quả', 'Chế độ tiết kiệm điện', 'Loại Gas sử dụng', 'Nơi sản xuất', 'Năm ra mắt'];
+                    $ar = $ar_gr[$data_id];
                 
                 ?>
 
                
-                @if(count($filter)>0 && isset($data))
+                @if(count($ar)>0 && isset($data))
 
                 <?php 
                     $info_product = [];
-                    foreach ($data as $key => $value) {
+
+                    $ar_sp = [];
+                    foreach ($data as $keys => $value) {
 
                         $product = App\Models\product::find($value);
 
-                        $info_products = [$product->Name, '<img width="327" style="width:50%" src="'.asset($product->Image).'">',  str_replace(',' ,'.', number_format($product->Price)).' đ',  str_replace(array("Đặc điểm nổi bật", "Xem thêm"), '',  html_entity_decode($product->Salient_Features))];
+                        $html = $product->Specifications;
 
-                        array_push($info_product, $info_products);
+                        $dom = new \DOMDocument();
+
+                        $html = mb_convert_encoding($html , 'HTML-ENTITIES', 'UTF-8'); //convert sang tiếng việt cho dom
+
+                        $dom->loadHTML($html);
+
+                        foreach($dom->getElementsByTagName('td') as $td) {
+
+                            foreach($ar as $key => $value) {
+
+                                if(strpos($td->nodeValue, $value)>-1){
+
+                                    $ar_sp[$keys][$key] = str_replace($value, '', $td->nodeValue);
+                                    
+                                }
+
+                            }
+                        } 
+                        array_unshift($ar_sp[$keys], $product->Name);
+                        
+
+
                     }
+
+                   
+                    
                 ?>
-                @foreach($filter as $key=> $filters)
+
+                
+                @foreach($ar as $key=> $filters)
                 
                 <tr>
-                    <td><b>{{ $filters['name'] }}</b></td>
+                    <td><b>{{ $filters }}</b></td>
 
-                    @foreach($info_product as $info_productss)
+                    @foreach($ar_sp as  $info_productss)
 
+                    
+                   
                     <td>
                         <div style="max-height:250px; overflow:auto">
                             <table>
                                 <tbody>
                                     <tr>
-                                        
                                         <td class="td-info">
+                                             
                                             <span>  
-                                                <label for="code" class="{{ $key==2?'code':'' }}" >{!! $info_productss[$key] !!}</label>
+                                                <label for="code" class="{{ $key==2?'code':'' }}" >{{ str_replace(':','',$info_productss[$key]) }}</label>
                                             </span>
-                                        </td>
 
+                                        </td>
+                                        
                                     </tr> 
                                 </tbody>
                             </table>
                         </div>
                     </td>
+                   
+                   
                     @endforeach
                 </tr>
                 @endforeach

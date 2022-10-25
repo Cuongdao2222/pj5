@@ -868,7 +868,7 @@
                                                 <a href="{{route('details','tu-lanh-hitachi')}}">
                                                     <h3>Tủ lạnh Hitachi</h3>
                                                 </a>
-                                                <a href="{{route('details','tu-lanh-panasonic')}}">
+                                                 <a href="{{route('details','tu-lanh-panasonic')}}">
                                                     <h3>Tủ lạnh Panasonic</h3>
                                                 </a>
                                                 <a href="{{route('details','tu-lanh-samsung')}}">

@@ -107,7 +107,9 @@ class crawlController extends Controller
    
     public function checkProductSku()
     {
-        $data  = product::find(4090);
+        $data  = product::find(2226);
+
+        $data_id = 4;
 
         $html = $data->Specifications;
 
@@ -117,7 +119,14 @@ class crawlController extends Controller
 
         $dom->loadHTML($html);
 
-        $ar = ['Cổng AV', 'Kết nối Internet', 'Cổng HDMI', 'Tương tác thông minh', 'Công nghệ âm thanh', 'Tổng công suất loa'];
+        $ar_gr[1] = ['Kích cỡ màn hình', 'Độ phân giải', 'Nơi sản xuất', 'Cổng HDMI', 'Công nghệ xử lý hình ảnh', 'Kích thước có chân, đặt bàn', 'Kích thước không chân, treo tường'];
+        $ar_gr[2] = ['Khối lượng giặt', 'Khối lượng sấy', 'Tốc độ quay vắt', 'Kiểu động cơ', 'Lồng giặt', 'Công nghệ giặt', 'Kích thước - Khối lượng', 'Nơi sản xuất'];
+        $ar_gr[3] = ['Dung tích sử dụng', 'Dung tích ngăn đá', 'Dung tích ngăn lạnh', 'Công nghệ Inverter', 'Kiểu tủ', 'Kích thước - Khối lượng', 'Nơi sản xuất'];
+        $ar_gr[4] = ['Loại máy', 'Công suất làm lạnh', 'Công suất sưởi ấm', 'Phạm vi làm lạnh hiệu quả', 'Chế độ tiết kiệm điện', 'Loại Gas sử dụng', 'Nơi sản xuất', 'Năm ra mắt'];
+
+        $ar = $ar_gr[$data_id];
+
+
 
         foreach($dom->getElementsByTagName('td') as $td) {
 

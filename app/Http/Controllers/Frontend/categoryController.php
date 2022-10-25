@@ -625,7 +625,10 @@ class categoryController extends Controller
 
                 $data_cate = $group_product[0];
 
-            }   
+            } 
+
+
+              
 
 
             $data_group_product = Cache::rememberForever('data_group_product_'.$data_cate, function() use ($data_cate){ 
