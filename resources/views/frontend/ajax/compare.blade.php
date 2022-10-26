@@ -89,8 +89,8 @@
                $('#'+classname).append(html);
                $('#modal-search-pd').modal().hide();
                id_name = [];
-
                ar_product.push(data.id);
+               console.log(group_id);
               
             }
         });

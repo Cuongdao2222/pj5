@@ -608,7 +608,7 @@
 
                             </a>
 
-                             <a href="javascript:void(0)" class="compare-show" data-id="{{ $datas->id }}">
+                             <a href="javascript:void(0)" class="compare-show" data-id="{{ $datas->id }}" data-group="{{ $groups->id }}">
                                 <i class="fa-solid fa-plus"></i>
                                     so sánh
                             </a>
@@ -771,9 +771,14 @@
 
         let ar_product = [];
 
+        var group_id   = [];
+
         $('.compare-show').click(function() {
 
             id = $(this).attr('data-id');
+
+            data_id = $(this).attr('data-group');
+
             // kiểm tra đã tick so sánh hay chưa
 
             if($(this).find('.fa-solid').hasClass('fa-check')){
@@ -800,6 +805,7 @@
                 if(ar_product.length<3){
 
                     ar_product.push(id);
+
                 } 
                 else{
                     alert('không thể thêm sản phẩm nữa');
@@ -818,6 +824,7 @@
                 url: "{{ route('compare-show') }}",
                 data: {
                     ar_product_id: JSON.stringify(ar_product),
+                    data_id:data_id,
                        
                 },
                 success: function(result){
@@ -826,7 +833,7 @@
                 }
             });         
             
-
+          
 
             $('.global-compare-group').show();
         });
@@ -834,13 +841,37 @@
 
         function compare_link() {
 
-            var link = '{{ route("so-sanh") }}?list='+ar_product;
+             $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                type: 'POST',
+                url: "{{ route('check-unique-cate') }}",
+                data: {
+                    ar_product_id: JSON.stringify(ar_product),
+                      
+                },
+                success: function(result){
+                    if(result == 0){
+
+                        alert('có sản phẩm không cùng nhóm, không thể so sánh')
+                    }
+                    else{
+
+                        console.log(result[0]);
+                        // var link = '{{ route("so-sanh") }}?list='+ar_product;
             
-            location.href = link;
+                        // location.href = link;
+                    }
+                   
+                }
+            });         
+           
+            
         }
-
-
-
 
       
         loop = {{ $deal->count() }};

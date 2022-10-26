@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Auth;
 use Session;
 use Illuminate\Support\Facades\Storage;
 
+use  App\Http\Controllers\Frontend\categoryController;
+
 use Illuminate\Support\Facades\Cache;
 use App\Models\searchkey;
 use Response;
@@ -592,6 +594,32 @@ class productController extends AppBaseController
         return  $product;
     }
 
+    public function filterProduct(Request $request)
+    {
+        // $ar_pd = json_decode($request->ar_product_id);
+
+        $ar_pd = [4573,4673,4636];
+
+        $ar_gr = [];
+
+        if(isset($ar_pd)){
+
+            foreach ($ar_pd as $key => $value) {
+               $gr =  new categoryController();
+               $gr_id = $gr->get_Group_Product($value);
+
+               array_push($ar_gr, $gr_id[0]);
+            }
+        }
+        $unique = array_unique($ar_gr);
+
+       
+        if(count($unique)==1){
+            return json_encode($unique);
+        }
+        return 0;
+    }
+
     public function imagecontent($id)
     {
         return view('products.image', compact('id'));
@@ -600,6 +628,7 @@ class productController extends AppBaseController
     public function sosanh()
     {
         $data = $_GET['list'];
+       
 
         if(empty($data)){
             return abort('404');

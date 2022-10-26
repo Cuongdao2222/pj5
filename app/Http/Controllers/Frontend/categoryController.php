@@ -510,9 +510,7 @@ class categoryController extends Controller
         $infoProductOfGroup = groupProduct::select('product_id', 'id')->whereIn('id', $data_groupProduct)->get()->toArray();
 
         $result = [];
-        
-
-
+    
 
         if(isset($infoProductOfGroup)){
 

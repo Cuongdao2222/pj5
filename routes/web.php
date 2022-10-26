@@ -24,6 +24,10 @@ Route::get('/tin-tuc', 'Frontend\blogController@index')->middleware('cache.heade
 
 Route::get('/', 'Frontend\indexController@index')->middleware('throttle:60')->name('homeFe');
 
+Route::post('/check-unique-cate', 'productController@filterProduct')->name('check-unique-cate');
+
+// Route::get('/check-unique-cates', 'productController@filterProduct')->name('check-unique-cate');
+
 
 Route::post('showDealClick','flashdealController@showDealByIdClick')->name('showDealClick');
 
@@ -157,6 +161,8 @@ Route::post('get-email-user', 'AjaxController@getEmail')->name('getemail');
 Route::post('suggest', 'AjaxController@getProductActive')->middleware('throttle:60')->name('sugest-click');
 
 Route::post('filter-price-product', 'AjaxController@filterByValue')->name('filter-option');
+
+
 
 
 Route::post('filter-price-product-by-page', 'AjaxController@filterByPageFilter')->name('filter-option-by-page');
