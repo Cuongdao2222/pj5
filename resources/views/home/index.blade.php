@@ -494,6 +494,9 @@
             $.ajax({
                 type: 'POST',
                 dataType:"jsonp",
+                contentType:'application/json',
+                cors: true ,
+                secure: true,
                 url: 'https://dienmaynguoiviet.gencrm.com/modules/api/insert',
                 headers:{ 
 
