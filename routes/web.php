@@ -158,6 +158,8 @@ Route::post('muchsearch', 'AjaxController@muchSearch')->name('muchSearch');
 
 Route::post('get-email-user', 'AjaxController@getEmail')->name('getemail');
 
+Route::post('get-search-input-compare', 'AjaxController@getProductSeachValueInput')->name('search-input-pd-compare');
+
 Route::post('suggest', 'AjaxController@getProductActive')->middleware('throttle:60')->name('sugest-click');
 
 Route::post('filter-price-product', 'AjaxController@filterByValue')->name('filter-option');

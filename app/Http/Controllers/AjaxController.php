@@ -415,6 +415,31 @@ class AjaxController extends Controller
         }
     }
 
+    public function getProductSeachValueInput(Request $request)
+    {
+
+        $clearData = trim($request->search);
+
+        $clearData = strip_tags($clearData);
+
+        $search = $clearData;
+
+        $products = product::where('Name', 'like', '%'.$search.'%')->where('active', 1)->Orwhere('ProductSku', $search)->where('active', 1)->first();
+
+
+        $sugests = [];
+
+        if(!empty($products)){
+            $sugest = '<a href="'.route("details", $products->Link).'"><img src="'.asset($products->Image).'" width="50" style="margin-right:10px;"></a><a class="suggest_link" href="'.route('details', $products->Link).'">'.$products->Name.'</a>';
+
+            array_push($sugests, $sugest);
+        }
+
+        
+
+        return response(json_encode($sugests));
+    }
+
     public function addNewProduct(Request $request)
     {
         $addProduct = new newProduct();

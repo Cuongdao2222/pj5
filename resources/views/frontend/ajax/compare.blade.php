@@ -39,7 +39,7 @@
             </div>
             <div class="modal-body">
                
-                    <input type="text" class="input-search ui-autocomplete-input" id="searchs" placeholder="nhập tên hoặc mã model" name="key" autocomplete="off" maxlength="100" required=""> 
+                    <input type="text" class="input-search ui-autocomplete-input" id="searchs" placeholder="nhập tên hoặc mã model" name="key" autocomplete="off" maxlength="100" required="" id="search-model"> 
                     <button type="button"> <i class="icon-search" onclick="add_Pd_search('')"></i> </button> 
                     <div id="search-result"></div> 
                 
@@ -106,4 +106,41 @@
             }
         });
     }
+
+    $(function() {
+        $("#searchs").autocomplete({
+
+            minLength: 2,
+            
+            source: function(request, response) {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+
+                    url: "{{  route('search-input-pd-compare')}}",
+                    type: "POST",
+                    data: {
+                        "_token": "{{ csrf_token() }}",
+                        search:$('#searchs').val()
+                    },
+                    dataType: "json",
+                    success: function (data) {
+                        var items = data;
+                       
+                        console.log(data);
+                        // response(items);
+
+                        $('#search-result').html();
+
+                        $('#search-result').html(data);
+                    
+                    }
+                });
+            },
+            html:true,
+        });
+    });
 </script>

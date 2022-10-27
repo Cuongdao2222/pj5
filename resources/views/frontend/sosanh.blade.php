@@ -57,7 +57,7 @@
 
                     $data_id = $_GET['cate']??6;
 
-                    $ar_gr[1] = ['Tên sản phẩm','Ảnh sản phẩm','Kích cỡ màn hình', 'Độ phân giải', 'Nơi sản xuất', 'Cổng HDMI', 'Công nghệ xử lý hình ảnh', 'Kích thước có chân, đặt bàn', 'Kích thước không chân, treo tường'];
+                    $ar_gr[1] = ['Tên sản phẩm','Ảnh sản phẩm','Kích cỡ màn hình', 'Độ phân giải', 'Công nghệ âm thanh', 'Nơi sản xuất', 'Cổng HDMI', 'Công nghệ xử lý hình ảnh', 'Kích thước có chân, đặt bàn', 'Kích thước không chân, treo tường'];
                     $ar_gr[2] = ['Tên sản phẩm','Ảnh sản phẩm','Khối lượng giặt', 'Khối lượng sấy', 'Tốc độ quay vắt', 'Kiểu động cơ', 'Lồng giặt', 'Công nghệ giặt', 'Kích thước - Khối lượng', 'Nơi sản xuất'];
                     $ar_gr[3] = ['Tên sản phẩm','Ảnh sản phẩm','Dung tích sử dụng', 'Dung tích ngăn đá', 'Dung tích ngăn lạnh', 'Công nghệ Inverter', 'Kiểu tủ', 'Kích thước - Khối lượng', 'Nơi sản xuất'];
                     $ar_gr[4] = ['Tên sản phẩm','Ảnh sản phẩm','Loại máy', 'Công suất làm lạnh', 'Công suất sưởi ấm', 'Phạm vi làm lạnh hiệu quả', 'Chế độ tiết kiệm điện', 'Loại Gas sử dụng', 'Nơi sản xuất', 'Năm ra mắt'];
@@ -115,7 +115,7 @@
                             
 
                            $pd_filter[$keys]['Ảnh sản phẩm'] = htmlspecialchars_decode('<img width="327" class="code-image" src="'.asset($product->Image).'">');
-                           $pd_filter[$keys]['Tên sản phẩm'] = $product->Name;
+                           $pd_filter[$keys]['Tên sản phẩm'] = '<b>'.$product->Name.'</b>';
                         }
                         else{
                             $pd_filter[$keys]['Tên sản phẩm'] = $product->Name;
