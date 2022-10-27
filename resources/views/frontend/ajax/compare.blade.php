@@ -101,6 +101,7 @@
                html = '<img src="https://dienmaynguoiviet.vn/'+data.Image+'"> <span>'+data.Name+'</span>';
                $('#'+classname).append(html);
                $('#modal-search-pd').modal().hide();
+               $('#modal-search-pd').modal('hide');
                id_name = [];
                ar_product.push(data.id);
                console.log(group_id);

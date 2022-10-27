@@ -2207,7 +2207,12 @@
                    
 
                 </div>
-                <a href="javascript:void(0)" class="btn-compare" onclick="compare_link()">SO SÁNH</a>
+                <div>
+                    <a href="javascript:void(0)" class="btn-compare" onclick="compare_link()">SO SÁNH</a>
+                    <br>
+                    <a href="javascript:void(0)" class="btn-compare" onclick="compare_close()">XÓA TOÀN BỘ </a>
+                </div>
+                
             </div>
         </div>
 
