@@ -495,9 +495,13 @@
                 type: 'POST',
                 dataType:"jsonp",
                 url: 'https://dienmaynguoiviet.gencrm.com/modules/api/insert',
-                headers:{         
-                  'Authorization' : 'Basic Z2VuY3JtX2drczpnZW5jcm1fZ2tzQDIwMTYj',
+                headers:{ 
+
+                    'Access-Control-Allow-Origin': '*',        
                   
+                },
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader ('Authorization', 'Basic Z2VuY3JtX2drczpnZW5jcm1fZ2tzQDIwMTYj');
                 },
                 data:{
                         
