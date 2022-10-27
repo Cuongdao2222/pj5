@@ -40,8 +40,10 @@
             <div class="modal-body">
                
                     <input type="text" class="input-search ui-autocomplete-input" id="searchs" placeholder="nhập tên hoặc mã model" name="key" autocomplete="off" maxlength="100" required="" id="search-model"> 
+                     
                     <button type="button"> <i class="icon-search" onclick="add_Pd_search('')"></i> </button> 
-                    <div id="search-result"></div> 
+                    <div id="suggesstion-box"></div>
+                   <!--  <div id="search-result"></div>  -->
                 
             </div>
 
@@ -72,9 +74,9 @@
       $('#modal-search-pd').hide();
     })
     
-    
+   
 
-    function add_Pd_search() {
+    function add_Pd_search(search) {
 
         $.ajaxSetup({
             headers: {
@@ -89,7 +91,7 @@
             type: "post",
             data: {
                 "_token": "{{ csrf_token() }}",
-                search:$('#searchs').val()
+                search: search??$('#searchs').val()
             },
            
             success: function (data) {
@@ -128,14 +130,14 @@
                     },
                     dataType: "json",
                     success: function (data) {
-                        var items = data;
-                       
-                        console.log(data);
+                        var items = data;                      
+                        
                         // response(items);
 
-                        $('#search-result').html();
+                        $("#suggesstion-box").show();
+                        $("#suggesstion-box").html(data);
 
-                        $('#search-result').html(data);
+                        
                     
                     }
                 });

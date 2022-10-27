@@ -430,7 +430,7 @@ class AjaxController extends Controller
         $sugests = [];
 
         if(!empty($products)){
-            $sugest = '<a href="'.route("details", $products->Link).'"><img src="'.asset($products->Image).'" width="50" style="margin-right:10px;"></a><a class="suggest_link" href="'.route('details', $products->Link).'">'.$products->Name.'</a>';
+            $sugest = '<a href="javascript:void(0)" onclick=\'add_Pd_search("'.$products->Name.'")\'><img src="'.asset($products->Image).'" width="50" style="margin-right:10px;"></a><a class="suggest_link" href="javascript:void(0)" onclick=\'add_Pd_search("'.$products->Name.'")\'>'.$products->Name.'</a>';
 
             array_push($sugests, $sugest);
         }

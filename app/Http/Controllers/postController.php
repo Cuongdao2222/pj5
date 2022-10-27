@@ -285,14 +285,10 @@ class postController extends AppBaseController
         $datas = [];
 
         array_push($datas, $data);
-
         
-
         if(!empty($data)){
             return response(json_encode($datas));
         }
-
-        
 
     }
 
