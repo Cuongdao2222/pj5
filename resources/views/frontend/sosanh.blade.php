@@ -34,6 +34,10 @@
     .code-image{
         width: 36%;
     }
+
+    .fa-angle-right{
+        display: none;
+    }
     @media only screen and (max-width: 767px) {
      
         .text-h3{
@@ -51,7 +55,7 @@
 
                 <?php
 
-                    $data_id = 3;
+                    $data_id = $_GET['cate']??6;
 
                     $ar_gr[1] = ['Tên sản phẩm','Ảnh sản phẩm','Kích cỡ màn hình', 'Độ phân giải', 'Nơi sản xuất', 'Cổng HDMI', 'Công nghệ xử lý hình ảnh', 'Kích thước có chân, đặt bàn', 'Kích thước không chân, treo tường'];
                     $ar_gr[2] = ['Tên sản phẩm','Ảnh sản phẩm','Khối lượng giặt', 'Khối lượng sấy', 'Tốc độ quay vắt', 'Kiểu động cơ', 'Lồng giặt', 'Công nghệ giặt', 'Kích thước - Khối lượng', 'Nơi sản xuất'];
@@ -71,6 +75,10 @@
                     $info_product = [];
 
                     $ar_sp = [];
+
+                    $list_filter = [];
+
+                    $pd_filter = [];
                     foreach ($data as $keys => $value) {
 
                         $product = App\Models\product::find($value);
@@ -90,34 +98,47 @@
 
                                     if(strpos($td->nodeValue, $value)>-1){
 
-                                        $ar_sp[$keys][$key] = str_replace($value, '', $td->nodeValue);
+                                        // $ar_sp[$keys][$key] =  !empty($td->nodeValue)?str_replace($value, '', $td->nodeValue):'';
+
+                                        $pd_filter[$keys][$value] = !empty($td->nodeValue)?str_replace([$value,':'], '', $td->nodeValue):'';
+
+                                       
+
+                                        // array_push($list_filter, $value);
                                         
                                     }
+
 
                                 }
                             } 
 
-                            array_unshift($ar_sp[$keys], htmlspecialchars_decode('<img width="327" class="code-image" src="'.asset($product->Image).'">'));
-                            array_unshift($ar_sp[$keys], $product->Name);
+                            
+
+                           $pd_filter[$keys]['Ảnh sản phẩm'] = htmlspecialchars_decode('<img width="327" class="code-image" src="'.asset($product->Image).'">');
+                           $pd_filter[$keys]['Tên sản phẩm'] = $product->Name;
                         }
                         else{
-                            $ar_sp[$keys][0] = $product->Name;
-                            $ar_sp[$keys][1] = '<img width="327" class="code-image" src="'.asset($product->Image).'">';
-                            $ar_sp[$keys][2] = $product->Salient_Features;
+                            $pd_filter[$keys]['Tên sản phẩm'] = $product->Name;
+                            $pd_filter[$keys]['Ảnh sản phẩm'] = '<img width="327" class="code-image" src="'.asset($product->Image).'">';
+                            $pd_filter[$keys]['Đặc điểm nổi bật'] = str_replace(['Xem thêm', 'Đặc điểm nổi bật'], '', html_entity_decode($product->Salient_Features));
                         }
 
 
                     }
+
+                   
                     
                 ?>
 
                 
-                @foreach($ar as $key=> $filters)
+                @foreach($ar as $keypd=> $filters)
                 
                 <tr>
                     <td><b>{{ $filters }}</b></td>
 
-                    @foreach($ar_sp as  $info_productss)
+
+
+                    @foreach($pd_filter as  $info_productss)
 
                     <td>
                         <div style="max-height:250px; overflow:auto">
@@ -127,7 +148,7 @@
                                         <td class="td-info">
                                              
                                             <span>  
-                                                <label for="code">{!! !empty($info_productss[$key])?str_replace(':','',$info_productss[$key]):'11' !!}</label>
+                                                <label for="code">{!! !empty($info_productss[$filters])?$info_productss[$filters]:'' !!}</label>
                                             </span>
 
                                         </td>

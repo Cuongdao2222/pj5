@@ -857,14 +857,14 @@
                 success: function(result){
                     if(result == 0){
 
-                        alert('có sản phẩm không cùng nhóm, không thể so sánh')
+                        alert('có sản phẩm không cùng nhóm, không thể so sánh');
                     }
                     else{
 
-                        console.log(result[0]);
-                        // var link = '{{ route("so-sanh") }}?list='+ar_product;
+                       
+                        var link = '{{ route("so-sanh") }}?list='+ar_product+'&cate='+result;
             
-                        // location.href = link;
+                        location.href = link;
                     }
                    
                 }

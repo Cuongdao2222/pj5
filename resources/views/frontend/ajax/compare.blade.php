@@ -2,6 +2,7 @@
 @if(!empty($data))
 
 @foreach($data as $datas)
+
 <a href="javascript:void(0)" class="js-compare-item position-relative" data-id="39839">
     <span class="remove-compare js-remove-compare" onclick="removeCompare(this)"></span>
     <img src="{{ asset($datas->Image) }}">
@@ -32,7 +33,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Tìm kiếm model</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close close-modal" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -42,6 +43,11 @@
                     <button type="button"> <i class="icon-search" onclick="add_Pd_search('')"></i> </button> 
                     <div id="search-result"></div> 
                 
+            </div>
+
+            <div class="modal-footer">
+                
+                <button type="button" class="btn btn-secondary close-modal" >Close</button>
             </div>
            
         </div>
@@ -59,6 +65,11 @@
 
        $('#modal-search-pd').show();
 
+    })
+
+    $('.close-modal').click(function () {
+       
+      $('#modal-search-pd').hide();
     })
     
     

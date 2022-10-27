@@ -596,9 +596,9 @@ class productController extends AppBaseController
 
     public function filterProduct(Request $request)
     {
-        // $ar_pd = json_decode($request->ar_product_id);
+        $ar_pd = json_decode($request->ar_product_id);
 
-        $ar_pd = [4573,4673,4636];
+        // $ar_pd = [4573,4673,4636];
 
         $ar_gr = [];
 
@@ -615,7 +615,7 @@ class productController extends AppBaseController
 
        
         if(count($unique)==1){
-            return json_encode($unique);
+            return $unique[0];
         }
         return 0;
     }

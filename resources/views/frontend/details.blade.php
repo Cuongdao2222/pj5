@@ -1789,9 +1789,34 @@
 
     function compare_link() {
 
-        var link = '{{ route("so-sanh") }}?list='+ar_product;
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $.ajax({
+            type: 'POST',
+            url: "{{ route('check-unique-cate') }}",
+            data: {
+                ar_product_id: JSON.stringify(ar_product),
+                  
+            },
+            success: function(result){
+                if(result == 0){
+
+                    alert('có sản phẩm không cùng nhóm, không thể so sánh');
+                }
+                else{
+
+                   
+                    var link = '{{ route("so-sanh") }}?list='+ar_product+'&cate='+result;
         
-        location.href = link;
+                    location.href = link;
+                }
+               
+            }
+        });         
     }
 
     $('.scroll-content').click(function(){
