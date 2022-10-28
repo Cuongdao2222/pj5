@@ -417,22 +417,34 @@
                       display: -webkit-box;
                   }  
 
-                    .p_hotline_item span {
-                        width: 100%;
-                        text-align: center;
-                    }
-                  .hotlines{
+                .p_hotline_item span {
+                    width: 100%;
+                    text-align: center;
+                }
+                .hotlines{
                     bottom:100px; 
                     right:0; 
-                  }  
-                  #myBtn-top {
+                }  
+                #myBtn-top {
                    /* bottom: 28px;
                     right: 100px*/
                     display: none !important;
-                  }  
+                }  
                   #skw{
                     border: 1px solid #D92548;
                   }
+
+                .btn-remove-all-compare{
+                    display: none !important;
+
+                }
+                .btn-compare{
+                    top: 0px !important;
+                    left: 112px !important;
+                    line-height: 28px !important;
+                }
+
+                
             }
         </style>
         @endif
@@ -2208,9 +2220,9 @@
 
                 </div>
                 <div>
-                    <a href="javascript:void(0)" class="btn-compare" onclick="compare_link()">SO SÁNH</a>
+                    <a href="javascript:void(0)" class="btn-compare btn-compare" onclick="compare_link()">SO SÁNH</a>
                     <br>
-                    <a href="javascript:void(0)" class="btn-compare" onclick="compare_close()">XÓA TOÀN BỘ </a>
+                    <a href="javascript:void(0)" class="btn-compare btn-remove-all-compare" onclick="compare_close()">XÓA TOÀN BỘ </a>
                 </div>
                 
             </div>
