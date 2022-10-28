@@ -389,6 +389,10 @@
                 width: 30%;
             }
 
+            .buy-button-hotline{
+                font-size: 17px;
+            }
+
             .btn-compare{
                 position: absolute;
                 top: 34px;
@@ -743,12 +747,21 @@
                                     <h3> {{ str_replace(',' ,'.', number_format($data->Price)) }}₫ </h3>
                                 </div>
 
+
+
                             </div>
+
+
 
                             <div class="pdetail-status">
                                 <div class="pdetail-stockavailable">
                                     <span>{{ $status }}</span>
                                 </div>
+                                @if($data_cate ===8)
+
+                                <a href="tel:02473036336"><div class="buy-button-hotline nhapnhay btn">Gọi 0247.303.6336 để được giảm thêm</div></a>
+
+                                @endif
 
                                 @if(!empty($data->promotion))
 
@@ -1160,8 +1173,10 @@
                     return false !== strpos($item->ProductSku, $cutModel);
                 });
 
+                $relationProduct =  $relationProduct->sortBy('Name');
 
-                    
+
+
             ?>
             @if($relationProduct->count()>1)
                
@@ -1338,8 +1353,14 @@
 
                         <div class="clearfix"></div>
                         <div class="pdetail-status">
+
+                            
                            
-                            <!-- <a href="tel:02473036336"></a><div class="buy-button-hotline nhapnhay btn">Gọi 0247.303.6336 để được giảm thêm</div> -->
+                            @if($data_cate ===8)
+
+                            <a href="tel:02473036336"><div class="buy-button-hotline nhapnhay btn">Gọi 0247.303.6336 để được giảm thêm</div></a>
+
+                            @endif
 
                             @if($data->limits ==1)
                             <div class="sticker buyonline"> <p><strong>Số Lượng Có Hạn</strong></p></div>
