@@ -693,7 +693,7 @@
 
                         <?php 
 
-                            $images_products = Cache::remember('image_product_'.$data->id, 1000, function() use ($data) {
+                            $images_products = Cache::remember('image_product_'.$data->id, 100, function() use ($data) {
 
                                 $images = App\Models\image::where('product_id', $data->id)->select('image')->get()??'';
 
@@ -703,9 +703,9 @@
 
                         ?>
 
-                        @if(isset($images))
+                        @if(isset($images_products))
                        
-                        @foreach($images as $image)
+                        @foreach( $images_products as $image)
 
                         <!-- check trùng ảnh đại diện -->
 
