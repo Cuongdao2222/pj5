@@ -377,6 +377,10 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
 
 
+    Route::get('/create-redirect-link', 'redirectLinkController@showCreate');
+
+
+
     Route::get('/active-deal', 'dealController@activeDeal')->name('active-deal');
 
     Route::get('/active-flash-deal', 'flashdealController@activeDeal')->name('active-flash-deal');                                            
