@@ -21,7 +21,7 @@ class redirectLinkController extends Controller
         $redirects->request_path = $request->request_path;
         $redirects->target_path  = $request->target_path;
         $redirects->save();
-        return redirect('redirect.list');
+        return redirect(route('redirect.list'));
     }
 
     public function update(Request $request, $id)
@@ -32,7 +32,18 @@ class redirectLinkController extends Controller
             $redirect->target_path  = $request->target_path;
             $redirect->save();
         }
-        return redirect('redirect.list');
+        return redirect(route('redirect.list'));
+    }
+
+    public function remove(Request $request, $id)
+    {
+        $redirect = redirectLink::find($id);
+        if(!empty($redirect)){
+
+            $redirect->delete();
+        }   
+
+        return redirect(route('redirect.list'));
     }
     
     public function show($id)

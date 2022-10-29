@@ -385,6 +385,8 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::post('redirect/update/{id}', 'redirectLinkController@update')->name('redirect.update');
 
+    Route::get('redirect/delete/{id}', 'redirectLinkController@remove')->name('redirect.remove');
+
     Route::get('redirect/show/{id}', 'redirectLinkController@show')->name('redirect.show');
 
 

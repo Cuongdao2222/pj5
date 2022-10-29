@@ -537,6 +537,16 @@ class categoryController extends Controller
 
         $link = trim($slug);
 
+        $link_redirect = DB::table('redirect')->where('request_path', '/'.$slug)->first();
+
+        if(!empty($link_redirect)){
+
+            return redirect($link_redirect->target_path, 301);
+
+            die();
+        }
+
+
         $cache = 'findID'.$link;
 
         $findID = Cache::rememberForever($cache, function() use ($link) {
@@ -544,6 +554,7 @@ class categoryController extends Controller
             $findID = product::select('id')->where('Link', $link)->first()??'';
             return  $findID;
         });
+
 
         // $findID = product::where('Link', $link)->first();
         

@@ -16,9 +16,16 @@
 
         @if(isset($list))
 
-        @foreach($list as $val)
+        <?php 
+            $number = 0;
+        ?>
+
+        @foreach($list as  $val)
+        <?php 
+            $number++;
+        ?>
         <tr id="row_164654" onmouseover="this.className='row-hover'" onmouseout="this.className=''" class="">
-            <td>1</td>
+            <td>{{ $number }}</td>
             <td><input type="text" size="30" value="{{ @$val->request_path }}"></td>
             <td>
                 <input type="text" size="60" value="{{ @$val->target_path }}">
@@ -26,6 +33,7 @@
             </td>
             <td>301</td>
             <td><a href="{{ route('redirect.show', $val->id) }}">Sửa</a></td>
+            <td><a href="{{ route('redirect.remove', $val->id) }}">xóa</a></td>
         </tr>
         @endforeach
 

@@ -131,6 +131,13 @@
 </li>
 
 <li class="nav-item">
+    <a href="{{ route('redirect.list') }}"
+       class="nav-link {{ Request::is('makers*') ? 'active' : '' }}">
+        <p>redirect link</p>
+    </a>
+</li>
+
+<li class="nav-item">
     <a href="{{ route('addcss') }}"
        class="nav-link {{ Request::is('makers*') ? 'active' : '' }}">
         <p>Sửa css trang</p>
