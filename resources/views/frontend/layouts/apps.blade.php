@@ -2251,18 +2251,24 @@
             
         </script>
 
+        <?php 
+            $week = Carbon\Carbon::now()->weekOfYear;
+           
+        ?>
+
+        @if( $week%2===0)
         <a href="https://zalo.me/0913011888" target="_blank">
             <div style="position: fixed; bottom: 52px; left: 52px; transform: translate(0px, 0px) !important; z-index: 2147483644; border: none; visibility: visible; right: 0px; width: 60px; height: 60px;" class="zalo-chat-widget"data-welcome-message="Điện Máy Người Việt rất vui khi được hỗ trợ bạn!" data-autopopup="0" data-width="" data-height="">
                 <img src="https://page.widget.zalo.me/static/images/2.0/Logo.svg">
             </div>
         </a>
-
+        @else
         <a href="https://zalo.me/0983612828" target="_blank">
             <div style="position: fixed; bottom: 28px !important; left: 52px !important; transform: translate(0px, 0px) !important; z-index: 2147483644; border: none; visibility: visible; right: 0px; width: 60px; height: 60px;" class="zalo-chat-widget"data-welcome-message="Điện Máy Người Việt rất vui khi được hỗ trợ bạn!" data-autopopup="0" data-width="" data-height="">
                 <img src="https://page.widget.zalo.me/static/images/2.0/Logo.svg">
             </div>
         </a>
-       
+        @endif
  
 <!-- Messenger Plugin chat Code -->
    <!--  <div id="fb-root"></div> -->

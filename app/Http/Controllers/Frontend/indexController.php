@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Cache;
 use App\Models\deal;
 use App\Models\product;
 use Carbon\Carbon;
+use Session;
 
 use Auth;
 use DB;
@@ -153,6 +154,26 @@ class indexController extends Controller
     {
         Cache::flush();
         echo "thanh cong";
+    }
+
+    public function addClick(Request $request)
+    {
+        $link = $request->link;
+
+        $sessionKey = 'banner_click_'.$link;
+
+        $sessionView = Session::get($sessionKey);
+
+        $count = Cache::get('visited_banner_'.$link)??0;
+
+        if (!$sessionView) { //nếu chưa có session
+
+            Session::put($sessionKey, 1); //set giá trị cho session
+
+            $count = Cache::increment('visited_banner_'.$link);   
+
+        }
+
     }
 
      

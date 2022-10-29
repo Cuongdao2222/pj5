@@ -43,6 +43,9 @@
          <?php 
 
             $i++;
+
+            $click = (Cache::get('visited_banner_'.$banner->link))??0;
+                            
          ?>
         <tr id="row_402" onmouseover="this.className='row-hover'" onmouseout="this.className=''" class="row-hover">
             <td>{{ $i }}</td>
@@ -69,6 +72,7 @@
                             <td>Link</td>
                             <td>: <input type="text" readonly="" size="35" value="{{ $banner->link }}"></td>
                         </tr>
+                       
                         <tr>
                             <td>Thời gian</td>
                             <td>{{ @$banner->updated_at->format('d/m/Y')  }}</td>
@@ -82,7 +86,7 @@
                  <span id="order_{{ $banner->id }}"></span>
                 
             </td>
-            <td>0</td>
+            <td>{{ $click }}</td>
             <td>
                 <span id="status_402">
                 <a href="{{ route('active-banner') }}?id={{ $banner->id }}&active={{ $banner->active==0?1:0 }}">{{ $banner->active==0?'Bật lên':'Hạ xuống' }}</a>

@@ -113,7 +113,7 @@
 
                 @foreach($banners as $value)
                 <div class="item" data-dot="<span>{{ $value->title }}</span>">
-                    <a aria-label="slide" data-cate="0" data-place="1535" href="{{ $value->link }}" target="_blank"><img  src="{{ asset($value->image) }}"  data-src="{{ asset($value->image) }}" alt="{{ $value->title }}"  ></a>
+                    <a aria-label="slide" data-cate="0" data-place="1535" href="javascript:void(0)" ><img  src="{{ asset($value->image) }}"  data-src="{{ asset($value->image) }}" alt="{{ $value->title }}"  onclick="tracking('{{ $value->link }}')"></a>
                 </div>
                 @endforeach
                 @endif
@@ -1058,6 +1058,31 @@
                 }
             }
         });
+
+        function tracking(link){
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                type: 'POST',
+                url: "{{ route('click-banner') }}",
+                data: {
+                    link: link,
+                },
+                success: function(result){
+                    window.open(
+                      link,
+                      '_blank' 
+                    );
+                }
+            });     
+
+            
+        }
         
     </script>
     @endpush
