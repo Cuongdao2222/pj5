@@ -389,7 +389,7 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::get('redirect/show/{id}', 'redirectLinkController@show')->name('redirect.show');
 
-
+    Route::get('banner/delete/{id}','bannerController@destroy')->name('banner.destroy');
 
 
 

@@ -89,7 +89,7 @@
                 </span> 
                 <br> 
                 <a href="{{ route('banners.edit', [$banner->id]) }}">Sửa lại</a> <br>
-                <!-- <a href="javascript:void(0);" onclick="delete_this('402')">Xóa</a> -->
+                <a href="{{ route('banner.destroy', [$banner->id]) }}">Xóa</a>
             </td>
         </tr>
         @endforeach

@@ -25,6 +25,8 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 
 use App\Http\Controllers\Frontend\filterController;
 
+use App\Models\redirectLink;
+
 
 use Session;
 
@@ -537,7 +539,13 @@ class categoryController extends Controller
 
         $link = trim($slug);
 
-        $link_redirect = DB::table('redirect')->where('request_path', '/'.$slug)->first();
+        $link_redirect = Cache::rememberForever('link_redirect', function() use ($slug) {
+
+            $link_redirect = redirectLink::where('request_path', '/'.$slug)->first()??'';
+
+            return $link_redirect;
+
+        });    
 
         if(!empty($link_redirect)){
 
