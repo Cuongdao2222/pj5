@@ -377,7 +377,17 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
 
 
-    Route::get('/create-redirect-link', 'redirectLinkController@showCreate');
+    Route::get('redirect/create', 'redirectLinkController@index')->name('redirect.creates');
+
+    Route::get('redirect/list', 'redirectLinkController@list')->name('redirect.list');
+
+    Route::post('redirects/create', 'redirectLinkController@store')->name('redirect.create');
+
+    Route::post('redirect/update/{id}', 'redirectLinkController@update')->name('redirect.update');
+
+    Route::get('redirect/show/{id}', 'redirectLinkController@show')->name('redirect.show');
+
+
 
 
 
