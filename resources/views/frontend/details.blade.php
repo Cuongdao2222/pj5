@@ -757,7 +757,7 @@
                                 <div class="pdetail-stockavailable">
                                     <span>{{ $status }}</span>
                                 </div>
-                                @if($data_cate ===8||$data_cate ===9)
+                                @if($data_cate ===8||$data_cate ===9||$data_cate ===1)
 
                                 <a href="tel:02473036336"><div class="buy-button-hotline nhapnhay btn">Gọi 0247.303.6336 để được giảm thêm</div></a>
 
@@ -1356,7 +1356,7 @@
 
                             
                            
-                            @if($data_cate ===8||$data_cate ===9)
+                            @if($data_cate ===8||$data_cate ===9||$data_cate ===1)
 
                             <a href="tel:02473036336"><div class="buy-button-hotline nhapnhay btn">Gọi 0247.303.6336 để được giảm thêm</div></a>
 
