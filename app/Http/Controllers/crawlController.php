@@ -620,7 +620,26 @@ class crawlController extends Controller
              print_r($value->Link.'     ');
         }
 
+   }
+
+   public function randomOrderDeal()
+   {
+        $deal = deal::get();
+
+        if($deal->count()>0){
+            foreach ($deal as $key => $value) {
+          
+                $deals = deal::find($value->id);
+
+                $deals->order = mt_rand(1, 10000);
+
+                $deals->save();
+
+           }
+        }
+
        
+       echo "thanh cong";
    }
     public function findimage()
     {

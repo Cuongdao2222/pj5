@@ -98,6 +98,7 @@
                                     <td width="100">Giá</td>
 
                                     <td width="130">Thời gian sửa</td>
+                                    <td width="130">Người sửa</td>
                                     
                                 </tr>
                                 <?php 
@@ -112,9 +113,10 @@
                                     <td width="40">{{ $key }}</td>
                                     <td width="190">{{ App\Models\product::find($value->product_id)->Name }}</td>
                                     
-                                    <td width="130">{{ str_replace(',' ,'.', number_format($value->price_old)) }}</td>
+                                    <td width="130">{{ str_replace(',' ,'.', number_format($value->price_old)) }} đ</td>
 
                                     <td>{{ $value->updated_at }}</td>
+                                    <td> {{ App\User::find($value->user_id)->name }}</td>
                                     
                                 </tr>
                                 @endforeach

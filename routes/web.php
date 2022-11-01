@@ -26,7 +26,7 @@ Route::get('/', 'Frontend\indexController@index')->middleware('throttle:60')->na
 
 Route::post('/check-unique-cate', 'productController@filterProduct')->name('check-unique-cate');
 
-// Route::get('/check-unique-cates', 'productController@filterProduct')->name('check-unique-cate');
+Route::get('/random-deal', 'crawlController@randomOrderDeal');
 
 
 Route::post('showDealClick','flashdealController@showDealByIdClick')->name('showDealClick');

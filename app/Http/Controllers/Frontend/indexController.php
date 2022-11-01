@@ -24,6 +24,8 @@ class indexController extends Controller
        
         $banners =  Cache::get('baners');
 
+        $now  = Carbon::now();
+
         if(!Cache::has('deals')){
             $deal = deal::get();
 
@@ -97,11 +99,14 @@ class indexController extends Controller
         }  
         else{
             $bannerUnderSale = Cache::get('bannerUnderSale');
-        }  
+        }
 
-       
-        return view('frontend.index', compact('banners', 'bannersRight', 'bannerUnderSlider', 'bannerUnderSale','deal','product_sale', 'group','timeDeal_star', 'deal_check'));
+        
+
+        return view('frontend.index', compact('banners', 'bannersRight', 'bannerUnderSlider', 'bannerUnderSale','deal','product_sale', 'group','timeDeal_star', 'deal_check', 'now'));
     }
+
+
     public function cache()
     {
        
@@ -118,8 +123,6 @@ class indexController extends Controller
 
         }
         Cache::put('groups', $groups,10000);
-
-       
 
     }
 

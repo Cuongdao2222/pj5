@@ -181,7 +181,7 @@
         </section>
         <?php 
            
-            $now  = Carbon\Carbon::now();
+           
 
             if(!empty($deal)){
 
