@@ -14,6 +14,20 @@
     {!! Form::textarea('slogan', null, ['class' => 'form-control','maxlength' => 10000, 'id'=>'slogan']) !!}
 </div>
 
+<?php 
+    $option  = ['tắt', 'bật'];
+
+    if(!empty($groupProducts)){
+       
+        $options = ($groupProducts->toArray())['button'];
+    }
+?>
+
+<div class="form-group col-sm-6">
+    {!! Form::label('button gọi để giảm thêm', 'button gọi để giảm thêm:') !!}
+    {!! Form::select('button', $option, @$options, ['class' => 'form-control custom-select']) !!}
+</div>
+
 
 
 
