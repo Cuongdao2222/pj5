@@ -660,8 +660,8 @@ class categoryController extends Controller
                 return product::whereIn('id',  json_decode($data_group_product->product_id))->take(10)->get();
             });  
             
-            cache::forget('metaseo-detail'.$data->Meta_id);
-            
+
+
             $meta = Cache::remember('metaseo-detail'.$data->Meta_id,100, function() use ($data){
                 return metaSeo::find($data->Meta_id);
             }); 
