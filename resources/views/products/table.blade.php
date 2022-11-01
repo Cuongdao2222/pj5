@@ -122,8 +122,18 @@
                 <a href="{{ route('products.edit', [$product->id]) }}">{{ $product->Name }}</a>
                 <br>
                 thời gian update :{{ $product->updated_at->format('d/m/Y, H:i:s') }}
+
                 <br>
                 người update : {{ App\User::find($product->user_id)->name }} 
+                <br>
+
+                <?php 
+                    $check = App\Models\historyPd::where('product_id', $product->id)->get();
+                ?>
+
+                @if($check->count()>0)
+                <a href="{{ route('view-history', $product->id) }}">xem lịch sử</a>
+                @endif
             </td>
             <td width="100">
                 

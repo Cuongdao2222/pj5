@@ -22,6 +22,7 @@ use  App\Http\Controllers\Frontend\categoryController;
 use Illuminate\Support\Facades\Cache;
 use App\Models\searchkey;
 use Response;
+use App\Models\historyPd;
 
 use App\Models\metaSeo ;
 
@@ -116,37 +117,7 @@ class productController extends AppBaseController
 
         }    
 
-        // if(!empty($input['Group_id'])){
-
-        //     // tìm sản phẩm cha để add vào 
-
-        //     $add_parent = [];
-
-        //     $parent = groupProduct::find($input['Group_id']);
-
-        //     $level = $parent->level;
-
-        //     if($level>0){
-
-        //         for($i = 0; $i<= $level; $i++){
-
-        //             if($parent->parent_id != 0){
-
-        //                 $parent = (groupProduct::find($parent->parent_id));
-
-        //                 array_push($add_parent, $parent->id);
-        //             }
-
-        //         }
-
-        //     }
-        //     else{
-        //         array_push($add_parent, $parent->id);
-        //     }
-
-        //     $input['Price'] = str_replace(',', '', $input['Price']);
-        //     $input['Price'] = str_replace('.', '', $input['Price']);
-        // }
+        
 
         if(!empty($input['Group_id'])){
 
@@ -321,6 +292,18 @@ class productController extends AppBaseController
 
         $input['user_id'] =  Auth::user()->id;
 
+        if($product->Price != $input['Price']){
+
+            $products_history   = new historyPd();
+            $products_history->product_id = $product_id;
+            $products_history->user_id = Auth::user()->id;
+
+            $products_history->price_old =  $product->Price;
+
+            $products_history->save();
+
+        }
+
          
         $product = $this->productRepository->update($input, $id);
 
@@ -431,9 +414,23 @@ class productController extends AppBaseController
         $price = str_replace('.', '', $price);
 
         $product_id = $request->product_id;
+
         $product = product::find($product_id);
+
+        $price_old = $product->Price;
+
+
         $product->Price = $price;
         $product->user_id = Auth::user()->id;
+
+        $products_history   = new historyPd();
+        $products_history->product_id = $product_id;
+        $products_history->user_id = Auth::user()->id;
+
+        $products_history->price_old =  $price_old;
+
+        $products_history->save();
+
     
 
         $product->save();
@@ -448,7 +445,7 @@ class productController extends AppBaseController
         $product_id = $request->product_id;
         $product = product::find($product_id);
         $product->Quantily = $qualtity;
-         $product->user_id = Auth::user()->id;
+        $product->user_id = Auth::user()->id;
 
         $product->save();
         return response('thanh cong');
@@ -651,6 +648,19 @@ class productController extends AppBaseController
         $array['Price'] = '500';
         $search = product::where($array)->get();
         print_r($search);
+    }
+
+    public function viewHistoryPD($id)
+    {
+        $data = historyPd::where('product_id', $id)->OrderBy('id', 'desc')->take(6)->get();
+
+        if($data->count()>0){
+            return  view('products.history', compact('data'));
+        }
+        else{
+            return abort('404');
+        }
+
     }
 
     

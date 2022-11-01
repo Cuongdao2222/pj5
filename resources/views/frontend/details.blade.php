@@ -747,11 +747,7 @@
                                     <h3> {{ str_replace(',' ,'.', number_format($data->Price)) }}₫ </h3>
                                 </div>
 
-
-
                             </div>
-
-
 
                             <div class="pdetail-status">
                                 <div class="pdetail-stockavailable">
