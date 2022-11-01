@@ -95,7 +95,7 @@
                                 <tr class="table_public_tr">
                                     <td width="40">STT</td>
                                     <td width="190">Sản phẩm </td>
-                                    <td width="100">Giá</td>
+                                    <td width="100">Giá cũ</td>
 
                                     <td width="130">Thời gian sửa</td>
                                     <td width="130">Người sửa</td>
