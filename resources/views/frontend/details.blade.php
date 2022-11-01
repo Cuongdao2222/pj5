@@ -227,7 +227,7 @@
         .gift_pro {
             border: 1px solid #dedede;
             border-radius: 5px;
-            margin-top: 8px;
+            margin-top: 18px;
         }
 
         .gift_pro .ttl, .gift_pro h3, .gift_pro h5 {

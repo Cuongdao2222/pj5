@@ -661,7 +661,7 @@ class categoryController extends Controller
             });  
             
            
-            $meta = Cache::remember('metaseo-detail'.$data->Meta_id,10000, function() use ($data){
+            $meta = Cache::remember('metaseo-detail'.$data->Meta_id,100, function() use ($data){
                 return metaSeo::find($data->Meta_id);
             }); 
             
