@@ -2,12 +2,18 @@
 @if(!empty($data))
 
 @foreach($data as $datas)
+<div class="col-md-4">
+    <a href="javascript:void(0)" class="js-compare-item position-relative" data-id="39839">
+        <!-- <span class="remove-compare js-remove-compare" onclick="removeCompare({{ $datas->id }})">X</span> -->
+        <div class="img-compare">
+            <img src="{{ asset($datas->Image) }}">
+        </div>
+        
+        <span>{{ $datas->Name }}</span>
+    </a>
 
-<a href="javascript:void(0)" class="js-compare-item position-relative" data-id="39839">
-    <!-- <span class="remove-compare js-remove-compare" onclick="removeCompare({{ $datas->id }})">X</span> -->
-    <img src="{{ asset($datas->Image) }}">
-    <span>{{ $datas->Name }}</span>
-</a>
+</div>
+
 @endforeach
 
 <?php 
@@ -16,12 +22,20 @@
 
 @for($i=1; $i<=$count; $i++)
 
-<a href="javascript:void(0)" class="add-search-popup"  id="search-pro-{{ $i }}">
+<div class="col-md-4">
 
-    <i class="fa-solid fa-plus"></i>
+        <div class="img-compare">
+            <a href="javascript:void(0)" class="add-search-popup add-compare-a"  id="search-pro-{{ $i }}">
 
-    <span>Thêm sản phẩm</span>
-</a>
+           <i class="icImageCompareNew"></i>
+
+            <span>Thêm sản phẩm</span>
+        </div>
+        
+    </a>
+</div>
+
+
 
 @endfor
 

@@ -270,7 +270,7 @@
                 display: block;
                 width: 160px;
                 margin-right: 35px;
-                float: left;
+                /*float: left;*/
             }
             .compare-pro-holder img{
                 width: 100%;
@@ -285,7 +285,34 @@
             }
             #js-compare-holder img{
                 margin-bottom: 10px;
+
             }
+            .icImageCompareNew{
+                background: url("{{ asset('images/background-image/icon_add_desktop.png')  }}") no-repeat top center;
+                background-size: 45px 45px;
+                width: 59%;
+                height: 45px;
+                display: block;   
+                margin-bottom: 10px;
+
+            }
+
+            .img-compare{
+                height: 140px;
+                width: 140px;
+                position: relative;
+            }
+
+            .add-compare-a{
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            #js-compare-holder{
+                display: flex;
+            }
+
 
             /*item footer*/
 
