@@ -438,6 +438,24 @@ class productController extends AppBaseController
 
     }
 
+    public function getPDviewer(Request $request)
+    {
+        $datas = json_decode($request->viewerPD);
+
+        
+
+        if(count($datas)>0){
+
+           
+
+            $product_data = product::select('Image', 'Name', 'id', 'Link')->whereIn('id',$datas)->take(3)->get();
+
+            return view('frontend.ajax.viewer-compare-product',compact('product_data'));
+
+        }
+
+    }
+
      public function editFastQualtity(Request $request)
     {
 

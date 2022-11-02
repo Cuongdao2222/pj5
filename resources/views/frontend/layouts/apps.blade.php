@@ -268,12 +268,16 @@
 
             .compare-pro-holder a {
                 display: block;
-                width: 160px;
+                width: 100%;
                 margin-right: 35px;
                 /*float: left;*/
             }
             .compare-pro-holder img{
                 width: 100%;
+            }
+
+            #suggesstion-box img{
+                width: 29%;
             }
 
             .global-compare-group{
@@ -290,7 +294,7 @@
             .icImageCompareNew{
                 background: url("{{ asset('images/background-image/icon_add_desktop.png')  }}") no-repeat top center;
                 background-size: 45px 45px;
-                width: 59%;
+                width: 69%;
                 height: 45px;
                 display: block;   
                 margin-bottom: 10px;

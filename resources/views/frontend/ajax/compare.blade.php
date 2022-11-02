@@ -41,23 +41,76 @@
 
 @endif
 
+<style type="text/css">
+    .pro-compare_viewed{
+        display: flex;
+        overflow: hidden;
+        border: unset;
+        justify-content: center
+    }
+   .pro-compare_viewed li {
+        float: left;
+        width: 33.33%;
+        border: 1px solid #e5e5e5;
+        border-right: 0;
+        text-align: center;
+        padding: 15px 4px 20px 4px;
+        margin: 0 0 20px;
+        position: relative;
+    }
+
+    .pro-compare_viewed li h3{
+        overflow: hidden;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        font-size: 14px;
+        padding: 0 0 3px 15px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        text-overflow: ellipsis;
+    }
+
+    .input-search-compare{
+        border: 1px solid #ddd;
+        width: 50%;
+        height: 35px;
+    }
+    
+</style>
+
 
 <div class="modal" tabindex="-1" role="dialog" id="modal-search-pd">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Tìm kiếm model</h5>
+                <h5 class="modal-title">Sản phẩm đã xem gần nhất</h5>
                 <button type="button" class="close close-modal" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-               
-                    <input type="text" class="input-search ui-autocomplete-input" id="searchs" placeholder="nhập tên hoặc mã model" name="key" autocomplete="off" maxlength="100" required="" id="search-model"> 
+                    <div>
+                        <ul class="pro-compare pro-compare_viewed">
+
+                            
+                        </ul>
+                    </div>
+                    <div>
+                         <input type="text" class="input-search ui-autocomplete-input input-search-compare" id="searchs" placeholder="nhập tên hoặc mã model" name="key" autocomplete="off" maxlength="100" required="" id="search-model"> 
+
+                         <button type="button" class="btn btn-success" onclick="add_Pd_search('')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+                                </svg>
+                       
+                      </button>
                      
-                    <button type="button"> <i class="icon-search" onclick="add_Pd_search('')"></i> </button> 
-                    <div id="suggesstion-box"></div>
-                   <!--  <div id="search-result"></div>  -->
+                        
+                        <div id="suggesstion-box"></div>
+                       <!--  <div id="search-result"></div>  -->
+                    </div>
+                   
                 
             </div>
 
@@ -73,6 +126,39 @@
 <script type="text/javascript">
     var id_name = [];
 
+    getPDViewer();
+
+    function getPDViewer() {
+        
+        viewerPD = JSON.parse(localStorage.getItem('viewed_product'));
+
+        viewerPDSend = JSON.stringify(viewerPD);
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $.ajax({
+
+            url: "{{ route('ajax-compare-viewerPd') }}",
+            type: "post",
+            data: {
+                "_token": "{{ csrf_token() }}",
+                viewerPD:  viewerPDSend,
+            },
+           
+            success: function (data) {
+                $('.pro-compare_viewed').append(data);
+                     
+            }
+        });
+       
+
+        
+    }
+
     $('.add-search-popup').click(function () {
 
          id_names = $(this).attr('id');
@@ -81,12 +167,14 @@
 
        $('#modal-search-pd').show();
 
-    })
+    });
+
+
 
     $('.close-modal').click(function () {
        
       $('#modal-search-pd').hide();
-    })
+    });
     
    
 
