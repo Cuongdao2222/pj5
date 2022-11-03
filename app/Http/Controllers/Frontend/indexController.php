@@ -101,9 +101,17 @@ class indexController extends Controller
             $bannerUnderSale = Cache::get('bannerUnderSale');
         }
 
+        $bannerscrollRight = Cache::rememberForever('bannerscrollRight', function() {
+            return banners::where('option', 11)->OrderBy('stt', 'asc')->where('active', 1)->first()??'';
+        });
+
+         $bannerscrollleft = Cache::rememberForever('bannerscrollleft', function() {
+            return banners::where('option', 12)->OrderBy('stt', 'asc')->where('active', 1)->first()??'';
+        });
+
         
 
-        return view('frontend.index', compact('banners', 'bannersRight', 'bannerUnderSlider', 'bannerUnderSale','deal','product_sale', 'group','timeDeal_star', 'deal_check', 'now'));
+        return view('frontend.index', compact('banners', 'bannersRight', 'bannerUnderSlider', 'bannerUnderSale','deal','product_sale', 'group','timeDeal_star', 'deal_check', 'now','bannerscrollRight', 'bannerscrollleft'));
     }
 
 

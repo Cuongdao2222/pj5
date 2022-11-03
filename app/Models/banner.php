@@ -36,6 +36,8 @@ class banner extends Model
             Cache::forget('banners_groups__9');
             Cache::forget('banners_groups__10');
             Cache::forget('banners_groups__11');
+            Cache::forget('bannerscrollleft');
+            Cache::forget('bannerscrollRight');
             
            
         });
@@ -51,6 +53,8 @@ class banner extends Model
             Cache::forget('banners_groups__9');
             Cache::forget('banners_groups__10');
             Cache::forget('banners_groups__11');
+            Cache::forget('bannerscrollleft');
+            Cache::forget('bannerscrollRight');
         });
 
         static::created(function ($instance) {
@@ -64,6 +68,8 @@ class banner extends Model
             Cache::forget('banners_groups__9');
             Cache::forget('banners_groups__10');
             Cache::forget('banners_groups__11');
+            Cache::forget('bannerscrollleft');
+            Cache::forget('bannerscrollRight');
         });    
     }
 
