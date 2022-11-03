@@ -292,17 +292,21 @@ class productController extends AppBaseController
 
         $input['user_id'] =  Auth::user()->id;
 
-        if($product->Price != $input['Price']){
+        if(!empty($input['Price'])){
+             if($product->Price != $input['Price']){
 
-            $products_history   = new historyPd();
-            $products_history->product_id = $product->id;
-            $products_history->user_id = Auth::user()->id;
+                $products_history   = new historyPd();
+                $products_history->product_id = $product->id;
+                $products_history->user_id = Auth::user()->id;
 
-            $products_history->price_old =  $product->Price;
+                $products_history->price_old =  $product->Price;
 
-            $products_history->save();
+                $products_history->save();
 
+            }
         }
+
+       
 
          
         $product = $this->productRepository->update($input, $id);
