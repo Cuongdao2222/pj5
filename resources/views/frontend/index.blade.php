@@ -615,27 +615,7 @@
 
 
 
-                            @if(!empty($gift))
-                                <?php 
-                                    $gifts = $gift['gifts'];
-                                    $gift = $gift['gift']; 
-
-                                   
-                                ?>
-
-                                {{ $gifts->type ==1?'k/m chọn 1 trong 2':'' }}
-                                <div class="option-gift">
-
-                                     @foreach($gift as $gifts)
-
-                                    <div class="quatang"><img src="{{ asset($gifts->image) }}"></div>
-                                    @endforeach
-                                </div>
-
-                                @if(!empty($gifts->price))
-                                <span> Quà tặng trị giá <strong>{{ @str_replace(',' ,'.', number_format($gifts->price)) }}<sup>đ</sup></strong> </span>
-                                @endif   
-                            @endif
+                           
                             
                         </div>
                         

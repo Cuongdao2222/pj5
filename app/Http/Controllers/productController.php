@@ -295,7 +295,7 @@ class productController extends AppBaseController
         if($product->Price != $input['Price']){
 
             $products_history   = new historyPd();
-            $products_history->product_id = $product_id;
+            $products_history->product_id = $product->id;
             $products_history->user_id = Auth::user()->id;
 
             $products_history->price_old =  $product->Price;
