@@ -4,7 +4,7 @@
     @push('style')
 
         <link rel="stylesheet" type="text/css" href="{{ asset('css/home.css') }}?ver=21">
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}?ver=20"> 
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}?ver=22"> 
         <link rel="stylesheet" type="text/css" href="{{ asset('css/index.css') }}?ver=3">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/homes.css') }}?ver=8">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/homecs.css') }}?ver=8">
@@ -634,7 +634,7 @@
      
     
         <!-- Banner dọc 2 bên -->
-        <div class="sticky-sidebar" style="display: block;">
+        <div class="sticky-sidebar">
             <a data-cate="0" data-place="1863" href="#" class="banner-left"><img style="cursor:pointer" src="https://cdn.tgdd.vn/2022/10/banner/Phai-79x271-3.png" alt="Theme Giáng Sinh Trái" width="179" height="271"></a>
             <a data-cate="0" data-place="1864" href="#" class="banner-right"><img style="cursor:pointer" src="https://cdn.tgdd.vn/2022/10/banner/Phai-79x271-3.png" alt="Theme Giáng Sinh Phải" width="179" height="271"></a>        
         </div>
@@ -748,6 +748,18 @@
     @push('script')
 
     <script type="text/javascript">
+         $('.sticky-sidebar').hide();
+        $(window).scroll(function (){
+
+            if($(window).scrollTop()>$('.menus-banner').offset().top){
+
+                $('.sticky-sidebar').show();
+            }
+            else{
+                $('.sticky-sidebar').hide();
+            }
+
+        })   
 
         let ar_product = [];
 

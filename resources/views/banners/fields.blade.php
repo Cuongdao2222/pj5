@@ -12,7 +12,8 @@
     $option[9] = ['name'=>'Banner home Điều hòa', 'size'=>'1200 x 90'];
     $option[10] = ['name'=>'Banner home Gia dụng', 'size'=>'1200 x 90'];
     $option[11] = ['name'=>'Banner home Máy lọc nước', 'size'=>'1200 x 90'];
-
+    $option[12] = ['name'=>'Banner scroll home left', 'size'=>'179px - 271px'];
+    $option[13] = ['name'=>'Banner scroll home right', 'size'=>'179px - 271px'];
 ?>
 <div class="form-group col-sm-12">
 <select name="option">
