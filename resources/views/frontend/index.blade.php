@@ -631,14 +631,14 @@
         @endif
         @endforeach
         <!-- End  -->
-     
-    
+
+        @if(!empty($bannerscrollRight) && !empty($bannerscrollLeft))
         <!-- Banner dọc 2 bên -->
         <div class="sticky-sidebar">
-            <a data-cate="0" data-place="1863" href="#" class="banner-left"><img style="cursor:pointer" src="https://cdn.tgdd.vn/2022/10/banner/Phai-79x271-3.png" alt="Theme Giáng Sinh Trái" width="179" height="271"></a>
-            <a data-cate="0" data-place="1864" href="#" class="banner-right"><img style="cursor:pointer" src="https://cdn.tgdd.vn/2022/10/banner/Phai-79x271-3.png" alt="Theme Giáng Sinh Phải" width="179" height="271"></a>        
+            <a data-cate="0" data-place="1863" href="{{ $bannerscrollLeft->link }}" class="banner-left"><img style="cursor:pointer" src="{{ asset($bannerscrollLeft->image) }}" alt="Theme Giáng Sinh Trái" width="179" height="271"></a>
+            <a data-cate="0" data-place="1864" href="{{ $bannerscrollRight->link }}" class="banner-right"><img style="cursor:pointer" src="{{ asset($bannerscrollRight->image) }}" alt="Theme Giáng Sinh Phải" width="179" height="271"></a>        
         </div>
-        
+        @endif
         <?php  
             
             $post = Cache::remember('post_home',10000, function() {
