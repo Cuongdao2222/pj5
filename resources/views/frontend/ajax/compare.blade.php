@@ -1,9 +1,18 @@
+<style type="text/css">
+
+     @media only screen and (max-width: 768px) {
+        .add-mobile-compare{
+            width: 100% !important;
+        }
+    }
+</style>
+
 
 @if(!empty($data))
 
 @foreach($data as $datas)
 <div class="col-md-4">
-    <a href="javascript:void(0)" class="js-compare-item position-relative" data-id="39839">
+    <a href="javascript:void(0)" class="js-compare-item position-relative compare-add-mobile" data-id="39839">
         <!-- <span class="remove-compare js-remove-compare" onclick="removeCompare({{ $datas->id }})">X</span> -->
         <div class="img-compare">
             <img src="{{ asset($datas->Image) }}">
@@ -25,7 +34,7 @@
 <div class="col-md-4">
 
         <div class="img-compare">
-            <a href="javascript:void(0)" class="add-search-popup add-compare-a"  id="search-pro-{{ $i }}">
+            <a href="javascript:void(0)" class="add-search-popup add-compare-a add-mobile-compare"  id="search-pro-{{ $i }}">
 
            <i class="icImageCompareNew"></i>
 
@@ -97,7 +106,7 @@
                         </ul>
                     </div>
                     <div>
-                         <input type="text" class="input-search ui-autocomplete-input input-search-compare" id="searchs" placeholder="nhập tên hoặc mã model" name="key" autocomplete="off" maxlength="100" required="" id="search-model"> 
+                         <input type="text" class="input-search ui-autocomplete-input input-search-compare" id="searchs" placeholder="Nhập tên hoặc mã model" name="key" autocomplete="off" maxlength="100" required="" id="search-model"> 
 
                          <button type="button" class="btn btn-success" onclick="add_Pd_search('')">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
@@ -202,11 +211,12 @@
                $('#'+classname).html('');
                html = '<img src="https://dienmaynguoiviet.vn/'+data.Image+'"> <span>'+data.Name+'</span>';
                $('#'+classname).append(html);
+                $('#'+classname).removeClass('add-compare-a');
                $('#modal-search-pd').modal().hide();
                $('#modal-search-pd').modal('hide');
                id_name = [];
                ar_product.push(data.id);
-               console.log(group_id);
+              
               
             }
         });

@@ -474,6 +474,9 @@
                     left: 112px !important;
                     line-height: 28px !important;
                 }
+                .compare-add-mobile{
+                    width: 100% !important;
+                }
 
                 
             }
