@@ -654,9 +654,9 @@
      
     
         <!-- Banner dọc 2 bên -->
-        <div class="sticky-sidebar" style="display: none;">
-            <a data-cate="0" data-place="1863" href="#" class="banner-left"><img style="cursor:pointer" src="#" alt="Theme Giáng Sinh Trái" width="79" height="271"></a>
-            <a data-cate="0" data-place="1864" href="#" class="banner-right"><img style="cursor:pointer" src="#" alt="Theme Giáng Sinh Phải" width="79" height="271"></a>        
+        <div class="sticky-sidebar" style="display: block;">
+            <a data-cate="0" data-place="1863" href="#" class="banner-left"><img style="cursor:pointer" src="https://cdn.tgdd.vn/2022/10/banner/Phai-79x271-3.png" alt="Theme Giáng Sinh Trái" width="179" height="271"></a>
+            <a data-cate="0" data-place="1864" href="#" class="banner-right"><img style="cursor:pointer" src="https://cdn.tgdd.vn/2022/10/banner/Phai-79x271-3.png" alt="Theme Giáng Sinh Phải" width="179" height="271"></a>        
         </div>
         
         <?php  
