@@ -2054,11 +2054,11 @@ section {
 }
 
 .sticky-sidebar .banner-left {
-	left: calc(((100vw - 1200px)/2) - 95px)
+	left: calc(((100vw - 1200px)/2) - 120px)
 }
 
 .sticky-sidebar .banner-right {
-	right: calc(((100vw - 1200px)/2) - 105px)
+	right: calc(((100vw - 1200px)/2) - 120px)
 }
 
 @media screen and (max-width:1366px) {
