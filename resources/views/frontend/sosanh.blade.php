@@ -92,36 +92,42 @@
                         $product = App\Models\product::find($value);
 
                         if($data_id <5){
-                            $html = $product->Specifications;
 
-                            $dom = new \DOMDocument();
+                            if(!empty($product->Specifications)){
 
-                            $html = mb_convert_encoding($html , 'HTML-ENTITIES', 'UTF-8'); //convert sang tiếng việt cho dom
+                                $html = $product->Specifications;
 
-                            $dom->loadHTML($html);
+                                $dom = new \DOMDocument();
 
-                            foreach($dom->getElementsByTagName('td') as $td) {
+                                $html = mb_convert_encoding($html , 'HTML-ENTITIES', 'UTF-8'); //convert sang tiếng việt cho dom
 
-                                foreach($ar as $key => $value) {
+                                $dom->loadHTML($html);
 
-                                    if(strpos($td->nodeValue, $value)>-1){
+                                foreach($dom->getElementsByTagName('td') as $td) {
 
-                                        // $ar_sp[$keys][$key] =  !empty($td->nodeValue)?str_replace($value, '', $td->nodeValue):'';
+                                    foreach($ar as $key => $value) {
 
-                                        $pd_filter[$keys][$value] = !empty($td->nodeValue)?str_replace([$value,':'], '', $td->nodeValue):'';
+                                        if(strpos($td->nodeValue, $value)>-1){
 
-                                        // array_push($list_filter, $value);
-                                        
+                                            // $ar_sp[$keys][$key] =  !empty($td->nodeValue)?str_replace($value, '', $td->nodeValue):'';
+
+                                            $pd_filter[$keys][$value] = !empty($td->nodeValue)?str_replace([$value,':'], '', $td->nodeValue):'';
+
+                                            // array_push($list_filter, $value);
+                                            
+                                        }
+
+
                                     }
+                                } 
 
+                               $pd_filter[$keys]['Ảnh sản phẩm'] = htmlspecialchars_decode('<img width="327" class="code-image" src="'.asset($product->Image).'">');
+                               $pd_filter[$keys]['Tên sản phẩm'] = '<b>'.$product->Name.'</b>';
+                               $pd_filter[$keys]['id'] = $product->active===1&&$product->Quantily>0?$product->id:'';
+                               $pd_filter[$keys]['links'] = $product->active===1&&$product->Quantily>0&&$product->Price>3000000?route('details', $product->Link).'?show=tra-gop':'';
 
-                                }
-                            } 
-
-                           $pd_filter[$keys]['Ảnh sản phẩm'] = htmlspecialchars_decode('<img width="327" class="code-image" src="'.asset($product->Image).'">');
-                           $pd_filter[$keys]['Tên sản phẩm'] = '<b>'.$product->Name.'</b>';
-                           $pd_filter[$keys]['id'] = $product->active===1&&$product->Quantily>0?$product->id:'';
-                           $pd_filter[$keys]['links'] = $product->active===1&&$product->Quantily>0&&$product->Price>3000000?route('details', $product->Link).'?show=tra-gop':'';
+                            }
+                           
                         }
                         else{
                             $pd_filter[$keys]['Tên sản phẩm'] = $product->Name;
