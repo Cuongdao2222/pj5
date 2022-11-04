@@ -8,6 +8,7 @@ use App\Repositories\postRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
+use DB;
 use Response;
 use App\Models\metaSeo;
 use App\Models\post;
