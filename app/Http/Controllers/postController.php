@@ -140,10 +140,13 @@ class postController extends AppBaseController
 
                 $categories = DB::table('categories')->where('namecategory', $search)->first();
 
-                $categories = $categories->id;
+                if(!empty($categories)){
+                     $categories = $categories->id;
 
-                 $post = post::where('category', $categories)->paginate(10);
+                    $post = post::where('category', $categories)->paginate(10);
+                }
 
+            
             }
              return view('posts.index')
             ->with('posts', $post);

@@ -79,7 +79,7 @@
         <tbody>
 
           
-            
+        @if(!empty($posts))    
         @foreach($posts as $post)
             @if($post->category!=5)
             <tr>
@@ -113,6 +113,8 @@
             </tr>
             @endif
         @endforeach
+
+        @endif
         </tbody>
     </table>
 </div>
