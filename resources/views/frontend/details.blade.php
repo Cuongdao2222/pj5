@@ -40,6 +40,11 @@
     
     ?>
 
+     <?php 
+
+        $checkSharp = strpos($data->Name, 'Sharp');
+    ?>
+
     <?php
     if($data->Quantily==0||$data['Price']==0){
         $status ='Tạm hết hàng';
@@ -133,6 +138,10 @@
         .installments-but{
             margin-left: 15px;
             border: 1px solid #EA1D34;
+        }
+
+        .fa-hand-point-right{
+            color: red !important;
         }
 
         .add-card-buttons {
@@ -771,6 +780,22 @@
                                 </fieldset>
                                 @endif
 
+
+                                @if($checkSharp>-1)
+                                <div class="gift_pro">
+                                    <span class="ttl"><i class="fa-solid fa-hand-point-right"></i> Hướng dẫn kích hoạt</span> 
+                                    <div class="gift_item">
+                                        <ul>
+                                            <li>
+                                                <div class="gift_info">
+                                                    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px">Hướng dẫn khách hàng tự kích hoạt bảo hành sản phẩm Sharp (<a href="https://dienmaynguoiviet.vn/huong-dan-khach-hang-tu-kich-hoat-bao-hanh-san-pham-sharp" target="_blank">Xem chi tiết</a>)</span></span></p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                @endif
+
                                  @if(!empty($gift) &&  $data->Quantily>0 &&  $data['Price']>0 && $deal_check_add ==false)
 
                                 <fieldset class="p-gift">
@@ -1381,6 +1406,7 @@
                                     
                             
                             @endif
+
                         
                             @if(!empty($gift) && $data->Quantily>0 && $deal_check_add ==false  &&  $data['Price']>0)
 
@@ -1411,7 +1437,22 @@
                                 @endforeach
                             </div>
 
-                             @endif    
+                             @endif
+
+                            @if($checkSharp>-1)
+                            <div class="gift_pro">
+                                <span class="ttl"><i class="fa-solid fa-hand-point-right"></i> Hướng dẫn kích hoạt</span> 
+                                <div class="gift_item">
+                                    <ul>
+                                        <li>
+                                            <div class="gift_info">
+                                                <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px">Hướng dẫn khách hàng tự kích hoạt bảo hành sản phẩm Sharp (<a href="https://dienmaynguoiviet.vn/huong-dan-khach-hang-tu-kich-hoat-bao-hanh-san-pham-sharp" target="_blank">Xem chi tiết</a>)</span></span></p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            @endif
 
                             @if($data['Quantily']>0)
                             <div class="pdetail-add-to-cart add-to-cart">
