@@ -2050,28 +2050,57 @@ section {
 
 .sticky-sidebar a img {
 	display: block;
-	max-width: 100%
+	width: 100%
 }
 
-.sticky-sidebar .banner-left {
-	left: calc(((100vw - 1200px)/2) - 120px)
-}
 
-.sticky-sidebar .banner-right {
-	right: calc(((100vw - 1200px)/2) - 120px)
-}
+@media only screen and (min-width: 1441px) {
 
-@media screen and (max-width:1366px) {
 	.sticky-sidebar a {
-		width: 69px
+		width: 80px
 	}
 	.sticky-sidebar .banner-left {
-		left: calc(((100vw - 1200px)/2) - 80px)
+		left: calc(((100vw - 1200px)/2) - 90px)
 	}
 	.sticky-sidebar .banner-right {
-		right: calc(((100vw - 1200px)/2) - 80px)
+		right: calc(((100vw - 1200px)/2) - 90px)
 	}
+
+}	
+
+
+
+@media only screen and (min-width: 1367px) and (max-width: 1440px)  {
+
+	.sticky-sidebar a {
+		width: 120px;
+	}
+
+	.sticky-sidebar .banner-left {
+		left: calc(((100vw - 1200px)/2) - 120px)
+	}
+
+	.sticky-sidebar .banner-right {
+		right: calc(((100vw - 1200px)/2) - 120px)
+	}
+   
 }
+
+@media only screen and (min-width: 1280px) and (max-width: 1366px)  {
+
+	.sticky-sidebar a {
+		width: 80px
+	}
+	.sticky-sidebar .banner-left {
+		left: calc(((100vw - 1200px)/2) - 83px)
+	}
+	.sticky-sidebar .banner-right {
+		right: calc(((100vw - 1200px)/2) - 83px)
+	}
+
+}	
+
+
 
 .banner-media img {
 	display: block;

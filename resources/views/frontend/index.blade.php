@@ -1,10 +1,11 @@
 @extends('frontend.layouts.apps')
 
 @section('content') 
+
     @push('style')
 
         <link rel="stylesheet" type="text/css" href="{{ asset('css/home.css') }}?ver=21">
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}?ver=24"> 
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}?ver=35"> 
         <link rel="stylesheet" type="text/css" href="{{ asset('css/index.css') }}?ver=3">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/homes.css') }}?ver=8">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/homecs.css') }}?ver=8">
@@ -641,8 +642,10 @@
         @if(!empty($bannerscrollRight) && !empty($bannerscrollLeft))
         <!-- Banner dọc 2 bên -->
         <div class="sticky-sidebar">
-            <a data-cate="0" data-place="1863" href="{{ $bannerscrollLeft->link }}" class="banner-left" id="banner-left-scroll"><img style="cursor:pointer" src="{{ asset($bannerscrollLeft->image) }}" alt="Theme Giáng Sinh Trái" width="179" height="271"></a>
-            <a data-cate="0" data-place="1864" href="{{ $bannerscrollRight->link }}" class="banner-right" id="banner-right-scroll"><img style="cursor:pointer" src="{{ asset($bannerscrollRight->image) }}" alt="Theme Giáng Sinh Phải" width="179" height="271"></a>        
+            <a data-cate="0" data-place="1863" href="{{ $bannerscrollLeft->link }}" class="banner-left" id="banner-left-scroll">
+                <img style="cursor:pointer; height:auto;" src="{{ asset($bannerscrollLeft->image) }}" alt="Theme Giáng Sinh Trái" width="179" height="271">
+            </a>
+            <a data-cate="0" data-place="1864" href="{{ $bannerscrollRight->link }}" class="banner-right" id="banner-right-scroll"><img style="cursor:pointer; height:auto;" src="{{ asset($bannerscrollRight->image) }}" alt="Theme Giáng Sinh Phải"></a>        
         </div>
         @endif
         <?php  
@@ -771,23 +774,12 @@
 
                 width = (w - 1200)/2;
 
-                var leftClass = {
-                    left: 'calc((100vw - 1200px)/2) -'+width+'px',
-                   
-                };
-
-                var rightClass = {
-                    right: 'calc((100vw - 1200px)/2) -'+width+'px',
-                   
-                }
-
                 $('.sticky-sidebar').show();
 
-                $('#banner-left-scroll').css(leftClass);
+                // $('#banner-left-scroll').css(leftClass);
 
-                $('#banner-right-scroll').css(rightClass);
-
-                $('.sticky-sidebar a').css('width', width+'px');
+                // $('#banner-right-scroll').css(rightClass);
+               
             }
             else{
                 $('.sticky-sidebar').hide();
