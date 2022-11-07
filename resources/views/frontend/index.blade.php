@@ -22,7 +22,7 @@
 
         if(!Cache::has('product_search')){
 
-            $productss = App\Models\product::select('Link', 'Name', 'Image', 'Price', 'id', 'ProductSku')->where('active', 1)->get();
+            $productss = App\Models\product::select('Link', 'Name', 'Image', 'Price', 'id', 'ProductSku', 'promotion')->where('active', 1)->get();
 
             Cache::forever('product_search',$productss);
 
@@ -406,6 +406,8 @@
                         <i class="fa-solid fa-plus"></i>
                             so sánh
                     </a>
+
+
                 </div>
                 @endif
 
@@ -488,11 +490,7 @@
 
                 @foreach($listGroupsShows as $valueslist)
 
-                <?php 
-
-
-                ?>
-
+            
                 <li data-cate-id="2162" data-prop-value-ids="90016" class="desk-t"><a href="{{ route('details', $valueslist->link) }}">
                     {{ @str_replace('quần áo', '', $valueslist->name)  }}</a></li>
                 @endforeach
@@ -504,6 +502,7 @@
                 </div>
                 <div class="box-common__content">
                     <div class="listproduct slider-home owl-carousel" id="banner-product_{{ $key }}" data-size="10">
+
                         @foreach($data as $datas)
 
                         <div class="item"  data-pos="1">
@@ -620,10 +619,35 @@
                                     so sánh
                             </a>
 
+                            @if(!empty($gift))
+                                <?php 
+                                    $gifts = $gift['gifts'];
+                                    $gift = $gift['gift']; 
+                                   
+                                ?>
+
+                                {{ $gifts->type ==1?'k/m chọn 1 trong 2':'' }}
+                                <div class="option-gift">
+
+                                     @foreach($gift as $gifts)
+
+                                    <div class="quatang"><img src="{{ asset($gifts->image) }}"></div>
+                                    @endforeach
+                                </div>
+
+                                @if(!empty($gifts->price))
+                                <span> Quà tặng trị giá <strong>{{ @str_replace(',' ,'.', number_format($gifts->price)) }}<sup>đ</sup></strong> </span>
+                                @endif  
+
+                            @endif
+
+                            @if(!empty($datas->promotion))
+
+                                <span>có 1 khuyến mãi</span>
+
+                            @endif
 
 
-                           
-                            
                         </div>
                         
                         @endforeach
@@ -712,7 +736,6 @@
         </div>
         
     </section>
-   
     <!-- End -->
     <!-- Hiệu ứng ... rơi -->
     <!-- <div class="falling-container" aria-hidden="true">
