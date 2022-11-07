@@ -1296,6 +1296,9 @@
                                     text-align: center;
                                     margin-top: 1em;
                                 }
+                                .show-litmits{
+                                    color: #FF1D25;
+                                }
                             </style>
                         <div class="pdetail-price">
                             @if(!empty($text))
@@ -1312,10 +1315,17 @@
                                 <div class="crazy-deal-details pc" style="background-image:url('{{ asset('images/template/flashsale.png')  }}'); height:38px">
                                     <div class="crazy-deal-details-right">
                                         <time class="crazy-deal-details-countdown" data-spm-anchor-id="a2o4n.pdp_revamp.0.i0.89db8552daSXV6">Kết thúc sau <span class="crazy-deal-details-countdown-time clock">12:08:36</span></time>
+
+                                        @if($data->ProductSku =='OLED55A1PTA')
+                                        <div class="crazy-deal-details-process show-litmits">
+                                            Còn lại 3 sản phẩm
+                                        </div>
+                                        @else
                                         <div class="crazy-deal-details-process">
                                             Đã bán {{ $numberDeal }} sản phẩm
-                                           
                                         </div>
+                                        @endif
+
                                     </div>
                                 </div>
                             </div>
