@@ -11,7 +11,9 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('css/homecs.css') }}?ver=8">
 
         <style type="text/css">
-           
+           .gift-text span{
+                color: #D82A20;
+           }
         </style>
 
 
@@ -642,11 +644,11 @@
                             @endif
 
                             @if(!empty($datas->promotion))
-
-                                <span>có 1 khuyến mãi</span>
+                                <div class="gift-text mt-2">
+                                    <span>Có 1 khuyến mãi</span>
+                                </div>
 
                             @endif
-
 
                         </div>
                         
