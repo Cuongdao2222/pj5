@@ -471,20 +471,25 @@
 
     // check flashdeal 
 
-
-   
+        Cache::forget('date_flash_deal');
+        
     if(!cache::has('date_flash_deal')){
 
         $date_string_flash_deal = DB::table('date_flash_deal')->where('id', 1)->first()->date;
+
+
         cache::put('date_flash_deal', $date_string_flash_deal, 10000);
     } 
 
     $date_string_flash_deal = cache::get('date_flash_deal');
 
+   
+
 
     $date_flashdeal = \Carbon\Carbon::create($date_string_flash_deal);
 
     if($date_flashdeal->isToday()){
+
 
         $add_date = $date_string_flash_deal;
         $time1_start = \Carbon\Carbon::createFromDate($add_date.', 9:00');
@@ -508,6 +513,7 @@
 
             $flashDeal = App\Models\flashdeal::where('product_id', $data->id)->where('flash_deal_time_id', $groups_deal)->where('active',1)->first();
 
+            
             if(!empty($flashDeal)){
                 $price_flash_deal = DB::table('flash_deal')->where('id', $flashDeal->flash_deal_id)->first();
                 if(!empty($price_flash_deal)){

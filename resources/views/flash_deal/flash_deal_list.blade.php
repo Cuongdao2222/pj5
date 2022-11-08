@@ -211,7 +211,7 @@
                         
                         <div class="btn btn-primary add-product">Thêm sản phẩm</div>
 
-                        <div class="btn btn-default accepts">Xác nhận</div>
+                       <!--  <div class="btn btn-default accepts">Xác nhận</div> -->
                     </div>
 
                     <br>
@@ -224,7 +224,7 @@
 
                                 $deal = App\Models\flashdeal::where('flash_deal_id', $deal_id)->get();
 
-                                $priceDeal = DB::table('flash_deal')->where('id', $deal_id)->get()->first();
+                                $priceDeal = DB::table('flash_deal')->where('id', $deal_id)->get()->last();
 
                             ?>
 

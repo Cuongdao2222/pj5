@@ -415,7 +415,10 @@
 
                                     @foreach($flashDeal as $key => $value)
 
-                                    <?php 
+
+
+                                    <?php
+
                                         $timestamp = $now->diffInSeconds($value->end);
                                         $hour =  floor($timestamp/3600);
                                         $timestamp = floor($timestamp % 3600);
@@ -439,8 +442,18 @@
                                                    </div>
                                                 </div>
                                                 <div style="margin-top: 11px">
+
+
+
+                                                    @if($vals->price !=0)
                                                 
                                                     <span class="price-new">{{  @str_replace(',' ,'.', number_format($vals->price)) }}&#x20AB;</span>
+                                                    @else
+                                                    
+                                                  
+
+                                                    <span class="price-new">{{  @str_replace(',' ,'.', number_format($value->deal_price)) }}&#x20AB;</span>
+                                                    @endif
                                                 </div>
                                                 
                                             </a>
