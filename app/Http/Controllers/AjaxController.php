@@ -325,7 +325,7 @@ class AjaxController extends Controller
 
             foreach($product as $products){
 
-                $check_deal =  Cache::get('deals')->where('product_id',  $products->id)->where('active', 1)->first();
+                $check_deal =  deal::where('product_id',  $products->id)->where('active', 1)->first();
 
                 $deal_check_add = false;
                 
@@ -360,17 +360,16 @@ class AjaxController extends Controller
 
                                     $groups_deal = $groups_deal+1;
 
-                                    $flashDeal = flashdeal::where('product_id', $products->id)->where('flash_deal_time_id', $groups_deal)->where('active',1)->first();
+                                    $flashDeal = flashdeal::where('product_id', $products->id)->where('flash_deal_time_id', $groups_deal)->where('active',1)->get()->last();
 
                                     if(!empty($flashDeal)){
 
-                                        $price_flash_deal = DB::table('flash_deal')->where('id', $flashDeal->flash_deal_id)->first();
-                                        if(!empty($price_flash_deal)){
+                                       
                                             $deal_check_add = true;
                                           
-                                            $products->Price =  $price_flash_deal->price;
+                                            $products->Price =  $flashDeal->deal_price;
                                            
-                                        }
+                                        
 
                                     }
 

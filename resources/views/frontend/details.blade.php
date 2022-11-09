@@ -525,31 +525,33 @@
 
                 $groups_deal = $groups_deal+1;
 
-                $flashDeal = App\Models\flashdeal::where('product_id', $data->id)->where('flash_deal_time_id', $groups_deal)->where('active',1)->first();
+                $flashDeal = App\Models\flashdeal::where('product_id', $data->id)->where('flash_deal_time_id', $groups_deal)->where('active',1)->get()->last();
+
+                
 
                 
                 if(!empty($flashDeal)){
-                    $price_flash_deal = DB::table('flash_deal')->where('id', $flashDeal->flash_deal_id)->first();
-                    if(!empty($price_flash_deal)){
-                        $deal_check_add = true;
-                        $price_old = $data->Price;
-                        $text = '<b>MUA ONLINE GIÁ SỐC: </b>';
-                        $data->Price =  !empty($price_flash_deal->price)?$price_flash_deal->price:$flashDeal->deal_price;
-                        $percent = ceil((int)$price_old/$data->Price);
-                        $timestamp = $now->diffInSeconds($value['endTime']);
-
-                    }
+                    
+                    $deal_check_add = true;
+                    $price_old = $data->Price;
+                    $text = '<b>MUA ONLINE GIÁ SỐC: </b>';
+                    $data->Price =  $flashDeal->deal_price;
+                    $percent = ceil((int)$price_old/$data->Price);
+                    $timestamp = $now->diffInSeconds($value['endTime']);
 
                 }
 
             }
 
 
-            if(empty($key_check_betweens)){
+            if(empty($key_check_betweens)&& $key_check_between>0){
 
                
+                if($now < $define[$key_check_between-1]['startTime']){
+                    $timestamp_check = $now->diffInSeconds($define[$key_check_between-1]['startTime']);
 
-                $timestamp_check = $now->diffInSeconds($define[$key_check_between-1]['startTime']);
+                }
+                
 
 
 
@@ -749,6 +751,7 @@
                                 return $images;
                             
                             });
+
 
                         ?>
 

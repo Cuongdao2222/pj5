@@ -18,6 +18,19 @@
            .container-productbox{
             overflow: hidden;
            }
+
+
+           @media screen and (max-width:776px) {
+
+                .cIVWIZ{
+                    background-repeat: no-repeat;
+                    background-size: 100%;
+                    padding-top: 78px !important;
+                }
+                .btn-buys{
+                    display: none;
+                }
+            }
         </style>
 
 
@@ -526,7 +539,7 @@
 
             ?>
            
-            <a href="{{ route('show-flash-deal') }}"><div class="container cIVWIZ" style="background-image: url(https://cf.shopee.vn/file/9ec673f17e637893c11a2a983045e7c6);"></div></a>
+            <a href="{{ route('show-flash-deal') }}" target="_blank"><div class="container cIVWIZ" style="background-image: url(https://cf.shopee.vn/file/9ec673f17e637893c11a2a983045e7c6);"></div></a>
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
        
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
@@ -600,13 +613,14 @@
                                 
                 <div class="col-md-3 col-6 lists">
                     <div class="item  __cate_1942">
-                        <a href="{{ route('details', $value->link) }}" data-box="BoxCate" class="main-contain">
+                       
                             
-                            <div class="item-img item-img_1942"> <img class="thumb lazyloaded" data-src="{{ asset($value->image) }}" alt="Smart Tivi LG 75UQ8050PSB 75 inch 4K" style="width:auto; height: 184px;" src="{{ asset($value->image) }}" > </div>
+                            <div class="item-img item-img_1942">  <a href="{{ route('details', $value->link) }}" data-box="BoxCate" class="main-contain" target="_blank"> <img class="thumb lazyloaded" data-src="{{ asset($value->image) }}" alt="{{ $value->name }}" style="width:auto; height: 184px;" src="{{ asset($value->image) }}" ></a> </div>
                             <div class="items-title">
                                 <div class="name">
-                                    
-                                     <span> {{ $value->name }} </span>
+                                     <a href="{{ route('details', $value->link) }}" data-box="BoxCate" class="main-contain" target="_blank">    
+                                         <span> {{ $value->name }} </span>
+                                     </a>
                                 </div>
 
                                 <div class="IKgh3U"><div class="qOgYxF"><span>{{ @str_replace(',' ,'.', number_format($value->price)) }}</span><span class="-92Xgq">₫ </span></div></div>
@@ -625,18 +639,16 @@
                                             </div>
                                         </div>
 
-
-
                                     </div>
                                     <div class="btn-buys">
-                                        <button type="button" class="btn btn-danger btn-buy-click" >Mua ngay</button>
+                                        <button type="button" class="btn btn-danger btn-buy-click" onclick="addToCart('{{ $value->product_id }}')">Mua ngay</button>
                                     </div>
                                     
                                 </div>
                                 
                                
                             </div>
-                        </a>
+                        
                         <div class="item-bottom"> <a href="#" class="shiping"></a> </div>
 
                         @if($checksoon==0)
@@ -1223,6 +1235,49 @@
 
     <script type="text/javascript">
 
+
+
+        function addToCart(id) {
+    
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+        
+            $.ajax({
+                type: 'POST',
+                url: "{{ route('cart') }}",
+                data: {
+                    product_id: id,
+                    gift_check:$('#gift_checked').val()
+                       
+                },
+                beforeSend: function() {
+                   
+                    $('.loader').show();
+
+                },
+                success: function(result){
+        
+                   //  numberProductCart = $(".number-cart").text();
+        
+                   //  console.log(numberProductCart);
+                   
+                   // numberCart = result.find(numberProductCart);
+        
+                    $('#tbl_list_cartss').append(result);
+        
+                    const numberCart = $('#number-product-cart').text();
+        
+                    $('.number-cart').text(numberCart);
+        
+                    $('#exampleModal').modal('show'); 
+                    $('.loader').hide();
+                    
+                }
+            });
+        }
        
          $('.sticky-sidebar').hide();
         $(window).scroll(function (){
@@ -1561,6 +1616,8 @@
 
             
         }
+
+
 
 
         function clickDeal(flash_deal_id, id, dem) {

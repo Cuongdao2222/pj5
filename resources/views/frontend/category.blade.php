@@ -214,7 +214,9 @@
                                 $id_product = $value->id;
                                 array_push($arr_id_pro, $id_product);
 
-                                $check_deal =  Cache::get('deals')->where('product_id', $value->id)->where('active',1);
+
+                              
+                                $check_deal =  App\Models\deal::where('product_id', $value->id)->where('active',1)->get();
 
                                 
 
@@ -222,7 +224,7 @@
 
                                 $now  = Carbon\Carbon::now();
 
-                                if(!empty($check_deal)){
+                                if($check_deal->count()>0){
 
 
                                     $check_deal = reset($check_deal);
@@ -244,6 +246,7 @@
                                         }
 
                                     }
+
                                     
                                 }
                                 else{
@@ -260,7 +263,11 @@
 
                                     $date_flashdeal = \Carbon\Carbon::create($date_string_flash_deal);
 
+
+
                                     if($date_flashdeal->isToday()){
+
+
 
                                         $add_date = $date_string_flash_deal;
                                         $time1_start = \Carbon\Carbon::createFromDate($add_date.', 9:00');
@@ -282,15 +289,15 @@
 
                                             $groups_deal = $groups_deal+1;
 
-                                            $flashDeal = App\Models\flashdeal::where('product_id', $id_product)->where('flash_deal_time_id', $groups_deal)->where('active',1)->first();
+                                            $flashDeal = App\Models\flashdeal::where('product_id', $id_product)->where('flash_deal_time_id', $groups_deal)->where('active',1)->get()->last();
 
 
-
+                                           
                                             if(!empty($flashDeal)){
 
-                                                $price_flash_deal = DB::table('flash_deal')->where('id', $flashDeal->flash_deal_id)->first();
+                                                
 
-                                                $value->Price = $price_flash_deal->price;
+                                                $value->Price = $flashDeal->deal_price;
                                                
                                             
                                             }
