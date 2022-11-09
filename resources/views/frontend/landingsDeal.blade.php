@@ -733,9 +733,15 @@
                         </a>
                         <div class="item-bottom"> <a href="#" class="shiping"></a> </div>
 
+                        @if($checksoon==0)
+
+                        <?php 
+                            $percent = floor((intval($value->price)- intval($value->deal_price))/intval($value->price));
+                        ?>
                         <div class="_5ICO3M yV54ZD X7gzZ7">
-                            <div class="_8PundJ"><span class="percent">63%</span><span class="tSV5KQ">giảm</span></div>
+                            <div class="_8PundJ"><span class="percent">{{ $percent }}%</span><span class="tSV5KQ">giảm</span></div>
                         </div>
+                        @endif
                         <!-- <a href="javascript:void(0)" class="item-ss"> <i></i> So sánh </a> --> 
                     </div>
                 </div>

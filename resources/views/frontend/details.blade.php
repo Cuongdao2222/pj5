@@ -478,7 +478,7 @@
         $date_string_flash_deal = DB::table('date_flash_deal')->where('id', 1)->first()->date;
 
 
-        cache::put('date_flash_deal', $date_string_flash_deal, 10000);
+        cache::put('date_flash_deal', $date_string_flash_deal, 1000);
     } 
 
     $date_string_flash_deal = cache::get('date_flash_deal');
@@ -490,45 +490,75 @@
 
     if($date_flashdeal->isToday()){
 
+        // kiểm tra sản phẩm có trong flashdeal k
 
-        $add_date = $date_string_flash_deal;
-        $time1_start = \Carbon\Carbon::createFromDate($add_date.', 9:00');
-        $time1 = \Carbon\Carbon::createFromDate($add_date.', 12:00');
-        $time2_start = \Carbon\Carbon::createFromDate($add_date.', 12:00');
-        $time2 = \Carbon\Carbon::createFromDate($add_date.', 14:00');
-        $time3_start = \Carbon\Carbon::createFromDate($add_date.', 14:00');
-        $time3 = \Carbon\Carbon::createFromDate($add_date.', 17:00');
-        $time4_start = \Carbon\Carbon::createFromDate($add_date.', 17:00');
-        $time4 = \Carbon\Carbon::createFromDate($add_date.', 22:00');
+        $check_Pd_Flash_deal = App\Models\flashdeal::select('flash_deal_time_id')->where('product_id', $data->id)->first();
 
-        $define = [['start'=>'9h', 'endTime'=>$time1, 'startTime'=>$time1_start], ['start'=>'12h', 'endTime'=>$time2, 'startTime'=>$time2_start], ['start'=>'14h', 'endTime'=>$time3, 'startTime'=>$time3_start], ['start'=>'17h', 'endTime'=>$time4, 'startTime'=>$time4_start]];
 
-        foreach($define as $key => $value)
+        if(!empty($check_Pd_Flash_deal)){
 
-        if($now->between($value['startTime'], $value['endTime'])){
+            $key_check_between =  $check_Pd_Flash_deal->flash_deal_time_id;
+            $add_date = $date_string_flash_deal;
+            $time1_start = \Carbon\Carbon::createFromDate($add_date.', 9:00');
+            $time1 = \Carbon\Carbon::createFromDate($add_date.', 12:00');
+            $time2_start = \Carbon\Carbon::createFromDate($add_date.', 12:00');
+            $time2 = \Carbon\Carbon::createFromDate($add_date.', 14:00');
+            $time3_start = \Carbon\Carbon::createFromDate($add_date.', 14:00');
+            $time3 = \Carbon\Carbon::createFromDate($add_date.', 17:00');
+            $time4_start = \Carbon\Carbon::createFromDate($add_date.', 17:00');
+            $time4 = \Carbon\Carbon::createFromDate($add_date.', 22:00');
 
-            $groups_deal = $key;
+            $define = [['start'=>'9h', 'endTime'=>$time1, 'startTime'=>$time1_start], ['start'=>'12h', 'endTime'=>$time2, 'startTime'=>$time2_start], ['start'=>'14h', 'endTime'=>$time3, 'startTime'=>$time3_start], ['start'=>'17h', 'endTime'=>$time4, 'startTime'=>$time4_start]];
 
-            $groups_deal = $groups_deal+1;
+            foreach($define as $key => $value)
 
-            $flashDeal = App\Models\flashdeal::where('product_id', $data->id)->where('flash_deal_time_id', $groups_deal)->where('active',1)->first();
+            if($now->between($value['startTime'], $value['endTime'])){
 
-            
-            if(!empty($flashDeal)){
-                $price_flash_deal = DB::table('flash_deal')->where('id', $flashDeal->flash_deal_id)->first();
-                if(!empty($price_flash_deal)){
-                    $deal_check_add = true;
-                    $price_old = $data->Price;
-                    $text = '<b>MUA ONLINE GIÁ SỐC: </b>';
-                    $data->Price =  !empty($price_flash_deal->price)?$price_flash_deal->price:$flashDeal->deal_price;
-                    $percent = ceil((int)$price_old/$data->Price);
-                    $timestamp = $now->diffInSeconds($value['endTime']);
+                $groups_deal = $key;
+
+                if($groups_deal === $key_check_between){
+
+                    $key_check_betweens = true;
+                }
+              
+                // kiểm tra sản phẩm có ở trong khung giờ flashdeal không?
+
+                $groups_deal = $groups_deal+1;
+
+                $flashDeal = App\Models\flashdeal::where('product_id', $data->id)->where('flash_deal_time_id', $groups_deal)->where('active',1)->first();
+
+                
+                if(!empty($flashDeal)){
+                    $price_flash_deal = DB::table('flash_deal')->where('id', $flashDeal->flash_deal_id)->first();
+                    if(!empty($price_flash_deal)){
+                        $deal_check_add = true;
+                        $price_old = $data->Price;
+                        $text = '<b>MUA ONLINE GIÁ SỐC: </b>';
+                        $data->Price =  !empty($price_flash_deal->price)?$price_flash_deal->price:$flashDeal->deal_price;
+                        $percent = ceil((int)$price_old/$data->Price);
+                        $timestamp = $now->diffInSeconds($value['endTime']);
+
+                    }
 
                 }
 
             }
 
+
+            if(empty($key_check_betweens)){
+
+               
+
+                $timestamp_check = $now->diffInSeconds($define[$key_check_between-1]['startTime']);
+
+
+
+            }
+
+          
         }
+
+       
     }
     // end check flashdeal
 
@@ -1335,8 +1365,26 @@
                                     </div>
                                 </div>
                             </div>
-                          
+
+                            @else
+
+                                @if(!empty($timestamp_check))
+
+                                    <div id="module_flash_sale" class="pdp-block module">
+                                        <div class="crazy-deal-details pc" style="background-image:url('{{ asset('images/template/flashsale.png')  }}'); height:38px">
+                                            <div class="crazy-deal-details-right">
+                                                <time class="crazy-deal-details-countdown" data-spm-anchor-id="a2o4n.pdp_revamp.0.i0.89db8552daSXV6">Bắt đầu sau <span class="crazy-deal-details-countdown-time clock-start">{{ $timestamp_check }}</span></time>
+
+                                                
+                                        </div>
+                                    </div>
+                                @endif
+
+                              
                             @endif
+
+
+                           
                             <br>
 
                             @if(!empty($data->manuPrice) || !empty($price_old))
@@ -2331,6 +2379,134 @@
             }
         }
     });
+
+
+    @if(!empty($timestamp_check))
+
+         // đếm thời gian 
+
+         //document.getElementById('svg').innerHTML = xmlSvg;
+                                        
+        time = '{{ @$timestamp_check }}';
+        number_deal_product =10;
+        //in time 
+        var h = 12;
+        var i = 0;
+        var s = 0;
+    
+        amount = time //calc milliseconds between dates
+        days = 0;
+        hours = 0;
+        mins = 0;
+        secs = 0;
+        out = "";
+    
+    
+        hours = Math.floor(amount / 3600);
+        amount = amount % 3600;
+        mins = Math.floor(amount / 60);
+        amount = amount % 60;
+        secs = Math.floor(amount);
+            
+            
+    
+    
+        //time run 
+        if(parseInt(time)>0 && parseInt(number_deal_product)>0){
+         h = hours;
+          m = mins;
+          s = secs;
+        }   
+        else{
+            let today =  new Date();
+            h = 99 - parseInt(today.getHours());
+            m = 59 - parseInt(today.getMinutes());
+            s = 59 - parseInt(today.getSeconds());
+            
+        }
+
+        start();    
+        function start()
+        {
+
+              /*BƯỚC 1: LẤY GIÁ TRỊ BAN ĐẦU*/
+              if (h === null)
+              {
+                  h = parseInt($('.hour').text());
+
+              }
+
+              /*BƯỚC 1: CHUYỂN ĐỔI DỮ LIỆU*/
+              // Nếu số giây = -1 tức là đã chạy ngược hết số giây, lúc này:
+              //  - giảm số phút xuống 1 đơn vị
+              //  - thiết lập số giây lại 59
+              if (s === -1){
+                  m -= 1;
+                  s = 59;
+              }
+
+              // Nếu số phút = -1 tức là đã chạy ngược hết số phút, lúc này:
+              //  - giảm số giờ xuống 1 đơn vị
+              //  - thiết lập số phút lại 59
+              if (m === -1){
+                  h -= 1;
+                  m = 59;
+              }
+
+              // Nếu số giờ = -1 tức là đã hết giờ, lúc này:
+              //  - Dừng chương trình
+              if (h == -1){
+
+                $('.crazy-deal-details').remove();
+
+                $('.pdetail-price b').remove();
+                $('.pdetail-price-box b').remove();
+                
+
+              }
+
+
+
+              /*BƯỚC 1: HIỂN THỊ ĐỒNG HỒ*/
+
+
+
+              var hour =  h.toString();
+
+              var seconds =  s.toString();
+
+              var minutes =  m.toString();
+
+
+
+              // $('.hourss').text(h<10?'0'+hour:''+hour);
+              // $('.secondss').text(s<10?'0'+seconds:''+seconds);
+              // $('.minutess').text(m<10?'0'+minutes:''+minutes);
+
+            let currentHour = h<10?'0'+hour:''+hour;
+            let currentMinutes = m<10?'0'+minutes:''+minutes;
+            let currentSeconds = s<10?'0'+seconds:''+seconds;
+
+    
+            let currentTimeStr =currentHour + ":" + currentMinutes + ":" + currentSeconds;
+
+          
+
+            $('.clock-start').html(currentTimeStr);
+
+              // Insert the time string inside the DOM
+           
+
+              /*BƯỚC 1: GIẢM PHÚT XUỐNG 1 GIÂY VÀ GỌI LẠI SAU 1 GIÂY */
+              timeout = setTimeout(function(){
+                  s--;
+                  start();
+
+
+              }, 1000);
+        }
+
+    @endif
 
     @if(!empty($text))
 
