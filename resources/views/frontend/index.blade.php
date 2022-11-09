@@ -539,7 +539,7 @@
 
             ?>
            
-            <a href="{{ route('show-flash-deal') }}" target="_blank"><div class="container cIVWIZ" style="background-image: url(https://cf.shopee.vn/file/9ec673f17e637893c11a2a983045e7c6);"></div></a>
+            <a href="{{ route('show-flash-deal') }}" target="_blank"><div class="container cIVWIZ" style="background-image: url(https://dienmaynguoiviet.vn/uploads/banner/1668001535_9ec673f17e637893c11a2a983045e7c6.jpg);"></div></a>
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
        
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
