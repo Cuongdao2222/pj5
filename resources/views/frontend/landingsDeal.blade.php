@@ -21,6 +21,10 @@
                 font-weight: bold;
            }
 
+           .div-pd{
+            padding: 15px 0;
+           }
+
             .actives{
                 background: #fff;
             }
@@ -672,7 +676,7 @@
 
                     
                     <div class="navbar-nav col-md-3 {{  $k==1?'actives':'' }} active_{{ $key+1 }}">
-                        <div class="nav-item nav-link active div-pd" href="#"> 
+                        <div class="nav-item nav-link active div-pd" > 
                             <div>
                                 <a class="deal{{ $vals->id }}" href="javascript:void(0)" onclick="clickDeal({{ $vals->id }},{{ $key+1 }}, {{ $k }})">
                                     <div class="UCDJ9O">{{ $value['start'] }}</div>
