@@ -1430,7 +1430,7 @@
     </script>
 
 
-     <script type="text/javascript">
+   <!--   <script type="text/javascript">
             
 
 
@@ -1675,6 +1675,6 @@
                     }
                 }
             });
-        </script>
+        </script> -->
     @endpush
 @endsection      
