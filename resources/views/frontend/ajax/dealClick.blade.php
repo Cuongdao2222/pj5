@@ -29,7 +29,7 @@
                         <div class="btn-buy-price">
 
                             
-                             <strong class="price">{{  @str_replace(',' ,'.', number_format($value->deal_price)) }}</strong>
+                             <strong class="price">{{ $keyss==1 && $checksoon==0?@str_replace(',' ,'.', number_format($value->deal_price)):'???.000' }}   </strong>
                             
                             <div class="progress">
 
@@ -51,9 +51,17 @@
                 </div>
             </a>
             <div class="item-bottom"> <a href="#" class="shiping"></a> </div>
+
+
+            @if($keyss==1 && $checksoon==0)
+
+            <?php 
+                $percent = floor((intval($value->price)- intval($value->deal_price))/intval($value->price));
+            ?>
             <div class="_5ICO3M yV54ZD X7gzZ7">
-                <div class="_8PundJ"><span class="percent">63%</span><span class="tSV5KQ">giảm</span></div>
+                <div class="_8PundJ"><span class="percent">{{ $percent }}%</span><span class="tSV5KQ">giảm</span></div>
             </div>
+            @endif
             <!-- <a href="javascript:void(0)" class="item-ss"> <i></i> So sánh </a> --> 
         </div>
     </div>

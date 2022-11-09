@@ -14,6 +14,10 @@
            .gift-text span{
                 color: #D82A20;
            }
+
+           .container-productbox{
+            overflow: hidden;
+           }
         </style>
 
 
@@ -46,19 +50,13 @@
         });
 
 
-        // $now  = Carbon\Carbon::now();
-        $now  = \Carbon\Carbon::createFromDate('9-11-2022, 11:00');
+        $now  = Carbon\Carbon::now();
+        // $now  = \Carbon\Carbon::createFromDate('9-11-2022, 8:00');
 
         $date_string_flash_deal = DB::table('date_flash_deal')->where('id', 1)->first()->date;
         $date_flashdeal = \Carbon\Carbon::create($date_string_flash_deal);
 
         $deal = Cache::get('deals')->sortByDesc('order');
-
-
-
-
-
-
 
         $add_date = $date_string_flash_deal;
         $time1_start = \Carbon\Carbon::createFromDate($add_date.', 9:00');
@@ -70,10 +68,7 @@
         $time4_start = \Carbon\Carbon::createFromDate($add_date.', 17:00');
         $time4 = \Carbon\Carbon::createFromDate($add_date.', 22:00');
         $define = [['start'=>'9h', 'endTime'=>$time1, 'startTime'=>$time1_start], ['start'=>'12h', 'endTime'=>$time2, 'startTime'=>$time2_start], ['start'=>'14h', 'endTime'=>$time3, 'startTime'=>$time3_start], ['start'=>'17h', 'endTime'=>$time4, 'startTime'=>$time4_start]];
-   
-    
 
-       
        
     ?> 
 
@@ -241,7 +236,7 @@
 
         @if($date_flashdeal->isToday())
 
-            <style type="text/css">
+        <style type="text/css">
             .bg-light {
                 background-color: #414142 !important;
 
@@ -521,7 +516,7 @@
         @foreach($saleFlash as $keys => $vals)
 
         
-        @if($now>$time1_start && $now < $time4)
+        @if($now < $time4)
 
 
             <?php 
@@ -531,12 +526,19 @@
 
             ?>
            
-            <div class="container cIVWIZ" style="background-image: url(https://cf.shopee.vn/file/9ec673f17e637893c11a2a983045e7c6);"></div>
+            <a href="{{ route('show-flash-deal') }}"><div class="container cIVWIZ" style="background-image: url(https://cf.shopee.vn/file/9ec673f17e637893c11a2a983045e7c6);"></div></a>
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
        
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 
-                   
+                    <?php 
+
+                        $flashDeal = App\Models\flashdeal::where('flash_deal_id', $vals->id)->where('flash_deal_time_id', 1)->where('active',1)->OrderBy('order','desc')->take(4)->get();
+
+                       // Khi chưa đến giờ flashdeal kiểm tra để hiển thị deal
+
+                        $checksoon = 1;
+                    ?>
                     @foreach($define as $key => $value)
 
                     @if($now<$value['endTime'])
@@ -558,14 +560,14 @@
                                 $groups_deal+=1;
 
 
-                                $flashDeal = App\Models\flashdeal::where('flash_deal_id', $vals->id)->where('flash_deal_time_id', $groups_deal)->where('active',1)->get();
-
+                                $flashDeal = App\Models\flashdeal::where('flash_deal_id', $vals->id)->where('flash_deal_time_id', $groups_deal)->where('active',1)->OrderBy('order','desc')->take(4)->get();
+                                $checksoon = 0;
 
                             }
 
                     ?>  
 
-                    
+                   
                     <div class="navbar-nav col-md-3 {{  $k==1?'actives':'' }} active_{{ $key+1 }}">
                         <div class="nav-item nav-link active div-pd" href="#"> 
                             <div>
@@ -592,7 +594,7 @@
             <div class="row list-pro listpd">
 
 
-
+                @if(!empty($flashDeal) && $flashDeal->count()>0)
                 @foreach($flashDeal as $key => $value)
 
                                 
@@ -612,9 +614,9 @@
                                     <div class="btn-buy-price">
 
                                          @if($vals->price !=0)
-                                        <strong class="price">{{  @str_replace(',' ,'.', number_format($vals->price)) }}</strong>
+                                        <strong class="price">{{ $checksoon ==1?'???.000':@str_replace(',' ,'.', number_format($vals->price)) }}&#x20AB</strong>
                                          @else
-                                         <strong class="price">{{  @str_replace(',' ,'.', number_format($value->deal_price)) }}</strong>
+                                         <strong class="price">{{   $checksoon ==1?'???.000':@str_replace(',' ,'.', number_format($value->deal_price)) }} &#x20AB</strong>
                                          @endif
                                         <div class="progress">
 
@@ -627,7 +629,7 @@
 
                                     </div>
                                     <div class="btn-buys">
-                                        <button type="button" class="btn btn-danger btn-buy-click">Mua ngay</button>
+                                        <button type="button" class="btn btn-danger btn-buy-click" >Mua ngay</button>
                                     </div>
                                     
                                 </div>
@@ -644,6 +646,7 @@
                 </div>
 
                 @endforeach
+                @endif
 
                 
 
@@ -1559,7 +1562,7 @@
                 $('#navbarNavAltMarkup .navbar-nav').removeClass('actives');
 
 
-                $('.active_'+dem).addClass('actives');
+                $('.active_'+id).addClass('actives');
 
                 // classname =  $(this).attr('class');
 
@@ -1580,6 +1583,8 @@
                         product_id: id,
                         flash_deal_id:flash_deal_id,
                         key:dem,
+                        page:'index',
+                        checksoon:{{ $checksoon??1 }}
                            
                     },
                     success: function(result){
