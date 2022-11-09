@@ -339,8 +339,6 @@
                     <p class="text-promotion">{{ $vals->name }}</p>
                 </div>
             </div>
-
-           
             
             <!-- flash sale -->
             <div class="img-flashsale mobiles" style="width: 100%;">
@@ -380,7 +378,6 @@
 
 
                                 $flashDeal = App\Models\flashdeal::where('flash_deal_id', $vals->id)->where('flash_deal_time_id', $groups_deal)->where('active',1)->get();
-
 
                             }
 

@@ -46,8 +46,8 @@
         });
 
 
-        $now  = Carbon\Carbon::now();
-        // $now  = \Carbon\Carbon::createFromDate('30-8-2022, 11:00');
+        // $now  = Carbon\Carbon::now();
+        $now  = \Carbon\Carbon::createFromDate('9-11-2022, 11:00');
 
         $date_string_flash_deal = DB::table('date_flash_deal')->where('id', 1)->first()->date;
         $date_flashdeal = \Carbon\Carbon::create($date_string_flash_deal);
@@ -241,115 +241,280 @@
 
         @if($date_flashdeal->isToday())
 
-        <?php
-        $add_date = $date_string_flash_deal;
-        $time1_start = \Carbon\Carbon::createFromDate($add_date.', 9:00');
-        $time1 = \Carbon\Carbon::createFromDate($add_date.', 12:00');
-        $time2_start = \Carbon\Carbon::createFromDate($add_date.', 12:00');
-        $time2 = \Carbon\Carbon::createFromDate($add_date.', 14:00');
-        $time3_start = \Carbon\Carbon::createFromDate($add_date.', 14:00');
-        $time3 = \Carbon\Carbon::createFromDate($add_date.', 17:00');
-        $time4_start = \Carbon\Carbon::createFromDate($add_date.', 17:00');
-        $time4 = \Carbon\Carbon::createFromDate($add_date.', 22:00');
-        $define = [['start'=>'9h', 'endTime'=>$time1, 'startTime'=>$time1_start], ['start'=>'12h', 'endTime'=>$time2, 'startTime'=>$time2_start], ['start'=>'14h', 'endTime'=>$time3, 'startTime'=>$time3_start], ['start'=>'17h', 'endTime'=>$time4, 'startTime'=>$time4_start]];
+            <style type="text/css">
+            .bg-light {
+                background-color: #414142 !important;
 
-        ?>
-
-        <style type="text/css">
-           /* deal*/
-
-            .actives-click{
-                color: red !important;
+                height: 64px;
+            }
+            .UCDJ9O {
+                font-size: 1.5rem;
             }
 
-           .sale-time-flash{
-                margin-bottom: 10px;
-           }
-           .text-er{
-                font-weight: bold;
-           }
+            .navbar-nav{
+                height: 80% !important;
+            }
+            .higiZo {
+                text-transform: capitalize;
+            }
+            .oNZiNS {
+                text-decoration: none;
+                color: rgba(0,0,0,.87);
+                display: block;
+                background: #414142;
+                color: #c3c3c3;
+                display: flex;
+                flex-direction: column;
+                height: 3rem;
+                justify-content: center;
+                position: relative;
+                text-align: center;
+            }
 
+            .navbar{
+                width: 100%;
+            } 
+
+            .cIVWIZ, .zuQWXW {
+                padding-top: 240px;
+            }
+
+            .VUCDM7 {
+                width: 1200px;
+                margin: 20px auto;
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+            }
+            .B3\+pb\+ {
+                box-shadow: 0 1px 1px 0 rgb(0 0 0 / 5%);
+                border-radius: 0.125rem;
+                overflow: hidden;
+                background-color: #fff;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+                position: relative;
+                margin-bottom: 10px;
+                z-index: 1;
+            }
+
+            .PMpbYz {
+                text-decoration: none;
+                color: rgba(0,0,0,.87);
+                display: block;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .cmjSHU, .qifRic {
+                width: 280px;
+                height: 280px;
+            }
+
+            .FSzItq {
+                margin: 5px auto;
+                position: relative;
+            }
+
+            .items-title span{
+                font-size: 18px;
+            }
+            .div-pd{
+                margin: 0 auto;
+            }
+            .list-pro{
+                background: #F5F5F5;
+            }
+            .items-title{
+                background: #fff;
+            }
+            .items-title span{
+                color: #000;
+            }
+            .items-title{
+                padding: 0 15px;
+            }
+            .navbar-light{
+                padding: 0;
+            }
             .actives{
+                background: #ee4d2d;
+                color: #fff !important;
+            }
+            .actives .UCDJ9O, .actives .higiZo{
+                color: #fff !important;
+            }
+
+
+
+
+            .X7gzZ7 {
+                background-color: rgba(255,212,36,.9);
+            }
+
+            .aS\+-QV {
+                -webkit-transform: scale(1.4);
+                transform: scale(1.4);
+                padding: 7px 8px;
+                font-weight: 400;
+                position: absolute;
+                top: 0;
+                right: 0;
+                z-index: 3;
+            }
+
+
+            .yV54ZD {
+                width: 36px;
+                height: 32px;
+            }
+
+            ._8PundJ {
+                display: flex;
+                flex-direction: column;
+                text-align: center;
+                position: relative;
+                font-weight: 400;
+                line-height: .8125rem;
+                color: #ee4d2d;
+                text-transform: uppercase;
+                font-size: .75rem;
+            }
+
+            ._5ICO3M {
+                display: inline-block;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+                position: relative;
+                padding: 4px 2px 3px;
+                font-weight: 700;
+            }
+
+            .tSV5KQ {
+                color: #fff;
+            }
+
+            .X7gzZ7:after {
+                content: "";
+                width: 0;
+                height: 0;
+                left: 0;
+                bottom: -4px;
+                position: absolute;
+                border-color: transparent rgba(255,212,36,.9);
+                border-style: solid;
+                border-width: 0 18px 4px;
+
+                width: 50px;
+            }
+            .__cate_1942{
+                position: relative;
+            }
+
+            .X7gzZ7{
+                position: absolute;
+                top: 0;
+                right: 0;
+
+                width: 50px;
+            }
+
+            .yV54ZD {
+                
+                height: 40px;
+            }
+            .IKgh3U {
+                
+                color: rgba(0,0,0,.13);
+                text-decoration: line-through;
+                margin: 10px 0;
+            }
+            .price{
+                font-size: 25px;
+                font-weight: normal;
+                color: #ee4d2d;
+            }
+            .price-sale{
+                display: flex;
+            }
+
+            .btn-buys{
+                line-height: 51px;
+                width: 40%;
+                text-align: right;
+
+            }
+            .btn-buys button{
+                 font-size: 13px;
+                height: 42px;
+               width: 94%;
+            }
+            .btn-buy-price{
+                width: 60%;
+            }
+
+            .btn-buy-click{
+                background: #ee4d2d;
+                border: 0;
+            }
+            .qOgYxF span{
+                color: #ddd;
+            }
+
+            .lists{
+                height: 325px;
+            }
+            .lists .item{
+                height: 97%;
                 background: #fff;
             }
 
-            .titles-time{
-               /* border-top: 2px solid #ff9;*/
-                margin-top: 5px;
-                padding-top: 5px;
-                padding-bottom: 5px;
-               /* background-color: #fb0707;*/
-                margin-bottom: 7px;
-                display: block;
+            .progress {
+                background-color: #FDBCA8;
+                border-radius: 8px;
+                position: relative;
+               
+                height: 12px;
                 width: 100%;
-                height: 80px;
+                margin-top: 10px;
             }
 
-            .titles-time h3 {
-                margin: 0;
-                display: inline-block;
-                color: #000000;
-                font-size: 18px;
-                text-transform: uppercase;
-                padding: 0 13px;
-                vertical-align: -3px;
-                float: left;
-                /*background-color: #ffea26;*/
-                padding: 5px 13px;
-                border-radius: 4px;
-                
-                cursor: pointer;
-            }
-
-
-            .titles-time .cat-child {
-                padding: 2px 0;
-                display: inline-block;
-                margin-left: 2px;
-            }
-
-            .titles-time .cat-child a {
-                line-height: 36px;
-                color: #000000;
-                background-color: #ff9;
-                padding: 11px 10px;
-                border-radius: 4px;
-            }
-
-            .titles-time .cat-child li {
-                float: left;
-                padding-right: 8vw;
-            }
-
-            .banner-inner {
-                height: 50px;
-                position: sticky;
-                margin: 0 auto;
+            .progress-done {
+                background: #E91B24;
+                box-shadow: 0 3px 3px -5px #F2709C, 0 2px 5px #F2709C;
+                border-radius: 20px;
+                color: #fff;
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                height: 100%;
+                width: 0;
+                opacity: 0;
+                transition: 1s ease 0.3s;
+            }
+
+            .cIVWIZ{
+                max-width: 1200px;
+            }
+            #navbarNavAltMarkup{
+                height: 80px;
+            }
+            .navbar-nav{
+                height: 100%;
+            }
+            .item-img_1942{
                 text-align: center;
-                line-height: 1.25;
-                width: 50%;
-                background: #ffc75f;
-                border-radius: 10px;
-                border: 1px solid;
             }
 
-            .text-promotion {
-                font-size: 30px;
-                font-weight: bold;
-                color: #153464;
-                text-transform: uppercase;
+            .items-title .name{
+                margin-top: 10px;
             }
-
-            /*.titles-time .minutes{
-                font-weight: normal;
-                color: #000;
-            }*/
 
         </style>
-       <?php 
+
+
+        <?php 
             $saleFlash = DB::table('flash_deal')->get();
         ?>
 
@@ -357,34 +522,24 @@
 
         
         @if($now>$time1_start && $now < $time4)
-        <div class="sale-time-flash">
-            <div class="banner-outer">
-                <div class="banner-inner responsive-wrapper">
-                    <p class="text-promotion">{{ $vals->name }}</p>
-                </div>
-            </div>
 
+
+            <?php 
+
+                $groups_deal = 0;
+                $k = 0;
+
+            ?>
            
-            
-            <!-- flash sale -->
-            <div class="img-flashsale mobiles" style="width: 100%;">
-                <a href="{{ route('details', 'deal') }}"><img src="{{ asset('images/template/flashsalemb.jpg') }}" style="width: 100%"></a>
+            <div class="container cIVWIZ" style="background-image: url(https://cf.shopee.vn/file/9ec673f17e637893c11a2a983045e7c6);"></div>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+       
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 
-            </div>
+                   
+                    @foreach($define as $key => $value)
 
-
-           
-                <div class="title titles-time key{{ $keys }}">
-                    <ul class="cat-child">
-                        <?php 
-
-                            $groups_deal = 0;
-                            $k = 0;
-
-                        ?>
-                        @foreach($define as $key => $value)
-
-                        @if($now<$value['endTime'])
+                    @if($now<$value['endTime'])
 
                         <?php 
                             $k++;
@@ -408,96 +563,98 @@
 
                             }
 
-                        ?>  
-                        <li onclick="clickDeal({{ $vals->id }},{{ $key+1 }}, {{ $k }})" class='deal{{ $vals->id }}'>
-                            <h3 class="{{  $k==1?'actives-click':'' }} active_{{ $key+1 }}">
-                                <span>{{ $value['start'] }}</span>
-                                <br>
-                                <span>{!! $now->between($value['startTime'], $value['endTime'])?'<div class="clock"><span class="hour">0'.$hour.'</span>:<span class="minutes">'.$minutes.'</span>:<span class="second">'.$seconds.'</span></div>':'SẮP DIỄN RA' !!}</span>
-                            </h3>
-                        </li>
-                        @endif
-                        @endforeach
-                        
-                    </ul>
-                </div>
-               
+                    ?>  
 
-              
-            
-                <div class="deal-view{{ $vals->id }}">
-                    <div class="flash-sale" style="height: 305px;">
-                        
-                        <span id="banner-flash-sale">
-                            <a href="{{ route('dealFe') }}">
-                                <img width="256" src="{{  asset('images/background-image/Flash_Sale_Theme_256x396.jpg')}}" style="width: auto; height: 300px" alt="banner-fs">
-                            </a>
-                        </span>
-                        <div class="flash-product nk-product-of-flash-sales">
-                            <div class="col-flash col-flash-2 active">
-                                <div id="sync1S" class="slider-banner owl-carousel flash-sale-banner">
-
-                                    @foreach($flashDeal as $key => $value)
-
-                                    <?php 
-                                        $timestamp = $now->diffInSeconds($value->end);
-                                        $hour =  floor($timestamp/3600);
-                                        $timestamp = floor($timestamp % 3600);
-                                        $minutes =floor($timestamp/60);
-                                        $timestamp = floor($timestamp % 60);
-                                        $seconds =floor($timestamp);
-                                    ?>
-
-                                    <div class="item">
-                                        <a href="{{ route('details', $value->link) }}">
-                                            <div class="img">
-                                                <img width="327" src="{{ asset($value->image) }}"  data-src="{{ asset($value->image) }}" title="{{ $value->name }}">
-                                            </div>
-                                        </a>
-                                        <div class="desc desc-deal{{$key}}">
-                                            <a href="{{ route('details', $value->link) }}">
-                                                <h4 class="title">{{ $value->name }}</h4>
-                                                <div class="container-price">
-                                                   <div>
-                                                       <span class="price-old">{{ @str_replace(',' ,'.', number_format($value->price)) }}&#x20AB;</span>
-                                                   </div>
-                                                </div>
-                                                <div style="margin-top: 11px">
-
-
-
-                                                    @if($vals->price !=0)
-                                                
-                                                    <span class="price-new">{{  @str_replace(',' ,'.', number_format($vals->price)) }}&#x20AB;</span>
-                                                    @else
-                                                    
-                                                  
-
-                                                    <span class="price-new">{{  @str_replace(',' ,'.', number_format($value->deal_price)) }}&#x20AB;</span>
-                                                    @endif
-                                                </div>
-
-                                                <div class="review_product star"> <p> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> </p> <div class="line_break">|</div> <div class="reviewCount">0 đánh giá</div> </div>
-
-                                                <div class="container-timeline"> <span class="timeline"><span style="width: 2%"></span></span> <!-- <p>Đã bán <span style="color: #EE1E25">2</span> / 100 sản phẩm</p> --> </div>
-                                                
-                                            </a>
-                                        </div>
-                                    </div>
-                                  
-                                    @endforeach
-
-                                </div>
+                    
+                    <div class="navbar-nav col-md-3 {{  $k==1?'actives':'' }} active_{{ $key+1 }}">
+                        <div class="nav-item nav-link active div-pd" href="#"> 
+                            <div>
+                                <a class="deal{{ $vals->id }}" href="javascript:void(0)" onclick="clickDeal({{ $vals->id }},{{ $key+1 }}, {{ $k }})">
+                                    <div class="UCDJ9O">{{ $value['start'] }}</div>
+                                    <div class="higiZo">{{ $now->between($value['startTime'], $value['endTime'])?'Đang diễn ra':'sắp diễn ra'}}</div>
+                                </a>
                             </div>
                         </div>
+
+
+                    </div>
+
+                     @endif
+                    @endforeach
+                   
+                </div>
+            </nav>
+
+           
+
+        <div class="container-productbox">
+
+            <div class="row list-pro listpd">
+
+
+
+                @foreach($flashDeal as $key => $value)
+
+                                
+                <div class="col-md-3 col-6 lists">
+                    <div class="item  __cate_1942">
+                        <a href="{{ route('details', $value->link) }}" data-box="BoxCate" class="main-contain">
+                            
+                            <div class="item-img item-img_1942"> <img class="thumb lazyloaded" data-src="{{ asset($value->image) }}" alt="Smart Tivi LG 75UQ8050PSB 75 inch 4K" style="width:auto; height: 184px;" src="{{ asset($value->image) }}" > </div>
+                            <div class="items-title">
+                                <div class="name">
+                                    
+                                     <span> {{ $value->name }} </span>
+                                </div>
+
+                                <div class="IKgh3U"><div class="qOgYxF"><span>{{ @str_replace(',' ,'.', number_format($value->price)) }}</span><span class="-92Xgq">₫ </span></div></div>
+                                <div class="price-sale">
+                                    <div class="btn-buy-price">
+
+                                         @if($vals->price !=0)
+                                        <strong class="price">{{  @str_replace(',' ,'.', number_format($vals->price)) }}</strong>
+                                         @else
+                                         <strong class="price">{{  @str_replace(',' ,'.', number_format($value->deal_price)) }}</strong>
+                                         @endif
+                                        <div class="progress">
+
+                                            <div class="progress-done" data-done="70">
+                                                70%
+                                            </div>
+                                        </div>
+
+
+
+                                    </div>
+                                    <div class="btn-buys">
+                                        <button type="button" class="btn btn-danger btn-buy-click">Mua ngay</button>
+                                    </div>
+                                    
+                                </div>
+                                
+                               
+                            </div>
+                        </a>
+                        <div class="item-bottom"> <a href="#" class="shiping"></a> </div>
+                        <div class="_5ICO3M yV54ZD X7gzZ7">
+                            <div class="_8PundJ"><span class="percent">63%</span><span class="tSV5KQ">giảm</span></div>
+                        </div>
+                        <!-- <a href="javascript:void(0)" class="item-ss"> <i></i> So sánh </a> --> 
                     </div>
                 </div>
-               
-               <!--  end flash  -->
-           
+
+                @endforeach
+
+                
+
+            </div>
+            <!-- <div class="view-more "> <a href="javascript:;">Xem thêm <span class="remain">133</span> Tivi</a> </div> --> 
         </div>
-        @endif 
+
+        @endif
         @endforeach
+
+
 
         @else
 
@@ -511,39 +668,7 @@
                 <a href="{{ route('details', 'deal') }}"><img src="{{ asset('images/template/flashsalemb.jpg') }}" style="width: 100%"></a>
 
             </div>
-            <!-- <div class="title titles-time">
-                <h3>
-                    <span>12:00</span>
-                    <br>
-                    <span>01:00:59</span>
-                </h3>
-                
-                <ul class="cat-child">
-                    <li>
-                        <h3>
-                            <span>15:00</span>
-                            <br>
-                            <span>Sắp diễn ra</span>
-                        </h3>
-                    </li>
-                    <li>
-                        <h3>
-                            <span>18:00</span>
-                            <br>
-                            <span>Sắp diễn ra</span>
-                        </h3>
-
-                    </li>
-                    <li>
-                        <h3>
-                            <span>21:00</span>
-                            <br>
-                            <span>Sắp diễn ra</span>
-                        </h3>
-                    </li>
-                </ul>
-            </div>
- -->
+           
             <div class="">
                 <div class="flash-sale" style="height: 305px;">
                     
@@ -1426,6 +1551,73 @@
 
             
         }
+
+
+        function clickDeal(flash_deal_id, id, dem) {
+
+
+                $('#navbarNavAltMarkup .navbar-nav').removeClass('actives');
+
+
+                $('.active_'+dem).addClass('actives');
+
+                // classname =  $(this).attr('class');
+
+                // $('.deal'+flash_deal_id+' h3').removeClass('actives-click');
+
+                // $('.deal'+flash_deal_id+' .active_'+id).addClass('actives-click');
+
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
+                $.ajax({
+                    type: 'POST',
+                    url: "{{ route('showDealClick') }}",
+                    data: {
+                        product_id: id,
+                        flash_deal_id:flash_deal_id,
+                        key:dem,
+                           
+                    },
+                    success: function(result){
+                       // numberCart = result.find($("#number-product-cart").text());
+
+                       $('.listpd').remove();
+
+                       // console.log(result);
+
+                       $('.container-productbox').append(result);
+
+
+                        // var owl = $('.deal-view'+flash_deal_id+' .flash-sale-banner');
+                        // owl.owlCarousel({
+                        //     loop:false,
+                        //     margin:10,
+                        //     nav:true,
+                        //     dots:false,
+                        //     autoplay:false,
+                            
+                        //     navText: ["<i class='fa fa-angle-left'></i>","<i class='fa fa fa-angle-right'></i>"],
+                        //     responsive:{
+                        //         0:{
+                        //             items:2
+                        //         },
+
+                        //          600:{
+                        //             items:2
+                        //         },
+                               
+                        //         1000:{
+                        //             items:4
+                        //         }
+                        //     }
+                        // });
+                    }
+                });    
+            }
         
     </script>
 
