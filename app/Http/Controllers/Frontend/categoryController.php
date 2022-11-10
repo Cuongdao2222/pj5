@@ -212,7 +212,7 @@ class categoryController extends Controller
 
         $link = trim($slug);
 
-        $findID = cache()->remember('findID_link_group'.$link, 1000, function () use($link){
+        $findID = cache()->remember('findID_link_group'.$link, 100000, function () use($link){
 
             $findID = groupProduct::where('link', $link)->first()??'';
 
