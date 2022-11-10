@@ -176,8 +176,22 @@
                 .btn-buys{
                     display: none;
                 }
-           
 
+                 .btn-buys{
+                    display: none;
+                }
+                .navbar-collapse{
+                    display: flex;
+                }
+                #navbarNavAltMarkup {
+                     height: auto !important; 
+                }
+                .items-title span{
+                    font-size: 16px !important;
+                }
+                .btn-buy-price{
+                    width: 100% !important;
+                }
 
             }
 
@@ -1189,6 +1203,13 @@
                         // });
                     }
                 });    
+            }
+
+            if ($(window).width < 600){
+            
+
+                $('#navbarNavAltMarkup').removeClass('collapse');
+
             }
         </script>
         @endpush
