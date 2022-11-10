@@ -20,7 +20,14 @@
                 <div class="item-img item-img_1942"> <img class="thumb lazyloaded" data-src="{{ asset($value->image) }}" alt="Smart Tivi LG 75UQ8050PSB 75 inch 4K" style="width:auto; height: 184px;" src="{{ asset($value->image) }}" > </div>
                 <div class="items-title">
                     <div class="name">
-                        
+                        <?php 
+                            $str_len[7] = '?.???.000';
+                            $str_len[8] = '??.???.000';
+                            $str_len[9] = '???.???.000';
+
+                            $price_strlen = $str_len[strlen($value->deal_price)]??'???.000';
+                                         
+                        ?>
                          <span> {{ $value->name }} </span>
                     </div>
 
@@ -29,7 +36,7 @@
                         <div class="btn-buy-price">
 
                             
-                             <strong class="price">{{ $keyss==1 && $checksoon==0?@str_replace(',' ,'.', number_format($value->deal_price)):'???.000' }}   </strong>
+                             <strong class="price">{{ $keyss==1 && $checksoon==0?@str_replace(',' ,'.', number_format($value->deal_price)):$price_strlen }}   </strong>
                             
                             <div class="progress">
 

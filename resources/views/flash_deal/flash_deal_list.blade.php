@@ -222,7 +222,7 @@
 
                                 $deal_id =  $_GET['id'];
 
-                                $deal = App\Models\flashdeal::where('flash_deal_id', $deal_id)->get();
+                                $deal = App\Models\flashdeal::where('flash_deal_id', $deal_id)->orderBy('id', 'desc')->get();
 
                                 $priceDeal = DB::table('flash_deal')->where('id', $deal_id)->get()->last();
 

@@ -521,6 +521,7 @@
 
             .items-title .name{
                 margin-top: 10px;
+                height: 38px;
             }
 
         </style>
@@ -631,10 +632,20 @@
                                 <div class="price-sale">
                                     <div class="btn-buy-price">
 
+                                        <?php 
+                                            $str_len[7] = '?.???.000';
+                                            $str_len[8] = '??.???.000';
+                                            $str_len[9] = '???.???.000';
+                                        ?>
+
                                          @if($vals->price !=0)
                                         <strong class="price">{{ $checksoon ==1?'???.000':@str_replace(',' ,'.', number_format($vals->price)) }}&#x20AB</strong>
                                          @else
-                                         <strong class="price">{{   $checksoon ==1?'???.000':@str_replace(',' ,'.', number_format($value->deal_price)) }} &#x20AB</strong>
+
+                                         <?php 
+                                            $price_strlen = $str_len[strlen($value->deal_price)]??'???.000';
+                                         ?>
+                                         <strong class="price">{{   $checksoon ==1 ?$price_strlen:@str_replace(',' ,'.', number_format($value->deal_price)) }} &#x20AB</strong>
                                          @endif
                                         <div class="progress">
 
