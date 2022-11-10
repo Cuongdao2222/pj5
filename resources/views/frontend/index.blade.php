@@ -535,6 +535,7 @@
             .items-title .name{
                 margin-top: 10px;
                 height: 38px;
+                overflow: hidden;
             }
 
             .readmore-btn {
