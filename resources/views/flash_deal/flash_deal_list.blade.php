@@ -224,6 +224,8 @@
 
                                 $deal = App\Models\flashdeal::where('flash_deal_id', $deal_id)->orderBy('id', 'desc')->get();
 
+
+
                                 $priceDeal = DB::table('flash_deal')->where('id', $deal_id)->get()->last();
 
                             ?>
@@ -308,7 +310,7 @@
 
                             <?php  
                                 $now = Carbon\Carbon::now();
-                                $products = DB::table('deal_flash_product')->where('flash_deal_id', $deal_id)->distinct()->get()->toArray();
+                                $products = DB::table('deal_flash_product')->where('flash_deal_id', $deal_id)->OrderBy('id', 'desc')->distinct()->get()->toArray();
 
                                 $k =0;
                             ?>
