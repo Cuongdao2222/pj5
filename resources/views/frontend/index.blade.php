@@ -34,6 +34,18 @@
                 .btn-buys{
                     display: none;
                 }
+                .navbar-collapse{
+                    display: flex;
+                }
+                #navbarNavAltMarkup {
+                     height: auto !important; 
+                }
+                .items-title span{
+                    font-size: 16px !important;
+                }
+                .btn-buy-price{
+                    width: 100% !important;
+                }
             }
         </style>
 
@@ -337,6 +349,7 @@
             }
             .list-pro{
                 background: #F5F5F5;
+                overflow: hidden;
             }
             .items-title{
                 background: #fff;
@@ -524,6 +537,23 @@
                 height: 38px;
             }
 
+            .readmore-btn {
+                background-color: #fff;
+                border-radius: 4px;
+                display: block;
+                line-height: 16px;
+                margin: 10px auto 0;
+                padding: 12px 5px;
+                text-align: center;
+                color: #333;
+                width: 340px;
+            }
+
+            .product-view-all .prd-promo__top{
+                background: #E94A37;
+                padding-top:1px;
+            }
+
         </style>
 
 
@@ -607,7 +637,7 @@
 
            
 
-        <div class="container-productbox">
+        <div class="container-productbox product-view-all">
 
             <div class="row list-pro listpd">
 
@@ -681,10 +711,9 @@
 
                 @endforeach
                 @endif
-
-                
-
             </div>
+            <div class="clearfix"></div>
+            <div class="prd-promo__top clearfix"> <a class="readmore-btn" href="{{ route('show-flash-deal') }}" target="_blank"><span>Xem tất cả</span></a> </div>
             <!-- <div class="view-more "> <a href="javascript:;">Xem thêm <span class="remain">133</span> Tivi</a> </div> --> 
         </div>
 
@@ -738,74 +767,74 @@
                                         </div>
                                     </a>
                                     <div class="desc desc-deal{{$key}}">
-                                      <a href="{{ route('details', $value->link) }}">
-                                        <h4 class="title">{{ $value->name }}</h4>
-                                        <div class="container-price">
-                                               <div>
-                                                   <span class="price-old">{{ @str_replace(',' ,'.', number_format($value->price)) }}&#x20AB;</span>
-                                                   &nbsp
+                                        <a href="{{ route('details', $value->link) }}">
+                                            <h4 class="title">{{ $value->name }}</h4>
+                                            <div class="container-price">
+                                                   <div>
+                                                       <span class="price-old">{{ @str_replace(',' ,'.', number_format($value->price)) }}&#x20AB;</span>
+                                                       &nbsp
 
-                                                   <?php
-                                                        $discount_deal =  round(((intval($value->price) - intval($value->deal_price))/intval($value->price))*100)
-                                                    ?>
-                                                    
-                                                    <span class="discount_percent">-{{ $discount_deal }}%</span>
-                                               </div>
-                                        </div>
-                                        <div style="margin-top: 11px">
-                                            <div class="nk-top-stickers"><span class="nk-sticker nk-new">Mới</span></div><div>
-                                                    <p class="title-shock-price">Giá sốc online</p>
-                                                    <span class="price-new">{{ @str_replace(',' ,'.', number_format($value->deal_price)) }}&#x20AB;</span>
-                                                </div>
-                                        </div>
-                                        <div class="review_product star">
-                                           <p>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                            </p>
-                                            <div class="line_break">|</div>
-                                                <div class="reviewCount">0 đánh giá</div>
-                                            </div>
-                                            <div class="container-timeline">
-                                            <span class="timeline"><span style="width: 2%"></span></span>
-                                           <!--  <p>Đã bán <span style="color: #EE1E25">2</span> / 100 sản phẩm</p> -->
-                                        </div>
-                                        <div style="width: 100%; height: 1px; background: #ECECEC; margin-top: 8px"></div>
-                                        <div class="countdown-flash-sale">
-                                            <div class="time-cd time-fl time{{ $key }}">
-
-                                                <span class="timestamp" style="display: none;">{{   $now->diffInSeconds($value->end) }}</span>
-                                               
-                                               
-                                                <div class="time">
-                                                    <span class="hours">
-                                                        <span class="hourss"> {{ $hour }}</span>
+                                                       <?php
+                                                            $discount_deal =  round(((intval($value->price) - intval($value->deal_price))/intval($value->price))*100)
+                                                        ?>
                                                         
-                                                        <div style="margin-top: 2px; width:100%; height:1px; background: #FF3647"></div>
-                                                        <span>Giờ</span>
-                                                    </span>
-                                                    <p style="font-size: 28px; line-height: 55px;font-weight: bold;color: #101010; margin: 0 7px" >:</p>
+                                                        <span class="discount_percent">-{{ $discount_deal }}%</span>
+                                                   </div>
+                                            </div>
+                                            <div style="margin-top: 11px">
+                                                <div class="nk-top-stickers"><span class="nk-sticker nk-new">Mới</span></div><div>
+                                                        <p class="title-shock-price">Giá sốc online</p>
+                                                        <span class="price-new">{{ @str_replace(',' ,'.', number_format($value->deal_price)) }}&#x20AB;</span>
+                                                    </div>
+                                            </div>
+                                            <div class="review_product star">
+                                               <p>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                </p>
+                                                <div class="line_break">|</div>
+                                                    <div class="reviewCount">0 đánh giá</div>
+                                                </div>
+                                                <div class="container-timeline">
+                                                <span class="timeline"><span style="width: 2%"></span></span>
+                                               <!--  <p>Đã bán <span style="color: #EE1E25">2</span> / 100 sản phẩm</p> -->
+                                            </div>
+                                            <div style="width: 100%; height: 1px; background: #ECECEC; margin-top: 8px"></div>
+                                            <div class="countdown-flash-sale">
+                                                <div class="time-cd time-fl time{{ $key }}">
 
-                                                    <span class="hours">
-                                                        <span class="minutess">{{ $minutes }}</span>
-                                                        <div style="margin-top: 2px; width:100%; height:1px; background: #FF3647"></div>
-                                                        <span>phút</span>
-                                                    </span>
-                                                    <p style="font-size: 28px; line-height: 55px;font-weight: bold;color: #101010; margin: 0 7px">:</p>
-                                                    <span class="hours">
-                                                        <span class="secondss"> {{ $seconds }}</span>
-                                                        <div style="margin-top: 2px; width:100%; height:1px; background: #FF3647"></div>
-                                                        <span>giây</span>
-                                                    </span>
+                                                    <span class="timestamp" style="display: none;">{{   $now->diffInSeconds($value->end) }}</span>
                                                    
-                                                  
+                                                   
+                                                    <div class="time">
+                                                        <span class="hours">
+                                                            <span class="hourss"> {{ $hour }}</span>
+                                                            
+                                                            <div style="margin-top: 2px; width:100%; height:1px; background: #FF3647"></div>
+                                                            <span>Giờ</span>
+                                                        </span>
+                                                        <p style="font-size: 28px; line-height: 55px;font-weight: bold;color: #101010; margin: 0 7px" >:</p>
+
+                                                        <span class="hours">
+                                                            <span class="minutess">{{ $minutes }}</span>
+                                                            <div style="margin-top: 2px; width:100%; height:1px; background: #FF3647"></div>
+                                                            <span>phút</span>
+                                                        </span>
+                                                        <p style="font-size: 28px; line-height: 55px;font-weight: bold;color: #101010; margin: 0 7px">:</p>
+                                                        <span class="hours">
+                                                            <span class="secondss"> {{ $seconds }}</span>
+                                                            <div style="margin-top: 2px; width:100%; height:1px; background: #FF3647"></div>
+                                                            <span>giây</span>
+                                                        </span>
+                                                       
+                                                      
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                      </a>
+                                        </a>
                                     </div>
                                 </div>
 
@@ -1249,7 +1278,12 @@
 
 
     <script type="text/javascript">
+        if ($(window).width < 600){
+            
 
+            $('#navbarNavAltMarkup').removeClass('collapse');
+
+        }
 
 
         function addToCart(id) {
@@ -1673,7 +1707,7 @@
 
                        // console.log(result);
 
-                       $('.container-productbox').append(result);
+                       $('.container-productbox').prepend(result);
 
 
                         // var owl = $('.deal-view'+flash_deal_id+' .flash-sale-banner');
