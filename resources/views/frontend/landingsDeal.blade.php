@@ -547,7 +547,7 @@
                 margin: 10px 0;
             }
             .price{
-                font-size: 25px;
+                font-size: 23px;
                 font-weight: normal;
                 color: #ee4d2d;
             }
