@@ -1377,7 +1377,7 @@
                                         <div class="crazy-deal-details pc" style="background-image:url('{{ asset('images/template/flashsale.png')  }}'); height:38px">
                                             <div class="crazy-deal-details-right">
                                                 <time class="crazy-deal-details-countdown" data-spm-anchor-id="a2o4n.pdp_revamp.0.i0.89db8552daSXV6">Bắt đầu sau <span class="crazy-deal-details-countdown-time clock-start">{{ $timestamp_check }}</span></time>
-
+                                            </div>     
                                                 
                                         </div>
                                     </div>
