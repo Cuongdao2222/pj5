@@ -908,8 +908,6 @@
                         <i class="fa-solid fa-plus"></i>
                             so sánh
                     </a>
-
-
                 </div>
                 @endif
 
