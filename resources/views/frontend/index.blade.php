@@ -46,6 +46,9 @@
                 .btn-buy-price{
                     width: 100% !important;
                 }
+                 .div-pd a{
+                    text-decoration: none;
+                }
             }
         </style>
 

@@ -138,6 +138,10 @@
                    
                 } 
 
+                .div-pd a{
+                    text-decoration: none;
+                }
+
                 .flash-sale .item .img {
                     width: 100% !important;
                 }    
