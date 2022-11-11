@@ -138,6 +138,10 @@
                    
                 } 
 
+                .lists{
+                    padding-right: 0 !important;
+                }
+
                 .lists .item{
                     width: 100%;
                     overflow: hidden;

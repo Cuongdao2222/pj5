@@ -54,6 +54,11 @@
                     width: 100%;
                     overflow: hidden;
                 }
+                .lists{
+                    padding-right: 0 !important;
+                }
+
+
             }
         </style>
 
