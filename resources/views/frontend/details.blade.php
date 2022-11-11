@@ -2201,6 +2201,8 @@
     $("img").each(function() {
     
         $(this).attr("data-src",$(this).attr("src"));
+
+        $(this).addClass('lazyload');
         
         
     });
