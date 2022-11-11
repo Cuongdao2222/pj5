@@ -124,6 +124,11 @@
                 width: 100%;
             }    
 
+             .items-title .name {
+                margin-top: 10px;
+                height: 45px;
+            }
+
 
            
 
