@@ -1135,6 +1135,9 @@
 
 
                      $details = $data->Detail;
+
+
+
                     if(isset($check)){
                         $details = str_replace($check,  asset('/images/product/noimage.png'), $data->Detail);
                         $details = str_replace(['http://dienmaynguoiviet.net', 'https://dienmaynguoiviet.net'], 'https://dienmaynguoiviet.vn', $details);
@@ -2194,6 +2197,13 @@
 <script type="text/javascript">
    
     $('.bar-top-left').hide();
+
+    $("img").each(function() {
+    
+        $(this).attr("data-src",$(this).attr("src"));
+        
+        
+    });
 
      $.ajaxSetup({
         headers: {
