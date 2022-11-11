@@ -49,6 +49,11 @@
                  .div-pd a{
                     text-decoration: none;
                 }
+
+                .lists .item{
+                    width: 100%;
+                    overflow: hidden;
+                }
             }
         </style>
 

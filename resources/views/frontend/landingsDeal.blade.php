@@ -138,6 +138,11 @@
                    
                 } 
 
+                .lists .item{
+                    width: 100%;
+                    overflow: hidden;
+                }
+
                 .div-pd a{
                     text-decoration: none;
                 }
