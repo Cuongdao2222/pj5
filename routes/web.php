@@ -192,6 +192,10 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::get('incrawl', 'crawlController@allproduct');
 
+    Route::get('addTimeDealBefore', 'flashdealController@addTimeDealBefore');
+
+    
+
     Route::get('update-call-phone/{id}', 'lienheController@updateCall')->name('updateCall');
 
     Route::get('updateTimeDeal', 'dealController@updateTimeDeal')->name('updateTimeDeal');
@@ -248,6 +252,8 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
     Route::get('flash-deal', 'dealController@flashDeal')->name('flashDeal');
 
     Route::post('add-deal-flash', 'flashdealController@addDealFlash')->name('add-deal-flash');
+
+    Route::post('add-deal-flash-demo', 'flashdealController@addDealFlashDemo')->name('add-deal-flash-demo');
 
     Route::get('editPricedeal', 'dealController@editDealPrice')->name('editPricedeal');
 

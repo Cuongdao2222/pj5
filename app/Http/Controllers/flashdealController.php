@@ -10,6 +10,8 @@ use App\Models\flashdeal;
 
 use DB; 
 
+use Carbon\Carbon;
+
 use App\Models\deal;
 
 class flashdealController extends Controller
@@ -127,6 +129,38 @@ class flashdealController extends Controller
         $val = $request->val;
         $deal = flashdeal::find($id);
         $deal->flash_deal_time_id = $val;
+        $result = $deal->save();
+    }
+
+    public function addTimeDealBefore(Request $request)
+    {
+        $date = DB::table('date_flash_deal')->where('id', 1)->first();
+
+        $time =  Carbon::createFromDate($date->date)->addDay();
+
+        DB::table('date_flash_deal')->where('id', 1)->update(['date' => $time->format('d-m-Y')]);
+
+        $flashdeal = flashdeal::get();
+
+        foreach ($flashdeal as $key => $value) {
+
+            $flashdeals = flashdeal::find($value->id);
+
+            $flashdeals->flash_deal_time_id = $value->flash_deal_time_id_demo;
+
+            $flashdeals->save();
+        }
+
+        echo "thành công";
+
+    }
+
+    public function addDealFlashDemo(Request $request)
+    {
+        $id = $request->id;
+        $val = $request->val;
+        $deal = flashdeal::find($id);
+        $deal->flash_deal_time_id_demo = $val;
         $result = $deal->save();
     }
 

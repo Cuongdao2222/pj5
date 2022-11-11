@@ -305,6 +305,7 @@
                                 <td>Quản lý</td>
                                 <td>Sắp xếp</td>
                                 <td>Flash Deal (theo khung giờ)</td>
+                                <td>Flash Deal (giờ nháp)</td>
                                 
                             </tr>
 
@@ -321,6 +322,8 @@
                             <?php  
                                 $k++ ;
                                 $flashDealTimeId =  $val->flash_deal_time_id;
+
+                                $flashDealTimeIdDemo = $val->flash_deal_time_id_demo??'';
 
                                
                             ?>
@@ -386,6 +389,17 @@
                                         <option value="4" {{ $flashDealTimeId==4?'selected':'' }}>17h</option>
                                     </select>
                                 </td>
+
+                                <td>
+                                    <select  id="flash-deal-demo{{ $val->id }}" class="form-select"  onchange="demoTime({{ $val->id }})">
+                                        <option value="0">Không chọn</option>
+                                        <option value="1" {{ $flashDealTimeIdDemo==1?'selected':'' }}>9h</option>
+                                        <option value="2" {{ $flashDealTimeIdDemo==2?'selected':'' }}>12h</option>
+                                        <option value="3" {{ $flashDealTimeIdDemo==3?'selected':'' }}>14h</option>
+                                        <option value="4" {{ $flashDealTimeIdDemo==4?'selected':'' }}>17h</option>
+                                    </select>
+                                </td>
+
                                 
                             </tr>
                             @endforeach
@@ -851,6 +865,34 @@ function changeFlashDeal(id) {
     });
 
 }   
+
+
+function demoTime(id) {
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $.ajax({
+
+    type: 'POST',
+        url: "{{ route('add-deal-flash-demo') }}",
+        data: {
+            val: $('#flash-deal-demo'+id).val(),
+            id:id,
+            
+        },
+        success: function(result){
+           
+            alert('Thành công');
+            // window.location.reload();
+
+        }
+    });
+
+}  
 
 
 
