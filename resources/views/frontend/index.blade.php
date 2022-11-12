@@ -22,6 +22,9 @@
            .div-pd{
             padding: 15px 0;
            }
+           .__cate_1942 a:hover{
+            text-decoration: none;
+           }
 
 
            @media screen and (max-width:776px) {
