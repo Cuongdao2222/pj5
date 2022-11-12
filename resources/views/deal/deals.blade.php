@@ -299,7 +299,7 @@
 
                             <?php  
                                 $now = Carbon\Carbon::now();
-                                $products = DB::table('deal')->distinct()->get()->toArray();
+                                $products = DB::table('deal')->OrderBy('id', 'desc')->distinct()->get()->toArray();
 
                                 $k =0;
 

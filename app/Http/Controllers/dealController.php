@@ -10,6 +10,8 @@ use App\Models\groupProduct;
 
 use App\Models\deal;
 
+use Carbon\Carbon;
+
 use Illuminate\Support\Facades\Cache;
 
 class dealController extends Controller
@@ -103,6 +105,8 @@ class dealController extends Controller
                 $products_add['deal_price'] = str_replace([',','.'],'',$products[$i]['price_deal']);
 
                 $products_add['product_id'] = $products[$i]['id'];
+                $products_add['created_at'] = Carbon::now();
+                $products_add['updated_at'] = Carbon::now();
 
                 $time = DB::table('deal')->select('start', 'end')->first();
 
