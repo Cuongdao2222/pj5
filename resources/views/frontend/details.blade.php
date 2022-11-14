@@ -731,13 +731,13 @@
                             $image_product = strstr(basename($data->Image), '_');
                         ?>
                         <div class="item img-main">
-                            <a href="{{ asset($data->Image) }}" data-fancybox="gallery"><img src="{{ asset($data->Image) }}" alt="{{ @$data->Name }}">
+                            <a href="{{ asset($data->Image) }}" data-fancybox="gallery"><img src="{{ asset($data->Image) }}" data-src ="{{ asset($data->Image) }}" alt="{{ @$data->Name }}">
 
                             </a>
 
                             @if($data->id>4720)
                             <div class="saker">
-                                <img src="{{ asset('images/saker/'.strtolower($logoSaker->maker).'.png') }}" class="lazyload">
+                                <img src="{{ asset('images/saker/'.strtolower($logoSaker->maker).'.png') }}"  data-src ="{{ asset($data->Image) }}" class="lazyload">
                             </div>
                             @endif
                         </div>
@@ -766,7 +766,7 @@
                         @if( basename($image->image) != basename($data->Image) )
 
                         <div class="item">
-                            <a href="{{ asset($image->image) }}" data-fancybox="gallery"><img src="{{ asset($image->image) }}"  alt="{{ @$data->Name }}"></a>
+                            <a href="{{ asset($image->image) }}" data-fancybox="gallery"><img  data-src ="{{ asset($image->image) }}"  alt="{{ @$data->Name }}" class="lazyload"></a>
                         </div>
                       
                         @endif
