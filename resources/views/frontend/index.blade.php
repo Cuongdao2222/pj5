@@ -192,7 +192,7 @@
 
                 @foreach($banners as $value)
                 <div class="item" data-dot="<span>{{ $value->title }}</span>">
-                    <a aria-label="slide" data-cate="0" data-place="1535" href="{{ $value->link }}" ><img  src="{{ asset($value->image) }}"  data-src="{{ asset($value->image) }}" alt="{{ $value->title }}"></a>
+                    <a aria-label="slide" data-cate="0" data-place="1535" href="{{ $value->link }}" ><img  data-src="{{ asset($value->image) }}" alt="{{ $value->title }}" class="lazyload"></a>
                 </div>
                 @endforeach
                 @endif
@@ -225,7 +225,7 @@
                 @foreach( $bannersRight as $values)
 
                 <a  aria-label="slide" data-cate="0" data-place="1539" href="{{ $values->link }}">
-                    <img  src="{{ asset($values->image) }}" data-src="{{ asset($values->image) }}"  alt="{{ $values->title }}" >
+                    <img   data-src="{{ asset($values->image) }}"  alt="{{ $values->title }}" class="lazyload">
                 </a>
                 @endforeach
                 @endif
@@ -241,7 +241,7 @@
                     <a href="{{ $slider->link }}">
                         <picture>
                             <source media="(min-width:1201px)" >
-                            <img src="{{ asset($slider->image) }}" alt="" data-src="{{ asset($slider->image) }}">
+                            <img  data-src="{{ asset($slider->image) }}" class="lazyload">
                         </picture>
                     </a>
                     <p>

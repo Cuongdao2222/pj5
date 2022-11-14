@@ -2202,6 +2202,8 @@
     
         $(this).attr("data-src",$(this).attr("src"));
 
+        $(this).removeAttr('src');
+
         $(this).addClass('lazyload');
         
         

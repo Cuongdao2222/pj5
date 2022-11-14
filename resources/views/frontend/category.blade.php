@@ -99,7 +99,7 @@
 
                     @if(!empty($banner)&& $banner->active ==1)
                      <div class="item">
-                        <a aria-label="slide" data-cate="1942" data-place="1537"><img width=1200  src="{{ asset($banner->image) }}" alt="{{ $banner->title }}"  ></a>
+                        <a aria-label="slide" data-cate="1942" data-place="1537"><img width=1200  data-src="{{ asset($banner->image) }}" alt="{{ $banner->title }}"  class="lazyload"></a>
                     </div>
                     @endif
                    
@@ -432,7 +432,7 @@
 
                                                  @foreach($gift as $gifts)
 
-                                                <div class="quatang"><img src="{{ asset($gifts->image) }}"></div>
+                                                <div class="quatang"><img data-src="{{ asset($gifts->image) }}" class="lazyload"></div>
                                                 @endforeach
                                             </div>
                                            
