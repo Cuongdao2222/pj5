@@ -731,7 +731,7 @@
                             $image_product = strstr(basename($data->Image), '_');
                         ?>
                         <div class="item img-main">
-                            <a href="{{ asset($data->Image) }}" data-fancybox="gallery"><img src="{{ asset($data->Image) }}" data-src ="{{ asset($data->Image) }}" alt="{{ @$data->Name }}">
+                            <a href="{{ asset($data->Image) }}" data-fancybox="gallery"><img  data-src ="{{ asset($data->Image) }}" alt="{{ @$data->Name }}">
 
                             </a>
 
