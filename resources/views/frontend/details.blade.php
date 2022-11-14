@@ -365,6 +365,13 @@
                 text-align: center;
             }
 
+            .item{
+                height: 100%;
+            }
+            .saker{
+                position: absolute;
+            }
+
             .cartSP{
                 margin-left: 4px;
                
@@ -731,13 +738,13 @@
                             $image_product = strstr(basename($data->Image), '_');
                         ?>
                         <div class="item img-main">
-                            <a href="{{ asset($data->Image) }}" data-fancybox="gallery"><img  data-src ="{{ asset($data->Image) }}" alt="{{ @$data->Name }}">
+                           
+                             <a href="{{ asset($data->Image) }}" data-fancybox="gallery"><img  data-src ="{{ asset($data->Image) }}" alt="{{ @$data->Name }}" class="lazyload">
 
                             </a>
-
                             @if($data->id>4720)
                             <div class="saker">
-                                <img  data-src ="{{ asset($data->Image) }}" class="lazyload">
+                                    <img src="{{ asset('images/saker/'.strtolower($logoSaker->maker).'.png') }}"  data-src ="{{ asset($data->Image) }}" class="lazyload">
                             </div>
                             @endif
                         </div>
@@ -759,7 +766,7 @@
                        
                         @foreach( $images_products as $image)
 
-                        <!-- check trùng ảnh đại diện -->
+                      
 
                         @if(!empty($image->image) && '_'.basename($image->image) != $image_product)
 
@@ -771,7 +778,7 @@
                       
                         @endif
 
-                        <!-- end check -->
+                      
                         @endif
                         @endforeach
 
@@ -2355,6 +2362,7 @@
         nav:true,
         autoplay:true,
         dots:true,
+        autoWidth: false,
        
         dotsEach:1,
 
