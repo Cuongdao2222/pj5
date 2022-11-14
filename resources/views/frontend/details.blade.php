@@ -737,7 +737,7 @@
 
                             @if($data->id>4720)
                             <div class="saker">
-                                <img src="{{ asset('images/saker/'.strtolower($logoSaker->maker).'.png') }}"  data-src ="{{ asset($data->Image) }}" class="lazyload">
+                                <img  data-src ="{{ asset($data->Image) }}" class="lazyload">
                             </div>
                             @endif
                         </div>
@@ -853,7 +853,7 @@
 
                                                 <input type="checkbox" name="gift" value="{{ $valuegift->name }}" class="gift-check">
                                                 
-                                                <img src="{{ asset($valuegift->image) }}" height="30px" width="30px">
+                                                <img data-src="{{ asset($valuegift->image) }}" height="30px" width="30px" class="lazyload">
 
                                                 @if($valuegift->id ==5)
                                                 <a href="https://dienmaynguoiviet.vn/khau-trang-loc-khi-lg-puricare-the-he-2-ap551awfa-ajp-may-trang"><h4>{{ $valuegift->name }}</h4></a>
@@ -2201,8 +2201,6 @@
     $("img").each(function() {
     
         $(this).attr("data-src",$(this).attr("src"));
-
-        $(this).removeAttr('src');
 
         $(this).addClass('lazyload');
         
