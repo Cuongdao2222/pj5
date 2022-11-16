@@ -363,6 +363,7 @@
                 width: 70%;
                 margin: 0 auto;
                 text-align: center;
+                height: 104px;
             }
 
             .item{
