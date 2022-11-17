@@ -491,7 +491,16 @@
                         $limit =  floor(intval($numberdata)/12); 
                     ?>
                     @for($i=0; $i<=$limit; $i++)
-                    <li class="page-item {{  $page==$i+1?'active':'' }} " ><a class="page-link" href="{{ route('details',$link) }}?page={{ $i+1 }}">{{ $i+1 }}</a></li>
+
+                    @if($page>5)
+                        @if($i<=$page+4 && $i>$page-6)
+                        <li class="page-item {{  $page==$i+1?'active':'' }} " ><a class="page-link" href="{{ route('details',$link) }}?page={{ $i+1 }}">{{ $i+1 }}</a></li>
+                        @endif
+                    @else
+                        @if($i<10)
+                        <li class="page-item {{  $page==$i+1?'active':'' }} " ><a class="page-link" href="{{ route('details',$link) }}?page={{ $i+1 }}">{{ $i+1 }}</a></li>
+                        @endif
+                    @endif
                     @endfor
                    
                 </ul>
