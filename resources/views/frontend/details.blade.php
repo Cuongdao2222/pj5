@@ -1800,6 +1800,9 @@
 
          <br>
 
+        
+        @endif
+
         <div>
             
             <a class="btn-buy txt_center cor5px"  href="javascript:void(0)" style="border-bottom: 0; background: #CCD0D3;
@@ -1807,7 +1810,6 @@
             <i class="icondetail-thongso"></i> <span class="txt_15">Thông số kỹ thuật</span>
             </a>
         </div>
-        @endif
 
        
 
