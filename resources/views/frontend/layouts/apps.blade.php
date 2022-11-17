@@ -437,6 +437,9 @@
                     right:8px; 
                        
                 }
+                .global-compare-group{
+                    height: 300px;
+                }
             }
 
             @media only screen and (max-width: 768px) {

@@ -395,6 +395,7 @@
             .prod-info .btn-buy{
                 width: calc(50% - 10px);
             }
+             
         }
 
        @media screen and (max-width: 768px){
