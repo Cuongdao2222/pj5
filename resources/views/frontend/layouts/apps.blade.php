@@ -235,7 +235,7 @@
     
         <style type="text/css">
             body.theme-lunar-new-year{
-                overflow-x: auto;
+                overflow-x: auto !important;
             }
 
             .category__all{
