@@ -234,6 +234,9 @@
 
     
         <style type="text/css">
+            body.theme-lunar-new-year{
+                overflow-x: auto;
+            }
 
             .category__all{
                 padding: 0 !important;
@@ -827,7 +830,7 @@
                                         </div>
                                         <div id="submenu-1" class="submenu" style="display: none;">
                                             <aside>
-                                                <strong>Thương hiệu</strong>
+                                                <a href="{{ route('details', 'thuong-hieu-tivi') }}"><strong>Thương hiệu</strong></a>
                                                 <hr>
                                                 <a href="{{route('details','tivi-samsung')}}">
                                                     <h3>Tivi Samsung</h3>
@@ -846,7 +849,7 @@
                                                 </a>
                                             </aside>
                                             <aside>
-                                                <strong>Loại tivi</strong>
+                                                <a href="{{ route('details', 'loai-tivi') }}"><strong>Loại tivi</strong></a>
                                                 <hr>
                                                 <a href="{{route('details','8k')}}">
                                                     <h3>8K</h3>
@@ -874,7 +877,7 @@
                                                 </a>
                                             </aside>
                                             <aside>
-                                                <strong>Kích cỡ tivi</strong>
+                                                <a href="{{route('details','kich-co-tivi')}}"><strong>Kích cỡ tivi</strong></a>
                                                 <hr>
                                                 <a href="{{route('details','tivi-32-inches')}}">
                                                     <h3>Tivi 32 inches</h3>
@@ -911,7 +914,7 @@
                                         <div id="submenu-2" class="submenu" style="display: none;">
                                             <aside>
                                                 
-                                                <strong>Thương hiệu</strong>
+                                                <a href="{{route('details','thuong-hieu-tu-lanh')}}"><strong>Thương hiệu</strong></a>
                                                 <hr>
 
                                                 <a href="{{route('details','tu-lanh-hitachi')}}">
@@ -941,7 +944,8 @@
                                                 </a>
                                             </aside>
                                             <aside>
-                                                <strong>Dung tích</strong>
+
+                                                <a href="{{route('details','dung-tich-tu-lanh')}}"><strong>Dung tích</strong></a>  
                                                 <hr>
                                                 <a href="{{route('details','duoi-150-lit')}}">
                                                     <h3>Dưới 150 lít</h3>
@@ -970,7 +974,7 @@
                                             </aside>
 
                                             <aside>
-                                                <strong>Loại tủ</strong>
+                                                <a href="{{route('details','loai-tu-lanh')}}"><strong>Loại tủ</strong></a>
                                                 <hr>
                                                 <a href="{{route('details','tu-lanh-mini')}}">
                                                     <h3>Tủ lạnh mini</h3>
@@ -998,7 +1002,7 @@
 
                                         <div id="submenu-3" class="submenu" style="display: none;">
                                             <aside>
-                                                <strong>Kiểu giặt</strong>
+                                                <a href="{{route('details','kieu-giat')}}"><strong>Kiểu giặt</strong></a>
                                                 <hr>
                                                 <a href="{{route('details','may-giat-long-ngang')}}">
                                                     <h3>Máy giặt lồng ngang</h3>
@@ -1008,7 +1012,7 @@
                                                 </a>
                                             </aside>
                                             <aside>
-                                                <strong>Thương hiệu</strong>
+                                                <a href="{{ route('details', 'thuong-hieu-may-giat') }}"><strong>Thương hiệu</strong></a>
                                                 <hr>
                                                 <a href="{{route('details','may-giat-electrolux')}}">
                                                     <h3>Máy giặt Electrolux</h3>
@@ -1040,7 +1044,7 @@
 
                                         <div id="submenu-4" class="submenu" style="display: none;">
                                             <aside>
-                                                <strong>Thương hiệu</strong>
+                                                <a href="{{ route('details', 'thuong-hieu-dieu-hoa') }}"><strong>Thương hiệu</strong></a>  
                                                 <hr>
                                                 <a href="{{route('details','dieu-hoa-daikin')}}">
                                                     <h3>Điều hòa Daikin</h3>
@@ -1069,7 +1073,7 @@
                                             </aside>
 
                                             <aside>
-                                                <strong>Tiết kiệm điện</strong>
+                                                <a href="{{ route('details', 'tiet-kiem-dien') }}"><strong>Tiết kiệm điện</strong></a>  
                                                 <hr>
                                                
                                                 <a href="{{route('details','co-inverter')}}">
@@ -1170,7 +1174,8 @@
                                             </aside>
 
                                             <aside>
-                                                <strong>Sản phẩm nhà bếp</strong>
+                                                <a href="{{ route('details', 'san-pham-nha-bep') }}"><strong>Sản phẩm nhà bếp</strong></a>
+                                                
                                                 <hr>
                                                 <a href="{{route('details','noi-com-dien')}}">
                                                     <h3>Nồi cơm điện</h3>
@@ -1264,7 +1269,8 @@
 
                                         <div id="submenu-9" class="submenu" style="display: none;">
                                             <aside>
-                                               <strong>Thương hiệu</strong>
+                                                <a href=""><strong>Thương hiệu</strong></a>
+                                               
                                                <hr>
                                                 <a href="{{route('details','tu-mat-sanaky')}}">
                                                     <h3>Sanaky</h3>
@@ -1343,7 +1349,8 @@
                             <div class="navmwg accessories danh-muc1" style="display: none;">
                                 <div class="sub-cate">
                                     <div class="PKLT">
-                                        <strong>Thương hiệu</strong>
+                                        <a href="{{ route('details', 'thuong-hieu-tivi') }}"><strong>Thương hiệu</strong></a>
+
                                         <a href="{{route('details','tivi-samsung')}}">
                                             <h3>Tivi Samsung</h3>
                                         </a>
@@ -1363,7 +1370,8 @@
                                 </div>
                                 <div class="sub-cate">
                                     <div class="PKLT">
-                                        <strong>Loại tivi</strong>
+                                        <a href="{{ route('details', 'loai-tivi') }}"><strong>Loại tivi</strong></a>
+
                                         <a href="{{route('details','8k')}}">
                                             <h3>8K</h3>
                                         </a>
@@ -1392,7 +1400,7 @@
                                 </div>
                                 <div class="sub-cate">
                                     <div class="PKLT">
-                                        <strong>Kích cỡ tivi</strong>
+                                        <a href="{{route('details','kich-co-tivi')}}"><strong>Kích cỡ tivi</strong></a>
                                         <a href="{{route('details','tivi-32-inches')}}">
                                             <h3>Tivi 32 inches</h3>
                                         </a>
@@ -1426,7 +1434,7 @@
                             <div class="navmwg accessories danh-muc2" style="display: none;">
                                 <div class="sub-cate">
                                     <div class="PKLT">
-                                        <strong>Thương hiệu</strong>
+                                        <a href="{{ route('details', 'thuong-hieu-may-giat') }}"><strong>Thương hiệu</strong></a>
                                         <a href="{{route('details','may-giat-electrolux')}}">
                                             <h3>Máy giặt Electrolux</h3>
                                         </a>
@@ -1446,7 +1454,7 @@
                                 </div>
                                 <div class="sub-cate">
                                     <div class="PKLT">
-                                        <strong>Kiểu giặt</strong>
+                                        <a href="{{route('details','kieu-giat')}}"><strong>Kiểu giặt</strong></a>
                                         <a href="{{route('details','may-giat-long-ngang')}}">
                                             <h3>Máy giặt lồng ngang</h3>
                                         </a>
@@ -1457,7 +1465,8 @@
                                 </div>
                                 <div class="sub-cate">
                                     <div class="PKLT">
-                                        <strong>Khối lượng giặt</strong>
+                                        <a href="{{ route('details', 'khoi-luong-giat') }}"><strong>Khối lượng giặt</strong></a>
+                                        
                                         <a href="{{route('details','duoi-7kg')}}">
                                             <h3>Dưới 7kg</h3>
                                         </a>
@@ -1482,7 +1491,7 @@
                             <div class="navmwg accessories danh-muc3" style="display: none;">
                                 <div class="sub-cate">
                                     <div class="PKLT">
-                                        <strong>Thương hiệu</strong>
+                                        <a href="{{route('details','thuong-hieu-tu-lanh')}}"><strong>Thương hiệu</strong></a>
 
                                         <a href="{{route('details','tu-lanh-panasonic')}}">
                                             <h3>Tủ lạnh Panasonic</h3>
@@ -1510,7 +1519,7 @@
                                 </div>
                                 <div class="sub-cate">
                                     <div class="PKLT">
-                                        <strong>Dung tích</strong>
+                                        <a href="{{route('details','dung-tich-tu-lanh')}}"><strong>Dung tích</strong></a>  
                                         <a href="{{route('details','duoi-150-lit')}}">
                                             <h3>Dưới 150 lít</h3>
                                         </a>
@@ -1539,7 +1548,7 @@
                                 </div>
                                 <div class="sub-cate">
                                     <div class="PKLT">
-                                        <strong>Loại tủ</strong>
+                                         <a href="{{route('details','loai-tu-lanh')}}"><strong>Loại tủ</strong></a>
                                         <a href="{{route('details','tu-lanh-mini')}}">
                                             <h3>Tủ lạnh mini</h3>
                                         </a>
@@ -1564,7 +1573,8 @@
                             <div class="navmwg accessories danh-muc4" style="display: none;">
                                 <div class="sub-cate">
                                     <div class="PKLT">
-                                        <strong>Thương hiệu</strong>
+                                        <a href="{{ route('details', 'thuong-hieu-dieu-hoa') }}"><strong>Thương hiệu</strong></a>
+
                                         <a href="{{route('details','dieu-hoa-daikin')}}">
                                             <h3>Điều hòa Daikin</h3>
                                         </a>
@@ -1593,7 +1603,8 @@
                                 </div>
                                 <div class="sub-cate">
                                     <div class="PKLT">
-                                        <strong>Tiết kiệm điện</strong>
+                                        <a href="{{ route('details', 'tiet-kiem-dien') }}"><strong>Tiết kiệm điện</strong></a>
+                                        
                                         <a href="{{route('details','dieu-hoa-tiet-kiem-dien')}}">
                                             <h3>Điều hòa tiết kiệm điện</h3>
                                         </a>
@@ -1608,7 +1619,9 @@
                                 </div>
                                 <div class="sub-cate">
                                     <div class="PKLT">
-                                        <strong>Công suất</strong>
+                                        
+                                        <a href="{{ route('details', 'cong-suat') }}"><strong>Công suất</strong></a>
+                                       
                                         <a href="{{route('details','1hp')}}">
                                             <h3>1HP</h3>
                                         </a>
@@ -1636,8 +1649,9 @@
                             <div class="navmwg accessories danh-muc6" style="display: none;">
                                 <div class="sub-cate">
                                     <div class="PKLT">
-                                        <strong>Thương hiệu</strong>
-
+                                        <a href="{{ route('details', 'thuong-hieu-tu-dong') }}"><strong>Thương hiệu</strong>
+</a>
+                                        
                                         <a href="{{route('details','tu-dong-sanaky')}}">
                                             <h3>Sanaky</h3>
                                         </a>
@@ -1648,7 +1662,8 @@
                                 </div>
                                 <div class="sub-cate">
                                     <div class="PKLT">
-                                        <strong>Dung tích</strong>
+                                        <a href="{{ route('details', 'dung-tich-tu-dong') }}"><strong>Dung tích</strong></a>
+                                       
                                         <a href="{{route('details','tu-100-lit-200-lit')}}">
                                             <h3>Từ 100 lít - 200 lít</h3>
                                         </a>
@@ -1699,7 +1714,8 @@
                                 </div>
                                 <div class="sub-cate">
                                     <div class="PKLT">
-                                        <strong>Dung tích</strong>
+                                        <a href="{{ route('details', 'dung-tich-tu-mat') }}"><strong>Dung tích</strong></a>
+                                        
                                         <a href="{{route('details','tu-100-200-lit')}}">
                                             <h3>Từ 100-200 lít</h3>
                                         </a>
@@ -1747,7 +1763,8 @@
                             <div class="navmwg accessories danh-muc8" style="display: none;">
                                 <div class="sub-cate">
                                     <div class="PKLT">
-                                        <strong>Sản phẩm gia dụng</strong>
+                                        <a href="{{ route('details', 'san-pham-gia-dung') }}"><strong>Sản phẩm gia dụng</strong></a>
+                                        
                                         <a href="{{route('details','may-hut-bui')}}">
                                             <h3>Máy hút bụi</h3>
                                         </a>
@@ -1770,7 +1787,8 @@
                                 </div>
                                 <div class="sub-cate">
                                     <div class="PKLT">
-                                        <strong>Sản phẩm nhà bếp</strong>
+                                        <a href="{{ route('details', 'san-pham-nha-bep') }}"><strong>Sản phẩm nhà bếp</strong></a>
+                                       
                                         <a href="{{route('details','noi-com-dien')}}">
                                             <h3>Nồi cơm điện</h3>
                                         </a>
