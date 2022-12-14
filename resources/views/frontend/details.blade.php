@@ -128,6 +128,11 @@
             list-style: auto !important;
         }
 
+        .Description  a{
+            color: #0056b3;
+            font-size: 14pt;
+        }
+
         strong a{
             font-weight: bold !important;
         }
