@@ -190,7 +190,7 @@ class indexController extends Controller
     public function cacheClear()
     {
         Cache::flush();
-        file_get_contents(env('APP_URL'));
+        file_get_contents('https://dienmaynguoiviet.vn/');
         echo "thanh cong";
     }
 
