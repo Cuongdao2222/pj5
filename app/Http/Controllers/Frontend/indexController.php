@@ -187,5 +187,12 @@ class indexController extends Controller
 
     }
 
+    public function cacheClear()
+    {
+        Cache::flush();
+        file_get_contents(env('APP_URL'));
+        echo "thanh cong";
+    }
+
      
 }
