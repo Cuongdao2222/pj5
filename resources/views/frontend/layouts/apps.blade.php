@@ -604,10 +604,10 @@
 
             @keyframes lighting {
               0% {
-                content: url(https://cdn01.dienmaycholon.vn/filewebdmclnew/DMCL21/FE/images/noel-2022/Asset3@3x.png);
+                content: url({{ asset('public/background/Asset3@3x.png')  }}));
               }
               to {
-                content: url(https://cdn01.dienmaycholon.vn/filewebdmclnew/DMCL21/FE/images/noel-2022/Asset5@3x.png);
+                content: url({{ asset('public/background/Asset5@3x.png')  }});
               }
             }
 
@@ -877,7 +877,7 @@
     
 
                         <a href="#" class="category__all"><i class="fa fa-bars" aria-hidden="true"></i> Tất cả danh mục</a>
-                            <div class="bar-top-left">
+                            <div class="bar-top-left" style="display: none;">
                                 <ul class="main-menu">
 
                                     <li data-submenu-id="submenu-0">
@@ -2321,14 +2321,7 @@
             </div>
         </footer>
 
-        <div class="pine-tree"> 
-            <img class="pine-tree-left loading" src="https://cdn01.dienmaycholon.vn/filewebdmclnew/DMCL21/FE/images/noel-2022/Asset5@3x.png" data-was-processed="true"> 
-            <img class="pine-tree-right loading" src="https://cdn01.dienmaycholon.vn/filewebdmclnew/DMCL21/FE/images/noel-2022/Asset5@3x.png" data-was-processed="true"> 
-            <img class="tuyet-left loading" src="https://cdn01.dienmaycholon.vn/filewebdmclnew/DMCL21/FE/images/noel-2022/Asset6@3x.png" data-was-processed="true"> 
-            <img class="tuyet-right loading" src="https://cdn01.dienmaycholon.vn/filewebdmclnew/DMCL21/FE/images/noel-2022/Asset7@3x.png" data-was-processed="true"> 
-            <img class="santa-left loading" src="https://cdn01.dienmaycholon.vn/filewebdmclnew/DMCL21/FE/images/noel-2022/Asset4@3x.png" data-was-processed="true"> 
-            <img class="santa-right loading" src="https://cdn01.dienmaycholon.vn/filewebdmclnew/DMCL21/FE/images/noel-2022/Asset8@3x.png" data-was-processed="true">
-        </div>
+        
 
         <div class="snowflakes" aria-hidden="true">
             <div class="snowflake">❅</div>
