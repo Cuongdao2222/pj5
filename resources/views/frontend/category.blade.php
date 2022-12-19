@@ -28,6 +28,9 @@
                 color: #000;
                 border: none; 
             }
+            .icons-deal-active{
+                height: 90px;
+            }
             
 
             @media screen and (max-width:776px) {
@@ -324,8 +327,8 @@
 
                                     @if($check_deals->count()>0 && $now->between($check_deal->start, $check_deal->end))
 
-                                    <div>
-                                        <span>flash deal</span>
+                                    <div class="icons-deal-active">
+                                        <img src="{{ asset('public/background/icondeal.jpg') }}" style="width: 30%;">
                                     </div>
                                     
                                     
