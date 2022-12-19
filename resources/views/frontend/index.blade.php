@@ -183,36 +183,40 @@
         </div>
     </div>
 
-     <div class="homebanner-container">
-        <!-- Banner chính -->
-        <aside class="homebanner">
-            <div id="sync1" class="slider-banner owl-carousel homebanners">
+    <section>
+        <div class="homebanner-container">
+            <!-- Banner chính -->
+            <aside class="homebanner">
+                <div id="sync1" class="slider-banner owl-carousel homebanners">
 
-                @if(isset($banners))
+                    @if(isset($banners))
 
-                @foreach($banners as $value)
-                <div class="item" data-dot="<span>{{ $value->title }}</span>">
-                    <a aria-label="slide" data-cate="0" data-place="1535" href="{{ $value->link }}" ><img  data-src="{{ asset($value->image) }}" alt="{{ $value->title }}" class="lazyload"></a>
+                    @foreach($banners as $value)
+                    <div class="item" data-dot="<span>{{ $value->title }}</span>">
+                        <a aria-label="slide" data-cate="0" data-place="1535" href="{{ $value->link }}" ><img  data-src="{{ asset($value->image) }}" alt="{{ $value->title }}" class="lazyload"></a>
+                    </div>
+                    @endforeach
+                    @endif
+                    
                 </div>
-                @endforeach
-                @endif
-                
-            </div>
-            <div id="sync2" class="slider-banner owl-carousel">
-                @if(isset($banners))
-                @foreach($banners as $value)
-                <div class="item">
-                    <h3>
-                        {{  $value->title }}
-                    </h3>
+                <div id="sync2" class="slider-banner owl-carousel">
+                    @if(isset($banners))
+                    @foreach($banners as $value)
+                    <div class="item">
+                        <h3>
+                            {{  $value->title }}
+                        </h3>
+                    </div>
+                    @endforeach
+                    @endif
+                    
                 </div>
-                @endforeach
-                @endif
-                
-            </div>
-        </aside>
-        <!-- End -->
-    </div>
+            </aside>
+            <!-- End -->
+        </div>
+    </section>
+
+    
     
     <section>
 
@@ -571,6 +575,9 @@
                 background: #E94A37;
                 padding-top:1px;
             }
+            .bar-top-lefts{
+                display: inline-block;
+            }
 
         </style>
 
@@ -880,7 +887,7 @@
           
         <div class="clearfix"></div> 
 
-        <div class="prd-promo has-banner" style="background: #DC00BD;;" data-html-id="3109">
+        <div class="prd-promo has-banner" style="background: #F7001B;" data-html-id="3109">
 
             <div class="prd-promo__top clearfix" >
 
