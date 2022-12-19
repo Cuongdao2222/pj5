@@ -205,7 +205,9 @@
                 <div class="row list-pro">
                    
                     @if(isset($data))
-                    <?php $arr_id_pro = []; ?>
+                    <?php $arr_id_pro = []; $activeDeal = 0;?>
+
+
                    
                     @foreach($data as $value)
                         
@@ -213,19 +215,16 @@
 
                                 $id_product = $value->id;
                                 array_push($arr_id_pro, $id_product);
-
-
                               
                                 $check_deal =  App\Models\deal::where('product_id', $value->id)->where('active',1)->get();
 
-                                
+                                $check_deals = $check_deal;
 
                                 $deal_check_add = false;
 
                                 $now  = Carbon\Carbon::now();
 
                                 if($check_deal->count()>0){
-
 
                                     $check_deal = reset($check_deal);
 
@@ -240,9 +239,9 @@
                                         $timestamp = $now->diffInSeconds($timeDeal_end);
 
                                         if($now->between($check_deal->start, $check_deal->end)){
-                                           
+
                                             $value->Price = $check_deal->deal_price;
-                                            
+                                           
                                         }
 
                                     }
@@ -310,14 +309,31 @@
 
                         <div class="col-md-3 col-6 lists">
                             <div class="item  __cate_1942">
+
+
                                 <a href='{{ route("details", $value->Link ) }}' data-box="BoxCate" class="main-contain">
                                     @if($value->Price>=3000000)
                                     <span class="icon_tragop icons-tra-gops">Trả góp <i>0%</i></span>
                                     @endif
+
+
                                     <div class="item-img item-img_1942">
                                         <img class="lazyload thumb" data-src="{{ asset($value->Image) }}" alt="{{ $value->Name }}" style="width:100%"> 
                                     </div>
+
+
+                                    @if($check_deals->count()>0 && $now->between($check_deal->start, $check_deal->end))
+
+                                    <div>
+                                        <span>flash deal</span>
+                                    </div>
+                                    
+                                    
+
+                                    @endif
+
                                     <div class="items-title">
+                                        
                                         
                                         <h3 >
                                             {{ $value->Name  }}

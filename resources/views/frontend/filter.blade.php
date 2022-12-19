@@ -309,6 +309,7 @@
                                     if($now->between($check_deal->start, $check_deal->end)){
                                        
                                         $value->Price = $check_deal->deal_price;
+                                        $checkActiveDeal = 1;
                                         
                                     }
                                     
@@ -327,6 +328,13 @@
                                     <div class="item-img item-img_1942">
                                         <img class="lazyload thumb" data-src="{{ asset($value->Image) }}" alt="{{ asset($value->Name) }}" style="width:100%"> 
                                     </div>
+
+                                    @if(!empty($checkActiveDeal) && $checkActiveDeal ==1)
+                                    <div>
+                                        <img data-src="{{ asset('public/background/icondeal.jpg') }}">
+                                    </div>
+                                    @endif
+
                                     <div class="items-title">
                                        
                                         <h3 >
