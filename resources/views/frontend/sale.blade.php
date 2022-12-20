@@ -59,8 +59,8 @@
 
             $product_sale = Cache::remember('sale_products',10, function(){
 
-                // return DB::table('products')->join('sale_product', 'products.id', '=', 'sale_product.product_id')->join('makers', 'products.Maker', '=', 'makers.id')->get();
-                 return DB::table('products')->where('active',1)->Orderby('id', 'desc')->take(20)->get();
+                return DB::table('products')->join('sale_product', 'products.id', '=', 'sale_product.product_id')->join('makers', 'products.Maker', '=', 'makers.id')->get();
+                 // return DB::table('products')->where('active',1)->Orderby('id', 'desc')->take(20)->get();
             });    
 
 
