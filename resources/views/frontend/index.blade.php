@@ -1422,28 +1422,28 @@
             });
         }
        
-         $('.sticky-sidebar').hide();
-        $(window).scroll(function (){
+        //  $('.sticky-sidebar').hide();
+        // $(window).scroll(function (){
 
-            if($(window).scrollTop()>$('.menus-banner').offset().top){
+        //     if($(window).scrollTop()>$('.menus-banner').offset().top){
 
 
-                var w = window.innerWidth;
+        //         var w = window.innerWidth;
 
-                width = (w - 1200)/2;
+        //         width = (w - 1200)/2;
 
-                $('.sticky-sidebar').show();
+        //         $('.sticky-sidebar').show();
 
-                // $('#banner-left-scroll').css(leftClass);
+        //         // $('#banner-left-scroll').css(leftClass);
 
-                // $('#banner-right-scroll').css(rightClass);
+        //         // $('#banner-right-scroll').css(rightClass);
                
-            }
-            else{
-                $('.sticky-sidebar').hide();
-            }
+        //     }
+        //     else{
+        //         $('.sticky-sidebar').hide();
+        //     }
 
-        })   
+        // })   
 
         let ar_product = [];
 
