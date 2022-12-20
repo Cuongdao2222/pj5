@@ -953,12 +953,12 @@
            <div class="option-sg">
 
                 <a href="javascript:;" data-is-recommend-tab="true" class="active option-sale" data-id="0">
-                    <img data-src="{{ asset('background/like2.png') }}" class=" ls-is-cached lazyloaded" alt="Cho bạn" width="50" height="50" src="{{ public_path('background/like2.png') }}">
+                    <img data-src="{{ asset('public/background/like2.png') }}" class=" ls-is-cached lazyloaded" alt="Cho bạn" width="50" height="50" src="{{ public_path('background/like2.png') }}">
                     <span>Cho bạn</span>
                 </a>
 
                 <a href="javascript:;" data-campaign="282" data-group="3507"  class="option-sale" data-id="1">
-                    <img data-src="{{ asset('background/like1.png') }}" class=" ls-is-cached lazyloaded" alt="Sản phẩm hot" width="50" height="50" src="{{ public_path('background/like1.png') }}">
+                    <img data-src="{{ asset('public/background/like1.png') }}" class=" ls-is-cached lazyloaded" alt="Sản phẩm hot" width="50" height="50" src="{{ public_path('background/like1.png') }}">
                     <span>Sản phẩm hot</span>
                 </a>
                 
