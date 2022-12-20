@@ -29,6 +29,10 @@
 
            @media screen and (max-width:776px) {
 
+                .option-sg{
+                    display: none;
+                }
+
                 .cIVWIZ{
                     background-repeat: no-repeat;
                     background-size: 100%;
@@ -907,7 +911,7 @@
             }
 
             .option-sg a {
-                background-image: url(//cdn.tgdd.vn/mwgcart/mwg-site/ContentMwg/images/noel/promote_manu.png?v=1);
+               
                 background-size: 100%;
                 height: 83px;
                 border-bottom-right-radius: 12px;
@@ -958,7 +962,7 @@
                 </a>
 
                 <a href="javascript:;" data-campaign="282" data-group="3507"  class="option-sale" data-id="1">
-                    <img data-src="{{ asset('public/background/like1.png') }}" class=" ls-is-cached lazyloaded" alt="Sản phẩm hot" width="50" height="50" src="{{ asset('public/background/like2.png') }}">
+                    <img data-src="{{ asset('public/background/like1.png') }}" class=" ls-is-cached lazyloaded" alt="Sản phẩm hot" width="50" height="50" src="{{ asset('public/background/like1.png') }}">
                     <span>Sản phẩm hot</span>
                 </a>
                 
