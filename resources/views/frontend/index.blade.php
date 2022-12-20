@@ -892,14 +892,78 @@
           
         <div class="clearfix"></div> 
 
+        <style type="text/css">
+            .option-sg {
+                display: flex;
+                overflow: hidden;
+                flex-flow: row;
+                padding: 15px;
+                text-align: center;
+                align-items: center;
+            }
+
+            .option-sg a.active {
+                background-color: #feb70b;
+            }
+
+            .option-sg a {
+                background-image: url(//cdn.tgdd.vn/mwgcart/mwg-site/ContentMwg/images/noel/promote_manu.png?v=1);
+                background-size: 100%;
+                height: 83px;
+                border-bottom-right-radius: 12px;
+                border-bottom-left-radius: 12px;
+            }
+
+            .option-sg a {
+                display: inline-block;
+                vertical-align: middle;
+                width: 218px;
+                margin: 0 20px 0 0;
+                background: #fff;
+                border-radius: 8px;
+                height: 70px;
+                padding: 8px 0;
+            }
+
+           
+
+            .option-sg a span {
+                display: inline-block;
+                overflow: hidden;
+                vertical-align: middle;
+                color: #555;
+                font-size: 18px;
+                line-height: 22px;
+                padding: 8px 0 0;
+            }
+
+            
+        </style>
+        
         <div class="prd-promo has-banner" style="background: #F7001B;" data-html-id="3109">
 
             <div class="prd-promo__top clearfix" >
 
                 <a data-cate="0" data-place="1868" href="#" ><img style="cursor:pointer" src="{{ asset($bannerUnderSale[0]['image']) }}" alt="banner-summer" width="1200"></a>                
             </div>
+
+
            
            @if(!empty($product_sale)&&$product_sale->count()>0)
+           <div class="option-sg">
+
+                <a href="javascript:;" data-is-recommend-tab="true" class="active option-sale" data-id="0">
+                    <img data-src="{{ public_path('background/like2.png') }}" class=" ls-is-cached lazyloaded" alt="Cho bạn" width="50" height="50" src="{{ public_path('background/like2.png') }}">
+                    <span>Cho bạn</span>
+                </a>
+
+                <a href="javascript:;" data-campaign="282" data-group="3507"  class="option-sale" data-id="1">
+                    <img data-src="{{ public_path('background/like1.png') }}" class=" ls-is-cached lazyloaded" alt="Sản phẩm hot" width="50" height="50" src="{{ public_path('background/like1.png') }}">
+                    <span>Sản phẩm hot</span>
+                </a>
+                
+            </div>
+
            <?php 
                 $useragent=$_SERVER['HTTP_USER_AGENT'];
 
@@ -1760,7 +1824,38 @@
             
         }
 
+        
 
+        $('.option-sale').click(function(){
+            
+            var option = $(this).attr('data-id');
+            $('.option-sg a').removeClass('active');
+            choose = (option==0)?1:0;
+
+            $(this).addClass('active');
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                type: 'POST',
+                url: "{{ route('showProductSale') }}",
+                data: {
+                    choose: choose,
+                },
+                success: function(result){
+
+                    $('.block-product__content ul').remove();
+                   
+                   $('.block-product__content').prepend(result);
+
+                }
+            });
+
+        })
 
 
         function clickDeal(flash_deal_id, id, dem) {

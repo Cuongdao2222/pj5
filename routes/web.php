@@ -78,6 +78,8 @@ Route::get('readfile', 'Frontend\indexController@readFile')->name('readfile');
 
 Route::post('login-Fe', 'AjaxController@loginClientsFe')->name('login-Fe');
 
+Route::post('product-sale-show', 'productController@product_sale_show')->name('showProductSale');
+
 Route::get('logout-Fe', 'AjaxController@logout')->name('logout-Fe');
 
 
@@ -235,6 +237,8 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
     Route::post('update-time-flash-deal', 'flashdealController@updateTimeFlashDeal')->name('update-time-flash-deal');
 
     Route::post('/edit-fast-Qualtity', 'productController@editFastQualtity')->name('edit-fast-qualtity');
+
+    Route::post('/edit-sale-order', 'productController@editSaleOrder')->name('edit-sale-order');
 
     Route::get('update-permision', 'customnUserController@updatePermision')->name('updatePermission');
 

@@ -50,7 +50,7 @@
     @endpush
 <section id="categoryPage" class="desktops" data-id="1942" data-name="Tivi" data-template="cate">
     <div class="sale-title">
-        <h1>Sản Phẩm Sale Giá Rẻ</h1>
+        <h1>Sản Phẩm Gợi Ý</h1>
     </div>
 
     <div class="container-productbox">
@@ -63,9 +63,6 @@
                  // return DB::table('products')->where('active',1)->Orderby('id', 'desc')->take(20)->get();
             });    
 
-
-
-           
 
         ?>
 
