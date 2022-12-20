@@ -30,7 +30,7 @@
            @media screen and (max-width:776px) {
 
                 .option-sg{
-                    display: none;
+                    display: none !important;
                 }
 
                 .cIVWIZ{
