@@ -5,7 +5,7 @@
 
     @foreach($product_sale as $keys => $value)
        
-        @if($keys<10)
+        
         @if($value->active==1)
        
         <li data-id="{{ $keys }}" data-pos="1" class="item ">
@@ -38,7 +38,7 @@
             </a>
         </li>
         @endif
-        @endif
+        
     @endforeach
 
 </ul>
