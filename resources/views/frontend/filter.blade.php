@@ -328,12 +328,11 @@
                                     <div class="item-img item-img_1942">
                                         <img class="lazyload thumb" data-src="{{ asset($value->Image) }}" alt="{{ asset($value->Name) }}" style="width:100%"> 
                                     </div>
-
+                                    <div style="height: 38px;">
                                     @if(!empty($checkActiveDeal) && $checkActiveDeal ==1)
-                                    <div>
-                                        <img data-src="{{ asset('public/background/icondeal.jpg') }}">
-                                    </div>
+                                        <button type="button" class="btn btn-danger">Flash Deal</button>
                                     @endif
+                                    </div>
 
                                     <div class="items-title">
                                        

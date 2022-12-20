@@ -324,16 +324,11 @@
                                         <img class="lazyload thumb" data-src="{{ asset($value->Image) }}" alt="{{ $value->Name }}" style="width:100%"> 
                                     </div>
 
-
+                                    <div style="height: 38px;">
                                     @if($check_deals->count()>0 && $now->between($check_deal->start, $check_deal->end))
-
-                                    <div class="icons-deal-active">
-                                        <img src="{{ asset('public/background/icondeal.jpg') }}" style="width: 30%;">
-                                    </div>
-                                    
-                                    
-
+                                        <button type="button" class="btn btn-danger">Flash Deal</button>
                                     @endif
+                                    </div>
 
                                     <div class="items-title">
                                         
