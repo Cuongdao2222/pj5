@@ -486,7 +486,8 @@
             success: function(result){
 
                 $('#modal-gift').modal('hide');
-                alert(result);
+                // alert(result);
+                location.reload();
                 
                 
             }
@@ -554,6 +555,7 @@
             success: function(result){
                 $('#selectProduct'+product_id).val('Đã chọn');
                 alert(result);
+               location.reload();
                 
             }
         });
@@ -595,15 +597,12 @@
 
     });
 
-     $('.group_gift').click(function(){
+    $('.group_gift').click(function(){
         $('#Modal_group_gift').modal('show');
         
     });
 
 </script>
-
-
-
 
 @endsection
 
