@@ -487,7 +487,7 @@
 
                 $('#modal-gift').modal('hide');
                 alert(result);
-                window.location.href;
+                
                 
             }
         });
