@@ -1513,6 +1513,13 @@
             line-height: 13px;
             text-align: center;
         }
+
+        .pdetail-price{
+            height: 69px;
+        }
+        .pdetail-price-box{
+            height: 74%;
+        }
     </style>
 
     <div class="prod-info-right fr">
