@@ -216,7 +216,7 @@
 
                 
 
-                $gifts_list = DB::table('gifts')->select('name')->get()->toArray();
+                $gifts_list = DB::table('gifts')->select('name')->orderBy('id','desc')->get()->toArray();
             ?>
 
             <table>
