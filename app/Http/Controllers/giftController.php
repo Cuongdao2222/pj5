@@ -7,6 +7,7 @@ use App\Http\Requests\UpdategiftRequest;
 use App\Repositories\giftRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
+use App\Models\gift;
 use Flash;
 use Response;
 use DB;
@@ -31,7 +32,7 @@ class giftController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $gifts = $this->giftRepository->paginate(10);
+        $gifts = gift::orderBy('id','desc')->paginate(10);
 
         return view('gifts.index')
             ->with('gifts', $gifts);
@@ -64,7 +65,7 @@ class giftController extends AppBaseController
 
             $name = time() . '_' . $file_upload->getClientOriginalName();
 
-            $filePath = $file_upload->storeAs('uploads/gift', $name, 'ftp');
+            $filePath = $file_upload->storeAs('uploads/gift', $name, 'public');
 
             $input['image'] = $filePath;
         }
@@ -148,7 +149,7 @@ class giftController extends AppBaseController
 
             $name = time() . '_' . $file_upload->getClientOriginalName();
 
-            $filePath = $file_upload->storeAs('uploads/gift', $name, 'ftp');
+            $filePath = $file_upload->storeAs('uploads/gift', $name, 'public');
 
             $input['image'] = $filePath;
         }
