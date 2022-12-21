@@ -949,23 +949,11 @@ class AjaxController extends Controller
                 $input['type'] = 0;
             }
 
-            $checkE = DB::table('group_gift')->where('start', $input['start'])->where('end', $input['end'])->first();
-
-
-            if(empty($checkE)){
-
-                $result = DB::table('group_gift')->insert($input);
-            
-                return response('tạo nhóm gift thành công');
-
-            }
-            else{
-                 // Flash::error('Không thể tạo vì khuyến mãi trùng thời gian với một khuyến mãi khác');
-                 return redirect()->back();
-            }
-
-            
-
+          
+            $result = DB::table('group_gift')->insert($input);
+        
+            return response('tạo nhóm gift thành công');
+        
         }    
     }
 

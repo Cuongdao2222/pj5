@@ -486,8 +486,8 @@
             success: function(result){
 
                 $('#modal-gift').modal('hide');
-                // alert(result);
-                location.reload();
+                console.log(result);
+                // location.reload();
                 
                 
             }
