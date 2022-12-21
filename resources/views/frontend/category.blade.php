@@ -218,6 +218,8 @@
 
                                 $id_product = $value->id;
                                 array_push($arr_id_pro, $id_product);
+
+                                $checkdealpd = false;
                               
                                 $check_deal =  App\Models\deal::where('product_id', $value->id)->where('active',1)->get();
 
@@ -242,6 +244,8 @@
                                         $timestamp = $now->diffInSeconds($timeDeal_end);
 
                                         if($now->between($check_deal->start, $check_deal->end)){
+
+                                            $checkdealpd = true;
 
                                             $value->Price = $check_deal->deal_price;
                                            
@@ -432,9 +436,8 @@
 
                                         ?>
                                         
-                                       
-                                        @if(!empty($gift)&&!$check_deal)
 
+                                        @if(!empty($gift)&& $checkdealpd===false)
                                             <?php 
                                                 $gifts = $gift['gifts'];
                                                 $gift = $gift['gift']; 
@@ -449,6 +452,11 @@
                                                 <div class="quatang"><img data-src="{{ asset($gifts->image) }}" class="lazyload"></div>
                                                 @endforeach
                                             </div>
+
+                                            @if(!empty($gifts->price))
+                                            <span> Quà tặng trị giá <strong>{{ @str_replace(',' ,'.', number_format($gifts->price)) }}<sup>đ</sup></strong> </span>
+                                            @endif  
+
                                            
                                         @endif
 
