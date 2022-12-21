@@ -159,7 +159,7 @@
             </div>
             <div class="modal-body">
                 <?php  
-                    $gift = App\Models\gift::get();
+                    $gift = App\Models\gift::orderBy('id', 'desc')->get();
 
                 ?>
                 @isset($gift)
