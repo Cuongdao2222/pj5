@@ -30,7 +30,7 @@
         </div>
     </section>
 <?php    
-    $list = DB::table('group_gift')->get(); 
+    $list = DB::table('group_gift')->orderBy('id', 'desc')->get(); 
     $groupProduct_gift = DB::table('gift_group')->get();
 ?>
     
