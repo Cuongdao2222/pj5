@@ -421,7 +421,7 @@ class categoryController extends Controller
     {
         $link = trim($slug);
 
-        $data = post::where('link', $link)->first();
+        $data = post::where('link', $link)->where('active', 1)->first();
 
         if(empty($data)){
             return $this->categoriesBlog($slug);
