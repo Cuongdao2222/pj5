@@ -18,6 +18,7 @@
         <th>Sửa nhanh</th>
         
         <th>Số lượng trong kho</th>
+        <th>Sắp xếp sản phẩm gợi ý</th>
         <th>Hiển thị</th>
         <th>chọn danh mục nhanh</th>
 
@@ -161,6 +162,21 @@
                 <br>
 
                 <div class="btn-primary" onclick="flashQualtily('{{ $product->id}}')"  id="qualtity_edit{{ $product->id }}">Sửa</div>
+
+
+                <br>
+
+            </td>
+
+            <td style="width: 124px;">
+                <label>Sửa</label>
+                <input type="" name="sale_order" value="{{ $product->sale_order }}" id="sale_order{{ $product->id }}" style="width: 100%;">
+
+                <br>
+
+                <br>
+
+                <div class="btn-primary" onclick="flashOrderSale('{{ $product->id}}')"  id="sale_order_edit{{ $product->id }}">Sửa</div>
 
 
                 <br>
@@ -535,6 +551,34 @@
             success: function(result){
 
                 $('#qualtity_edit'+productId).text('thành công');
+                 
+                setTimeout(location.reload(), 3000);
+            }
+        });
+       
+    }
+
+    function flashOrderSale(productId) {
+
+         $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+           
+        $.ajax({
+           
+            type: 'POST',
+            url: "{{ route('edit-sale-order') }}",
+            data: {
+                product_id: productId,
+                sale_order:$('#sale_order'+productId).val()
+                   
+            },
+            success: function(result){
+
+                $('#sale_order_edit'+productId).text('thành công');
                  
                 setTimeout(location.reload(), 3000);
             }

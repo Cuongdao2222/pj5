@@ -6,7 +6,7 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('css/category.css') }}?ver=1"> 
 
         <link rel="stylesheet" type="text/css" href="{{ asset('css/categories.css') }}?ver=3"> 
-         <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}?ver=15"> 
+         <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}?ver=16"> 
          <link rel="stylesheet" type="text/css" href="{{ asset('css/home.css') }}?ver=1"> 
 
         <style type="text/css">
@@ -27,6 +27,9 @@
                 background-color: #ddd;
                 color: #000;
                 border: none; 
+            }
+            .icons-deal-active{
+                height: 90px;
             }
             
 
@@ -205,7 +208,9 @@
                 <div class="row list-pro">
                    
                     @if(isset($data))
-                    <?php $arr_id_pro = []; ?>
+                    <?php $arr_id_pro = []; $activeDeal = 0;?>
+
+
                    
                     @foreach($data as $value)
                         
@@ -214,18 +219,17 @@
                                 $id_product = $value->id;
                                 array_push($arr_id_pro, $id_product);
 
-
+                                $checkdealpd = false;
                               
                                 $check_deal =  App\Models\deal::where('product_id', $value->id)->where('active',1)->get();
 
-                                
+                                $check_deals = $check_deal;
 
                                 $deal_check_add = false;
 
                                 $now  = Carbon\Carbon::now();
 
                                 if($check_deal->count()>0){
-
 
                                     $check_deal = reset($check_deal);
 
@@ -240,9 +244,11 @@
                                         $timestamp = $now->diffInSeconds($timeDeal_end);
 
                                         if($now->between($check_deal->start, $check_deal->end)){
-                                           
+
+                                            $checkdealpd = true;
+
                                             $value->Price = $check_deal->deal_price;
-                                            
+                                           
                                         }
 
                                     }
@@ -310,14 +316,26 @@
 
                         <div class="col-md-3 col-6 lists">
                             <div class="item  __cate_1942">
+
+
                                 <a href='{{ route("details", $value->Link ) }}' data-box="BoxCate" class="main-contain">
                                     @if($value->Price>=3000000)
                                     <span class="icon_tragop icons-tra-gops">Trả góp <i>0%</i></span>
                                     @endif
+
+
                                     <div class="item-img item-img_1942">
                                         <img class="lazyload thumb" data-src="{{ asset($value->Image) }}" alt="{{ $value->Name }}" style="width:100%"> 
                                     </div>
+
+                                    <div style="height: 38px;">
+                                    @if($check_deals->count()>0 && $now->between($check_deal->start, $check_deal->end))
+                                        <button type="button" class="btn btn-danger">Flash Deal</button>
+                                    @endif
+                                    </div>
+
                                     <div class="items-title">
+                                        
                                         
                                         <h3 >
                                             {{ $value->Name  }}
@@ -418,9 +436,8 @@
 
                                         ?>
                                         
-                                       
-                                        @if(!empty($gift)&&!$check_deal)
 
+                                        @if(!empty($gift)&& $checkdealpd===false)
                                             <?php 
                                                 $gifts = $gift['gifts'];
                                                 $gift = $gift['gift']; 
@@ -435,6 +452,11 @@
                                                 <div class="quatang"><img data-src="{{ asset($gifts->image) }}" class="lazyload"></div>
                                                 @endforeach
                                             </div>
+
+                                            @if(!empty($gifts->price))
+                                            <span> Quà tặng trị giá <strong>{{ @str_replace(',' ,'.', number_format($gifts->price)) }}<sup>đ</sup></strong> </span>
+                                            @endif  
+
                                            
                                         @endif
 

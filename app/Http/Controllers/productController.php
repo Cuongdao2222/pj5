@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Cache;
 use App\Models\searchkey;
 use Response;
 use App\Models\historyPd;
+use DB;
 
 use App\Models\metaSeo ;
 
@@ -81,11 +82,6 @@ class productController extends AppBaseController
             $input['Link'] =  str_replace('/', '', convertSlug($input['Name']));
         }
 
-        if(empty($input['Quantily'])){
-
-            $input['Quantily'] = 0;
-        }
-
         if(!empty($input['Price'])){
 
             $input['Price'] = str_replace(',', '', $input['Price']);
@@ -142,7 +138,7 @@ class productController extends AppBaseController
 
         $meta_title = $input['ProductSku'].', '.$input['Name'].' giá rẻ, Trả góp 0%';
 
-        $meta_content = 'Mua '.$input['Name'].' giá rẻ. Miễn phí giao hàng & Lắp đặt. Đổi lỗi trong 7 ngày đầu. Liên hệ hotline 0247.303.6336 để mua hàng và biết thêm thông tin chi tiết'; 
+        $meta_content = 'Mua '.$input['Name'].' giá rẻ. Miễn phí giao hàng & Lắp đặt. Đổi lỗi trong 7 ngày đầu. Liên hệ  hotline để mua hàng'; 
 
         $meta_model = new metaSeo();
 
@@ -192,6 +188,8 @@ class productController extends AppBaseController
         return view('products.show')->with('product', $product);
     }
 
+
+
     /**
      * Show the form for editing the specified product.
      *
@@ -232,11 +230,6 @@ class productController extends AppBaseController
             $input['Link'] = convertSlug($input['Name']);
         }
 
-    
-        if(empty($input['Quantily'])){
-
-            $input['Quantily'] = 0;
-        }
 
 
         if (empty($product)) {
@@ -305,9 +298,6 @@ class productController extends AppBaseController
 
             }
         }
-
-       
-
          
         $product = $this->productRepository->update($input, $id);
 
@@ -340,6 +330,26 @@ class productController extends AppBaseController
         Flash::success('Product deleted successfully.');
 
         return redirect(route('products.index'));
+    }
+
+    public function product_sale_show(Request $request)
+    {
+        $choose = $request->choose;
+        if($choose==1){
+
+            $product_sale = DB::table('products')->join('sale_product', 'products.id', '=', 'sale_product.product_id')->join('makers', 'products.Maker', '=', 'makers.id')->take(20)->orderBy('sale_order', 'desc')->get();
+
+            
+        }
+        else{
+            $hot = DB::table('hot_product')->take(20)->get()->pluck('product_id');
+
+            $product_sale = product::whereIn('id', $hot->toArray())->where('active', 1)->orderBy('sale_order', 'desc')->get();
+
+        }
+        return view('frontend.product_sale', compact('product_sale'));
+
+
     }
 
     public function FindbyNameOrModel(Request $request)
@@ -468,6 +478,20 @@ class productController extends AppBaseController
         $product = product::find($product_id);
         $product->Quantily = $qualtity;
         $product->user_id = Auth::user()->id;
+
+        $product->save();
+        return response('thanh cong');
+
+    }
+
+    public function editSaleOrder(Request $request)
+    {
+
+        $sale_order = $request->sale_order;
+        $product_id = $request->product_id;
+        $product = product::find($product_id);
+        $product->sale_order = $sale_order;
+       
 
         $product->save();
         return response('thanh cong');

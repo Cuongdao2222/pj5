@@ -4,11 +4,11 @@
 
     @push('style')
 
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/home.css') }}?ver=21">
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}?ver=35"> 
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/index.css') }}?ver=3">
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/homes.css') }}?ver=8">
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/homecs.css') }}?ver=8">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/home.css') }}?ver=22">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}?ver=36"> 
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/index.css') }}?ver=4">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/homes.css') }}?ver=9">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/homecs.css') }}?ver=9">
 
         <style type="text/css">
            .gift-text span{
@@ -28,6 +28,10 @@
 
 
            @media screen and (max-width:776px) {
+
+                .option-sg{
+                    display: none !important;
+                }
 
                 .cIVWIZ{
                     background-repeat: no-repeat;
@@ -147,6 +151,10 @@
         .icons-promotion-per{
             height: 42px;
         }
+
+        .listproduct{
+                grid-gap:16px;
+            }
     </style>   
 
     <div class="locationbox__overlay"></div>
@@ -183,36 +191,40 @@
         </div>
     </div>
 
-     <div class="homebanner-container">
-        <!-- Banner chính -->
-        <aside class="homebanner">
-            <div id="sync1" class="slider-banner owl-carousel homebanners">
+    <section>
+        <div class="homebanner-container">
+            <!-- Banner chính -->
+            <aside class="homebanner">
+                <div id="sync1" class="slider-banner owl-carousel homebanners">
 
-                @if(isset($banners))
+                    @if(isset($banners))
 
-                @foreach($banners as $value)
-                <div class="item" data-dot="<span>{{ $value->title }}</span>">
-                    <a aria-label="slide" data-cate="0" data-place="1535" href="{{ $value->link }}" ><img  data-src="{{ asset($value->image) }}" alt="{{ $value->title }}" class="lazyload"></a>
+                    @foreach($banners as $value)
+                    <div class="item" data-dot="<span>{{ $value->title }}</span>">
+                        <a aria-label="slide" data-cate="0" data-place="1535" href="{{ $value->link }}" ><img  data-src="{{ asset($value->image) }}" alt="{{ $value->title }}" class="lazyload"></a>
+                    </div>
+                    @endforeach
+                    @endif
+                    
                 </div>
-                @endforeach
-                @endif
-                
-            </div>
-            <div id="sync2" class="slider-banner owl-carousel">
-                @if(isset($banners))
-                @foreach($banners as $value)
-                <div class="item">
-                    <h3>
-                        {{  $value->title }}
-                    </h3>
+                <div id="sync2" class="slider-banner owl-carousel">
+                    @if(isset($banners))
+                    @foreach($banners as $value)
+                    <div class="item">
+                        <h3>
+                            {{  $value->title }}
+                        </h3>
+                    </div>
+                    @endforeach
+                    @endif
+                    
                 </div>
-                @endforeach
-                @endif
-                
-            </div>
-        </aside>
-        <!-- End -->
-    </div>
+            </aside>
+            <!-- End -->
+        </div>
+    </section>
+
+    
     
     <section>
 
@@ -231,7 +243,7 @@
                 @endif
             </div>
         </div>
-        <section class="menus-banner">
+        <!-- <section class="menus-banner">
             <strong class="name-box">Có thể bạn quan tâm</strong>
             <ul>
 
@@ -257,7 +269,7 @@
                 @endif
                
             </ul>
-        </section>
+        </section> -->
         <?php 
            
            
@@ -571,6 +583,10 @@
                 background: #E94A37;
                 padding-top:1px;
             }
+            .bar-top-lefts{
+                display: inline-block;
+            }
+
 
         </style>
 
@@ -749,7 +765,11 @@
 
         @else
 
-        @if(!empty($deal_check) && $deal_check->count()>0 && $now->between($deal_check[0]->start, $deal_check[0]->end))
+        <?php 
+            $deal_active = 0;
+        ?>
+
+        @if(!empty($deal_check) && $deal_check->count()>0 && $now->between($deal_check[0]->start, $deal_check[0]->end) && $deal_active ===1)
 
         
 
@@ -880,16 +900,88 @@
           
         <div class="clearfix"></div> 
 
-        <div class="prd-promo has-banner" style="background: #DC00BD;;" data-html-id="3109">
+        <style type="text/css">
+            .option-sg {
+                display: flex;
+                overflow: hidden;
+                flex-flow: row;
+                padding: 15px;
+                text-align: center;
+                align-items: center;
+            }
+
+            .option-sg a.active {
+                background-color: #fffca8;
+            }
+
+            .option-sg a {
+               
+                background-size: 100%;
+                height: 83px;
+                border-bottom-right-radius: 12px;
+                border-bottom-left-radius: 12px;
+            }
+
+            .option-sg a {
+                display: inline-block;
+                vertical-align: middle;
+                width: 218px;
+                margin: 0 20px 0 0;
+                background: #fff;
+                border-radius: 8px;
+                height: 70px;
+                padding: 8px 0;
+            }
+
+           
+
+            .option-sg a span {
+                display: inline-block;
+                overflow: hidden;
+                vertical-align: middle;
+                color: #555;
+                font-size: 18px;
+                line-height: 22px;
+                padding: 8px 0 0;
+            }
+
+            
+        </style>
+        
+        <div class="prd-promo has-banner" style="background: #F7001B;" data-html-id="3109">
 
             <div class="prd-promo__top clearfix" >
 
                 <a data-cate="0" data-place="1868" href="#" ><img style="cursor:pointer" src="{{ asset($bannerUnderSale[0]['image']) }}" alt="banner-summer" width="1200"></a>                
             </div>
+
+
            
            @if(!empty($product_sale)&&$product_sale->count()>0)
-           
-            <div class="listproduct slider-promo owl-carousel banner-sale" id="banner-sale" data-size="20">
+           <div class="option-sg">
+
+                <a href="javascript:;" data-is-recommend-tab="true" class="active option-sale" data-id="0">
+                    <img data-src="{{ asset('public/background/like2.png') }}" class=" ls-is-cached lazyloaded" alt="Cho bạn" width="50" height="50" src="{{ asset('public/background/like2.png') }}">
+                    <span>Cho bạn</span>
+                </a>
+
+               <!--  <a href="javascript:;" data-campaign="282" data-group="3507"  class="option-sale" data-id="1">
+                    <img data-src="{{ asset('public/background/like1.png') }}" class=" ls-is-cached lazyloaded" alt="Sản phẩm luxury" width="50" height="50" src="{{ asset('public/background/like1.png') }}">
+                    <span>Sản phẩm Luxury</span>
+                </a> -->
+                
+            </div>
+
+           <?php 
+                $useragent=$_SERVER['HTTP_USER_AGENT'];
+
+           ?>
+
+            <div class="block-product__content" data-is-recommend-tab="true">
+
+                @if(preg_match('/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i',$useragent)||preg_match('/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i',substr($useragent,0,4)))
+
+                <div class="listproduct slider-promo owl-carousel banner-sale" id="banner-sale" data-size="20">
 
                 @foreach($product_sale as  $value)
                 @if($value->active==1)
@@ -928,13 +1020,99 @@
                 @endif
 
                 @endforeach
-                
+                </div>
+
+
+                @else
+                <ul class="listproduct" data-total="39">
+                    @foreach($product_sale as $keys => $value)
+                    @if($value->active==1)
+
+                    <li data-id="{{ $keys }}" data-pos="1" class="item ">
+                        <a href='{{ route('details', $value->Link) }}' class=" main-contain" data-s="OnlineSavingCMS" data-site="2" data-pro="3" data-cache="False" data-name="M&#xE1;y gi&#x1EB7;t LG Inverter 8.5 kg FV1408S4W" data-id="227121" data-price="8840000.0" data-brand="LG" data-cate="M&#xE1;y gi&#x1EB7;t" data-box="BoxHome">
+                            <div class="item-label">
+                            </div>
+                            <div class="item-img">
+                                <img data-src="{{ asset($value->Image) }}"   class="lazyload"  data-src="{{ asset($value->Image) }}" alt="{{ $value->Name }}" width=210 height=210>
+                            
+                            </div>
+                            <div class="title-name">
+                                <h3>{{ $value->Name }}</h3>
+                            </div>
+                            
+                            <strong class="price">{{  @str_replace(',' ,'.', number_format($value->Price))  }}.&#x20AB;</strong>
+                            <div class="item-rating">
+                                <p>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </p>
+                            </div>
+                        </a>
+
+                        <?php  
+
+                            if(!Cache::has('gifts_Fe_'.$value->id)){
+
+                                $gifts = gift($value->product_id);
+                                
+                                
+                                Cache::put('gifts_Fe_'.$value->product_id, $gifts,100);
+
+                            }
+                            
+                            $gift = Cache::get('gifts_Fe_'.$value->product_id);
+
+
+
+                        ?>
+
+                        @if(!empty($gift))
+                            <?php 
+                                $gifts = $gift['gifts'];
+                                $gift = $gift['gift']; 
+                               
+                            ?>
+
+                            {{ $gifts->type ==1?'k/m chọn 1 trong 2':'' }}
+                            <div class="option-gift">
+
+                                 @foreach($gift as $gifts)
+
+                                <div class="quatang"><img src="{{ asset($gifts->image) }}"></div>
+                                @endforeach
+                            </div>
+
+                            @if(!empty($gifts->price))
+                            <span> Quà tặng trị giá <strong>{{ @str_replace(',' ,'.', number_format($gifts->price)) }}<sup>đ</sup></strong> </span>
+                            @endif  
+
+                         
+
+                        @endif
+
+
+
+                        <a href="javascript:void(0)" class="compare-show" data-id="{{ $value->product_id }}">
+                            <i class="fa-solid fa-plus"></i>
+                                so sánh
+                        </a>
+                    </li>
+                    @endif
+                    @endforeach
+                </ul>
+                @endif
+
+
+                <div class="prd-promo__top clearfix" >
+                    <a class="readmore-btn" href="{{ route('sale-home') }}"><span>Xem tất cả</span></a>                
+                </div>
             </div>
             @endif
 
-            <div class="prd-promo__top clearfix" >
-                <a class="readmore-btn" href="{{ route('sale-home') }}"><span>Xem tất cả</span></a>                
-            </div>
+            
             
         </div>
         
@@ -1275,7 +1453,15 @@
         </div>
     </div> -->
     <!-- End -->
-    
+
+    <div class="pine-tree"> 
+        <img class="pine-tree-left loading" src="{{ asset('public/background/Asset3@3x.png')}}" data-was-processed="true"> 
+        <img class="pine-tree-right loading" src="{{ asset('public/background/Asset3@3x.png')}}" data-was-processed="true"> 
+        <img class="tuyet-left loading" src="{{ asset('public/background/Asset6@3x.png')}}" data-was-processed="true"> 
+        <img class="tuyet-right loading" src="{{ asset('public/background/Asset7@3x.png')}}" data-was-processed="true"> 
+        <img class="santa-left loading" src="{{ asset('public/background/Asset4@3x.png')}}" data-was-processed="true"> 
+        <img class="santa-right loading" src="{{ asset('public/background/Asset8@3x.png')}}" data-was-processed="true">
+    </div>
 
      <script src="https://unpkg.com/sweetalert2@7.18.0/dist/sweetalert2.all.js"></script>
     @if (session('success'))
@@ -1351,28 +1537,28 @@
             });
         }
        
-         $('.sticky-sidebar').hide();
-        $(window).scroll(function (){
+        //  $('.sticky-sidebar').hide();
+        // $(window).scroll(function (){
 
-            if($(window).scrollTop()>$('.menus-banner').offset().top){
+        //     if($(window).scrollTop()>$('.menus-banner').offset().top){
 
 
-                var w = window.innerWidth;
+        //         var w = window.innerWidth;
 
-                width = (w - 1200)/2;
+        //         width = (w - 1200)/2;
 
-                $('.sticky-sidebar').show();
+        //         $('.sticky-sidebar').show();
 
-                // $('#banner-left-scroll').css(leftClass);
+        //         // $('#banner-left-scroll').css(leftClass);
 
-                // $('#banner-right-scroll').css(rightClass);
+        //         // $('#banner-right-scroll').css(rightClass);
                
-            }
-            else{
-                $('.sticky-sidebar').hide();
-            }
+        //     }
+        //     else{
+        //         $('.sticky-sidebar').hide();
+        //     }
 
-        })   
+        // })   
 
         let ar_product = [];
 
@@ -1689,7 +1875,38 @@
             
         }
 
+        
 
+        $('.option-sale').click(function(){
+            
+            var option = $(this).attr('data-id');
+            $('.option-sg a').removeClass('active');
+            choose = (option==0)?1:0;
+
+            $(this).addClass('active');
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                type: 'POST',
+                url: "{{ route('showProductSale') }}",
+                data: {
+                    choose: choose,
+                },
+                success: function(result){
+
+                    $('.block-product__content ul').remove();
+                   
+                   $('.block-product__content').prepend(result);
+
+                }
+            });
+
+        })
 
 
         function clickDeal(flash_deal_id, id, dem) {

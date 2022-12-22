@@ -5,7 +5,7 @@
 </div>
 
 <div class="form-group col-sm-6">
-    {!! Form::label('link', 'Link:') !!}
+    {!! Form::label('link', 'Link:') !!} https://dienmaynguoiviet.vn/{{  $groupProduct->link }} <div class="btn btn-primary copy" onclick="copy('https://dienmaynguoiviet.vn/{{  $groupProduct->link }}')">copy</div>
     {!! Form::text('link', null, ['class' => 'form-control','maxlength' => 10000]) !!}
 </div>
 
@@ -16,6 +16,8 @@
 
 <?php 
     $option  = ['tắt', 'bật'];
+
+   
 
     if(!empty($groupProducts)){
        
@@ -30,10 +32,7 @@
 
 
 
-
 <?php  
-
-    
 
     $groupProducts = App\Models\groupProduct::select('id', 'name', 'group_product_id')->get()->toArray();
 
@@ -52,8 +51,6 @@
 
 
             }
-            
-
 
         }
         return $result;
@@ -124,7 +121,18 @@
 
         $('#parent_id').val(filter[0].parent_id);
             
-    })
+    });
+
+    
+    function copy(text) {
+        document.body.insertAdjacentHTML("beforeend","<div id=\"copy\" contenteditable>"+text+"</div>")
+        document.getElementById("copy").focus();
+        document.execCommand("selectAll");
+        document.execCommand("copy");
+        document.getElementById("copy").remove();
+
+        $('.copy').text('thành công!');
+    }
 
 </script>
 

@@ -30,7 +30,7 @@
         </div>
     </section>
 <?php    
-    $list = DB::table('group_gift')->get(); 
+    $list = DB::table('group_gift')->orderBy('id', 'desc')->get(); 
     $groupProduct_gift = DB::table('gift_group')->get();
 ?>
     
@@ -159,7 +159,7 @@
             </div>
             <div class="modal-body">
                 <?php  
-                    $gift = App\Models\gift::get();
+                    $gift = App\Models\gift::orderBy('id', 'desc')->get();
 
                 ?>
                 @isset($gift)
@@ -216,7 +216,7 @@
 
                 
 
-                $gifts_list = DB::table('gifts')->select('name')->get()->toArray();
+                $gifts_list = DB::table('gifts')->select('name')->orderBy('id','desc')->get()->toArray();
             ?>
 
             <table>
@@ -486,8 +486,9 @@
             success: function(result){
 
                 $('#modal-gift').modal('hide');
-                alert(result);
-                window.location.href;
+                alert (result);
+                // location.reload();
+                
                 
             }
         });
@@ -554,6 +555,7 @@
             success: function(result){
                 $('#selectProduct'+product_id).val('Đã chọn');
                 alert(result);
+               location.reload();
                 
             }
         });
@@ -595,15 +597,12 @@
 
     });
 
-     $('.group_gift').click(function(){
+    $('.group_gift').click(function(){
         $('#Modal_group_gift').modal('show');
         
     });
 
 </script>
-
-
-
 
 @endsection
 

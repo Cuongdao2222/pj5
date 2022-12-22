@@ -49,6 +49,8 @@ Route::get('/sale', 'mainController@sale')->name('sale-home');
 
 Route::get('/caches','crawlController@checkProductSku');
 
+Route::get('/add-active-post','Frontend\categoryController@post_active');
+
 
 Route::get('/deal', 'mainController@deal')->middleware('cache.headers:public;max_age=14400;etag')->name('dealFe');
 
@@ -77,6 +79,8 @@ Route::post('recall','lienheController@callphone')->name('callphone');
 Route::get('readfile', 'Frontend\indexController@readFile')->name('readfile');
 
 Route::post('login-Fe', 'AjaxController@loginClientsFe')->name('login-Fe');
+
+Route::post('product-sale-show', 'productController@product_sale_show')->name('showProductSale');
 
 Route::get('logout-Fe', 'AjaxController@logout')->name('logout-Fe');
 
@@ -180,6 +184,8 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::get('forget-cache-home', 'backend\indexController@index')->name('test');
 
+    Route::get('forget-cache', 'Frontend\indexController@cacheClear')->name('test1');
+
     Route::get('test', 'backend\apiController@checkDeal')->name('test');
 
     Route::get('hot-list', 'hotController@index')->name('host-list');
@@ -233,6 +239,8 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
     Route::post('update-time-flash-deal', 'flashdealController@updateTimeFlashDeal')->name('update-time-flash-deal');
 
     Route::post('/edit-fast-Qualtity', 'productController@editFastQualtity')->name('edit-fast-qualtity');
+
+    Route::post('/edit-sale-order', 'productController@editSaleOrder')->name('edit-sale-order');
 
     Route::get('update-permision', 'customnUserController@updatePermision')->name('updatePermission');
 

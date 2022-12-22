@@ -7,10 +7,10 @@
 
 
  @push('style')
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/category.css') }}"> 
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/category.css') }}?ver=1"> 
 
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/categories.css') }}"> 
-         <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}"> 
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/categories.css') }}?ver=1"> 
+         <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}?ver=16"> 
 
         <style type="text/css">
             
@@ -50,7 +50,7 @@
     @endpush
 <section id="categoryPage" class="desktops" data-id="1942" data-name="Tivi" data-template="cate">
     <div class="sale-title">
-        <h1>Sản Phẩm Sale Giá Rẻ</h1>
+        <h1>Sản Phẩm Gợi Ý</h1>
     </div>
 
     <div class="container-productbox">
@@ -59,13 +59,10 @@
 
             $product_sale = Cache::remember('sale_products',10, function(){
 
-                // return DB::table('products')->join('sale_product', 'products.id', '=', 'sale_product.product_id')->join('makers', 'products.Maker', '=', 'makers.id')->get();
-                 return DB::table('products')->where('active',1)->Orderby('id', 'desc')->take(20)->get();
+                return DB::table('products')->join('sale_product', 'products.id', '=', 'sale_product.product_id')->join('makers', 'products.Maker', '=', 'makers.id')->get();
+                 // return DB::table('products')->where('active',1)->Orderby('id', 'desc')->take(20)->get();
             });    
 
-
-
-           
 
         ?>
 
