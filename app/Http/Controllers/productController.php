@@ -82,11 +82,6 @@ class productController extends AppBaseController
             $input['Link'] =  str_replace('/', '', convertSlug($input['Name']));
         }
 
-        if(empty($input['Quantily'])){
-
-            $input['Quantily'] = 0;
-        }
-
         if(!empty($input['Price'])){
 
             $input['Price'] = str_replace(',', '', $input['Price']);
@@ -143,7 +138,7 @@ class productController extends AppBaseController
 
         $meta_title = $input['ProductSku'].', '.$input['Name'].' giá rẻ, Trả góp 0%';
 
-        $meta_content = 'Mua '.$input['Name'].' giá rẻ. Miễn phí giao hàng & Lắp đặt. Đổi lỗi trong 7 ngày đầu. Liên hệ hotline 0247.303.6336 để mua hàng và biết thêm thông tin chi tiết'; 
+        $meta_content = 'Mua '.$input['Name'].' giá rẻ. Miễn phí giao hàng & Lắp đặt. Đổi lỗi trong 7 ngày đầu. Liên hệ  hotline để mua hàng'; 
 
         $meta_model = new metaSeo();
 
@@ -235,11 +230,6 @@ class productController extends AppBaseController
             $input['Link'] = convertSlug($input['Name']);
         }
 
-    
-        if(empty($input['Quantily'])){
-
-            $input['Quantily'] = 0;
-        }
 
 
         if (empty($product)) {
