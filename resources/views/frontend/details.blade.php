@@ -440,6 +440,8 @@
                                 <div class="pdetail-price-box">
                                     {!! @$text !!}
                                     <h3> {{ str_replace(',' ,'.', number_format($data->Price)) }}₫ </h3>
+
+
                                 </div>
 
                             </div>
@@ -1062,6 +1064,14 @@
                                 <h3>
                                     {{str_replace(',' ,'.', number_format($data->Price))  }}₫
                                 </h3>
+
+                                <div class="contents">
+                                    <ul>
+                                        <li><strong>Hàng chính hãng&nbsp;</strong><br>Mới 100% nguyên đai nguyên kiện<br>Bảo hành chính hãng toàn quốc</li>
+                                        <li><strong>Miễn phí vận chuyển, lắp đặt</strong><br>10km nội thành Hà Nội<br><strong>Đổi trả miễn phí&nbsp;</strong></li>
+                                       
+                                    </ul>
+                                </div>
 
                                 @if(!empty($data->manuPrice) || !empty($price_old))
                                 <b>Rẻ hơn</b>
