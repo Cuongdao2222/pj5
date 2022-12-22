@@ -36,6 +36,22 @@ class categoryController extends Controller
 {
 
 
+    public function post_active()
+    {
+        $post_active = post::where('active', 0)->get();
+
+        foreach ($post_active as $key => $value) {
+            $post = post::find($value->id);
+
+            $post->active = 1;
+
+            $post->save();
+
+
+        }
+         echo "thanh cong";
+    }
+
     public function categoryView($slug)
     {
 
