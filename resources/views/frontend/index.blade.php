@@ -911,7 +911,7 @@
             }
 
             .option-sg a.active {
-                background-color: #feb70b;
+                background-color: #fffca8;
             }
 
             .option-sg a {
