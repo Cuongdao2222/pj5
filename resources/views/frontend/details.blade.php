@@ -369,6 +369,7 @@
     </div>
     
     <div class="box_main">
+
         <div class="box_left">
             <div class="box01">
                 <div class="box01__show">
@@ -441,9 +442,7 @@
                                     {!! @$text !!}
                                     <h3> {{ str_replace(',' ,'.', number_format($data->Price)) }}₫ </h3>
 
-
                                 </div>
-
                             </div>
 
                             <div class="pdetail-status">
@@ -771,38 +770,7 @@
                 <div class="pop">
                 </div>
             </div>
-            <div class="content" id="contents-scroll">
-                 
-
-                <?php
-
-                     $minutes = 1000;
-
-                    $check = Cache::remember('check',$minutes, function() use ($data){
-                        return DB::table('imagecrawl')->select('image')->where('product_id', $data->id)->where('active',0)->get()->pluck('image')->toArray();
-                    });
-
-
-                     $details = $data->Detail;
-
-
-
-                    if(isset($check)){
-                        $details = str_replace($check,  asset('/images/product/noimage.png'), $data->Detail);
-                        $details = str_replace(['http://dienmaynguoiviet.net', 'https://dienmaynguoiviet.net'], 'https://dienmaynguoiviet.vn', $details);
-                        $details = preg_replace("/<a(.*?)>/", "<a$1 target=\"_blank\">",  $details);
-
-                    }
-                   
-                ?>
-
-                 {!! html_entity_decode($details)   !!}
-                
-            </div>
-            <div class="show-more">
-                <span>Đọc thêm</span>
-            </div>
-            <div class="border7"></div>
+            
         </div>
         <div class="box_right desktop">
 
@@ -990,6 +958,40 @@
                                 .show-litmits{
                                     color: #FF1D25;
                                 }
+
+                            
+                                .pdetail-price-box .contents{
+
+                                    position: relative;
+                                }
+
+                                .price-details{
+                                    width:38%;
+
+                                    margin-right: 20px;
+                                }
+                                .show-price{
+                                    height: 113px;
+                                    display: flex;
+                                }
+
+                                .contents{
+                                    width: 62%;
+                                }
+
+                                .pdetail-price .contents1{
+                                    position: relative;
+                                }
+                                .contents ul{
+                                    margin-left: 45px;
+                                }
+
+                                .contents li{
+                                    height: 32px;
+                                    margin-bottom: 18px;
+                                }
+
+                                
                             </style>
                         <div class="pdetail-price">
                             @if(!empty($text))
@@ -1054,38 +1056,53 @@
                             @endif
                             @endif 
 
-                            
+                            <div class="text-on">
+                                <div class="text-on-1">
+                                    {!!  @$text??'<b>GIÁ ONLINE</b>' !!}
 
-                            {!!  @$text??'<b>GIÁ ONLINE</b>' !!}
-                           
-                            
-                            <div class="pdetail-price-box">
+                                    <div class="show-price">
+                                        <div class="price-details">
+                                            <h3>
+                                                {{str_replace(',' ,'.', number_format($data->Price))  }}₫
+                                            </h3>
+                                        </div>
 
-                                <h3>
-                                    {{str_replace(',' ,'.', number_format($data->Price))  }}₫
-                                </h3>
+                                        
 
+                                        <div class="pdetail-price-box">
+
+
+                                            @if(!empty($data->manuPrice) || !empty($price_old))
+                                            <b>Rẻ hơn</b>
+
+                                            <?php 
+
+                                                $discount = !empty($price_old)?round(((intval($price_old) - intval($data->Price))/intval($price_old))*100):round(((intval($data->manuPrice) - intval($data->Price))/intval($data->manuPrice))*100)
+                                            ?>
+
+                                            <span class="discount_percent">-{{ $discount }}%</span>
+                                            @endif 
+                                             
+                                        </div>
+                                    </div>    
+                                
+                                </div>
+
+                              
+                                
                                 <div class="contents">
                                     <ul>
-                                        <li><strong>Hàng chính hãng&nbsp;</strong><br>Mới 100% nguyên đai nguyên kiện<br>Bảo hành chính hãng toàn quốc</li>
-                                        <li><strong>Miễn phí vận chuyển, lắp đặt</strong><br>10km nội thành Hà Nội<br><strong>Đổi trả miễn phí&nbsp;</strong></li>
+                                        <li>
+                                            <strong>Hàng chính hãng&nbsp;</strong>
+                                        </li>
+                                        
+                                        <li>
+                                            <strong>Miễn phí vận chuyển, lắp đặt 20km nội thành Hà Nội</strong>
+                                        </li>
                                        
                                     </ul>
                                 </div>
-
-                                @if(!empty($data->manuPrice) || !empty($price_old))
-                                <b>Rẻ hơn</b>
-
-                                <?php 
-
-                                    $discount = !empty($price_old)?round(((intval($price_old) - intval($data->Price))/intval($price_old))*100):round(((intval($data->manuPrice) - intval($data->Price))/intval($data->manuPrice))*100)
-                                ?>
-
-                                <span class="discount_percent">-{{ $discount }}%</span>
-                                @endif 
-                                 
                             </div>
-
 
                             <!-- <div class="pdetail-promotion">
                                 <div class="pdetail-promotion-body">
@@ -1253,8 +1270,48 @@
                 </div>
             </div>
         </div>
+
         <div class="border7"></div>
         <div class="clearfix"></div>
+
+
+
+        <div class="content" id="contents-scroll">
+                 
+
+                <?php
+
+                     $minutes = 1000;
+
+                    $check = Cache::remember('check',$minutes, function() use ($data){
+                        return DB::table('imagecrawl')->select('image')->where('product_id', $data->id)->where('active',0)->get()->pluck('image')->toArray();
+                    });
+
+
+                     $details = $data->Detail;
+
+
+
+                    if(isset($check)){
+                        $details = str_replace($check,  asset('/images/product/noimage.png'), $data->Detail);
+                        $details = str_replace(['http://dienmaynguoiviet.net', 'https://dienmaynguoiviet.net'], 'https://dienmaynguoiviet.vn', $details);
+                        $details = preg_replace("/<a(.*?)>/", "<a$1 target=\"_blank\">",  $details);
+
+                    }
+                   
+                ?>
+
+                 {!! html_entity_decode($details)   !!}
+
+                 
+
+            </div>
+
+            <div class="show-more">
+                <span>Đọc thêm</span>
+            </div>
+            <div class="border7"></div>
+
         <div class="related view-more-related viewer-product">
         </div>
         <div class="col-md-8 clearfix" id="comment_pro">
@@ -1525,11 +1582,49 @@
         }
 
         .pdetail-price{
-            height: 69px;
+            height: 110px;
         }
         .pdetail-price-box{
             height: 74%;
         }
+        .text-on{
+            display: flex;
+        }
+
+        .contents{
+            position: relative;
+        }       
+
+        .contents ul li:nth-child(1):before {
+           background: url(https://manhnguyen.com.vn/img/sprites.png?t=323) no-repeat;
+            display: block;
+            content: " ";
+            background-position: -7px -539px;
+            width: 36px;
+            height: 40px;
+            position: absolute;
+            left: 0;
+        }
+
+        .contents ul li:nth-child(2):before{
+
+            background: url(https://manhnguyen.com.vn/img/sprites.png?t=323) no-repeat;
+            display: block;
+            content: " ";
+            background-position: -7px -589px;
+            width: 36px;
+            height: 40px;
+            position: absolute;
+            left: 0;
+
+           
+        }
+        .box_right {
+            
+            width: ;
+        }   
+
+
     </style>
 
     <div class="prod-info-right fr">
@@ -1572,7 +1667,7 @@
 
 </div>
 @push('style')
-<link rel="stylesheet" type="text/css" href="{{ asset('css/details.css') }}?ver=5">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/details.css') }}?ver=6">
 @endpush
 @push('script')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js"></script>
