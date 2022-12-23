@@ -434,7 +434,7 @@ class categoryController extends Controller
         $category = category::find($data->category);
 
 
-        $related_news = post::where('category', $data->category)->select('title', 'link', 'id')->get();
+        $related_news = post::where('category', $data->category)->select('title', 'link', 'id')->orderBy('id', 'desc')->take(15)->get();
 
         $name_cate = $category->namecategory;
 
