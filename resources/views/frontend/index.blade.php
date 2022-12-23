@@ -29,9 +29,7 @@
 
            @media screen and (max-width:776px) {
 
-                .option-sg{
-                    display: none !important;
-                }
+               
 
                 .cIVWIZ{
                     background-repeat: no-repeat;
@@ -117,6 +115,18 @@
         $time4_start = \Carbon\Carbon::createFromDate($add_date.', 17:00');
         $time4 = \Carbon\Carbon::createFromDate($add_date.', 22:00');
         $define = [['start'=>'9h', 'endTime'=>$time1, 'startTime'=>$time1_start], ['start'=>'12h', 'endTime'=>$time2, 'startTime'=>$time2_start], ['start'=>'14h', 'endTime'=>$time3, 'startTime'=>$time3_start], ['start'=>'17h', 'endTime'=>$time4, 'startTime'=>$time4_start]];
+
+        $smart_phone = false;
+
+         $useragent=$_SERVER['HTTP_USER_AGENT'];
+
+        if(preg_match('/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i',$useragent)||preg_match('/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i',substr($useragent,0,4))){
+
+            $smart_phone = true;
+
+        }
+
+        
 
        
     ?> 
@@ -901,7 +911,7 @@
         <div class="clearfix"></div> 
 
         <style type="text/css">
-            .option-sg {
+            .option-sg,  .option-mbile-sg{
                 display: flex;
                 overflow: hidden;
                 flex-flow: row;
@@ -910,8 +920,12 @@
                 align-items: center;
             }
 
-            .option-sg a.active {
-                background-color: #fffca8;
+            .option-sg a.active, .option-mbile-sg .active {
+                background-color: #fffca8 !important;
+            }
+
+            .option-mbile-sg .active span{
+                color: #F20028;
             }
 
             .option-sg a {
@@ -958,6 +972,8 @@
 
            
            @if(!empty($product_sale)&&$product_sale->count()>0)
+
+           @if(!$smart_phone)
            <div class="option-sg">
 
                 <a href="javascript:;" data-is-recommend-tab="true" class="active option-sale" data-id="0">
@@ -972,16 +988,31 @@
                 
             </div>
 
-           <?php 
-                $useragent=$_SERVER['HTTP_USER_AGENT'];
+            @else
 
-           ?>
+            <div class="option-mbile-sg">
+                <div>
+                    <button class="btn btn-primary optionsg active" data-id="0"><span>Cho bạn</span></button>
+                </div>
 
+                <div class="ml-2">
+                    <button class="btn btn-primary optionsg" data-id="1"><span>Sản phẩm Luxury</span></button>
+                </div>
+   
+            </div>
+
+           
+
+            @endif
+
+
+
+            
             <div class="block-product__content" data-is-recommend-tab="true">
 
-                @if(preg_match('/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i',$useragent)||preg_match('/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i',substr($useragent,0,4)))
+                @if($smart_phone ===true)
 
-                <div class="listproduct slider-promo owl-carousel banner-sale" id="banner-sale" data-size="20">
+                <div class="listproduct slider-promo owl-carousel banner-sale" id="banner-sale-mobile" data-size="20">
 
                 @foreach($product_sale as  $value)
                 @if($value->active==1)
@@ -1564,6 +1595,10 @@
 
         var group_id   = [];
 
+
+        
+
+
         $('.compare-show').click(function() {
 
             id = $(this).attr('data-id');
@@ -1760,7 +1795,7 @@
         }
 
 
-        $('#banner-sale').owlCarousel({
+        $('#banner-sale-mobile').owlCarousel({
             loop:true,
             
             margin:10,
@@ -1875,6 +1910,62 @@
             
         }
 
+        $('.optionsg').click(function(){
+            
+            var option = $(this).attr('data-id');
+            choose = (option==0)?1:0;
+            $('.optionsg').removeClass('active');
+            $(this).addClass('active');
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                type: 'POST',
+                url: "{{ route('showProductSaleMobile') }}",
+                data: {
+                    choose: choose,
+                },
+                success: function(result){
+                    
+
+                    $('#banner-sale-mobile').html('');
+                   
+                   $('#banner-sale-mobile').html(result);
+
+                    var owl = $("#banner-sale-mobile");
+
+                    var owlcarouseltrick = owl.owlCarousel({
+                        loop:true,
+            
+                        margin:10,
+                        nav:true,
+                        navText: ["<i class='fa fa-chevron-left'></i>","<i class='fa fa-chevron-right'></i>"],
+                        responsive:{
+                            0:{
+                                items:2
+                            },
+                            600:{
+                                items:2
+                            },
+                            1000:{
+                                items:5
+                            }
+                        }
+                    });
+
+                    $owlcarouseltrick.trigger('refresh.owl.carousel');
+
+
+                }
+            });
+
+
+        })
+
         
 
         $('.option-sale').click(function(){
@@ -1906,7 +1997,7 @@
                 }
             });
 
-        })
+        });
 
 
         function clickDeal(flash_deal_id, id, dem) {

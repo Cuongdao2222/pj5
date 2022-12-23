@@ -348,9 +348,29 @@ class productController extends AppBaseController
 
         }
         return view('frontend.product_sale', compact('product_sale'));
-
-
     }
+
+    public function product_sale_show_mobile(Request $request)
+    {
+        $choose = $request->choose;
+        if($choose==1){
+
+            $product_sale = DB::table('products')->join('sale_product', 'products.id', '=', 'sale_product.product_id')->join('makers', 'products.Maker', '=', 'makers.id')->take(20)->orderBy('sale_order', 'desc')->get();
+
+            
+        }
+        else{
+            $hot = DB::table('hot_product')->take(20)->get()->pluck('product_id');
+
+            $product_sale = product::whereIn('id', $hot->toArray())->where('active', 1)->orderBy('sale_order', 'desc')->get();
+
+        }
+        return view('frontend.product_sale_mobile', compact('product_sale'));
+    }
+
+
+
+
 
     public function FindbyNameOrModel(Request $request)
     {

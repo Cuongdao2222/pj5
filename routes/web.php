@@ -82,6 +82,8 @@ Route::post('login-Fe', 'AjaxController@loginClientsFe')->name('login-Fe');
 
 Route::post('product-sale-show', 'productController@product_sale_show')->name('showProductSale');
 
+Route::post('product-sale-show-mobile', 'productController@product_sale_show_mobile')->name('showProductSaleMobile');
+
 Route::get('logout-Fe', 'AjaxController@logout')->name('logout-Fe');
 
 
