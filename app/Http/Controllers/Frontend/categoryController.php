@@ -421,7 +421,7 @@ class categoryController extends Controller
     {
         $link = trim($slug);
 
-        $data = post::where('link', $link)->where('active', 1)->first();
+        $data = post::where('link', $link)->first();
 
         if(empty($data)){
             return $this->categoriesBlog($slug);
@@ -434,11 +434,15 @@ class categoryController extends Controller
         $category = category::find($data->category);
 
 
-        $related_news = post::where('category', $data->category)->where('active', 1)->select('title', 'link', 'id')->get();
+        $related_news = post::where('category', $data->category)->select('title', 'link', 'id')->get();
 
         $name_cate = $category->namecategory;
 
         $meta = metaSeo::find($data->Meta_id);
+
+        $page = 'blogdetail';
+
+        $actives_pages_blog = $data->active;
 
         // đếm số lượt view
 
@@ -457,7 +461,7 @@ class categoryController extends Controller
         // }
 
 
-        echo view('frontend.blogdetail',compact( 'name_cate', 'related_news', 'meta', 'data'));
+        echo view('frontend.blogdetail',compact( 'name_cate', 'related_news', 'meta', 'data', 'page', 'actives_pages_blog'));
 
         die();
     }

@@ -16,7 +16,11 @@
 
           ?>
         <meta charset="utf-8" />
-        <meta name="robots" content="index,follow" />
+
+
+
+
+        <meta name="robots" content="{{ (isset($actives_pages_blog) && $actives_pages_blog ==0)?'noindex':'index' }},follow" />
         @if(isset($meta))
         <title>{{ $meta->meta_title }}</title>
         <meta name="description" content="{{ $meta->meta_content }}"/>
