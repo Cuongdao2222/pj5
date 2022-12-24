@@ -49,6 +49,8 @@ Route::get('/sale', 'mainController@sale')->name('sale-home');
 
 Route::get('/caches','crawlController@checkProductSku');
 
+Route::get('/add-active-post','Frontend\categoryController@post_active');
+
 
 Route::get('/deal', 'mainController@deal')->middleware('cache.headers:public;max_age=14400;etag')->name('dealFe');
 
@@ -79,6 +81,8 @@ Route::get('readfile', 'Frontend\indexController@readFile')->name('readfile');
 Route::post('login-Fe', 'AjaxController@loginClientsFe')->name('login-Fe');
 
 Route::post('product-sale-show', 'productController@product_sale_show')->name('showProductSale');
+
+Route::post('product-sale-show-mobile', 'productController@product_sale_show_mobile')->name('showProductSaleMobile');
 
 Route::get('logout-Fe', 'AjaxController@logout')->name('logout-Fe');
 

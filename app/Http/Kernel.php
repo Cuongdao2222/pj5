@@ -29,7 +29,7 @@ class Kernel extends HttpKernel
      */
     protected $middlewareGroups = [
         'web' => [
-            'throttle:80,1',
+            'throttle:580,1',
             \App\Http\Middleware\EncryptCookies::class,
             \App\Http\Middleware\BlockIpMiddleware::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,

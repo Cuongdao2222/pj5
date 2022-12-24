@@ -36,6 +36,22 @@ class categoryController extends Controller
 {
 
 
+    public function post_active()
+    {
+        $post_active = post::where('active', 0)->get();
+
+        foreach ($post_active as $key => $value) {
+            $post = post::find($value->id);
+
+            $post->active = 1;
+
+            $post->save();
+
+
+        }
+         echo "thanh cong";
+    }
+
     public function categoryView($slug)
     {
 
@@ -418,11 +434,15 @@ class categoryController extends Controller
         $category = category::find($data->category);
 
 
-        $related_news = post::where('category', $data->category)->where('active', 1)->select('title', 'link', 'id')->get();
+        $related_news = post::where('category', $data->category)->select('title', 'link', 'id')->orderBy('id', 'desc')->take(15)->get();
 
         $name_cate = $category->namecategory;
 
         $meta = metaSeo::find($data->Meta_id);
+
+        $page = 'blogdetail';
+
+        $actives_pages_blog = $data->active;
 
         // đếm số lượt view
 
@@ -441,7 +461,7 @@ class categoryController extends Controller
         // }
 
 
-        echo view('frontend.blogdetail',compact( 'name_cate', 'related_news', 'meta', 'data'));
+        echo view('frontend.blogdetail',compact( 'name_cate', 'related_news', 'meta', 'data', 'page', 'actives_pages_blog'));
 
         die();
     }

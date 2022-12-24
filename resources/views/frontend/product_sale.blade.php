@@ -1,3 +1,33 @@
+<?php
+function pricesPromotion($price)
+        {
+
+            if($price>=50000000){
+
+                $gift_Price = '1.000.000 đ';
+
+            }
+            elseif ($price>5000000 && $price<=10000000) {
+
+                 $gift_Price = '100.000 đ';
+            }
+
+            elseif ($price>10000000 && $price<=30000000) {
+
+                 $gift_Price = '200.000 đ';
+            }
+
+            elseif ($price>30000000 && $price<50000000) {
+
+                $gift_Price = '500.000 đ';
+            }
+            else{
+                $gift_Price = '50.000 đ';
+            }
+            return $gift_Price;
+        }
+
+    ?>
 
 @if(!empty($product_sale)&&$product_sale->count()>0)
 
@@ -67,12 +97,14 @@
                 </div>
 
                 @if(!empty($gifts->price))
-                <span> Quà tặng trị giá <strong>{{ @str_replace(',' ,'.', number_format($gifts->price)) }}<sup>đ</sup></strong> </span>
+                <span> Quà tặng trị giá {{  pricesPromotion($value->Price) }} </span>
                 @endif  
 
              
 
             @endif
+
+
 
 
             <a href="javascript:void(0)" class="compare-show" data-id="{{ $value->product_id }}">

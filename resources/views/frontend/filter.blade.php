@@ -131,6 +131,40 @@
             
         </style>
     @endpush
+
+
+    <?php
+
+    function pricesPromotion($price)
+        {
+
+            if($price>=50000000){
+
+                $gift_Price = '1.000.000 đ';
+
+            }
+            elseif ($price>5000000 && $price<=10000000) {
+
+                 $gift_Price = '100.000 đ';
+            }
+
+            elseif ($price>10000000 && $price<=30000000) {
+
+                 $gift_Price = '200.000 đ';
+            }
+
+            elseif ($price>30000000 && $price<50000000) {
+
+                $gift_Price = '500.000 đ';
+            }
+            else{
+                $gift_Price = '50.000 đ';
+            }
+            return $gift_Price;
+        }
+
+    ?>
+
         <div class="locationbox__overlay"></div>
         <!-- <div class="locationbox">
             <div class="locationbox__item locationbox__item--right" onclick="OpenLocation()">
@@ -406,6 +440,10 @@
 
                                                 <div class="quatang"><img src="{{ asset($gifts->image) }}"></div>
                                                 @endforeach
+
+                                                @if(!empty($gifts->price))
+                                                    <span> Quà tặng trị giá <strong>{{  pricesPromotion($value->Price) }}  <sup>đ</sup></strong> </span>
+                                                @endif  
                                             </div>
                                            
                                         @endif
