@@ -1078,6 +1078,48 @@
                         </div>
                     </a>
 
+                    <?php  
+
+                            if(!Cache::has('gifts_Fe_'.$value->id)){
+
+                                $gifts = gift($value->product_id);
+                                
+                                
+                                Cache::put('gifts_Fe_'.$value->product_id, $gifts,100);
+
+                            }
+                            
+                            $gift = Cache::get('gifts_Fe_'.$value->product_id);
+
+
+
+                        ?>
+
+                        @if(!empty($gift))
+                            <?php 
+                                $gifts = $gift['gifts'];
+                                $gift = $gift['gift']; 
+                               
+                            ?>
+
+                            {{ $gifts->type ==1?'k/m chọn 1 trong 2':'' }}
+                            <div class="option-gift">
+
+                                 @foreach($gift as $gifts)
+
+                                <div class="quatang"><img src="{{ asset($gifts->image) }}"></div>
+                                @endforeach
+                            </div>
+
+                            @if(!empty($gifts->price))
+                            <span> Quà tặng trị giá {{  pricesPromotion($value->Price) }} </span>
+                            @endif  
+
+                         
+
+                        @endif
+
+
                     <a href="javascript:void(0)" class="compare-show" data-id="{{ $value->product_id }}">
                         <i class="fa-solid fa-plus"></i>
                             so sánh
