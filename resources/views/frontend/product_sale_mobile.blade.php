@@ -1,3 +1,33 @@
+<?php
+function pricesPromotion($price)
+        {
+
+            if($price>=50000000){
+
+                $gift_Price = '1.000.000 đ';
+
+            }
+            elseif ($price>5000000 && $price<=10000000) {
+
+                 $gift_Price = '100.000 đ';
+            }
+
+            elseif ($price>10000000 && $price<=30000000) {
+
+                 $gift_Price = '200.000 đ';
+            }
+
+            elseif ($price>30000000 && $price<50000000) {
+
+                $gift_Price = '500.000 đ';
+            }
+            else{
+                $gift_Price = '50.000 đ';
+            }
+            return $gift_Price;
+        }
+
+    ?>
 <div class="listproduct slider-promo owl-carousel banner-sale" id="banner-sale-mobile" data-size="20">
 
 @foreach($product_sale as  $value)
@@ -28,6 +58,42 @@
             </p>
         </div>
     </a>
+
+    <?php 
+
+        if(!Cache::has('gifts_Fe_'.$value->id)){
+
+            $gifts = gift($value->product_id);
+            
+            
+            Cache::put('gifts_Fe_'.$value->product_id, $gifts,100);
+
+        }
+        
+        $gift = Cache::get('gifts_Fe_'.$value->product_id);
+
+    ?>
+
+    @if(!empty($gift))
+        <?php 
+            $gifts = $gift['gifts'];
+            $gift = $gift['gift']; 
+           
+        ?>
+
+        {{ $gifts->type ==1?'k/m chọn 1 trong 2':'' }}
+        <div class="option-gift">
+
+             @foreach($gift as $gifts)
+
+            <div class="quatang"><img src="{{ asset($gifts->image) }}"></div>
+            @endforeach
+        </div>
+
+        @if(!empty($gifts->price))
+        <span> Quà tặng trị giá {{  pricesPromotion($value->Price) }} </span>
+        @endif  
+    @endif
 
     <a href="javascript:void(0)" class="compare-show" data-id="{{ $value->product_id }}">
         <i class="fa-solid fa-plus"></i>
