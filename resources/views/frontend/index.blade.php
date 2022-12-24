@@ -70,6 +70,41 @@
 
     @endpush
 
+     <!-- check giá khuyến mãi sản phẩm để tạng voucher -->
+
+    <?php 
+
+        function pricesPromotion($price)
+        {
+
+            if($price>=50000000){
+
+                $gift_Price = '1.000.000 đ';
+
+            }
+            elseif ($price>5000000 && $price<=10000000) {
+
+                 $gift_Price = '100.000 đ';
+            }
+
+            elseif ($price>10000000 && $price<=30000000) {
+
+                 $gift_Price = '200.000 đ';
+            }
+
+            elseif ($price>30000000 && $price<50000000) {
+
+                $gift_Price = '500.000 đ';
+            }
+            else{
+                $gift_Price = '50.000 đ';
+            }
+            return $gift_Price;
+        }
+
+        
+    ?>
+
      <?php
 
 
@@ -992,12 +1027,12 @@
 
             <div class="option-mbile-sg">
                 <div>
-                    <button class="btn btn-primary  active" data-id="0"><span>Cho bạn</span></button>
+                    <button class="btn btn-primary optionsg active" data-id="0"><span>Cho bạn</span></button>
                 </div>
 
-                <!-- <div class="ml-2">
-                    <button class="btn btn-primary " data-id="1"><span>Sản phẩm Luxury</span></button>
-                </div> -->
+                <div class="ml-2">
+                    <button class="btn btn-primary optionsg" data-id="1"><span>Sản phẩm Luxury</span></button>
+                </div>
    
             </div>
 
@@ -1008,7 +1043,7 @@
 
 
             
-            <div class="block-product__content" data-is-recommend-tab="true">
+            <div class="block-product__content mobile-sale-product" data-is-recommend-tab="true">
 
                 @if($smart_phone ===true)
 
@@ -1117,7 +1152,7 @@
                             </div>
 
                             @if(!empty($gifts->price))
-                            <span> Quà tặng trị giá <strong>{{ @str_replace(',' ,'.', number_format($gifts->price)) }}<sup>đ</sup></strong> </span>
+                            <span> Quà tặng trị giá {{  pricesPromotion($value->Price) }} </span>
                             @endif  
 
                          
@@ -1361,7 +1396,7 @@
                                 </div>
 
                                 @if(!empty($gifts->price))
-                                <span> Quà tặng trị giá <strong>{{ @str_replace(',' ,'.', number_format($gifts->price)) }}<sup>đ</sup></strong> </span>
+                                <span> Quà tặng trị giá <strong> {{  pricesPromotion($datas->Price) }}<sup>đ</sup></strong> </span>
                                 @endif  
 
                             @endif
@@ -1932,11 +1967,13 @@
                 success: function(result){
                     
 
-                    $('#banner-sale-mobile').html('');
+                    $('.mobile-sale-product #banner-sale-mobile').remove();
                    
-                   $('#banner-sale-mobile').html(result);
+                   $('.mobile-sale-product').prepend(result);
 
                     var owl = $("#banner-sale-mobile");
+
+                   
 
                     owl.owlCarousel({
                         loop:true,

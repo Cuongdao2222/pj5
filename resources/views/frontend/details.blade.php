@@ -1127,11 +1127,40 @@
                         
                             @if(!empty($gift) && $data->Quantily>0 && $deal_check_add ==false  &&  $data['Price']>0)
 
+
+                            <!-- check giá khuyến mãi sản phẩm để tạng voucher -->
+
+                            <?php 
+
+                                if($data->Price>=50000000){
+
+                                    $gift_Price = '1.000.000 đ';
+
+                                }
+                                elseif ($data->Price>5000000 && $data->Price<=10000000) {
+
+                                     $gift_Price = '100.000 đ';
+                                }
+
+                                elseif ($data->Price>10000000 && $data->Price<=30000000) {
+
+                                     $gift_Price = '200.000 đ';
+                                }
+
+                                elseif ($data->Price>30000000 && $data->Price<50000000) {
+
+                                    $gift_Price = '500.000 đ';
+                                }
+                                else{
+                                    $gift_Price = '50.000 đ';
+                                }
+                            ?>
+
                             <div class="gift_pro">
 
                                 @foreach($gift as $key => $valuegift)
                                
-                                <span class="ttl"><i class="fa-solid fa-gift"></i> Quà tặng @if(!empty($valuegift->price)) kèm trị giá {{ str_replace(',' ,'.', number_format($valuegift->price)) }}đ  @endif</span>
+                                <span class="ttl"><i class="fa-solid fa-gift"></i> Quà tặng kèm trị giá {{ @$gift_Price }}</span>
                                
                                 <div class="gift_item">
                                     <ul>
@@ -1144,7 +1173,7 @@
                                                     @if($gifts->type ==1)<input type="checkbox" name="gift" value="{{ $valuegift->name }}" {{ $key==0?'checked':'' }}> @endif
                                                     <img src="{{ asset($valuegift->image) }}" height="30px" width="30px">
 
-                                                        <h4>{{ $valuegift->name }}</h4>
+                                                        <h4>Tặng 1 voucher trị giá {{ @$gift_Price }}</h4>
                                                     
                                                 </div>
                                             </div>

@@ -1,3 +1,5 @@
+<div class="listproduct slider-promo owl-carousel banner-sale" id="banner-sale-mobile" data-size="20">
+
 @foreach($product_sale as  $value)
 @if($value->active==1)
 <div class="item">
@@ -32,10 +34,7 @@
             so sánh
     </a>
 </div>
-
-
-    
-
 @endif
 
 @endforeach
+</div>
