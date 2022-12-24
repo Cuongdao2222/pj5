@@ -992,12 +992,12 @@
 
             <div class="option-mbile-sg">
                 <div>
-                    <button class="btn btn-primary optionsg active" data-id="0"><span>Cho bạn</span></button>
+                    <button class="btn btn-primary  active" data-id="0"><span>Cho bạn</span></button>
                 </div>
 
-                <div class="ml-2">
-                    <button class="btn btn-primary optionsg" data-id="1"><span>Sản phẩm Luxury</span></button>
-                </div>
+                <!-- <div class="ml-2">
+                    <button class="btn btn-primary " data-id="1"><span>Sản phẩm Luxury</span></button>
+                </div> -->
    
             </div>
 
@@ -1938,7 +1938,7 @@
 
                     var owl = $("#banner-sale-mobile");
 
-                    var owlcarouseltrick = owl.owlCarousel({
+                    owl.owlCarousel({
                         loop:true,
             
                         margin:10,
@@ -1957,7 +1957,6 @@
                         }
                     });
 
-                    $owlcarouseltrick.trigger('refresh.owl.carousel');
 
 
                 }
