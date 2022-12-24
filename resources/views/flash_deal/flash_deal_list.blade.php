@@ -327,12 +327,17 @@
 
                                
                             ?>
+
+                            <?php 
+                                $product_info = App\Models\product::find($val->product_id);
+                            ?>
+
+                            @if(!empty($product_info->Image))
+
                             <tr id="row_1208">
                                 <td>{{ $k }}</td>
 
-                                <?php 
-                                    $product_info = App\Models\product::find($val->product_id);
-                                ?>
+                               
                                 <td align="center">
                                     <img src="{{ asset($product_info->Image) }}" width="100" alt="{{ $val->name }}">
                                     <!--<div><a style="color:green" href="javascript:;" onclick="delete_special(1208)">Xóa bỏ</a></div>-->
@@ -402,6 +407,7 @@
 
                                 
                             </tr>
+                            @endif
                             @endforeach
 
                             @endif
