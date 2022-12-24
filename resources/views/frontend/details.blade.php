@@ -774,530 +774,469 @@
         </div>
         <div class="box_right desktop">
 
-            @if($mobile ==0)
+            <!-- div chia -->
+            <div class="box1">
+                @if($mobile ==0)
+    
+                <ul class="breadcrumb">
             
-            <ul class="breadcrumb">
-        
-                <li>
-                    <a href="{{route('homeFe')}}">Trang chủ</a>
-                    <meta property="position" content="1">
-                </li>
-                @if(!empty($groupLink))
-                <li>
-                    <span>›</span>
-                    <a href="{{ route('details', $groupLink??'') }}">{{ @$groupName }}</a>
-                    <meta property="position" content="2">
-                </li>
-                @endif
+                    <li>
+                        <a href="{{route('homeFe')}}">Trang chủ</a>
+                        <meta property="position" content="1">
+                    </li>
+                    @if(!empty($groupLink))
+                    <li>
+                        <span>›</span>
+                        <a href="{{ route('details', $groupLink??'') }}">{{ @$groupName }}</a>
+                        <meta property="position" content="2">
+                    </li>
+                    @endif
 
-                @if(!empty($thuonghieu[$data_cate])&& !empty($ar_groups_info))
-                <li>
-                    <span>›</span>
-                    <a href="{{ route('details',$ar_groups_info[0]['link']) }}">{{ $ar_groups_info[0]['name'] }}</a>
-                   
-                </li>
-                @endif
-            </ul>
-
-
-
-            <div class="box-info-name">
-
-                <h1>{{ $data->Name }}</h1>
-
-                
-            </div>
-
-            <br>
-            <div class="box-compare">
-
-                @if(!empty($thuonghieu[$data_cate])&& !empty($ar_groups_info))
-                <span style="font-weight: bold; font-size:17px ">Thương hiệu:  <a href="{{ route('details', $ar_groups_info[0]['link']) }}">{{ str_replace($namecate->name, '',  $ar_groups_info[0]['name']) }}</a></span> 
-                @endif
-                &nbsp
-
-
-
-                 <span style="font-weight: bold; font-size:17px ">Model: {{ $data->ProductSku }} </span> 
-                &nbsp
-
-                <a href="javascript:void(0)" class="compare-show" onclick="compareShow({{ $data->id }})">
-                    <i class="fa-solid fa-plus"></i>
-                        so sánh
-                </a>
-            </div>
-
-            <hr>
-             <div class="pdetail-stockavailable stock">
-
-                <span>{{ $status }}</span>
-
-                &nbsp 
-                <a href="https://goo.gl/maps/TozxKHRZeHfrafMt9" title="#" class="adress_stock"><i class="fa fa-map-marker"></i> Địa chỉ kho hàng</a>
-
-            </div>
-
-           
-            @if(!empty($data_cate) && $data_cate==1)
-
-            <?php
-
-                $cutModel1 = str_replace('UA', '', $data->ProductSku);
-
-                $cutModel = substr(trim($cutModel1),2);
-
-                $data_model = Cache::get('product_search');
-
-                $relationProduct = collect($data_model)->filter(function ($item) use ($cutModel) {
-                  
-                    return false !== strpos($item->ProductSku, $cutModel);
-                });
-
-                $relationProduct =  $relationProduct->sortBy('Name');
-
-
-
-            ?>
-            @if($relationProduct->count()>1)
-               
-                <?php 
-
-                    $size_tv = str_replace($cutModel, '', $data->ProductSku);
-                   
-                ?>
-                
-                <p class="padtex">Có <strong> {{ $relationProduct->count() }} Kích cỡ màn hình.</strong> Bạn đang chọn <strong>{{ $size_tv }} inch</strong></p>
-                <div class="scrolling_inner">
-                    @foreach($relationProduct->chunk(4) as $chunk)
-                    <div class="box03 group desk">
-                        @foreach ($chunk as $relationProducts)
-                            <?php 
-                                $check_deals_pd =  Cache::get('deals')->where('product_id', $relationProducts->id)->first();
-
-                                if(!empty($check_deals_pd)){
-
-                                    $relationProducts->Price = $check_deals_pd['deal_price'];
-
-                                }
-
-                            ?>
-
-                            <a class="one_size  {{ $relationProducts->ProductSku==$data->ProductSku?'act':'' }}" href="{{ route('details', $relationProducts->Link) }}"><label class="container-detail"><span class="size-pro">{{  str_replace( $cutModel, '', $relationProducts->ProductSku)  }} inch</span><span class="price-pro">{{ str_replace(',' ,'.', number_format(@$relationProducts->Price))  }}đ</span></label></a>
-                        
-                        @endforeach
+                    @if(!empty($thuonghieu[$data_cate])&& !empty($ar_groups_info))
+                    <li>
+                        <span>›</span>
+                        <a href="{{ route('details',$ar_groups_info[0]['link']) }}">{{ $ar_groups_info[0]['name'] }}</a>
                        
-                    </div>
-                    @endforeach
+                    </li>
+                    @endif
+                </ul>
+
+                <div class="box-info-name">
+                    <h1>{{ $data->Name }}</h1>
                 </div>
-            @endif
-                
-            @endif
+                <br>
+                <div class="box-compare">
 
-            @endif
-            <div class="col-12 pdetail-des">
-                <div class="clearfix"></div>
-                <div>
-                    <div class="pdetail-info">
-                        <!-- <p>Model: <b>{{ @$data->ProductSku  }}</b></p> -->
-                        <!-- <p>Bảo hành: <b>24 Tháng, 1 đổi 1 trong vòng 1 tháng</b></p> -->
-                    </div>
-                    <div class="scroll-box">
-                        <!-- <div class="boxbanner-32">
-                            <div class="banner-list">
-                                <div class="item banner-item banner-item-1">
-                                    <a target="#" data-id="1022">
-                                        <picture>
-                                           
-                                            <img src="https://thegioidohoacom.s3.ap-southeast-1.amazonaws.com/wp-content/uploads/2019/01/10040348/X4iNCOp-1024x454.jpg" alt="Tết Lớn Khuyến Mại Lớn" width="&quot;640&quot;" height="&quot;150&quot;">
-                                        </picture>
-                                    </a>
-                                </div>
-                            </div>
-                            </div> -->
-                            <style type="text/css">
-                                
-                                .crazy-deal-details-right {
-                                    position: relative;
-                                    margin-left: 113px;
-                                    height: 100%;
-                                    display: flex;
-                                    align-items: center;
-                                    flex-direction: row;
-                                    justify-content: space-between;
-                                }
-                                .crazy-deal-details-procressbar{
-                                    width: 90px;
-                                    height: 8px;
-                                    background: #ffd1c2;
-                                    border-radius: 4px;
-                                    display: inline-block;
-                                    margin-right: 6px;
-                                    margin-left: 6px;
-                                }
-                                .crazy-deal-details-process{
-                                    font-weight: bold;
-                                    margin-right: 10px;
-                                }
-                                .crazy-deal-details.pc {
-                                    margin: 8px;
-                                    height: 29px;
-                                    overflow: hidden;
-                                    background-position: 0 0;
-                                    background-repeat: no-repeat;
-                                    background-size: 100% 100%;
+                    @if(!empty($thuonghieu[$data_cate])&& !empty($ar_groups_info))
+                    <span style="font-weight: bold; font-size:17px ">Thương hiệu:  <a href="{{ route('details', $ar_groups_info[0]['link']) }}">{{ str_replace($namecate->name, '',  $ar_groups_info[0]['name']) }}</a></span> 
+                    @endif
+                    &nbsp
 
-                                }    
-                                .crazy-deal-details-countdown{
-                                    font-weight: bold;
-                                }
 
-                                .buy-button-hotline {
-                                    text-align: center;
-                                    margin-top: 1em;
-                                }
-                                .show-litmits{
-                                    color: #FF1D25;
-                                }
 
+                     <span style="font-weight: bold; font-size:17px ">Model: {{ $data->ProductSku }} </span> 
+                    &nbsp
+
+                    <a href="javascript:void(0)" class="compare-show" onclick="compareShow({{ $data->id }})">
+                        <i class="fa-solid fa-plus"></i>
+                            so sánh
+                    </a>
+                </div>
+
+                <hr>
+                <div class="pdetail-stockavailable stock">
+
+                    <span>{{ $status }}</span>
+
+                    &nbsp 
+                    <a href="https://goo.gl/maps/TozxKHRZeHfrafMt9" title="#" class="adress_stock"><i class="fa fa-map-marker"></i> Địa chỉ kho hàng</a>
+                </div>
+
+               
+                @if(!empty($data_cate) && $data_cate==1)
+
+                <?php
+
+                    $cutModel1 = str_replace('UA', '', $data->ProductSku);
+
+                    $cutModel = substr(trim($cutModel1),2);
+
+                    $data_model = Cache::get('product_search');
+
+                    $relationProduct = collect($data_model)->filter(function ($item) use ($cutModel) {
+                      
+                        return false !== strpos($item->ProductSku, $cutModel);
+                    });
+
+                    $relationProduct =  $relationProduct->sortBy('Name');
+                ?>
+                @if($relationProduct->count()>1)
+                   
+                    <?php 
+
+                        $size_tv = str_replace($cutModel, '', $data->ProductSku);
+                       
+                    ?>
+                    
+                    <p class="padtex">Có <strong> {{ $relationProduct->count() }} Kích cỡ màn hình.</strong> Bạn đang chọn <strong>{{ $size_tv }} inch</strong></p>
+                    <div class="scrolling_inner">
+                        @foreach($relationProduct->chunk(4) as $chunk)
+                        <div class="box03 group desk">
+                            @foreach ($chunk as $relationProducts)
+                                <?php 
+                                    $check_deals_pd =  Cache::get('deals')->where('product_id', $relationProducts->id)->first();
+
+                                    if(!empty($check_deals_pd)){
+
+                                        $relationProducts->Price = $check_deals_pd['deal_price'];
+
+                                    }
+
+                                ?>
+
+                                <a class="one_size  {{ $relationProducts->ProductSku==$data->ProductSku?'act':'' }}" href="{{ route('details', $relationProducts->Link) }}"><label class="container-detail"><span class="size-pro">{{  str_replace( $cutModel, '', $relationProducts->ProductSku)  }} inch</span><span class="price-pro">{{ str_replace(',' ,'.', number_format(@$relationProducts->Price))  }}đ</span></label></a>
                             
-                                .pdetail-price-box .contents{
-
-                                    position: relative;
-                                }
-
-                                .price-details{
-                                    width:38%;
-
-                                    margin-right: 20px;
-                                }
-                                .show-price{
-                                    height: 113px;
-                                    display: flex;
-                                }
-
-                                .contents{
-                                    width: 62%;
-                                }
-
-                                .pdetail-price .contents1{
-                                    position: relative;
-                                }
-                                .contents ul{
-                                    margin-left: 45px;
-                                }
-
-                                .contents li{
-                                    height: 32px;
-                                    margin-bottom: 18px;
-                                }
-
-                                
-                            </style>
-                        <div class="pdetail-price">
-                            @if(!empty($text))
-                            <?php 
-
-                                if($data->id%2==0){
-                                    $numberDeal = 6;
-                                }
-                                else{
-                                    $numberDeal = 5;
-                                }
-                            ?>
-                            <div id="module_flash_sale" class="pdp-block module">
-                                <div class="crazy-deal-details pc" style="background-image:url('{{ asset('images/template/flashsale.png')  }}'); height:38px">
-                                    <div class="crazy-deal-details-right">
-                                        <time class="crazy-deal-details-countdown" data-spm-anchor-id="a2o4n.pdp_revamp.0.i0.89db8552daSXV6">Kết thúc sau <span class="crazy-deal-details-countdown-time clock">12:08:36</span></time>
-
-                                        @if($data->ProductSku =='OLED55A1PTA')
-                                        <div class="crazy-deal-details-process show-litmits">
-                                            Còn lại 3 sản phẩm
-                                        </div>
-                                        @else
-                                        <div class="crazy-deal-details-process">
-                                            Đã bán {{ $numberDeal }} sản phẩm
-                                        </div>
-                                        @endif
-
-                                    </div>
-                                </div>
-                            </div>
-
-                            @else
-
-                                @if(!empty($timestamp_check))
-
-                                    <div id="module_flash_sale" class="pdp-block module">
-                                        <div class="crazy-deal-details pc" style="background-image:url('{{ asset('images/template/flashsale.png')  }}'); height:38px">
-                                            <div class="crazy-deal-details-right">
-                                                <time class="crazy-deal-details-countdown" data-spm-anchor-id="a2o4n.pdp_revamp.0.i0.89db8552daSXV6">Bắt đầu sau <span class="crazy-deal-details-countdown-time clock-start">{{ $timestamp_check }}</span></time>
-                                            </div>     
-                                                
-                                        </div>
-                                    </div>
-                                @endif
-
-                              
-                            @endif
-
-
+                            @endforeach
                            
-                            <br>
+                        </div>
+                        @endforeach
+                    </div>
+                @endif
+                    
+                @endif
 
-                            @if(!empty($data->manuPrice) || !empty($price_old))
-
-                            @if(!empty($price_old))
-
-                                <div class="price_giaban price_market">Giá niêm yết : <span>{{str_replace(',' ,'.', number_format($price_old))}}đ </span></div>
-                                <br>
-                            @else    
-                            <div class="price_giaban price_market">Giá hãng : <span>{{str_replace(',' ,'.', number_format($data->manuPrice))}}đ </span></div>
-                            <br>
-                            @endif
-                            @endif 
-
-                            <div class="text-on">
-                                <div class="text-on-1">
-                                    {!!  @$text??'<b>GIÁ ONLINE</b>' !!}
-
-                                    <div class="show-price">
-                                        <div class="price-details">
-                                            <h3>
-                                                {{str_replace(',' ,'.', number_format($data->Price))  }}₫
-                                            </h3>
-                                        </div>
-
-                                        
-
-                                        <div class="pdetail-price-box">
-
-
-                                            @if(!empty($data->manuPrice) || !empty($price_old))
-                                            <b>Rẻ hơn</b>
-
-                                            <?php 
-
-                                                $discount = !empty($price_old)?round(((intval($price_old) - intval($data->Price))/intval($price_old))*100):round(((intval($data->manuPrice) - intval($data->Price))/intval($data->manuPrice))*100)
-                                            ?>
-
-                                            <span class="discount_percent">-{{ $discount }}%</span>
-                                            @endif 
-                                             
-                                        </div>
-                                    </div>    
-                                
-                                </div>
-
-                              
-                                
-                                <div class="contents">
-                                    <ul>
-                                        <li>
-                                            <strong>Hàng chính hãng&nbsp;</strong>
-                                        </li>
-                                        
-                                        <li>
-                                            <strong>Miễn phí vận chuyển, lắp đặt 20km nội thành Hà Nội</strong>
-                                        </li>
-                                       
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <!-- <div class="pdetail-promotion">
-                                <div class="pdetail-promotion-body">
-                                    <ul>
-                                        Tặng máy đánh trứng đa năng Roler RHM-1002 trị giá 790,000đ
-                                        <li>Tặng eVoucher trị giá 200,000đ mua phụ kiện IT, phụ kiện Mobile (có giá trị sử dụng trong 07 ngày). Chi tiết xem <a href="https://mediamart.vn/tin-khuyen-mai/tang-voucher-tri-gia-200-000vnd-mua-cac-san-pham-phu-kien" target="_blank">tại đây</a>.</li>
-                                        <li>TÀI TRỢ TRẢ GÓP 0% LÃI SUẤT (*)</li>
-                                    </ul>
-                                    <div class="clearfix"></div>
+                @endif
+                <div class="col-12 pdetail-des">
+                    <div class="clearfix"></div>
+                    <div>
+                        <div class="pdetail-info">
+                            <!-- <p>Model: <b>{{ @$data->ProductSku  }}</b></p> -->
+                            <!-- <p>Bảo hành: <b>24 Tháng, 1 đổi 1 trong vòng 1 tháng</b></p> -->
+                        </div>
+                        <div class="scroll-box">
+                            <!-- <div class="boxbanner-32">
+                                <div class="banner-list">
+                                    <div class="item banner-item banner-item-1">
+                                        <a target="#" data-id="1022">
+                                            <picture>
+                                               
+                                                <img src="https://thegioidohoacom.s3.ap-southeast-1.amazonaws.com/wp-content/uploads/2019/01/10040348/X4iNCOp-1024x454.jpg" alt="Tết Lớn Khuyến Mại Lớn" width="&quot;640&quot;" height="&quot;150&quot;">
+                                            </picture>
+                                        </a>
+                                    </div>
                                 </div>
                                 </div> -->
-                        </div>
+                                
+                            <div class="pdetail-price">
+                                @if(!empty($text))
+                                <?php 
 
-                        <div class="clearfix"></div>
-                        <div class="pdetail-status">
+                                    if($data->id%2==0){
+                                        $numberDeal = 6;
+                                    }
+                                    else{
+                                        $numberDeal = 5;
+                                    }
+                                ?>
+                                <div id="module_flash_sale" class="pdp-block module">
+                                    <div class="crazy-deal-details pc" style="background-image:url('{{ asset('images/template/flashsale.png')  }}'); height:38px">
+                                        <div class="crazy-deal-details-right">
+                                            <time class="crazy-deal-details-countdown" data-spm-anchor-id="a2o4n.pdp_revamp.0.i0.89db8552daSXV6">Kết thúc sau <span class="crazy-deal-details-countdown-time clock">12:08:36</span></time>
 
-                            
-                           
-                            @if($data_cate ===8||$data_cate ===9||$data_cate ===1)
-
-                            <a href="tel:02473036336"><div class="buy-button-hotline nhapnhay btn">Gọi 0247.303.6336 để được giảm thêm</div></a>
-
-                            @endif
-
-                            @if($data->limits ==1)
-                            <div class="sticker buyonline"> <p><strong>Số Lượng Có Hạn</strong></p></div>
-                            @endif
-
-                            @if(!empty($data->promotion))
-
-                            <div class="gift_pro">
-                                <span class="ttl"><i class="fa-solid fa-gift"></i> Ưu đãi tặng kèm  @if(!empty($data->GiftPrice)) trị giá {{ str_replace(',' ,'.', number_format($data->GiftPrice)) }}  @endif</span>
-                               
-                                <div class="gift_item">
-                                    <ul>
-                                        <li>
-                                            
-                                            <div class="gift_info">
-                                               {!! @$data->promotion !!}
+                                            @if($data->ProductSku =='OLED55A1PTA')
+                                            <div class="crazy-deal-details-process show-litmits">
+                                                Còn lại 3 sản phẩm
                                             </div>
-                                        </li>
-                                    </ul>
+                                            @else
+                                            <div class="crazy-deal-details-process">
+                                                Đã bán {{ $numberDeal }} sản phẩm
+                                            </div>
+                                            @endif
+
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                                    
-                            
-                            @endif
 
-                        
-                            @if(!empty($gift) && $data->Quantily>0 && $deal_check_add ==false  &&  $data['Price']>0)
+                                @else
 
+                                    @if(!empty($timestamp_check))
 
-                            <!-- check giá khuyến mãi sản phẩm để tạng voucher -->
-
-                            <?php 
-
-                                if($data->Price>=50000000){
-
-                                    $gift_Price = '1.000.000 đ';
-
-                                }
-                                elseif ($data->Price>5000000 && $data->Price<=10000000) {
-
-                                     $gift_Price = '100.000 đ';
-                                }
-
-                                elseif ($data->Price>10000000 && $data->Price<=30000000) {
-
-                                     $gift_Price = '200.000 đ';
-                                }
-
-                                elseif ($data->Price>30000000 && $data->Price<50000000) {
-
-                                    $gift_Price = '500.000 đ';
-                                }
-                                else{
-                                    $gift_Price = '50.000 đ';
-                                }
-                            ?>
-
-                            <div class="gift_pro">
-
-                                @foreach($gift as $key => $valuegift)
-                               
-                                <span class="ttl"><i class="fa-solid fa-gift"></i> Quà tặng kèm trị giá {{ @$gift_Price }}</span>
-                               
-                                <div class="gift_item">
-                                    <ul>
-                                        <li>
-                                            
-                                            <div class="gift_info">
-                                               {{ $gifts->type ==1?'Lựa chọn 1 trong 2 sản phẩm sau':'' }}
-                                                <div class="select-gift">
+                                        <div id="module_flash_sale" class="pdp-block module">
+                                            <div class="crazy-deal-details pc" style="background-image:url('{{ asset('images/template/flashsale.png')  }}'); height:38px">
+                                                <div class="crazy-deal-details-right">
+                                                    <time class="crazy-deal-details-countdown" data-spm-anchor-id="a2o4n.pdp_revamp.0.i0.89db8552daSXV6">Bắt đầu sau <span class="crazy-deal-details-countdown-time clock-start">{{ $timestamp_check }}</span></time>
+                                                </div>     
                                                     
-                                                    @if($gifts->type ==1)<input type="checkbox" name="gift" value="{{ $valuegift->name }}" {{ $key==0?'checked':'' }}> @endif
-                                                    <img src="{{ asset($valuegift->image) }}" height="30px" width="30px">
-
-                                                        <h4>Tặng 1 voucher trị giá {{ @$gift_Price }}</h4>
-                                                    
-                                                </div>
                                             </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                                @endforeach
-                            </div>
-
-                             @endif
-
-                            @if($checkSharp>-1)
-                            <div class="gift_pro">
-                                <span class="ttl"><i class="fa-solid fa-hand-point-right"></i> Hướng dẫn kích hoạt</span> 
-                                <div class="gift_item">
-                                    <ul>
-                                        <li>
-                                            <div class="gift_info">
-                                                <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px">Hướng dẫn khách hàng tự kích hoạt bảo hành sản phẩm Sharp (<a href="https://dienmaynguoiviet.vn/huong-dan-khach-hang-tu-kich-hoat-bao-hanh-san-pham-sharp" target="_blank">Xem chi tiết</a>)</span></span></p>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            @endif
-
-                            @if($data['Quantily']>0)
-                            <div class="pdetail-add-to-cart add-to-cart">
-                                <form class="inline">
-                                    <input type="hidden" name="productId" value="19439">
-                                    <!-- <div class="product-quantity">
-                                        <input type="text" class="quantity-field" readonly="readonly" name="qty" value="1">
-                                        </div> -->
-                                    @if((int)$data['Price']>0)
-                                    <button type="button" class="btn btn-lg btn-add-cart btn-add-cart redirectCart" onclick="addToCart({{ $data->id }})">MUA NGAY <br>(Giao hàng tận nơi - Giá tốt)</button>
-
-                                    
-                                    @else
-                                    <button type="button" class="btn btn-lg btn-add-cart btn-add-cart redirectCart">LIÊN HỆ <br></button>
+                                        </div>
                                     @endif
-                                </form>
-                                 <button type="button" class="btn btn-lg btn-add-cart btn-add-cart redirectCart cartSP" onclick="addToSuport({{ $data->id }})">GỌI LẠI CHO TÔI <br>(Tư vấn tận tình, chu đáo)</button>
-                                <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                                    Launch demo modal
-                                    </button> -->
+
+                                  
+                                @endif
+
+
+                               
+                                <br>
+
+                                @if(!empty($data->manuPrice) || !empty($price_old))
+
+                                @if(!empty($price_old))
+
+                                    <div class="price_giaban price_market">Giá niêm yết : <span>{{str_replace(',' ,'.', number_format($price_old))}}đ </span></div>
+                                    <br>
+                                @else    
+                                <div class="price_giaban price_market">Giá hãng : <span>{{str_replace(',' ,'.', number_format($data->manuPrice))}}đ </span></div>
+                                <br>
+                                @endif
+                                @endif 
+
+                                <div class="text-on">
+                                    <div class="text-on-1">
+                                        {!!  @$text??'<b>GIÁ ONLINE</b>' !!}
+
+                                        <div class="show-price">
+                                            <div class="price-details">
+                                                <h3>
+                                                    {{str_replace(',' ,'.', number_format($data->Price))  }}₫
+                                                </h3>
+                                            </div>
+
+                                            
+
+                                            <div class="pdetail-price-box">
+
+
+                                                @if(!empty($data->manuPrice) || !empty($price_old))
+                                                <b>Rẻ hơn</b>
+
+                                                <?php 
+
+                                                    $discount = !empty($price_old)?round(((intval($price_old) - intval($data->Price))/intval($price_old))*100):round(((intval($data->manuPrice) - intval($data->Price))/intval($data->manuPrice))*100)
+                                                ?>
+
+                                                <span class="discount_percent">-{{ $discount }}%</span>
+                                                @endif 
+                                                 
+                                            </div>
+                                        </div>    
+                                    
+                                    </div>
+                                </div>
+
+                                <!-- <div class="pdetail-promotion">
+                                    <div class="pdetail-promotion-body">
+                                        <ul>
+                                            Tặng máy đánh trứng đa năng Roler RHM-1002 trị giá 790,000đ
+                                            <li>Tặng eVoucher trị giá 200,000đ mua phụ kiện IT, phụ kiện Mobile (có giá trị sử dụng trong 07 ngày). Chi tiết xem <a href="https://mediamart.vn/tin-khuyen-mai/tang-voucher-tri-gia-200-000vnd-mua-cac-san-pham-phu-kien" target="_blank">tại đây</a>.</li>
+                                            <li>TÀI TRỢ TRẢ GÓP 0% LÃI SUẤT (*)</li>
+                                        </ul>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    </div> -->
+                            </div>
+
+                            <div class="clearfix"></div>
+                            <div class="pdetail-status">
+
+                                
+                               
+                                @if($data_cate ===8||$data_cate ===9||$data_cate ===1)
+
+                                <a href="tel:02473036336"><div class="buy-button-hotline nhapnhay btn">Gọi 0247.303.6336 để được giảm thêm</div></a>
+
+                                @endif
+
+                                @if($data->limits ==1)
+                                <div class="sticker buyonline"> <p><strong>Số Lượng Có Hạn</strong></p></div>
+                                @endif
+
+                                @if(!empty($data->promotion))
+
+                                <div class="gift_pro">
+                                    <span class="ttl"><i class="fa-solid fa-gift"></i> Ưu đãi tặng kèm  @if(!empty($data->GiftPrice)) trị giá {{ str_replace(',' ,'.', number_format($data->GiftPrice)) }}  @endif</span>
+                                   
+                                    <div class="gift_item">
+                                        <ul>
+                                            <li>
+                                                
+                                                <div class="gift_info">
+                                                   {!! @$data->promotion !!}
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                        
+                                
+                                @endif
+
+                            
+                                @if(!empty($gift) && $data->Quantily>0 && $deal_check_add ==false  &&  $data['Price']>0)
+
+
+                                <!-- check giá khuyến mãi sản phẩm để tạng voucher -->
+
+                                <?php 
+
+                                    if($data->Price>=50000000){
+
+                                        $gift_Price = '1.000.000 đ';
+
+                                    }
+                                    elseif ($data->Price>5000000 && $data->Price<=10000000) {
+
+                                         $gift_Price = '100.000 đ';
+                                    }
+
+                                    elseif ($data->Price>10000000 && $data->Price<=30000000) {
+
+                                         $gift_Price = '200.000 đ';
+                                    }
+
+                                    elseif ($data->Price>30000000 && $data->Price<50000000) {
+
+                                        $gift_Price = '500.000 đ';
+                                    }
+                                    else{
+                                        $gift_Price = '50.000 đ';
+                                    }
+                                ?>
+
+                                <div class="gift_pro">
+
+                                    @foreach($gift as $key => $valuegift)
+                                   
+                                    <span class="ttl"><i class="fa-solid fa-gift"></i> Quà tặng kèm trị giá {{ @$gift_Price }}</span>
+                                   
+                                    <div class="gift_item">
+                                        <ul>
+                                            <li>
+                                                
+                                                <div class="gift_info">
+                                                   {{ $gifts->type ==1?'Lựa chọn 1 trong 2 sản phẩm sau':'' }}
+                                                    <div class="select-gift">
+                                                        
+                                                        @if($gifts->type ==1)<input type="checkbox" name="gift" value="{{ $valuegift->name }}" {{ $key==0?'checked':'' }}> @endif
+                                                        <img src="{{ asset($valuegift->image) }}" height="30px" width="30px">
+
+                                                            <h4>Tặng 1 voucher trị giá {{ @$gift_Price }}</h4>
+                                                        
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    @endforeach
+                                </div>
+
+                                 @endif
+
+                                @if($checkSharp>-1)
+                                <div class="gift_pro">
+                                    <span class="ttl"><i class="fa-solid fa-hand-point-right"></i> Hướng dẫn kích hoạt</span> 
+                                    <div class="gift_item">
+                                        <ul>
+                                            <li>
+                                                <div class="gift_info">
+                                                    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px">Hướng dẫn khách hàng tự kích hoạt bảo hành sản phẩm Sharp (<a href="https://dienmaynguoiviet.vn/huong-dan-khach-hang-tu-kich-hoat-bao-hanh-san-pham-sharp" target="_blank">Xem chi tiết</a>)</span></span></p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                @endif
+
+                                @if($data['Quantily']>0)
+                                <div class="pdetail-add-to-cart add-to-cart">
+                                    <form class="inline">
+                                        <input type="hidden" name="productId" value="19439">
+                                        <!-- <div class="product-quantity">
+                                            <input type="text" class="quantity-field" readonly="readonly" name="qty" value="1">
+                                            </div> -->
+                                        @if((int)$data['Price']>0)
+                                        <button type="button" class="btn btn-lg btn-add-cart btn-add-cart redirectCart" onclick="addToCart({{ $data->id }})">MUA NGAY <br>(Giao hàng tận nơi - Giá tốt)</button>
+
+                                        
+                                        @else
+                                        <button type="button" class="btn btn-lg btn-add-cart btn-add-cart redirectCart">LIÊN HỆ <br></button>
+                                        @endif
+                                    </form>
+                                     <button type="button" class="btn btn-lg btn-add-cart btn-add-cart redirectCart cartSP" onclick="addToSuport({{ $data->id }})">GỌI LẠI CHO TÔI <br>(Tư vấn tận tình, chu đáo)</button>
+                                    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                        Launch demo modal
+                                        </button> -->
+                                </div>
+                                <div class="clearfix"></div>
+
+
+                                <div class="installment-purchase pdetail-installment specifications-img">
+                                    
+                                    @if((int)$data['Price']>=3000000)
+                                   
+                                    <a  class="but-tra-gop add-cart-button" href="javascript:void(0)" onclick="addCartFast({{ $data->id }})" admicro-data-event="101725" admicro-data-auto="1" admicro-data-order="false">
+                                    <strong>THÊM VÀO </strong>
+                                    <br>
+                                    <strong>GIỎ HÀNG</strong>
+                                    </a>
+
+                                     <a target="_blank" class="but-tra-gop installments-but" href="{{ route('details', $data->Link)  }}?show=tra-gop" admicro-data-event="101725" admicro-data-auto="1" admicro-data-order="false">
+                                    <strong>TRẢ GÓP QUA THẺ</strong>
+                                    <br>
+                                    (Visa, Master, JCB)
+                                    </a>
+                                    @else
+                                     <a target="_blank" class="add-card-buttons add-cart-button" href="javascript:void(0)" onclick="addCartFast({{ $data->id }})">
+                                    <strong>THÊM VÀO GIỎ HÀNG </strong>
+                                  
+                                    </a>
+                                    
+                                    @endif
+
+                                    
+                                    <br><br>
+                                    {!!  $data->Specifications  !!} 
+                                </div>
+                                @else
+
+                                <div class="pdetail-add-to-cart pdetail-installment specifications-img">
+                                    <div class="inline">
+                                        <button type="button" class="btn btn-lg btn-add-cart btn-add-cart redirectCart">Liên hệ</button>
+                                    </div>
+
+                                    {!!  $data->Specifications  !!} 
+                                </div>
+                               
+                                @endif
+
                             </div>
                             <div class="clearfix"></div>
 
-
-                            <div class="installment-purchase pdetail-installment specifications-img">
-                                
-                                @if((int)$data['Price']>=3000000)
-                               
-                                <a  class="but-tra-gop add-cart-button" href="javascript:void(0)" onclick="addCartFast({{ $data->id }})" admicro-data-event="101725" admicro-data-auto="1" admicro-data-order="false">
-                                <strong>THÊM VÀO </strong>
-                                <br>
-                                <strong>GIỎ HÀNG</strong>
-                                </a>
-
-                                 <a target="_blank" class="but-tra-gop installments-but" href="{{ route('details', $data->Link)  }}?show=tra-gop" admicro-data-event="101725" admicro-data-auto="1" admicro-data-order="false">
-                                <strong>TRẢ GÓP QUA THẺ</strong>
-                                <br>
-                                (Visa, Master, JCB)
-                                </a>
-                                @else
-                                 <a target="_blank" class="add-card-buttons add-cart-button" href="javascript:void(0)" onclick="addCartFast({{ $data->id }})">
-                                <strong>THÊM VÀO GIỎ HÀNG </strong>
-                              
-                                </a>
-                                
-                                @endif
-
-                                
-                                <br><br>
-                                {!!  $data->Specifications  !!} 
-                            </div>
-                            @else
-
-                            <div class="pdetail-add-to-cart pdetail-installment specifications-img">
-                                <div class="inline">
-                                    <button type="button" class="btn btn-lg btn-add-cart btn-add-cart redirectCart">Liên hệ</button>
-                                </div>
-
-                                {!!  $data->Specifications  !!} 
-                            </div>
+                             <button type="button" class="btn btn-lg" data-toggle="modal" data-target="#specifications">Xem chi tiết thông số kỹ thuật</button>
                            
-                            @endif
-
+                            
                         </div>
-                        <div class="clearfix"></div>
-
-                         <button type="button" class="btn btn-lg" data-toggle="modal" data-target="#specifications">Xem chi tiết thông số kỹ thuật</button>
-                       
-                        
                     </div>
                 </div>
+
             </div>
+
+            <!-- end chia -->
+
+            <div class="box2">
+                <div class="title">Điều khoản</div>
+                <div class="contents">
+                    <ul>
+                        <li>
+                            <strong>Hàng chính hãng&nbsp;</strong>
+                        </li>
+                        
+                        <li>
+                            <strong>Miễn phí vận chuyển, lắp đặt </strong>
+                            <br>
+                            <span>20km nội thành Hà Nội</span>
+
+                        </li>
+
+                        <li>
+                            <strong>Lắp đặt nhanh </strong>
+
+                            <span>trong vòng 24h. Chuẩn quy trình</span>
+
+                        </li>
+
+
+                        <li>
+                            <strong>Chăm sóc khách hàng</strong>
+
+                            <span>Hậu mãi, hỗ trợ chu đáo</span>
+
+                        </li>
+                       
+                       
+                    </ul>
+                </div>
+            </div>
+
         </div>
 
         <div class="border7"></div>
@@ -1554,108 +1493,7 @@
 
     <div class="clear"></div>
     <br>
-    <style type="text/css">
-        .commitment {
-            border: 1px solid #0083d1;
-            padding: 10px;
-        }
-        .commitment h4 {
-            font-weight: bold;
-            color: #ff9;
-            text-transform: uppercase;
-            font-size: 16px;
-            margin: 0;
-            padding: 10px;
-            background-color: #fe0000;
-            margin: -10px;
-            margin-bottom: 0px;
-            text-align: center;
-        }
-       .commitment ul {
-            line-height: 3vmin;
-        }
-        .commitment .support a {
-            color: #fe0000;
-            font-size: 16px;
-            font-weight: bold;
-            display: block;
-            line-height: 30px;
-        }
-
-        .commitment h5 {
-          /*  font-weight: 500;*/
-            font-size: 16px;
-            text-transform: uppercase;
-            margin: 0;
-            margin-bottom: 10px;
-            font-weight: bold;
-        }
-        .commitment{
-            width: 100%;
-        }
-        .commitment ul li::before {
-            content: "\f00c";
-            font-weight: 900;
-            font-family: Font Awesome\ 5 Free;
-            font-size: 8px;
-            margin-right: 5px;
-            color: #fff;
-            border: 1px solid #fff;
-            border-radius: 100%;
-            width: 14px;
-            height: 14px;
-            display: inline-block;
-            background-color: #ff3333;
-            line-height: 13px;
-            text-align: center;
-        }
-
-        .pdetail-price{
-            height: 110px;
-        }
-        .pdetail-price-box{
-            height: 74%;
-        }
-        .text-on{
-            display: flex;
-        }
-
-        .contents{
-            position: relative;
-        }       
-
-        .contents ul li:nth-child(1):before {
-           background: url(https://manhnguyen.com.vn/img/sprites.png?t=323) no-repeat;
-            display: block;
-            content: " ";
-            background-position: -7px -539px;
-            width: 36px;
-            height: 40px;
-            position: absolute;
-            left: 0;
-        }
-
-        .contents ul li:nth-child(2):before{
-
-            background: url(https://manhnguyen.com.vn/img/sprites.png?t=323) no-repeat;
-            display: block;
-            content: " ";
-            background-position: -7px -589px;
-            width: 36px;
-            height: 40px;
-            position: absolute;
-            left: 0;
-
-           
-        }
-        .box_right {
-            
-            width: ;
-        }   
-
-
-    </style>
-
+    
     <div class="prod-info-right fr">
 
         <div>
@@ -1696,7 +1534,7 @@
 
 </div>
 @push('style')
-<link rel="stylesheet" type="text/css" href="{{ asset('css/details.css') }}?ver=6">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/details.css') }}?ver=7">
 @endpush
 @push('script')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js"></script>
