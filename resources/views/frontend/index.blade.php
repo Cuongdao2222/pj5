@@ -811,7 +811,7 @@
         @else
 
         <?php 
-            $deal_active = 0;
+            $deal_active = 1;
         ?>
 
         @if(!empty($deal_check) && $deal_check->count()>0 && $now->between($deal_check[0]->start, $deal_check[0]->end) && $deal_active ===1)
