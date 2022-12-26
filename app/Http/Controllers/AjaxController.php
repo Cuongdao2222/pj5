@@ -760,6 +760,67 @@ class AjaxController extends Controller
 
         $value = $request->value;
 
+
+        $orders = Order::find($id);
+
+        $product = json_decode($orders->product);
+
+        $order = new Frontend\orderController();
+
+        $product = $order->apiInsertGent($id);
+
+
+        // define ten nguoi duyet tu gen sang đang viết dở 
+
+
+        if($value==1){
+
+             // Create the context for the request
+
+            $postData = [
+               "api_id" => "qr4SP88JRWzDzd/u4AyG8djhaaj5eJHfFiudnB2klPQ=", 
+               "vcustomers_insert_individual" => [
+                     "di_dong" => $orders->phone_number, 
+                     "ten_khach_hang" => $orders->name 
+                  ], 
+               "hop_dong" => [
+                  [
+                     "col162" => "12 tháng", 
+                     "col112" => "Đ/H website do ".auth()->user()->name." ".$orders->updated_at->format('d/m/Y'), 
+                     "col142" => $orders->updated_at->format('d/m/Y'), 
+                     "col121" => "Đ/H website do ".auth()->user()->name." ".$orders->updated_at->format('d/m/Y'), 
+                     "col132" => "573", 
+                     "col421" => "250",
+                     "chi_tiet" =>$product,
+                  ] 
+               ] 
+            ]; 
+
+            $context = stream_context_create(array(
+                'http' => array(
+                    
+                    'method' => 'POST',
+
+                    'header' => "Content-Type: application/x-www-form-urlencoded\r\n".
+                                "Authorization: Basic Z2VuY3JtX2drczpnZW5jcm1fZ2tzQDIwMTYj",
+                    'content' => json_encode($postData)
+                )
+            ));
+
+            // Send the request
+            $response = file_get_contents('https://dienmaynguoiviet.gencrm.com/modules/api/insert', FALSE, $context);
+
+            // Check for errors
+            if($response === FALSE){
+                die('Error');
+            }
+
+            // Decode the response
+            $responseData = json_decode($response, TRUE);
+
+
+        }
+
         $order = Order::find($id);
 
         $order->active = $value;
