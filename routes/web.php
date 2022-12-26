@@ -422,6 +422,8 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::post('add-selected-value-filter', 'AjaxController@addValueSelectFilter')->name('add-value-selected-filter');
 
+    Route::get('add-gen-api', 'Frontend\orderController@apiInseartGent')->name('insert-api');
+
     
 
     Route::post('add-promotion', 'AjaxController@add_promotion')->name('add-promotion');

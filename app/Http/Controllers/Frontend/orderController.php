@@ -137,7 +137,7 @@ class orderController extends Controller
 
         return view('order.index', compact('order', 'users')); 
 
-    }
+    } 
     public function orderListView($id)
     {
         $order = Order::findOrFail($id);
@@ -173,5 +173,78 @@ class orderController extends Controller
 
         return view('order.list-order', compact('data_product', 'id', 'order_accept', 'user', 'order'));
     }
+
+
+    public function apiInseartGent(Request $request)
+    {
+    
+        // Create the context for the request
+
+        $postData = [
+           "api_id" => "qr4SP88JRWzDzd/u4AyG8djhaaj5eJHfFiudnB2klPQ=", 
+           "vcustomers_insert_individual" => [
+                 "di_dong" => "0987654321", 
+                 "ten_khach_hang" => "cuong test api" 
+              ], 
+           "hop_dong" => [
+              [
+                 "col162" => "12 tháng", 
+                 "col112" => "Hợp đồng mua bán", 
+                 "col142" => "13/12/2022", 
+                 "col121" => "Hợp đồng mua bán", 
+                 "col132" => "573", 
+                 "col421" => "250",
+                 "chi_tiet" => [
+                    [
+                       "ma_nsp" => "65UP7550PTC", 
+                       "ten_nsp" => "Smart tivi LG 65UP7550PTC 65 inch 4K", 
+                       "ma_sp" => "65UP7550PTC", 
+                       "ten_sp" => "LG 65UP7550PTC", 
+                       "don_gia" => "5000000", 
+                       "so_luong" => "1",
+
+                    ] 
+                    ,
+                    [
+                       "ma_nsp" => "65UP7550PTB", 
+                       "ten_nsp" => "Smart tivi LG 65UP7550PTB 65 inch 4K", 
+                       "ma_sp" => "65UP7550PTB", 
+                       "ten_sp" => "LG 65UP7550PTB", 
+                       "don_gia" => "6000001", 
+                       "so_luong" => "1",
+
+                    ] 
+                 ] 
+              ] 
+           ] 
+        ]; 
+
+        $context = stream_context_create(array(
+            'http' => array(
+                
+                'method' => 'POST',
+
+                'header' => "Content-Type: application/x-www-form-urlencoded\r\n".
+                            "Authorization: Basic Z2VuY3JtX2drczpnZW5jcm1fZ2tzQDIwMTYj",
+                'content' => json_encode($postData)
+            )
+        ));
+
+        // Send the request
+        $response = file_get_contents('https://dienmaynguoiviet.gencrm.com/modules/api/insert', FALSE, $context);
+
+        // Check for errors
+        if($response === FALSE){
+            die('Error');
+        }
+
+        // Decode the response
+        $responseData = json_decode($response, TRUE);
+
+
+        echo "thanh cong";
+
+
+    }   
    
 }
