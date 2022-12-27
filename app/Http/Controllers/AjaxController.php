@@ -772,6 +772,11 @@ class AjaxController extends Controller
 
         // define ten nguoi duyet tu gen sang đang viết dở 
 
+        $user_convert = ['4'=>'247', '6'=>'250', '8'=>'245'];
+
+        $user = $user_convert[Auth::user()->id]??'1';
+
+
 
         if($value==1){
 
@@ -790,7 +795,7 @@ class AjaxController extends Controller
                      "col142" => $orders->updated_at->format('d/m/Y'), 
                      "col121" => "Đ/H website do ".auth()->user()->name." ".$orders->updated_at->format('d/m/Y'), 
                      "col132" => "573", 
-                     "col421" => "250",
+                     "col421" => $user,
                      "chi_tiet" =>$product,
                   ] 
                ] 
@@ -1100,6 +1105,7 @@ class AjaxController extends Controller
 
     }
 
+  
 }
 
 

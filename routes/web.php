@@ -30,6 +30,8 @@ Route::get('/random-deal', 'crawlController@randomOrderDeal');
 
 Route::post('get-compare-pd-viewer', 'productController@getPDviewer')->name('ajax-compare-viewerPd');
 
+Route::get('get-info-order', 'apiController@getInfoOrderToApi');
+
 
 Route::post('showDealClick','flashdealController@showDealByIdClick')->name('showDealClick');
 
@@ -178,6 +180,9 @@ Route::post('filter-price-product', 'AjaxController@filterByValue')->name('filte
 
 
 Route::post('filter-price-product-by-page', 'AjaxController@filterByPageFilter')->name('filter-option-by-page');
+
+
+
 
 
 
