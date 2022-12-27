@@ -61,10 +61,12 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/detailscs.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}?ver=21"> 
     <link rel="stylesheet" href="{{ asset('css/jquery.fancybox.css') }}"/>
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/detail1fe.css') }}?ver=6">
-
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/detail1fe.css') }}?ver=7">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/detailsfe.css') }}?ver=9">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/details.css') }}?ver=8">
 
 @endpush
+
 
 <?php 
     if(!Cache::has('saker') ){
@@ -276,9 +278,7 @@
     }
     
     ?>
-@push('style')
-<link rel="stylesheet" type="text/css" href="{{ asset('css/detailsfe.css') }}?ver=7">
-@endpush
+
 <div class="locationbox__overlay"></div>
 <div class="locationbox">
     <div class="locationbox__item locationbox__item--right" onclick="OpenLocation()">
@@ -527,7 +527,7 @@
                                         <!-- <div class="product-quantity">
                                             <input type="text" class="quantity-field" readonly="readonly" name="qty" value="1">
                                             </div> -->
-                                        <button type="button" class="btn btn-lg btn-add-cart btn-add-cart redirectCart" onclick="addToCart({{ $data->id }})">MUA NGAY <br>(Giao hàng tận nơi - Giá tốt - An toàn)</button>
+                                        <button type="button" class="btn btn-lg btn-add-cart btn-add-cart redirectCart cart-sp1" onclick="addToCart({{ $data->id }})">MUA NGAY <br>(Giao hàng tận nơi - Giá tốt - An toàn)</button>
 
 
                                         <button type="button" class="btn btn-lg btn-add-cart btn-add-cart redirectCart cartSP" onclick="addToSuport(2221)">GỌI LẠI CHO TÔI <br>(Tư vấn tận tình, chu đáo)</button>
@@ -1533,9 +1533,7 @@
     <!--//prod-info-left -->
 
 </div>
-@push('style')
-<link rel="stylesheet" type="text/css" href="{{ asset('css/details.css') }}?ver=7">
-@endpush
+
 @push('script')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js"></script>
 <script type="text/javascript">

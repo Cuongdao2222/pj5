@@ -1,3 +1,30 @@
+
+.text-on{
+    display: block !important;
+}
+.pdetail-price{
+    height: 74px !important;
+}
+
+.specifications-img table{
+    display:none;
+}
+
+.specifications-img{
+    height: auto !important;
+}
+
+.cart-sp1{
+    width: 100%!important;
+}
+
+.specifications-img{
+    width: 100% !important;
+}
+.btn-add-cart{
+    padding: 8px 24px !important;
+}
+
 #data-pricetotal{
     width: 194px;
 }
@@ -179,6 +206,10 @@ width: auto !important;
                 top: 10px;
                 left: 94vw;
             }  
+
+            #contents-scroll{
+                padding: 0 15px;
+            }
         }
 
 @media screen and (min-width: 576px){
