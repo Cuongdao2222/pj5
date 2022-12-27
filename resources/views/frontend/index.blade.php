@@ -811,7 +811,7 @@
         @else
 
         <?php 
-            $deal_active = 0;
+            $deal_active = 1;
         ?>
 
         @if(!empty($deal_check) && $deal_check->count()>0 && $now->between($deal_check[0]->start, $deal_check[0]->end) && $deal_active ===1)
@@ -1052,9 +1052,7 @@
                 @foreach($product_sale as  $value)
                 @if($value->active==1)
                 <div class="item">
-                    <span class="icon_sale">
-                        <img class="sale-banner ls-is-cached lazyloaded" alt="hot" data-src="{{ asset('images/background-image/xahang.png') }}" src="{{ asset('images/background-image/xahang.png') }}">
-                    </span>
+                    
                     <a href='{{ route('details', $value->Link) }}' class=" main-contain" data-s="OnlineSavingCMS" data-site="2" data-pro="3" data-cache="False" data-name="M&#xE1;y gi&#x1EB7;t LG Inverter 8.5 kg FV1408S4W" data-id="227121" data-price="8840000.0" data-brand="LG" data-cate="M&#xE1;y gi&#x1EB7;t" data-box="BoxHome">
                         <div class="item-label">
                         </div>

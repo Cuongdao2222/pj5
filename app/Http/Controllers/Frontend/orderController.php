@@ -137,7 +137,7 @@ class orderController extends Controller
 
         return view('order.index', compact('order', 'users')); 
 
-    }
+    } 
     public function orderListView($id)
     {
         $order = Order::findOrFail($id);
@@ -173,5 +173,37 @@ class orderController extends Controller
 
         return view('order.list-order', compact('data_product', 'id', 'order_accept', 'user', 'order'));
     }
+
+
+    public function apiInsertGent($id)
+    {
+
+
+        $orders = Order::find($id);
+
+        $product = json_decode($orders->product);
+
+        $convertPD = [];
+
+        if(isset($product)){
+
+            foreach ($product as $key=>$value) {
+
+                $model = product::find($value->id)->ProductSku;
+
+                $dongia =  intval($value->price)/intval($value->qty);
+                $convertPD[$key]['ma_nsp'] = $model;
+                $convertPD[$key]['ten_nsp'] = $value->name;
+                $convertPD[$key]['ma_sp'] = $model;
+                $convertPD[$key]['ten_sp'] = $model;
+                $convertPD[$key]['don_gia'] = $dongia;
+                $convertPD[$key]['so_luong'] = $value->qty;
+                
+            }
+
+        }
+
+        return($convertPD);
+    }   
    
 }
