@@ -774,7 +774,7 @@ class AjaxController extends Controller
 
         $user_convert = ['4'=>'247', '6'=>'250', '8'=>'245'];
 
-        $user = $user_convert[Auth::user()->id]??'1';
+        $userss = $user_convert[Auth::user()->id]??'1';
 
 
 
@@ -795,7 +795,7 @@ class AjaxController extends Controller
                      "col142" => \Carbon\Carbon::parse(\Carbon\Carbon::now())->timestamp, 
                      "col121" => "Đ/H website do ".auth()->user()->name." ".$orders->updated_at->format('d/m/Y'), 
                      "col132" => "573", 
-                     "col421" => "247",
+                     "col421" => $userss,
                      "chi_tiet" =>$product,
                   ] 
                ] 
