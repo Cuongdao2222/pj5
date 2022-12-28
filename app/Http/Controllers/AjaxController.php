@@ -770,7 +770,7 @@ class AjaxController extends Controller
         $product = $order->apiInsertGent($id);
 
 
-        // define ten nguoi duyet tu gen sang đang viết dở 
+        // define ten nguoi duyet tu gen
 
         $user_convert = ['4'=>'247', '6'=>'250', '8'=>'245'];
 
@@ -792,7 +792,7 @@ class AjaxController extends Controller
                   [
                      "col162" => "12 tháng", 
                      "col112" => "Đ/H website do ".auth()->user()->name." ".$orders->updated_at->format('d/m/Y'), 
-                     "col142" => $orders->updated_at->format('d/m/Y'), 
+                     "col142" => \Carbon\Carbon::parse(\Carbon\Carbon::now())->timestamp, 
                      "col121" => "Đ/H website do ".auth()->user()->name." ".$orders->updated_at->format('d/m/Y'), 
                      "col132" => "573", 
                      "col421" => $user,

@@ -30,9 +30,6 @@ Route::get('/random-deal', 'crawlController@randomOrderDeal');
 
 Route::post('get-compare-pd-viewer', 'productController@getPDviewer')->name('ajax-compare-viewerPd');
 
-Route::get('get-info-order', 'apiController@getInfoOrderToApi');
-
-
 Route::post('showDealClick','flashdealController@showDealByIdClick')->name('showDealClick');
 
 Route::get('checkPSK', 'crawlController@checkProductSku');
@@ -176,18 +173,11 @@ Route::post('suggest', 'AjaxController@getProductActive')->middleware('throttle:
 
 Route::post('filter-price-product', 'AjaxController@filterByValue')->name('filter-option');
 
-
-
-
 Route::post('filter-price-product-by-page', 'AjaxController@filterByPageFilter')->name('filter-option-by-page');
-
-
-
-
-
 
 Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
+    Route::get('get-info-order', 'apiController@filterOrderToNumberPhone');
 
     Route::get('forget-cache-home', 'backend\indexController@index')->name('test');
 
@@ -206,8 +196,6 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
     Route::get('incrawl', 'crawlController@allproduct');
 
     Route::get('addTimeDealBefore', 'flashdealController@addTimeDealBefore');
-
-    
 
     Route::get('update-call-phone/{id}', 'lienheController@updateCall')->name('updateCall');
 
@@ -255,14 +243,11 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::post('/addUser', 'customnUserController@addUser')->name('adduser');
 
-
     Route::post('/add-limit', 'AjaxController@addLimitProduct')->name('add-limit-product');
 
     Route::post('/remove-limit', 'AjaxController@removeLimitProduct')->name('remove-limit-product');
 
-
     Route::get('deal', 'dealController@index')->name('deal');
-
 
     Route::get('flash-deal', 'dealController@flashDeal')->name('flashDeal');
 
@@ -280,22 +265,18 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::post('remove-deal-flash', 'dealController@removeDealFlash')->name('removeDealFlash');
 
-
     Route::get('add-Deal-Flashs', 'dealController@addDealFlashs')->name('addDealFlashs');
 
     Route::get('post-codinh', 'mainController@footerpost')->name('postcd');
 
     Route::get('list-flash-deal', 'dealController@viewFlashDeal')->name('viewFlashDeal');
 
-
     Route::get('home', 'HomeController@index')->name('home-admin');
 
     Route::get('delete-link-add', 'showController@deleteLinkAdd')->name('delete-link-add');
 
-
-     Route::get('changepass', 'mainController@changepass')->name('changepassview');
+    Route::get('changepass', 'mainController@changepass')->name('changepassview');
     
-
     Route::post('info-pop-up', 'showController@addPopup')->name('add-popup');
 
     Route::post('user-edit-pass', 'customnUserController@changePassWord')->name('changepass');
@@ -309,7 +290,6 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
     Route::get('view-user', 'customnUserController@viewUser')->name('view-user');
 
     Route::get('new-banner', 'mainController@newBanner')->middleware('auth');
-
 
     Route::get('order', 'Frontend\orderController@orderList')->name('order_list');
 

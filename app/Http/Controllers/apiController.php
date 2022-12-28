@@ -22,10 +22,10 @@ class apiController extends Controller
     {
         
         $postData = [
-           'from_date' => '24/12/2022',
+           'from_date' => '26/12/2022',
            'to_date' => '26/12/2022',
            'page'=>'1',
-           'status'=>'CHOGIAOHANG', 
+           'status'=>'KT', 
         ];
         $context = stream_context_create(array(
             'http' => array(
@@ -54,14 +54,42 @@ class apiController extends Controller
 
         $string = "[" . trim($string) . "]";
 
-        $json =  json_decode(preg_replace('/[\x00-\x1F\x80-\xFF]/', '', $string), true);
+        $result =  json_decode(preg_replace('/[\x00-\x1F\x80-\xFF]/', '', $string), true);
 
-        echo "<pre>";
-
-           print_r($json);
-
-        echo "</pre>";
+        return $result;
 
         
+    }
+
+    public function filterOrderToNumberPhone()
+    {
+        $data = $this->getInfoOrderToApi();
+
+        $info_data = $data[0]['data']['data']??'';
+
+        if(isset($info_data)){
+
+            $ar_val = [];
+            foreach ($info_data as $key => $value) {
+
+                $datas = $value['dien_thoai'];
+
+                if(strpos($value['dien_thoai'], ',')){
+
+                    $datas = explode(',', $value['dien_thoai']);
+                }
+
+                array_push($ar_val, $datas);
+                
+            }
+
+    
+            echo "<pre>";
+
+                print_r($info_data);
+                
+            echo "</pre>";
+
+        }
     }
 }
