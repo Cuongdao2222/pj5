@@ -22,8 +22,8 @@ class apiController extends Controller
     {
         
         $postData = [
-           'from_date' => '26/12/2022',
-           'to_date' => '26/12/2022',
+           'from_date' => '28/12/2022',
+           'to_date' => '28/12/2022',
            'page'=>'1',
            'status'=>$status, 
         ];
@@ -104,14 +104,26 @@ class apiController extends Controller
 
         $ar_status = ['CHOGIAOHANG','HOAN','KT','HUY'];
 
+        $check_pd = [];
+
         foreach ($ar_status as $key => $value) {
 
-            if(!empty($this->filterOrderToNumberPhoneStatus($value, '0989951212')) ){
+            if(!empty($this->filterOrderToNumberPhoneStatus($value, '0981061252')) ){
 
-                print_r($key);
+                array_push($check_pd, $key);
 
             }
+
         }
+        if(!empty($check_pd)){
+
+            echo reset($check_pd);
+        }
+        else{
+
+            echo "không tìm thấy thông tin đơn hàng";
+        }
+
        
     }
 }

@@ -772,21 +772,20 @@ class AjaxController extends Controller
 
         // define ten nguoi duyet tu gen
 
-        $user_convert = ['4'=>'247', '6'=>'250', '8'=>'245'];
+        $user_convert = [4=>'247', 6=>'250', 8=>'245'];
 
         $userss = $user_convert[Auth::user()->id]??'1';
 
 
-
         if($value==1){
-
              // Create the context for the request
 
             $postData = [
                "api_id" => "qr4SP88JRWzDzd/u4AyG8djhaaj5eJHfFiudnB2klPQ=", 
                "vcustomers_insert_individual" => [
                      "di_dong" => $orders->phone_number, 
-                     "ten_khach_hang" => $orders->name 
+                     "ten_khach_hang" => $orders->name,
+                     "nguoi_quan_ly" =>$userss,
                   ], 
                "hop_dong" => [
                   [
