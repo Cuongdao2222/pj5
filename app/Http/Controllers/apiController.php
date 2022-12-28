@@ -18,14 +18,14 @@ class apiController extends Controller
         echo "thanh cong";
     }
 
-    public function getInfoOrderToApi()
+    public function getInfoOrderToApi($status)
     {
         
         $postData = [
            'from_date' => '26/12/2022',
            'to_date' => '26/12/2022',
            'page'=>'1',
-           'status'=>'KT', 
+           'status'=>$status, 
         ];
         $context = stream_context_create(array(
             'http' => array(
@@ -61,9 +61,9 @@ class apiController extends Controller
         
     }
 
-    public function filterOrderToNumberPhone()
+    public function filterOrderToNumberPhoneStatus($status, $number_phone)
     {
-        $data = $this->getInfoOrderToApi();
+        $data = $this->getInfoOrderToApi($status);
 
         $info_data = $data[0]['data']['data']??'';
 
@@ -72,7 +72,8 @@ class apiController extends Controller
             $ar_val = [];
             foreach ($info_data as $key => $value) {
 
-                $datas = $value['dien_thoai'];
+                
+                 $datas = array($value['dien_thoai']);
 
                 if(strpos($value['dien_thoai'], ',')){
 
@@ -83,13 +84,34 @@ class apiController extends Controller
                 
             }
 
-    
-            echo "<pre>";
+            foreach ($ar_val as $key => $value) {
 
-                print_r($info_data);
+                if(in_array($number_phone, $value)){
+
+                    return($key);
+
+                }
+
                 
-            echo "</pre>";
+            }  
+            return '';
 
         }
+    }
+
+    public function searchInfoOrder()
+    {
+
+        $ar_status = ['CHOGIAOHANG','HOAN','KT','HUY'];
+
+        foreach ($ar_status as $key => $value) {
+
+            if(!empty($this->filterOrderToNumberPhoneStatus($value, '0989951212')) ){
+
+                print_r($key);
+
+            }
+        }
+       
     }
 }

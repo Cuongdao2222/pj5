@@ -177,7 +177,7 @@ Route::post('filter-price-product-by-page', 'AjaxController@filterByPageFilter')
 
 Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
-    Route::get('get-info-order', 'apiController@filterOrderToNumberPhone');
+    Route::get('get-info-order', 'apiController@searchInfoOrder');
 
     Route::get('forget-cache-home', 'backend\indexController@index')->name('test');
 
