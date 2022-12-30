@@ -2339,7 +2339,7 @@
             <div class="snowflake">❆</div>
         </div>
 
-// CSS
+
 <style>
   @-webkit-keyframes snowflakes-fall {
     0% {top:-10%}
