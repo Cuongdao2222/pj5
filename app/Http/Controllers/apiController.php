@@ -118,7 +118,7 @@ class apiController extends Controller
         }
 
         $data = $this->getInfoOrderToApi('CHOGIAOHANG');
-        dd($data);
+       
 
     }
 }
