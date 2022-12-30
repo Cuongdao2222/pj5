@@ -22,8 +22,8 @@ class apiController extends Controller
     {
         
         $postData = [
-           'from_date' => '28/12/2022',
-           'to_date' => '28/12/2022',
+           'from_date' => '29/12/2022',
+           'to_date' => '29/12/2022',
            'page'=>'1',
            'status'=>$status, 
         ];
@@ -72,8 +72,7 @@ class apiController extends Controller
             $ar_val = [];
             foreach ($info_data as $key => $value) {
 
-                
-                 $datas = array($value['dien_thoai']);
+                $datas = array($value['dien_thoai']);
 
                 if(strpos($value['dien_thoai'], ',')){
 
@@ -88,42 +87,38 @@ class apiController extends Controller
 
                 if(in_array($number_phone, $value)){
 
-                    return($key);
+                    return($info_data[$key]);
 
                 }
 
                 
             }  
-            return '';
+            return $info_data;
 
         }
     }
 
     public function searchInfoOrder()
     {
-
         $ar_status = ['CHOGIAOHANG','HOAN','KT','HUY'];
 
-        $check_pd = [];
+        $data = [];
 
         foreach ($ar_status as $key => $value) {
 
-            if(!empty($this->filterOrderToNumberPhoneStatus($value, '0981061252')) ){
+            if($this->filterOrderToNumberPhoneStatus($value, '0934234388')!=''){
 
-                array_push($check_pd, $key);
+                $data = $this->filterOrderToNumberPhoneStatus('CHOGIAOHANG', '0934234388');
 
+                dd($data);
+
+                die();
             }
 
         }
-        if(!empty($check_pd)){
 
-            echo reset($check_pd);
-        }
-        else{
+        $data = $this->getInfoOrderToApi('CHOGIAOHANG');
+        dd($data);
 
-            echo "không tìm thấy thông tin đơn hàng";
-        }
-
-       
     }
 }
