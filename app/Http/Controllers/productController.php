@@ -63,6 +63,24 @@ class productController extends AppBaseController
         return view('products.create');
     }
 
+    public function promotionCheckDefault(Request $request)
+    {
+       
+        $value = $request->value;
+
+        $product_id = $request->product_id;
+
+        $product = product::find($product_id);
+
+        $product->promotion_box = $value;
+
+        $result = $product->save();
+
+        return $value;
+
+    }
+
+
     
 
     /**

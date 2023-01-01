@@ -207,6 +207,9 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::get('/delete-user-permission','customnUserController@deleteUser')->name('deleteUser');
 
+
+    Route::post('promotion-click', 'productController@promotionCheckDefault')->name('promotionCheckDefault');
+
     Route::get('filter-group-id', 'dealController@getProductToGroupId')->name('filter-group-id');
 
     Route::get('fill-product-deal', 'dealController@getProductToName')->name('filter-product-deal');

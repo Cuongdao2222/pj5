@@ -55,31 +55,40 @@
 
     <?php
 
-    function pricesPromotion($price)
+-    function pricesPromotion($price, $id)
         {
 
-            if($price>=50000000){
+            if($id===''){
 
-                $gift_Price = '1.000.000 đ';
+                $gift_Price = '';
 
-            }
-            elseif ($price>5000000 && $price<=10000000) {
-
-                 $gift_Price = '100.000 đ';
-            }
-
-            elseif ($price>10000000 && $price<=30000000) {
-
-                 $gift_Price = '200.000 đ';
-            }
-
-            elseif ($price>30000000 && $price<50000000) {
-
-                $gift_Price = '500.000 đ';
             }
             else{
-                $gift_Price = '50.000 đ';
+                if($price>=50000000){
+
+                    $gift_Price = '1.000.000 đ';
+
+                }
+                elseif ($price>5000000 && $price<=10000000) {
+
+                     $gift_Price = '100.000 đ';
+                }
+
+                elseif ($price>10000000 && $price<=30000000) {
+
+                     $gift_Price = '200.000 đ';
+                }
+
+                elseif ($price>30000000 && $price<50000000) {
+
+                    $gift_Price = '500.000 đ';
+                }
+                else{
+
+                    $gift_Price = '50.000 đ';
+                }
             }
+            
             return $gift_Price;
         }
 
@@ -486,7 +495,12 @@
                                             </div>
 
                                             @if(!empty($gifts->price))
-                                            <span> Quà tặng trị giá <strong>{{  pricesPromotion($value->Price) }}  <sup>đ</sup></strong> </span>
+
+                                            <?php 
+
+                                                $id_checkpromotion = $value->promotion_box==1?'':$value->id;
+                                            ?>
+                                            <span> Quà tặng trị giá <strong>{{  pricesPromotion($value->Price, $id_checkpromotion) }}  <sup>đ</sup></strong> </span>
                                             @endif  
 
                                            

@@ -205,6 +205,11 @@
                 <input type="checkbox" id="hots{{ $product->id }}" name="hots"  onclick='hotClick({{ $product->id }});' data-id ="{{ get_Group_Product($product->id)[0]??'' }}" {{ in_array($product->id, $list_hots)?'checked':'' }}>
                   Sản phẩm Hot
                 <br>
+
+                <input type="checkbox"  name="promotionClick" id="promotionClick{{ $product->id }}"  onclick='promotionClick({{ $product->id }});' data-id ="{{ get_Group_Product($product->id)[0]??'' }}" {{ $product->promotion_box==1?'checked':'' }}>
+                  Nhận khuyến mãi theo option chọn
+                <br>
+
                 <input type="checkbox" id="limit{{ $product->id }}" name="limit"  onclick="limit({{ $product->id }})" {{  $product->limits ==1?'checked':'' }}>
 
                 Sản phẩm số lượng có hạn
@@ -479,6 +484,59 @@
                 
             }
         });
+
+    }
+
+    function promotionClick(id) {
+        var checked = $('#promotionClick'+id).is(':checked'); 
+
+        if(checked == true){
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+            
+        $.ajax({
+
+           
+            type: 'POST',
+            url: "{{ route('promotionCheckDefault') }}",
+            data: {
+                product_id: id,
+                value: 1,
+                   
+            },
+            success: function(result){
+                console.log(result);
+            }
+        });
+
+        }
+        else{
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+            
+        $.ajax({
+           
+            type: 'POST',
+            url: "{{ route('promotionCheckDefault') }}",
+            data: {
+                product_id: id,
+                value: 0,
+                   
+            },
+            success: function(result){
+                console.log(result);
+            }
+        });
+
+        }
 
     }
 
