@@ -1174,7 +1174,7 @@
 
                                 ?>
 
-                                <span class="ttl"><i class="fa-solid fa-gift"></i> Quà tặng kèm trị giá {{  $price_gift }} đ</span>
+                                <span class="ttl"><i class="fa-solid fa-gift"></i> Quà tặng kèm trị giá {{  $price_gift }} </span>
                                
                                 <div class="gift_item">
                                     <ul>
@@ -1187,7 +1187,7 @@
                                                     @if($gifts->type ==1)<input type="checkbox" name="gift" value="{{ $valuegift->name }}" {{ $key==0?'checked':'' }}> @endif
                                                     <img src="{{ asset($valuegift->image) }}" height="30px" width="30px">
 
-                                                        <h4>Tặng 1 voucher trị giá {{ @$price_gift }}đ</h4>
+                                                        <h4>Tặng 1 voucher trị giá {{ @$price_gift }}</h4>
                                                     
                                                 </div>
                                             </div>
