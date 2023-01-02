@@ -218,7 +218,9 @@
             <option value="https://dienmaynguoiviet.vn/am-sieu-toc" {{ $id_cate==111?'selected':'' }}>Ấm siêu tốc</option>
             <option value="https://dienmaynguoiviet.vn/may-xay-sinh-to" {{ $id_cate==112?'selected':'' }}>Máy xay sinh tố</option>
             <option value="https://dienmaynguoiviet.vn/may-ep-hoa-qua" {{ $id_cate==113?'selected':'' }}>Máy ép hoa quả</option>
-            <option value="https://dienmaynguoiviet.vn/may-xay-da-nang">Máy xay đa năng</option>
+            <option value="https://dienmaynguoiviet.vn/may-xay-da-nang" {{ $id_cate==114?'selected':'' }}>Máy xay đa năng</option>
+            <option value="https://dienmaynguoiviet.vn/noi-chien-khong-dau" {{ $id_cate==328?'selected':'' }}>Nồi chiên không dầu</option>
+            
         </select>
 
     
