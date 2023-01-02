@@ -498,7 +498,7 @@
 
                                             @if(!empty($gifts->price))
 
-                                            {{ $value->promotion_box }}
+                                            
 
                                             <?php 
 
