@@ -508,7 +508,7 @@
 
 
                                             ?>
-                                            <span> Quà tặng trị giá <strong>{{  $price_gift }}  <sup>đ</sup></strong> </span>
+                                            <span> Quà tặng trị giá <strong>{{  $price_gift }}  </strong> </span>
                                             @endif  
 
                                            
