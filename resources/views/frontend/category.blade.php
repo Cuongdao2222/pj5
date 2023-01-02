@@ -55,7 +55,7 @@
 
     <?php
 
--    function pricesPromotion($price, $id)
+    function pricesPromotion($price, $id)
         {
 
             if($id===''){
@@ -496,11 +496,17 @@
 
                                             @if(!empty($gifts->price))
 
+                                            {{ $value->promotion_box }}
+
                                             <?php 
 
                                                 $id_checkpromotion = $value->promotion_box==1?'':$value->id;
+
+                                                $price_gift = pricesPromotion($value->Price, $id_checkpromotion)===''?str_replace(',' ,'.', number_format($gifts->price)):pricesPromotion($value->Price, $id_checkpromotion)
+
+
                                             ?>
-                                            <span> Quà tặng trị giá <strong>{{  pricesPromotion($value->Price, $id_checkpromotion) }}  <sup>đ</sup></strong> </span>
+                                            <span> Quà tặng trị giá <strong>{{  $price_gift }}  <sup>đ</sup></strong> </span>
                                             @endif  
 
                                            

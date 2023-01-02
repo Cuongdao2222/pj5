@@ -249,15 +249,16 @@
 
 
             <td>
-                <select id="gift" onchange="add_gift_group({{ $product->id }})">
+                <select id="gift{{ $product->id }}" onchange="add_gift_group({{ $product->id }})">
                     <option value="0">Không chọn</option>
 
 
                     @if(isset($group_gift))
                     
                     @foreach($group_gift as $value)
-                    
-                    <option value="{{ $value->id }}" {{ $id_group_gift == $value->id?'selected':'' }} >{{ $value->group_name }}</option>
+
+
+                    <option data-id="{{ $id_group_gift }}" value="{{ $value->id }}" {{ $id_group_gift == $value->id?'selected':'' }} >{{ $value->group_name }}</option>
                     @endforeach
                     @endif
 
@@ -434,7 +435,7 @@
             data: {
                 
                 product_id:product_id,
-                id_group_gift:$('#gift').val(),
+                id_group_gift:$('#gift'+product_id).val(),
                    
             },
             success: function(result){

@@ -1264,6 +1264,9 @@
                                                 <a href="{{route('details','may-xay-da-nang')}}">
                                                     <h3>Máy xay đa năng</h3>
                                                 </a>
+                                                <a href="{{route('details','noi-chien-khong-dau')}}">
+                                                    <h3>Nồi chiên không dầu</h3>
+                                                </a>
                                             </aside>
                                         </div>
 

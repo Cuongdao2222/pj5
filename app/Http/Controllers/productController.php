@@ -70,11 +70,8 @@ class productController extends AppBaseController
 
         $product_id = $request->product_id;
 
-        $product = product::find($product_id);
 
-        $product->promotion_box = $value;
-
-        $result = $product->save();
+        DB::table('products')->where('id', $product_id)->update(['promotion_box'=>$value]);
 
         return $value;
 
@@ -559,7 +556,7 @@ class productController extends AppBaseController
 
             if(!Cache::has('product_search')){
 
-                $productss = product::select('Link', 'Name', 'Image', 'Price', 'id', 'ProductSku')->where('active', 1)->get();
+                $productss = product::select('Link', 'Name', 'Image', 'Price', 'id', 'ProductSku', 'promotion_box')->where('active', 1)->get();
 
                 Cache::forever('product_search',$productss);
 

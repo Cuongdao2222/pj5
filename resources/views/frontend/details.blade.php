@@ -1107,6 +1107,7 @@
                             @if(!empty($data->promotion))
 
                             <div class="gift_pro">
+
                                 <span class="ttl"><i class="fa-solid fa-gift"></i> Ưu đãi tặng kèm  @if(!empty($data->GiftPrice)) trị giá {{ str_replace(',' ,'.', number_format($data->GiftPrice)) }}  @endif</span>
                                
                                 <div class="gift_item">
@@ -1128,39 +1129,52 @@
                             @if(!empty($gift) && $data->Quantily>0 && $deal_check_add ==false  &&  $data['Price']>0)
 
 
-                            <!-- check giá khuyến mãi sản phẩm để tạng voucher -->
+                            <!-- check giá khuyến mãi sản phẩm để tặng voucher -->
 
                             <?php 
 
-                                if($data->Price>=50000000){
+                                if($data->promotion_box==1){
 
-                                    $gift_Price = '1.000.000 đ';
-
-                                }
-                                elseif ($data->Price>5000000 && $data->Price<=10000000) {
-
-                                     $gift_Price = '100.000 đ';
-                                }
-
-                                elseif ($data->Price>10000000 && $data->Price<=30000000) {
-
-                                     $gift_Price = '200.000 đ';
-                                }
-
-                                elseif ($data->Price>30000000 && $data->Price<50000000) {
-
-                                    $gift_Price = '500.000 đ';
+                                    $gift_Price = '';
                                 }
                                 else{
-                                    $gift_Price = '50.000 đ';
-                                }
-                            ?>
+                                    if($data->Price>=50000000){
 
+                                        $gift_Price = '1.000.000 đ';
+
+                                    }
+                                    elseif ($data->Price>5000000 && $data->Price<=10000000) {
+
+                                         $gift_Price = '100.000 đ';
+                                    }
+
+                                    elseif ($data->Price>10000000 && $data->Price<=30000000) {
+
+                                         $gift_Price = '200.000 đ';
+                                    }
+
+                                    elseif ($data->Price>30000000 && $data->Price<50000000) {
+
+                                        $gift_Price = '500.000 đ';
+                                    }
+                                    else{
+                                        $gift_Price = '50.000 đ';
+                                    }
+                                }
+
+                            ?>
+                           
                             <div class="gift_pro">
 
                                 @foreach($gift as $key => $valuegift)
                                
-                                <span class="ttl"><i class="fa-solid fa-gift"></i> Quà tặng kèm trị giá {{ @$gift_Price }}</span>
+                                <?php 
+                                   
+                                    $price_gift = $gift_Price===''?str_replace(',' ,'.', number_format($valuegift->price)):$gift_Price;
+
+                                ?>
+
+                                <span class="ttl"><i class="fa-solid fa-gift"></i> Quà tặng kèm trị giá {{  $price_gift }} đ</span>
                                
                                 <div class="gift_item">
                                     <ul>
@@ -1173,7 +1187,7 @@
                                                     @if($gifts->type ==1)<input type="checkbox" name="gift" value="{{ $valuegift->name }}" {{ $key==0?'checked':'' }}> @endif
                                                     <img src="{{ asset($valuegift->image) }}" height="30px" width="30px">
 
-                                                        <h4>Tặng 1 voucher trị giá {{ @$gift_Price }}</h4>
+                                                        <h4>Tặng 1 voucher trị giá {{ @$price_gift }}đ</h4>
                                                     
                                                 </div>
                                             </div>

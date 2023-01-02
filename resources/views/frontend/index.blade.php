@@ -118,7 +118,7 @@
 
         if(!Cache::has('product_search')){
 
-            $productss = App\Models\product::select('Link', 'Name', 'Image', 'Price', 'id', 'ProductSku', 'promotion')->where('active', 1)->get();
+            $productss = App\Models\product::select('Link', 'Name', 'Image', 'Price', 'id', 'ProductSku', 'promotion', 'promotion_box')->where('active', 1)->get();
 
             Cache::forever('product_search',$productss);
 
@@ -1128,8 +1128,12 @@
                             <?php 
 
                                 $id_checkpromotion = $value->promotion_box==1?'':$value->id;
+
+                                $price_gift = pricesPromotion($value->Price, $id_checkpromotion)===''?str_replace(',' ,'.', number_format($gifts->price)):pricesPromotion($value->Price, $id_checkpromotion);
+
                             ?>
-                            <span> Quà tặng trị giá {{  pricesPromotion($value->Price, $id_checkpromotion) }} </span>
+
+                            <span> Quà tặng trị giá <strong>{{  $price_gift }}  <sup>đ</sup></strong> </span>
                             @endif  
 
                          
@@ -1212,9 +1216,17 @@
 
                             @if(!empty($gifts->price))
                             <?php 
-                            $id_checkpromotion = $value->promotion_box==1?'':$value->id;
+
+                                $id_checkpromotion = $value->promotion_box==1?'':$value->id;
+
+                                $price_gift = pricesPromotion($value->Price, $id_checkpromotion)===''?str_replace(',' ,'.', number_format($gifts->price)):pricesPromotion($value->Price, $id_checkpromotion);
+
+            
                             ?>
-                            <span> Quà tặng trị giá {{  pricesPromotion($value->Price, $id_checkpromotion) }} </span>
+
+
+
+                            <span> Quà tặng trị giá <strong>{{  $price_gift }}  <sup>đ</sup></strong> </span>
                             @endif  
 
                          
@@ -1458,11 +1470,21 @@
                                 </div>
 
                                 @if(!empty($gifts->price))
+
+
                                 <?php 
 
-                                    $id_checkpromotion = $datas->promotion_box==1?'':$datas->id;
+                                $id_checkpromotion = $datas->promotion_box==1?'':$datas->id;
+
+                                $price_gift = pricesPromotion($datas->Price, $id_checkpromotion)===''?str_replace(',' ,'.', number_format($gifts->price)):pricesPromotion($datas->Price, $id_checkpromotion);
+
+
+                
                                 ?>
-                                <span> Quà tặng trị giá <strong> {{  pricesPromotion($datas->Price, $id_checkpromotion) }}<sup>đ</sup></strong> </span>
+
+
+                                <span> Quà tặng trị giá <strong>{{  $price_gift }}  <sup>đ</sup></strong> </span>
+                               
                                 @endif  
 
                             @endif

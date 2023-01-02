@@ -110,16 +110,15 @@ function pricesPromotion($price, $id)
                 <?php 
 
                     $id_checkpromotion = $value->promotion_box==1?'':$value->id;
+
+                    $price_gift = pricesPromotion($value->Price, $id_checkpromotion)===''?str_replace(',' ,'.', number_format($gifts->price)):pricesPromotion($value->Price, $id_checkpromotion);
                 ?>
-                <span> Quà tặng trị giá {{  pricesPromotion($value->Price, $id_checkpromotion) }} </span>
+                <span> Quà tặng trị giá {{ $price_gift }} </span>
                 @endif  
 
              
 
             @endif
-
-
-
 
             <a href="javascript:void(0)" class="compare-show" data-id="{{ $value->product_id }}">
                 <i class="fa-solid fa-plus"></i>
