@@ -1404,7 +1404,7 @@
                                     $discount =  round(((intval($datas->manuPrice) - intval($datas->Price))/intval($datas->manuPrice))*100)
                                     ?>
                                     
-                                    <span class="price_market">{{ @number_format($datas->manuPrice , 0, ',', '.')}} <sup>đ</sup></span>
+                                    <span class="price_market">{{ @number_format($datas->manuPrice , 0, ',', '.')}} </span>
 
                                     <span class="discount_percent">-{{ $discount }}%</span>
 
