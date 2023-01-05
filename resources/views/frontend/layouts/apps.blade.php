@@ -2332,7 +2332,7 @@
         <!-- hoa mai rơi -->
         <script type='text/javascript'>
             //<![CDATA[
-            var pictureSrc ="https://1.bp.blogspot.com/-CXx9jt2JMRk/Vq-Lh5fm88I/AAAAAAAASwo/XivooDn_oSY/s1600/hoamai.png"; //the location of the snowflakes
+            var pictureSrc ="{{ asset('background/hoamai.png') }}"; //the location of the snowflakes
             var pictureWidth = 15; //the width of the snowflakes
             var pictureHeight = 15; //the height of the snowflakes
             var numFlakes = 10; //the number of snowflakes
