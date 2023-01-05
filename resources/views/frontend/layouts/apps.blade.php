@@ -585,22 +585,22 @@
             }
 
             .pine-tree-right {
-                left: 91vw;
-                transform: rotate(335deg);
+                left: 90vw;
+/*                transform: rotate(335deg);*/
             }
 
             .pine-tree-left, .pine-tree-right {
                 bottom: 0;
                 cursor: pointer;
                 z-index: 1;
-                animation: lighting 1s infinite;
+/*                animation: lighting 1s infinite;*/
             }
 
             .pine-tree-left, .pine-tree-right {
                 bottom: 0px;
                 cursor: pointer;
                 z-index: 1;
-                animation: 1s ease 0s infinite normal none running lighting;
+/*                animation: 1s ease 0s infinite normal none running lighting;*/
             }
 
             @keyframes lighting {
