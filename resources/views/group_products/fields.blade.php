@@ -4,11 +4,14 @@
     {!! Form::text('name', null, ['class' => 'form-control','maxlength' => 1000]) !!}
 </div>
 
+
+@if(!empty($groupProduct->link))
 <div class="form-group col-sm-6">
-    {!! Form::label('link', 'Link:') !!} https://dienmaynguoiviet.vn/{{  $groupProduct->link }} <div class="btn btn-primary copy" onclick="copy('https://dienmaynguoiviet.vn/{{  $groupProduct->link }}')">copy</div>
+    {!! Form::label('link', 'Link:') !!} https://dienmaynguoiviet.vn/{{  $groupProduct->link }} 
+    <div class="btn btn-primary copy" onclick="copy('https://dienmaynguoiviet.vn/{{  $groupProduct->link }}')">copy</div>
     {!! Form::text('link', null, ['class' => 'form-control','maxlength' => 10000]) !!}
 </div>
-
+@endif
 <div class="form-group col-sm-6">
     {!! Form::label('slogan', 'slogan:') !!}
     {!! Form::textarea('slogan', null, ['class' => 'form-control','maxlength' => 10000, 'id'=>'slogan']) !!}
