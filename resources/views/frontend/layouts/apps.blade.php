@@ -2335,7 +2335,7 @@
             var pictureSrc ="{{ asset('background/hoamai.png') }}"; //the location of the snowflakes
             var pictureWidth = 15; //the width of the snowflakes
             var pictureHeight = 15; //the height of the snowflakes
-            var numFlakes = 10; //the number of snowflakes
+            var numFlakes = 12; //the number of snowflakes
             var downSpeed = 0.009; //the falling speed of snowflakes (portion of screen per 100 ms)
             var lrFlakes = 10; //the speed that the snowflakes should swing from side to side
             if( typeof( numFlakes ) != 'number' || Math.round( numFlakes ) != numFlakes || numFlakes < 1 ) { numFlakes = 10; }
@@ -2387,7 +2387,7 @@
             if( document.all ) { return document.all[divName]; } //Proprietary DOM - IE4
             return false;
             }
-            window.setInterval('flakeFall();',150);
+            window.setInterval('flakeFall();',100);
             //]]>
         </script>
 
