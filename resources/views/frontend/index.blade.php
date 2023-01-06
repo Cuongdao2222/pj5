@@ -1609,8 +1609,8 @@
     <!-- End -->
 
     <div class="pine-tree"> 
-        <img class="pine-tree-left " src="{{ asset('public/background/dao-tree.png')}}" data-was-processed="true"> 
-        <img class="pine-tree-right " src="{{ asset('public/background/mai-tree.png')}}" data-was-processed="true"> 
+        <img class="pine-tree-left " src="{{ asset('public/background/mai-tree.png')}}" data-was-processed="true"> 
+        <img class="pine-tree-right " src="{{ asset('public/background/dao-tree.png')}}" data-was-processed="true"> 
         <!-- <img class="tuyet-left loading" src="{{ asset('public/background/Asset6@3x.png')}}" data-was-processed="true"> 
         <img class="tuyet-right loading" src="{{ asset('public/background/Asset7@3x.png')}}" data-was-processed="true">  -->
        <!--  <img class="santa-left loading" src="{{ asset('public/background/Asset4@3x.png')}}" data-was-processed="true"> 
