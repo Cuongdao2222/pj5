@@ -559,17 +559,16 @@ class categoryController extends Controller
 
         $link = trim($slug);
 
+        // $link_redirect = redirectLink::where('request_path', '/'.$slug)->first();
 
-        $link_redirect = redirectLink::where('request_path', '/'.$slug)->first();
 
-
-        if(!empty($link_redirect)){
+        // if(!empty($link_redirect)){
 
     
-            return redirect($link_redirect->target_path, 301);
+        //     return redirect($link_redirect->target_path, 301);
 
-            die();
-        }
+        //     die();
+        // }
 
 
         $cache = 'findID'.$link;
