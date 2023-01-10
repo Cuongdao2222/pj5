@@ -108,20 +108,8 @@
                                                         <!----><!----><!----><!---->
                                                     </div>
                                                 </div>
-                                                <!---->
-
-                                                <?php 
-
-                                                    $product = App\Models\product::find($data_installment->product_id);
-                                                    
-                                                    $qualtyty = $data_installment->qualtity;
-                                                    
-                                                    $product->Quantily = (int)$product->Quantily- (int)$qualtyty;
-                                                    
-                                                    $product->save();
-                                                    
-                                                    
-                                                ?>
+                                                
+                                                
 
                                                 <div class="timetakegoods">
                                                 <h4>Thời gian nhận hàng</h4>
