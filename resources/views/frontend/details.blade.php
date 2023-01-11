@@ -1138,28 +1138,30 @@
                                     $gift_Price = '';
                                 }
                                 else{
-                                    if($data->Price>=50000000){
+                                    // if($data->Price>=50000000){
 
-                                        $gift_Price = '1.000.000 đ';
+                                    //     $gift_Price = '1.000.000 đ';
 
-                                    }
-                                    elseif ($data->Price>5000000 && $data->Price<=10000000) {
+                                    // }
+                                    // elseif ($data->Price>5000000 && $data->Price<=10000000) {
 
-                                         $gift_Price = '100.000 đ';
-                                    }
+                                    //      $gift_Price = '100.000 đ';
+                                    // }
 
-                                    elseif ($data->Price>10000000 && $data->Price<=30000000) {
+                                    // elseif ($data->Price>10000000 && $data->Price<=30000000) {
 
-                                         $gift_Price = '200.000 đ';
-                                    }
+                                    //      $gift_Price = '200.000 đ';
+                                    // }
 
-                                    elseif ($data->Price>30000000 && $data->Price<50000000) {
+                                    // elseif ($data->Price>30000000 && $data->Price<50000000) {
 
-                                        $gift_Price = '500.000 đ';
-                                    }
-                                    else{
-                                        $gift_Price = '50.000 đ';
-                                    }
+                                    //     $gift_Price = '500.000 đ';
+                                    // }
+                                    // else{
+                                    //     $gift_Price = '50.000 đ';
+                                    // }
+
+                                    $gift_Price = '';
                                 }
 
                             ?>
@@ -1174,7 +1176,7 @@
 
                                 ?>
 
-                                <span class="ttl"><i class="fa-solid fa-gift"></i> Quà tặng kèm trị giá {{  $price_gift }} </span>
+                                <span class="ttl"><i class="fa-solid fa-gift"></i> Quà tặng {{ !empty($price_gift)?' kèm trị giá '.$price_gift:''   }}  </span>
                                
                                 <div class="gift_item">
                                     <ul>
@@ -1187,7 +1189,7 @@
                                                     @if($gifts->type ==1)<input type="checkbox" name="gift" value="{{ $valuegift->name }}" {{ $key==0?'checked':'' }}> @endif
                                                     <img src="{{ asset($valuegift->image) }}" height="30px" width="30px">
 
-                                                        <h4>Tặng 1 voucher trị giá {{ @$price_gift }}</h4>
+                                                        <h4>{{ @$valuegift->name }}</h4>
                                                     
                                                 </div>
                                             </div>
