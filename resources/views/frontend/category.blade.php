@@ -88,6 +88,10 @@
                     $gift_Price = '50.000 đ';
                 }
             }
+
+            // tắt tính năng auto tính giá quà khuyến mãi
+
+            $gift_Price = '';
             
             return $gift_Price;
         }
