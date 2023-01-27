@@ -1281,8 +1281,21 @@
                     
                 });
 
+                // xử lý khi không có cache
 
-                $data = Cache::get('product_search')->whereIn('id', $hot->toArray())->sortByDesc('orders_hot');
+                if(Cache::has('product_search'))
+                {
+                    $data = Cache::get('product_search')->whereIn('id', $hot->toArray())->sortByDesc('orders_hot');
+                }
+                else{
+
+                    $productss = App\Models\product::select('Link', 'Name', 'Image', 'Price', 'id', 'ProductSku', 'promotion', 'promotion_box')->where('active', 1)->get();
+
+                    Cache::forever('product_search',$productss);
+
+                    $data = Cache::get('product_search')->whereIn('id', $hot->toArray())->sortByDesc('orders_hot');
+                }
+               
 
 
             ?>
