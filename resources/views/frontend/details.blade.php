@@ -61,7 +61,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/detailscs.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}?ver=21"> 
     <link rel="stylesheet" href="{{ asset('css/jquery.fancybox.css') }}"/>
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/detail1fe.css') }}?ver=6">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/detail1fe.css') }}?ver=7">
 
 
 @endpush
@@ -584,8 +584,8 @@
                     </ul>
                     <div class="support">
                       <h5>Tổng Đài mua hàng</h5>
-                        <a href="tel:02473036336">0247.303.6336</a>
-                      <h5>Tổng Đài mua hàng( Sau 17h )</h5>
+                        <!-- <a href="tel:02473036336">0247.303.6336</a>
+                      <h5>Tổng Đài mua hàng( Sau 17h )</h5> -->
                        <a href="tel:0913011888">091.301.1888</a> 
                        <a href="tel:0983612828">098.361.2828</a>
                     </div>
@@ -1573,8 +1573,8 @@
             <div class="commitment">
                 <div class="support">
                   <h5>Tổng Đài mua hàng</h5>
-                    <a href="tel:02473036336">0247.303.6336</a>
-                  <h5>Tổng Đài mua hàng( Sau 17h )</h5>
+                    <!-- <a href="tel:02473036336">0247.303.6336</a>
+                  <h5>Tổng Đài mua hàng( Sau 17h )</h5> -->
                   <div class="style-number-fone">
                         <a href="tel:0913011888">091.301.1888</a>&nbsp; &nbsp; &nbsp; <span>||</span> &nbsp; &nbsp; &nbsp;
                         <a href="tel:0983612828">098.361.2828</a>
