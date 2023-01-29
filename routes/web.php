@@ -56,6 +56,8 @@ Route::get('/deal', 'mainController@deal')->middleware('cache.headers:public;max
 
 // Route::get('filterurl',crawlController@addFilterProduct);
 
+Route::redirect('.env', 'https://www.24h.com.vn/');
+
 
 Route::get('/lien-he', 'mainController@lienhe');
 
