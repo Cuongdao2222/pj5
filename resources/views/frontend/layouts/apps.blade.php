@@ -731,7 +731,7 @@
                     <a href="tel: 02473036336" class="header__cart fas-phones">
                          <i class="fa fa-phone phones-customn" aria-hidden="true"></i>
                          <div class="div-text">
-                            <span class="tel-head">0913.011.888</span>
+                            <span class="tel-head">0247.303.6336</span>
                             <span class="tvbhclient">Tư vấn bán hàng</span>
 
                             
@@ -2394,7 +2394,7 @@
 
 
         <div class="hotlines">   
-            <a href="tel:0913011888"><img src="{{ asset('images/template/tongdai0247.png') }}" alt="hotline" style="height:55px; z-index: 999;"></a>
+            <a href="tel:0913011888"><img src="{{ asset('images/template/tongdai02473036336.png') }}" alt="hotline" style="height:55px; z-index: 999;"></a>
               
             <div class="clear"></div>
               
