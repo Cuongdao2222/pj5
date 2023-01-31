@@ -186,7 +186,7 @@ class AjaxController extends Controller
                 $input['email'] = strip_tags($request->email);
                 $input['fullname'] = strip_tags($request->fullname);
                 $input['phone'] = strip_tags($request->phone);
-                $result = DB::table('loginClient')->insert($input);
+                $result = DB::table('loginclient')->insert($input);
                 return response('Đăng ký thành công');
 
            }
