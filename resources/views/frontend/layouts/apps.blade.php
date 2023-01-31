@@ -773,11 +773,24 @@
                         <b id="count_shopping_cart_store"><span class="number-cart">{{ $number_cart }}</span></b>
                     </a>
 
-                    @if(!empty($userClient)&& $userClient=='Đăng nhập thành công')
+                    @if( !empty($userClient) && !empty($userClient['status']) && $userClient['status']==='Đăng nhập thành công')
 
-                        <a rel="nofollow"  href="javascript:void(0)">
-                            <span style="color:#fff; font-size: 12px;">Xin chào</span>
+                        
+
+                       
+
+                        @if(!empty($userClient['number']))
+
+                        <?php 
+
+                            $data_number_ctm = base64_encode($userClient['number']);
+                        ?>
+                        <a   href="https://tracking.dienmaynguoiviet.vn/search?tracknbctm={{ $data_number_ctm }}">
+                            <span style="color:#fff; font-size: 12px;">Kiểm tra đơn hàng của bạn</span>
                         </a>
+
+                        @endif
+
 
                         <a rel="nofollow"  href="{{ route('logout-Fe') }}">
                             <span style="color:#fff; font-size: 12px;">Đăng xuất</span>
@@ -2161,6 +2174,13 @@
                                 <label class="col-md-4 col-form-label" for="FullName">Họ và tên</label>
                                 <div class="col-md-8"><input class="form-control" data-val="true" data-val-required="Trường Tên là bắt buộc." id="FullName" name="FullName"> <span class="text-danger field-validation-valid" data-valmsg-for="FullName" data-valmsg-replace="true"></span></div>
                             </div>
+
+                            <div class="form-group row">
+                                <label class="col-md-4 col-form-label" for="number-phone">Số điện thoại </label>
+                                <div class="col-md-8"><input class="form-control" data-val="true" data-val-required="Số điện thoại là bắt buộc" id="number-phone-customer" name="number-phone-register"> <span class="text-danger field-validation-valid" data-valmsg-for="FullName" data-valmsg-replace="true"></span></div>
+                            </div>
+
+
                             <div class="form-group row">
                                 <label class="col-md-4 col-form-label" for="Password">Mật khẩu</label>
                                 <div class="col-md-8"><input class="form-control" type="password" data-val="true" data-val-length="The Mật khẩu must be at least 4 and at max 100 characters long." data-val-length-max="100" data-val-length-min="4" data-val-required="Trường Mật khẩu là bắt buộc." id="Passwords" maxlength="100" name="Passwords"> <span class="text-danger field-validation-valid" data-valmsg-for="Password" data-valmsg-replace="true" autocomplete="on"></span></div>
@@ -2877,6 +2897,8 @@
                 };
             }, "Invalid phone number");
 
+
+
             $("#registers-form-submit").validate({
                 rules: {
                    
@@ -2891,6 +2913,14 @@
                         email: true,
                         
                     },
+
+                    "number-phone-register": {
+                        required: true,
+                         phonenu: true,
+                        
+                    },
+
+                   
 
                     "Passwords":{
                         required:true,
@@ -2978,6 +3008,7 @@
                         fullname: $('#FullName').val(),
                         password: $('#Passwords').val(),
                         email: $('#Emails').val(),
+                        phone: $('#number-phone-customer').val(),
                         
                     },
                    

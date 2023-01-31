@@ -60,7 +60,9 @@ class AjaxController extends Controller
         if(!empty($check)){
             if( Hash::check($request->password, $check->password) == true){
 
-                Session::put('status-login', 'Đăng nhập thành công');
+                $ar_info = ['status'=>'Đăng nhập thành công', 'number'=>$check->phone, 'name'=>$check->fullname];
+
+                Session::put('status-login', $ar_info);
 
                 return redirect()->route('homeFe');
 
@@ -170,7 +172,8 @@ class AjaxController extends Controller
             $validator = Validator::make($request->all(), [
            'email' => 'required|email|unique:loginClient',
            'fullname' => 'required|string|max:150',
-           'password' => 'required'
+           'password' => 'required',
+           
            ]);
             
            if ($validator->fails()) {
@@ -182,6 +185,7 @@ class AjaxController extends Controller
                 $input['password'] = bcrypt($request->password);
                 $input['email'] = strip_tags($request->email);
                 $input['fullname'] = strip_tags($request->fullname);
+                $input['phone'] = strip_tags($request->phone);
                 $result = DB::table('loginClient')->insert($input);
                 return response('Đăng ký thành công');
 
