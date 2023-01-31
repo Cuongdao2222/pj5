@@ -170,7 +170,7 @@ class AjaxController extends Controller
         if($request->ajax())
         {
             $validator = Validator::make($request->all(), [
-           'email' => 'required|email|unique:loginClient',
+           'email' => 'required|email|unique:loginclient',
            'fullname' => 'required|string|max:150',
            'password' => 'required',
            
