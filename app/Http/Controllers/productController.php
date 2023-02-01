@@ -725,14 +725,10 @@ class productController extends AppBaseController
     public function search()
     {
 
-        $host = request()->getHttpHost();
-        
-        dd($host);
-        // $array['ProductSku'] = 'UA50AU9000KXXVS';
+        $array['ProductSku'] = 'UA50AU9000KXXVS';
 
-        // $array['Price'] = '500';
-        // $search = product::where($array)->get();
-        // print_r($search);
+        $array['Price'] = '500';
+        
     }
 
     public function viewHistoryPD($id)

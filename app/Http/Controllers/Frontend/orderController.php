@@ -23,100 +23,108 @@ class orderController extends Controller
 
     public function orderProduct(Request $request)
     {
-        $cart  = Cart::content();
+        $host = request()->getHttpHost();
 
-        $carts = [];
+        if($host === env('APP_DOMAIN')){
 
-        $totalPrice = [];
+            $cart  = Cart::content();
 
-        $key  = -1;
+            $carts = [];
 
-        foreach($cart as $data){
-            $key++;
-            $carts[$key]['orderId'] = $data->rowId;
-            $carts[$key]['id'] = $data->id;
-            $carts[$key]['price'] = $data->price;
-            $carts[$key]['name'] = $data->name;
-            $carts[$key]['qty'] = $data->qty;
+            $totalPrice = [];
 
-            $carts[$key]['gift'] = ($data->options)['gift']??'';
-            $price = (int)$data->price*(int)$data->qty;
-            array_push($totalPrice, $price);
+            $key  = -1;
+
+            foreach($cart as $data){
+                $key++;
+                $carts[$key]['orderId'] = $data->rowId;
+                $carts[$key]['id'] = $data->id;
+                $carts[$key]['price'] = $data->price;
+                $carts[$key]['name'] = $data->name;
+                $carts[$key]['qty'] = $data->qty;
+
+                $carts[$key]['gift'] = ($data->options)['gift']??'';
+                $price = (int)$data->price*(int)$data->qty;
+                array_push($totalPrice, $price);
+            }
+
+
+            $input = $request->all();
+
+            $input['orderId'] = !empty($carts[0])?$carts[0]['orderId']:'';
+
+        
+            // trừ số sản phẩm đã đặt
+
+            // $product_subtract = product::find(array_values(reset($cart))[0]->id);
+
+            // $qty  = $carts[0]['qty'];
+
+            // $resultqty = (int)$product_subtract->Quantily- (int)$qty;
+
+            // $product_subtract->Quantily = $resultqty;
+
+            // $product_subtract->save();
+
+            $carts_mail = $carts;
+
+            $carts = json_encode($carts);
+
+            $input['product'] = $carts;
+
+            $input['total_price'] = array_sum($totalPrice);
+
+            $mail =  $input["mail"];
+
+            $order = new Order();
+
+            if($input['total_price'] == 0){
+
+                $ip = $request->ip();
+
+                DB::table('checkspam')->insert(['ip'=>$ip]);
+
+                Cache::forget('checkspam');
+
+                die();
+
+            }
+
+            $check = $order::create($input);
+
+          
+
+            // if(!empty($mail)){
+
+            //      $GLOBALS['mail'] = $input["mail"];
+
+            //     $success = Mail::send('frontend.mail', array('name'=>$input["name"],'email'=>$input["mail"], 'product'=>$carts_mail, 'address'=>$input['address'],
+            //     'phone_number'=>$input['phone_number'],
+            //         'orderId'=>$input['orderId'], 'total_price'=>$totalPrice), function($message){
+            //         $message->to($GLOBALS['mail'], 'Điện máy người việt')->subject('[Điện máy người việt] Đơn hàng mới ');
+            //     });
+
+            //     unset($GLOBALS['mail']);
+
+            // }
+
+            // $success = Mail::send('frontend.mail', array('name'=>$input["name"],'email'=>@$input["mail"], 'product'=>$carts_mail, 'address'=>$input['address'],
+            // 'phone_number'=>$input['phone_number'],
+            //     'orderId'=>$input['orderId'], 'total_price'=>$totalPrice), function($message){
+            //     $message->to('lienhe@dienmaynguoiviet.vn', 'Điện máy người việt')->subject('[Điện máy người việt] Đơn hàng mới ');
+            // });
+
+            // khi mua thành công thì xóa giỏ hàng
+            Cart::destroy();
+
+            Session::flash('success', 'Mua thành công sản phẩm!'); 
+
+            return redirect('/');
         }
+        else{
 
-
-        $input = $request->all();
-
-        $input['orderId'] = !empty($carts[0])?$carts[0]['orderId']:'';
-
-    
-        // trừ số sản phẩm đã đặt
-
-        // $product_subtract = product::find(array_values(reset($cart))[0]->id);
-
-        // $qty  = $carts[0]['qty'];
-
-        // $resultqty = (int)$product_subtract->Quantily- (int)$qty;
-
-        // $product_subtract->Quantily = $resultqty;
-
-        // $product_subtract->save();
-
-        $carts_mail = $carts;
-
-        $carts = json_encode($carts);
-
-        $input['product'] = $carts;
-
-        $input['total_price'] = array_sum($totalPrice);
-
-        $mail =  $input["mail"];
-
-        $order = new Order();
-
-        if($input['total_price'] == 0){
-
-            $ip = $request->ip();
-
-            DB::table('checkspam')->insert(['ip'=>$ip]);
-
-            Cache::forget('checkspam');
-
-            die();
-
+            return abort('403');
         }
-
-        $check = $order::create($input);
-
-      
-
-        // if(!empty($mail)){
-
-        //      $GLOBALS['mail'] = $input["mail"];
-
-        //     $success = Mail::send('frontend.mail', array('name'=>$input["name"],'email'=>$input["mail"], 'product'=>$carts_mail, 'address'=>$input['address'],
-        //     'phone_number'=>$input['phone_number'],
-        //         'orderId'=>$input['orderId'], 'total_price'=>$totalPrice), function($message){
-        //         $message->to($GLOBALS['mail'], 'Điện máy người việt')->subject('[Điện máy người việt] Đơn hàng mới ');
-        //     });
-
-        //     unset($GLOBALS['mail']);
-
-        // }
-
-        // $success = Mail::send('frontend.mail', array('name'=>$input["name"],'email'=>@$input["mail"], 'product'=>$carts_mail, 'address'=>$input['address'],
-        // 'phone_number'=>$input['phone_number'],
-        //     'orderId'=>$input['orderId'], 'total_price'=>$totalPrice), function($message){
-        //     $message->to('lienhe@dienmaynguoiviet.vn', 'Điện máy người việt')->subject('[Điện máy người việt] Đơn hàng mới ');
-        // });
-
-        // khi mua thành công thì xóa giỏ hàng
-        Cart::destroy();
-
-        Session::flash('success', 'Mua thành công sản phẩm!'); 
-
-        return redirect('/');
-    
     }
 
     public function orderList()
