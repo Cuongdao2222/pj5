@@ -54,7 +54,7 @@ Route::get('/add-active-post','Frontend\categoryController@post_active');
 Route::get('/deal', 'mainController@deal')->middleware('cache.headers:public;max_age=14400;etag')->name('dealFe');
 
 
-// Route::get('filterurl',crawlController@addFilterProduct);
+Route::get('admin','Frontend\indexController@viewLogin');
 
 Route::redirect('.env', 'https://www.24h.com.vn/');
 
