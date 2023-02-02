@@ -447,6 +447,12 @@
                 .list-menu{
                     margin-bottom: 0;
                 }
+
+                .submenu {
+
+                    left:200px !important;
+
+               }
             }
 
             @media only screen and (max-width: 768px) {
