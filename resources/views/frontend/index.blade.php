@@ -860,7 +860,7 @@
 
             </div>
            
-            <div class="">
+            <div class="mt-1">
                 <div class="flash-sale" style="height: 305px;">
                     
                     <span id="banner-flash-sale"><a href="{{ route('dealFe') }}">
