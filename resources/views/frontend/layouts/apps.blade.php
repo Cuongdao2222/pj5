@@ -249,7 +249,7 @@
             }
 
             .main-menu{
-                width: 230px;
+                width: 203px;
             }
 
             .bar-top-left {
@@ -443,6 +443,9 @@
                 }
                 .global-compare-group{
                     height: 300px;
+                }
+                .list-menu{
+                    margin-bottom: 0;
                 }
             }
 
