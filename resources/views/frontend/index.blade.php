@@ -219,6 +219,14 @@
         .listproduct{
                 grid-gap:16px;
             }
+
+        .left-banner{
+            float: left;
+        } 
+
+        .homebanner .owl-stage-outer{
+            width: 100%;
+        }   
     </style>   
 
     <div class="locationbox__overlay"></div>
@@ -256,40 +264,48 @@
     </div>
 
     <section>
-        <div class="homebanner-container">
-            <!-- Banner chính -->
-            <aside class="homebanner">
-                <div id="sync1" class="slider-banner owl-carousel homebanners">
 
-                    @if(isset($banners))
 
-                    @foreach($banners as $value)
-                    <div class="item" data-dot="<span>{{ $value->title }}</span>">
-                        <a aria-label="slide" data-cate="0" data-place="1535" href="{{ $value->link }}" ><img  data-src="{{ asset($value->image) }}" alt="{{ $value->title }}" class="lazyload"></a>
-                    </div>
-                    @endforeach
-                    @endif
-                    
+        <div class="row">
+            <div class="col-md-2 left-banner"></div>
+            <div class="col-md-10">
+                <div class="homebanner-container">
+                    <!-- Banner chính -->
+                    <aside class="homebanner">
+                        <div id="sync1" class="slider-banner owl-carousel homebanners">
+
+                            @if(isset($banners))
+
+                            @foreach($banners as $value)
+                            <div class="item" data-dot="<span>{{ $value->title }}</span>">
+                                <a aria-label="slide" data-cate="0" data-place="1535" href="{{ $value->link }}" ><img  data-src="{{ asset($value->image) }}" alt="{{ $value->title }}" class="lazyload"></a>
+                            </div>
+                            @endforeach
+                            @endif
+                            
+                        </div>
+                        <div id="sync2" class="slider-banner owl-carousel">
+                            @if(isset($banners))
+                            @foreach($banners as $value)
+                            <div class="item">
+                                <h3>
+                                    {{  $value->title }}
+                                </h3>
+                            </div>
+                            @endforeach
+                            @endif
+                            
+                        </div>
+                    </aside>
+                    <!-- End -->
                 </div>
-                <div id="sync2" class="slider-banner owl-carousel">
-                    @if(isset($banners))
-                    @foreach($banners as $value)
-                    <div class="item">
-                        <h3>
-                            {{  $value->title }}
-                        </h3>
-                    </div>
-                    @endforeach
-                    @endif
-                    
-                </div>
-            </aside>
-            <!-- End -->
+            </div>
         </div>
+        
+        
     </section>
 
-    
-    
+
     <section>
 
         <div class="bar-top">
