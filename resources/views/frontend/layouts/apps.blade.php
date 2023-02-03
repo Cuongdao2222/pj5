@@ -588,6 +588,13 @@
 
         <style type="text/css">
             
+
+            .border-rd{
+                border-radius: 4px;
+                border: 1px solid #fff;
+                padding: 9px;
+            }
+
             .pine-tree img {
                 width: 10%;
                 position: fixed;
@@ -787,23 +794,29 @@
                         
 
                        
+                        <div class="border-rd">
+                            @if(!empty($userClient['number']))
 
-                        @if(!empty($userClient['number']))
+                            <?php 
 
-                        <?php 
-
-                            $data_number_ctm = base64_encode($userClient['number']);
-                        ?>
-                        <a   href="https://tracking.dienmaynguoiviet.vn/search?tracknbctm={{ $data_number_ctm }}">
-                            <span style="color:#fff; font-size: 12px;">Kiểm tra đơn hàng của bạn</span>
-                        </a>
-
-                        @endif
+                                $data_number_ctm = base64_encode($userClient['number']);
+                            ?>
 
 
-                        <a rel="nofollow"  href="{{ route('logout-Fe') }}">
-                            <span style="color:#fff; font-size: 12px;">Đăng xuất</span>
-                        </a>
+                            <a   href="https://tracking.dienmaynguoiviet.vn/search?tracknbctm={{ $data_number_ctm }}">
+                                <span style="color:#fff; font-size: 12px;">Xin chào</span>
+                            </a>
+
+                            @endif
+
+                            &nbsp&nbsp&nbsp
+
+
+                            <a rel="nofollow"  href="{{ route('logout-Fe') }}">
+                                <span style="color:#fff; font-size: 12px;">Đăng xuất</span>
+                            </a>
+                        </div>
+                       
                     
                     @else
 
@@ -822,6 +835,26 @@
                         <a href="{{ route('tin') }}" class="header__history tin-km">Tin tức khuyến mãi</a>
                         <!-- <div class="bordercol"></div> -->
                     </div>
+
+                    @if( !empty($userClient) && !empty($userClient['status']) && $userClient['status']==='Đăng nhập thành công')
+
+                    @if(!empty($userClient['number']))
+
+                    <div class="fas-phones">          
+                        <a href="https://tracking.dienmaynguoiviet.vn/search?tracknbctm={{ $data_number_ctm }}" class="header__history tin-km">Kiểm tra đơn hàng</a>
+                       
+                    </div>
+
+                    @endif
+
+                    @else
+
+                    <div class="fas-phones">          
+                        <a href="#" class="header__history tin-km logins-modal">Kiểm tra đơn hàng</a>
+                       
+                    </div>
+
+                    @endif
                 </section>
             </div>
 
