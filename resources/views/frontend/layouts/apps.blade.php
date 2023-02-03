@@ -1412,7 +1412,7 @@
 
                                     </li>
 
-                                    <li data-submenu-id="submenu-10" class="">
+                                    <!-- <li data-submenu-id="submenu-10" class="">
                                         <div class="dropdown">
                                             <span>
                                                 <img src="{{ asset('media/category/cat_4dc6fff104da28d600d1e4e6d8dffa9c.png') }}" class="iconss-sp">
@@ -1433,7 +1433,7 @@
                                             </aside>
                                         </div>
 
-                                    </li>
+                                    </li> -->
 
                                 </ul>
                             </div>
