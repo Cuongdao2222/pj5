@@ -789,29 +789,35 @@
                         <b id="count_shopping_cart_store"><span class="number-cart">{{ $number_cart }}</span></b>
                     </a>
 
-                    @if( !empty($userClient) && !empty($userClient['status']) && $userClient['status']==='Đăng nhập thành công')
+                     @if( !empty($userClient) && !empty($userClient['status']) && $userClient['status']==='Đăng nhập thành công')
 
-                        
+                    @if(!empty($userClient['number']))
 
-                       
-                        <div class="border-rd">
-                            @if(!empty($userClient['number']))
-
-                            <?php 
+                    <?php 
 
                                 $data_number_ctm = base64_encode($userClient['number']);
                             ?>
 
+                    <div class="fas-phones">          
+                        <a href="https://tracking.dienmaynguoiviet.vn/search?tracknbctm={{ $data_number_ctm }}" class="header__history tin-km">Kiểm tra đơn hàng</a>
+                       
+                    </div>
 
-                            <a   href="https://tracking.dienmaynguoiviet.vn/search?tracknbctm={{ $data_number_ctm }}">
-                                <span style="color:#fff; font-size: 12px;">Xin chào</span>
-                            </a>
+                    @endif
 
-                            @endif
+                    @else
 
-                            &nbsp&nbsp&nbsp
+                    <div class="fas-phones">          
+                        <a href="#" class="header__history tin-km logins-modal">Kiểm tra đơn hàng</a>
+                       
+                    </div>
 
+                    @endif
 
+                    @if( !empty($userClient) && !empty($userClient['status']) && $userClient['status']==='Đăng nhập thành công')
+
+                        <div class="border-rd">
+                        
                             <a rel="nofollow"  href="{{ route('logout-Fe') }}">
                                 <span style="color:#fff; font-size: 12px;">Đăng xuất</span>
                             </a>
@@ -836,25 +842,7 @@
                         <!-- <div class="bordercol"></div> -->
                     </div>
 
-                    @if( !empty($userClient) && !empty($userClient['status']) && $userClient['status']==='Đăng nhập thành công')
-
-                    @if(!empty($userClient['number']))
-
-                    <div class="fas-phones">          
-                        <a href="https://tracking.dienmaynguoiviet.vn/search?tracknbctm={{ $data_number_ctm }}" class="header__history tin-km">Kiểm tra đơn hàng</a>
-                       
-                    </div>
-
-                    @endif
-
-                    @else
-
-                    <div class="fas-phones">          
-                        <a href="#" class="header__history tin-km logins-modal">Kiểm tra đơn hàng</a>
-                       
-                    </div>
-
-                    @endif
+                   
                 </section>
             </div>
 
