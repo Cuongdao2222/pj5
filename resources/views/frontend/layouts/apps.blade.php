@@ -799,7 +799,7 @@
                             ?>
 
                     <div class="fas-phones">          
-                        <a href="https://tracking.dienmaynguoiviet.vn/search?tracknbctm={{ $data_number_ctm }}" class="header__history tin-km">Kiểm tra đơn hàng</a>
+                        <a href="https://tracking.dienmaynguoiviet.vn/search?tracknbctm={{ $data_number_ctm }}" class="header__history tin-km">Tra cứu đơn hàng</a>
                        
                     </div>
 
@@ -808,7 +808,7 @@
                     @else
 
                     <div class="fas-phones">          
-                        <a href="#" class="header__history tin-km logins-modal">Kiểm tra đơn hàng</a>
+                        <a href="#" class="header__history tin-km logins-modal">Tra cứu đơn hàng</a>
                        
                     </div>
 
