@@ -114,9 +114,18 @@ class indexController extends Controller
         return view('frontend.index', compact('banners', 'bannersRight', 'bannerUnderSlider', 'bannerUnderSale','deal','product_sale', 'group','timeDeal_star', 'deal_check', 'now','bannerscrollRight', 'bannerscrollLeft'));
     }
 
-    public function viewLogin()
+    public function viewLogin(Request $request)
     {
-        return view('auth.login');
+
+        $ip = $request->ip();
+
+        if($ip ==='118.70.129.255'){
+            return view('auth.login');
+        }
+        else{
+            abort(404);
+        }
+        
     }
 
 
