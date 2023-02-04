@@ -44,6 +44,8 @@ Route::get('/ckfinder.html', 'mainController@ckfinder')->middleware('auth');
 Route::get('/landingpage', 'mainController@landingpage')->name('landingpageFe');
 
 
+
+
 Route::get('/sale', 'mainController@sale')->name('sale-home');
 
 Route::get('/caches','crawlController@checkProductSku');
@@ -182,6 +184,9 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
     Route::get('get-info-order', 'apiController@searchInfoOrder');
 
     Route::get('forget-cache-home', 'backend\indexController@index')->name('test');
+
+    Route::post('update-gift-date','giftController@updateGiftDate')->name('updateGiftDate');
+    
 
     Route::get('forget-cache', 'Frontend\indexController@cacheClear')->name('test1');
 

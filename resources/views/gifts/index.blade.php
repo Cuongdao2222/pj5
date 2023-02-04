@@ -242,8 +242,12 @@
                         </td>
                         <td>{{ $lists->type==1?'chọn 1 trong 2 sản phẩm':'chọn toàn bộ sản phẩm' }}</td>
                         
-                        <td>{{ $lists->start }}</td>
-                        <td>{{ $lists->end }}</td>
+                        <td> {{ $lists->start }} 
+                        </td>
+                        <td>
+                            {{ $lists->end }}
+                            <a href="javascript:void(0)" onclick="update_date_end('{{ $lists->id }}')">Sửa</a>
+                        </td>
                         <td><a href="{{ route('destroyGiftGroup', $lists->id) }}">xóa</a></td>
                     </tr>
                     @endforeach   
@@ -256,6 +260,32 @@
         </div>
     </div>
 </div>
+
+
+<div class="modal" tabindex="-1" role="dialog" id="modal-date-gift">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Sửa ngày kết thúc</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <input type="text" name="date" id="date-picker3">
+                <input type="hidden" name="id_group" value="" id="id_group_date">
+               
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary click_update_date">Thay đổi</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 <div class="modal fade" id="modal-g" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -410,7 +440,16 @@
  -->
 <input type="hidden" name="" id="km">
 
+
+
 <script type="text/javascript">
+
+    function update_date_end(id) {
+        
+        $('#modal-date-gift').modal('show');
+
+        $('#id_group_date').val(id);
+    }
 
     $('.group_gift_select').bind('change',function(){
         group_product = $(this).attr('data-id');
@@ -432,11 +471,44 @@
             }
         });
 
-    })
+    });
+
+
+    $('.click_update_date').click(function () {
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        id = $('#id_group_date').val();
+
+        data = $('#date-picker3').val();
+
+         $.ajax({
+           
+            type: 'POST',
+            url: "{{ route('updateGiftDate') }}",
+            data: {
+                
+                id:id,
+                data:data
+            },
+            success: function(result){
+
+                location.reload();
+
+                
+            }
+        });
+        
+    });
     
 
     $("#date-picker1").datepicker({ dateFormat: 'dd-mm-yy'});
     $("#date-picker2").datepicker({ dateFormat: 'dd-mm-yy'});
+    $("#date-picker3").datepicker({ dateFormat: 'dd-mm-yy'});
     function openModal() {
        
        
