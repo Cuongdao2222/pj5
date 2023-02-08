@@ -214,8 +214,6 @@ class categoryController extends Controller
         else{
             $data = $this->getDataOfCate($slug);
 
-
-
             return view('frontend.category', with($data));
         }
        
@@ -305,7 +303,7 @@ class categoryController extends Controller
                    
                     $data = cache()->remember('data_'.$id_cate.'_'.$page, 100, function () use($Group_product, $limit, $page){
 
-                        $data = product::whereIn('id', $Group_product)->where('active', 1)->orderBy('id', 'desc')->limit($limit)->offset(($page - 1) * $limit)->get();
+                        $data = product::whereIn('id', $Group_product)->where('active', 1)->orderBy('sale_order', 'desc')->limit($limit)->offset(($page - 1) * $limit)->get();
 
                         return $data;
 
