@@ -62,6 +62,21 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}?ver=21"> 
     <link rel="stylesheet" href="{{ asset('css/jquery.fancybox.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/detail1fe.css') }}?ver=9">
+    <style type="text/css">
+        .copy-button{
+            position: absolute;
+
+            top: 0;
+            right: 0;
+        }
+
+        @media only screen and (min-width: 768px) {
+            .copy-button{
+
+                display: none;
+            }    
+        }    
+    </style>
 
 
 @endpush
@@ -382,11 +397,14 @@
                              <a href="{{ asset($data->Image) }}" data-fancybox="gallery"><img  data-src ="{{ asset($data->Image) }}" alt="{{ @$data->Name }}" class="lazyload">
 
                             </a>
+                            <button class="copy-button" onclick="copyImage('{{ env("APP_URL") }}/{{ $data->Image }}')"><i class="fas fa-copy"></i></button>
                             @if($data->id>4720)
                             <div class="saker">
                                     <img src="{{ asset('images/saker/'.strtolower($logoSaker->maker).'.png') }}"  data-src ="{{ asset($data->Image) }}" class="lazyload">
                             </div>
                             @endif
+
+
                         </div>
 
                         <?php 
@@ -412,14 +430,21 @@
 
                         @if( basename($image->image) != basename($data->Image) )
 
+
+
                         <div class="item">
                             <a href="{{ asset($image->image) }}" data-fancybox="gallery"><img  data-src ="{{ asset($image->image) }}"  alt="{{ @$data->Name }}" class="lazyload"></a>
+                            <button class="copy-button"><i class="fas fa-copy"></i></button>
                         </div>
+
+
                       
                         @endif
 
                       
                         @endif
+
+
                         @endforeach
 
                         @endif
@@ -1906,6 +1931,29 @@
         
         
     });
+
+
+    function copyImage(src) {
+        
+        imageURL = src;
+        // Create a temporary element to hold the image URL
+        var tempInput = document.createElement("input");
+        tempInput.style = "position: absolute; left: -1000px; top: -1000px";
+        tempInput.value = imageURL;
+        document.body.appendChild(tempInput);
+
+        // Select the text in the temporary element
+        tempInput.select();
+
+        // Copy the text to the clipboard
+        document.execCommand("copy");
+
+        // Remove the temporary element
+        document.body.removeChild(tempInput);
+
+        // Show a message that the image URL has been copied
+        alert("Copy ảnh thành công");
+    }
 
      $.ajaxSetup({
         headers: {
