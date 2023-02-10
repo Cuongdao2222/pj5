@@ -29,7 +29,9 @@
 
            @media screen and (max-width:776px) {
 
-               
+                .row{
+                    margin: 0 !important;
+                }
 
                 .cIVWIZ{
                     background-repeat: no-repeat;
