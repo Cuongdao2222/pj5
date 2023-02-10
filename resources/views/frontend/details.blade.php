@@ -1751,7 +1751,7 @@
              buttons : [
                 'zoom',
                 'download',
-                'thumbs',
+                'fullScreen',
                 'close'
               ]
         });
