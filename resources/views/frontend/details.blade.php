@@ -1934,38 +1934,30 @@
 
     // copy image to clipbroad
 
-    const img = new Image();
-    const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d');
-
-   
-    function writeToCanvas(src) {
-        return new Promise((res, rej) => {
-            img.src = src;
-            img.onload = function() {
-                canvas.width = img.naturalWidth;
-                canvas.height = img.naturalHeight;
-                ctx.drawImage(img, 0, 0)
-                canvas.toBlob((blob) => {
-                    res(blob);
-                }, 'image/png');
-            }
-        });
+    function imageToBlob(imageURL) {
+      const img = new Image;
+      const c = document.createElement("canvas");
+      const ctx = c.getContext("2d");
+      img.crossOrigin = "";
+      img.src = imageURL;
+      return new Promise(resolve => {
+        img.onload = function () {
+          c.width = this.naturalWidth;
+          c.height = this.naturalHeight;
+          ctx.drawImage(this, 0, 0);
+          c.toBlob((blob) => {
+            // here the image is a blob
+            resolve(blob)
+          }, "image/png", 0.75);
+        };
+      })
     }
 
-    async function copyImage(src) {
-        const image = await writeToCanvas(src);
-        try {
-            await navigator.clipboard.write([
-                new ClipboardItem({
-                    [image.type]: image,
-                })
-            ]);
-
-            alert("Copy ảnh thành công");
-        } catch (e) {
-            alert("Copy failed: " + e);
-        }
+    async function copyImage(imageURL){
+        const blob = await imageToBlob(imageURL)
+        const item = new ClipboardItem({ "image/png": blob });
+        navigator.clipboard.write([item]);
+        alert('copy ảnh thành công!');
     }
 
     // end copy
