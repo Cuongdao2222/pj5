@@ -1932,42 +1932,45 @@
         
     });
 
+    // copy image to clipbroad
 
-    function copyImage(src) {
-        
-        imageURL = src;
-        const isIos = navigator.userAgent.match(/ipad|iphone/i);
-          const textarea = document.createElement('textarea');
+    const img = new Image();
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
 
-          // create textarea
-          textarea.value = imageURL;
-
-          // ios will zoom in on the input if the font-size is < 16px
-          textarea.style.fontSize = '20px';
-          document.body.appendChild(textarea);
-
-          // select text
-          if (isIos) {
-            const range = document.createRange();
-            range.selectNodeContents(textarea);
-
-            const selection = window.getSelection();
-            selection.removeAllRanges();
-            selection.addRange(range);
-            textarea.setSelectionRange(0, 999999);
-          } else {
-            textarea.select();
-          }
-
-          // copy selection
-          document.execCommand('copy');
-
-          // cleanup
-          document.body.removeChild(textarea);
-
-
-        alert("Copy ảnh thành công");
+   
+    function writeToCanvas(src) {
+        return new Promise((res, rej) => {
+            img.src = src;
+            img.onload = function() {
+                canvas.width = img.naturalWidth;
+                canvas.height = img.naturalHeight;
+                ctx.drawImage(img, 0, 0)
+                canvas.toBlob((blob) => {
+                    res(blob);
+                }, 'image/png');
+            }
+        });
     }
+
+    async function copyImage(src) {
+        const image = await writeToCanvas(src);
+        try {
+            await navigator.clipboard.write([
+                new ClipboardItem({
+                    [image.type]: image,
+                })
+            ]);
+
+            alert("Copy ảnh thành công");
+        } catch (e) {
+            alert("Copy failed: " + e);
+        }
+    }
+
+    // end copy
+
+
 
      $.ajaxSetup({
         headers: {
