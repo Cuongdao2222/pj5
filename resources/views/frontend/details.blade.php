@@ -1749,9 +1749,8 @@
         $(".box01 a").fancybox({
             'hideOnContentClick': true,
              buttons : [
-                'zoom',
-                'download',
                 'fullScreen',
+                'download',
                 'close'
               ]
         });
