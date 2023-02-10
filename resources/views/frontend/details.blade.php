@@ -434,7 +434,7 @@
 
                         <div class="item">
                             <a href="{{ asset($image->image) }}" data-fancybox="gallery"><img  data-src ="{{ asset($image->image) }}"  alt="{{ @$data->Name }}" class="lazyload"></a>
-                            <button class="copy-button"><i class="fas fa-copy"></i></button>
+                            <button class="copy-button" onclick="copyImage('{{ env("APP_URL") }}/{{ $data->Image }}')"><i class="fas fa-copy"></i></button>
                         </div>
 
 
@@ -1936,14 +1936,36 @@
     function copyImage(src) {
         
         imageURL = src;
-        // Create a temporary element to hold the image URL
-        var clipBoardElem = document.createElement("input");
-        document.body.appendChild(clipBoardElem);
-        clipBoardElem.value = imageURL;
-        clipBoardElem.select();
-        var successfulCopy = document.execCommand('copy');
+        const isIos = navigator.userAgent.match(/ipad|iphone/i);
+          const textarea = document.createElement('textarea');
 
-        // Show a message that the image URL has been copied
+          // create textarea
+          textarea.value = imageURL;
+
+          // ios will zoom in on the input if the font-size is < 16px
+          textarea.style.fontSize = '20px';
+          document.body.appendChild(textarea);
+
+          // select text
+          if (isIos) {
+            const range = document.createRange();
+            range.selectNodeContents(textarea);
+
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            textarea.setSelectionRange(0, 999999);
+          } else {
+            textarea.select();
+          }
+
+          // copy selection
+          document.execCommand('copy');
+
+          // cleanup
+          document.body.removeChild(textarea);
+
+
         alert("Copy ảnh thành công");
     }
 
