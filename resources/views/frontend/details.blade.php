@@ -1937,19 +1937,11 @@
         
         imageURL = src;
         // Create a temporary element to hold the image URL
-        var tempInput = document.createElement("input");
-        tempInput.style = "position: absolute; left: -1000px; top: -1000px";
-        tempInput.value = imageURL;
-        document.body.appendChild(tempInput);
-
-        // Select the text in the temporary element
-        tempInput.select();
-
-        // Copy the text to the clipboard
-        document.execCommand("copy");
-
-        // Remove the temporary element
-        document.body.removeChild(tempInput);
+        var clipBoardElem = document.createElement("input");
+        document.body.appendChild(clipBoardElem);
+        clipBoardElem.value = imageURL;
+        clipBoardElem.select();
+        var successfulCopy = document.execCommand('copy');
 
         // Show a message that the image URL has been copied
         alert("Copy ảnh thành công");
