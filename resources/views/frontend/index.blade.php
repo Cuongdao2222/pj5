@@ -29,8 +29,12 @@
 
            @media screen and (max-width:776px) {
 
-                .row{
+                .div-slide{
                     margin: 0 !important;
+                }
+
+                .box-div-slide{
+                    padding: 0;
                 }
 
                 .cIVWIZ{
@@ -268,9 +272,9 @@
     <section>
 
 
-        <div class="row">
+        <div class="row div-slide">
             <div class="col-md-2 left-banner"></div>
-            <div class="col-md-10">
+            <div class="col-md-10 box-div-slide">
                 <div class="homebanner-container">
                     <!-- Banner chính -->
                     <aside class="homebanner">
