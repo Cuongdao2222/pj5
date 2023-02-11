@@ -1934,26 +1934,21 @@
 
     // copy image to clipbroad
 
-
-    
-            
-            const copyImage = (imageSrc) => {
-            const image = new Image();
-            image.src = imageSrc;
-            const canvas = document.createElement('canvas');
-            canvas.width = image.width;
-            canvas.height = image.height;
-            canvas.getContext('2d').drawImage(image, 0, 0);
-            const dataURI = canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream');
-
-            navigator.clipboard.writeText(dataURI).then(() => {
-                alert('Image copied to clipboard successfully.');
-            }, () => {
-                alert('Failed to copy image to clipboard.');
-          });
+    function copyImage(imageUrl) {
+        const el = document.createElement('canvas');
+        const ctx = el.getContext('2d');
+        const img = new Image();
+        img.src = imageUrl;
+        img.onload = function() {
+            el.width = img.width;
+            el.height = img.height;
+            ctx.drawImage(img, 0, 0);
+            const data = el.toDataURL('image/png');
+            navigator.clipboard.write([new ClipboardItem({'image/png': new Blob([data], {type: 'image/png'})})]);
         };
-        
-   
+        alert('copy ảnh thành công');
+    }
+
     // end copy
 
      $.ajaxSetup({
