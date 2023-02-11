@@ -397,7 +397,7 @@
                              <a href="{{ asset($data->Image) }}" data-fancybox="gallery"><img  data-src ="{{ asset($data->Image) }}" alt="{{ @$data->Name }}" class="lazyload">
 
                             </a>
-                            <button class="copy-button" onclick="copyImage('{{ env("APP_URL") }}/{{ $data->Image }}')"><i class="fas fa-copy"></i></button>
+                            <button class="copy-button"  id="copy1"><i class="fas fa-copy"></i></button>
                             @if($data->id>4720)
                             <div class="saker">
                                     <img src="{{ asset('images/saker/'.strtolower($logoSaker->maker).'.png') }}"  data-src ="{{ asset($data->Image) }}" class="lazyload">
@@ -434,7 +434,7 @@
 
                         <div class="item">
                             <a href="{{ asset($image->image) }}" data-fancybox="gallery"><img  data-src ="{{ asset($image->image) }}"  alt="{{ @$data->Name }}" class="lazyload"></a>
-                            <button class="copy-button" onclick="copyImage('{{ env("APP_URL") }}/{{ $data->Image }}')"><i class="fas fa-copy"></i></button>
+                            <button class="copy-button"><i class="fas fa-copy"></i></button>
                         </div>
 
 
@@ -1932,24 +1932,31 @@
         
     });
 
+
+
     // copy image to clipbroad
 
-    function copyImage(imageUrl) {
-        const el = document.createElement('canvas');
-        const ctx = el.getContext('2d');
-        const img = new Image();
-        img.src = imageUrl;
-        img.onload = function() {
-            el.width = img.width;
-            el.height = img.height;
-            ctx.drawImage(img, 0, 0);
-            const data = el.toDataURL('image/png');
-            navigator.clipboard.write([new ClipboardItem({'image/png': new Blob([data], {type: 'image/png'})})]);
-        };
-        alert('copy ảnh thành công');
-    }
+    var copy = document.getElementById('copy1');
 
-    // end copy
+    copy.addEventListener("click", async (e) => {
+
+        try {
+            const imgURL = 'https://dienmaynguoiviet.vn/uploads/product/1672817137_RT29K5532BY-km1.jpg';
+            const data = await fetch(imgURL);
+            const blob = await data.blob();
+            await navigator.clipboard.write([
+                new ClipboardItem({
+                  [blob.type]: blob
+                })
+            ]);
+          console.log('Image copied.');
+        } catch (err) {
+          console.error(err.name, err.message);
+        }
+       
+
+    });    
+  
 
      $.ajaxSetup({
         headers: {
