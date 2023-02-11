@@ -26,6 +26,11 @@
             text-decoration: none;
            }
 
+           .pine-tree{
+             display: none;
+             
+           }
+
 
            @media screen and (max-width:776px) {
 

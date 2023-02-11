@@ -2388,7 +2388,7 @@
         <!-- hoa mai rơi -->
         <script type='text/javascript'>
             //<![CDATA[
-            var pictureSrc ="{{ asset('background/hoamai.png') }}"; //the location of the snowflakes
+            var pictureSrc ="{{ asset('background/heart_low.png') }}"; //the location of the snowflakes
             var pictureWidth = 15; //the width of the snowflakes
             var pictureHeight = 15; //the height of the snowflakes
             var numFlakes = 12; //the number of snowflakes
