@@ -1934,35 +1934,27 @@
 
     // copy image to clipbroad
 
-    function imageToBlob(imageURL) {
-      const img = new Image;
-      const c = document.createElement("canvas");
-      const ctx = c.getContext("2d");
-      img.crossOrigin = "";
-      img.src = imageURL;
-      return new Promise(resolve => {
-        img.onload = function () {
-          c.width = this.naturalWidth;
-          c.height = this.naturalHeight;
-          ctx.drawImage(this, 0, 0);
-          c.toBlob((blob) => {
-            // here the image is a blob
-            resolve(blob)
-          }, "image/png", 0.75);
+
+    
+            
+            const copyImage = (imageSrc) => {
+            const image = new Image();
+            image.src = imageSrc;
+            const canvas = document.createElement('canvas');
+            canvas.width = image.width;
+            canvas.height = image.height;
+            canvas.getContext('2d').drawImage(image, 0, 0);
+            const dataURI = canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream');
+
+            navigator.clipboard.writeText(dataURI).then(() => {
+                alert('Image copied to clipboard successfully.');
+            }, () => {
+                alert('Failed to copy image to clipboard.');
+          });
         };
-      })
-    }
-
-    async function copyImage(imageURL){
-        const blob = await imageToBlob(imageURL)
-        const item = new ClipboardItem({ "image/png": blob });
-        navigator.clipboard.write([item]);
-        alert('copy ảnh thành công!');
-    }
-
+        
+   
     // end copy
-
-
 
      $.ajaxSetup({
         headers: {
