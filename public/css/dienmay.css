@@ -12948,9 +12948,9 @@ img.lazyload {
 
 body.theme-lunar-new-year {
 	
-	background-size: cover;
+	/*background-size: cover;
 	background-attachment: fixed;
-	overflow-x: hidden
+	overflow-x: hidden*/
 }
 
 .theme-lunar-new-year .footer {
