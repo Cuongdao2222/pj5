@@ -3,7 +3,7 @@
 @section('content') 
     @push('style')
         <link rel="stylesheet" type="text/css" href="{{ asset('css/categorycs.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/category.css') }}?ver=5"> 
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/category.css') }}?ver=7"> 
 
         <link rel="stylesheet" type="text/css" href="{{ asset('css/categories.css') }}?ver=3"> 
          <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}?ver=20"> 
