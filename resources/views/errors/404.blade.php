@@ -17,7 +17,7 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('css/category.css') }}"> 
 
         <link rel="stylesheet" type="text/css" href="{{ asset('css/categories.css') }}"> 
-         <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}?ver=2"> 
+         <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}?ver=3"> 
 
         <style type="text/css">
             
