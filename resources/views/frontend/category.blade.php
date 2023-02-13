@@ -31,6 +31,10 @@
             .icons-deal-active{
                 height: 90px;
             }
+
+            .footer_list-link, .footer-bottom{
+                font-size: 14px;
+            }
             
 
             @media screen and (max-width:776px) {
@@ -164,7 +168,7 @@
 
             <section>
                 <div class="jsfix scrolling_inner scroll-right">
-                    <div><h4>{!! @$slogan !!}</h4></div>
+                    <div><h4 style="line-height: 26px">{!! @$slogan !!}</h4></div>
                     <div class="box-filter block-scroll-main scrolling">
                         @if(isset($filter))
                         @foreach($filter as $filters)
