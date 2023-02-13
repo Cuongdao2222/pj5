@@ -428,6 +428,10 @@ h6 a {
     outline: none
 }
 
+.list-mn{
+    font-size: 14px !important;
+}
+
 body {
 /*    min-width: 1024px*/
 }

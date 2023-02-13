@@ -3,10 +3,10 @@
 @section('content') 
     @push('style')
         <link rel="stylesheet" type="text/css" href="{{ asset('css/categorycs.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/category.css') }}?ver=2"> 
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/category.css') }}?ver=4"> 
 
         <link rel="stylesheet" type="text/css" href="{{ asset('css/categories.css') }}?ver=3"> 
-         <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}?ver=16"> 
+         <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}?ver=18"> 
          <link rel="stylesheet" type="text/css" href="{{ asset('css/home.css') }}?ver=1"> 
 
         <style type="text/css">
