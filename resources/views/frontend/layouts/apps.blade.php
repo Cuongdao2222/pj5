@@ -276,6 +276,10 @@
                 margin-right: 35px;
                 /*float: left;*/
             }
+
+            .sub-cate h3{
+                font-size: 14px;
+            }
             .compare-pro-holder img{
                 width: 100%;
             }
