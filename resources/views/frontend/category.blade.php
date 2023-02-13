@@ -3,7 +3,7 @@
 @section('content') 
     @push('style')
         <link rel="stylesheet" type="text/css" href="{{ asset('css/categorycs.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/category.css') }}?ver=4"> 
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/category.css') }}?ver=5"> 
 
         <link rel="stylesheet" type="text/css" href="{{ asset('css/categories.css') }}?ver=3"> 
          <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}?ver=20"> 
@@ -52,6 +52,7 @@
                     width: 117px;
                 }
             }
+
         </style>
 
     
@@ -538,9 +539,8 @@
                     @endforeach
 
 
-                     <span class="lists-id">{{ json_encode($arr_id_pro) }}</span>
+                    <span class="lists-id">{{ json_encode($arr_id_pro) }}</span>
                       
-                   
                    @else   
 
                     <div style="margin-left: 20px;">

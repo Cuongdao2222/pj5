@@ -14,7 +14,7 @@
 
 
  @push('style')
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/category.css') }}"> 
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/category.css') }}?ver=11"> 
 
         <link rel="stylesheet" type="text/css" href="{{ asset('css/categories.css') }}"> 
          <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}?ver=3"> 
@@ -27,6 +27,16 @@
             .block-manu{
                 width: 150px;
             }
+            @media screen and (min-width:776px) {
+
+                .container-productbox{
+
+                    height: 540px;
+                }
+            }
+            .footer_list-link{
+                font-size: 14px;
+            }    
         </style>
 
     
@@ -36,7 +46,7 @@
 
     <div class="container-productbox">
 
-    	<div style="margin-left: 20px;">
+    	<div style="margin-left: 20px;" class="mt-3">
             <h2><b>Không tìm thấy link</b></h2>
         </div>
         <hr>

@@ -436,7 +436,15 @@
             .hotlines{
                 position:fixed; 
                 z-index:9999
-            }    
+            }   
+
+            .submenu strong{
+                font-size: 14px;
+            } 
+
+            .submenu h3{
+                font-size: 14px;
+            } 
 
              @media only screen and (min-width: 768px) {
                 .hotlines{
@@ -498,7 +506,6 @@
                     width: 100% !important;
                 }
 
-                
             }
         </style>
         @endif
