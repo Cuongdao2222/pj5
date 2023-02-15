@@ -894,7 +894,7 @@
                                     $timestamp = floor($timestamp % 60);
                                     $seconds =floor($timestamp);
 
-                                    $ar_Deal_Pd[$value->id] = $value->deal_price;
+                                    $ar_Deal_Pd[$value->product_id] = $value->deal_price;
                                 ?>
 
                                 <div class="item">
@@ -1440,7 +1440,6 @@
                                 
                                 @endif
                                 <div class="icons-promotion-per">
-
                                     <strong class="price">{{ @number_format(!empty($ar_Deal_Pd[$datas->id])?$ar_Deal_Pd[$datas->id]:$datas->Price , 0, ',', '.')}}&#x20AB;</strong>
 
                                     @if(!empty($datas->manuPrice))
