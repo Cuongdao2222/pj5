@@ -858,12 +858,11 @@
 
         <?php 
             $deal_active = 1;
+
+            $ar_Deal_Pd = [];
         ?>
 
         @if(!empty($deal_check) && $deal_check->count()>0 && $now->between($deal_check[0]->start, $deal_check[0]->end) && $deal_active ===1)
-
-        
-
 
         <!-- flash sale -->
             <div class="img-flashsale mobiles" style="width: 100%;">
@@ -881,19 +880,21 @@
                         <div class="col-flash col-flash-2 active">
                             <div id="sync1S" class="slider-banner owl-carousel flash-sale-banner">
 
+
+
                                 @foreach($deal as $key => $value)
                                
                                 @if( !empty($value->active) && $value->active ==1 && $now->between($value->start, $value->end))
 
                                 <?php 
                                     $timestamp = $now->diffInSeconds($value->end);
-
                                     $hour =  floor($timestamp/3600);
                                     $timestamp = floor($timestamp % 3600);
                                     $minutes =floor($timestamp/60);
                                     $timestamp = floor($timestamp % 60);
                                     $seconds =floor($timestamp);
 
+                                    $ar_Deal_Pd[$value->id] = $value->deal_price;
                                 ?>
 
                                 <div class="item">
@@ -1051,7 +1052,6 @@
             </div>
 
 
-           
            @if(!empty($product_sale)&&$product_sale->count()>0)
 
            @if(!$smart_phone)
@@ -1440,8 +1440,8 @@
                                 
                                 @endif
                                 <div class="icons-promotion-per">
-                                    
-                                    <strong class="price">{{ @number_format($datas->Price , 0, ',', '.')}}&#x20AB;</strong>
+
+                                    <strong class="price">{{ @number_format(!empty($ar_Deal_Pd[$datas->id])?$ar_Deal_Pd[$datas->id]:$datas->Price , 0, ',', '.')}}&#x20AB;</strong>
 
                                     @if(!empty($datas->manuPrice))
 
