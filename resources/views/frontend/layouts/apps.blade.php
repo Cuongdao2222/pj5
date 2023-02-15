@@ -438,6 +438,10 @@
                 z-index:9999
             }   
 
+            #ui-id-1{
+                font-size: 14px;
+            }
+
             .submenu strong{
                 font-size: 14px;
             } 
