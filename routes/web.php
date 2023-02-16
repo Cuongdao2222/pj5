@@ -215,6 +215,9 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
     Route::get('/delete-user-permission','customnUserController@deleteUser')->name('deleteUser');
 
 
+    Route::post('update-event', 'showController@eventPostShowChecked')->name('update-event');
+
+
     Route::post('promotion-click', 'productController@promotionCheckDefault')->name('promotionCheckDefault');
 
     Route::get('filter-group-id', 'dealController@getProductToGroupId')->name('filter-group-id');
@@ -445,8 +448,6 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
     Route::post('remove-new-product', 'AjaxController@removeNewProduct')->name('remove-new-product');
 
     Route::post('remove-sale-product', 'AjaxController@removeSaleProduct')->name('remove-sale-product');
-
-     
 
     Route::post('check-active', 'AjaxController@checkActive')->name('check-active');
 
