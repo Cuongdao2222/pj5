@@ -28,6 +28,10 @@
                 color: #000;
                 border: none; 
             }
+
+            option{
+                font-size: 14px !important;
+            }
             .icons-deal-active{
                 height: 90px;
             }

@@ -5,7 +5,7 @@
     @push('style')
 
         <link rel="stylesheet" type="text/css" href="{{ asset('css/home.css') }}?ver=22">
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}?ver=37"> 
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}?ver=38"> 
         <link rel="stylesheet" type="text/css" href="{{ asset('css/index.css') }}?ver=4">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/homes.css') }}?ver=9">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/homecs.css') }}?ver=9">
@@ -30,6 +30,10 @@
              display: none;
              
            }
+
+           .list-mn {
+                font-size: 14px !important;
+            }
 
 
            @media screen and (max-width:776px) {

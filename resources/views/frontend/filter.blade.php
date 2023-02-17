@@ -33,6 +33,9 @@
             .list-pro h2{
                 margin-left:20px ;
             }
+            select, option{
+                font-size: 15px !important;
+            }
 
 
             .list-pro .item-compare span{
