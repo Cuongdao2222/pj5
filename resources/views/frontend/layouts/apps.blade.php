@@ -277,7 +277,7 @@
                 /*float: left;*/
             }
 
-            .sub-cate h3{
+            .sub-cate h3, .compare-show, .gift-text span{
                 font-size: 14px;
             }
             .compare-pro-holder img{
