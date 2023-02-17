@@ -31,7 +31,7 @@
              
            }
 
-           .list-mn {
+           .list-mn, .footer{
                 font-size: 14px !important;
             }
 
