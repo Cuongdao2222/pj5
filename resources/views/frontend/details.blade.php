@@ -1773,11 +1773,7 @@
     
         $(".box01 a").fancybox({
             clickContent: 'close',
-             buttons : [
-                'fullScreen',
-                'download',
-                'close'
-              ]
+             buttons: ['close']
         });
        
         $('.item-ss').bind('click',function(){
