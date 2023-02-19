@@ -1771,13 +1771,9 @@
 
     $( document ).ready(function() {
     
-        $(".box01 a").fancybox({
+        $('[data-fancybox]').fancybox({
             clickContent: 'close',
-             buttons : [
-                'fullScreen',
-                'download',
-                'close'
-              ]
+             buttons: ['close']
         });
        
         $('.item-ss').bind('click',function(){
