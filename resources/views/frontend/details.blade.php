@@ -60,7 +60,7 @@
     ?>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/detailscs.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}?ver=21"> 
-    <link rel="stylesheet" href="{{ asset('css/jquery.fancybox.css') }}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/css/jquery.fancybox.min.css" />
     <link rel="stylesheet" type="text/css" href="{{ asset('css/detail1fe.css') }}?ver=9">
     <style type="text/css">
         .copy-button{
@@ -1634,7 +1634,7 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('css/details.css') }}?ver=5">
 @endpush
 @push('script')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js"></script>
 <script type="text/javascript">
 
 
