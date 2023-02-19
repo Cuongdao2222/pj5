@@ -1772,7 +1772,7 @@
     $( document ).ready(function() {
     
         $(".box01 a").fancybox({
-            'hideOnContentClick': true,
+            clickContent: 'close',
              buttons : [
                 'fullScreen',
                 'download',
