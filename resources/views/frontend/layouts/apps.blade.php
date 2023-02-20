@@ -266,14 +266,7 @@
                
             } 
 
-            .ui-widget-content p{
 
-                font-size: 15px;
-            }
-
-            .suggest_link{
-                font-size: 14px;
-            }
 
             .list-menu .category{
                 width: 11%;
@@ -488,6 +481,15 @@
                       overflow: hidden;
                       display: -webkit-box;
                   }  
+
+                .ui-widget-content p{
+
+                    font-size: 15px;
+                }
+
+                .suggest_link{
+                    font-size: 14px;
+                }  
 
                 .p_hotline_item span {
                     width: 100%;
