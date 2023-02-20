@@ -266,6 +266,11 @@
                
             } 
 
+            .ui-widget-content p{
+
+                font-size: 15px;
+            }
+
             .suggest_link{
                 font-size: 14px;
             }
