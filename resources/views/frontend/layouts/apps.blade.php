@@ -266,6 +266,10 @@
                
             } 
 
+            .suggest_link{
+                font-size: 14px;
+            }
+
             .list-menu .category{
                 width: 11%;
             }
