@@ -43,6 +43,16 @@
      <?php 
 
         $checkSharp = strpos($data->Name, 'Sharp');
+
+        $browserAsString = $_SERVER['HTTP_USER_AGENT'];
+
+        $browserIsMobileSafari = false;
+
+        if (strstr($browserAsString, " AppleWebKit/") && strstr($browserAsString, " Mobile/"))
+        {
+            $browserIsMobileSafari = true;
+        }
+
     ?>
 
     <?php
@@ -60,7 +70,14 @@
     ?>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/detailscs.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}?ver=21"> 
+
+    @if($browserIsMobileSafari===true)
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/css/jquery.fancybox.min.css" />
+    @else
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.css">
+    
+
+    @endif
     <link rel="stylesheet" type="text/css" href="{{ asset('css/detail1fe.css') }}?ver=9">
     <style type="text/css">
         .copy-button{
@@ -1634,7 +1651,14 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('css/details.css') }}?ver=5">
 @endpush
 @push('script')
+
+@if($browserIsMobileSafari)
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js"></script>
+@else
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+@endif
+
+
 <script type="text/javascript">
 
 
