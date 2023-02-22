@@ -243,6 +243,8 @@ class AjaxController extends Controller
     {
         $search = $request->product;
 
+        $search = strip_tags($search);
+
         if(!empty($search)){
 
             $search = str_replace('dieu hoa', 'Điều hòa', $search);
