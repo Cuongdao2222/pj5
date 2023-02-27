@@ -1644,7 +1644,7 @@
         <div class="falling-item">
             ●
         </div>
-       <!--  <div class="falling-item">
+        <div class="falling-item">
             ●
         </div>
 
@@ -1653,7 +1653,7 @@
         </div>
         <div class="falling-item">
             ●
-        </div> -->
+        </div>
         <!-- <div class="falling-item">
             ●
         </div>
