@@ -99,12 +99,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                    <div>
-                        <ul class="pro-compare pro-compare_viewed">
 
-                            
-                        </ul>
-                    </div>
                     <div>
                          <input type="text" class="input-search ui-autocomplete-input input-search-compare" id="searchs" placeholder="Nhập tên hoặc mã model" name="key" autocomplete="off" maxlength="100" required="" id="search-model"> 
 
@@ -119,8 +114,13 @@
                         <div id="suggesstion-box"></div>
                        <!--  <div id="search-result"></div>  -->
                     </div>
-                   
-                
+                    <div>
+                        <ul class="pro-compare pro-compare_viewed">
+
+                            
+                        </ul>
+                    </div>
+                    
             </div>
 
             <div class="modal-footer">
