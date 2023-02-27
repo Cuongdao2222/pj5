@@ -4842,7 +4842,7 @@ body.dmx-site #loader:before {
 
 @keyframes snowflakes-fall {
 	0% {
-		top: -10%
+		top: 0%
 	}
 	100% {
 		top: 100%
@@ -4857,7 +4857,7 @@ body.dmx-site #loader:before {
 		transform: translateX(80px)
 	}
 	100% {
-		transform: translateX(0)
+		transform: translateX(10px)
 	}
 }
 
