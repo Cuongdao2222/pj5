@@ -4749,7 +4749,7 @@ body.dmx-site #loader:before {
 	-webkit-animation-timing-function: linear, ease-in-out;
 	-webkit-animation-iteration-count: infinite, infinite;
 	-webkit-animation-play-state: running, running;
-	animation-name: snowflakes-fall, snowflakes-shake;
+/*	animation-name: snowflakes-fall, snowflakes-shake;*/
 	animation-duration: 8s, 0s;
 	animation-timing-function: linear, ease-in-out;
 	animation-iteration-count: infinite, infinite;
