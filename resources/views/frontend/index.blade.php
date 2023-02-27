@@ -5,7 +5,7 @@
     @push('style')
 
         <link rel="stylesheet" type="text/css" href="{{ asset('css/home.css') }}?ver=22">
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}?ver=58"> 
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}?ver=66"> 
         <link rel="stylesheet" type="text/css" href="{{ asset('css/index.css') }}?ver=4">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/homes.css') }}?ver=9">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/homecs.css') }}?ver=9">
@@ -1050,10 +1050,14 @@
         
         <div class="prd-promo has-banner" style="background: #ED7397;" data-html-id="3109">
 
-            <div class="prd-promo__top clearfix" >
+            @if(!empty($bannerUnderSale[0]['image']))
+
+            <!-- <div class="prd-promo__top clearfix" >
 
                 <a data-cate="0" data-place="1868" href="#" ><img style="cursor:pointer" src="{{ asset($bannerUnderSale[0]['image']) }}" alt="banner-summer" width="1200"></a>                
-            </div>
+            </div> -->
+
+            @endif
 
 
            @if(!empty($product_sale)&&$product_sale->count()>0)
