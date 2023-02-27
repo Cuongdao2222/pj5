@@ -4756,7 +4756,7 @@ body.dmx-site #loader:before {
 	animation-play-state: running, running
 }
 
-.falling-item:nth-of-type(0) {
+/*.falling-item:nth-of-type(0) {
 	left: 1%;
 	-webkit-animation-delay: 0s, 0s;
 	animation-delay: 0s, 0s
@@ -4814,7 +4814,7 @@ body.dmx-site #loader:before {
 	left: 90%;
 	-webkit-animation-delay: 3s, 1.5s;
 	animation-delay: 3s, 1.5s
-}
+}*/
 
 @-webkit-keyframes snowflakes-fall {
 	0% {
