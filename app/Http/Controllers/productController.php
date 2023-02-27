@@ -660,16 +660,16 @@ class productController extends AppBaseController
     public function searchPdCompare(Request $request)
     {
 
-
         $clearData = trim($request->search);
 
         $clearData = strip_tags($clearData);
 
         $search = $clearData;
 
-        $product = product::where('Name', 'like', '%'.$search.'%')->Orwhere('ProductSku', $search)->first();
+        $product = product::where('Name', 'like', '%'.$search.'%')->where('active', 1)->Orwhere('ProductSku', $search)->where('active', 1)->first();
+        
 
-        return  $product;
+        return $product;
     }
 
     public function filterProduct(Request $request)

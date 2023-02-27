@@ -202,11 +202,11 @@
             type: "post",
             data: {
                 "_token": "{{ csrf_token() }}",
-                search: search??$('#searchs').val()
+                search: $('#searchs').val()
             },
            
             success: function (data) {
-
+               
                let classname =  id_name[0]??'';
                $('#'+classname).html('');
                html = '<img src="https://dienmaynguoiviet.vn/'+data.Image+'"> <span>'+data.Name+'</span>';
