@@ -2419,7 +2419,9 @@
 
         ?>
 
-        @if($event->active ==1)
+        <!-- đang tắt chức năng hoa mai  -->
+
+        @if($event->active ==3)
 
 
         <script type='text/javascript'>

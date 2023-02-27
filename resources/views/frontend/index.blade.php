@@ -5,7 +5,7 @@
     @push('style')
 
         <link rel="stylesheet" type="text/css" href="{{ asset('css/home.css') }}?ver=22">
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}?ver=38"> 
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}?ver=52"> 
         <link rel="stylesheet" type="text/css" href="{{ asset('css/index.css') }}?ver=4">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/homes.css') }}?ver=9">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/homecs.css') }}?ver=9">
@@ -1634,8 +1634,27 @@
     </section>
     <!-- End -->
     <!-- Hiệu ứng ... rơi -->
-    <!-- <div class="falling-container" aria-hidden="true">
+    <div class="falling-container" aria-hidden="true">
         <div class="falling-item">
+            ●
+        </div>
+        <div class="falling-item">
+            ●
+        </div>
+        <div class="falling-item">
+            ●
+        </div>
+        <div class="falling-item">
+            ●
+        </div>
+
+        <div class="falling-item">
+            ●
+        </div>
+        <div class="falling-item">
+            ●
+        </div>
+        <!-- <div class="falling-item">
             ●
         </div>
         <div class="falling-item">
@@ -1649,11 +1668,8 @@
         </div>
         <div class="falling-item">
             ●
-        </div>
-        <div class="falling-item">
-            ●
-        </div>
-    </div> -->
+        </div> -->
+    </div>
     <!-- End -->
 
     <div class="pine-tree"> 

@@ -4872,48 +4872,61 @@ body.dmx-site #loader:before {
 	left: 10%;
 	-webkit-animation-delay: 6s, .5s;
 	animation-delay: 6s, .5s;
-	font-size: 2.5em;
-	background-image: url(//cdn.tgdd.vn/mwgcart/mwg-site/ContentMwg/images/lunar_new_year/Flower/pink_1-min.png)
+	font-size: 5em;
+	background-image: url(https://dienmaynguoiviet.vn/images/posts/1677466527_500.png);
+	height: 80px;
+
+
 }
 
 .falling-item:nth-of-type(2) {
 	left: 20%;
 	-webkit-animation-delay: 5s, 5.5s;
 	animation-delay: 5s, 5.5s;
-	font-size: 1.9em;
-	background-image: url(//cdn.tgdd.vn/mwgcart/mwg-site/ContentMwg/images/lunar_new_year/Flower/yellow_2-min.png)
+	font-size: 5em;
+	background-image: url(https://dienmaynguoiviet.vn/images/posts/1677466527_500.png);
+	height: 80px;
+
 }
 
 .falling-item:nth-of-type(3) {
 	left: 40%;
 	-webkit-animation-delay: 4s, 2s;
 	animation-delay: 4s, 2s;
-	font-size: 2.4em;
-	background-image: url(//cdn.tgdd.vn/mwgcart/mwg-site/ContentMwg/images/lunar_new_year/Flower/pink_3-min.png)
+	font-size: 5em;
+	background-image: url(https://dienmaynguoiviet.vn/images/posts/1677466527_500.png);
+	height: 80px;
+
 }
 
 .falling-item:nth-of-type(4) {
 	left: 50%;
 	-webkit-animation-delay: 3s, 1.5s;
 	animation-delay: 3s, 1.5s;
-	font-size: 2.1em;
-	background-image: url(//cdn.tgdd.vn/mwgcart/mwg-site/ContentMwg/images/lunar_new_year/Flower/yellow_4-min.png)
+	font-size: 5em;
+	background-image: url(https://dienmaynguoiviet.vn/images/posts/1677466527_500.png);
+	height: 80px;
+
 }
 
 .falling-item:nth-of-type(5) {
 	left: 80%;
 	-webkit-animation-delay: 2s, 2s;
 	animation-delay: 2s, 2s;
-	font-size: 2.3em;
-	background-image: url(//cdn.tgdd.vn/mwgcart/mwg-site/ContentMwg/images/lunar_new_year/Flower/pink_5-min.png)
+	font-size: 5em;
+	background-image: url(https://dienmaynguoiviet.vn/images/posts/1677466527_500.png);
+	height: 80px;
+
 }
 
 .falling-item:nth-of-type(6) {
 	left: 90%;
 	-webkit-animation-delay: 1s, 0s;
 	animation-delay: 1s, 0s;
-	font-size: 2.2em;
-	background-image: url(//cdn.tgdd.vn/mwgcart/mwg-site/ContentMwg/images/lunar_new_year/Flower/yellow_6-min.png)
+	font-size: 5em;
+	background-image: url(https://dienmaynguoiviet.vn/images/posts/1677466527_500.png);
+	height: 80px;
+
 }
 
 @media all and (-webkit-min-device-pixel-ratio:1.5) {
