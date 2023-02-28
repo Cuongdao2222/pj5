@@ -4,7 +4,11 @@
 
     @push('style')
 
-    
+     <link rel="stylesheet" type="text/css" href="{{ asset('css/home.css') }}?ver=22"> 
+  
+       <link rel="stylesheet" type="text/css" href="{{ asset('css/index.css') }}?ver=4"> 
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/homes.css') }}?ver=9">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/homecs.css') }}?ver=9">
  
         <style type="text/css">
            .gift-text span{
@@ -1667,11 +1671,10 @@
 
     @push('script')
 
-     <link rel="stylesheet" type="text/css" href="{{ asset('css/home.css') }}?ver=22"> 
-  
-       <link rel="stylesheet" type="text/css" href="{{ asset('css/index.css') }}?ver=4"> 
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/homes.css') }}?ver=9">
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/homecs.css') }}?ver=9">
+    <style type="text/css">
+        
+    </style>
+
 
     <script type="text/javascript">
         if ($(window).width < 600){
