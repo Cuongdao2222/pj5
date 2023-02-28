@@ -861,7 +861,7 @@
         @else
 
         <?php 
-            $deal_active = 1;
+            $deal_active = 0;
 
             $ar_Deal_Pd = [];
         ?>
