@@ -36,9 +36,15 @@
                 height: 90px;
             }
 
-            .footer_list-link, .footer-bottom{
+            .footer_list-link, .footer-bottom, .sort-select label, #sort-by-option, .sort-total{
                 font-size: 14px;
             }
+
+            .item-img_1942{
+                line-height: normal;
+            }
+
+
             
 
             @media screen and (max-width:776px) {

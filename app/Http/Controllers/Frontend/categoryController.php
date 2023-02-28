@@ -482,7 +482,7 @@ class categoryController extends Controller
 
         }
 
-        $data = post::where('category', $datas->id)->orderBy('date_post','desc')->orderBy('date_post','desc')->paginate(10);
+        $data = post::where('category', $datas->id)->orderBy('date_post','desc')->where('active', 1)->orderBy('date_post','desc')->paginate(10);
 
       
         echo view('frontend.blog', compact('data','name_cates_cate'));

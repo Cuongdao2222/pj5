@@ -14,6 +14,20 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}"> 
 
         <style type="text/css">
+
+            @media screen and (max-width:776px) {
+                .item-img_1942 {
+
+                    height: 180px;
+                    line-height: 57px;
+                }
+
+            }
+            
+            .item-img_1942 {
+                height: 290px;
+                line-height: normal;
+            }    
             
             .box-filter .form-control{
                 width: 100%;
@@ -42,6 +56,10 @@
                 color: #0080cb;
                 text-align: center;
             } 
+
+            .tbl_time{
+                font-size: 14px;
+            }
 
            
 
