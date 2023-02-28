@@ -69,7 +69,6 @@
 
     ?>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/detailscs.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}?ver=84"> 
 
     @if($browserIsMobileSafari===true)
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/css/jquery.fancybox.min.css" />

@@ -5,7 +5,7 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('css/category.css') }}"> 
 
         <link rel="stylesheet" type="text/css" href="{{ asset('css/categories.css') }}"> 
-         <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}"> 
+ 
          <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
  @endpush  
 

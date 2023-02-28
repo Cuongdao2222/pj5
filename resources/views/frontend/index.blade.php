@@ -5,7 +5,7 @@
     @push('style')
 
         <link rel="stylesheet" type="text/css" href="{{ asset('css/home.css') }}?ver=22">
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}?ver=87"> 
+  
         <link rel="stylesheet" type="text/css" href="{{ asset('css/index.css') }}?ver=4">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/homes.css') }}?ver=9">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/homecs.css') }}?ver=9">
@@ -1048,7 +1048,7 @@
             
         </style>
         
-        <div class="prd-promo has-banner" style="background: #ED7397;" data-html-id="3109">
+        <div class="prd-promo has-banner" style="background: #eb3a7f;" data-html-id="3109">
 
             @if(!empty($bannerUnderSale[0]['image']))
 
