@@ -1,119 +1,249 @@
 @extends('frontend.layouts.apps')
 
 @section('content') 
+
     @push('style')
 
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/home.css') }}?ver=11">
- 
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/index.css') }}?ver=3">
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/homes.css') }}?ver=5">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/home.css') }}?ver=22">
+  
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/index.css') }}?ver=4">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/homes.css') }}?ver=9">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/homecs.css') }}?ver=9">
+
         <style type="text/css">
-           /* deal*/
-            .titles-time{
-                border-top: 2px solid #ff9;
-                margin-top: 5px;
-                padding-top: 5px;
-                padding-bottom: 5px;
-                background-color: #fb0707;
-                margin-bottom: 7px;
-                display: block;
-                width: 100%;
-                height: 80px;
+           .gift-text span{
+                color: #D82A20;
+           }
+
+           .container-productbox{
+            overflow: hidden;
+           }
+
+           .div-pd{
+            padding: 15px 0;
+           }
+           .__cate_1942 a:hover{
+            text-decoration: none;
+           }
+
+           .pine-tree{
+             display: none;
+             
+           }
+
+           .list-mn, .footer{
+                font-size: 14px !important;
             }
-            .titles-time h3 {
-                margin: 0;
-                display: inline-block;
-                color: #000000;
-                font-size: 18px;
-                text-transform: uppercase;
-                padding: 0 13px;
-                vertical-align: -3px;
-                float: left;
-                background-color: #ffea26;
-                padding: 5px 13px;
-                border-radius: 4px;
-                line-height: 29px;
-                margin-left: 10px;
-                cursor: pointer;
-            }
-            .titles-time .cat-child {
-                padding: 2px 0;
-                display: inline-block;
-                margin-left: 2px;
-            }
-            .titles-time .cat-child a {
-                line-height: 36px;
-                color: #000000;
-                background-color: #ff9;
-                padding: 11px 10px;
-                border-radius: 4px;
-            }
-            .titles-time .cat-child li {
-                float: left;
-                padding: 0 4px;
-            }
-            .div-title-news{
-                margin-bottom: 10px;
-            }
-            .texts p {
-                height: 50px;
-                line-height: 32px !important;
-                padding-left: 10px;
-            }   
-            .col1-big-img img{
-               /* width: auto !important;*/
-            }
-            .col1-big-img{
-                text-align: center;
-            }
-            .big-title-href{
-                height: 100%;
-            }
-            .result-labels{
-                /*position: absolute ;
-                left: 0;*/
-                margin-bottom: 10px;
-            }
-            .icon_sale{
-                
-                padding: 3px;
-                border-radius: 2px;
-                font-size: 10px;
-                color: #000;
-                position: absolute;
-                left: 10px;
-                bottom: 30%;
-                z-index: 1;
-            }
-            @media screen and (max-width: 767px) {
-                .result-labels{
-                    top: 43%;
-                   
-                }    
-            }
-             @media screen and (min-width: 768px) {
-                .result-labels{
-                    top: 53%;
-                   
-                } 
-                .homebanners{
-                    height: auto;
-                } 
-                .homebanner{
-                    height: auto;
-                }   
-                #sync1  .owl-item img {
-                    height: 100% !important;
+
+
+           @media screen and (max-width:776px) {
+
+                .div-slide{
+                    margin: 0 !important;
+                }
+
+                .box-div-slide{
+                    padding: 0;
+                }
+
+                .cIVWIZ{
+                    background-repeat: no-repeat;
+                    background-size: 100%;
+                    padding-top: 78px !important;
+                }
+                .btn-buys{
+                    display: none;
+                }
+                .navbar-collapse{
+                    display: flex;
+                }
+                #navbarNavAltMarkup {
+                     height: auto !important; 
+                }
+                .items-title span{
+                    font-size: 16px !important;
+                }
+                .btn-buy-price{
                     width: 100% !important;
-                } 
-                #sync1 .item img{
-                    height: auto !important;
-                }   
+                }
+                 .div-pd a{
+                    text-decoration: none;
+                }
+
+                .lists .item{
+                    width: 100%;
+                    overflow: hidden;
+                }
+                .lists{
+                    padding-right: 0 !important;
+                }
+
+
             }
         </style>
 
-       
+
     @endpush
+
+     <!-- check giá khuyến mãi sản phẩm để tạng voucher -->
+
+    <?php 
+
+        function pricesPromotion($price, $id)
+        {
+
+             if($id===''){
+
+                $gift_Price = '';
+
+            }
+            else{
+                if($price>=50000000){
+
+                    $gift_Price = '1.000.000 đ';
+
+                }
+                elseif ($price>5000000 && $price<=10000000) {
+
+                     $gift_Price = '100.000 đ';
+                }
+
+                elseif ($price>10000000 && $price<=30000000) {
+
+                     $gift_Price = '200.000 đ';
+                }
+
+                elseif ($price>30000000 && $price<50000000) {
+
+                    $gift_Price = '500.000 đ';
+                }
+                else{
+
+                    $gift_Price = '50.000 đ';
+                }
+            }
+
+            // tắt tính năng auto tính giá quà khuyến mãi
+
+            $gift_Price = '';
+            
+            return $gift_Price;
+        }
+
+        
+    ?>
+
+     <?php
+
+
+        if(!Cache::has('product_search')){
+
+            $productss = App\Models\product::select('Link', 'Name', 'Image', 'Price', 'id', 'ProductSku', 'promotion', 'promotion_box')->where('active', 1)->get();
+
+            Cache::forever('product_search',$productss);
+
+        }    
+
+
+        $hots = Cache::rememberForever('hots', function(){
+
+            $hots = App\Models\hotsProduct::select('product_id')->get()->pluck('product_id');
+
+            return $hots;
+        });
+
+        $new_product = Cache::rememberForever('new_product', function(){
+
+            $new_product = App\Models\newProduct::select('product_id')->get()->pluck('product_id');
+
+            return $new_product;
+        });
+
+
+        $now  = Carbon\Carbon::now();
+        // $now  = \Carbon\Carbon::createFromDate('9-11-2022, 8:00');
+
+        $date_string_flash_deal = DB::table('date_flash_deal')->where('id', 1)->first()->date;
+        $date_flashdeal = \Carbon\Carbon::create($date_string_flash_deal);
+
+        $deal = Cache::get('deals')->sortByDesc('order');
+
+        $add_date = $date_string_flash_deal;
+        $time1_start = \Carbon\Carbon::createFromDate($add_date.', 9:00');
+        $time1 = \Carbon\Carbon::createFromDate($add_date.', 12:00');
+        $time2_start = \Carbon\Carbon::createFromDate($add_date.', 12:00');
+        $time2 = \Carbon\Carbon::createFromDate($add_date.', 14:00');
+        $time3_start = \Carbon\Carbon::createFromDate($add_date.', 14:00');
+        $time3 = \Carbon\Carbon::createFromDate($add_date.', 17:00');
+        $time4_start = \Carbon\Carbon::createFromDate($add_date.', 17:00');
+        $time4 = \Carbon\Carbon::createFromDate($add_date.', 22:00');
+        $define = [['start'=>'9h', 'endTime'=>$time1, 'startTime'=>$time1_start], ['start'=>'12h', 'endTime'=>$time2, 'startTime'=>$time2_start], ['start'=>'14h', 'endTime'=>$time3, 'startTime'=>$time3_start], ['start'=>'17h', 'endTime'=>$time4, 'startTime'=>$time4_start]];
+
+        $smart_phone = false;
+
+        $useragent=$_SERVER['HTTP_USER_AGENT']??'';
+
+        if(!empty($useragent)){
+
+            if(preg_match('/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i',$useragent)||preg_match('/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i',substr($useragent,0,4))){
+
+                $smart_phone = true;
+
+            }
+
+        }
+
+        
+
+        
+
+       
+    ?> 
+
+   
+
+    <style type="text/css">
+        .price_market {
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 4px;
+            font-size: 12px;
+            color: #707070;
+            text-decoration: line-through;
+        }
+
+        .discount_percent {
+            color: #fff;
+            background: #007bff;
+            display: inline-block;
+            vertical-align: middle;
+            padding: 2px 5px;
+            font-size: 12px;
+            border-radius: 4px;
+        }
+
+        .icons-tra-gops{
+            background-color: #ddd;
+            color: #000;
+            border: none; 
+        }
+        .icons-promotion-per{
+            height: 42px;
+        }
+
+        .listproduct{
+                grid-gap:16px;
+            }
+
+        .left-banner{
+            float: left;
+        } 
+
+        .homebanner .owl-stage-outer{
+            width: 100%;
+        }   
+    </style>   
+
     <div class="locationbox__overlay"></div>
     <div class="locationbox">
         <div class="locationbox__item locationbox__item--right" onclick="OpenLocation()">
@@ -148,38 +278,51 @@
         </div>
     </div>
 
-     <div class="homebanner-container">
-        <!-- Banner chính -->
-        <aside class="homebanner">
-            <div id="sync1" class="slider-banner owl-carousel homebanners">
-
-                @if(isset($banners))
-
-                @foreach($banners as $value)
-                <div class="item" data-dot="<span>{{ $value->title }}</span>">
-                    <a aria-label="slide" data-cate="0" data-place="1535" href="{{ $value->link }}"><img  src="{{ asset($value->image) }}"  data-src="{{ asset($value->image) }}" alt="{{ $value->title }}"  ></a>
-                </div>
-                @endforeach
-                @endif
-                
-            </div>
-            <div id="sync2" class="slider-banner owl-carousel">
-                @if(isset($banners))
-                @foreach($banners as $value)
-                <div class="item">
-                    <h3>
-                        {{  $value->title }}
-                    </h3>
-                </div>
-                @endforeach
-                @endif
-                
-            </div>
-        </aside>
-        <!-- End -->
-    </div>
-    
     <section>
+
+
+        <div class="row div-slide">
+            <div class="col-md-2 left-banner"></div>
+            <div class="col-md-10 box-div-slide">
+                <div class="homebanner-container">
+                    <!-- Banner chính -->
+                    <aside class="homebanner">
+                        <div id="sync1" class="slider-banner owl-carousel homebanners">
+
+                            @if(isset($banners))
+
+                            @foreach($banners as $value)
+                            <div class="item" data-dot="<span>{{ $value->title }}</span>">
+                                <a aria-label="slide" data-cate="0" data-place="1535" href="{{ $value->link }}" ><img  data-src="{{ asset($value->image) }}" alt="{{ $value->title }}" class="lazyload"></a>
+                            </div>
+                            @endforeach
+                            @endif
+                            
+                        </div>
+                        <div id="sync2" class="slider-banner owl-carousel">
+                            @if(isset($banners))
+                            @foreach($banners as $value)
+                            <div class="item">
+                                <h3>
+                                    {{  $value->title }}
+                                </h3>
+                            </div>
+                            @endforeach
+                            @endif
+                            
+                        </div>
+                    </aside>
+                    <!-- End -->
+                </div>
+            </div>
+        </div>
+        
+        
+    </section>
+
+
+    <section>
+
         <div class="bar-top">
            <!--  <div class="bar-top-left-none"></div> -->
            
@@ -189,23 +332,23 @@
                 @foreach( $bannersRight as $values)
 
                 <a  aria-label="slide" data-cate="0" data-place="1539" href="{{ $values->link }}">
-                    <img  src="{{ asset($values->image) }}" data-src="{{ asset($values->image) }}"  alt="{{ $values->title }}" >
+                    <img   data-src="{{ asset($values->image) }}"  alt="{{ $values->title }}" class="lazyload">
                 </a>
                 @endforeach
                 @endif
             </div>
         </div>
-        <section class="menus-banner">
+        <!-- <section class="menus-banner">
             <strong class="name-box">Có thể bạn quan tâm</strong>
             <ul>
-               
+
                 @if(!empty($bannerUnderSlider))
                 @foreach($bannerUnderSlider as $slider)
                 <li class="col-">
                     <a href="{{ $slider->link }}">
                         <picture>
                             <source media="(min-width:1201px)" >
-                            <img src="{{ asset($slider->image) }}" alt="" data-src="{{ asset($slider->image) }}">
+                            <img  data-src="{{ asset($slider->image) }}" class="lazyload">
                         </picture>
                     </a>
                     <p>
@@ -221,62 +364,517 @@
                 @endif
                
             </ul>
-        </section>
-       
-
+        </section> -->
         <?php 
            
-            $now  = Carbon\Carbon::now();
-            
+           
+
             if(!empty($deal)){
-                $timeDeal_star = Cache::get('deal_start');
+
+                $timeDeal_star =$deal->first()->start;
+
                 $timeDeal_star =  \Carbon\Carbon::create($timeDeal_star);
+
                 $timeDeal_end = $deal->first()->end;
+
                 $timeDeal_end =  \Carbon\Carbon::create($timeDeal_end);
+
                 $timestamp = $now->diffInSeconds($timeDeal_end);
             }
+
+            
+
         ?>
 
+        @if($date_flashdeal->isToday())
 
-        @if(!empty($deal_check) && $deal_check->count()>0 && $now->between($deal_check[0]->start, $deal_check[0]->end))
+        <style type="text/css">
+            .bg-light {
+                background-color: #414142 !important;
+
+                height: 64px;
+            }
+            .UCDJ9O {
+                font-size: 1.5rem;
+            }
+
+            .navbar-nav{
+                height: 80% !important;
+            }
+            .higiZo {
+                text-transform: capitalize;
+                font-size: 12px;
+            }
+            .oNZiNS {
+                text-decoration: none;
+                color: rgba(0,0,0,.87);
+                display: block;
+                background: #414142;
+                color: #c3c3c3;
+                display: flex;
+                flex-direction: column;
+                height: 3rem;
+                justify-content: center;
+                position: relative;
+                text-align: center;
+            }
+
+            .navbar{
+                width: 100%;
+            } 
+
+            .cIVWIZ, .zuQWXW {
+                padding-top: 240px;
+            }
+
+            .VUCDM7 {
+                width: 1200px;
+                margin: 20px auto;
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+            }
+            .B3\+pb\+ {
+                box-shadow: 0 1px 1px 0 rgb(0 0 0 / 5%);
+                border-radius: 0.125rem;
+                overflow: hidden;
+                background-color: #fff;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+                position: relative;
+                margin-bottom: 10px;
+                z-index: 1;
+            }
+
+            .PMpbYz {
+                text-decoration: none;
+                color: rgba(0,0,0,.87);
+                display: block;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .cmjSHU, .qifRic {
+                width: 280px;
+                height: 280px;
+            }
+
+            .FSzItq {
+                margin: 5px auto;
+                position: relative;
+            }
+
+            .items-title span{
+                font-size: 18px;
+            }
+            .div-pd{
+                margin: 0 auto;
+            }
+            .list-pro{
+                background: #F5F5F5;
+                overflow: hidden;
+            }
+            .items-title{
+                background: #fff;
+            }
+            .items-title span{
+                color: #000;
+            }
+            .items-title{
+                padding: 0 15px;
+            }
+            .navbar-light{
+                padding: 0;
+            }
+            .actives{
+                background: #ee4d2d;
+                color: #fff !important;
+            }
+            .actives .UCDJ9O, .actives .higiZo{
+                color: #fff !important;
+            }
+
+
+
+
+            .X7gzZ7 {
+                background-color: rgba(255,212,36,.9);
+            }
+
+            .aS\+-QV {
+                -webkit-transform: scale(1.4);
+                transform: scale(1.4);
+                padding: 7px 8px;
+                font-weight: 400;
+                position: absolute;
+                top: 0;
+                right: 0;
+                z-index: 3;
+            }
+
+
+            .yV54ZD {
+                width: 36px;
+                height: 32px;
+            }
+
+            ._8PundJ {
+                display: flex;
+                flex-direction: column;
+                text-align: center;
+                position: relative;
+                font-weight: 400;
+                line-height: .8125rem;
+                color: #ee4d2d;
+                text-transform: uppercase;
+                font-size: .75rem;
+            }
+
+            ._5ICO3M {
+                display: inline-block;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+                position: relative;
+                padding: 4px 2px 3px;
+                font-weight: 700;
+            }
+
+            .tSV5KQ {
+                color: #fff;
+            }
+
+            .X7gzZ7:after {
+                content: "";
+                width: 0;
+                height: 0;
+                left: 0;
+                bottom: -4px;
+                position: absolute;
+                border-color: transparent rgba(255,212,36,.9);
+                border-style: solid;
+                border-width: 0 18px 4px;
+
+                width: 50px;
+            }
+            .__cate_1942{
+                position: relative;
+            }
+
+            .X7gzZ7{
+                position: absolute;
+                top: 0;
+                right: 0;
+
+                width: 50px;
+            }
+
+            .yV54ZD {
+                
+                height: 40px;
+            }
+            .IKgh3U {
+                
+                color: rgba(0,0,0,.13);
+                text-decoration: line-through;
+                margin: 10px 0;
+            }
+            .price{
+                font-size: 23px;
+                font-weight: normal;
+                color: #ee4d2d;
+            }
+            .price-sale{
+                display: flex;
+            }
+
+            .btn-buys{
+                line-height: 51px;
+                width: 40%;
+                text-align: right;
+
+            }
+            .btn-buys button{
+                 font-size: 13px;
+                height: 42px;
+               width: 94%;
+            }
+            .btn-buy-price{
+                width: 60%;
+            }
+
+            .btn-buy-click{
+                background: #ee4d2d;
+                border: 0;
+            }
+            .qOgYxF span{
+                color: #ddd;
+            }
+
+            .lists{
+                height: 325px;
+            }
+            .lists .item{
+                height: 97%;
+                background: #fff;
+            }
+
+            .progress {
+                background-color: #FDBCA8;
+                border-radius: 8px;
+                position: relative;
+               
+                height: 12px;
+                width: 100%;
+                margin-top: 10px;
+            }
+
+            .progress-done {
+                background: #E91B24;
+                box-shadow: 0 3px 3px -5px #F2709C, 0 2px 5px #F2709C;
+                border-radius: 20px;
+                color: #fff;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 100%;
+                width: 0;
+                opacity: 0;
+                transition: 1s ease 0.3s;
+            }
+
+            .cIVWIZ{
+                max-width: 1200px;
+            }
+            #navbarNavAltMarkup{
+                height: 80px;
+            }
+            .navbar-nav{
+                height: 100%;
+            }
+            .item-img_1942{
+                text-align: center;
+            }
+
+            .items-title .name{
+                margin-top: 10px;
+                height: 35px;
+                overflow: hidden;
+            }
+
+            .readmore-btn {
+                background-color: #fff;
+                border-radius: 4px;
+                display: block;
+                line-height: 16px;
+                margin: 10px auto 0;
+                padding: 12px 5px;
+                text-align: center;
+                color: #333;
+                width: 340px;
+            }
+
+            .product-view-all .prd-promo__top{
+                background: #E94A37;
+                padding-top:1px;
+            }
+            .bar-top-lefts{
+                display: inline-block;
+            }
+
+
+        </style>
+
+
+        <?php 
+            $saleFlash = DB::table('flash_deal')->get();
+        ?>
+
+        @foreach($saleFlash as $keys => $vals)
+
+        
+        @if($now < $time4)
+
+
+            <?php 
+
+                $groups_deal = 0;
+                $k = 0;
+
+            ?>
+           
+            <a href="{{ route('show-flash-deal') }}" target="_blank"><div class="container cIVWIZ" style="background-image: url(https://dienmaynguoiviet.vn/uploads/banner/1668001535_9ec673f17e637893c11a2a983045e7c6.jpg);"></div></a>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+       
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+
+                    <?php 
+
+                        $flashDeal = App\Models\flashdeal::where('flash_deal_id', $vals->id)->where('flash_deal_time_id', 1)->where('active',1)->OrderBy('order','desc')->take(4)->get();
+
+                       // Khi chưa đến giờ flashdeal kiểm tra để hiển thị deal
+
+                        $checksoon = 1;
+                    ?>
+                    @foreach($define as $key => $value)
+
+                    @if($now<$value['endTime'])
+
+                        <?php 
+                            $k++;
+                           
+                            if($now->between($value['startTime'], $value['endTime'])){
+
+                                $timestamp = $now->diffInSeconds($value['endTime']);
+                                $hour =  floor($timestamp/3600);
+                                $timestamp = floor($timestamp % 3600);
+                                $minutes =floor($timestamp/60);
+                                $timestamp = floor($timestamp % 60);
+                                $seconds =floor($timestamp);
+
+                                $groups_deal = $key;
+
+                                $groups_deal+=1;
+
+
+                                $flashDeal = App\Models\flashdeal::where('flash_deal_id', $vals->id)->where('flash_deal_time_id', $groups_deal)->where('active',1)->OrderBy('order','desc')->take(4)->get();
+                                $checksoon = 0;
+
+                            }
+
+                    ?>  
+
+                   
+                    <div class="navbar-nav col-md-3 {{  $k==1?'actives':'' }} active_{{ $key+1 }}">
+                        <div class="nav-item nav-link active div-pd" > 
+                            <div>
+                                <a class="deal{{ $vals->id }}" href="javascript:void(0)" onclick="clickDeal({{ $vals->id }},{{ $key+1 }}, {{ $k }})">
+                                    <div class="UCDJ9O">{{ $value['start'] }}</div>
+                                    <div class="higiZo">{{ $now->between($value['startTime'], $value['endTime'])?'Đang diễn ra':'sắp diễn ra'}}</div>
+                                </a>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                     @endif
+                    @endforeach
+                   
+                </div>
+            </nav>
+
+           
+
+        <div class="container-productbox product-view-all">
+
+            <div class="row list-pro listpd">
+
+
+                @if(!empty($flashDeal) && $flashDeal->count()>0)
+                @foreach($flashDeal as $key => $value)
+
+                                
+                <div class="col-md-3 col-6 lists">
+                    <div class="item  __cate_1942">
+                       
+                            
+                            <div class="item-img item-img_1942">  <a href="{{ route('details', $value->link) }}" data-box="BoxCate" class="main-contain" target="_blank"> <img class="thumb lazyloaded" data-src="{{ asset($value->image) }}" alt="{{ $value->name }}" style="width:auto; height: 184px;" src="{{ asset($value->image) }}" ></a> </div>
+                            <div class="items-title">
+                                <div class="name">
+                                     <a href="{{ route('details', $value->link) }}" data-box="BoxCate" class="main-contain" target="_blank">    
+                                         <span> {{ $value->name }} </span>
+                                     </a>
+                                </div>
+
+                                <div class="IKgh3U"><div class="qOgYxF"><span>{{ @str_replace(',' ,'.', number_format($value->price)) }}</span><span class="-92Xgq">₫ </span></div></div>
+                                <div class="price-sale">
+                                    <div class="btn-buy-price">
+
+                                        <?php 
+                                            $str_len[7] = '?.???.000';
+                                            $str_len[8] = '??.???.000';
+                                            $str_len[9] = '???.???.000';
+                                        ?>
+
+                                         @if($vals->price !=0)
+                                        <strong class="price">{{ $checksoon ==1?'???.000':@str_replace(',' ,'.', number_format($vals->price)) }}&#x20AB</strong>
+                                         @else
+
+                                         <?php 
+                                            $price_strlen = $str_len[strlen($value->deal_price)]??'???.000';
+                                         ?>
+                                         <strong class="price">{{   $checksoon ==1 ?$price_strlen:@str_replace(',' ,'.', number_format($value->deal_price)) }} &#x20AB</strong>
+                                         @endif
+                                        <div class="progress">
+
+                                            <div class="progress-done" data-done="70">
+                                                70%
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="btn-buys">
+                                        <button type="button" class="btn btn-danger btn-buy-click" onclick="addToCart('{{ $value->product_id }}')">Mua ngay</button>
+                                    </div>
+                                    
+                                </div>
+                                
+                               
+                            </div>
+                        
+                        <div class="item-bottom"> <a href="#" class="shiping"></a> </div>
+
+                        @if($checksoon==0)
+
+                        <?php 
+                            $percent = floor((intval($value->price)- intval($value->deal_price))/intval($value->price)*100);
+
+
+                        ?>
+
+
+
+                        @if($percent>0)
+                        <div class="_5ICO3M yV54ZD X7gzZ7">
+                            <div class="_8PundJ"><span class="percent">{{ $percent }}%</span><span class="tSV5KQ">giảm</span></div>
+                        </div>
+                        @endif
+                        @endif
+                        <!-- <a href="javascript:void(0)" class="item-ss"> <i></i> So sánh </a> --> 
+                    </div>
+                </div>
+
+                @endforeach
+                @endif
+            </div>
+            <div class="clearfix"></div>
+            <div class="prd-promo__top clearfix"> <a class="readmore-btn" href="{{ route('show-flash-deal') }}" target="_blank"><span>Xem tất cả</span></a> </div>
+            <!-- <div class="view-more "> <a href="javascript:;">Xem thêm <span class="remain">133</span> Tivi</a> </div> --> 
+        </div>
+
+        @endif
+        @endforeach
+
+
+
+        @else
+
+        <?php 
+            $deal_active = 1;
+
+            $ar_Deal_Pd = [];
+        ?>
+
+        @if(!empty($deal_check) && $deal_check->count()>0 && $now->between($deal_check[0]->start, $deal_check[0]->end) && $deal_active ===1)
+
         <!-- flash sale -->
             <div class="img-flashsale mobiles" style="width: 100%;">
                 <a href="{{ route('details', 'deal') }}"><img src="{{ asset('images/template/flashsalemb.jpg') }}" style="width: 100%"></a>
 
             </div>
-           <!--  <div class="title titles-time">
-                <h3>
-                    <span>12:00</span>
-                    <br>
-                    <span>01:00:59</span>
-                </h3>
-                
-                <ul class="cat-child">
-                    <li>
-                        <h3>
-                            <span>15:00</span>
-                            <br>
-                            <span>Sắp diễn ra</span>
-                        </h3>
-                    </li>
-                    <li>
-                        <h3>
-                            <span>18:00</span>
-                            <br>
-                            <span>Sắp diễn ra</span>
-                        </h3>
-                    </li>
-                    <li>
-                        <h3>
-                            <span>21:00</span>
-                            <br>
-                            <span>Sắp diễn ra</span>
-                        </h3>
-                    </li>
-                </ul>
-            </div> -->
-
-            <div class="">
+           
+            <div class="mt-1">
                 <div class="flash-sale" style="height: 305px;">
                     
                     <span id="banner-flash-sale"><a href="{{ route('dealFe') }}">
@@ -285,6 +883,8 @@
                     <div class="flash-product nk-product-of-flash-sales">
                         <div class="col-flash col-flash-2 active">
                             <div id="sync1S" class="slider-banner owl-carousel flash-sale-banner">
+
+
 
                                 @foreach($deal as $key => $value)
                                
@@ -297,6 +897,8 @@
                                     $minutes =floor($timestamp/60);
                                     $timestamp = floor($timestamp % 60);
                                     $seconds =floor($timestamp);
+
+                                    $ar_Deal_Pd[$value->product_id] = $value->deal_price;
                                 ?>
 
                                 <div class="item">
@@ -306,67 +908,74 @@
                                         </div>
                                     </a>
                                     <div class="desc desc-deal{{$key}}">
-                                      <a href="{{ route('details', $value->link) }}">
-                                        <h4 class="title">{{ $value->name }}</h4>
-                                        <div class="container-price">
-                                               <div>
-                                                   <span class="price-old">{{ @str_replace(',' ,'.', number_format($value->price)) }}&#x20AB;</span>
-                                               </div>
-                                        </div>
-                                        <div style="margin-top: 11px">
-                                            <div class="nk-top-stickers"><span class="nk-sticker nk-new">Mới</span></div><div>
-                                                    <p class="title-shock-price">Giá sốc online</p>
-                                                    <span class="price-new">{{ @str_replace(',' ,'.', number_format($value->deal_price)) }}&#x20AB;</span>
-                                                </div>
-                                        </div>
-                                        <div class="review_product star">
-                                           <p>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                            </p>
-                                            <div class="line_break">|</div>
-                                                <div class="reviewCount">0 đánh giá</div>
-                                            </div>
-                                            <div class="container-timeline">
-                                            <span class="timeline"><span style="width: 2%"></span></span>
-                                           <!--  <p>Đã bán <span style="color: #EE1E25">2</span> / 100 sản phẩm</p> -->
-                                        </div>
-                                        <div style="width: 100%; height: 1px; background: #ECECEC; margin-top: 8px"></div>
-                                        <div class="countdown-flash-sale">
-                                            <div class="time-cd time-fl time{{ $key }}">
+                                        <a href="{{ route('details', $value->link) }}">
+                                            <h4 class="title">{{ $value->name }}</h4>
+                                            <div class="container-price">
+                                                   <div>
+                                                       <span class="price-old">{{ @str_replace(',' ,'.', number_format($value->price)) }}&#x20AB;</span>
+                                                       &nbsp
 
-                                                <span class="timestamp" style="display: none;">{{   $now->diffInSeconds($value->end) }}</span>
-                                               
-                                               
-                                                <div class="time">
-                                                    <span class="hours">
-                                                        <span class="hourss"> {{ $hour }}</span>
+                                                       <?php
+                                                            $discount_deal =  round(((intval($value->price) - intval($value->deal_price))/intval($value->price))*100)
+                                                        ?>
                                                         
-                                                        <div style="margin-top: 2px; width:100%; height:1px; background: #FF3647"></div>
-                                                        <span>Giờ</span>
-                                                    </span>
-                                                    <p style="font-size: 28px; line-height: 55px;font-weight: bold;color: #101010; margin: 0 7px" >:</p>
+                                                        <span class="discount_percent">-{{ $discount_deal }}%</span>
+                                                   </div>
+                                            </div>
+                                            <div style="margin-top: 11px">
+                                                <div class="nk-top-stickers"><span class="nk-sticker nk-new">Mới</span></div><div>
+                                                        <p class="title-shock-price">Giá sốc online</p>
+                                                        <span class="price-new">{{ @str_replace(',' ,'.', number_format($value->deal_price)) }}&#x20AB;</span>
+                                                    </div>
+                                            </div>
+                                            <div class="review_product star">
+                                               <p>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                </p>
+                                                <div class="line_break">|</div>
+                                                    <div class="reviewCount">0 đánh giá</div>
+                                                </div>
+                                                <div class="container-timeline">
+                                                <span class="timeline"><span style="width: 2%"></span></span>
+                                               <!--  <p>Đã bán <span style="color: #EE1E25">2</span> / 100 sản phẩm</p> -->
+                                            </div>
+                                            <div style="width: 100%; height: 1px; background: #ECECEC; margin-top: 8px"></div>
+                                            <div class="countdown-flash-sale">
+                                                <div class="time-cd time-fl time{{ $key }}">
 
-                                                    <span class="hours">
-                                                        <span class="minutess">{{ $minutes }}</span>
-                                                        <div style="margin-top: 2px; width:100%; height:1px; background: #FF3647"></div>
-                                                        <span>phút</span>
-                                                    </span>
-                                                    <p style="font-size: 28px; line-height: 55px;font-weight: bold;color: #101010; margin: 0 7px">:</p>
-                                                    <span class="hours">
-                                                        <span class="secondss"> {{ $seconds }}</span>
-                                                        <div style="margin-top: 2px; width:100%; height:1px; background: #FF3647"></div>
-                                                        <span>giây</span>
-                                                    </span>
+                                                    <span class="timestamp" style="display: none;">{{   $now->diffInSeconds($value->end) }}</span>
                                                    
-                                                  
+                                                   
+                                                    <div class="time">
+                                                        <span class="hours">
+                                                            <span class="hourss"> {{ $hour }}</span>
+                                                            
+                                                            <div style="margin-top: 2px; width:100%; height:1px; background: #FF3647"></div>
+                                                            <span>Giờ</span>
+                                                        </span>
+                                                        <p style="font-size: 28px; line-height: 55px;font-weight: bold;color: #101010; margin: 0 7px" >:</p>
+
+                                                        <span class="hours">
+                                                            <span class="minutess">{{ $minutes }}</span>
+                                                            <div style="margin-top: 2px; width:100%; height:1px; background: #FF3647"></div>
+                                                            <span>phút</span>
+                                                        </span>
+                                                        <p style="font-size: 28px; line-height: 55px;font-weight: bold;color: #101010; margin: 0 7px">:</p>
+                                                        <span class="hours">
+                                                            <span class="secondss"> {{ $seconds }}</span>
+                                                            <div style="margin-top: 2px; width:100%; height:1px; background: #FF3647"></div>
+                                                            <span>giây</span>
+                                                        </span>
+                                                       
+                                                      
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                      </a>
+                                        </a>
                                     </div>
                                 </div>
 
@@ -382,26 +991,122 @@
 
            <!--  end flash  -->
          @endif 
+
+         @endif
           
         <div class="clearfix"></div> 
 
-        <div class="prd-promo has-banner" style="background-color:#FFF3EE; " data-html-id="3109">
+        <style type="text/css">
+            .option-sg,  .option-mbile-sg{
+                display: flex;
+                overflow: hidden;
+                flex-flow: row;
+                padding: 15px;
+                text-align: center;
+                align-items: center;
+            }
 
-            <div class="prd-promo__top clearfix" >
+            .option-sg a.active, .option-mbile-sg .active {
+                background-color: #fffca8 !important;
+            }
+
+            .option-mbile-sg .active span{
+                color: #F20028;
+            }
+
+            .option-sg a {
+               
+                background-size: 100%;
+                height: 83px;
+                border-bottom-right-radius: 12px;
+                border-bottom-left-radius: 12px;
+            }
+
+            .option-sg a {
+                display: inline-block;
+                vertical-align: middle;
+                width: 218px;
+                margin: 0 20px 0 0;
+                background: #fff;
+                border-radius: 8px;
+                height: 70px;
+                padding: 8px 0;
+            }
+
+           
+
+            .option-sg a span {
+                display: inline-block;
+                overflow: hidden;
+                vertical-align: middle;
+                color: #555;
+                font-size: 18px;
+                line-height: 22px;
+                padding: 8px 0 0;
+            }
+
+            
+        </style>
+        
+        <div class="prd-promo has-banner" style="background: #eb3a7f;" data-html-id="3109">
+
+            @if(!empty($bannerUnderSale[0]['image']))
+
+            <!-- <div class="prd-promo__top clearfix" >
 
                 <a data-cate="0" data-place="1868" href="#" ><img style="cursor:pointer" src="{{ asset($bannerUnderSale[0]['image']) }}" alt="banner-summer" width="1200"></a>                
-            </div>
-           
+            </div> -->
+
+            @endif
+
+
            @if(!empty($product_sale)&&$product_sale->count()>0)
+
+           @if(!$smart_phone)
+           <div class="option-sg">
+
+                <a href="javascript:;" data-is-recommend-tab="true" class="active option-sale" data-id="0">
+                    <img data-src="{{ asset('background/like2.png') }}" class=" ls-is-cached lazyloaded" alt="Cho bạn" width="50" height="50" src="{{ asset('background/like2.png') }}">
+                    <span>Cho bạn</span>
+                </a>
+
+                <a href="javascript:;" data-campaign="282" data-group="3507"  class="option-sale" data-id="1">
+                    <img data-src="{{ asset('background/like1.png') }}" class=" ls-is-cached lazyloaded" alt="Sản phẩm luxury" width="50" height="50" src="{{ asset('background/like1.png') }}">
+                    <span>Sản phẩm Luxury</span>
+                </a>
+                
+            </div>
+
+            @else
+
+            <div class="option-mbile-sg">
+                <div>
+                    <button class="btn btn-primary optionsg active" data-id="0"><span>Cho bạn</span></button>
+                </div>
+
+                <div class="ml-2">
+                    <button class="btn btn-primary optionsg" data-id="1"><span>Sản phẩm Luxury</span></button>
+                </div>
+   
+            </div>
+
            
-            <div class="listproduct slider-promo owl-carousel banner-sale" data-size="20">
+
+            @endif
+
+
+
+            
+            <div class="block-product__content mobile-sale-product" data-is-recommend-tab="true">
+
+                @if($smart_phone ===true)
+
+                <div class="listproduct slider-promo owl-carousel banner-sale" id="banner-sale-mobile" data-size="20">
 
                 @foreach($product_sale as  $value)
                 @if($value->active==1)
                 <div class="item">
-                    <span class="icon_sale">
-                        <img class="sale-banner ls-is-cached lazyloaded" alt="hot" data-src="{{ asset('images/background-image/xahang.png') }}" src="{{ asset('images/background-image/xahang.png') }}">
-                    </span>
+                    
                     <a href='{{ route('details', $value->Link) }}' class=" main-contain" data-s="OnlineSavingCMS" data-site="2" data-pro="3" data-cache="False" data-name="M&#xE1;y gi&#x1EB7;t LG Inverter 8.5 kg FV1408S4W" data-id="227121" data-price="8840000.0" data-brand="LG" data-cate="M&#xE1;y gi&#x1EB7;t" data-box="BoxHome">
                         <div class="item-label">
                         </div>
@@ -409,7 +1114,10 @@
                             <img data-src="{{ asset($value->Image) }}"   class="lazyload"  data-src="{{ asset($value->Image) }}" alt="{{ $value->Name }}" width=210 height=210>
                         
                         </div>
-                        <h3>{{ $value->Name }}</h3>
+                        <div class="title-name">
+                            <h3>{{ $value->Name }}</h3>
+                        </div>
+                        
                         <strong class="price">{{  @str_replace(',' ,'.', number_format($value->Price))  }}.&#x20AB;</strong>
                         <div class="item-rating">
                             <p>
@@ -421,59 +1129,257 @@
                             </p>
                         </div>
                     </a>
+
+                    <?php  
+
+                            if(!Cache::has('gifts_Fe_'.$value->id)){
+
+                                $gifts = gift($value->product_id);
+                                
+                                
+                                Cache::put('gifts_Fe_'.$value->product_id, $gifts,100);
+
+                            }
+                            
+                            $gift = Cache::get('gifts_Fe_'.$value->product_id);
+
+
+
+                        ?>
+
+                        @if(!empty($gift))
+                            <?php 
+                                $gifts = $gift['gifts'];
+                                $gift = $gift['gift']; 
+                               
+                            ?>
+
+                            {{ $gifts->type ==1?'k/m chọn 1 trong 2':'' }}
+                            <div class="option-gift">
+
+                                 @foreach($gift as $gifts)
+
+                                <div class="quatang"><img src="{{ asset($gifts->image) }}"></div>
+                                @endforeach
+                            </div>
+
+                            @if(!empty($gifts->price))
+
+                            <?php 
+
+                                $id_checkpromotion = $value->promotion_box==1?'':$value->id;
+
+                                $price_gift = pricesPromotion($value->Price, $id_checkpromotion)===''?str_replace(',' ,'.', number_format($gifts->price)):pricesPromotion($value->Price, $id_checkpromotion);
+
+                            ?>
+
+                            <span> Quà tặng trị giá <strong>{{  $price_gift }}  </strong> </span>
+                            @endif  
+
+                         
+
+                        @endif
+
+
+                    <a href="javascript:void(0)" class="compare-show" data-id="{{ $value->product_id }}">
+                        <i class="fa-solid fa-plus"></i>
+                            so sánh
+                    </a>
                 </div>
                 @endif
 
                 @endforeach
-                
+                </div>
+
+
+                @else
+                <ul class="listproduct" data-total="39">
+                    @foreach($product_sale as $keys => $value)
+                    @if($value->active==1)
+
+                    <li data-id="{{ $keys }}" data-pos="1" class="item ">
+                        <a href='{{ route('details', $value->Link) }}' class=" main-contain" data-s="OnlineSavingCMS" data-site="2" data-pro="3" data-cache="False" data-name="M&#xE1;y gi&#x1EB7;t LG Inverter 8.5 kg FV1408S4W" data-id="227121" data-price="8840000.0" data-brand="LG" data-cate="M&#xE1;y gi&#x1EB7;t" data-box="BoxHome">
+                            <div class="item-label">
+                            </div>
+                            <div class="item-img">
+                                <img data-src="{{ asset($value->Image) }}"   class="lazyload"  data-src="{{ asset($value->Image) }}" alt="{{ $value->Name }}" width=210 height=210>
+                            
+                            </div>
+                            <div class="title-name">
+                                <h3>{{ $value->Name }}</h3>
+                            </div>
+                            
+                            <strong class="price">{{  @str_replace(',' ,'.', number_format($value->Price))  }}.&#x20AB;</strong>
+                            <div class="item-rating">
+                                <p>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </p>
+                            </div>
+                        </a>
+
+                        <?php  
+
+                            if(!Cache::has('gifts_Fe_'.$value->id)){
+
+                                $gifts = gift($value->product_id);
+                                
+                                
+                                Cache::put('gifts_Fe_'.$value->product_id, $gifts,100);
+
+                            }
+                            
+                            $gift = Cache::get('gifts_Fe_'.$value->product_id);
+
+
+
+                        ?>
+
+                        @if(!empty($gift))
+                            <?php 
+                                $gifts = $gift['gifts'];
+                                $gift = $gift['gift']; 
+                               
+                            ?>
+
+                            {{ $gifts->type ==1?'k/m chọn 1 trong 2':'' }}
+                            <div class="option-gift">
+
+                                 @foreach($gift as $gifts)
+
+                                <div class="quatang"><img src="{{ asset($gifts->image) }}"></div>
+                                @endforeach
+                            </div>
+
+                            @if(!empty($gifts->price))
+                            <?php 
+
+                                $id_checkpromotion = $value->promotion_box==1?'':$value->id;
+
+                                $price_gift = pricesPromotion($value->Price, $id_checkpromotion)===''?str_replace(',' ,'.', number_format($gifts->price)):pricesPromotion($value->Price, $id_checkpromotion);
+
+            
+                            ?>
+
+
+
+                            <span> Quà tặng trị giá <strong>{{  $price_gift }} </strong> </span>
+                            @endif  
+
+                         
+
+                        @endif
+
+
+
+                        <a href="javascript:void(0)" class="compare-show" data-id="{{ $value->product_id }}">
+                            <i class="fa-solid fa-plus"></i>
+                                so sánh
+                        </a>
+                    </li>
+                    @endif
+                    @endforeach
+                </ul>
+                @endif
+
+
+                <div class="prd-promo__top clearfix" >
+                    <a class="readmore-btn" href="{{ route('sale-home') }}"><span>Xem tất cả</span></a>                
+                </div>
             </div>
             @endif
 
-            <div class="prd-promo__top clearfix" >
-                <a class="readmore-btn" href="{{ route('sale-home') }}"><span>Xem tất cả</span></a>                
-            </div>
+            
             
         </div>
         
 
         <div  class="owl-slider-count" style="display: none;">{{ @$group->count() }}</div> 
+        <?php
+            $defineBannerGr = [0=>6, 1=>7, 2=>8, 3=>9, 6=>10, 7=>11];
+
+         ?>
+
         @foreach($group as $key => $groups)
 
             <?php
-                
-                
-                Cache::forget('hot'.$groups->id);
-                Cache::forget('data'.$groups->id);
-                if(!Cache::has('hot'.$groups->id) ){
-                    $hot = DB::table('hot')->select('product_id')->where('group_id', $groups->id)->get()->pluck('product_id');
-                    Cache::put('hot'.$groups->id, $hot, 10000);
+               
+                $hot = Cache::rememberForever('hot'.$groups->id, function() use($groups){
+
+                    $hot = DB::table('hot')->select('product_id')->where('group_id', $groups->id)->orderBy('orders', 'asc')->get()->pluck('product_id');
+
+                    return $hot;
+
+                    
+                });
+
+                // xử lý khi không có cache
+
+                if(Cache::has('product_search'))
+                {
+                    $data = Cache::get('product_search')->whereIn('id', $hot->toArray())->sortByDesc('orders_hot');
                 }
-                 $hot = Cache::get('hot'.$groups->id);
-                if(!Cache::has('data'.$groups->id)){
-                    $datas =  DB::table('products')->whereIn('id', $hot)->where('active', 1)->get();
-                    $datas = Cache::put('data'.$groups->id,  $datas, 10000);
+                else{
+
+                    $productss = App\Models\product::select('Link', 'Name', 'Image', 'Price', 'id', 'ProductSku', 'promotion', 'promotion_box')->where('active', 1)->get();
+
+                    Cache::forever('product_search',$productss);
+
+                    $data = Cache::get('product_search')->whereIn('id', $hot->toArray())->sortByDesc('orders_hot');
                 }
                
-                $data = Cache::get('data'.$groups->id);
+
+
             ?>
+
         @if(!empty($data) && $data->count()>0)
 
-         
+        <?php 
+            if(!empty($defineBannerGr[$key])){
+                $banners_group = Cache::rememberForever('banners_groups__'.$defineBannerGr[$key], function() use($defineBannerGr, $key){
+
+                    $banners_group = App\Models\banners::where('option', $defineBannerGr[$key])->where('active', 1)->get();
+
+                    return $banners_group;
+                });
+            }
+
+        ?>
+         @if($banners_group->count()>0)
+
+        <div class="banner"> 
+            @foreach($banners_group as $value)
+            <a href="{{ $value->link }}" title="{{ $value->title }}" class="item" target="_self"> 
+                <img src="{{ asset($value->image) }}" data-src="{{ asset($value->image) }}" class="lazy loaded" alt="{ $value->title }}" data-was-processed="true"> 
+            </a> 
+            @endforeach
+            
+        </div>
+        @endif
+
         <div class="box-common _cate_1942">
             <ul class="box-common__tab box-tab-mobile">
                 <li class="active-tab" data-cate-id="1942"><a href="{{  @$groups->link }}">{{  @$groups->name }}</a></li>
-                <?php 
-                    if(empty(Cache::get('listGroupsShow'.$groups->id))){
-                        $listGroupsShows =   App\Models\groupProduct::select('name', 'link')->where('parent_id', $groups->id)->get();
-                        Cache::put('listGroupsShow'.$groups->id,  $listGroupsShows, 10000);
-                    }
-                    $listGroupsShow = Cache::get('listGroupsShow'.$groups->id);
+                <?php
+
+                    $listGroupsShows = Cache::rememberForever('listGroupsShow'.$groups->id, function() use($groups){
+
+                         $listGroupsShow =   App\Models\groupProduct::select('name', 'link')->where('parent_id', $groups->id)->take(4)->get();
+
+                        return $listGroupsShow??'';
+                    });
                 ?>
 
-                @if(!empty($listGroupsShow))
-                @foreach($listGroupsShow as $valueslist)
+                @if(!empty($listGroupsShows) && $listGroupsShows->count()>0)
 
-                <li data-cate-id="2162" data-prop-value-ids="90016" class="desk-t"><a href="{{ route('details', $valueslist->link) }}">{{ @$valueslist->name }}</a></li>
+                @foreach($listGroupsShows as $valueslist)
+
+            
+                <li data-cate-id="2162" data-prop-value-ids="90016" class="desk-t"><a href="{{ route('details', $valueslist->link) }}">
+                    {{ @str_replace('quần áo', '', $valueslist->name)  }}</a></li>
                 @endforeach
                 @endif
             </ul>
@@ -483,20 +1389,33 @@
                 </div>
                 <div class="box-common__content">
                     <div class="listproduct slider-home owl-carousel" id="banner-product_{{ $key }}" data-size="10">
+
                         @foreach($data as $datas)
-                        @if($datas->active==1)
-                        
+
                         <div class="item"  data-pos="1">
                             <a href='{{ route('details', $datas->Link) }}'>
                                 @if($datas->Price>=3000000)
-                                <span class="icon_tragop">Trả góp <i>0%</i></span>
+                                <span class="icon_tragop icons-tra-gops">Trả góp <i>0%</i></span>
                                 @endif
+
+                                @if(in_array($datas->id, $new_product->toArray()))
+                                <span class="icon_tragop icons-new">Model 2022</span>
+                                @endif
+                                
                                 <div class="item-img">
                                     <img data-src="{{ asset($datas->Image) }}" class="lazyload"   alt="{{ $datas->Name }}" width=210 height=210>
                                     
                                 </div>
-                               <p class="result-labels"><img class="sale-banner ls-is-cached lazyloaded" alt="hot" data-src="{{ asset('images/background-image/hot.jpg') }}" src="{{ asset('images/background-image/hot.jpg') }}"></p>
-                                <h3>{{ $datas->Name }}</h3>
+
+                                @if(in_array($datas->id, $hots->toArray()))
+                                <p class="result-labels"><img class="sale-banner ls-is-cached lazyloaded" alt="hot" data-src="{{ asset('images/background-image/i-con-hot.gif') }}" src="{{ asset('images/background-image/i-con-hot.gif') }}"></p>
+                                @else
+                                <div style="height: 30px;"></div>
+                                @endif
+
+                               <div class="title-name">
+                                    <h3>{{ $datas->Name }}</h3>
+                                </div>
                                 @if($groups->id<5)
                                 <?php
                                         if($groups->id == 1){
@@ -504,15 +1423,18 @@
                                         }
                                         else{
                                             $searchstring = 'inverter';
+
                                         }
                                        
                                     $infoName  = str_replace($datas->ProductSku,'', strstr($datas->Name, $datas->ProductSku));
                                     if(!empty($infoName)){
+
                                         $arNames = [];
                                         if(strpos($datas->Name, $searchstring)){
+
                                             $arNames = explode($searchstring, $infoName);
+
                                         }
-                            
                                     }
                                 ?>
                                
@@ -525,8 +1447,23 @@
                                 </div>
                                 
                                 @endif
-                                <strong class="price">{{ @number_format($datas->Price , 0, ',', '.')}}&#x20AB;</strong>
+                                <div class="icons-promotion-per">
+                                    <strong class="price">{{ @number_format(!empty($ar_Deal_Pd[$datas->id])?$ar_Deal_Pd[$datas->id]:$datas->Price , 0, ',', '.')}}&#x20AB;</strong>
 
+                                    @if(!empty($datas->manuPrice))
+
+                                    <?php
+                                    $discount =  round(((intval($datas->manuPrice) - intval($datas->Price))/intval($datas->manuPrice))*100)
+                                    ?>
+                                    
+                                    <span class="price_market">{{ @number_format($datas->manuPrice , 0, ',', '.')}} <sup>đ</sup></span>
+
+                                    <span class="discount_percent">-{{ $discount }}%</span>
+
+                                    @endif
+
+                                </div>
+                                
                            
                                 <div class="item-rating">
                                     <p>
@@ -539,46 +1476,82 @@
                                 </div>
 
                                 <?php  
+
                                     if(!Cache::has('gifts_Fe_'.$datas->id)){
+
                                         $gifts = gift($datas->id);
         
+
                                         if(empty($gifts)){
                                             $gifts = groupGift($groups->id);
                                             
                                             if(empty($gifts)){
+
                                                 $gifts =[];
                                             }
                                         }
                                         Cache::put('gifts_Fe_'.$datas->id, $gifts,100);
+
                                     }
                                    
                                     $gift = Cache::get('gifts_Fe_'.$datas->id);
                                 ?>
 
-                                @if(!empty($gift))
 
-                                    <?php 
-                                        $gifts = $gift['gifts'];
-                                        $gift = $gift['gift']; 
-                                    ?>
-
-                                    {{ $gifts->type ==1?'k/m chọn 1 trong 2':'' }}
-                                    <div class="option-gift">
-
-                                         @foreach($gift as $gifts)
-
-                                        <div class="quatang"><img src="{{ asset($gifts->image) }}"></div>
-                                        @endforeach
-                                    </div>
-                                   
-                                @endif
-                                
                             </a>
+
+                             <a href="javascript:void(0)" class="compare-show" data-id="{{ $datas->id }}" data-group="{{ $groups->id }}">
+                                <i class="fa-solid fa-plus"></i>
+                                    so sánh
+                            </a>
+
+                            @if(!empty($gift))
+                                <?php 
+                                    $gifts = $gift['gifts'];
+                                    $gift = $gift['gift']; 
+                                   
+                                ?>
+
+                                {{ $gifts->type ==1?'k/m chọn 1 trong 2':'' }}
+                                <div class="option-gift">
+
+                                     @foreach($gift as $gifts)
+
+                                    <div class="quatang"><img src="{{ asset($gifts->image) }}"></div>
+                                    @endforeach
+                                </div>
+
+                                @if(!empty($gifts->price))
+
+
+                                <?php 
+
+                                $id_checkpromotion = $datas->promotion_box==1?'':$datas->id;
+
+                                $price_gift = pricesPromotion($datas->Price, $id_checkpromotion)===''?str_replace(',' ,'.', number_format($gifts->price)):pricesPromotion($datas->Price, $id_checkpromotion);
+
+
+                
+                                ?>
+
+
+                                <span> Quà tặng trị giá <strong>{{  $price_gift }} </strong> </span>
+                               
+                                @endif  
+
+                            @endif
+
+                            @if(!empty($datas->promotion))
+                                <div class="gift-text mt-2">
+                                    <span>Có 1 khuyến mãi</span>
+                                </div>
+
+                            @endif
+
                         </div>
-                        @endif
+                        
                         @endforeach
-                        
-                        
+                    
                     </div>
                     <a class="readmore-txt blue" href="{{ route('details', @$groups->link)  }}"><span>Xem tất cả {{ @$groups->name }}</span></a>
                 </div>
@@ -589,77 +1562,69 @@
         @endif
         @endforeach
         <!-- End  -->
-     
-    
+
+        @if(!empty($bannerscrollRight) && !empty($bannerscrollLeft))
         <!-- Banner dọc 2 bên -->
-        <div class="sticky-sidebar" style="display: none;">
-            <a data-cate="0" data-place="1863" href="#" class="banner-left"><img style="cursor:pointer" src="#" alt="Theme Giáng Sinh Trái" width="79" height="271"></a>
-            <a data-cate="0" data-place="1864" href="#" class="banner-right"><img style="cursor:pointer" src="#" alt="Theme Giáng Sinh Phải" width="79" height="271"></a>        
+        <div class="sticky-sidebar">
+            <a data-cate="0" data-place="1863" href="{{ $bannerscrollLeft->link }}" class="banner-left" id="banner-left-scroll">
+                <img style="cursor:pointer; height:auto;" src="{{ asset($bannerscrollLeft->image) }}" alt="Theme Giáng Sinh Trái" width="179" height="271">
+            </a>
+            <a data-cate="0" data-place="1864" href="{{ $bannerscrollRight->link }}" class="banner-right" id="banner-right-scroll"><img style="cursor:pointer; height:auto;" src="{{ asset($bannerscrollRight->image) }}" alt="Theme Giáng Sinh Phải"></a>        
         </div>
-        
+        @endif
         <?php  
-           
+            
             $post = Cache::remember('post_home',10000, function() {
-                return App\Models\post::where('active',1)->where('hight_light', 1)->OrderBy('created_at', 'desc')->select('link', 'title', 'image')->limit(6)->get()->toArray();
+                return App\Models\post::where('active',1)->where('hight_light', 1)->OrderBy('created_at', 'desc')->select('link', 'title', 'image')->limit(7)->get()->toArray();
             }); 
+
         ?>
-                    
         @if(isset($post) && count($post)>0)
-        <div class="applications">
-            <div class="col1">
-                <!-- Tư vấn chọn mua -->
-                <div class="ttl-main">
-                    <h4 class="title-layout">Tin tức nổi bật</h4>
-                    <a href="{{ route('tin') }}" class="readmore-txt blue">Xem thêm</a>
-                </div>
 
-                <div class="col1-big div-title-news">
-                    <a href="{{ route('details', $post[0]['link']) }}" class="col1-big big-title-href">
-                        <div class="span texts">
-                            <p class="text-blog">{{ $post[0]['title'] }}</p>
-                        </div>
-                    </a>
-                </div>
-                    
+        <div class="my_utilities">
+            <p class="title_pro news-home">Tin tức nổi bật </p>
 
-                <div class="col1__ct" data-size="4">
-                    <a href="{{ route('details', $post[0]['link']) }}" class="col1-big">
-                        <div class="col1-big-img">
-                            <img data-src="{{ asset( $post[0]['image'])  }}" class=" ls-is-cached lazyloaded" alt="{{ $post[0]['title'] }}" src="{{ $post[0]['image'] }}">
-                        </div>
-                        
-                    </a>
-                    <div class="col1-simple">
+            <br>
+           
+            <div class="videos">
+                <a href="{{ route('details', $post[0]['link']) }}" class="video_big not_video " title="{{ $post[0]['title'] }}" idx="5229">
+                    <div class="img_video"> <img src="{{ asset($post[0]['image']) }}" data-src="{{ asset($post[0]['image']) }}" alt="Iphone lock là gì? Các cách kiểm tra Iphone lock dễ dàng" class="lazy loaded" style="width: 100%;" data-was-processed="true"> </div>
+                    <div class="title_video">
+                        <h3> <span>{{ $post[0]['title'] }}</span> </h3>
+                    </div>
+                </a>
 
-                        @for($i=1; $i<count($post); $i++)
+                <div class="video_small">
 
-                        <a href="{{ route('details', $post[$i]['link']) }}" class="">
-                            <div class="spl-item__img">
-                                <img data-src="{{ asset($post[$i]['image']) }}" class=" lazyloaded" alt="{{ $post[$i]['title'] }}" src="{{ asset($post[$i]['image']) }}">
-                            </div>
-                            <div class="spl-item__content">
-                                <p class="spl-item-title">{{ $post[$i]['title'] }}</p>
+                    @for($i=1; $i<count($post); $i++)
+
+                        <a href="{{ route('details', $post[$i]['link']) }}" class="video_small_item not_video " title="{{ $post[$i]['title'] }}" idx="5228">
+                            <div class="img_video"> <img src="{{ asset($post[$i]['image']) }}" data-src="{{ asset($post[$i]['image']) }}" class="lazy loaded" alt="{{ $post[$i]['title'] }}" data-was-processed="true"> </div>
+                            <div class="title_video">
+                                <h3> <span>{{ $post[$i]['title'] }}</span> </h3>
                             </div>
                         </a>
 
-                        @endfor
-                    </div>
+                    @endfor
+                   
                 </div>
-                <!-- End -->
             </div>
         </div>
-        
-         @endif
+        @endif
+                    
+
         <div class="bottom-search">
             <p>Tìm kiếm nhiều:</p>
 
             <?php 
                 if(empty(Cache::get('link_much'))){
                     $links=   DB::table('muchsearch')->get(); 
+
                     Cache::put('link_much',  $links, 10000);
                 }
               
                 $link = Cache::get('link_much');
+
              ?>
 
             @isset($link)
@@ -671,11 +1636,29 @@
         </div>
         
     </section>
-   
     <!-- End -->
     <!-- Hiệu ứng ... rơi -->
-    <!-- <div class="falling-container" aria-hidden="true">
+    <div class="falling-container" aria-hidden="true">
         <div class="falling-item">
+            ●
+        </div>
+        <div class="falling-item">
+            ●
+        </div>
+        <div class="falling-item">
+            ●
+        </div>
+        <div class="falling-item">
+            ●
+        </div>
+
+        <div class="falling-item">
+            ●
+        </div>
+        <div class="falling-item">
+            ●
+        </div>
+        <!-- <div class="falling-item">
             ●
         </div>
         <div class="falling-item">
@@ -689,13 +1672,18 @@
         </div>
         <div class="falling-item">
             ●
-        </div>
-        <div class="falling-item">
-            ●
-        </div>
-    </div> -->
+        </div> -->
+    </div>
     <!-- End -->
-    
+
+    <div class="pine-tree"> 
+        <img class="pine-tree-left " src="{{ asset('public/background/mai-tree.png')}}" data-was-processed="true"> 
+        <img class="pine-tree-right " src="{{ asset('public/background/dao-tree.png')}}" data-was-processed="true"> 
+        <!-- <img class="tuyet-left loading" src="{{ asset('public/background/Asset6@3x.png')}}" data-was-processed="true"> 
+        <img class="tuyet-right loading" src="{{ asset('public/background/Asset7@3x.png')}}" data-was-processed="true">  -->
+       <!--  <img class="santa-left loading" src="{{ asset('public/background/Asset4@3x.png')}}" data-was-processed="true"> 
+        <img class="santa-right loading" src="{{ asset('public/background/Asset8@3x.png')}}" data-was-processed="true"> -->
+    </div>
 
      <script src="https://unpkg.com/sweetalert2@7.18.0/dist/sweetalert2.all.js"></script>
     @if (session('success'))
@@ -715,11 +1703,197 @@
 
     @push('script')
 
+    <style type="text/css">
+        
+    </style>
 
 
     <script type="text/javascript">
+        if ($(window).width < 600){
+            
+
+            $('#navbarNavAltMarkup').removeClass('collapse');
+
+        }
+
+
+        function addToCart(id) {
+    
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+        
+            $.ajax({
+                type: 'POST',
+                url: "{{ route('cart') }}",
+                data: {
+                    product_id: id,
+                    gift_check:$('#gift_checked').val()
+                       
+                },
+                beforeSend: function() {
+                   
+                    $('.loader').show();
+
+                },
+                success: function(result){
+        
+                   //  numberProductCart = $(".number-cart").text();
+        
+                   //  console.log(numberProductCart);
+                   
+                   // numberCart = result.find(numberProductCart);
+        
+                    $('#tbl_list_cartss').append(result);
+        
+                    const numberCart = $('#number-product-cart').text();
+        
+                    $('.number-cart').text(numberCart);
+        
+                    $('#exampleModal').modal('show'); 
+                    $('.loader').hide();
+                    
+                }
+            });
+        }
+       
+        //  $('.sticky-sidebar').hide();
+        // $(window).scroll(function (){
+
+        //     if($(window).scrollTop()>$('.menus-banner').offset().top){
+
+
+        //         var w = window.innerWidth;
+
+        //         width = (w - 1200)/2;
+
+        //         $('.sticky-sidebar').show();
+
+        //         // $('#banner-left-scroll').css(leftClass);
+
+        //         // $('#banner-right-scroll').css(rightClass);
+               
+        //     }
+        //     else{
+        //         $('.sticky-sidebar').hide();
+        //     }
+
+        // })   
+
+        let ar_product = [];
+
+        var group_id   = [];
+
+
+        
+
+
+        $('.compare-show').click(function() {
+
+            id = $(this).attr('data-id');
+
+            data_id = $(this).attr('data-group');
+
+            // kiểm tra đã tick so sánh hay chưa
+
+            if($(this).find('.fa-solid').hasClass('fa-check')){
+
+                $(this).find('.fa-solid').removeClass('fa-check');
+
+                $(this).find('.fa-solid').addClass('fa-plus');
+
+                $(this).css('color','#59A0DA');
+
+                index = ar_product.indexOf(id);
+
+                if (index !== -1) {
+                    ar_product.splice(index, 1);
+                }
+            }
+            else{
+                $(this).css('color','red');
+
+                $(this).find('.fa-solid').removeClass('fa-plus');
+
+                $(this).find('.fa-solid').addClass('fa-check');
+
+                if(ar_product.length<3){
+
+                    ar_product.push(id);
+
+                } 
+                else{
+                    alert('không thể thêm sản phẩm nữa');
+                }    
+            }
+
+           
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                type: 'POST',
+                url: "{{ route('compare-show') }}",
+                data: {
+                    ar_product_id: JSON.stringify(ar_product),
+                    data_id:data_id,
+                       
+                },
+                success: function(result){
+                   $('#js-compare-holder').html('');
+                   $('#js-compare-holder').append(result);
+                }
+            });         
+            
+          
+
+            $('.global-compare-group').show();
+        });
+
+
+        function compare_link() {
+
+             $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                type: 'POST',
+                url: "{{ route('check-unique-cate') }}",
+                data: {
+                    ar_product_id: JSON.stringify(ar_product),
+                      
+                },
+                success: function(result){
+                    if(result == 0){
+
+                        alert('có sản phẩm không cùng nhóm, không thể so sánh');
+                    }
+                    else{
+
+                       
+                        var link = '{{ route("so-sanh") }}?list='+ar_product+'&cate='+result;
+            
+                        location.href = link;
+                    }
+                   
+                }
+            });         
+           
+            
+        }
+
       
         loop = {{ $deal->count() }};
+
+
         times = [];
                   
         time = {{ $timestamp }};
@@ -730,7 +1904,9 @@
             for (var i = 0 ; i < loop; i++) {
                 run(i);
             }
+
         }, 1000);
+
         function run(key) {
             var hour =  $('.time'+key+' .hourss').text();
             var minutes =  $('.time'+key+' .minutess').text();
@@ -748,6 +1924,7 @@
                  
                   s = 59;
             }
+
             // Nếu số phút = -1 tức là đã chạy ngược hết số phút, lúc này:
             //  - giảm số giờ xuống 1 đơn vị
             //  - thiết lập số phút lại 59
@@ -755,13 +1932,20 @@
                 h -= 1;
                 m = 59;
             }
+
              if (h < 0){
                 $('.time'+key).remove();
+
                 priceSet =  $('.desc-deal'+key+' .price-old').text();
+
                 $('.desc-deal'+key+' .price-old').css('text-decoration','none');
+
                 $('.desc-deal'+key+' .price-new').text(priceSet);
+
               }  
+
             hour =  h.toString();
+
             minutes =  m.toString();
             
             seconds =  s.toString();
@@ -774,8 +1958,11 @@
         if(window.innerWidth>768){
             $('.bar-top-lefts').show();
         } 
+
         var number_slider =  parseInt($('.owl-slider-count').text());
+
         for (i = 0; i < number_slider; i++) {
+
             $('#banner-product_'+i).owlCarousel({
                 
                 margin:10,
@@ -797,26 +1984,28 @@
             });
             
         }
-        $('.banner-sale').owlCarousel({
+
+
+        $('#banner-sale-mobile').owlCarousel({
             loop:true,
-            items:2.5,
+            
             margin:10,
             nav:true,
             navText: ["<i class='fa fa-chevron-left'></i>","<i class='fa fa-chevron-right'></i>"],
             responsive:{
                 0:{
-                    items:2.5
+                    items:2
                 },
                 600:{
-                    items:2.5
+                    items:2
                 },
                 1000:{
                     items:5
                 }
             }
         });
-       
-       
+
+
         $('.homebanners').owlCarousel({
             loop:true,
             margin:10,
@@ -828,6 +2017,7 @@
                 0:{
                     items:1
                 },
+
                  600:{
                     items:1
                 },
@@ -837,6 +2027,32 @@
                 }
             }
         });
+
+        
+
+        $('#sync1S').owlCarousel({
+            loop:false,
+            margin:10,
+            nav:true,
+            dots:false,
+            autoplay:false,
+            
+            navText: ["<i class='fa fa-angle-left'></i>","<i class='fa fa fa-angle-right'></i>"],
+            responsive:{
+                0:{
+                    items:1
+                },
+
+                 600:{
+                    items:2
+                },
+               
+                1000:{
+                    items:2
+                }
+            }
+        });
+
         $('.flash-sale-banner').owlCarousel({
             loop:false,
             margin:10,
@@ -849,6 +2065,7 @@
                 0:{
                     items:1
                 },
+
                  600:{
                     items:2
                 },
@@ -858,7 +2075,439 @@
                 }
             }
         });
+
+        function tracking(link){
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                type: 'POST',
+                url: "{{ route('click-banner') }}",
+                data: {
+                    link: link,
+                },
+                success: function(result){
+                    window.open(
+                      link,
+                      '_blank' 
+                    );
+                }
+            });     
+
+            
+        }
+
+        $('.optionsg').click(function(){
+            
+            var option = $(this).attr('data-id');
+            choose = (option==0)?1:0;
+            $('.optionsg').removeClass('active');
+            $(this).addClass('active');
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                type: 'POST',
+                url: "{{ route('showProductSaleMobile') }}",
+                data: {
+                    choose: choose,
+                },
+                success: function(result){
+                    
+
+                    $('.mobile-sale-product #banner-sale-mobile').remove();
+                   
+                   $('.mobile-sale-product').prepend(result);
+
+                    var owl = $("#banner-sale-mobile");
+
+                   
+
+                    owl.owlCarousel({
+                        loop:true,
+            
+                        margin:10,
+                        nav:true,
+                        navText: ["<i class='fa fa-chevron-left'></i>","<i class='fa fa-chevron-right'></i>"],
+                        responsive:{
+                            0:{
+                                items:2
+                            },
+                            600:{
+                                items:2
+                            },
+                            1000:{
+                                items:5
+                            }
+                        }
+                    });
+
+
+
+                }
+            });
+
+
+        })
+
+        
+
+        $('.option-sale').click(function(){
+            
+            var option = $(this).attr('data-id');
+            $('.option-sg a').removeClass('active');
+            choose = (option==0)?1:0;
+
+            $(this).addClass('active');
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                type: 'POST',
+                url: "{{ route('showProductSale') }}",
+                data: {
+                    choose: choose,
+                },
+                success: function(result){
+
+                    $('.block-product__content ul').remove();
+                   
+                   $('.block-product__content').prepend(result);
+
+                }
+            });
+
+        });
+
+
+        function clickDeal(flash_deal_id, id, dem) {
+
+
+                $('#navbarNavAltMarkup .navbar-nav').removeClass('actives');
+
+
+                $('.active_'+id).addClass('actives');
+
+                // classname =  $(this).attr('class');
+
+                // $('.deal'+flash_deal_id+' h3').removeClass('actives-click');
+
+                // $('.deal'+flash_deal_id+' .active_'+id).addClass('actives-click');
+
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
+                $.ajax({
+                    type: 'POST',
+                    url: "{{ route('showDealClick') }}",
+                    data: {
+                        product_id: id,
+                        flash_deal_id:flash_deal_id,
+                        key:dem,
+                        page:'index',
+                        checksoon:{{ $checksoon??1 }}
+                           
+                    },
+                    success: function(result){
+                       // numberCart = result.find($("#number-product-cart").text());
+
+                       $('.listpd').remove();
+
+                       // console.log(result);
+
+                       $('.container-productbox').prepend(result);
+
+
+                        // var owl = $('.deal-view'+flash_deal_id+' .flash-sale-banner');
+                        // owl.owlCarousel({
+                        //     loop:false,
+                        //     margin:10,
+                        //     nav:true,
+                        //     dots:false,
+                        //     autoplay:false,
+                            
+                        //     navText: ["<i class='fa fa-angle-left'></i>","<i class='fa fa fa-angle-right'></i>"],
+                        //     responsive:{
+                        //         0:{
+                        //             items:2
+                        //         },
+
+                        //          600:{
+                        //             items:2
+                        //         },
+                               
+                        //         1000:{
+                        //             items:4
+                        //         }
+                        //     }
+                        // });
+                    }
+                });    
+            }
         
     </script>
+
+
+   <!--   <script type="text/javascript">
+            
+
+
+            loop = {{ $deal->count() }};
+
+            times = [];
+                      
+            time = {{ $timestamp??15500 }};
+            number_deal_product =10;
+            //in time 
+          
+            setInterval(function(){
+                for (var i = 0 ; i < loop; i++) {
+                    run(i);
+                }
+
+                @foreach($define as $key => $value)
+
+                runs('.key{{ $key }}');
+
+                @endforeach
+                
+                
+            }, 1000);
+
+            function runs(key) {
+
+                var hour =  $(key+' .hour').text();
+                var minutes =  $(key+' .minutes').text();
+                var second =  $(key+' .second').text();
+
+
+                h =  parseInt(hour);
+                m = parseInt(minutes);
+                s = parseInt(second);
+                s--;
+                /*BƯỚC 1: CHUYỂN ĐỔI DỮ LIỆU*/
+                  // Nếu số giây = -1 tức là đã chạy ngược hết số giây, lúc này:
+                  //  - giảm số phút xuống 1 đơn vị
+                  //  - thiết lập số giây lại 59
+                if (s === -1){
+                      m -= 1;
+                     
+                      s = 59;
+                }
+
+                // Nếu số phút = -1 tức là đã chạy ngược hết số phút, lúc này:
+                //  - giảm số giờ xuống 1 đơn vị
+                //  - thiết lập số phút lại 59
+                if (m === -1){
+                    h -= 1;
+                    m = 59;
+                }
+
+                hour =  h.toString();
+
+                minutes =  m.toString();
+                
+                seconds =  s.toString();
+              
+                let currentHour = h<10?'0'+hour:''+hour;
+                let currentMinutes = m<10?'0'+minutes:''+minutes;
+                let currentSeconds = s<10?'0'+seconds:''+seconds;
+
+        
+                let currentTimeStr ='<span class="hour">'+ currentHour+'</span>:<span class="minutes">'+currentMinutes+'</span>:<span class="second">'+currentSeconds+'</span>';
+                $(key+' .clock').html(currentTimeStr);
+            }    
+
+
+            function clickDeal(flash_deal_id, id, dem) {
+
+                // $(this).addClass('actives');
+
+                classname =  $(this).attr('class');
+
+                $('.deal'+flash_deal_id+' h3').removeClass('actives-click');
+
+                $('.deal'+flash_deal_id+' .active_'+id).addClass('actives-click');
+
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
+                $.ajax({
+                    type: 'POST',
+                    url: "{{ route('showDealClick') }}",
+                    data: {
+                        product_id: id,
+                        flash_deal_id:flash_deal_id,
+                        key:dem,
+                           
+                    },
+                    success: function(result){
+                       // numberCart = result.find($("#number-product-cart").text());
+
+                       $('.deal-view'+flash_deal_id).html(result);
+
+                        var owl = $('.deal-view'+flash_deal_id+' .flash-sale-banner');
+                        owl.owlCarousel({
+                            loop:false,
+                            margin:10,
+                            nav:true,
+                            dots:false,
+                            autoplay:false,
+                            
+                            navText: ["<i class='fa fa-angle-left'></i>","<i class='fa fa fa-angle-right'></i>"],
+                            responsive:{
+                                0:{
+                                    items:2
+                                },
+
+                                 600:{
+                                    items:2
+                                },
+                               
+                                1000:{
+                                    items:4
+                                }
+                            }
+                        });
+                    }
+                });    
+            }
+
+            function run(key) {
+                var hour =  $('.time'+key+' .hourss').text();
+                var minutes =  $('.time'+key+' .minutess').text();
+                var second =  $('.time'+key+' .secondss').text();
+                h =  parseInt(hour);
+                m = parseInt(minutes);
+                s = parseInt(second);
+                s--;
+                /*BƯỚC 1: CHUYỂN ĐỔI DỮ LIỆU*/
+                  // Nếu số giây = -1 tức là đã chạy ngược hết số giây, lúc này:
+                  //  - giảm số phút xuống 1 đơn vị
+                  //  - thiết lập số giây lại 59
+                if (s === -1){
+                      m -= 1;
+                     
+                      s = 59;
+                }
+
+                // Nếu số phút = -1 tức là đã chạy ngược hết số phút, lúc này:
+                //  - giảm số giờ xuống 1 đơn vị
+                //  - thiết lập số phút lại 59
+                if (m === -1){
+                    h -= 1;
+                    m = 59;
+                }
+
+                 if (h < 0){
+                    $('.time'+key).remove();
+
+                    priceSet =  $('.desc-deal'+key+' .price-old').text();
+
+                    $('.desc-deal'+key+' .price-old').css('text-decoration','none');
+
+                    $('.desc-deal'+key+' .price-new').text(priceSet);
+
+                  }  
+
+                hour =  h.toString();
+
+                minutes =  m.toString();
+                
+                seconds =  s.toString();
+                $('.time'+key+' .hourss').text(h<10?'0'+hour:''+hour);
+                $('.time'+key+' .secondss').text(s<10?'0'+seconds:''+seconds);
+                $('.time'+key+' .minutess').text(m<10?'0'+minutes:''+minutes); 
+            }
+           
+                                                                                                                                                                     
+            if(window.innerWidth>768){
+                $('.bar-top-lefts').show();
+            } 
+
+
+            $('.banner-sale').owlCarousel({
+                loop:true,
+                items:2.5,
+                margin:10,
+                nav:true,
+                navText: ["<i class='fa fa-chevron-left'></i>","<i class='fa fa-chevron-right'></i>"],
+                responsive:{
+                    0:{
+                        items:2.5
+                    },
+                    600:{
+                        items:2.5
+                    },
+                    1000:{
+                        items:5
+                    }
+                }
+            });
+           
+           
+            $('.homebanners').owlCarousel({
+                loop:true,
+                margin:10,
+                nav:true,
+                // dots:true,
+                // dotsData: true,
+                navText: ["<i class='fa fa-chevron-left'></i>","<i class='fa fa-chevron-right'></i>"],
+                responsive:{
+                    0:{
+                        items:1
+                    },
+
+                     600:{
+                        items:1
+                    },
+                   
+                    1000:{
+                        items:1
+                    }
+                }
+            });
+
+            $('.flash-sale-banner').owlCarousel({
+                loop:false,
+                margin:10,
+                nav:true,
+                dots:false,
+                autoplay:false,
+                
+                navText: ["<i class='fa fa-angle-left'></i>","<i class='fa fa fa-angle-right'></i>"],
+                responsive:{
+                    0:{
+                        items:2
+                    },
+
+                     600:{
+                        items:2
+                    },
+                   
+                    1000:{
+                        items:4
+                    }
+                }
+            });
+        </script> -->
     @endpush
 @endsection      
