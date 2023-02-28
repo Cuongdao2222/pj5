@@ -18,7 +18,7 @@
             @media screen and (max-width:776px) {
                 .item-img_1942 {
 
-                    height: 180px;
+                    height: 180px !important;
                     line-height: 57px;
                 }
 
