@@ -235,7 +235,18 @@ width: auto !important;
         text-align: center;
         cursor: pointer;
         background: #ffde00;
-    }   
+    }  
+
+    @media only screen and (min-device-width: 77px) and (max-device-width: 1360px) {
+
+        #vote_avg{
+            margin: 20px 0;
+        }
+        .commitment ul {
+            line-height: 16px;
+        }
+     
+    } 
     
     @media screen and (min-width: 777px){
         .style-number-fone{
@@ -327,9 +338,7 @@ width: auto !important;
             margin-bottom: 10px;
         }
 
-        #vote_avg{
-            margin: 20px 0;
-        }
+        
         .prod-info .txt_20{
             font-size: 20px !important;
         }
