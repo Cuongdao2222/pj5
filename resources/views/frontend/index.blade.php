@@ -4,12 +4,12 @@
 
     @push('style')
 
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/home.css') }}?ver=22">
+     <link rel="stylesheet" type="text/css" href="{{ asset('css/home.css') }}?ver=22"> 
   
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/index.css') }}?ver=4">
+       <link rel="stylesheet" type="text/css" href="{{ asset('css/index.css') }}?ver=4"> 
         <link rel="stylesheet" type="text/css" href="{{ asset('css/homes.css') }}?ver=9">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/homecs.css') }}?ver=9">
-
+ 
         <style type="text/css">
            .gift-text span{
                 color: #D82A20;
@@ -244,39 +244,7 @@
         }   
     </style>   
 
-    <div class="locationbox__overlay"></div>
-    <div class="locationbox">
-        <div class="locationbox__item locationbox__item--right" onclick="OpenLocation()">
-            <p>Chọn địa chỉ nhận hàng</p>
-            <a class="cls-location" href="javascript:void(0)">Đóng</a>
-        </div>
-        <div class="locationbox__item" id="lc_title"><i class="icondetail-address-white"></i><span> Vui lòng đợi trong giây lát...</span></div>
-        <div class="locationbox__popup" id="lc_pop--choose">
-            <div class="locationbox__popup--cnt locationbox__popup--choose">
-                <div class="locationbox__popup--chooseDefault">
-                    <div class="lds-ellipsis">
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <b id="h-provincename" style="display:none!important" data-provinceid="3">Hồ Chí Minh</b>
-    </div>
-    <div class="locationbox__popup new-popup hide" id="lc_pop--sugg">
-        <div class="locationbox__popup--cnt locationbox__popup--suggestion new-locale">
-            <div class="flex-block">
-                <i class="icon-location"></i>
-                <p>Hãy chọn <b>địa chỉ cụ thể</b> để chúng tôi cung cấp <b>chính xác</b> th&#x1EDD;i gian giao h&#xE0;ng v&#xE0; t&#xEC;nh tr&#x1EA1;ng h&#xE0;ng.</p>
-            </div>
-            <div class="btn-block">
-                <a href="javascript:;" class="btn-location" onclick="OpenLocation()"><b>Chọn địa chỉ</b></a>
-                <a href="javascript:;" class="btn-location gray" onclick="SkipLocation()"><b>Đóng</b></a>
-            </div>
-        </div>
-    </div>
+  
 
     <section>
 
@@ -316,10 +284,7 @@
                 </div>
             </div>
         </div>
-        
-        
     </section>
-
 
     <section>
 
@@ -1636,6 +1601,9 @@
         </div>
         
     </section>
+
+
+   
     <!-- End -->
     <!-- Hiệu ứng ... rơi -->
     <div class="falling-container" aria-hidden="true">
@@ -1896,16 +1864,7 @@
 
         times = [];
                   
-        time = {{ $timestamp }};
-        number_deal_product =10;
-        //in time 
       
-        setInterval(function(){
-            for (var i = 0 ; i < loop; i++) {
-                run(i);
-            }
-
-        }, 1000);
 
         function run(key) {
             var hour =  $('.time'+key+' .hourss').text();
@@ -2263,251 +2222,6 @@
     </script>
 
 
-   <!--   <script type="text/javascript">
-            
-
-
-            loop = {{ $deal->count() }};
-
-            times = [];
-                      
-            time = {{ $timestamp??15500 }};
-            number_deal_product =10;
-            //in time 
-          
-            setInterval(function(){
-                for (var i = 0 ; i < loop; i++) {
-                    run(i);
-                }
-
-                @foreach($define as $key => $value)
-
-                runs('.key{{ $key }}');
-
-                @endforeach
-                
-                
-            }, 1000);
-
-            function runs(key) {
-
-                var hour =  $(key+' .hour').text();
-                var minutes =  $(key+' .minutes').text();
-                var second =  $(key+' .second').text();
-
-
-                h =  parseInt(hour);
-                m = parseInt(minutes);
-                s = parseInt(second);
-                s--;
-                /*BƯỚC 1: CHUYỂN ĐỔI DỮ LIỆU*/
-                  // Nếu số giây = -1 tức là đã chạy ngược hết số giây, lúc này:
-                  //  - giảm số phút xuống 1 đơn vị
-                  //  - thiết lập số giây lại 59
-                if (s === -1){
-                      m -= 1;
-                     
-                      s = 59;
-                }
-
-                // Nếu số phút = -1 tức là đã chạy ngược hết số phút, lúc này:
-                //  - giảm số giờ xuống 1 đơn vị
-                //  - thiết lập số phút lại 59
-                if (m === -1){
-                    h -= 1;
-                    m = 59;
-                }
-
-                hour =  h.toString();
-
-                minutes =  m.toString();
-                
-                seconds =  s.toString();
-              
-                let currentHour = h<10?'0'+hour:''+hour;
-                let currentMinutes = m<10?'0'+minutes:''+minutes;
-                let currentSeconds = s<10?'0'+seconds:''+seconds;
-
-        
-                let currentTimeStr ='<span class="hour">'+ currentHour+'</span>:<span class="minutes">'+currentMinutes+'</span>:<span class="second">'+currentSeconds+'</span>';
-                $(key+' .clock').html(currentTimeStr);
-            }    
-
-
-            function clickDeal(flash_deal_id, id, dem) {
-
-                // $(this).addClass('actives');
-
-                classname =  $(this).attr('class');
-
-                $('.deal'+flash_deal_id+' h3').removeClass('actives-click');
-
-                $('.deal'+flash_deal_id+' .active_'+id).addClass('actives-click');
-
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                });
-
-                $.ajax({
-                    type: 'POST',
-                    url: "{{ route('showDealClick') }}",
-                    data: {
-                        product_id: id,
-                        flash_deal_id:flash_deal_id,
-                        key:dem,
-                           
-                    },
-                    success: function(result){
-                       // numberCart = result.find($("#number-product-cart").text());
-
-                       $('.deal-view'+flash_deal_id).html(result);
-
-                        var owl = $('.deal-view'+flash_deal_id+' .flash-sale-banner');
-                        owl.owlCarousel({
-                            loop:false,
-                            margin:10,
-                            nav:true,
-                            dots:false,
-                            autoplay:false,
-                            
-                            navText: ["<i class='fa fa-angle-left'></i>","<i class='fa fa fa-angle-right'></i>"],
-                            responsive:{
-                                0:{
-                                    items:2
-                                },
-
-                                 600:{
-                                    items:2
-                                },
-                               
-                                1000:{
-                                    items:4
-                                }
-                            }
-                        });
-                    }
-                });    
-            }
-
-            function run(key) {
-                var hour =  $('.time'+key+' .hourss').text();
-                var minutes =  $('.time'+key+' .minutess').text();
-                var second =  $('.time'+key+' .secondss').text();
-                h =  parseInt(hour);
-                m = parseInt(minutes);
-                s = parseInt(second);
-                s--;
-                /*BƯỚC 1: CHUYỂN ĐỔI DỮ LIỆU*/
-                  // Nếu số giây = -1 tức là đã chạy ngược hết số giây, lúc này:
-                  //  - giảm số phút xuống 1 đơn vị
-                  //  - thiết lập số giây lại 59
-                if (s === -1){
-                      m -= 1;
-                     
-                      s = 59;
-                }
-
-                // Nếu số phút = -1 tức là đã chạy ngược hết số phút, lúc này:
-                //  - giảm số giờ xuống 1 đơn vị
-                //  - thiết lập số phút lại 59
-                if (m === -1){
-                    h -= 1;
-                    m = 59;
-                }
-
-                 if (h < 0){
-                    $('.time'+key).remove();
-
-                    priceSet =  $('.desc-deal'+key+' .price-old').text();
-
-                    $('.desc-deal'+key+' .price-old').css('text-decoration','none');
-
-                    $('.desc-deal'+key+' .price-new').text(priceSet);
-
-                  }  
-
-                hour =  h.toString();
-
-                minutes =  m.toString();
-                
-                seconds =  s.toString();
-                $('.time'+key+' .hourss').text(h<10?'0'+hour:''+hour);
-                $('.time'+key+' .secondss').text(s<10?'0'+seconds:''+seconds);
-                $('.time'+key+' .minutess').text(m<10?'0'+minutes:''+minutes); 
-            }
-           
-                                                                                                                                                                     
-            if(window.innerWidth>768){
-                $('.bar-top-lefts').show();
-            } 
-
-
-            $('.banner-sale').owlCarousel({
-                loop:true,
-                items:2.5,
-                margin:10,
-                nav:true,
-                navText: ["<i class='fa fa-chevron-left'></i>","<i class='fa fa-chevron-right'></i>"],
-                responsive:{
-                    0:{
-                        items:2.5
-                    },
-                    600:{
-                        items:2.5
-                    },
-                    1000:{
-                        items:5
-                    }
-                }
-            });
-           
-           
-            $('.homebanners').owlCarousel({
-                loop:true,
-                margin:10,
-                nav:true,
-                // dots:true,
-                // dotsData: true,
-                navText: ["<i class='fa fa-chevron-left'></i>","<i class='fa fa-chevron-right'></i>"],
-                responsive:{
-                    0:{
-                        items:1
-                    },
-
-                     600:{
-                        items:1
-                    },
-                   
-                    1000:{
-                        items:1
-                    }
-                }
-            });
-
-            $('.flash-sale-banner').owlCarousel({
-                loop:false,
-                margin:10,
-                nav:true,
-                dots:false,
-                autoplay:false,
-                
-                navText: ["<i class='fa fa-angle-left'></i>","<i class='fa fa fa-angle-right'></i>"],
-                responsive:{
-                    0:{
-                        items:2
-                    },
-
-                     600:{
-                        items:2
-                    },
-                   
-                    1000:{
-                        items:4
-                    }
-                }
-            });
-        </script> -->
+  
     @endpush
 @endsection      
