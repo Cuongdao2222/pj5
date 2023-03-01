@@ -31,8 +31,8 @@ class urlTo
     public function handle($request, Closure $next)
     {
 
-        $checklink = $this->getUrl();
-        
+        $checkLink = $this->getUrl();
+
         if(!empty($checkLink)){
 
             return redirect()->to($checkLink->target_path);
