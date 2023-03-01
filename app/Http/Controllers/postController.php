@@ -222,8 +222,8 @@ class postController extends AppBaseController
             return redirect(route('postcd'));
         }
         else{
-
-            return redirect(route('posts.index'));
+            return redirect()->back();
+            // return redirect(route('posts.index'));
         }    
     }
 
