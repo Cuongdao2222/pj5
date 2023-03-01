@@ -21,22 +21,21 @@ class urlTo
 
     public function getUrl()
     {
-
         $uri = $_SERVER['REQUEST_URI'];
 
-        return $uri;
+        $checkLink = DB::table('redirect')->select('target_path')->where('request_path', $uri)->get()->first();
+
+        return $checkLink;
+
     }
     public function handle($request, Closure $next)
     {
+        if(!empty($checkLink)){
+
+            return redirect()->to($checkLink->target_path);
+
+        }
+        return $next($request);
        
-        if($this->getUrl()==='/binh-thuy-dien-panasonic-22-lit-nc-eg2200csy'){
-
-           return redirect()->to('https://dienmaynguoiviet.vn/binh-thuy-dien-panasonic-2-2-lit-nc-eg2200csy');
-        }
-        else{
-            return $next($request);
-        }
-
-        
     }
 }
