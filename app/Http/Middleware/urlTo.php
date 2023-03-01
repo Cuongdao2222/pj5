@@ -21,7 +21,7 @@ class urlTo
 
     public function getUrl()
     {
-        
+
         $uri = $_SERVER['REQUEST_URI'];
 
         return $uri;
