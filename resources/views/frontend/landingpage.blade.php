@@ -17,8 +17,6 @@
             
         </style>
 
-         <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}"> 
-       
         
         <link rel="stylesheet" type="text/css" href="{{ asset('css/deal.css') }}">
        

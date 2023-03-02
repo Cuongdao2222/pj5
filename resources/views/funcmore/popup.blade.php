@@ -52,6 +52,7 @@
         <li id="tab_3"><a href="#" onclick="imageCss()">Hình nền website</a></li>
         <li id="tab_4"><a href="javascript:void(0)" onclick="muchSearch()">Tìm kiếm nhiều</a></li>
         <li id="tab_5"><a href="javascript:void(0)" onclick="meta()">Thẻ Meta trang Home</a></li>
+        <li id="tab_6"><a href="javascript:void(0)" onclick="eventClick()">Tab sự kiện</a></li>
         
     </ul>
     <form method="post" enctype="multipart/form-data" action="{{route('add-popup')}}">
@@ -210,6 +211,64 @@
 </div>
 
 
+<div class="modal fade" id="eventShow" tabindex="-1" role="dialog"  aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Event show</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="{{ route('update-event') }}" id="eventClicks" enctype="multipart/form-data">
+                    @csrf
+                    
+                    <?php 
+
+                        $event = DB::table('event')->where('id', 1)->first();
+                    ?>
+                    <table>
+                        <tbody>
+
+                            <tr>
+                                <td>Bật, tắt </td>
+                                <td>
+                                    
+                                    <input type="checkbox" class="color" name="checkbox1" id="turnoff" {{ $event->active==1?'checked':'' }}> 
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Ảnh</td>
+
+                                <td>
+                                    <img src="">
+                                </td>
+
+                                <td>
+                                    <input type="file" class="color" name="file_image" id="file_image"> 
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Lưu</button>
+                    </div>
+
+
+                </form>
+
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
 <div class="modal fade" id="meta" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -254,6 +313,7 @@
 
 <script type="text/javascript">
 
+
     function deleteLink(id){
         $.ajax({
            
@@ -295,6 +355,11 @@
     function meta(){
 
          $('#meta').modal('show');
+    }
+
+    function eventClick() {
+
+        $('#eventShow').modal('show');
     }
     
 

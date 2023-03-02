@@ -1,33 +1,4 @@
-<?php
-function pricesPromotion($price)
-        {
 
-            if($price>=50000000){
-
-                $gift_Price = '1.000.000 đ';
-
-            }
-            elseif ($price>5000000 && $price<=10000000) {
-
-                 $gift_Price = '100.000 đ';
-            }
-
-            elseif ($price>10000000 && $price<=30000000) {
-
-                 $gift_Price = '200.000 đ';
-            }
-
-            elseif ($price>30000000 && $price<50000000) {
-
-                $gift_Price = '500.000 đ';
-            }
-            else{
-                $gift_Price = '50.000 đ';
-            }
-            return $gift_Price;
-        }
-
-    ?>
 <div class="listproduct slider-promo owl-carousel banner-sale" id="banner-sale-mobile" data-size="20">
 
 @foreach($product_sale as  $value)
@@ -72,6 +43,28 @@ function pricesPromotion($price)
 
     ?>
 
+
+    <?php 
+
+    $gift_Price = pricesPromotion($value->Price, $value->id);
+
+    ?>
+
+    @if(!empty($gift_Price))
+    <div class="option-gift">
+
+             
+        <div class="quatang"><img src="https://dienmaynguoiviet.vn/uploads/gift/1677726874_tien1.jpg"></div>
+       
+    </div>
+
+    <div class="font-sz">
+        <span> Quà tặng trị giá <strong>{{ $gift_Price  }}</strong> </span>
+    </div>
+
+    @endif
+
+
     @if(!empty($gift))
         <?php 
             $gifts = $gift['gifts'];
@@ -89,7 +82,15 @@ function pricesPromotion($price)
         </div>
 
         @if(!empty($gifts->price))
-        <span> Quà tặng trị giá {{  pricesPromotion($value->Price) }} </span>
+
+        <?php 
+
+            $id_checkpromotion = $value->promotion_box==1?'':$value->id;
+
+            $price_gift = pricesPromotion($value->Price, $id_checkpromotion)===''?str_replace(',' ,'.', number_format($gifts->price)):pricesPromotion($value->Price, $id_checkpromotion);
+
+        ?>
+        <span> Quà tặng trị giá {{  $price_gift }} </span>
         @endif  
     @endif
 

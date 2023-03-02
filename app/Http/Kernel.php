@@ -32,6 +32,8 @@ class Kernel extends HttpKernel
             'throttle:580,1',
             \App\Http\Middleware\EncryptCookies::class,
             \App\Http\Middleware\BlockIpMiddleware::class,
+             \App\Http\Middleware\urlTo::class,
+           
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Session\Middleware\StartSession::class,
             // \Illuminate\Session\Middleware\AuthenticateSession::class,

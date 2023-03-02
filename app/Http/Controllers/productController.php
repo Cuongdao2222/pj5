@@ -63,6 +63,21 @@ class productController extends AppBaseController
         return view('products.create');
     }
 
+    public function promotionCheckDefault(Request $request)
+    {
+       
+        $value = $request->value;
+
+        $product_id = $request->product_id;
+
+
+        DB::table('products')->where('id', $product_id)->update(['promotion_box'=>$value]);
+
+        return $value;
+
+    }
+
+
     
 
     /**
@@ -541,7 +556,7 @@ class productController extends AppBaseController
 
             if(!Cache::has('product_search')){
 
-                $productss = product::select('Link', 'Name', 'Image', 'Price', 'id', 'ProductSku')->where('active', 1)->get();
+                $productss = product::select('Link', 'Name', 'Image', 'Price', 'id', 'ProductSku', 'promotion_box')->where('active', 1)->get();
 
                 Cache::forever('product_search',$productss);
 
@@ -645,16 +660,16 @@ class productController extends AppBaseController
     public function searchPdCompare(Request $request)
     {
 
-
         $clearData = trim($request->search);
 
         $clearData = strip_tags($clearData);
 
         $search = $clearData;
 
-        $product = product::where('Name', 'like', '%'.$search.'%')->Orwhere('ProductSku', $search)->first();
+        $product = product::where('Name', 'like', '%'.$search.'%')->where('active', 1)->Orwhere('ProductSku', $search)->where('active', 1)->first();
+        
 
-        return  $product;
+        return $product;
     }
 
     public function filterProduct(Request $request)
@@ -709,11 +724,11 @@ class productController extends AppBaseController
 
     public function search()
     {
+
         $array['ProductSku'] = 'UA50AU9000KXXVS';
 
         $array['Price'] = '500';
-        $search = product::where($array)->get();
-        print_r($search);
+        
     }
 
     public function viewHistoryPD($id)

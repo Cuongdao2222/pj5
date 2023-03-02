@@ -3,10 +3,10 @@
 @section('content') 
     @push('style')
         <link rel="stylesheet" type="text/css" href="{{ asset('css/categorycs.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/category.css') }}?ver=1"> 
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/category.css') }}?ver=12"> 
 
         <link rel="stylesheet" type="text/css" href="{{ asset('css/categories.css') }}?ver=3"> 
-         <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}?ver=16"> 
+  
          <link rel="stylesheet" type="text/css" href="{{ asset('css/home.css') }}?ver=1"> 
 
         <style type="text/css">
@@ -28,9 +28,23 @@
                 color: #000;
                 border: none; 
             }
+
+            option{
+                font-size: 14px !important;
+            }
             .icons-deal-active{
                 height: 90px;
             }
+
+            .footer_list-link, .footer-bottom, .sort-select label, #sort-by-option, .sort-total{
+                font-size: 14px;
+            }
+
+            .item-img_1942{
+                line-height: normal;
+            }
+
+
             
 
             @media screen and (max-width:776px) {
@@ -48,44 +62,13 @@
                     width: 117px;
                 }
             }
+
         </style>
 
     
     @endpush
 
-    <?php
-
-    function pricesPromotion($price)
-        {
-
-            if($price>=50000000){
-
-                $gift_Price = '1.000.000 đ';
-
-            }
-            elseif ($price>5000000 && $price<=10000000) {
-
-                 $gift_Price = '100.000 đ';
-            }
-
-            elseif ($price>10000000 && $price<=30000000) {
-
-                 $gift_Price = '200.000 đ';
-            }
-
-            elseif ($price>30000000 && $price<50000000) {
-
-                $gift_Price = '500.000 đ';
-            }
-            else{
-                $gift_Price = '50.000 đ';
-            }
-            return $gift_Price;
-        }
-
-    ?>
-
-
+   
 
         <div class="locationbox__overlay"></div>
         
@@ -151,7 +134,7 @@
 
             <section>
                 <div class="jsfix scrolling_inner scroll-right">
-                    <div><h4>{!! @$slogan !!}</h4></div>
+                    <div><h4 style="line-height: 26px">{!! @$slogan !!}</h4></div>
                     <div class="box-filter block-scroll-main scrolling">
                         @if(isset($filter))
                         @foreach($filter as $filters)
@@ -209,7 +192,9 @@
             <option value="https://dienmaynguoiviet.vn/am-sieu-toc" {{ $id_cate==111?'selected':'' }}>Ấm siêu tốc</option>
             <option value="https://dienmaynguoiviet.vn/may-xay-sinh-to" {{ $id_cate==112?'selected':'' }}>Máy xay sinh tố</option>
             <option value="https://dienmaynguoiviet.vn/may-ep-hoa-qua" {{ $id_cate==113?'selected':'' }}>Máy ép hoa quả</option>
-            <option value="https://dienmaynguoiviet.vn/may-xay-da-nang">Máy xay đa năng</option>
+            <option value="https://dienmaynguoiviet.vn/may-xay-da-nang" {{ $id_cate==114?'selected':'' }}>Máy xay đa năng</option>
+            <option value="https://dienmaynguoiviet.vn/noi-chien-khong-dau" {{ $id_cate==328?'selected':'' }}>Nồi chiên không dầu</option>
+            
         </select>
 
     
@@ -467,7 +452,35 @@
                                             } 
 
                                         ?>
+
+
+
                                         
+                                    </div>
+                                    
+                                </a>
+
+                                <?php 
+                                            
+                                            // Trường hợp  đang chạy sự kiện
+                                        
+                                            $gift_Price = pricesPromotion($value->Price, $value->id)
+                                            
+                                        ?>     
+
+                                        <!-- nếu tồn tại gift_price thì hiển thị -->
+                                        @if(!empty($gift_Price))
+                                        <div class="gift_pro">
+                                            
+                                            <span class="ttl"><i class="fa-solid fa-gift"></i> Quà tặng 1 voucher trị giá {{ $gift_Price }}</span>
+
+                                        </div>
+
+                                        @endif
+
+
+
+                                        <!-- phần check giá khi lựa chọn -->
 
                                         @if(!empty($gift)&& $checkdealpd===false)
                                             <?php 
@@ -486,15 +499,23 @@
                                             </div>
 
                                             @if(!empty($gifts->price))
-                                            <span> Quà tặng trị giá <strong>{{  pricesPromotion($value->Price) }}  <sup>đ</sup></strong> </span>
+
+                                            
+
+                                            <?php 
+
+                                                $id_checkpromotion = $value->promotion_box==1?'':$value->id;
+
+                                                $price_gift = pricesPromotion($value->Price, $id_checkpromotion)===''?str_replace(',' ,'.', number_format($gifts->price)):pricesPromotion($value->Price, $id_checkpromotion)
+
+
+                                            ?>
+                                            <span> Quà tặng trị giá <strong>{{  $price_gift }}  </strong> </span>
                                             @endif  
 
                                            
                                         @endif
 
-                                    </div>
-                                    
-                                </a>
                                 <div class="item-bottom">
                                     <a href="#" class="shiping"></a>
                                 </div>
@@ -508,9 +529,8 @@
                     @endforeach
 
 
-                     <span class="lists-id">{{ json_encode($arr_id_pro) }}</span>
+                    <span class="lists-id">{{ json_encode($arr_id_pro) }}</span>
                       
-                   
                    @else   
 
                     <div style="margin-left: 20px;">

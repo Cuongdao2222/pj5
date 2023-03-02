@@ -28,7 +28,7 @@ class showController extends Controller
 
             $name = time() . '_' . $file_upload->getClientOriginalName();
 
-            $filePath = $file_upload->storeAs('images/banner-popup', $name, 'ftp');
+            $filePath = $file_upload->storeAs('images/banner-popup', $name, 'public');
 
             $input['image'] = $filePath;
         }
@@ -50,6 +50,37 @@ class showController extends Controller
 
     }
 
+    public function eventPostShowChecked(Request $request)
+    {
+        $check =  $request->checkbox1;
+
+        if(isset($check)){
+            $active = 1;
+        }
+        else{
+            $active = 0;
+        }
+
+        if ($request->hasFile('file_image')) {
+
+            $file_upload = $request->file('file_image');
+
+            $name = time() . '_' . $file_upload->getClientOriginalName();
+
+            $filePath = $file_upload->storeAs('images/posts', $name, 'public');
+
+            $array_update = ['active'=>$active, 'image'=>$filePath];
+        }
+        else{
+
+            $array_update = ['active'=>$active];
+        }
+
+        $update =DB::table('event')->where('id', 1)->limit(1)->update($array_update);
+
+        return back()->with('status','thành công');
+    }
+
 
     public function addBackgroundSite(Request $request)
     {
@@ -59,7 +90,7 @@ class showController extends Controller
 
             $name = time() . '_' . $file_upload->getClientOriginalName();
 
-            $filePath = $file_upload->storeAs('images/background-image', $name, 'ftp');
+            $filePath = $file_upload->storeAs('images/background-image', $name, 'public');
 
             $input['background_image'] = $filePath;
 

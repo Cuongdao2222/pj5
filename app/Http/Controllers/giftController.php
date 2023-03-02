@@ -11,6 +11,7 @@ use App\Models\gift;
 use Flash;
 use Response;
 use DB;
+use Illuminate\Support\Facades\Cache;
 use Carbon\Carbon;
 
 class giftController extends AppBaseController
@@ -220,5 +221,23 @@ class giftController extends AppBaseController
             return redirect()->back();
              
        }
+    }
+
+    public function updateGiftDate(Request $request)
+    {
+        $id = $request->id;
+
+        $data_update = $request->data;
+
+        $ar = ['end' => $data_update];
+
+        DB::table('group_gift')->where('id', $id)->update($ar);
+
+        Cache::flush();
+
+        file_get_contents(env('APP_URL'));
+
+        return response($id);
+
     }
 }

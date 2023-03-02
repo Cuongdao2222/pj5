@@ -6,8 +6,7 @@
 
        
 
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/categories.css') }}"> 
-         <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}"> 
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/categories.css') }}">  
 
         <style type="text/css">
             
@@ -32,6 +31,9 @@
             }
             .list-pro h2{
                 margin-left:20px ;
+            }
+            select, option{
+                font-size: 15px !important;
             }
 
 
@@ -132,38 +134,6 @@
         </style>
     @endpush
 
-
-    <?php
-
-    function pricesPromotion($price)
-        {
-
-            if($price>=50000000){
-
-                $gift_Price = '1.000.000 đ';
-
-            }
-            elseif ($price>5000000 && $price<=10000000) {
-
-                 $gift_Price = '100.000 đ';
-            }
-
-            elseif ($price>10000000 && $price<=30000000) {
-
-                 $gift_Price = '200.000 đ';
-            }
-
-            elseif ($price>30000000 && $price<50000000) {
-
-                $gift_Price = '500.000 đ';
-            }
-            else{
-                $gift_Price = '50.000 đ';
-            }
-            return $gift_Price;
-        }
-
-    ?>
 
         <div class="locationbox__overlay"></div>
         <!-- <div class="locationbox">
@@ -442,7 +412,17 @@
                                                 @endforeach
 
                                                 @if(!empty($gifts->price))
-                                                    <span> Quà tặng trị giá <strong>{{  pricesPromotion($value->Price) }}  <sup>đ</sup></strong> </span>
+
+                                                    <?php 
+
+                                                        $id_checkpromotion = $value->promotion_box==1?'':$value->id;
+
+                                                        $price_gift = pricesPromotion($value->Price, $id_checkpromotion)===''?str_replace(',' ,'.', number_format($gifts->price)):pricesPromotion($value->Price, $id_checkpromotion)
+
+                                            
+                                                    ?>
+
+                                                    <span> Quà tặng trị giá <strong>{{  $price_gift }}  <sup>đ</sup></strong> </span>
                                                 @endif  
                                             </div>
                                            

@@ -21,8 +21,9 @@ class indexController extends Controller
     public function index()
     {
        
-
         $banners =  Cache::get('baners');
+
+        $now  = Carbon::now();
 
         if(!Cache::has('deals')){
             $deal = deal::get();
@@ -37,12 +38,18 @@ class indexController extends Controller
 
         $group = Cache::get('groups');
 
-        $product_sale = Cache::get('product_sale');
+        
+        $product_sale = Cache::rememberForever('product_sale', function() {
+
+            $product_sale = DB::table('products')->join('sale_product', 'products.id', '=', 'sale_product.product_id')->join('makers', 'products.Maker', '=', 'makers.id')->Orderby('products.sale_order','desc')->take(20)->get();
+
+            return $product_sale??'';
+        });
 
          $timeDeal_star = Cache::get('deal_start'); 
 
 
-        if(empty($group)||empty($product_sale) ){
+        if(!Cache::has('groups')||empty($product_sale) ){
 
             $this->cache();
 
@@ -53,6 +60,7 @@ class indexController extends Controller
             $timeDeal_star = Cache::get('deal_start'); 
 
             $product_sale = Cache::get('product_sale');
+
         }
 
         if(!Cache::has('baners')){
@@ -90,10 +98,20 @@ class indexController extends Controller
         }  
         else{
             $bannerUnderSale = Cache::get('bannerUnderSale');
-        }  
+        }
+
+        $bannerscrollRight = Cache::rememberForever('bannerscrollRight', function() {
+            return banners::where('option', 12)->OrderBy('stt', 'asc')->where('active', 1)->first()??'';
+        });
+
+        $bannerscrollLeft = Cache::rememberForever('bannerscrollleft', function() {
+            return banners::where('option', 13)->OrderBy('stt', 'asc')->where('active', 1)->first()??'';
+        });
 
         
-        return view('forget_cache_home.index', compact('banners', 'bannersRight', 'bannerUnderSlider', 'bannerUnderSale','deal','product_sale', 'group','timeDeal_star', 'deal_check'));
+
+        return view('forget_cache_home.index', compact('banners', 'bannersRight', 'bannerUnderSlider', 'bannerUnderSale','deal','product_sale', 'group','timeDeal_star', 'deal_check', 'now','bannerscrollRight', 'bannerscrollLeft'));
+    
     }
     public function cache()
     {

@@ -60,7 +60,9 @@ class AjaxController extends Controller
         if(!empty($check)){
             if( Hash::check($request->password, $check->password) == true){
 
-                Session::put('status-login', 'Đăng nhập thành công');
+                $ar_info = ['status'=>'Đăng nhập thành công', 'number'=>$check->phone, 'name'=>$check->fullname];
+
+                Session::put('status-login', $ar_info);
 
                 return redirect()->route('homeFe');
 
@@ -168,9 +170,10 @@ class AjaxController extends Controller
         if($request->ajax())
         {
             $validator = Validator::make($request->all(), [
-           'email' => 'required|email|unique:loginClient',
+           'email' => 'required|email|unique:loginclient',
            'fullname' => 'required|string|max:150',
-           'password' => 'required'
+           'password' => 'required',
+           
            ]);
             
            if ($validator->fails()) {
@@ -182,7 +185,8 @@ class AjaxController extends Controller
                 $input['password'] = bcrypt($request->password);
                 $input['email'] = strip_tags($request->email);
                 $input['fullname'] = strip_tags($request->fullname);
-                $result = DB::table('loginClient')->insert($input);
+                $input['phone'] = strip_tags($request->phone);
+                $result = DB::table('loginclient')->insert($input);
                 return response('Đăng ký thành công');
 
            }
@@ -238,6 +242,8 @@ class AjaxController extends Controller
     public function getProductActive(Request $request)
     {
         $search = $request->product;
+
+        $search = strip_tags($search);
 
         if(!empty($search)){
 
@@ -770,32 +776,31 @@ class AjaxController extends Controller
         $product = $order->apiInsertGent($id);
 
 
-        // define ten nguoi duyet tu gen sang đang viết dở 
+        // define ten nguoi duyet tu gen
 
-        $user_convert = ['4'=>'247', '6'=>'250', '8'=>'245'];
+        $user_convert = [4=>'247', 6=>'250', 8=>'245'];
 
-        $user = $user_convert[Auth::user()->id]??'1';
-
+        $userss = $user_convert[Auth::user()->id]??'1';
 
 
         if($value==1){
-
              // Create the context for the request
 
             $postData = [
                "api_id" => "qr4SP88JRWzDzd/u4AyG8djhaaj5eJHfFiudnB2klPQ=", 
                "vcustomers_insert_individual" => [
                      "di_dong" => $orders->phone_number, 
-                     "ten_khach_hang" => $orders->name 
+                     "ten_khach_hang" => $orders->name,
+                     "nguoi_quan_ly" =>$userss,
                   ], 
                "hop_dong" => [
                   [
                      "col162" => "12 tháng", 
                      "col112" => "Đ/H website do ".auth()->user()->name." ".$orders->updated_at->format('d/m/Y'), 
-                     "col142" => $orders->updated_at->format('d/m/Y'), 
+                     "col142" => \Carbon\Carbon::parse(\Carbon\Carbon::now())->timestamp, 
                      "col121" => "Đ/H website do ".auth()->user()->name." ".$orders->updated_at->format('d/m/Y'), 
                      "col132" => "573", 
-                     "col421" => $user,
+                     "col421" => $userss,
                      "chi_tiet" =>$product,
                   ] 
                ] 
@@ -1032,6 +1037,7 @@ class AjaxController extends Controller
 
             $input['id_group_gift'] = $request->id_group_gift;
 
+
              Cache::forget('id_checks'.$request->product_id);
 
             Cache::forget('promotion'.$request->product_id);
@@ -1090,7 +1096,7 @@ class AjaxController extends Controller
 
                 if(!Cache::has('product_search')){
 
-                    $productss = product::select('Link', 'Name', 'Image', 'Price', 'id', 'ProductSku')->where('active', 1)->get();
+                    $productss = product::select('Link', 'Name', 'Image', 'Price', 'id', 'ProductSku', 'promotion_box')->where('active', 1)->get();
 
                     Cache::forever('product_search',$productss);
 

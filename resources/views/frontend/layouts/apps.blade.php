@@ -231,13 +231,14 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}?ver=1"> 
         <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/apps.css') }}?ver=14">
+        <link rel="stylesheet" type="text/css" href="{{asset('css/dienmay.css')}}?ver=90"> 
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
     
         <style type="text/css">
-            body.theme-lunar-new-year{
-                overflow-x: auto !important;
-            }
+            /*body.theme-lunar-new-year{
+                overflow-x: hidden;
+            }*/
 
             .category__all{
                 padding: 0 !important;
@@ -249,7 +250,7 @@
             }
 
             .main-menu{
-                width: 230px;
+                width: 203px;
             }
 
             .bar-top-left {
@@ -266,6 +267,8 @@
                
             } 
 
+
+
             .list-menu .category{
                 width: 11%;
             }
@@ -275,6 +278,10 @@
                 width: 100%;
                 margin-right: 35px;
                 /*float: left;*/
+            }
+
+            .sub-cate h3, .compare-show, .gift-text span{
+                font-size: 14px;
             }
             .compare-pro-holder img{
                 width: 100%;
@@ -394,6 +401,10 @@
             .iconss-sp{
                 width: 20px;
             }
+
+            .header__top {
+                background-color: #eb3a7f !important;
+            }
         </style>
 
         <?php  
@@ -432,7 +443,19 @@
             .hotlines{
                 position:fixed; 
                 z-index:9999
-            }    
+            }   
+
+            #ui-id-1{
+                font-size: 14px;
+            }
+
+            .submenu strong{
+                font-size: 14px;
+            } 
+
+            .submenu h3{
+                font-size: 14px;
+            } 
 
              @media only screen and (min-width: 768px) {
                 .hotlines{
@@ -444,6 +467,15 @@
                 .global-compare-group{
                     height: 300px;
                 }
+                .list-menu{
+                    margin-bottom: 0;
+                }
+
+                .submenu {
+
+                    left:200px !important;
+
+               }
             }
 
             @media only screen and (max-width: 768px) {
@@ -454,6 +486,15 @@
                       overflow: hidden;
                       display: -webkit-box;
                   }  
+
+                .ui-widget-content p{
+
+                    font-size: 15px;
+                }
+
+                .suggest_link{
+                    font-size: 14px;
+                }  
 
                 .p_hotline_item span {
                     width: 100%;
@@ -485,7 +526,6 @@
                     width: 100% !important;
                 }
 
-                
             }
         </style>
         @endif
@@ -579,28 +619,35 @@
 
         <style type="text/css">
             
+
+            .border-rd{
+                border-radius: 4px;
+                border: 1px solid #fff;
+                padding: 9px;
+            }
+
             .pine-tree img {
                 width: 10%;
                 position: fixed;
             }
 
             .pine-tree-right {
-                left: 91vw;
-                transform: rotate(335deg);
+                left: 90vw;
+/*                transform: rotate(335deg);*/
             }
 
             .pine-tree-left, .pine-tree-right {
                 bottom: 0;
                 cursor: pointer;
                 z-index: 1;
-                animation: lighting 1s infinite;
+/*                animation: lighting 1s infinite;*/
             }
 
             .pine-tree-left, .pine-tree-right {
                 bottom: 0px;
                 cursor: pointer;
                 z-index: 1;
-                animation: 1s ease 0s infinite normal none running lighting;
+/*                animation: 1s ease 0s infinite normal none running lighting;*/
             }
 
             @keyframes lighting {
@@ -731,7 +778,7 @@
                     <a href="tel: 02473036336" class="header__cart fas-phones">
                          <i class="fa fa-phone phones-customn" aria-hidden="true"></i>
                          <div class="div-text">
-                            <span class="tel-head">024.7303.6336</span>
+                            <span class="tel-head">0247.303.6336</span>
                             <span class="tvbhclient">Tư vấn bán hàng</span>
 
                             
@@ -773,15 +820,40 @@
                         <b id="count_shopping_cart_store"><span class="number-cart">{{ $number_cart }}</span></b>
                     </a>
 
-                    @if(!empty($userClient)&& $userClient=='Đăng nhập thành công')
+                     @if( !empty($userClient) && !empty($userClient['status']) && $userClient['status']==='Đăng nhập thành công')
 
-                        <a rel="nofollow"  href="javascript:void(0)">
-                            <span style="color:#fff; font-size: 12px;">Xin chào</span>
-                        </a>
+                    @if(!empty($userClient['number']))
 
-                        <a rel="nofollow"  href="{{ route('logout-Fe') }}">
-                            <span style="color:#fff; font-size: 12px;">Đăng xuất</span>
-                        </a>
+                    <?php 
+
+                                $data_number_ctm = base64_encode($userClient['number']);
+                            ?>
+
+                    <div class="fas-phones">          
+                        <a href="https://tracking.dienmaynguoiviet.vn/search?tracknbctm={{ $data_number_ctm }}" class="header__history tin-km">Tra cứu đơn hàng</a>
+                       
+                    </div>
+
+                    @endif
+
+                    @else
+
+                    <div class="fas-phones">          
+                        <a href="#" class="header__history tin-km logins-modal">Tra cứu đơn hàng</a>
+                       
+                    </div>
+
+                    @endif
+
+                    @if( !empty($userClient) && !empty($userClient['status']) && $userClient['status']==='Đăng nhập thành công')
+
+                        <div class="border-rd">
+                        
+                            <a rel="nofollow"  href="{{ route('logout-Fe') }}">
+                                <span style="color:#fff; font-size: 12px;">Đăng xuất</span>
+                            </a>
+                        </div>
+                       
                     
                     @else
 
@@ -800,6 +872,8 @@
                         <a href="{{ route('tin') }}" class="header__history tin-km">Tin tức khuyến mãi</a>
                         <!-- <div class="bordercol"></div> -->
                     </div>
+
+                   
                 </section>
             </div>
 
@@ -878,7 +952,13 @@
     
 
                         <a href="#" class="category__all"><i class="fa fa-bars" aria-hidden="true"></i> Tất cả danh mục</a>
+
+                            @if(!empty($requestcheck)&& \Request::route()->getName() =="homeFe")
+                            <div class="bar-top-lefts" style="display: block;">
+                            @else
                             <div class="bar-top-left" style="display: none;">
+                            @endif
+                           
                                 <ul class="main-menu">
 
                                     <li data-submenu-id="submenu-0">
@@ -1264,6 +1344,9 @@
                                                 <a href="{{route('details','may-xay-da-nang')}}">
                                                     <h3>Máy xay đa năng</h3>
                                                 </a>
+                                                <a href="{{route('details','noi-chien-khong-dau')}}">
+                                                    <h3>Nồi chiên không dầu</h3>
+                                                </a>
                                             </aside>
                                         </div>
 
@@ -1381,7 +1464,7 @@
 
                                     </li>
 
-                                    <li data-submenu-id="submenu-10" class="">
+                                    <!-- <li data-submenu-id="submenu-10" class="">
                                         <div class="dropdown">
                                             <span>
                                                 <img src="{{ asset('media/category/cat_4dc6fff104da28d600d1e4e6d8dffa9c.png') }}" class="iconss-sp">
@@ -1402,7 +1485,7 @@
                                             </aside>
                                         </div>
 
-                                    </li>
+                                    </li> -->
 
                                 </ul>
                             </div>
@@ -1876,6 +1959,9 @@
                                         <a href="{{route('details','may-xay-da-nang')}}">
                                             <h3>Máy xay đa năng</h3>
                                         </a>
+                                        <a href="{{route('details','noi-chien-khong-dau')}}">
+                                            <h3>Nồi chiên không dầu</h3>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -2155,6 +2241,13 @@
                                 <label class="col-md-4 col-form-label" for="FullName">Họ và tên</label>
                                 <div class="col-md-8"><input class="form-control" data-val="true" data-val-required="Trường Tên là bắt buộc." id="FullName" name="FullName"> <span class="text-danger field-validation-valid" data-valmsg-for="FullName" data-valmsg-replace="true"></span></div>
                             </div>
+
+                            <div class="form-group row">
+                                <label class="col-md-4 col-form-label" for="number-phone">Số điện thoại </label>
+                                <div class="col-md-8"><input class="form-control" data-val="true" data-val-required="Số điện thoại là bắt buộc" id="number-phone-customer" name="number-phone-register"> <span class="text-danger field-validation-valid" data-valmsg-for="FullName" data-valmsg-replace="true"></span></div>
+                            </div>
+
+
                             <div class="form-group row">
                                 <label class="col-md-4 col-form-label" for="Password">Mật khẩu</label>
                                 <div class="col-md-8"><input class="form-control" type="password" data-val="true" data-val-length="The Mật khẩu must be at least 4 and at max 100 characters long." data-val-length-max="100" data-val-length-min="4" data-val-required="Trường Mật khẩu là bắt buộc." id="Passwords" maxlength="100" name="Passwords"> <span class="text-danger field-validation-valid" data-valmsg-for="Password" data-valmsg-replace="true" autocomplete="on"></span></div>
@@ -2323,101 +2416,82 @@
         </footer>
 
         
+        <!-- hoa mai rơi -->
 
-        <div class="snowflakes" aria-hidden="true">
-            <div class="snowflake">❅</div>
-            <div class="snowflake">❆</div>
-            <div class="snowflake">❅</div>
-            <div class="snowflake">❆</div>
-            <div class="snowflake">❅</div>
-            <div class="snowflake">❆</div>
-            <div class="snowflake">❅</div>
-            <div class="snowflake">❆</div>
-            <div class="snowflake">❅</div>
-            <div class="snowflake">❆</div>
-            <div class="snowflake">❅</div>
-            <div class="snowflake">❆</div>
-        </div>
+        <?php 
+            $event = DB::table('event')->where('id', 1)->first();
 
-// CSS
-<style>
-  @-webkit-keyframes snowflakes-fall {
-    0% {top:-10%}
-    100% {top:100%}
-  }
-  @-webkit-keyframes snowflakes-shake {
-    0%,100% {-webkit-transform:translateX(0);transform:translateX(0)}
-    50% {-webkit-transform:translateX(80px);transform:translateX(80px)}
-  }
-  @keyframes snowflakes-fall {
-    0% {top:-10%}
-    100% {top:100%}
-  }
-  @keyframes snowflakes-shake {
-    0%,100%{ transform:translateX(0)}
-    50% {transform:translateX(80px)}
-  }
-  .snowflake {
-    color: #fff;
-    font-size: 1em;
-    font-family: Arial, sans-serif;
-    text-shadow: 0 0 5px #000;
-    position:fixed;
-    top:-10%;
-    z-index:9999;
-    -webkit-user-select:none;
-    -moz-user-select:none;
-    -ms-user-select:none;
-    user-select:none;
-    cursor:default;
-    -webkit-animation-name:snowflakes-fall,snowflakes-shake;
-    -webkit-animation-duration:10s,3s;
-    -webkit-animation-timing-function:linear,ease-in-out;
-    -webkit-animation-iteration-count:infinite,infinite;
-    -webkit-animation-play-state:running,running;
-    animation-name:snowflakes-fall,snowflakes-shake;
-    animation-duration:10s,3s;
-    animation-timing-function:linear,ease-in-out;
-    animation-iteration-count:infinite,infinite;
-    animation-play-state:running,running;
-  }
-  .snowflake:nth-of-type(0){
-    left:1%;-webkit-animation-delay:0s,0s;animation-delay:0s,0s
-  }
-  .snowflake:nth-of-type(1){
-    left:10%;-webkit-animation-delay:1s,1s;animation-delay:1s,1s
-  }
-  .snowflake:nth-of-type(2){
-    left:20%;-webkit-animation-delay:6s,.5s;animation-delay:6s,.5s
-  }
-  .snowflake:nth-of-type(3){
-    left:30%;-webkit-animation-delay:4s,2s;animation-delay:4s,2s
-  }
-  .snowflake:nth-of-type(4){
-    left:40%;-webkit-animation-delay:2s,2s;animation-delay:2s,2s
-  }
-  .snowflake:nth-of-type(5){
-    left:50%;-webkit-animation-delay:8s,3s;animation-delay:8s,3s
-  }
-  .snowflake:nth-of-type(6){
-    left:60%;-webkit-animation-delay:6s,2s;animation-delay:6s,2s
-  }
-  .snowflake:nth-of-type(7){
-    left:70%;-webkit-animation-delay:2.5s,1s;animation-delay:2.5s,1s
-  }
-  .snowflake:nth-of-type(8){
-    left:80%;-webkit-animation-delay:1s,0s;animation-delay:1s,0s
-  }
-  .snowflake:nth-of-type(9){
-    left:90%;-webkit-animation-delay:3s,1.5s;animation-delay:3s,1.5s
-  }
-  .snowflake:nth-of-type(10){
-    left:25%;-webkit-animation-delay:2s,0s;animation-delay:2s,0s
-  }
-  .snowflake:nth-of-type(11){
-    left:65%;-webkit-animation-delay:4s,2.5s;animation-delay:4s,2.5s
-  }
-</style>
+
+        ?>
+
+        <!-- đang tắt chức năng hoa mai  -->
+
+        @if($event->active ==3)
+
+
+        <script type='text/javascript'>
+            
+            var pictureSrc ="{{ asset($event->image) }}"; //the location of the snowflakes
+            var pictureWidth = 15; //the width of the snowflakes
+            var pictureHeight = 15; //the height of the snowflakes
+            var numFlakes = 12; //the number of snowflakes
+            var downSpeed = 0.009; //the falling speed of snowflakes (portion of screen per 100 ms)
+            var lrFlakes = 10; //the speed that the snowflakes should swing from side to side
+            if( typeof( numFlakes ) != 'number' || Math.round( numFlakes ) != numFlakes || numFlakes < 1 ) { numFlakes = 10; }
+            //draw the snowflakes
+            for( var x = 0; x < numFlakes; x++ ) {
+            if( document.layers ) { //releave NS4 bug
+            document.write('<layer id="snFlkDiv'+x+'"><imgsrc="'+pictureSrc+'" height="'+pictureHeight+'"width="'+pictureWidth+'" alt="*" border="0"></layer>');
+            } else {
+            document.write('<div style="position:absolute; z-index:9999;"id="snFlkDiv'+x+'"><img src="'+pictureSrc+'"height="'+pictureHeight+'" width="'+pictureWidth+'" alt="*"border="0"></div>');
+            }
+            }
+            //calculate initial positions (in portions of browser window size)
+            var xcoords = new Array(), ycoords = new Array(), snFlkTemp;
+            for( var x = 0; x < numFlakes; x++ ) {
+            xcoords[x] = ( x + 1 ) / ( numFlakes + 1 );
+            do { snFlkTemp = Math.round( ( numFlakes - 1 ) * Math.random() );
+            } while( typeof( ycoords[snFlkTemp] ) == 'number' );
+            ycoords[snFlkTemp] = x / numFlakes;
+            }
+            //now animate
+            function flakeFall() {
+            if( !getRefToDivNest('snFlkDiv0') ) { return; }
+            var scrWidth = 0, scrHeight = 0, scrollHeight = 0, scrollWidth = 0;
+            //find screen settings for all variations. doing this every time allows for resizing and scrolling
+            if( typeof( window.innerWidth ) == 'number' ) { scrWidth = window.innerWidth; scrHeight = window.innerHeight; } else {
+            if( document.documentElement && (document.documentElement.clientWidth ||document.documentElement.clientHeight ) ) {
+            scrWidth = document.documentElement.clientWidth; scrHeight = document.documentElement.clientHeight; } else {
+            if( document.body && ( document.body.clientWidth || document.body.clientHeight ) ) {
+            scrWidth = document.body.clientWidth; scrHeight = document.body.clientHeight; } } }
+            if( typeof( window.pageYOffset ) == 'number' ) { scrollHeight = pageYOffset; scrollWidth = pageXOffset; } else {
+            if( document.body && ( document.body.scrollLeft ||document.body.scrollTop ) ) { scrollHeight = document.body.scrollTop;scrollWidth = document.body.scrollLeft; } else {
+            if(document.documentElement && (document.documentElement.scrollLeft ||document.documentElement.scrollTop ) ) { scrollHeight =document.documentElement.scrollTop; scrollWidth =document.documentElement.scrollLeft; } }
+            }
+            //move the snowflakes to their new position
+            for( var x = 0; x < numFlakes; x++ ) {
+            if( ycoords[x] * scrHeight > scrHeight - pictureHeight ) { ycoords[x] = 0; }
+            var divRef = getRefToDivNest('snFlkDiv'+x); if( !divRef ) { return; }
+            if( divRef.style ) { divRef = divRef.style; } var oPix = document.childNodes ? 'px' : 0;
+            divRef.top = ( Math.round( ycoords[x] * scrHeight ) + scrollHeight ) + oPix;
+            divRef.left = ( Math.round( ( ( xcoords[x] * scrWidth ) - (pictureWidth / 2 ) ) + ( ( scrWidth / ( ( numFlakes + 1 ) * 4 ) ) * (Math.sin( lrFlakes * ycoords[x] ) - Math.sin( 3 * lrFlakes * ycoords[x]) ) ) ) + scrollWidth ) + oPix;
+            ycoords[x] += downSpeed;
+            }
+            }
+            //DHTML handlers
+            function getRefToDivNest(divName) {
+            if( document.layers ) { return document.layers[divName]; } //NS4
+            if( document[divName] ) { return document[divName]; } //NS4 also
+            if( document.getElementById ) { return document.getElementById(divName); } //DOM (IE5+, NS6+, Mozilla0.9+, Opera)
+            if( document.all ) { return document.all[divName]; } //Proprietary DOM - IE4
+            return false;
+            }
+            window.setInterval('flakeFall();',100);
+            
+        </script>
+        @endif
+
+
 
         <div class="hotlines">   
             <a href="tel:02473036336"><img src="{{ asset('images/template/tongdai02473036336.png') }}" alt="hotline" style="height:55px; z-index: 999;"></a>
@@ -2903,6 +2977,8 @@
                 };
             }, "Invalid phone number");
 
+
+
             $("#registers-form-submit").validate({
                 rules: {
                    
@@ -2917,6 +2993,14 @@
                         email: true,
                         
                     },
+
+                    "number-phone-register": {
+                        required: true,
+                         phonenu: true,
+                        
+                    },
+
+                   
 
                     "Passwords":{
                         required:true,
@@ -3004,6 +3088,7 @@
                         fullname: $('#FullName').val(),
                         password: $('#Passwords').val(),
                         email: $('#Emails').val(),
+                        phone: $('#number-phone-customer').val(),
                         
                     },
                    

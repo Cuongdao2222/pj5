@@ -43,6 +43,16 @@
      <?php 
 
         $checkSharp = strpos($data->Name, 'Sharp');
+
+        $browserAsString = $_SERVER['HTTP_USER_AGENT'];
+
+        $browserIsMobileSafari = false;
+
+        if (strstr($browserAsString, " AppleWebKit/") && strstr($browserAsString, " Mobile/"))
+        {
+            $browserIsMobileSafari = true;
+        }
+
     ?>
 
     <?php
@@ -59,11 +69,31 @@
 
     ?>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/detailscs.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}?ver=21"> 
-    <link rel="stylesheet" href="{{ asset('css/jquery.fancybox.css') }}"/>
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/detail1fe.css') }}?ver=7">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/detailsfe.css') }}?ver=9">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/details.css') }}?ver=8">
+
+    @if($browserIsMobileSafari===true)
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/css/jquery.fancybox.min.css" />
+    @else
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.css">
+    
+
+    @endif
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/detail1fe.css') }}?ver=10">
+    <style type="text/css">
+        .copy-button{
+            position: absolute;
+
+            top: 0;
+            right: 0;
+        }
+
+        @media only screen and (min-width: 768px) {
+            .copy-button{
+
+                display: none;
+            }    
+        }    
+    </style>
+
 
 @endpush
 
@@ -269,8 +299,6 @@
    
     $gift = Cache::get('gifts_Fe_sss'.$data['id']);
 
-
-
     if(!empty($gift)){
         $gifts = $gift['gifts'];
         $gift = $gift['gift'];
@@ -383,11 +411,14 @@
                              <a href="{{ asset($data->Image) }}" data-fancybox="gallery"><img  data-src ="{{ asset($data->Image) }}" alt="{{ @$data->Name }}" class="lazyload">
 
                             </a>
+                            <button class="copy-button"   onclick="copyImage('{{ env("APP_URL") }}/{{ $data->Image }}')"><i class="fas fa-copy"></i></button>
                             @if($data->id>4720)
                             <div class="saker">
                                     <img src="{{ asset('images/saker/'.strtolower($logoSaker->maker).'.png') }}"  data-src ="{{ asset($data->Image) }}" class="lazyload">
                             </div>
                             @endif
+
+
                         </div>
 
                         <?php 
@@ -413,14 +444,21 @@
 
                         @if( basename($image->image) != basename($data->Image) )
 
+
+
                         <div class="item">
                             <a href="{{ asset($image->image) }}" data-fancybox="gallery"><img  data-src ="{{ asset($image->image) }}"  alt="{{ @$data->Name }}" class="lazyload"></a>
+                            <button class="copy-button" onclick="copyImage('{{ env("APP_URL") }}/{{ $data->Image }}')"><i class="fas fa-copy"></i></button>
                         </div>
+
+
                       
                         @endif
 
                       
                         @endif
+
+
                         @endforeach
 
                         @endif
@@ -467,6 +505,12 @@
                                 </fieldset>
                                 @endif
 
+                                <?php
+
+                                $gift_Price = pricesPromotion($data->Price, $data->id);
+
+                                ?>
+
 
                                 @if($checkSharp>-1)
                                 <div class="gift_pro">
@@ -482,6 +526,17 @@
                                     </div>
                                 </div>
                                 @endif
+
+                                <!-- nếu tồn tại gift_price thì hiển thị -->
+                                @if(!empty($gift_Price))
+                                <div class="gift_pro">
+                                    
+                                    <span class="ttl"><i class="fa-solid fa-gift"></i> Quà tặng 1 voucher trị giá {{ $gift_Price }}</span>
+
+                                </div>
+
+                                @endif
+
 
                                  @if(!empty($gift) &&  $data->Quantily>0 &&  $data['Price']>0 && $deal_check_add ==false)
 
@@ -1183,7 +1238,7 @@
                                         <button type="button" class="btn btn-lg btn-add-cart btn-add-cart redirectCart">Liên hệ</button>
                                     </div>
 
-                                    {!!  $data->Specifications  !!} 
+
                                 </div>
                                
                                 @endif
@@ -1194,21 +1249,7 @@
                              <button type="button" class="btn btn-lg" data-toggle="modal" data-target="#specifications">Xem chi tiết thông số kỹ thuật</button>
                            
                             
-                        </div>
-                    </div>
-                </div>
 
-            </div>
-
-            <!-- end chia -->
-
-            <div class="box2">
-                <div class="title">Điều khoản</div>
-                <div class="contents">
-                    <ul>
-                        <li>
-                            <strong>Hàng chính hãng&nbsp;</strong>
-                        </li>
                         
                         <li>
                             <strong>Miễn phí vận chuyển, lắp đặt </strong>
@@ -1217,37 +1258,7 @@
 
                         </li>
 
-                        <li>
-                            <strong>Lắp đặt nhanh </strong>
 
-                            <span>trong vòng 24h. Chuẩn quy trình</span>
-
-                        </li>
-
-
-                        <li>
-                            <strong>Chăm sóc khách hàng</strong>
-
-                            <span>Hậu mãi, hỗ trợ chu đáo</span>
-
-                        </li>
-                       
-                       
-                    </ul>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="border7"></div>
-        <div class="clearfix"></div>
-
-
-
-        <div class="content" id="contents-scroll">
-                 
-
-                <?php
 
                      $minutes = 1000;
 
@@ -1499,14 +1510,13 @@
         <div>
             <div class="commitment">
                 <div class="support">
-                  <h5>Tổng Đài mua hàng</h5>
-                    <a href="tel:02473036336">0247.303.6336</a>
-                  <h5>Tổng Đài mua hàng( Sau 17h )</h5>
-                  <div class="style-number-fone">
-                        <a href="tel:0913011888">091.301.1888</a>&nbsp; &nbsp; &nbsp; <span>||</span> &nbsp; &nbsp; &nbsp;
+                    <h5>Tổng Đài mua hàng</h5>
+                        <a href="tel:02473036336">0247.303.6336</a>
+                    <h5>Tổng Đài mua hàng( Sau 17h )</h5>
+                     <div class="style-number-fone">
+                       <a href="tel:0913011888">091.301.1888</a>&nbsp; &nbsp; &nbsp; <span>||</span> &nbsp; &nbsp; &nbsp;
                         <a href="tel:0983612828">098.361.2828</a>
-                  </div>
-                  
+                     </div>
                    
                 </div>
                 <br>
@@ -1535,7 +1545,14 @@
 </div>
 
 @push('script')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js"></script>
+
+@if($browserIsMobileSafari)
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js"></script>
+@else
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+@endif
+
+
 <script type="text/javascript">
 
 
@@ -1672,13 +1689,9 @@
 
     $( document ).ready(function() {
     
-        $(".box01 a").fancybox({
-            'hideOnContentClick': true,
-             buttons : [
-                'zoom',
-                'download',
-                'close'
-              ]
+        $('[data-fancybox]').fancybox({
+            clickContent: 'close',
+             buttons: ['close']
         });
        
         $('.item-ss').bind('click',function(){
@@ -1833,7 +1846,27 @@
         
     });
 
-     $.ajaxSetup({
+
+    // copy image to clipbroad
+
+    const copyImage = (imageSrc) => {
+        const image = new Image();
+        image.src = imageSrc;
+        const canvas = document.createElement('canvas');
+        canvas.width = image.width;
+        canvas.height = image.height;
+        canvas.getContext('2d').drawImage(image, 0, 0);
+        const dataURI = canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream');
+        navigator.clipboard.writeText(dataURI).then(() => {
+            alert('Image copied to clipboard successfully.');
+        }, () => {
+            alert('Failed to copy image to clipboard.');
+      });
+    }    
+
+
+
+    $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }

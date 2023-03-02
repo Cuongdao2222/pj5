@@ -428,8 +428,12 @@ h6 a {
     outline: none
 }
 
+.list-mn{
+    font-size: 14px !important;
+}
+
 body {
-    min-width: 1024px
+/*    min-width: 1024px*/
 }
 
 p {
@@ -3102,7 +3106,7 @@ strong.choose-province {
     border: none;
     font-size: 12px;
     line-height: 14px;
-    height: 30px;
+    height: 40px;
     padding: 8px 35px 8px 13px;
     width: 100%;
     border-radius: 4px
@@ -13757,3 +13761,10 @@ a#ss-now span label {
     text-align: center;
   }
 }
+@media screen and (min-width:776px) {
+
+    .container-productbox{
+
+        min-height: 500px;
+    }
+}    

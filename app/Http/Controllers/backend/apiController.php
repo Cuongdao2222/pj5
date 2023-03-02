@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\product;
 use App\Models\apiUpdate;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Redirect;
+
 
 class apiController extends Controller
 {
@@ -75,30 +77,7 @@ class apiController extends Controller
 
     public function checkDeal()
     {
-        Cache::forget('product_search');
+        return Redirect::to('https://dantri.com.vn/');
 
-        $productss = product::select('Link', 'Name', 'Image', 'Price', 'id', 'ProductSku')->where('active', 1)->get();
-
-        Cache::forever('product_search',$productss);
-
-        $data =  Cache::get('product_search');
-
-        $search = 'Máy giặt LG ';
-
-        $collection = collect($data)->filter(function ($item) use ($search) {
-            return false !== strpos($item->ProductSku, $search);
-        });
-
-        if($collection->count()==0){
-
-            $collection = collect($data)->filter(function ($item) use ($search) {
-                return false !== strpos($item->Name, $search);
-            });
-
-            $collection = $collection->take(6)->sortByDesc('id');
-        }
-
-      
-        dd($collection);
     }
 }

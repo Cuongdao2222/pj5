@@ -214,8 +214,6 @@ class categoryController extends Controller
         else{
             $data = $this->getDataOfCate($slug);
 
-
-
             return view('frontend.category', with($data));
         }
        
@@ -305,7 +303,7 @@ class categoryController extends Controller
                    
                     $data = cache()->remember('data_'.$id_cate.'_'.$page, 100, function () use($Group_product, $limit, $page){
 
-                        $data = product::whereIn('id', $Group_product)->where('active', 1)->orderBy('id', 'desc')->limit($limit)->offset(($page - 1) * $limit)->get();
+                        $data = product::whereIn('id', $Group_product)->where('active', 1)->orderBy('sale_order', 'desc')->limit($limit)->offset(($page - 1) * $limit)->get();
 
                         return $data;
 
@@ -484,7 +482,7 @@ class categoryController extends Controller
 
         }
 
-        $data = post::where('category', $datas->id)->orderBy('date_post','desc')->orderBy('date_post','desc')->paginate(10);
+        $data = post::where('category', $datas->id)->orderBy('date_post','desc')->where('active', 1)->orderBy('date_post','desc')->paginate(10);
 
       
         echo view('frontend.blog', compact('data','name_cates_cate'));
@@ -559,17 +557,16 @@ class categoryController extends Controller
 
         $link = trim($slug);
 
+        // $link_redirect = redirectLink::where('request_path', '/'.$slug)->first();
 
-        $link_redirect = redirectLink::where('request_path', '/'.$slug)->first();
 
-
-        if(!empty($link_redirect)){
+        // if(!empty($link_redirect)){
 
     
-            return redirect($link_redirect->target_path, 301);
+        //     return redirect($link_redirect->target_path, 301);
 
-            die();
-        }
+        //     die();
+        // }
 
 
         $cache = 'findID'.$link;

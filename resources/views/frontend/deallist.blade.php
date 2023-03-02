@@ -11,9 +11,21 @@
 
         <link rel="stylesheet" type="text/css" href="{{ asset('css/categories.css') }}"> 
         
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/dienmay.css') }}"> 
-
         <style type="text/css">
+
+            @media screen and (max-width:776px) {
+                .item-img_1942 {
+
+                    height: 180px !important;
+                    line-height: 57px;
+                }
+
+            }
+            
+            .item-img_1942 {
+                height: 290px;
+                line-height: normal;
+            }    
             
             .box-filter .form-control{
                 width: 100%;
@@ -42,6 +54,10 @@
                 color: #0080cb;
                 text-align: center;
             } 
+
+            .tbl_time{
+                font-size: 14px;
+            }
 
            
 
@@ -97,6 +113,9 @@
 
                                                                                                                               
                             <strong class="price">{{ @str_replace(',' ,'.', number_format($value->deal_price))}}&#x20AB;</strong>
+
+
+
                            
                             <div class="item-rating">
                                 <p>
@@ -112,6 +131,10 @@
                         </div>
                         
                     </a>
+
+                    <br>
+
+                     
                     <div class="item-bottom">
                         <a href="#" class="shiping"></a>
                     </div>
