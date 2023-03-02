@@ -298,8 +298,6 @@
    
     $gift = Cache::get('gifts_Fe_sss'.$data['id']);
 
-
-
     if(!empty($gift)){
         $gifts = $gift['gifts'];
         $gift = $gift['gift'];
@@ -507,6 +505,12 @@
                                 </fieldset>
                                 @endif
 
+                                <?php
+
+                                $gift_Price = pricesPromotion($data->Price, $data->id);
+
+                                ?>
+
 
                                 @if($checkSharp>-1)
                                 <div class="gift_pro">
@@ -522,6 +526,17 @@
                                     </div>
                                 </div>
                                 @endif
+
+                                <!-- nếu tồn tại gift_price thì hiển thị -->
+                                @if(!empty($gift_Price))
+                                <div class="gift_pro">
+                                    
+                                    <span class="ttl"><i class="fa-solid fa-gift"></i> Quà tặng 1 voucher trị giá {{ $gift_Price }}</span>
+
+                                </div>
+
+                                @endif
+
 
                                  @if(!empty($gift) &&  $data->Quantily>0 &&  $data['Price']>0 && $deal_check_add ==false)
 
@@ -1165,7 +1180,7 @@
                                     
                             
                             @endif
-
+                            
                         
                             @if(!empty($gift) && $data->Quantily>0 && $deal_check_add ==false  &&  $data['Price']>0)
 
@@ -1179,40 +1194,35 @@
                                     $gift_Price = '';
                                 }
                                 else{
-                                    // if($data->Price>=50000000){
+                                   $gift_Price = pricesPromotion($data->Price, $data->id)===''?str_replace(',' ,'.', number_format($gifts->price)):pricesPromotion($data->Price, $data->id);
 
-                                    //     $gift_Price = '1.000.000 đ';
-
-                                    // }
-                                    // elseif ($data->Price>5000000 && $data->Price<=10000000) {
-
-                                    //      $gift_Price = '100.000 đ';
-                                    // }
-
-                                    // elseif ($data->Price>10000000 && $data->Price<=30000000) {
-
-                                    //      $gift_Price = '200.000 đ';
-                                    // }
-
-                                    // elseif ($data->Price>30000000 && $data->Price<50000000) {
-
-                                    //     $gift_Price = '500.000 đ';
-                                    // }
-                                    // else{
-                                    //     $gift_Price = '50.000 đ';
-                                    // }
-
-                                    $gift_Price = '';
                                 }
 
+
+
+
                             ?>
+
+
+                            <!-- nếu tồn tại gift_price thì hiển thị -->
+                            @if(!empty($gift_Price))
+                            <div class="gift_pro">
+                                
+                                <span class="ttl"><i class="fa-solid fa-gift"></i> Quà tặng 1 voucher trị giá {{ $gift_Price }}</span>
+
+                            </div>
+
+                            @endif
                            
                             <div class="gift_pro">
+
+
+                                @if(!empty($gift))
 
                                 @foreach($gift as $key => $valuegift)
                                
                                 <?php 
-                                   
+                                  
                                     $price_gift = $gift_Price===''?str_replace(',' ,'.', number_format($valuegift->price)):$gift_Price;
 
                                 ?>
@@ -1238,6 +1248,9 @@
                                     </ul>
                                 </div>
                                 @endforeach
+                                @endif
+
+
                             </div>
 
                              @endif

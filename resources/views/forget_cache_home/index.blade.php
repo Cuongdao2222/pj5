@@ -85,53 +85,6 @@
 
     @endpush
 
-     <!-- check giá khuyến mãi sản phẩm để tạng voucher -->
-
-    <?php 
-
-        function pricesPromotion($price, $id)
-        {
-
-             if($id===''){
-
-                $gift_Price = '';
-
-            }
-            else{
-                if($price>=50000000){
-
-                    $gift_Price = '1.000.000 đ';
-
-                }
-                elseif ($price>5000000 && $price<=10000000) {
-
-                     $gift_Price = '100.000 đ';
-                }
-
-                elseif ($price>10000000 && $price<=30000000) {
-
-                     $gift_Price = '200.000 đ';
-                }
-
-                elseif ($price>30000000 && $price<50000000) {
-
-                    $gift_Price = '500.000 đ';
-                }
-                else{
-
-                    $gift_Price = '50.000 đ';
-                }
-            }
-
-            // tắt tính năng auto tính giá quà khuyến mãi
-
-            $gift_Price = '';
-            
-            return $gift_Price;
-        }
-
-        
-    ?>
 
      <?php
 

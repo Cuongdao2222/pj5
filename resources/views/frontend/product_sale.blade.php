@@ -1,46 +1,3 @@
-<?php
-function pricesPromotion($price, $id)
-        {
-
-            if($id===''){
-
-                $gift_Price = '';
-
-            }
-            else{
-                if($price>=50000000){
-
-                    $gift_Price = '1.000.000 đ';
-
-                }
-                elseif ($price>5000000 && $price<=10000000) {
-
-                     $gift_Price = '100.000 đ';
-                }
-
-                elseif ($price>10000000 && $price<=30000000) {
-
-                     $gift_Price = '200.000 đ';
-                }
-
-                elseif ($price>30000000 && $price<50000000) {
-
-                    $gift_Price = '500.000 đ';
-                }
-                else{
-
-                    $gift_Price = '50.000 đ';
-                }
-            }
-
-            // tắt tính năng auto tính giá quà khuyến mãi
-
-            $gift_Price = '';
-            
-            return $gift_Price;
-        }
-
-    ?>
 
 @if(!empty($product_sale)&&$product_sale->count()>0)
 
@@ -93,6 +50,27 @@ function pricesPromotion($price, $id)
 
             ?>
 
+            <?php 
+
+                $gift_Price = pricesPromotion($value->Price, $value->id);
+
+                ?>
+
+                @if(!empty($gift_Price))
+                <div class="option-gift">
+
+                         
+                    <div class="quatang"><img src="https://dienmaynguoiviet.vn/uploads/gift/1677726874_tien1.jpg"></div>
+                   
+                </div>
+
+                <div class="font-sz">
+                    <span> Quà tặng trị giá <strong>{{ $gift_Price  }}</strong> </span>
+                </div>
+
+                @endif
+
+
             @if(!empty($gift))
                 <?php 
                     $gifts = $gift['gifts'];
@@ -108,6 +86,9 @@ function pricesPromotion($price, $id)
                     <div class="quatang"><img src="{{ asset($gifts->image) }}"></div>
                     @endforeach
                 </div>
+
+
+                
 
                 @if(!empty($gifts->price))
 

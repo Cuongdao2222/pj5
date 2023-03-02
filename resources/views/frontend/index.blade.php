@@ -31,6 +31,10 @@
              
            }
 
+           .font-sz{
+            font-size: 14px;
+           }
+
            .list-mn, .footer{
                 font-size: 14px !important;
             }
@@ -87,52 +91,7 @@
 
      <!-- check giá khuyến mãi sản phẩm để tạng voucher -->
 
-    <?php 
-
-        function pricesPromotion($price, $id)
-        {
-
-             if($id===''){
-
-                $gift_Price = '';
-
-            }
-            else{
-                if($price>=50000000){
-
-                    $gift_Price = '1.000.000 đ';
-
-                }
-                elseif ($price>5000000 && $price<=10000000) {
-
-                     $gift_Price = '100.000 đ';
-                }
-
-                elseif ($price>10000000 && $price<=30000000) {
-
-                     $gift_Price = '200.000 đ';
-                }
-
-                elseif ($price>30000000 && $price<50000000) {
-
-                    $gift_Price = '500.000 đ';
-                }
-                else{
-
-                    $gift_Price = '50.000 đ';
-                }
-            }
-
-            // tắt tính năng auto tính giá quà khuyến mãi
-
-            $gift_Price = '';
-            
-            return $gift_Price;
-        }
-
-        
-    ?>
-
+    
      <?php
 
 
@@ -833,8 +792,6 @@
 
                         ?>
 
-
-
                         @if($percent>0)
                         <div class="_5ICO3M yV54ZD X7gzZ7">
                             <div class="_8PundJ"><span class="percent">{{ $percent }}%</span><span class="tSV5KQ">giảm</span></div>
@@ -1147,6 +1104,28 @@
 
                         ?>
 
+                        <!-- // Trường hợp  đang chạy sự kiện -->
+
+                        <?php 
+
+                        $gift_Price = pricesPromotion($value->Price, $value->id);
+
+                        ?>
+
+                        @if(!empty($gift_Price))
+                        <div class="option-gift">
+
+                                 
+                            <div class="quatang"><img src="https://dienmaynguoiviet.vn/uploads/gift/1677726874_tien1.jpg"></div>
+                           
+                        </div>
+
+                        <div class="font-sz">
+                            <span> Quà tặng trị giá <strong>{{ $gift_Price  }}</strong> </span>
+                        </div>
+
+                        @endif
+
                         @if(!empty($gift))
                             <?php 
                                 $gifts = $gift['gifts'];
@@ -1175,12 +1154,7 @@
 
                             <span> Quà tặng trị giá <strong>{{  $price_gift }}  </strong> </span>
                             @endif  
-
-                         
-
                         @endif
-
-
                     <a href="javascript:void(0)" class="compare-show" data-id="{{ $value->product_id }}">
                         <i class="fa-solid fa-plus"></i>
                             so sánh
@@ -1264,9 +1238,9 @@
             
                             ?>
 
-
-
-                            <span> Quà tặng trị giá <strong>{{  $price_gift }} </strong> </span>
+                            <div class="font-sz">    
+                                <span> Quà tặng trị giá <strong>{{  $price_gift }} </strong> </span>
+                            </div>
                             @endif  
 
                          
@@ -1274,6 +1248,31 @@
                         @endif
 
 
+
+                        <!-- phần quà khuyến mãi -->
+
+
+                        <?php 
+
+                        $gift_Price = pricesPromotion($value->Price, $value->id);
+
+                        ?>
+
+                        @if(!empty($gift_Price))
+                        <div class="option-gift">
+
+                                 
+                            <div class="quatang"><img src="https://dienmaynguoiviet.vn/uploads/gift/1677726874_tien1.jpg"></div>
+                           
+                        </div>
+
+                        <div class="font-sz">
+                            <span> Quà tặng trị giá <strong>{{ $gift_Price  }}</strong> </span>
+                        </div>
+
+                        @endif
+
+                       
 
                         <a href="javascript:void(0)" class="compare-show" data-id="{{ $value->product_id }}">
                             <i class="fa-solid fa-plus"></i>
@@ -1500,7 +1499,34 @@
 
                             </a>
 
-                             <a href="javascript:void(0)" class="compare-show" data-id="{{ $datas->id }}" data-group="{{ $groups->id }}">
+
+                             <!-- phần quà khuyến mãi 1-->
+
+                           <?php 
+
+                            $gift_Price = pricesPromotion($datas->Price, $datas->id);
+
+                            ?>
+
+                            @if(!empty($gift_Price))
+                            <div class="option-gift">
+
+                                     
+                                <div class="quatang"><img src="https://dienmaynguoiviet.vn/uploads/gift/1677726874_tien1.jpg"></div>
+                               
+                            </div>
+
+                            <div class="font-sz">
+                                <span> Quà tặng trị giá <strong>{{ $gift_Price  }}</strong> </span>
+                            </div>
+
+                            @endif
+
+
+                            <!-- end -->
+                           
+
+                            <a href="javascript:void(0)" class="compare-show" data-id="{{ $datas->id }}" data-group="{{ $groups->id }}">
                                 <i class="fa-solid fa-plus"></i>
                                     so sánh
                             </a>

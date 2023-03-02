@@ -113,6 +113,9 @@
 
                                                                                                                               
                             <strong class="price">{{ @str_replace(',' ,'.', number_format($value->deal_price))}}&#x20AB;</strong>
+
+
+
                            
                             <div class="item-rating">
                                 <p>
@@ -128,6 +131,10 @@
                         </div>
                         
                     </a>
+
+                    <br>
+
+                     
                     <div class="item-bottom">
                         <a href="#" class="shiping"></a>
                     </div>

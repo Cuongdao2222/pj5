@@ -68,52 +68,7 @@
     
     @endpush
 
-    <?php
-
-    function pricesPromotion($price, $id)
-        {
-
-            if($id===''){
-
-                $gift_Price = '';
-
-            }
-            else{
-                if($price>=50000000){
-
-                    $gift_Price = '1.000.000 đ';
-
-                }
-                elseif ($price>5000000 && $price<=10000000) {
-
-                     $gift_Price = '100.000 đ';
-                }
-
-                elseif ($price>10000000 && $price<=30000000) {
-
-                     $gift_Price = '200.000 đ';
-                }
-
-                elseif ($price>30000000 && $price<50000000) {
-
-                    $gift_Price = '500.000 đ';
-                }
-                else{
-
-                    $gift_Price = '50.000 đ';
-                }
-            }
-
-            // tắt tính năng auto tính giá quà khuyến mãi
-
-            $gift_Price = '';
-            
-            return $gift_Price;
-        }
-
-    ?>
-
-
+   
 
         <div class="locationbox__overlay"></div>
         
@@ -497,7 +452,35 @@
                                             } 
 
                                         ?>
+
+
+
                                         
+                                    </div>
+                                    
+                                </a>
+
+                                <?php 
+                                            
+                                            // Trường hợp  đang chạy sự kiện
+                                        
+                                            $gift_Price = pricesPromotion($value->Price, $value->id)
+                                            
+                                        ?>     
+
+                                        <!-- nếu tồn tại gift_price thì hiển thị -->
+                                        @if(!empty($gift_Price))
+                                        <div class="gift_pro">
+                                            
+                                            <span class="ttl"><i class="fa-solid fa-gift"></i> Quà tặng 1 voucher trị giá {{ $gift_Price }}</span>
+
+                                        </div>
+
+                                        @endif
+
+
+
+                                        <!-- phần check giá khi lựa chọn -->
 
                                         @if(!empty($gift)&& $checkdealpd===false)
                                             <?php 
@@ -533,9 +516,6 @@
                                            
                                         @endif
 
-                                    </div>
-                                    
-                                </a>
                                 <div class="item-bottom">
                                     <a href="#" class="shiping"></a>
                                 </div>

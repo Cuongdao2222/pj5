@@ -6,6 +6,7 @@
 CKEDITOR.editorConfig = function( config ) {
 	config.extraAllowedContent = 'a[*]';
 	config.extraPlugins = 'tableresize';
+	config.removePlugins = 'easyimage, cloudservices, exportpdf';
 
 
 

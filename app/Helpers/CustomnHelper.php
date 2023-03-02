@@ -167,6 +167,50 @@ if (!function_exists('convertSlug')) {
     }
 }
 
+if(!function_exists('pricesPromotion')){
+
+    function pricesPromotion($price, $id)
+    {
+
+        if($id===''){
+
+            $gift_Price = '';
+
+        }
+        else{
+            if($price>=50000000){
+
+                $gift_Price = '500.000 đ';
+
+            }
+            elseif ($price>5000000 && $price<=10000000) {
+
+                 $gift_Price = '100.000 đ';
+            }
+
+            elseif ($price>10000000 && $price<=20000000) {
+
+                 $gift_Price = '200.000 đ';
+            }
+
+            elseif ($price>20000000 && $price<50000000) {
+
+                $gift_Price = '300.000 đ';
+            }
+            else{
+
+                $gift_Price = '50.000 đ';
+            }
+        }
+
+        
+        return $gift_Price;
+    }
+
+}
+
+
+
 if (!function_exists('promotion_product')){
 
     function promotion_product($id, $now)
