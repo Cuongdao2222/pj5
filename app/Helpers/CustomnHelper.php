@@ -228,8 +228,11 @@ if(!function_exists('pricesPromotion')){
 
                 $gift_Price = '300.000 đ';
             }
-            else{
+             elseif ($price>1000000 && $price<5000000){
 
+                $gift_Price = '50.000 đ';
+            }
+            else{
                 $gift_Price = '';
             }
         }
