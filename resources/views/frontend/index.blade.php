@@ -1113,10 +1113,15 @@
                         ?>
 
                         @if(!empty($gift_Price))
+
+                        <?php 
+
+                            $image_promotion_price = definePrice($gift_Price);
+                        ?>
                         <div class="option-gift">
 
                                  
-                            <div class="quatang"><img src="https://dienmaynguoiviet.vn/uploads/gift/1677726874_tien1.jpg"></div>
+                            <div class="quatang"><img src="{{ $image_promotion_price }}"></div>
                            
                         </div>
 
@@ -1259,12 +1264,9 @@
                         ?>
 
                         @if(!empty($gift_Price))
-                        <div class="option-gift">
 
-                                 
-                            <div class="quatang"><img src="https://dienmaynguoiviet.vn/uploads/gift/1677726874_tien1.jpg"></div>
-                           
-                        </div>
+                       
+                        <div class="quatang"><img src="https://dienmaynguoiviet.vn/uploads/gift/1677726874_tien1.jpg"></div>
 
                         <div class="font-sz">
                             <span> Quà tặng trị giá <strong>{{ $gift_Price  }}</strong> </span>
@@ -1509,12 +1511,7 @@
                             ?>
 
                             @if(!empty($gift_Price))
-                            <div class="option-gift">
-
-                                     
-                                <div class="quatang"><img src="https://dienmaynguoiviet.vn/uploads/gift/1677726874_tien1.jpg"></div>
-                               
-                            </div>
+                            <div class="quatang"><img src="https://dienmaynguoiviet.vn/uploads/gift/1677726874_tien1.jpg"></div>
 
                             <div class="font-sz">
                                 <span> Quà tặng trị giá <strong>{{ $gift_Price  }}</strong> </span>

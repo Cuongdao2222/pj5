@@ -167,6 +167,35 @@ if (!function_exists('convertSlug')) {
     }
 }
 
+
+if(function_exists('definePrice')){
+
+
+    function definePrice($gift_Price)
+    {
+        if($gift_Price ==='500.000 đ'){
+
+            $image  = 'https://dienmaynguoiviet.vn/uploads/gift/1677808492_500k.jpg';
+
+        }
+        elseif($gift_Price==='300.000 đ'){
+
+            $image  = 'https://dienmaynguoiviet.vn/uploads/gift/1677808500_300.jpg';
+        }
+        elseif($gift_Price==='200.000 đ'){
+            $image = 'https://dienmaynguoiviet.vn/uploads/gift/1677808513_200k.jpg';
+        }
+        elseif($gift_Price==='100.000 đ'){
+
+            $image  = 'https://dienmaynguoiviet.vn/uploads/gift/1677808522_100k.jpg';
+        }
+        else{
+            $image  = 'https://dienmaynguoiviet.vn/uploads/gift/1677808530_50k.jpg';
+        }
+    }
+
+}
+
 if(!function_exists('pricesPromotion')){
 
     function pricesPromotion($price, $id)
@@ -181,6 +210,8 @@ if(!function_exists('pricesPromotion')){
             if($price>=50000000){
 
                 $gift_Price = '500.000 đ';
+
+
 
             }
             elseif ($price>5000000 && $price<=10000000) {
@@ -199,7 +230,7 @@ if(!function_exists('pricesPromotion')){
             }
             else{
 
-                $gift_Price = '50.000 đ';
+                $gift_Price = '';
             }
         }
 
