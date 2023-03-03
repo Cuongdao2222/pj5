@@ -3,9 +3,9 @@
 @section('content') 
     @push('style')
         <link rel="stylesheet" type="text/css" href="{{ asset('css/categorycs.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/category.css') }}?ver=13"> 
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/category.css') }}?ver=14"> 
 
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/categories.css') }}?ver=3"> 
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/categories.css') }}?ver=5"> 
   
          <link rel="stylesheet" type="text/css" href="{{ asset('css/home.css') }}?ver=1"> 
 
@@ -470,6 +470,17 @@
 
                                         <!-- nếu tồn tại gift_price thì hiển thị -->
                                         @if(!empty($gift_Price))
+
+                                        <?php 
+
+                                            $image_gift_promotion = definePrice($gift_Price);
+                                        ?>
+
+                                         <div class="option-gift">
+                                            
+                                            <div class="quatang"><img src="{{ $image_gift_promotion }}"></div>
+                                           
+                                        </div>
                                         <div class="gift_pro">
                                             
                                             <span class="ttl"><i class="fa-solid fa-gift"></i> Quà tặng 1 voucher trị giá {{ $gift_Price }}</span>
