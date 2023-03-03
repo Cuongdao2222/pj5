@@ -1077,6 +1077,11 @@
                    
                 } 
 
+                .title-name{
+                    height: 64px;
+                }
+                
+
                 .homebanners{
 
                     height: auto;
