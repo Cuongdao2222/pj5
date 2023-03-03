@@ -44,7 +44,7 @@
 
         $checkSharp = strpos($data->Name, 'Sharp');
 
-        $browserAsString = $_SERVER['HTTP_USER_AGENT'];
+        $browserAsString = !empty($_SERVER['HTTP_USER_AGENT'])?$_SERVER['HTTP_USER_AGENT']:'';
 
         $browserIsMobileSafari = false;
 
