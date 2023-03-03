@@ -308,6 +308,15 @@
 @push('style')
 <link rel="stylesheet" type="text/css" href="{{ asset('css/detailsfe.css') }}?ver=7">
 @endpush
+
+
+<?php
+
+    $gift_Price = pricesPromotion($data->Price, $data->id);
+
+?>
+
+
 <div class="locationbox__overlay"></div>
 <div class="locationbox">
     <div class="locationbox__item locationbox__item--right" onclick="OpenLocation()">
@@ -334,6 +343,7 @@
 
     <?php 
 
+   
     $mobile = 0;
 
     if(!empty($_SERVER['HTTP_USER_AGENT'])){
@@ -347,6 +357,8 @@
     }
 
     ?>
+
+    
 
 
     @if($mobile ==1)
@@ -505,11 +517,7 @@
                                 </fieldset>
                                 @endif
 
-                                <?php
-
-                                $gift_Price = pricesPromotion($data->Price, $data->id);
-
-                                ?>
+                                
 
 
                                 @if($checkSharp>-1)
@@ -528,6 +536,7 @@
                                 @endif
 
                                 <!-- nếu tồn tại gift_price thì hiển thị -->
+
                                 @if(!empty($gift_Price))
                                 <div class="gift_pro">
                                     
@@ -1180,8 +1189,18 @@
                                     
                             
                             @endif
+
                             
-                        
+                            @if(!empty($gift_Price))
+                            <div class="gift_pro">
+                                
+                                <span class="ttl"><i class="fa-solid fa-gift"></i> Quà tặng 1 voucher trị giá {{ $gift_Price }}</span>
+
+                            </div>
+
+                            @endif
+
+
                             @if(!empty($gift) && $data->Quantily>0 && $deal_check_add ==false  &&  $data['Price']>0)
 
 
@@ -1204,15 +1223,8 @@
                             ?>
 
 
+
                             <!-- nếu tồn tại gift_price thì hiển thị -->
-                            @if(!empty($gift_Price))
-                            <div class="gift_pro">
-                                
-                                <span class="ttl"><i class="fa-solid fa-gift"></i> Quà tặng 1 voucher trị giá {{ $gift_Price }}</span>
-
-                            </div>
-
-                            @endif
                            
                             <div class="gift_pro">
 
