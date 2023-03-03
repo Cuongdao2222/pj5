@@ -1114,16 +1114,8 @@
 
                         @if(!empty($gift_Price))
 
-                        <?php 
 
-                            $image_promotion_price = definePrice($gift_Price);
-                        ?>
-                        <div class="option-gift">
-
-                                 
-                            <div class="quatang"><img src="{{ $image_promotion_price }}"></div>
-                           
-                        </div>
+                       
 
                         <div class="font-sz">
                             <span> Quà tặng trị giá <strong>{{ $gift_Price  }}</strong> </span>
@@ -1553,8 +1545,6 @@
 
                                 $price_gift = pricesPromotion($datas->Price, $id_checkpromotion)===''?str_replace(',' ,'.', number_format($gifts->price)):pricesPromotion($datas->Price, $id_checkpromotion);
 
-
-                
                                 ?>
 
 
