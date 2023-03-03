@@ -1113,9 +1113,16 @@
                         ?>
 
                         @if(!empty($gift_Price))
+                        <?php 
 
+                            $image_gift_promotion = definePrice($gift_Price);
+                        ?>
 
-                       
+                         <div class="option-gift">
+                            
+                            <div class="quatang"><img src="{{ $image_gift_promotion }}"></div>
+                           
+                        </div>
 
                         <div class="font-sz">
                             <span> Quà tặng trị giá <strong>{{ $gift_Price  }}</strong> </span>
@@ -1217,6 +1224,8 @@
                             ?>
 
                             {{ $gifts->type ==1?'k/m chọn 1 trong 2':'' }}
+
+
                             <div class="option-gift">
 
                                  @foreach($gift as $gifts)
@@ -1257,8 +1266,17 @@
 
                         @if(!empty($gift_Price))
 
-                       
-                        <div class="quatang"><img src="https://dienmaynguoiviet.vn/uploads/gift/1677726874_tien1.jpg"></div>
+                        <?php 
+
+                            $image_gift_promotion = definePrice($gift_Price);
+                        ?>
+
+                         <div class="option-gift">
+                            
+                            <div class="quatang"><img src="{{ $image_gift_promotion }}"></div>
+                           
+                        </div>
+                      
 
                         <div class="font-sz">
                             <span> Quà tặng trị giá <strong>{{ $gift_Price  }}</strong> </span>
@@ -1503,7 +1521,18 @@
                             ?>
 
                             @if(!empty($gift_Price))
-                            <div class="quatang"><img src="https://dienmaynguoiviet.vn/uploads/gift/1677726874_tien1.jpg"></div>
+
+                            <?php 
+
+                                $image_gift_promotion = definePrice($gift_Price);
+                            ?>
+
+                             <div class="option-gift">
+                                
+                                <div class="quatang"><img src="{{ $image_gift_promotion }}"></div>
+                               
+                            </div>
+                            
 
                             <div class="font-sz">
                                 <span> Quà tặng trị giá <strong>{{ $gift_Price  }}</strong> </span>

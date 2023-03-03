@@ -51,10 +51,14 @@
     ?>
 
     @if(!empty($gift_Price))
-    <div class="option-gift">
+    <?php 
 
-             
-        <div class="quatang"><img src="https://dienmaynguoiviet.vn/uploads/gift/1677726874_tien1.jpg"></div>
+        $image_gift_promotion = definePrice($gift_Price);
+    ?>
+
+     <div class="option-gift">
+        
+        <div class="quatang"><img src="{{ $image_gift_promotion }}"></div>
        
     </div>
 

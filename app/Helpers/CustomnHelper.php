@@ -168,7 +168,7 @@ if (!function_exists('convertSlug')) {
 }
 
 
-if(function_exists('definePrice')){
+if(!function_exists('definePrice')){
 
 
     function definePrice($gift_Price)
@@ -192,6 +192,7 @@ if(function_exists('definePrice')){
         else{
             $image  = 'https://dienmaynguoiviet.vn/uploads/gift/1677808530_50k.jpg';
         }
+        return $image;
     }
 
 }
