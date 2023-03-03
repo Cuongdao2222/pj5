@@ -1986,6 +1986,10 @@ section {
     box-sizing: border-box
 }
 
+.gift_pro{
+    margin-top: 10px;
+}
+
 .banner-texttop:before,
 .banner-texttop:after {
     content: '';
