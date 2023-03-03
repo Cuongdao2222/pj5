@@ -1125,7 +1125,7 @@
                         </div>
 
                         <div class="font-sz">
-                            <span> Quà tặng trị giá <strong>{{ $gift_Price  }}</strong> </span>
+                            <span> Voucher trị giá <strong>{{ $gift_Price  }}</strong> </span>
                         </div>
 
                         @endif
@@ -1279,7 +1279,7 @@
                       
 
                         <div class="font-sz">
-                            <span> Quà tặng trị giá <strong>{{ $gift_Price  }}</strong> </span>
+                            <span> Voucher trị giá <strong>{{ $gift_Price  }}</strong> </span>
                         </div>
 
                         @endif
@@ -1535,7 +1535,7 @@
                             
 
                             <div class="font-sz">
-                                <span> Quà tặng trị giá <strong>{{ $gift_Price  }}</strong> </span>
+                                <span> Voucher trị giá <strong>{{ $gift_Price  }}</strong> </span>
                             </div>
 
                             @endif
