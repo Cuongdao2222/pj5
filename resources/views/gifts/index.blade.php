@@ -396,14 +396,78 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
+
+                <label>bật/tắt khuyến mãi</label>
+
+                <?php 
+
+                    $price_auto_promotion_active  = DB::table('price_auto_promotion_active')->where('id', 1)->first();
+
+                    
+                ?>
+
+                <input type="checkbox" id="active3881" name="active" onclick="active_action_auto_promotion_price({{ $price_auto_promotion_active->active }})"  
+                {{ $price_auto_promotion_active->active===1?'checked':'' }}>
+
+
                 <h5 class="modal-title" id="exampleModalLabel">Khuyến mãi theo giá sản phẩm</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
+
+                <?php 
+                    $data_promotion_price_auto = App\Models\pricePromotionAuto::get();
+                ?>
+                @if(!empty($data_promotion_price_auto) && $data_promotion_price_auto->count()>0)
+
+                <table class="table" id="gifts-table">
+                    <thead>
+                        <tr>
+                            <th>Khuyến mãi</th>
+                            <th>Số tiền giảm </th>
+                            <th colspan="3">Ảnh</th>
+                            <th >Xóa</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        
+
+                        @foreach($data_promotion_price_auto as $value)
+
+                        <?php 
+
+                            $promotion_price_auto =  json_decode($value->price_compare);
+                        ?>
+                        <tr id="promotion_price_auto_{{ $value->id  }}">
+
+                            @if( !empty($promotion_price_auto[1])  )
+                            <td>từ {{  @str_replace(',' ,'.', number_format( $promotion_price_auto[0]))  }} đến   {{  @str_replace(',' ,'.', number_format( $promotion_price_auto[1]))  }}</td>
+
+                            @else
+
+                            <td>trên {{  @str_replace(',' ,'.', number_format( $promotion_price_auto[0]))  }}  </td>
+                            @endif
+
+
+                            <td> {{ $value->voucher_name  }} đ  </td>
+                            <td width="120">
+                                <img src="{{ asset($value->image) }}" width="150px" height="150px">
+                            </td>
+
+                            <td><a href="javascript:void(0)" onclick="remove_active_promotion_price_auto({{ $value->id }})">Xóa</a> </td>
+                        </tr>
+                        @endforeach
+                       
+                    </tbody>
+                </table>
+                @endif
+
+
                 
-                <form method="post" action="{{  route('add-price-promotion-auto') }}">
+                <form method="post" action="{{  route('add-price-promotion-auto') }}" enctype="multipart/form-data">
 
                     @csrf
                     <label for="username">Khoảng giá khuyến mãi:</label>
@@ -434,15 +498,22 @@
 
                     <br>
                     <label for="username">Voucher tiền mặt:</label>
-
                    
                     <input type="text" name="voucher_name" required>
+
+                    <br>
+
+                    <label for="username">Ảnh khuyến mãi:</label>
+                   
+                    <input type="file" name="image">
 
                      <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Lưu </button>
                     </div>
 
+                    <br>
+                    
                 </form>
 
             </div>
@@ -505,6 +576,36 @@
 
 
 <script type="text/javascript">
+
+
+    function active_action_auto_promotion_price(active) {
+
+        actives = active===1?0:1
+        
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+    
+        $.ajax({
+           
+            type: 'POST',
+            url: "{{ route('active-promotion-price') }}",
+            data: {
+                
+                active:actives,
+               
+            },
+            success: function(result){
+
+                alert(result);
+                
+            }
+        });
+       
+    }
 
     function promotionProductPrice() {
         
@@ -705,6 +806,36 @@
      function openModalProducts_view() {
          $('#modal-productss').modal('show');
      }
+
+    function remove_active_promotion_price_auto(id) {
+
+
+        $('#promotion_price_auto_'+id).remove();
+         
+        $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+        $.ajax({
+
+        type: 'post',
+            url: "{{ route('remove-click-active-promotion-price') }}",
+            data: {
+                id: id,
+               
+                
+            },
+            success: function(result){
+
+               alert('thành công!')
+
+               
+            }
+        });
+
+    } 
 
 
     $("#group_product_id").bind("change", function() {

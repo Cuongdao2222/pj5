@@ -58,9 +58,6 @@ Route::get('/deal', 'mainController@deal')->middleware('cache.headers:public;max
 
 Route::get('admin','Frontend\indexController@viewLogin');
 
-Route::redirect('.env', 'https://www.24h.com.vn/');
-
-
 Route::get('/lien-he', 'mainController@lienhe');
 
 
@@ -186,6 +183,11 @@ Route::post('filter-price-product', 'AjaxController@filterByValue')->name('filte
 Route::post('filter-price-product-by-page', 'AjaxController@filterByPageFilter')->name('filter-option-by-page');
 
 Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
+
+
+    Route::post('active-promotion-price', 'giftController@activePromotionPrice')->name('active-promotion-price');
+
+    Route::post('remove-click-active-promotion-price', 'giftController@removeClickActivePromotionPrice')->name('remove-click-active-promotion-price');
 
     Route::get('get-info-order', 'apiController@searchInfoOrder');
 

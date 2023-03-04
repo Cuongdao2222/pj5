@@ -538,9 +538,15 @@
                                 <!-- nếu tồn tại gift_price thì hiển thị -->
 
                                 @if(!empty($gift_Price))
+
+                                <?php 
+
+                                    $image_gift_promotion = definePrice($gift_Price);
+                                ?>
+                                
                                 <div class="gift_pro">
                                     
-                                    <span class="ttl"><i class="fa-solid fa-gift"></i> Quà tặng giảm ngay {{ $gift_Price }}</span>
+                                    <span class="ttl"><i class="fa-solid fa-gift"></i> Quà tặng giảm ngay {{ $gift_Price }} đ <img src="{{ asset($image_gift_promotion) }}" height="30px" width="30px"></span>
 
                                 </div>
 
@@ -1192,10 +1198,25 @@
 
                             
                             @if(!empty($gift_Price))
+
+                            <?php 
+
+                                $image_gift_promotion = definePrice($gift_Price);
+                            ?>
+                            
+
+
                             <div class="gift_pro">
                                 
-                                <span class="ttl"><i class="fa-solid fa-gift"></i> Quà tặng giảm ngay {{ $gift_Price }}</span>
+                                    <div class="select-gift">
+                                                
+                                        <span class="ttl"><i class="fa-solid fa-gift"></i> Quà tặng giảm ngay {{ $gift_Price }} đ 
 
+                                            <img src="{{ asset($image_gift_promotion) }}" height="30px" width="30px">
+
+                                        </span>         
+                                    </div>
+                                       
                             </div>
 
                             @endif

@@ -152,10 +152,6 @@
 
         }
 
-        
-
-        
-
        
     ?> 
 
@@ -1125,7 +1121,7 @@
                         </div>
 
                         <div class="font-sz">
-                            <span> Giảm ngay <strong>{{ $gift_Price  }}</strong> </span>
+                            <span> Giảm ngay <strong>{{ $gift_Price  }} đ</strong> </span>
                         </div>
 
                         @endif
@@ -1279,7 +1275,7 @@
                       
 
                         <div class="font-sz">
-                            <span> Giảm ngay <strong>{{ $gift_Price  }}</strong> </span>
+                            <span> Giảm ngay <strong>{{ $gift_Price  }} đ</strong> </span>
                         </div>
 
                         @endif
@@ -1535,7 +1531,7 @@
                             
 
                             <div class="font-sz">
-                                <span> Giảm ngay <strong>{{ $gift_Price  }}</strong> </span>
+                                <span> Giảm ngay <strong>{{ $gift_Price  }} đ</strong> </span>
                             </div>
 
                             @endif

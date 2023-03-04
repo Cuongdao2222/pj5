@@ -11,6 +11,10 @@ use App\Models\gift;
 use Flash;
 use Response;
 use DB;
+use App\Models\priceAutoPromotionActive;
+
+use App\Models\pricePromotionAuto;
+
 use Illuminate\Support\Facades\Cache;
 use Carbon\Carbon;
 
@@ -262,6 +266,18 @@ class giftController extends AppBaseController
 
         $input['price_compare'] = $price_compare;
 
+
+        if ($request->hasFile('image')) {
+
+            $file_upload = $request->file('image');
+
+            $name = time() . '_' . $file_upload->getClientOriginalName();
+
+            $filePath = $file_upload->storeAs('uploads/gift', $name, 'public');
+
+            $input['image'] = $filePath;
+        }
+
         $insert = DB::table('price_promotion_auto')->insert($input);
 
          return redirect()->back()->with('success-promotion', 'thành công');   
@@ -293,6 +309,31 @@ class giftController extends AppBaseController
         else{
             echo "phần tử này k nằm giữa mảng";
         }
+
+    }
+    public function activePromotionPrice(Request $request)
+    {
+       
+        $active = $request->active;
+
+        $update =  priceAutoPromotionActive::find(1);
+
+        $update->active = $active;
+
+        $update->save();
+
+        return response('thành công');
+
+    }
+
+    public function removeClickActivePromotionPrice(Request $request)
+    {
+        $id = $request->id;
+
+        $delete = pricePromotionAuto::find($id)->delete();
+
+        return response('thành công!');
+
 
     }
 }

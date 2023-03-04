@@ -173,19 +173,19 @@ if(!function_exists('definePrice')){
 
     function definePrice($gift_Price)
     {
-        if($gift_Price ==='500.000 đ'){
+        if($gift_Price ==='500.000'){
 
             $image  = 'https://dienmaynguoiviet.vn/uploads/gift/1677808492_500k.jpg';
 
         }
-        elseif($gift_Price==='300.000 đ'){
+        elseif($gift_Price==='300.000'){
 
             $image  = 'https://dienmaynguoiviet.vn/uploads/gift/1677808500_300.jpg';
         }
-        elseif($gift_Price==='200.000 đ'){
+        elseif($gift_Price==='200.000'){
             $image = 'https://dienmaynguoiviet.vn/uploads/gift/1677808513_200k.jpg';
         }
-        elseif($gift_Price==='100.000 đ'){
+        elseif($gift_Price==='100.000'){
 
             $image  = 'https://dienmaynguoiviet.vn/uploads/gift/1677808522_100k.jpg';
         }
@@ -202,40 +202,55 @@ if(!function_exists('pricesPromotion')){
     function pricesPromotion($price, $id)
     {
 
-        if($id===''){
+        $gift_Price = '';
+
+        $checkActiveButton = Cache::rememberForever('price_auto_promotion_active', function(){
+
+            $active = App\Models\priceAutoPromotionActive::find(1)->active;
+
+            return $active;
+        });
+
+        
+        if($id===''||$checkActiveButton===0){
 
             $gift_Price = '';
 
         }
         else{
 
-            if($price>=50000000){
+            $data_price = Cache::rememberForever('price_auto_promotion', function(){
 
-                $gift_Price = '500.000 đ';
+                $data_price = App\Models\pricePromotionAuto::get();
+
+                return $data_price;
+            });
+
+
+            $data_price = App\Models\pricePromotionAuto::get();
+
+            if(!empty($data_price) && $data_price->count()>0){
+
+                foreach ($data_price as  $value) {
+
+                    $arr_all_price = json_decode($value->price_compare);
+
+                    array_push($arr_all_price, $price);
+
+                    // sắp xếp lại mảng theo chiều tăng dần
+
+                    sort($arr_all_price);
+
+                    if($arr_all_price[1] === $price){
+
+                        $gift_Price = $value->voucher_name;
+                    }
+
+                }
+
             }
-            elseif ($price>5000000 && $price<=10000000) {
-
-                 $gift_Price = '100.000 đ';
-            }
-
-            elseif ($price>10000000 && $price<=20000000) {
-
-                 $gift_Price = '200.000 đ';
-            }
-
-            elseif ($price>20000000 && $price<50000000) {
-
-                $gift_Price = '300.000 đ';
-            }
-             elseif ($price>1000000 && $price<5000000){
-
-                $gift_Price = '50.000 đ';
-            }
-            else{
-                $gift_Price = '';
-            }
+            
         }
-
         
         return $gift_Price;
     }

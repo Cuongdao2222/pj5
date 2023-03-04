@@ -293,7 +293,7 @@ class productController extends AppBaseController
 
             $name = time() . '_' . $file_upload->getClientOriginalName();
 
-            $filePath = $file_upload->storeAs('uploads/product', $name, 'ftp');
+            $filePath = $file_upload->storeAs('uploads/product', $name, 'public');
 
             $input['Image'] = $filePath;
         }
