@@ -202,7 +202,7 @@ if(!function_exists('pricesPromotion')){
     function pricesPromotion($price, $id)
     {
 
-        if($id===''|| $id === 3997){
+        if($id===''){
 
             $gift_Price = '';
 
