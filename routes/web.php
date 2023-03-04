@@ -137,6 +137,12 @@ Route::get('page/{slug}', 'Frontend\categoryController@pageView')->name('page_cd
 
 Route::get('tim', 'productController@FindbyNameOrModelOfFrontend')->name('search-product-frontend');
 
+
+Route::get('check-pmd',  'giftController@promotionPriceAuto');
+
+
+
+
 Auth::routes(['verify' => true]);
 
  Route::post('count-click-banner', 'Frontend\indexController@addClick')->name('click-banner');
@@ -323,6 +329,9 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
     Route::get('show/pop-up', 'mainController@funcmorePopup')->name('pop-up-show');
 
     Route::get('imagescontent/{id}', 'productController@imagecontent')->name('imagescontent');
+
+
+    Route::post('add-price-promotion-auto', 'giftController@addPromotionAuto')->name('add-price-promotion-auto');
 
 
     Route::get('add-lanfding-pro', 'landingController@addLanding')->name('add-product-landing');

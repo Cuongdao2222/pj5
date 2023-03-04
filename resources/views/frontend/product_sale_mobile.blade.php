@@ -63,7 +63,7 @@
     </div>
 
     <div class="font-sz">
-        <span> Voucher trị giá <strong>{{ $gift_Price  }}</strong> </span>
+        <span> Giảm ngay <strong>{{ $gift_Price  }}</strong> </span>
     </div>
 
     @endif

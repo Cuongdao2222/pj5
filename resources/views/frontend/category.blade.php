@@ -483,7 +483,7 @@
                                         </div>
                                         <div class="gift_pro">
                                             
-                                            <span class="ttl"><i class="fa-solid fa-gift"></i> Quà tặng 1 voucher trị giá {{ $gift_Price }}</span>
+                                            <span class="ttl"><i class="fa-solid fa-gift"></i> Giảm ngay {{ $gift_Price }}</span>
 
                                         </div>
 

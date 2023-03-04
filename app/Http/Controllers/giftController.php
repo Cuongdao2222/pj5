@@ -240,4 +240,59 @@ class giftController extends AppBaseController
         return response($id);
 
     }
+
+    public function addPromotionAuto(Request $request)
+    {
+
+        $price_form = $request->from;
+
+        $price_to   = $request->to;
+       
+        if($price_to ==='limit'){
+
+            $price_compare =  json_encode([$price_form]);
+        }
+        else{
+           
+            $price_compare =  json_encode([$price_form, $price_to]);
+        }
+        
+       
+        $input['voucher_name'] = trim($request->voucher_name);
+
+        $input['price_compare'] = $price_compare;
+
+        $insert = DB::table('price_promotion_auto')->insert($input);
+
+         return redirect()->back()->with('success-promotion', 'thành công');   
+
+    }
+
+    public function promotionPriceAuto(Request $request)
+    {
+
+        $thu = 500;
+
+        $array = [300, 600];
+
+        // đẩy phần tử mới nhập vào mảng cho trước
+
+        array_push($array, $thu);
+
+        // sắp xếp lại mảng theo chiều tăng dần
+
+        sort($array);
+
+        // kiểm tra xem phần tử có phải ở giữa không nếu ở giữa thì in ra đúng
+
+        if($array[1] === 900){
+
+            echo "phần tử này nằm giữa mảng";
+
+        }
+        else{
+            echo "phần tử này k nằm giữa mảng";
+        }
+
+    }
 }

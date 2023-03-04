@@ -403,12 +403,14 @@
             </div>
             <div class="modal-body">
                 
-                <form>
+                <form method="post" action="{{  route('add-price-promotion-auto') }}">
+
+                    @csrf
                     <label for="username">Khoảng giá khuyến mãi:</label>
 
-                    <select name="to">
+                    <select name="from">
                         @for($i=0; $i<100; $i++)
-                        <option val="{{ $i }}">{{ $i }} triệu</option>
+                        <option value="{{ $i*1000000 }}">{{ $i }} triệu</option>
 
                         @endfor
 
@@ -419,14 +421,14 @@
                     <span>to</span>
 
 
-                    <select name="from">
+                    <select name="to">
                         
                         @for($i=0; $i<100; $i++)
-                        <option val="{{ $i }}">{{ $i }} triệu</option>
+                        <option value="{{ $i*1000000 }}">{{ $i }} triệu</option>
 
                         @endfor
 
-                        <option val="vô hạn">vô hạn</option>
+                        <option value="limit">vô hạn</option>
 
                     </select>
 
@@ -434,15 +436,17 @@
                     <label for="username">Voucher tiền mặt:</label>
 
                    
-                    <input type="text" name="amount-reduced">
+                    <input type="text" name="voucher_name" required>
+
+                     <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Lưu </button>
+                    </div>
 
                 </form>
 
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
+           
         </div>
     </div>
 </div>
@@ -507,8 +511,6 @@
         $('#promotionProductPrice').modal('show');
 
     }
-    
-
 
     function update_date_end(id) {
         

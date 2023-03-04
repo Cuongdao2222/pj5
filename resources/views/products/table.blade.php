@@ -403,6 +403,22 @@
 </div>
 
 
+ @if (session('success-promotion'))
+
+
+        <script type="text/javascript">
+
+            alert('{{ session("success") }}');
+
+        </script>
+        <?php
+        Session::forget('success-promotion');
+        ?>
+
+        
+    @endif
+
+
 
 <script type="text/javascript">
 
@@ -412,12 +428,7 @@
 
         $('#gift-product').text(title);
         $('#modal-gift').modal('show');
-
-       
-
     }
-
-
 
     function add_gift_group(product_id) {
 
