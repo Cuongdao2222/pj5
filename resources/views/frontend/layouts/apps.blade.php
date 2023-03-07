@@ -506,7 +506,7 @@
                     right: 0;
                     padding: 0.5rem 0.3rem 0.5rem 0.8rem;
                     border-radius: 13px 0px 0px 13px;
-                    background-color: #002069;
+                    background-color: #fff;
                     z-index: 99;
                     transition: 0.3s;
                 }
@@ -2607,8 +2607,7 @@
 
 
         <div class="hotline position-fixed">
-            <p class="text-white d-inlineblock border-bottom text-right">Liên hệ</p>
-
+           
             @if($day_check%2===0)
             <a target="blank" href="https://zalo.me/0913011888" class="d-flex align-items-center position-relative hotline-fix">
                
