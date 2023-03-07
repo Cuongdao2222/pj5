@@ -2609,14 +2609,14 @@
         <div class="hotline position-fixed">
            
             @if($day_check%2===0)
-            <a target="blank" href="https://zalo.me/0913011888" class="d-flex align-items-center position-relative hotline-fix">
+            <a target="blank" href="https://zalo.me/0913011888" class="d-flex align-items-center position-relative hotline-fix" target="_blank">
                
                 <img src="https://page.widget.zalo.me/static/images/2.0/Logo.svg" width="20%">
                 &nbsp
                 <span><b>0913 011 888</b></span>
             </a>
             @endif
-            <a href="https://zalo.me/0983612828" class="d-flex align-items-center position-relative hotline-fix mb-2">
+            <a href="https://zalo.me/0983612828" class="d-flex align-items-center position-relative hotline-fix mb-2" target="_blank">
                 
                 <img src="https://page.widget.zalo.me/static/images/2.0/Logo.svg" width="20%">
                 &nbsp
@@ -2624,7 +2624,7 @@
             </a>
 
             @if($day_check%2 !=0)
-            <a target="blank" href="https://zalo.me/0913011888" class="d-flex align-items-center position-relative hotline-fix">
+            <a target="blank" href="https://zalo.me/0913011888" class="d-flex align-items-center position-relative hotline-fix" target="_blank">
                
                 <img src="https://page.widget.zalo.me/static/images/2.0/Logo.svg" width="20%">
                 &nbsp
