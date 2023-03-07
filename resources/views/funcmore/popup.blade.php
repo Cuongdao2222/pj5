@@ -220,14 +220,18 @@
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
+
+            <?php 
+
+                        $event = DB::table('event')->where('id', 1)->first();
+
+                       
+                    ?>
             <div class="modal-body">
                 <form method="post" action="{{ route('update-event') }}" id="eventClicks" enctype="multipart/form-data">
                     @csrf
                     
-                    <?php 
 
-                        $event = DB::table('event')->where('id', 1)->first();
-                    ?>
                     <table>
                         <tbody>
 

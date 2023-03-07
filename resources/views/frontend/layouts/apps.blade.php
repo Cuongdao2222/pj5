@@ -231,7 +231,8 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}?ver=1"> 
         <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/apps.css') }}?ver=14">
-        <link rel="stylesheet" type="text/css" href="{{asset('css/dienmay.css')}}?ver=90"> 
+        <link rel="stylesheet" type="text/css" href="{{asset('css/dienmay.css')}}?ver=90">
+        <link rel="stylesheet" type="text/css" href="{{asset('css/detailsfe.css')}}?ver=7"> 
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
     
@@ -462,7 +463,18 @@
                    
                     bottom:93px; 
                     right:8px; 
+                    display: none;
+
                        
+                }
+
+                .hotline{
+                    width: 237px;
+                }
+
+                .hotline p{
+
+                    margin-bottom: 1em;
                 }
                 .global-compare-group{
                     height: 300px;
@@ -476,6 +488,47 @@
                     left:200px !important;
 
                }
+
+               .hotline{
+                    position: absolute;
+                    
+               }
+
+                a.hotline-fix {
+                    background: #FCEF41;
+                    border-radius: 7px 0px 0px 0px;
+                    margin-bottom: 5px;
+                    font-size: 15px;
+                }
+
+                .hotline.position-fixed {
+                    bottom: 10%;
+                    right: 0;
+                    padding: 0.5rem 0.3rem 0.5rem 0.8rem;
+                    border-radius: 13px 0px 0px 13px;
+                    background-color: #002069;
+                    z-index: 99;
+                    transition: 0.3s;
+                }
+
+                .hotline.position-fixed a i {
+                    width: 35px;
+                    height: 35px;
+                    border: 1px solid #002069;
+                    border-radius: 50%;
+                    text-align: center;
+                    line-height: 35px;
+                    margin-right: 10px;
+                    color: #002069;
+                }
+
+                .text-white {
+                    color: #fff!important;
+                }
+
+                .zalo-mobile{
+                    display: none;
+                }
             }
 
             @media only screen and (max-width: 768px) {
@@ -2545,22 +2598,70 @@
 
         <?php 
             $week = Carbon\Carbon::now()->weekOfYear;
+
+            $day_check = Carbon\Carbon::now()->day;
+
+          
            
         ?>
 
-        @if( $week%2===0)
-        <a href="https://zalo.me/0913011888" target="_blank">
-            <div style="position: fixed; bottom: 52px; left: 52px; transform: translate(0px, 0px) !important; z-index: 2147483644; border: none; visibility: visible; right: 0px; width: 60px; height: 60px;" class="zalo-chat-widget"data-welcome-message="Điện Máy Người Việt rất vui khi được hỗ trợ bạn!" data-autopopup="0" data-width="" data-height="">
-                <img src="https://page.widget.zalo.me/static/images/2.0/Logo.svg">
-            </div>
-        </a>
-        @else
-        <a href="https://zalo.me/0983612828" target="_blank">
-            <div style="position: fixed; bottom: 28px !important; left: 52px !important; transform: translate(0px, 0px) !important; z-index: 2147483644; border: none; visibility: visible; right: 0px; width: 60px; height: 60px;" class="zalo-chat-widget"data-welcome-message="Điện Máy Người Việt rất vui khi được hỗ trợ bạn!" data-autopopup="0" data-width="" data-height="">
-                <img src="https://page.widget.zalo.me/static/images/2.0/Logo.svg">
-            </div>
-        </a>
-        @endif
+
+        <div class="hotline position-fixed">
+            <p class="text-white d-inlineblock border-bottom text-right">Liên hệ</p>
+
+            @if($day_check%2===0)
+            <a target="blank" href="https://zalo.me/0913011888" class="d-flex align-items-center position-relative hotline-fix">
+               
+                <img src="https://page.widget.zalo.me/static/images/2.0/Logo.svg" width="20%">
+                &nbsp
+                <span><b>0913 011 888</b></span>
+            </a>
+            @endif
+            <a href="https://zalo.me/0983612828" class="d-flex align-items-center position-relative hotline-fix mb-2">
+                
+                <img src="https://page.widget.zalo.me/static/images/2.0/Logo.svg" width="20%">
+                &nbsp
+                <span><b>0983 612 828</b></span>
+            </a>
+
+            @if($day_check%2 !=0)
+            <a target="blank" href="https://zalo.me/0913011888" class="d-flex align-items-center position-relative hotline-fix">
+               
+                <img src="https://page.widget.zalo.me/static/images/2.0/Logo.svg" width="20%">
+                &nbsp
+                <span><b>0913 011 888</b></span>
+            </a>
+            @endif
+
+            <a href="tel:02473036336" class="d-flex align-items-center position-relative hotline-fix mb-2">
+   
+            <i class="fa fa-phone"></i>
+            <span><b>024 7303 6336</b> <br> <span>Bấm phím 1</span></span>
+
+           
+        </div>
+
+        <div class="zalo-mobile">
+
+            @if($week%2===0)
+            <a href="https://zalo.me/0913011888" target="_blank">
+                <div style="position: fixed; bottom: 52px; left: 52px; transform: translate(0px, 0px) !important; z-index: 2147483644; border: none; visibility: visible; right: 0px; width: 60px; height: 60px;" class="zalo-chat-widget"data-welcome-message="Điện Máy Người Việt rất vui khi được hỗ trợ bạn!" data-autopopup="0" data-width="" data-height="">
+                    <img src="https://page.widget.zalo.me/static/images/2.0/Logo.svg">
+                </div>
+            </a>
+
+            @else
+           
+            <a href="https://zalo.me/0983612828" target="_blank">
+                <div style="position: fixed; bottom: 28px !important; left: 52px !important; transform: translate(0px, 0px) !important; z-index: 2147483644; border: none; visibility: visible; right: 0px; width: 60px; height: 60px;" class="zalo-chat-widget"data-welcome-message="Điện Máy Người Việt rất vui khi được hỗ trợ bạn!" data-autopopup="0" data-width="" data-height="">
+                    <img src="https://page.widget.zalo.me/static/images/2.0/Logo.svg">
+                </div>
+            </a>
+
+            @endif
+        </div>
+        
+        
  
 <!-- Messenger Plugin chat Code -->
    <!--  <div id="fb-root"></div> -->

@@ -5,7 +5,7 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('css/categorycs.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/category.css') }}?ver=14"> 
 
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/categories.css') }}?ver=5"> 
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/categories.css') }}?ver=6"> 
   
          <link rel="stylesheet" type="text/css" href="{{ asset('css/home.css') }}?ver=1"> 
 

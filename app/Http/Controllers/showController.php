@@ -10,6 +10,10 @@ use App\Models\popup;
 
 use DB;
 
+use App\Models\events;
+
+use Illuminate\Support\Facades\Cache;
+
 class showController extends Controller
 {
 
@@ -52,6 +56,7 @@ class showController extends Controller
 
     public function eventPostShowChecked(Request $request)
     {
+
         $check =  $request->checkbox1;
 
         if(isset($check)){
@@ -76,7 +81,11 @@ class showController extends Controller
             $array_update = ['active'=>$active];
         }
 
-        $update =DB::table('event')->where('id', 1)->limit(1)->update($array_update);
+        $update = events::find(1);
+
+        $update->active = $active;
+
+        $update->save();
 
         return back()->with('status','thành công');
     }
@@ -84,7 +93,7 @@ class showController extends Controller
 
     public function addBackgroundSite(Request $request)
     {
-        if ($request->hasFile('background_image')) {
+        if($request->hasFile('background_image')) {
 
             $file_upload = $request->file('background_image');
 

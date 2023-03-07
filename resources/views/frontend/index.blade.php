@@ -1676,6 +1676,22 @@
     </section>
     <!-- End -->
     <!-- Hiệu ứng ... rơi -->
+
+    <?php 
+
+
+        $event_check = Cache::rememberForever('events-show', function(){
+
+            $event_check = App\Models\events::find(1);
+
+            return $event_check;
+        });
+
+       
+
+    ?>
+
+    @if($event_check->active===1)
     <div class="falling-container" aria-hidden="true">
         <div class="falling-item">
             ●
@@ -1712,6 +1728,7 @@
             ●
         </div> -->
     </div>
+    @endif
     <!-- End -->
 
     <div class="pine-tree"> 
