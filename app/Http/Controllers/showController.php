@@ -121,4 +121,6 @@ class showController extends Controller
          return back()->with('status-background','sửa thành công');
 
     }
+
+
 }

@@ -308,4 +308,26 @@ class dealController extends Controller
     {
         return view('flash_deal.flash_deal_list');
     }
+
+    public function dealCheckTimeToTurnOff()
+    {
+        $deal = deal::select('start', 'end', 'id', 'active')->get();
+
+        $now = Carbon::now();
+
+        foreach ($deal as  $value) {
+
+            if(!$now->between($value->start, $value->end)){
+
+                $update = deal::find($value->id);
+
+                $update->active = 0;
+
+                $update->save();
+
+            }
+        }
+
+        echo "thành công!";
+    }
 }

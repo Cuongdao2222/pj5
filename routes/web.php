@@ -137,6 +137,8 @@ Route::get('tim', 'productController@FindbyNameOrModelOfFrontend')->name('search
 
 Route::get('check-pmd',  'giftController@promotionPriceAuto');
 
+Route::get('update-active-deal',  'dealController@dealCheckTimeToTurnOff');
+
 
 
 
