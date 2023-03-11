@@ -17,6 +17,8 @@
             .box-filter .form-control{
                 width: 100%;
             }
+
+
             .block-manu{
                 width: 150px;
             }
@@ -43,6 +45,13 @@
             } 
             .sale-title{
                 text-align: center;
+            }
+
+            @media only screen and (max-width: 767px){
+                .item-img_1942{
+                    height: auto;
+                }
+                
             }
         </style>
 
