@@ -1591,7 +1591,7 @@
                         @endforeach
                     
                     </div>
-                    <a class="readmore-txt blue" href="{{ route('details', @$groups->link)  }}"><span>Xem tất cả {{ @$groups->name }}</span></a>
+                    <a class="readmore-txt blue" href="{{ route('details', @$groups->link)  }}"><span>Xem tất cả</span></a>
                 </div>
             </div>
         </div>
