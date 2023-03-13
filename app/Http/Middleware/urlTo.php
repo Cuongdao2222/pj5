@@ -6,6 +6,8 @@ use Closure;
 
 use DB;
 
+use Illuminate\Support\Facades\Cache; 
+
 use Illuminate\Support\Facades\Redirect;
 
 
@@ -23,8 +25,14 @@ class urlTo
     {
         $uri = $_SERVER['REQUEST_URI'];
 
-        $checkLink = DB::table('redirect')->select('target_path')->where('request_path', $uri)->get()->first();
+        $checkLink = Cache::rememberForever('checkLinkRedirect', function() use($uri){
 
+            $checkLink = DB::table('redirect')->select('target_path')->where('request_path', $uri)->get()->first();
+
+            return $checkLink??'';
+        });
+
+        
         return $checkLink;
 
     }
