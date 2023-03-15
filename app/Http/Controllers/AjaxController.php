@@ -661,7 +661,7 @@ class AjaxController extends Controller
 
         if(!empty($deal)){
 
-            $price = $deal->deal_price;
+            $price =  str_replace('.', '',$deal->deal_price) ;
 
         }
         else{
