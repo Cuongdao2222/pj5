@@ -663,6 +663,8 @@ class AjaxController extends Controller
 
             $price =  str_replace('.', '',$deal->deal_price) ;
 
+            dd($price);
+
         }
         else{
             $price = $data_Product->Price;
