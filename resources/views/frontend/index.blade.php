@@ -238,7 +238,7 @@
 
         <div class="row div-slide">
             <div class="col-md-2 left-banner"></div>
-            <div class="col-md-10 box-div-slide">
+            <div class="col-md-7 box-div-slide">
                 <div class="homebanner-container">
                     <!-- Banner chính -->
                     <aside class="homebanner">
@@ -267,9 +267,29 @@
                             
                         </div>
                     </aside>
+
+                   
+
                     <!-- End -->
                 </div>
             </div>
+
+            @if(!$smart_phone)
+
+            <div class="col-md-3 ">
+                <div class="top-image">
+                    <a href="https://www.nguyenkim.com/dien-lanh-sale-tat.html">
+                        <img fetchpriority="high" loading="eager" src="https://cdn.nguyenkimmall.com/images/companies/_1/MKT_ECM/0323/MDA_AWO/Phase%202/REVISE-LDP-MDA-T3--309x183.png" width="100%" alt="REVISE-LDP-MDA-T3--309x183">
+                    </a>
+                </div>
+
+                <div class="bottom-image">
+                    <a href="https://www.nguyenkim.com/tivi/?features_hash=36-247882-225299-240514-67778_">
+                        <img fetchpriority="high" loading="eager" src="https://cdn.nguyenkimmall.com/images/companies/_1/MKT-TET-SEASON-2023/TAN%20XUAN%202023/TANXUAN_CATE%20BANNER/Badge/FEB-TANGCUONG/MO-KHO/BRAND%20WEEK/309x183-AV-MAR-W3.jpg" width="100%" alt="309x183-AV-MAR-W3">
+                    </a>
+                </div>
+            </div>
+            @endif
         </div>
         
         
