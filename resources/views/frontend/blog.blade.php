@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}?v=8881288.8883.151">
     <link rel="stylesheet" href="{{ asset('css/customs.css') }}?v=245754.75.52928">
+    
     @endpush
    
      <link rel="stylesheet" type="text/css" href="{{ asset('css/category.css') }}?ver=22"> 

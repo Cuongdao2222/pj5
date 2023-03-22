@@ -1,10 +1,26 @@
+<?php 
+            
+    $post = Cache::remember('post_home',10000, function() {
+        return App\Models\post::where('active',1)->where('hight_light', 1)->OrderBy('created_at', 'desc')->select('link', 'title', 'image')->limit(7)->get()->toArray();
+    });
+
+    $post_promotion = Cache::remember('post_promotion',100000, function() {
+        return App\Models\post::where('category',4)->where('hight_light', 1)->where('category', 11)->OrderBy('created_at', 'desc')->select('link', 'title')->limit(3)->get();
+    });
+
+    $post_advice = Cache::remember('post_advice',100000, function() {
+        return App\Models\post::where('active',1)->where('hight_light', 1)->where('category', 8)->OrderBy('created_at', 'desc')->select('link', 'title')->limit(3)->get();
+    });
+       
+?>
+
 @extends('frontend.layouts.apps')
 
 @section('content') 
 
     @push('style')
 
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/home.css') }}?ver=23">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/home.css') }}?ver=25">
   
         <link rel="stylesheet" type="text/css" href="{{ asset('css/index.css') }}?ver=4">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/homes.css') }}?ver=10">
@@ -13,6 +29,14 @@
         <style type="text/css">
            .gift-text span{
                 color: #D82A20;
+           }
+
+           .homenews ul{
+                height:117px;
+           }
+
+           .homenews ul li{
+                height:40px;
            }
 
            .container-productbox{
@@ -39,6 +63,10 @@
                 font-size: 14px !important;
             }
 
+            .box-div-slide{
+                    padding: 0;
+                }
+
 
            @media screen and (max-width:776px) {
 
@@ -46,9 +74,7 @@
                     margin: 0 !important;
                 }
 
-                .box-div-slide{
-                    padding: 0;
-                }
+                
 
                 .cIVWIZ{
                     background-repeat: no-repeat;
@@ -197,6 +223,31 @@
         .homebanner .owl-stage-outer{
             width: 100%;
         }   
+
+        .homenews span {
+            
+            margin-top: 0;
+            margin-bottom: 0;
+            font-size: 18px;
+        }
+
+       
+
+        .homenews span a {
+            padding: 10px 0;
+            font-size: 14px;
+            color: #414042;
+            text-transform: uppercase;
+            font-weight: 600;
+            line-height: 16px;
+        }
+
+        .homenews ul li a {
+            overflow: hidden;
+            line-height: 1.4em;
+            font-size: 14px;
+            color: #333;
+        }
     </style>   
 
     <div class="locationbox__overlay"></div>
@@ -276,18 +327,54 @@
 
             @if(!$smart_phone)
 
+            <?php 
+
+            ?>
+
             <div class="col-md-3 ">
                 <div class="top-image">
-                    <a href="https://www.nguyenkim.com/dien-lanh-sale-tat.html">
-                        <img fetchpriority="high" loading="eager" src="https://cdn.nguyenkimmall.com/images/companies/_1/MKT_ECM/0323/MDA_AWO/Phase%202/REVISE-LDP-MDA-T3--309x183.png" width="100%" alt="REVISE-LDP-MDA-T3--309x183">
-                    </a>
+
+                    <div class="homenews">
+                        <span><a href="javascript:void(0)">Tin tức khuyến mãi</a></span>
+                        <ul>
+
+                            @if($post_promotion->count()>0)
+
+                            @foreach($post_promotion as $value)
+
+                            <li>
+                                <a href="{{ route('details', $value->link) }}">{{ @$value->title }}</a>
+                            </li>
+
+                            @endforeach
+
+                            @endif
+
+                          
+                        </ul>
+                    </div>
+
+
+                   
                 </div>
 
-                <div class="bottom-image">
-                    <a href="https://www.nguyenkim.com/tivi/?features_hash=36-247882-225299-240514-67778_">
-                        <img fetchpriority="high" loading="eager" src="https://cdn.nguyenkimmall.com/images/companies/_1/MKT-TET-SEASON-2023/TAN%20XUAN%202023/TANXUAN_CATE%20BANNER/Badge/FEB-TANGCUONG/MO-KHO/BRAND%20WEEK/309x183-AV-MAR-W3.jpg" width="100%" alt="309x183-AV-MAR-W3">
-                    </a>
+                <div class="homenews">
+                    <span><a href="{{ route('details', 'tu-van-mua-sam') }}">Tư vấn tiêu dùng</a></span>
+                    <ul>
+                         @if($post_advice->count()>0)
+
+                            @foreach($post_advice as $value)
+
+                            <li>
+                                <a href="{{ route('details', $value->link) }}">{{ @$value->title }}</a>
+                            </li>
+
+                            @endforeach
+
+                            @endif
+                    </ul>
                 </div>
+
             </div>
             @endif
         </div>
@@ -1630,13 +1717,7 @@
             <a data-cate="0" data-place="1864" href="{{ $bannerscrollRight->link }}" class="banner-right" id="banner-right-scroll"><img style="cursor:pointer; height:auto;" src="{{ asset($bannerscrollRight->image) }}" alt="Theme Giáng Sinh Phải"></a>        
         </div>
         @endif
-        <?php  
-            
-            $post = Cache::remember('post_home',10000, function() {
-                return App\Models\post::where('active',1)->where('hight_light', 1)->OrderBy('created_at', 'desc')->select('link', 'title', 'image')->limit(7)->get()->toArray();
-            }); 
-
-        ?>
+        
         @if(isset($post) && count($post)>0)
 
         <div class="my_utilities">
