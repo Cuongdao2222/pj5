@@ -5,7 +5,7 @@
     });
 
     $post_promotion = Cache::remember('post_promotion',100000, function() {
-        return App\Models\post::where('category',4)->where('hight_light', 1)->where('category', 11)->OrderBy('created_at', 'desc')->select('link', 'title')->limit(3)->get();
+        return App\Models\post::where('active',1)->where('hight_light', 1)->where('category', 11)->OrderBy('created_at', 'desc')->select('link', 'title')->limit(3)->get();
     });
 
     $post_advice = Cache::remember('post_advice',100000, function() {
