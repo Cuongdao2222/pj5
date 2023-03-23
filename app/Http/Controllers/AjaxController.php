@@ -70,7 +70,7 @@ class AjaxController extends Controller
 
         }
 
-        Session::put('status-login', 'Đăng nhập thất bại, xin kiểm tra lại');
+        Session::put('status-login', 'Mật khẩu hoặc email không đúng');
         
         return redirect()->route('homeFe');
         

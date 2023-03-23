@@ -76,6 +76,10 @@
                 }
             }    
 
+            .swal2-popup .swal2-title{
+                line-height: 42px;
+            }
+
 
            @media screen and (max-width:776px) {
 
@@ -272,6 +276,7 @@
             line-height: 1.4em;
             font-size: 14px;
             color: #333;
+            word-spacing: 0.15em;
         }
     </style>   
 
@@ -1876,6 +1881,21 @@
         </script>
         <?php
         Session::forget('success');
+        ?>
+
+        
+    @endif
+
+
+    @if (session('status-login'))
+
+
+        <script type="text/javascript">
+            swal({ title: '{{ session("status-login") }}', type: 'error' });
+          
+        </script>
+        <?php
+        Session::forget('status-login');
         ?>
 
         
