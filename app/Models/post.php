@@ -18,6 +18,35 @@ class post extends Model
 
     public $table = 'posts';
 
+    public static function boot()
+    {
+        parent::boot();
+
+        static::updated(function ($instance) {
+            
+            Cache::forget('post_promotion');
+            Cache::forget('post_home');
+            Cache::forget('post_advice');
+           
+        });
+
+        static::deleted(function ($instance) {
+            
+            Cache::forget('post_promotion');
+            Cache::forget('post_home');
+            Cache::forget('post_advice');
+
+        });
+
+        static::created(function ($instance) {
+
+            Cache::forget('post_promotion');
+            Cache::forget('post_home');
+            Cache::forget('post_advice');
+
+        });    
+    }
+
 
     public $fillable = [
         'image',

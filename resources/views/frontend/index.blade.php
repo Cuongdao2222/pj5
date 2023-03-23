@@ -1,14 +1,14 @@
 <?php 
             
-    $post = Cache::remember('post_home',10000, function() {
+    $post = Cache::rememberForever('post_home', function() {
         return App\Models\post::where('active',1)->where('hight_light', 1)->OrderBy('created_at', 'desc')->select('link', 'title', 'image')->limit(7)->get()->toArray();
     });
 
-    $post_promotion = Cache::remember('post_promotion',100000, function() {
+    $post_promotion = Cache::rememberForever('post_promotion', function() {
         return App\Models\post::where('active',1)->where('hight_light', 1)->where('category', 11)->OrderBy('created_at', 'desc')->select('link', 'title')->limit(2)->get();
     });
 
-    $post_advice = Cache::remember('post_advice',100000, function() {
+    $post_advice = Cache::rememberForever('post_advice', function() {
         return App\Models\post::where('active',1)->where('hight_light', 1)->where('category', 8)->OrderBy('created_at', 'desc')->select('link', 'title')->limit(2)->get();
     });
        
@@ -157,11 +157,18 @@
             return $new_product;
         });
 
-
         $now  = Carbon\Carbon::now();
         // $now  = \Carbon\Carbon::createFromDate('9-11-2022, 8:00');
 
-        $date_string_flash_deal = DB::table('date_flash_deal')->where('id', 1)->first()->date;
+
+        $date_string_flash_deal = Cache::rememberForever('date_flash_deal', function(){
+
+            $date_string_flash_deal = DB::table('date_flash_deal')->where('id', 1)->first()->date;
+
+            return  $date_string_flash_deal;
+        });
+
+
         $date_flashdeal = \Carbon\Carbon::create($date_string_flash_deal);
 
         $deal = Cache::get('deals')->sortByDesc('order');

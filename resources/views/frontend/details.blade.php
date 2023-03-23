@@ -149,7 +149,6 @@
 
     // check flashdeal 
 
-        Cache::forget('date_flash_deal');
         
     if(!cache::has('date_flash_deal')){
 
