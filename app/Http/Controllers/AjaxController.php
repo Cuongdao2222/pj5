@@ -482,6 +482,26 @@ class AjaxController extends Controller
         
     }
 
+    public function rateFormByAdmin(Request $request)
+    {
+    
+        $name  = Auth::user()->name;
+        $email = Auth::user()->email;
+        $rate =  new rate();
+        $input['star'] = 5;
+        $input['email'] = $email;
+        $input['name'] = $name.' (quản trị viên)';
+        $input['content'] = $request->content;
+        $input['product_id'] = $request->product_id_feedback;
+        $input['id_feed_back'] = $request->id_feedback;
+        $input['active'] = 1;
+        $rate::create($input);
+        return redirect()->back();
+           
+    }
+
+
+
     public function removeRate(Request $request)
     {
         $id = $request->id;

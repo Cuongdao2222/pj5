@@ -38,6 +38,7 @@ class rate extends Model
         'star',
         'active',
         'content',
+        'id_feed_back',
     ];    
 
     

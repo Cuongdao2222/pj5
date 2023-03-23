@@ -70,6 +70,11 @@
         list-style: none;
     }
 
+    #feedback1{
+        height: 100px;
+        width: 300px;
+    }
+
 
 </style>
 
@@ -104,6 +109,7 @@
                                      <td  width="130">Content</td>
                                     <td width="120">Sản phẩm</td>
                                     <td width="120">Active</td>
+                                    <td width="120">Phản hồi lại</td>
                                     <td width="120">Xóa</td>
                                 </tr>
                                
@@ -122,6 +128,11 @@
                                     
                                     <td width="120"><a href="javascript:void(0)" onclick="accept({{ $rates->id }})" data-id="{{ $rates->id }}" class="accept{{ $rates->id}}">{{ $rates->active==1?'Đã duyệt':'duyệt' }}</a></td>
                                     <input type="hidden" name="active" id="active" value="{{ $rates->active }}">
+                                    <td> 
+                                        @if(empty($rates->id_feed_back))
+                                        <a href="javascript:void(0)" onclick="feedback({{ $rates->id }}, {{  $rates->product_id }})">Phản hồi</a> 
+                                        @endif
+                                    </td>
                                     <td><a href="javascript:void(0)" onclick="removeRate({{ $rates->id }})">Xóa</a></td>
                                     
                                 </tr>
@@ -175,17 +186,58 @@
             </tr>
         </tbody>
     </table>
+
+
+    <div class="modal fade" id="modal-feedback" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Phản hồi</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <form method="post" action="{{ route('admin-rate-feedback-form') }}">
+                        @csrf
+                        <input type="hidden" name="id_feedback" id="id_feedback">
+                        <input type="hidden" name="product_id_feedback" id="product_id_feedback">
+                        <textarea name="content" id="feedback1" required></textarea>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Phản hồi</button>
+                        </div>
+
+                    </form>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+
     <script type="text/javascript">
+
+
+        function feedback(id, productId) {
+            
+            $('#modal-feedback').modal('show');
+            $('#product_id_feedback').val(productId);
+            $('#id_feedback').val(id);
+
+        }
 
         function removeRate(id) {
             
-             $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                });
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
 
-             $.ajax({
+            $.ajax({
                 type: 'POST',
                 url: "{{ route('remote-rate') }}",
                 data: {
