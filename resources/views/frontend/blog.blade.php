@@ -76,9 +76,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('details', 'tin-khuyen-mai') }}">
+                    <a href="{{ route('details', 'tin-tuc-khuyen-mai') }}">
                     <img src="{{ asset('images/template/logo/khuyen-mai.png') }}" alt="">
-                    <span>Tin
+                    <span>Tin tức
                     <br> Khuyến Mại</span>
                     </a>
                 </li>
