@@ -32,7 +32,7 @@
            }
 
            .homenews ul{
-                height:117px;
+                height:110px;
            }
 
            .homenews ul li{
@@ -68,6 +68,12 @@
             .box-div-slide{
                     padding: 0;
                 }
+
+            @media (min-width: 768px) {
+                .box-div-slide1{
+                    margin-top: 15px;
+                }
+            }    
 
 
            @media screen and (max-width:776px) {
@@ -214,6 +220,17 @@
             height: 42px;
         }
 
+        .homenews span a:after {
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: 5px solid #4a90e2;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+            display: inline-block;
+            margin-left: 5px;
+        }
+
         .listproduct{
                 grid-gap:16px;
             }
@@ -231,6 +248,11 @@
             margin-top: 0;
             margin-bottom: 0;
             font-size: 18px;
+        }
+
+        .box-div-slide1{
+
+
         }
 
        
@@ -333,7 +355,7 @@
 
             ?>
 
-            <div class="col-md-3 ">
+            <div class="col-md-3 box-div-slide1">
                 <div class="top-image">
 
                     <div class="homenews">
