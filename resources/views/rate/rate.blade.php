@@ -104,6 +104,7 @@
                                      <td  width="130">Content</td>
                                     <td width="120">Sản phẩm</td>
                                     <td width="120">Active</td>
+                                    <td width="120">Xóa</td>
                                 </tr>
                                
                                 @if(isset($rate))
@@ -111,7 +112,7 @@
                                 <?php  $link = App\Models\product::find($rates->product_id)  ?>
 
                                 @isset($link)
-                                <tr>
+                                <tr id="rates_{{ $rates->id }}">
                                     <td>{{$key}}</td>
                                     <td width="40">{{$rates->name}}</td>
                                     <td width="190">{{$rates->email}}</td>
@@ -121,6 +122,7 @@
                                     
                                     <td width="120"><a href="javascript:void(0)" onclick="accept({{ $rates->id }})" data-id="{{ $rates->id }}" class="accept{{ $rates->id}}">{{ $rates->active==1?'Đã duyệt':'duyệt' }}</a></td>
                                     <input type="hidden" name="active" id="active" value="{{ $rates->active }}">
+                                    <td><a href="javascript:void(0)" onclick="removeRate({{ $rates->id }})">Xóa</a></td>
                                     
                                 </tr>
                                 @endisset
@@ -174,6 +176,33 @@
         </tbody>
     </table>
     <script type="text/javascript">
+
+        function removeRate(id) {
+            
+             $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
+             $.ajax({
+                type: 'POST',
+                url: "{{ route('remote-rate') }}",
+                data: {
+                    id: id,
+                   
+                },
+                success: function(result){
+                    if(result ==='xóa thành công'){
+
+                        $('#rates_'+id).remove();
+
+                    }
+
+                    alert(result);
+                }
+            });
+        }
 
         function accept(id) {
             $.ajaxSetup({

@@ -482,6 +482,27 @@ class AjaxController extends Controller
         
     }
 
+    public function removeRate(Request $request)
+    {
+        $id = $request->id;
+
+        $data = rate::find($id);
+
+        if($data->active === 0){
+
+            $data->delete();
+
+            return response('xóa thành công');
+
+        }
+        else{
+            return response('Vui lòng chuyển lại trạng thái, sau đó xóa');
+
+        }
+
+
+    }
+
     public function removeSaleProduct(Request $request)
     {
         $product_id = $request->product_id;

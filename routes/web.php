@@ -445,6 +445,8 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::post('accept-rate', 'AjaxController@accept_rate')->name('accept-rate');
 
+    Route::post('remote-rate', 'AjaxController@removeRate')->name('remote-rate');
+
 
     Route::post('add-hot-product', 'AjaxController@addHotProduct')->name('add-hot-product');
 
