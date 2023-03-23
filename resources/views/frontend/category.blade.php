@@ -238,7 +238,7 @@
 
                                 $checkdealpd = false;
                               
-                                $check_deal =  App\Models\deal::where('product_id', $value->id)->where('active',1)->get();
+                                $check_deal =  Cache::get('deals')->where('product_id', $value->id)->where('active',1);
 
                                 $check_deals = $check_deal;
 
