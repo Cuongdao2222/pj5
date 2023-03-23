@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Eloquent as Model;
 
+use Illuminate\Support\Facades\Cache;
+
 /**
  * Class post
  * @package App\Models
