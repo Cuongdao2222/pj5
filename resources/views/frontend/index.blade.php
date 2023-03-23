@@ -33,6 +33,7 @@
 
            .homenews ul{
                 height:110px;
+                margin-top: 5px;
            }
 
            .homenews ul li{

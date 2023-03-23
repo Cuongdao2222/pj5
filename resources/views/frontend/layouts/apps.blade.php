@@ -922,7 +922,7 @@
                     @endif
 
                     <div class="fas-phones">          
-                        <a href="" class="header__history tin-km">Tin tức khuyến mãi</a>
+                        <a href="{{ route('details', 'tin-tuc-khuyen-mai') }}" class="header__history tin-km">Tin tức khuyến mãi</a>
                         <!-- <div class="bordercol"></div> -->
                     </div>
 
