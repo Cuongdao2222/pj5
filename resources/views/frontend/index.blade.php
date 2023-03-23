@@ -359,7 +359,7 @@
                 <div class="top-image">
 
                     <div class="homenews">
-                        <span><a href="javascript:void(0)">Tin tức khuyến mãi</a></span>
+                        <span><a href="{{ route('details', 'tin-tuc-khuyen-mai') }}">Tin tức khuyến mãi</a></span>
                         <ul>
 
                             @if($post_promotion->count()>0)
