@@ -725,9 +725,8 @@ class productController extends AppBaseController
     public function search()
     {
 
-        $uri = $_SERVER['REQUEST_URI'];
-
-        dd($uri);
+    
+        return abort('404');
         
     }
 

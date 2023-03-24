@@ -13,6 +13,7 @@ class redirect extends Model
     parent::boot();
 
     static::created(function ($instance) {
+
        // update cache content
        Cache::forget('checkLinkRedirect_'.$instance->request_path);
 
@@ -21,6 +22,7 @@ class redirect extends Model
     });
 
     static::updated(function ($instance) {
+        
         // update cache content
         Cache::forget('checkLinkRedirect_'.$instance->request_path);
 

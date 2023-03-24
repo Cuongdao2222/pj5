@@ -15,18 +15,28 @@ class redirectLink extends Model
         parent::boot();
 
           static::updated(function ($instance) {
+
            
-            Cache::forget('link_redirect');
+             // update cache content
+             Cache::forget('checkLinkRedirect_'.$instance->request_path);
+
+             Cache::forever('checkLinkRedirect_'.$instance->request_path, $instance->target_path);
            
           });
 
           static::deleted(function ($instance) {
-            Cache::forget('link_redirect');
+            // update cache content
+           Cache::forget('checkLinkRedirect_'.$instance->request_path);
+
+           Cache::forever('checkLinkRedirect_'.$instance->request_path, $instance->target_path);
             
           });
 
           static::created(function ($instance) {
-            Cache::forget('link_redirect');
+               // update cache content
+               Cache::forget('checkLinkRedirect_'.$instance->request_path);
+
+               Cache::forever('checkLinkRedirect_'.$instance->request_path, $instance->target_path);
            
           });    
     }
