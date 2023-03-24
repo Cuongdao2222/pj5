@@ -23,26 +23,23 @@ class urlTo
 
     public function getUrl()
     {
-        $uri = $_SERVER['REQUEST_URI'];
+        $uri = trim($_SERVER['REQUEST_URI']);
 
-        $checkLink = Cache::rememberForever('link_redirect', function() use($uri){
-
-            $checkLink = DB::table('redirect')->select('target_path')->where('request_path', $uri)->get()->first();
-
-            return $checkLink??'';
-        });
+        return $uri;
 
     }
     public function handle($request, Closure $next)
     {
+        $uri =  $this->getUrl();
 
-        $checkLink = $this->getUrl();
+        if(Cache::has('checkLinkRedirect_'.$uri)){
 
-        if(!empty($checkLink)){
+            $uri_redirect = Cache::get('checkLinkRedirect_'.$uri);
 
-            return redirect()->to($checkLink->target_path);
+            return redirect()->to($uri_redirect);
 
         }
+
         return $next($request);
        
     }
