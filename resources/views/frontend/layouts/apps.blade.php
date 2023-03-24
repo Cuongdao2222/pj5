@@ -2026,11 +2026,29 @@
                             </div>
                         </li>
                         <li class="child" data-id="danh-muc9">
+
+                            
                             <a class="list-mn" href="{{route('details','may-loc-nuoc-ao-smith')}}">
                             <i class="fa-regular fa-refrigerator"></i>
-                            <span>Máy lọc nước</span>
+                                <span>Máy lọc nước</span>
                             </a>
+
+
                             <div class="navmwg accessories danh-muc9" style="display: none;">
+                                <div class="sub-cate">
+                                    <div class="PKLT">
+                                        <a href="{{route('details','may-loc-nuoc-ro-side-stream')}}">
+                                            <h3>Máy lọc nước RO-Side Stream</h3>
+                                        </a>
+                                        <a href="{{route('details','may-loc-nuoc-dau-nguon')}}">
+                                            <h3>Máy lọc nước đầu nguồn</h3>
+                                        </a>
+                                        <a href="{{route('details','may-loc-khong-khi-ao-smith')}}">
+                                            <h3>Máy lọc không khí AO Smith</h3>
+                                        </a>
+                                    </div> 
+                                </div>   
+
                             </div>
                         </li>
 
