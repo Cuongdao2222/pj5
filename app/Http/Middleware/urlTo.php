@@ -25,7 +25,7 @@ class urlTo
     {
         $uri = $_SERVER['REQUEST_URI'];
 
-        $checkLink = Cache::rememberForever('checkLinkRedirect', function() use($uri){
+        $checkLink = Cache::rememberForever('link_redirect', function() use($uri){
 
             $checkLink = DB::table('redirect')->select('target_path')->where('request_path', $uri)->get()->first();
 
