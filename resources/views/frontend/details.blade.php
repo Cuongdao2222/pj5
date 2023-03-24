@@ -424,9 +424,13 @@
                             </a>
                             <button class="copy-button"   onclick="copyImage('{{ env("APP_URL") }}/{{ $data->Image }}')"><i class="fas fa-copy"></i></button>
                             @if($data->id>4720)
+
+                            @if(!empty($logoSaker->maker))
+
                             <div class="saker">
                                     <img src="{{ asset('images/saker/'.strtolower($logoSaker->maker).'.png') }}"  data-src ="{{ asset($data->Image) }}" class="lazyload">
                             </div>
+                            @endif
                             @endif
 
 
