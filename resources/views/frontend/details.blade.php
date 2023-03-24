@@ -85,6 +85,9 @@
             top: 0;
             right: 0;
         }
+        .img-main .saker{
+            max-width: 100px;
+        }
 
         @media only screen and (min-width: 768px) {
             .copy-button{
