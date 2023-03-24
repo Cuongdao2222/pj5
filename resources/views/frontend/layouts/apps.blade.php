@@ -2052,12 +2052,12 @@
                             </div>
                         </li>
 
-                        <li class="child" data-id="danh-muc9">
+                        <li class="child" data-id="danh-muc10">
                             <a class="list-mn" href="{{route('details','may-say-quan-ao')}}">
                             <i class="fa-regular fa-refrigerator"></i>
                             <span>Máy sấy quần áo</span>
                             </a>
-                            <div class="navmwg accessories danh-muc9" style="display: none;">
+                            <div class="navmwg accessories danh-muc10" style="display: none;">
                             </div>
                         </li>
                         
