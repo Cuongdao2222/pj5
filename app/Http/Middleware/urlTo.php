@@ -40,10 +40,6 @@ class urlTo
 
         if(!empty($checkLink)){
 
-            echo $checkLink;
-
-            die();
-
             return redirect()->to($checkLink->target_path);
 
         }

@@ -1269,6 +1269,9 @@
                                                 <a href="{{route('details','dieu-hoa-nagakawa')}}">
                                                     <h3>Điều hòa Nagakawa</h3>
                                                 </a>
+                                                <a href="{{route('details','dieu-hoa-midea')}}">
+                                                    <h3>Điều hòa Midea</h3>
+                                                </a>
                                             </aside>
 
                                             <aside>
@@ -1800,6 +1803,9 @@
                                         </a>
                                         <a href="{{route('details','dieu-hoa-nagakawa')}}">
                                             <h3>Điều hòa Nagakawa</h3>
+                                        </a>
+                                        <a href="{{route('details','dieu-hoa-midea')}}">
+                                            <h3>Điều hòa Midea</h3>
                                         </a>
                                     </div>
                                 </div>
