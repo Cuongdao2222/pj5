@@ -32,9 +32,6 @@ class urlTo
             return $checkLink??'';
         });
 
-        
-        return $checkLink;
-
     }
     public function handle($request, Closure $next)
     {
@@ -42,6 +39,8 @@ class urlTo
         $checkLink = $this->getUrl();
 
         if(!empty($checkLink)){
+
+            echo $checkLink;
 
             return redirect()->to($checkLink->target_path);
 
