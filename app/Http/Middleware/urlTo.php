@@ -42,6 +42,8 @@ class urlTo
 
             echo $checkLink;
 
+            die();
+
             return redirect()->to($checkLink->target_path);
 
         }
