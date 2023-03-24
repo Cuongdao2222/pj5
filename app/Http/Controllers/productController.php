@@ -725,9 +725,9 @@ class productController extends AppBaseController
     public function search()
     {
 
-        $array['ProductSku'] = 'UA50AU9000KXXVS';
+        $uri = $_SERVER['REQUEST_URI'];
 
-        $array['Price'] = '500';
+        dd($uri);
         
     }
 
