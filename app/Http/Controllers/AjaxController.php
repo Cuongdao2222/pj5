@@ -708,7 +708,7 @@ class AjaxController extends Controller
 
         }
         else{
-            $price = $data_Product->Price;
+            $price = trim($data_Product->Price);
         }
              
         Cart::add(['id' => $id, 'name' => $data_Product->Name,  'qty' => 1, 'price' => $price, 'weight' => '500',  'options' => ['link' => $data_Product->Link, 'gift'=>$gift??'']]);
@@ -756,11 +756,11 @@ class AjaxController extends Controller
 
         if(!empty($deal)){
 
-            $price = $deal->deal_price;
+            $price = trim($deal->deal_price);
 
         }
         else{
-            $price = $data_Product->Price;
+            $price = trim($data_Product->Price);
         }
              
         Cart::add(['id' => $id, 'name' => $data_Product->Name,  'qty' => 1, 'price' => $price, 'weight' => '500', 'options' => ['link' => $data_Product->Link]]);
