@@ -614,10 +614,10 @@
 
             @if(!empty($bannerUnderSale[0]['image']))
 
-            <!-- <div class="prd-promo__top clearfix" >
+            <div class="prd-promo__top clearfix" >
 
                 <a data-cate="0" data-place="1868" href="#" ><img style="cursor:pointer" src="{{ asset($bannerUnderSale[0]['image']) }}" alt="banner-summer" width="1200"></a>                
-            </div> -->
+            </div> 
 
             @endif
 
