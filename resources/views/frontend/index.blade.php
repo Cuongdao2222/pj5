@@ -675,7 +675,7 @@
 
                         <?php 
 
-                           $check_deal_sale = $deal->where('product_id', '3968')->first();
+                           $check_deal_sale = $deal->where('product_id', $value->product_id)->first();
 
                             if(!empty($check_deal_sale)){
 
@@ -798,7 +798,7 @@
 
                             <?php 
 
-                                $check_deal_sale = $deal->where('product_id', '3968')->first();
+                                $check_deal_sale = $deal->where('product_id', $value->product_id)->first();
 
                                 
                                 if(!empty($check_deal_sale)){
