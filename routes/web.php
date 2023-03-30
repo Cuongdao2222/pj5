@@ -22,7 +22,7 @@ Route::get('/tin-tuc-tong-hop/', 'Frontend\blogController@index')->middleware('c
 
 Route::get('/tin-tuc', 'Frontend\blogController@index')->middleware('cache.headers:public;max_age=14400;etag')->name('tins');
 
-Route::get('/', 'Frontend\indexController@index')->middleware('cache.headers:public;max_age=14400;etag')->name('homeFe');
+Route::get('/', 'Frontend\indexController@index')->middleware('throttle:90')->name('homeFe');
 
 Route::post('/check-unique-cate', 'productController@filterProduct')->name('check-unique-cate');
 

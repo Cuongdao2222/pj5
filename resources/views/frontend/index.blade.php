@@ -497,8 +497,6 @@
                         <div class="col-flash col-flash-2 active">
                             <div id="sync1S" class="slider-banner owl-carousel flash-sale-banner">
 
-
-
                                 @foreach($deal as $key => $value)
                                
                                 @if( !empty($value->active) && $value->active ==1 && $now->between($value->start, $value->end))
@@ -652,12 +650,7 @@
    
             </div>
 
-           
-
             @endif
-
-
-
             
             <div class="block-product__content mobile-sale-product" data-is-recommend-tab="true">
 
@@ -679,6 +672,16 @@
                         <div class="title-name">
                             <h3>{{ $value->Name }}</h3>
                         </div>
+
+                        <?php 
+
+                            
+                            if(!empty($ar_Deal_Pd[$value->id])){
+
+                                $value->Price = $ar_Deal_Pd[$value->id];
+
+                            }
+                        ?>
                         
                         <strong class="price">{{  @str_replace(',' ,'.', number_format($value->Price))  }}.&#x20AB;</strong>
                         <div class="item-rating">
