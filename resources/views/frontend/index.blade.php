@@ -675,12 +675,13 @@
 
                         <?php 
 
-                            
-                            if(!empty($ar_Deal_Pd[$value->id])){
+                           $check_deal_sale = $deal->where('product_id', '3968')->first();
 
-                                $value->Price = $ar_Deal_Pd[$value->id];
+                            if(!empty($check_deal_sale)){
 
+                                $value->Price = $check_deal_sale->deal_price;
                             }
+                           
                         ?>
                         
                         <strong class="price">{{  @str_replace(',' ,'.', number_format($value->Price))  }}.&#x20AB;</strong>
@@ -792,8 +793,20 @@
                             
                             </div>
                             <div class="title-name">
-                                <h3>{{ $value->Name }}</h3>
+                                <h3>{{ $value->Name }} {{ $value->product_id }}</h3>
                             </div>
+
+                            <?php 
+
+                                $check_deal_sale = $deal->where('product_id', '3968')->first();
+
+                                
+                                if(!empty($check_deal_sale)){
+
+                                    $value->Price = $check_deal_sale->deal_price;
+
+                                }
+                            ?>
                             
                             <strong class="price">{{  @str_replace(',' ,'.', number_format($value->Price))  }}.&#x20AB;</strong>
                             <div class="item-rating">
