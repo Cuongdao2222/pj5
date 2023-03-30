@@ -227,8 +227,6 @@ if(!function_exists('pricesPromotion')){
             });
 
 
-            $data_price = App\Models\pricePromotionAuto::get();
-
             if(!empty($data_price) && $data_price->count()>0){
 
                 foreach ($data_price as  $value) {
