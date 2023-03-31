@@ -675,9 +675,9 @@
 
                         <?php 
 
-                           $check_deal_sale = $deal->where('product_id', $value->product_id)->first();
+                            $check_deal_sale = $deal->where('product_id', $value->product_id)->first();
 
-                            if(!empty($check_deal_sale)){
+                            if(!empty($check_deal_sale) && $now->between($deal[0]->start, $deal[0]->end)){
 
                                 $value->Price = $check_deal_sale->deal_price;
                             }
@@ -801,7 +801,7 @@
                                 $check_deal_sale = $deal->where('product_id', $value->product_id)->first();
 
                                 
-                                if(!empty($check_deal_sale)){
+                                if(!empty($check_deal_sale) && $now->between($deal[0]->start, $deal[0]->end)){
 
                                     $value->Price = $check_deal_sale->deal_price;
 

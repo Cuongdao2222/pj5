@@ -98,6 +98,19 @@
                                {{ $value->Name }}
                             </h3>
 
+                            <?php
+                                $now = Carbon\Carbon::now();
+
+                                $deal = Cache::get('deals')->sortByDesc('order');
+
+                                $check_deal_sale = $deal->where('product_id', $value->product_id)->first();
+
+                                if(!empty($check_deal_sale) && $now->between($deal[0]->start, $deal[0]->end)){
+
+                                    $value->Price = $check_deal_sale->deal_price;
+                                }
+                            ?>
+
                                                                                                                               
                             <strong class="price">{{ @str_replace(',' ,'.', number_format($value->Price))}}&#x20AB;</strong>
                            

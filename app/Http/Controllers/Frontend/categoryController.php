@@ -551,8 +551,16 @@ class categoryController extends Controller
         return $result;
     }    
 
-    public function details($slug)
+    public function details(Request $request, $slug)
     {
+
+        // redirect to https auto
+
+
+        if (!$request->secure() && env('APP_NAME') != 'local') {
+            return redirect()->secure($request->getRequestUri());
+        }
+
         $slug = trim($slug);
 
         $link = trim($slug);
