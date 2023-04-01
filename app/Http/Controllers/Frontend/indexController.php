@@ -109,9 +109,13 @@ class indexController extends Controller
             return banners::where('option', 13)->OrderBy('stt', 'asc')->where('active', 1)->first()??'';
         });
 
-        
+        $view = $value = Cache::remember('view-home', 5000, function() use($banners, $bannersRight, $bannerUnderSlider, $bannerUnderSale, $deal, $product_sale, $group, $timeDeal_star, $deal_check, $now, $bannerscrollRight, $bannerscrollLeft){
+            return htmlspecialchars_decode((view('frontend.index', compact('banners', 'bannersRight', 'bannerUnderSlider', 'bannerUnderSale','deal','product_sale', 'group','timeDeal_star', 'deal_check', 'now','bannerscrollRight', 'bannerscrollLeft'))));
+        });
 
-        return view('frontend.index', compact('banners', 'bannersRight', 'bannerUnderSlider', 'bannerUnderSale','deal','product_sale', 'group','timeDeal_star', 'deal_check', 'now','bannerscrollRight', 'bannerscrollLeft'));
+        return $view;
+
+        
     }
 
     public function viewLogin(Request $request)
