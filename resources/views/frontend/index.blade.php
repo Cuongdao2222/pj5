@@ -20,7 +20,7 @@
 
     @push('style')
 
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/home.css') }}?ver=25">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/home.css') }}?ver=26">
   
         <link rel="stylesheet" type="text/css" href="{{ asset('css/index.css') }}?ver=4">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/homes.css') }}?ver=10">
