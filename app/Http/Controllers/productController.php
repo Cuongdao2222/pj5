@@ -312,6 +312,9 @@ class productController extends AppBaseController
                 $products_history->save();
 
             }
+
+            file_get_contents("https://api.dienmaynguoiviet.net/public/test-api?product_sku=".$product->ProductSku."&price=".$input['Price']."&string=AtBSvrztfw5hXwxZeIf0fWf3GtuILFeCOBsRtnah");
+
         }
          
         $product = $this->productRepository->update($input, $id);
@@ -470,6 +473,9 @@ class productController extends AppBaseController
 
 
         $product->Price = $price;
+
+        file_get_contents("https://api.dienmaynguoiviet.net/public/test-api?product_sku=".$product->ProductSku."&price=".$price."&string=AtBSvrztfw5hXwxZeIf0fWf3GtuILFeCOBsRtnah");
+
         $product->user_id = Auth::user()->id;
 
         $products_history   = new historyPd();
