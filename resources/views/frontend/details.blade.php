@@ -441,13 +441,15 @@
 
                         <?php 
                             
-                            $images_products = Cache::remember('image_product'.$data->id, 100,function() use ($data) {
+                            // $images_products = Cache::remember('image_product'.$data->id, 10000,function() use ($data) {
 
-                                $images = App\Models\image::where('product_id', $data->id)->where('active', 1)->select('image')->get()??'';
+                            //     $images = App\Models\image::where('product_id', $data->id)->where('active', 1)->select('image')->get()??'';
 
-                                return $images;
+                            //     return $images;
                             
-                            });
+                            // });
+
+                            dd(Cache::get('image_product3968'));
 
                           
                         ?>

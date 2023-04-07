@@ -46,7 +46,7 @@ Route::get('/landingpage', 'mainController@landingpage')->name('landingpageFe');
 
 Route::get('redirect-update-cache', 'redirectLinkController@createCacheRedirect')->name('redirect-update-cache');
 
-
+Route::get('remove-cache-image', 'imageController@removeCacheImage')->name('remove-cache-image');
 
 
 Route::get('/sale', 'mainController@sale')->name('sale-home');
