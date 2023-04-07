@@ -44,6 +44,9 @@ Route::get('/ckfinder.html', 'mainController@ckfinder')->middleware('auth');
 Route::get('/landingpage', 'mainController@landingpage')->name('landingpageFe');
 
 
+Route::get('redirect-update-cache', 'redirectLinkController@createCacheRedirect')->name('redirect-update-cache');
+
+
 
 
 Route::get('/sale', 'mainController@sale')->name('sale-home');
@@ -184,7 +187,6 @@ Route::post('filter-price-product', 'AjaxController@filterByValue')->name('filte
 
 Route::post('filter-price-product-by-page', 'AjaxController@filterByPageFilter')->name('filter-option-by-page');
 
-Route::get('redirect-update-cache', 'redirectLinkController@createCacheRedirect')->name('redirect-update-cache');
 
 Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
