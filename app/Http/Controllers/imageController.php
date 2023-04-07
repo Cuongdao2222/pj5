@@ -235,11 +235,9 @@ class imageController extends AppBaseController
     {
        
         $product_id = $request->product_id;
-        $forget = Cache::flush();
+        $forget = Cache::forget('image_product'.$product_id);
         $image   = $request->image;
         $data = product::find($product_id);
-
-       
         $data->Image = $image;
         $data->save();
         $imageDeal = deal::where('product_id', $product_id)->first();
