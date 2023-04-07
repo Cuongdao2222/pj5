@@ -200,7 +200,7 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::get('forget-cache', 'Frontend\indexController@cacheClear')->name('test1');
 
-    Route::get('test', 'backend\apiController@checkDeal')->name('test');
+    Route::get('test', 'redirectLinkController@createCacheRedirect')->name('test');
 
     Route::get('hot-list', 'hotController@index')->name('host-list');
 

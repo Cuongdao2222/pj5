@@ -58,4 +58,17 @@ class redirectLinkController extends Controller
         return view('redirect.list', compact('list'));
 
     }
+
+    public function createCacheRedirect()
+    {
+
+        $data = redirectLink::get();
+
+        foreach ($data as $key => $value) {
+            Cache::forever('checkLinkRedirect_'.$value->request_path, $value->target_path);
+           
+        }
+        echo "thành công";
+        
+    }
 }
