@@ -10,7 +10,6 @@
             </div>
         </div>
     </section>
-
     
     <?php  
         $start = stripos($_SERVER['REQUEST_URI'],'?');
@@ -144,6 +143,7 @@
                 <th>Image</th>
                 <th>Product Id</th>
                 <th>Chọn ảnh đại diện</th>
+                <th>Active</th>
                 <th colspan="3">Action</th>
             </tr>
             </thead>
@@ -154,7 +154,11 @@
 
                 
                 <td>{{ $image->product_id }}</td>
-                <td><input type="checkbox"  name="check" value="{{ $image->image }}"  {{ $image->image==$imageProduct?'checked':'' }}></td>
+                <td>
+                    <input type="checkbox" class="show-image-product"  name="check" value="{{ $image->image }}"  {{ $image->image==$imageProduct?'checked':'' }}>
+                </td>
+                <td>  <input type="checkbox" class="active-image" id="active-image-{{ $image->id }}" data-id="{{ $image->id }}"  name="check" value="{{ $image->image }}"  {{ $image->active===1?'checked':'' }}> </td>
+
                     <td width="120">
                         {!! Form::open(['route' => ['images.destroy', $image->id], 'method' => 'delete']) !!}
                         <div class='btn-group'>
@@ -182,10 +186,10 @@
     <script type="text/javascript">
 
          
-        $('input[type="checkbox"]').on('change', function() {
-           $('input[type="checkbox"]').not(this).prop('checked', false);
+        $('.show-image-product').on('change', function() {
+           $('.show-image-product').not(this).prop('checked', false);
 
-           $.ajax({
+            $.ajax({
                 type: 'GET',
                 url: "{{ route('image-ajax-product') }}",
                 data: {
@@ -193,10 +197,50 @@
                     image:$(this).val()
                 },
                 success: function(result){
+
                      location.reload();
                 }
             });
            
         });
+
+        $('.active-image').on('change', function() {
+
+            id = $(this).attr('data-id');
+
+
+
+            if($('#active-image-' + id).is(":checked")){
+
+               active = 1;
+                
+            }
+            else{
+                active = 0;
+            }
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                type: 'post',
+                url: "{{ route('check-active-image') }}",
+                data: {
+                    id: id,
+                    active:active
+                },
+                success: function(result){
+                     location.reload();
+                }
+            });
+
+        });    
+
+       
+
+
     </script>
 @endsection

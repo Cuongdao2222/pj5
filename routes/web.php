@@ -435,7 +435,8 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::get('add-gen-api', 'Frontend\orderController@apiInsertGent')->name('insert-api');
 
-    
+    Route::post('check-active-image', 'imageController@checkActiveProduct')->name('check-active-image');
+
 
     Route::post('add-promotion', 'AjaxController@add_promotion')->name('add-promotion');
 

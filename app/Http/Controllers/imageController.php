@@ -9,9 +9,11 @@ use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
+use Illuminate\Support\Facades\Cache;
 use App\Models\deal;
 use App\Models\product;
 use App\Models\imagescontent;
+use App\Models\image;
 
 class imageController extends AppBaseController
 {
@@ -233,9 +235,11 @@ class imageController extends AppBaseController
     {
        
         $product_id = $request->product_id;
+        $forget = Cache::flush();
         $image   = $request->image;
         $data = product::find($product_id);
 
+       
         $data->Image = $image;
         $data->save();
         $imageDeal = deal::where('product_id', $product_id)->first();
@@ -245,7 +249,20 @@ class imageController extends AppBaseController
             $imageDeal->save();
 
         }
-        
+ 
+    }
+
+    public function checkActiveProduct(Request $request)
+    {
+       
+        $id     = $request->id;
+        $active = $request->active;
+
+        $image = image::findOrFail($id);
+
+        $image->active = $active;
+
+        $image->save();
 
     }
 }

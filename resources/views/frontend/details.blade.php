@@ -440,16 +440,16 @@
                         </div>
 
                         <?php 
+                            
+                            $images_products = Cache::remember('image_product'.$data->id, 100,function() use ($data) {
 
-                            $images_products = Cache::remember('image_product_'.$data->id, 100, function() use ($data) {
-
-                                $images = App\Models\image::where('product_id', $data->id)->select('image')->get()??'';
+                                $images = App\Models\image::where('product_id', $data->id)->where('active', 1)->select('image')->get()??'';
 
                                 return $images;
                             
                             });
 
-
+                          
                         ?>
 
                         @if(isset($images_products))
