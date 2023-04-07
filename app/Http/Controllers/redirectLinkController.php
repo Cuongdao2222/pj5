@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Models\redirectLink;
 
+use Illuminate\Support\Facades\Cache;
+
 class redirectLinkController extends Controller
 {
     public function index()
