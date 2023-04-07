@@ -205,6 +205,7 @@ class indexController extends Controller
     {
         Cache::flush();
         file_get_contents('https://dienmaynguoiviet.vn');
+        file_get_contents(Route('redirect-update-cache'));
         echo "thanh cong";
     }
 
