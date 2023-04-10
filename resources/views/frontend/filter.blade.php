@@ -297,7 +297,7 @@
                                 $id_product = $value->id;
                                 array_push($arr_id_pro, $id_product);
 
-                                $check_deal = App\Models\deal::select('deal_price','start', 'end')->where('product_id', $value->id)->where('active', 1)->first();
+                                $check_deal = App\Models\deal::select('deal_price','start', 'end', 'active')->where('product_id', $value->id)->where('active', 1)->first();
 
                                 $deal_check_add = false;
 
