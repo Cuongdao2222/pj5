@@ -1373,6 +1373,10 @@
                                                 <a href="{{route('details','may-loc-khong-khi-sharp')}}">
                                                     <h3>Máy lọc không khí Sharp</h3>
                                                 </a>
+
+                                                <a href="{{route('details','quat')}}">
+                                                    <h3>Quạt</h3>
+                                                </a>
                                             </aside>
 
                                             <aside>
@@ -1990,6 +1994,9 @@
                                         </a>
                                         <a href="{{route('details','may-loc-khong-khi-sharp')}}">
                                             <h3>Máy lọc không khí Sharp</h3>
+                                        </a>
+                                        <a href="{{route('details','quat')}}">
+                                            <h3>Quạt</h3>
                                         </a>
                                     </div>
                                 </div>
