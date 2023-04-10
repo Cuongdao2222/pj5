@@ -296,7 +296,7 @@
 
                              $check_deal = App\Models\deal::select('deal_price','start', 'end', 'active')->where('product_id', 4591)->where('active', 1)->first();
 
-                             dd($check_deal);
+                             dd(!empty($check_deal));
                          }
 
                     ?>
