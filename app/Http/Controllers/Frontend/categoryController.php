@@ -686,6 +686,13 @@ class categoryController extends Controller
             $meta = Cache::remember('metaseo-detail'.$data->Meta_id,100, function() use ($data){
                 return metaSeo::find($data->Meta_id);
             }); 
+
+            // nếu là bài viết trong nhóm sản phẩm khuyến mãi thì đổi view
+
+            if($data_cate===333){
+
+                return view('frontend.combo', compact('data', 'images', 'other_product', 'meta', 'pageCheck', 'data_cate'));
+            }
             
             return view('frontend.details', compact('data', 'images', 'other_product', 'meta', 'pageCheck', 'data_cate'));
         }
