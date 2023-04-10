@@ -235,7 +235,7 @@ class imageController extends AppBaseController
     {
        
         $product_id = $request->product_id;
-        file_get_contents(Route('remove-cache-image').'?cache_id='.$product_id);
+        Cache::forget('image_product'.$product_id);
         $image   = $request->image;
         $data = product::find($product_id);
         $data->Image = $image;
@@ -271,8 +271,6 @@ class imageController extends AppBaseController
              $id = $_GET['cache_id'];
 
             Cache::forget('image_product'.$id);
-
-            dd(Cache::get('image_product'.$id));
 
             echo "thanh cong";
         }

@@ -602,14 +602,13 @@ class categoryController extends Controller
 
             $images = Cache::get('image_product'.$findID->id);
 
-
-
             if(!Cache::has('image_product'.$findID->id)){
                 
-                $image_cache = image::where('product_id', $findID->id)->select('image')->get();
+                $image_cache = image::where('product_id', $findID->id)->where('active', 1)->select('image')->get();
 
                 Cache::forever('image_product'.$findID->id,$image_cache);
             }
+
 
             if(!empty($_GET['cache'])){
 
