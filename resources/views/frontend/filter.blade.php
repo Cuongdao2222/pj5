@@ -314,6 +314,7 @@
                                        
                                         $value->Price = $check_deal->deal_price;
                                         $checkActiveDeal = 1;
+                                        $checkActivePd = $check_deal->active??'';
                                         
                                     }
                                     
@@ -330,7 +331,7 @@
                                     </div>
                                     <div style="height: 38px;">
                                     @if(!empty($checkActiveDeal) && $checkActiveDeal ===1 )
-                                        <button type="button" class="btn btn-danger">Flash Deal  </button>
+                                        <button type="button" class="btn btn-danger">Flash Deal  {{ @$checkActivePd }}</button>
                                     @endif
                                     </div>
 
