@@ -319,11 +319,7 @@
                                     
                                 }
 
-                                
-
-
                             ?>
-
 
                         <div class="col-md-3 col-6 lists">
                             <div class="item  __cate_1942">
@@ -333,8 +329,8 @@
                                         <img class="lazyload thumb" data-src="{{ asset($value->Image) }}" alt="{{ asset($value->Name) }}" style="width:100%"> 
                                     </div>
                                     <div style="height: 38px;">
-                                    @if(!empty($checkActiveDeal) && $checkActiveDeal ==1)
-                                        <button type="button" class="btn btn-danger">Flash Deal</button>
+                                    @if(!empty($checkActiveDeal) && $checkActiveDeal ===1)
+                                        <button type="button" class="btn btn-danger">Flash Deal {{ $checkActiveDeal  }} </button>
                                     @endif
                                     </div>
 
