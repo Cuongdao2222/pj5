@@ -290,19 +290,7 @@
 
 
                     @if(isset($product_search))
-                    <?php $arr_id_pro = []; 
-
-                         if(!empty(Auth::user()->id) && Auth::user()->id===1){
-
-                             $check_deal = App\Models\deal::select('deal_price','start', 'end', 'active')->where('product_id', 4591)->where('active', 1)->first();
-
-                             dd(!empty($check_deal));
-                         }
-
-                    ?>
-
-
-                   
+                    <?php $arr_id_pro = []; ?>
                    
                     @foreach($product_search as $value)
 
@@ -314,6 +302,8 @@
                                 $check_deal = App\Models\deal::select('deal_price','start', 'end', 'active')->where('product_id', $value->id)->where('active', 1)->first();
 
                                 $deal_check_add = false;
+
+                                $checkActiveDeal = '';
 
                                 
                                 if(!empty($check_deal) && !empty($check_deal->deal_price)){
