@@ -330,7 +330,7 @@
                                     </div>
                                     <div style="height: 38px;">
                                     @if(!empty($checkActiveDeal) && $checkActiveDeal ===1)
-                                        <button type="button" class="btn btn-danger">Flash Deal {{ $check_deal->active  }} </button>
+                                        <button type="button" class="btn btn-danger">Flash Deal  </button>
                                     @endif
                                     </div>
 
