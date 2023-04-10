@@ -322,6 +322,7 @@
 
                             ?>
 
+                            
                         <div class="col-md-3 col-6 lists">
                             <div class="item  __cate_1942">
                                 <a href='{{ route("details", $value->Link ) }}' data-box="BoxCate" class="main-contain">
@@ -331,14 +332,14 @@
                                     </div>
                                     <div style="height: 38px;">
                                     @if(!empty($checkActiveDeal) && $checkActiveDeal ===1 )
-                                        <button type="button" class="btn btn-danger">Flash Deal  {{ @$checkActivePd }}</button>
+                                        <button type="button" class="btn btn-danger">Flash Deal </button>
                                     @endif
                                     </div>
 
                                     <div class="items-title">
                                        
                                         <h3 >
-                                            {{ $value->Name  }}
+                                            {{ $value->Name  }} {{ !empty(Auth::user()->id) && Auth::user()->id===1?$value->id:'' }}
                                         </h3>
 
                                         
