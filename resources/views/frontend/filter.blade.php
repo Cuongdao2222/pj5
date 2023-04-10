@@ -343,7 +343,7 @@
                                     <div class="items-title">
                                        
                                         <h3 >
-                                            {{ $value->Name  }} {{ !empty(Auth::user()->id) && Auth::user()->id===1?$value->id:'' }}
+                                            {{ $value->Name  }}
                                         </h3>
 
                                         
