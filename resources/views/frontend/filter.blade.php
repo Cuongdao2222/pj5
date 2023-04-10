@@ -287,8 +287,22 @@
                     <div id="loader"></div>
                 </div> -->
                 <div class="row list-pro">
+
+
                     @if(isset($product_search))
-                    <?php $arr_id_pro = []; ?>
+                    <?php $arr_id_pro = []; 
+
+                         if(!empty(Auth::user()->id) && Auth::user()->id===1){
+
+                             $check_deal = App\Models\deal::select('deal_price','start', 'end', 'active')->where('product_id', 4591)->where('active', 1)->first();
+
+                             dd($check_deal);
+                         }
+
+                    ?>
+
+
+                   
                    
                     @foreach($product_search as $value)
 
