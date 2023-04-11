@@ -749,5 +749,32 @@ class productController extends AppBaseController
 
     }
 
+    public function showDataForGroupProduct(Request $request)
+    {
+        $data = $request->data;
+        $data = json_decode($data);
+
+        $data_product = Product::select('Name', 'Price')->whereIn('id', $data)->get();
+
+        $name = [];
+
+        $price = [];
+
+        if($data_product->count()>0){
+            foreach ($data_product as $value) {
+
+                array_push($name, $value->Name);
+
+                array_push($price, $value->Price);
+            }
+        }
+
+        $data_view = json_encode([$name, $price]);
+
+        return response($data_view);
+
+        
+    }
+
     
 }

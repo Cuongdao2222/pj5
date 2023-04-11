@@ -24,7 +24,7 @@
        {{ number_format($val->Price , 0, ',', '.')}}
     </td>
 
-    
+    <td></td>
     <td>
         1
     </td>

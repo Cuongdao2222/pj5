@@ -260,11 +260,15 @@
 
 <!-- promotion -->
 <div class="form-group col-sm-6">
+    <a href="javascript:void(0)" onclick="show_Product()">chọn sản phẩm cho nhóm</a>
+    <br>
     {!! Form::label('Km', 'Khuyến mãi text:') !!}
     {!! Form::textarea('promotion', null, ['class' => 'form-control', 'id' =>'promotion']) !!}
 </div>
 
 <div class="form-group col-sm-6">
+
+    <br>
     {!! Form::label('GiftPrice', 'Giá trị quà ước tính:') !!}
     {!! Form::text('GiftPrice', null, ['class' => 'form-control']) !!}
 
@@ -282,12 +286,199 @@
 </div> -->
 <div class="clearfix"></div>
 @endif
+
+
+<div class="modal fade" id="modal-product" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                
+                <?php  
+               
+                    $option = App\Models\groupProduct::select('id', 'name')->where('parent_id', 0)->get();
+                ?>
+
+               
+                &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+                 <h5 class="modal-title" id="exampleModalLabel">Nhập model</h5>
+
+                 <input type="text" name="" id="name_product">
+                 &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp 
+                 <div class="btn-primary accept-find" style="width:22%">xác nhận</div>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <?php  
+
+
+                ?>
+                <table id="tb-list" border="1" bordercolor="#CCCCCC">
+                    <tbody>
+                        <tr bgcolor="#EEEEEE" style="font-weight:bold;">
+                            <td style="width:30px">STT</td>
+                            <td>Sản phẩm </td>
+                            <td style="width:150px">Giá bán</td>
+                            <td style="width:150px">Giá Deal</td>
+                            <td style="width:70px">Số lượng</td>
+                            <td style="width:80px">Bảo hành</td>
+                            <td style="width:80px">Chọn</td>
+                        </tr>
+
+                        <?php  
+                            $products = App\Models\product::select('Name', 'Link', 'Price','id', 'Link')->where('group_id', 1)->where('active', 1)->Orderby('id', 'desc')->paginate(10);
+
+                        ?>
+                       <?php  
+
+                            $i = 0
+                        ?>
+                        @if(isset($products))
+
+                        @foreach($products as $val)
+
+                        <?php 
+
+                            $i++;
+                        ?>
+
+                        <tr id="row_{{$val->id}}" class="row-hover">
+                            <td>{{ $i }}</td>
+                            <td>
+                                <b><a href="{{ route('details', $val->Link) }}" class="pop-up">{{ $val->Name }}</a></b> <br>
+                               
+                                <input type="hidden" id="pro_name_{{ $val->id }}" value="{{ $val->id }}">
+                            </td>
+                            <td class="price">
+                                {{ number_format($val->Price , 0, ',', '.')}}  
+                            </td>
+
+                            <td class="deal-price">
+                                
+                            </td>
+                            <td>
+                                1
+                            </td>
+                            <td>
+                                24 Tháng
+                            </td>
+                            <td>
+                                <input type="button" value="Chọn sản phẩm" class="update-bt-all" data-id="{{$val->id}}"><span id="update_bt_5814"></span>
+                            </td>
+                        </tr>
+
+                        @endforeach
+                        @endif
+                        
+                       
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary add-view">Xác nhận</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <script type="text/javascript">
+
+    var ar_pd_add = [];
+
 
     $(document).ready(function() {
         getContent();
     });
-    
+
+
+    $('.accept-find').click(function(){
+
+        data = $('#name_product').val();
+
+        $('#modal-product .modal-body').show();
+
+        if(data != null){
+
+            $.ajax({
+
+            type: 'GET',
+                url: "{{ route('filter-product-deal') }}",
+                data: {
+                    data:data,
+                    page:'pd',
+                },
+                success: function(result){
+
+                    
+                    $('#tb-list tbody').append(result);
+
+                }
+            });
+
+        }
+
+    });
+
+
+
+    $('.add-view').click(function () {
+
+        data = JSON.stringify(ar_pd_add);
+
+        $.ajax({
+
+        type: 'GET',
+            url: "{{ route('show-product-group-promotion') }}",
+            data: {
+                data:data,
+                
+            },
+            success: function(result){
+
+                result = JSON.parse(result);
+
+                price = sumArray(result[1]);
+
+                editor = CKEDITOR.instances['promotion'];
+
+                // update price in input
+
+                $('#Price').val(price);
+
+                editor.setData('1');
+               
+                $('#modal-product').modal('hide');
+
+
+                console.log(result[0]);
+            }
+        });
+        
+        
+    })
+
+   
+  
+
+    function show_Product() {
+        $('#modal-product').modal('show');
+    }
+
+
+    function sumArray(mang){
+        let sum = 0;
+        mang.forEach(function(value){
+            sum += value;
+        });
+         
+        return sum;
+    }
+        
     function getContent() {
          
         @if (\Session::has('success-content'))

@@ -34,10 +34,31 @@
         24 Tháng
     </td>
     <td>
-        <input type="button" value="Chọn sản phẩm" class="update-bt-all" onclick="selectProduct('{{$val->id}}')" id="selectProduct{{ $val->id}}"><span></span>
+        <input type="button" value="Chọn sản phẩm" class="update-bt-all" data-id="{{$val->id}}"  id="selectProduct{{ $val->id}}"><span></span>
     </td>
    
 </tr>
 
 @endforeach
 @endif
+
+<script type="text/javascript">
+   
+
+    $('.update-bt-all').click(function(){
+
+        id = $(this).attr('data-id');
+
+        ar_pd_add.push(id);
+
+        ar_pd_add = Array.from(new Set(ar_pd_add));
+
+        $(this).text('Đã chọn');
+
+        $(this).val('Đã chọn');
+
+       
+    });
+
+  
+</script>

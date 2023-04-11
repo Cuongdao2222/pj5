@@ -67,10 +67,32 @@ class dealController extends Controller
 
             return view('frontend.ajax.option_product', compact('products'));
         }
+        elseif($page =='pd'){
+            return view('frontend.ajax.add-pd', compact('products'));
+        }
         else{
             return view('frontend.ajax.product_landing', compact('products'));
         }    
 
+    }
+
+    public function getListProductToName(Request $request)
+    {
+        $data = $request->data;
+
+        $page = $request->page;
+
+        $datas = new mainController();
+
+        $products = $datas->findProductByNameOrModel($data);
+
+        if($page =='deal'){
+
+            return view('frontend.ajax.option_product', compact('products'));
+        }
+        else{
+            return view('frontend.ajax.product_landing', compact('products'));
+        }
     }
 
     public function GetProductbyId(request $request)

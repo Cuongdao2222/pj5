@@ -344,6 +344,9 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::get('add-lanfding-pro', 'landingController@addLanding')->name('add-product-landing');
 
+
+    Route::get('show-product-group-promotion', 'productController@showDataForGroupProduct')->name('show-product-group-promotion');
+
    
     Route::get('add-hight-light', 'landingController@add_Hight_Light')->name('add-hight-light');
 
