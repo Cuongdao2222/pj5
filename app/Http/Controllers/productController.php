@@ -353,11 +353,19 @@ class productController extends AppBaseController
     public function product_sale_show(Request $request)
     {
         $choose = $request->choose;
-        if($choose==1){
-
-            $product_sale = DB::table('products')->join('sale_product', 'products.id', '=', 'sale_product.product_id')->join('makers', 'products.Maker', '=', 'makers.id')->take(20)->orderBy('sale_order', 'desc')->get();
+        if($choose==0){
 
             
+            $product_sale = DB::table('products')->join('sale_product', 'products.id', '=', 'sale_product.product_id')->join('makers', 'products.Maker', '=', 'makers.id')->take(20)->orderBy('sale_order', 'desc')->get();
+
+            // tạm ẩn khuyến mãi theo nhóm
+
+            // $data = DB::table('group_product')->where('id', 333)->first();
+
+            // $data_convert = json_decode($data->product_id);
+
+            // $product_sale = product::whereIn('id', $data_convert)->orderBy('id', 'desc')->get();
+        
         }
         else{
             $hot = DB::table('hot_product')->take(20)->get()->pluck('product_id');
@@ -754,11 +762,13 @@ class productController extends AppBaseController
         $data = $request->data;
         $data = json_decode($data);
 
-        $data_product = Product::select('Name', 'Price')->whereIn('id', $data)->get();
+        $data_product = Product::select('Name', 'Price', 'Link')->whereIn('id', $data)->get();
 
         $name = [];
 
         $price = [];
+
+        $link  = [];
 
         if($data_product->count()>0){
             foreach ($data_product as $value) {
@@ -766,10 +776,13 @@ class productController extends AppBaseController
                 array_push($name, $value->Name);
 
                 array_push($price, $value->Price);
+
+                array_push($link, $value->Link);
             }
         }
 
-        $data_view = json_encode([$name, $price]);
+
+        $data_view = json_encode([$name, $price, $link]);
 
         return response($data_view);
 

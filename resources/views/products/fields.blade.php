@@ -162,7 +162,7 @@
 
 <div class="form-group col-sm-6">
     {!! Form::label('manu Price', 'Giá Hãng:') !!}
-    {!! Form::text('manuPrice', null, ['class' => 'form-control']) !!}
+    {!! Form::text('manuPrice', null, ['id'=>'manuPrice' ,'class' => 'form-control']) !!}
 
 </div>
 
@@ -439,23 +439,30 @@
                 
             },
             success: function(result){
-
+            
                 result = JSON.parse(result);
 
                 price = sumArray(result[1]);
 
+                name = result[0];
+
+                link =  result[2].toString();
+
                 editor = CKEDITOR.instances['promotion'];
+
+                editor1 = CKEDITOR.instances['content-1'];
 
                 // update price in input
 
-                $('#Price').val(price);
+                $('#manuPrice').val(price);
 
-                editor.setData('1');
+                editor.setData(name);
+
+                editor1.setData(link);
                
                 $('#modal-product').modal('hide');
 
-
-                console.log(result[0]);
+                // console.log(namestring);
             }
         });
         

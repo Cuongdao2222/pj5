@@ -2,9 +2,9 @@
 @section('content') 
 @push('style')
 
-    <?php 
+    <?php
 
-        $thuonghieu = [1 => 5, 3 => 35, 2 =>56, 4 =>76, 6=>115, 7=>129];
+         $thuonghieu = [1 => 5, 3 => 35, 2 =>56, 4 =>76, 6=>115, 7=>129];
 
         $namecate = Cache::rememberForever('namecate'.$data_cate, function() use($data_cate){
 
@@ -12,6 +12,8 @@
 
             return $namecate;
         });    
+
+   
 
         if(!empty($thuonghieu[$data_cate])){
 
@@ -37,10 +39,18 @@
             });
 
         }
-    
-    ?>
 
-     <?php 
+        $checkDaikin = false;
+
+        if(!empty($thuonghieu[$data_cate])&& !empty($ar_groups_info)){
+
+            
+            if(trim(str_replace($namecate->name, '',  $ar_groups_info[0]['name']))==='Daikin'){
+                $checkDaikin = true;
+
+            }
+
+        }   
 
         $checkSharp = strpos($data->Name, 'Sharp');
 
@@ -52,7 +62,8 @@
         {
             $browserIsMobileSafari = true;
         }
-
+               
+    
     ?>
 
     <?php
@@ -207,9 +218,6 @@
 
                 $flashDeal = App\Models\flashdeal::where('product_id', $data->id)->where('flash_deal_time_id', $groups_deal)->where('active',1)->get()->last();
 
-                
-
-                
                 if(!empty($flashDeal)){
                     
                     $deal_check_add = true;
@@ -425,7 +433,7 @@
                              <a href="{{ asset($data->Image) }}" data-fancybox="gallery"><img  data-src ="{{ asset($data->Image) }}" alt="{{ @$data->Name }}" class="lazyload">
 
                             </a>
-                            <button class="copy-button"   onclick="copyImage('{{ env("APP_URL") }}/{{ $data->Image }}')"><i class="fas fa-copy"></i></button>
+                           
                             @if($data->id>4720)
 
                             @if(!empty($logoSaker->maker))
@@ -460,14 +468,10 @@
 
                         @if( basename($image->image) != basename($data->Image) )
 
-
-
                         <div class="item">
                             <a href="{{ asset($image->image) }}" data-fancybox="gallery"><img  data-src ="{{ asset($image->image) }}"  alt="{{ @$data->Name }}" class="lazyload"></a>
-                            <button class="copy-button" onclick="copyImage('{{ env("APP_URL") }}/{{ $data->Image }}')"><i class="fas fa-copy"></i></button>
+                            
                         </div>
-
-
                       
                         @endif
 
@@ -537,6 +541,23 @@
                                         </ul>
                                     </div>
                                 </div>
+                                @endif
+
+                                @if($checkDaikin===true)
+
+                                 <div class="gift_pro">
+                                    <span class="ttl"><i class="fa-solid fa-hand-point-right"></i> Hướng dẫn kích hoạt</span> 
+                                    <div class="gift_item">
+                                        <ul>
+                                            <li>
+                                                <div class="gift_info">
+                                                    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px">Hướng dẫn khách hàng tự kích hoạt bảo hành sản phẩm Daikin (<a href="https://dienmaynguoiviet.vn/huong-dan-tu-kich-hoat-bao-hanh-dieu-hoa-daikin" target="_blank">Xem chi tiết</a>)</span></span></p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
                                 @endif
 
                                 <!-- nếu tồn tại gift_price thì hiển thị -->
@@ -1242,17 +1263,11 @@
 
                                 }
 
-
-
-
                             ?>
-
-
 
                             <!-- nếu tồn tại gift_price thì hiển thị -->
                            
                             <div class="gift_pro">
-
 
                                 @if(!empty($gift))
 
@@ -1306,6 +1321,24 @@
                                 </div>
                             </div>
                             @endif
+
+
+                            @if($checkDaikin===true)
+                            <div class="gift_pro">
+                                <span class="ttl"><i class="fa-solid fa-hand-point-right"></i> Hướng dẫn kích hoạt</span> 
+                                <div class="gift_item">
+                                    <ul>
+                                        <li>
+                                            <div class="gift_info">
+                                                <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px">Hướng dẫn khách hàng tự kích hoạt bảo hành sản phẩm Daikin (<a href="https://dienmaynguoiviet.vn/huong-dan-tu-kich-hoat-bao-hanh-dieu-hoa-daikin" target="_blank">Xem chi tiết</a>)</span></span></p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            @endif
+
+
 
                             @if($data['Quantily']>0)
                             <div class="pdetail-add-to-cart add-to-cart">
@@ -2170,6 +2203,7 @@
         autoplay:true,
         dots:true,
         autoWidth: false,
+        loop:true,
        
         dotsEach:1,
 

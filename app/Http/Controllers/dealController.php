@@ -220,12 +220,18 @@ class dealController extends Controller
      public function editDealPrice(Request $request)
     {
         $id = $request->product_id;
+
+
         $val = $request->val;
         $val = str_replace(['.',','],'', $request->val);
         if(!empty($val)){
             $deal = deal::find($id);
             $deal->deal_price = trim($val);
             $deal->save();
+
+            $id_product = $deal->product_id;
+            $productSku = (product::find($id_product))->ProductSku;
+            file_get_contents("https://api.dienmaynguoiviet.net/public/test-api?product_sku=".$productSku."&price=".trim($val)."&string=AtBSvrztfw5hXwxZeIf0fWf3GtuILFeCOBsRtnah");
 
         }
         return response('thanh cong');

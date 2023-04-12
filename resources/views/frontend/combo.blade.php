@@ -88,13 +88,34 @@
         .img-main .saker{
             max-width: 100px;
         }
+        .line-through b{
+            text-decoration:line-through;
+        }
 
         @media only screen and (min-width: 768px) {
             .copy-button{
 
                 display: none;
             }    
-        }    
+
+            hr{
+                margin-top:0;
+            }
+            .box-info-name{
+                height: 30px !important;
+            }
+        }  
+        @media only screen and (max-width: 768px) {
+
+            .pdetail-price{
+                height: auto !important;
+            }
+        }
+
+
+
+        
+
     </style>
 
 
@@ -481,19 +502,61 @@
                     </div>
                 </div>
             </div>
+
+             @if(!empty($data->promotion))
+
+            <div class="gift_pro">
+
+                <span class="ttl"><i class="fa-solid fa-gift"></i> Combo sản phẩm bao gồm</span>
+               
+                <div class="gift_item">
+                    <ul>
+                        <li>
+                            
+                            <div class="gift_info">
+
+                                <?php 
+
+                                    $gr_product = explode(',', trim($data->promotion));
+
+                                    $link    = explode(',', trim($data->Salient_Features));
+
+                                   
+                                ?>
+
+                                @if(count($gr_product)>0)
+
+                                <ul>
+
+                                @foreach($gr_product as $key => $val)
+                                <li><a href="{{ @strip_tags($link[$key]) }}" target="_blank">{!! $val !!}</a></li>
+
+
+                                @endforeach
+                                </ul>
+                                @endif
+                              
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+                    
+            
+            @endif
             <div class="pay mobile">
                 <div class="col-12 pdetail-des">
                     <div class="clearfix"></div>
                     <div>
-                        <div class="pdetail-info">
-                            <p>Model: <b>{{ @$data->ProductSku  }}</b></p>
-                           
+                        <div class="pdetail-info line-through">
+                            <p>Giá toàn bộ chưa khuyến mãi <b>{{str_replace(',' ,'.', number_format($data->manuPrice))}} đ</b></p>
                         </div>
                         <div class="scroll-box">
                            
                             <div class="pdetail-price">
+
                                 <div class="pdetail-price-box">
-                                    {!! @$text !!}
+                                    <p><b>Giá combo</b></p>
                                     <h3> {{ str_replace(',' ,'.', number_format($data->Price)) }}₫ </h3>
                                 </div>
 
@@ -864,16 +927,13 @@
 
                 
             </div>
-
-            <br>
-            
             <hr>
              <div class="pdetail-stockavailable stock">
 
                 <span>{{ $status }}</span>
 
                 &nbsp 
-                <a href="https://goo.gl/maps/TozxKHRZeHfrafMt9" title="#" class="adress_stock"><i class="fa fa-map-marker"></i> Địa chỉ kho hàng</a>
+                <a href="https://goo.gl/maps/TozxKHRZeHfrafMt9" title="#" class="adress_stock" target="_blank"><i class="fa fa-map-marker"></i> Địa chỉ kho hàng</a>
 
             </div>
 
@@ -1114,26 +1174,7 @@
                             <div class="sticker buyonline"> <p><strong>Số Lượng Có Hạn</strong></p></div>
                             @endif
 
-                            @if(!empty($data->promotion))
-
-                            <div class="gift_pro">
-
-                                <span class="ttl"><i class="fa-solid fa-gift"></i> Combo sản phẩm bao gồm</span>
-                               
-                                <div class="gift_item">
-                                    <ul>
-                                        <li>
-                                            
-                                            <div class="gift_info">
-                                               {!! @$data->promotion !!}
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                                    
-                            
-                            @endif
+                           
 
                             
                             @if(!empty($gift_Price))

@@ -1855,6 +1855,13 @@
             $('.option-sg a').removeClass('active');
             choose = (option==0)?1:0;
 
+            if(option===1){
+                $('.prd-promo .readmore-btn').attr('href', '{{ route('details', 'sale') }}');
+            }
+            else{
+                 $('.prd-promo .readmore-btn').attr('href', '{{ route('details', 'combo') }}');
+            }
+
             $(this).addClass('active');
 
             $.ajaxSetup({

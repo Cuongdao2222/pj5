@@ -838,7 +838,7 @@
                         </div>
                     </a>
 
-                    <a href="https://goo.gl/maps/TozxKHRZeHfrafMt9" class="header__cart fas-phones">
+                    <a href="https://goo.gl/maps/TozxKHRZeHfrafMt9" class="header__cart fas-phones" target="_blank">
                          <i class="fa fa-map-marker" aria-hidden="true"></i>
                          <div class="div-text">
                             <span class="tel-head">Xem kho hàng</span>
