@@ -1046,6 +1046,9 @@
                                                 <a href="{{route('details','tivi-philips')}}">
                                                     <h3>Tivi Philips</h3>
                                                 </a>
+                                                <a href="{{route('details','tivi-sharp')}}">
+                                                    <h3>Tivi Sharp</h3>
+                                                </a>
                                             </aside>
                                             <aside>
                                                 <a href="{{ route('details', 'loai-tivi') }}"><strong>Loại tivi</strong></a>
@@ -1574,6 +1577,9 @@
                                         </a>
                                         <a href="{{route('details','tivi-philips')}}">
                                             <h3>Tivi Philips</h3>
+                                        </a>
+                                        <a href="{{route('details','tivi-sharp')}}">
+                                                    <h3>Tivi Sharp</h3>
                                         </a>
                                     </div>
                                 </div>
