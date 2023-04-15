@@ -197,7 +197,7 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::get('get-info-order', 'apiController@searchInfoOrder');
 
-    Route::get('forget-cache-home', 'backend\indexController@index')->name('test');
+    Route::get('forget-cache-home', 'backend\indexController@index')->middleware('cache.headers:public;max_age=14400;etag')->name('test');
 
     Route::post('update-gift-date','giftController@updateGiftDate')->name('updateGiftDate');
     
