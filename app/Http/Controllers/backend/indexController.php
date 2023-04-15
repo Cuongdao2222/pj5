@@ -108,9 +108,13 @@ class indexController extends Controller
             return banners::where('option', 13)->OrderBy('stt', 'asc')->where('active', 1)->first()??'';
         });
 
-        
 
-        return view('forget_cache_home.index', compact('banners', 'bannersRight', 'bannerUnderSlider', 'bannerUnderSale','deal','product_sale', 'group','timeDeal_star', 'deal_check', 'now','bannerscrollRight', 'bannerscrollLeft'));
+        $view = Cache::rememberForever('view-admin-home', function() use($banners, $bannersRight, $bannerUnderSlider, $bannerUnderSale, $deal, $product_sale, $group, $timeDeal_star, $deal_check, $now, $bannerscrollRight, $bannerscrollLeft){
+
+            return htmlspecialchars_decode(view('forget_cache_home.index', compact('banners', 'bannersRight', 'bannerUnderSlider', 'bannerUnderSale','deal','product_sale', 'group','timeDeal_star', 'deal_check', 'now','bannerscrollRight', 'bannerscrollLeft')));
+        });
+
+        return $view;
     
     }
     public function cache()

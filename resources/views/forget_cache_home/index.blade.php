@@ -1,91 +1,36 @@
+<?php 
+            
+    $post = Cache::rememberForever('post_home', function() {
+        return App\Models\post::where('active',1)->where('hight_light', 1)->OrderBy('created_at', 'desc')->select('link', 'title', 'image')->limit(7)->get()->toArray();
+    });
+
+    $post_promotion = Cache::rememberForever('post_promotion', function() {
+        return App\Models\post::where('active',1)->where('hight_light', 1)->where('category', 11)->OrderBy('created_at', 'desc')->select('link', 'title')->limit(2)->get();
+    });
+
+    $post_advice = Cache::rememberForever('post_advice', function() {
+        return App\Models\post::where('active',1)->where('hight_light', 1)->where('category', 8)->OrderBy('created_at', 'desc')->select('link', 'title')->limit(2)->get();
+    });
+       
+?>
+
 @extends('frontend.layouts.apps')
 
 @section('content') 
 
     @push('style')
 
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/home.css') }}?ver=22">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/home.css') }}?ver=26">
   
         <link rel="stylesheet" type="text/css" href="{{ asset('css/index.css') }}?ver=4">
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/homes.css') }}?ver=9">
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/homecs.css') }}?ver=9">
-
-        <style type="text/css">
-           .gift-text span{
-                color: #D82A20;
-           }
-
-           .container-productbox{
-            overflow: hidden;
-           }
-
-           .div-pd{
-            padding: 15px 0;
-           }
-           .__cate_1942 a:hover{
-            text-decoration: none;
-           }
-
-           .pine-tree{
-             display: none;
-             
-           }
-
-           .list-mn, .footer{
-                font-size: 14px !important;
-            }
-
-
-           @media screen and (max-width:776px) {
-
-                .div-slide{
-                    margin: 0 !important;
-                }
-
-                .box-div-slide{
-                    padding: 0;
-                }
-
-                .cIVWIZ{
-                    background-repeat: no-repeat;
-                    background-size: 100%;
-                    padding-top: 78px !important;
-                }
-                .btn-buys{
-                    display: none;
-                }
-                .navbar-collapse{
-                    display: flex;
-                }
-                #navbarNavAltMarkup {
-                     height: auto !important; 
-                }
-                .items-title span{
-                    font-size: 16px !important;
-                }
-                .btn-buy-price{
-                    width: 100% !important;
-                }
-                 .div-pd a{
-                    text-decoration: none;
-                }
-
-                .lists .item{
-                    width: 100%;
-                    overflow: hidden;
-                }
-                .lists{
-                    padding-right: 0 !important;
-                }
-
-
-            }
-        </style>
-
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/homes.css') }}?ver=10">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/homecs.css') }}?ver=15">
 
     @endpush
 
+     <!-- check giá khuyến mãi sản phẩm để tạng voucher -->
 
+    
      <?php
 
 
@@ -112,11 +57,18 @@
             return $new_product;
         });
 
-
         $now  = Carbon\Carbon::now();
         // $now  = \Carbon\Carbon::createFromDate('9-11-2022, 8:00');
 
-        $date_string_flash_deal = DB::table('date_flash_deal')->where('id', 1)->first()->date;
+
+        $date_string_flash_deal = Cache::rememberForever('date_flash_deal', function(){
+
+            $date_string_flash_deal = DB::table('date_flash_deal')->where('id', 1)->first()->date;
+
+            return  $date_string_flash_deal;
+        });
+
+
         $date_flashdeal = \Carbon\Carbon::create($date_string_flash_deal);
 
         $deal = Cache::get('deals')->sortByDesc('order');
@@ -146,56 +98,8 @@
 
         }
 
-        
-
-        
-
        
-    ?> 
-
-   
-
-    <style type="text/css">
-        .price_market {
-            display: inline-block;
-            vertical-align: middle;
-            margin-right: 4px;
-            font-size: 12px;
-            color: #707070;
-            text-decoration: line-through;
-        }
-
-        .discount_percent {
-            color: #fff;
-            background: #007bff;
-            display: inline-block;
-            vertical-align: middle;
-            padding: 2px 5px;
-            font-size: 12px;
-            border-radius: 4px;
-        }
-
-        .icons-tra-gops{
-            background-color: #ddd;
-            color: #000;
-            border: none; 
-        }
-        .icons-promotion-per{
-            height: 42px;
-        }
-
-        .listproduct{
-                grid-gap:16px;
-            }
-
-        .left-banner{
-            float: left;
-        } 
-
-        .homebanner .owl-stage-outer{
-            width: 100%;
-        }   
-    </style>   
+    ?>   
 
     <div class="locationbox__overlay"></div>
     <div class="locationbox">
@@ -236,7 +140,7 @@
 
         <div class="row div-slide">
             <div class="col-md-2 left-banner"></div>
-            <div class="col-md-10 box-div-slide">
+            <div class="col-md-7 box-div-slide">
                 <div class="homebanner-container">
                     <!-- Banner chính -->
                     <aside class="homebanner">
@@ -265,9 +169,65 @@
                             
                         </div>
                     </aside>
+
+                   
+
                     <!-- End -->
                 </div>
             </div>
+
+            @if(!$smart_phone)
+
+            <?php 
+
+            ?>
+
+            <div class="col-md-3 box-div-slide1">
+                <div class="top-image">
+
+                    <div class="homenews">
+                        <span><a href="{{ route('details', 'tin-tuc-khuyen-mai') }}">Tin tức khuyến mãi</a></span>
+                        <ul>
+
+                            @if($post_promotion->count()>0)
+
+                            @foreach($post_promotion as $value)
+
+                            <li>
+                                <a href="{{ route('details', $value->link) }}">{{ @$value->title }}</a>
+                            </li>
+
+                            @endforeach
+
+                            @endif
+
+                          
+                        </ul>
+                    </div>
+
+
+                   
+                </div>
+
+                <div class="homenews">
+                    <span><a href="{{ route('details', 'tu-van-mua-sam') }}">Tư vấn tiêu dùng</a></span>
+                    <ul>
+                         @if($post_advice->count()>0)
+
+                            @foreach($post_advice as $value)
+
+                            <li>
+                                <a href="{{ route('details', $value->link) }}">{{ @$value->title }}</a>
+                            </li>
+
+                            @endforeach
+
+                            @endif
+                    </ul>
+                </div>
+
+            </div>
+            @endif
         </div>
         
         
@@ -340,304 +300,6 @@
         ?>
 
         @if($date_flashdeal->isToday())
-
-        <style type="text/css">
-            .bg-light {
-                background-color: #414142 !important;
-
-                height: 64px;
-            }
-            .UCDJ9O {
-                font-size: 1.5rem;
-            }
-
-            .navbar-nav{
-                height: 80% !important;
-            }
-            .higiZo {
-                text-transform: capitalize;
-                font-size: 12px;
-            }
-            .oNZiNS {
-                text-decoration: none;
-                color: rgba(0,0,0,.87);
-                display: block;
-                background: #414142;
-                color: #c3c3c3;
-                display: flex;
-                flex-direction: column;
-                height: 3rem;
-                justify-content: center;
-                position: relative;
-                text-align: center;
-            }
-
-            .navbar{
-                width: 100%;
-            } 
-
-            .cIVWIZ, .zuQWXW {
-                padding-top: 240px;
-            }
-
-            .VUCDM7 {
-                width: 1200px;
-                margin: 20px auto;
-                display: flex;
-                flex-wrap: wrap;
-                align-items: center;
-            }
-            .B3\+pb\+ {
-                box-shadow: 0 1px 1px 0 rgb(0 0 0 / 5%);
-                border-radius: 0.125rem;
-                overflow: hidden;
-                background-color: #fff;
-                -moz-box-sizing: border-box;
-                box-sizing: border-box;
-                position: relative;
-                margin-bottom: 10px;
-                z-index: 1;
-            }
-
-            .PMpbYz {
-                text-decoration: none;
-                color: rgba(0,0,0,.87);
-                display: block;
-                height: 100%;
-                display: flex;
-                flex-direction: column;
-            }
-
-            .cmjSHU, .qifRic {
-                width: 280px;
-                height: 280px;
-            }
-
-            .FSzItq {
-                margin: 5px auto;
-                position: relative;
-            }
-
-            .items-title span{
-                font-size: 18px;
-            }
-            .div-pd{
-                margin: 0 auto;
-            }
-            .list-pro{
-                background: #F5F5F5;
-                overflow: hidden;
-            }
-            .items-title{
-                background: #fff;
-            }
-            .items-title span{
-                color: #000;
-            }
-            .items-title{
-                padding: 0 15px;
-            }
-            .navbar-light{
-                padding: 0;
-            }
-            .actives{
-                background: #ee4d2d;
-                color: #fff !important;
-            }
-            .actives .UCDJ9O, .actives .higiZo{
-                color: #fff !important;
-            }
-
-
-
-
-            .X7gzZ7 {
-                background-color: rgba(255,212,36,.9);
-            }
-
-            .aS\+-QV {
-                -webkit-transform: scale(1.4);
-                transform: scale(1.4);
-                padding: 7px 8px;
-                font-weight: 400;
-                position: absolute;
-                top: 0;
-                right: 0;
-                z-index: 3;
-            }
-
-
-            .yV54ZD {
-                width: 36px;
-                height: 32px;
-            }
-
-            ._8PundJ {
-                display: flex;
-                flex-direction: column;
-                text-align: center;
-                position: relative;
-                font-weight: 400;
-                line-height: .8125rem;
-                color: #ee4d2d;
-                text-transform: uppercase;
-                font-size: .75rem;
-            }
-
-            ._5ICO3M {
-                display: inline-block;
-                -moz-box-sizing: border-box;
-                box-sizing: border-box;
-                position: relative;
-                padding: 4px 2px 3px;
-                font-weight: 700;
-            }
-
-            .tSV5KQ {
-                color: #fff;
-            }
-
-            .X7gzZ7:after {
-                content: "";
-                width: 0;
-                height: 0;
-                left: 0;
-                bottom: -4px;
-                position: absolute;
-                border-color: transparent rgba(255,212,36,.9);
-                border-style: solid;
-                border-width: 0 18px 4px;
-
-                width: 50px;
-            }
-            .__cate_1942{
-                position: relative;
-            }
-
-            .X7gzZ7{
-                position: absolute;
-                top: 0;
-                right: 0;
-
-                width: 50px;
-            }
-
-            .yV54ZD {
-                
-                height: 40px;
-            }
-            .IKgh3U {
-                
-                color: rgba(0,0,0,.13);
-                text-decoration: line-through;
-                margin: 10px 0;
-            }
-            .price{
-                font-size: 23px;
-                font-weight: normal;
-                color: #ee4d2d;
-            }
-            .price-sale{
-                display: flex;
-            }
-
-            .btn-buys{
-                line-height: 51px;
-                width: 40%;
-                text-align: right;
-
-            }
-            .btn-buys button{
-                 font-size: 13px;
-                height: 42px;
-               width: 94%;
-            }
-            .btn-buy-price{
-                width: 60%;
-            }
-
-            .btn-buy-click{
-                background: #ee4d2d;
-                border: 0;
-            }
-            .qOgYxF span{
-                color: #ddd;
-            }
-
-            .lists{
-                height: 325px;
-            }
-            .lists .item{
-                height: 97%;
-                background: #fff;
-            }
-
-            .progress {
-                background-color: #FDBCA8;
-                border-radius: 8px;
-                position: relative;
-               
-                height: 12px;
-                width: 100%;
-                margin-top: 10px;
-            }
-
-            .progress-done {
-                background: #E91B24;
-                box-shadow: 0 3px 3px -5px #F2709C, 0 2px 5px #F2709C;
-                border-radius: 20px;
-                color: #fff;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                height: 100%;
-                width: 0;
-                opacity: 0;
-                transition: 1s ease 0.3s;
-            }
-
-            .cIVWIZ{
-                max-width: 1200px;
-            }
-            #navbarNavAltMarkup{
-                height: 80px;
-            }
-            .navbar-nav{
-                height: 100%;
-            }
-            .item-img_1942{
-                text-align: center;
-            }
-
-            .items-title .name{
-                margin-top: 10px;
-                height: 35px;
-                overflow: hidden;
-            }
-
-            .readmore-btn {
-                background-color: #fff;
-                border-radius: 4px;
-                display: block;
-                line-height: 16px;
-                margin: 10px auto 0;
-                padding: 12px 5px;
-                text-align: center;
-                color: #333;
-                width: 340px;
-            }
-
-            .product-view-all .prd-promo__top{
-                background: #E94A37;
-                padding-top:1px;
-            }
-            .bar-top-lefts{
-                display: inline-block;
-            }
-
-
-        </style>
-
 
         <?php 
             $saleFlash = DB::table('flash_deal')->get();
@@ -786,8 +448,6 @@
 
                         ?>
 
-
-
                         @if($percent>0)
                         <div class="_5ICO3M yV54ZD X7gzZ7">
                             <div class="_8PundJ"><span class="percent">{{ $percent }}%</span><span class="tSV5KQ">giảm</span></div>
@@ -836,8 +496,6 @@
                     <div class="flash-product nk-product-of-flash-sales">
                         <div class="col-flash col-flash-2 active">
                             <div id="sync1S" class="slider-banner owl-carousel flash-sale-banner">
-
-
 
                                 @foreach($deal as $key => $value)
                                
@@ -949,66 +607,15 @@
           
         <div class="clearfix"></div> 
 
-        <style type="text/css">
-            .option-sg,  .option-mbile-sg{
-                display: flex;
-                overflow: hidden;
-                flex-flow: row;
-                padding: 15px;
-                text-align: center;
-                align-items: center;
-            }
-
-            .option-sg a.active, .option-mbile-sg .active {
-                background-color: #fffca8 !important;
-            }
-
-            .option-mbile-sg .active span{
-                color: #F20028;
-            }
-
-            .option-sg a {
-               
-                background-size: 100%;
-                height: 83px;
-                border-bottom-right-radius: 12px;
-                border-bottom-left-radius: 12px;
-            }
-
-            .option-sg a {
-                display: inline-block;
-                vertical-align: middle;
-                width: 218px;
-                margin: 0 20px 0 0;
-                background: #fff;
-                border-radius: 8px;
-                height: 70px;
-                padding: 8px 0;
-            }
-
-           
-
-            .option-sg a span {
-                display: inline-block;
-                overflow: hidden;
-                vertical-align: middle;
-                color: #555;
-                font-size: 18px;
-                line-height: 22px;
-                padding: 8px 0 0;
-            }
-
-            
-        </style>
-        
+     
         <div class="prd-promo has-banner" style="background: #eb3a7f;" data-html-id="3109">
 
             @if(!empty($bannerUnderSale[0]['image']))
 
-            <!-- <div class="prd-promo__top clearfix" >
+            <div class="prd-promo__top clearfix" >
 
                 <a data-cate="0" data-place="1868" href="#" ><img style="cursor:pointer" src="{{ asset($bannerUnderSale[0]['image']) }}" alt="banner-summer" width="1200"></a>                
-            </div> -->
+            </div> 
 
             @endif
 
@@ -1043,12 +650,7 @@
    
             </div>
 
-           
-
             @endif
-
-
-
             
             <div class="block-product__content mobile-sale-product" data-is-recommend-tab="true">
 
@@ -1070,6 +672,17 @@
                         <div class="title-name">
                             <h3>{{ $value->Name }}</h3>
                         </div>
+
+                        <?php 
+
+                            $check_deal_sale = $deal->where('product_id', $value->product_id)->first();
+
+                            if(!empty($check_deal_sale) && $now->between($deal[0]->start, $deal[0]->end)){
+
+                                $value->Price = $check_deal_sale->deal_price;
+                            }
+                           
+                        ?>
                         
                         <strong class="price">{{  @str_replace(',' ,'.', number_format($value->Price))  }}.&#x20AB;</strong>
                         <div class="item-rating">
@@ -1100,6 +713,32 @@
 
                         ?>
 
+                        <!-- // Trường hợp  đang chạy sự kiện -->
+
+                        <?php 
+
+                        $gift_Price = pricesPromotion($value->Price, $value->id);
+
+                        ?>
+
+                        @if(!empty($gift_Price))
+                        <?php 
+
+                            $image_gift_promotion = definePrice($gift_Price);
+                        ?>
+
+                         <div class="option-gift">
+                            
+                            <div class="quatang"><img src="{{ $image_gift_promotion }}"></div>
+                           
+                        </div>
+
+                        <div class="font-sz">
+                            <span> Giảm ngay <strong>{{ $gift_Price  }} đ</strong> </span>
+                        </div>
+
+                        @endif
+
                         @if(!empty($gift))
                             <?php 
                                 $gifts = $gift['gifts'];
@@ -1128,12 +767,7 @@
 
                             <span> Quà tặng trị giá <strong>{{  $price_gift }}  </strong> </span>
                             @endif  
-
-                         
-
                         @endif
-
-
                     <a href="javascript:void(0)" class="compare-show" data-id="{{ $value->product_id }}">
                         <i class="fa-solid fa-plus"></i>
                             so sánh
@@ -1159,8 +793,20 @@
                             
                             </div>
                             <div class="title-name">
-                                <h3>{{ $value->Name }}</h3>
+                                <h3>{{ $value->Name }} {{ $value->product_id }}</h3>
                             </div>
+
+                            <?php 
+
+                                $check_deal_sale = $deal->where('product_id', $value->product_id)->first();
+
+                                
+                                if(!empty($check_deal_sale) && $now->between($deal[0]->start, $deal[0]->end)){
+
+                                    $value->Price = $check_deal_sale->deal_price;
+
+                                }
+                            ?>
                             
                             <strong class="price">{{  @str_replace(',' ,'.', number_format($value->Price))  }}.&#x20AB;</strong>
                             <div class="item-rating">
@@ -1199,6 +845,8 @@
                             ?>
 
                             {{ $gifts->type ==1?'k/m chọn 1 trong 2':'' }}
+
+
                             <div class="option-gift">
 
                                  @foreach($gift as $gifts)
@@ -1217,9 +865,9 @@
             
                             ?>
 
-
-
-                            <span> Quà tặng trị giá <strong>{{  $price_gift }} </strong> </span>
+                            <div class="font-sz">    
+                                <span> Quà tặng trị giá <strong>{{  $price_gift }} </strong> </span>
+                            </div>
                             @endif  
 
                          
@@ -1227,6 +875,37 @@
                         @endif
 
 
+
+                        <!-- phần quà khuyến mãi -->
+
+
+                        <?php 
+
+                        $gift_Price = pricesPromotion($value->Price, $value->id);
+
+                        ?>
+
+                        @if(!empty($gift_Price))
+
+                        <?php 
+
+                            $image_gift_promotion = definePrice($gift_Price);
+                        ?>
+
+                         <div class="option-gift">
+                            
+                            <div class="quatang"><img src="{{ $image_gift_promotion }}"></div>
+                           
+                        </div>
+                      
+
+                        <div class="font-sz">
+                            <span> Giảm ngay <strong>{{ $gift_Price  }} đ</strong> </span>
+                        </div>
+
+                        @endif
+
+                       
 
                         <a href="javascript:void(0)" class="compare-show" data-id="{{ $value->product_id }}">
                             <i class="fa-solid fa-plus"></i>
@@ -1453,7 +1132,40 @@
 
                             </a>
 
-                             <a href="javascript:void(0)" class="compare-show" data-id="{{ $datas->id }}" data-group="{{ $groups->id }}">
+
+                             <!-- phần quà khuyến mãi 1-->
+
+                           <?php 
+
+                            $gift_Price = pricesPromotion($datas->Price, $datas->id);
+
+                            ?>
+
+                            @if(!empty($gift_Price))
+
+                            <?php 
+
+                                $image_gift_promotion = definePrice($gift_Price);
+                            ?>
+
+                             <div class="option-gift">
+                                
+                                <div class="quatang"><img src="{{ $image_gift_promotion }}"></div>
+                               
+                            </div>
+                            
+
+                            <div class="font-sz">
+                                <span> Giảm ngay <strong>{{ $gift_Price  }} đ</strong> </span>
+                            </div>
+
+                            @endif
+
+
+                            <!-- end -->
+                           
+
+                            <a href="javascript:void(0)" class="compare-show" data-id="{{ $datas->id }}" data-group="{{ $groups->id }}">
                                 <i class="fa-solid fa-plus"></i>
                                     so sánh
                             </a>
@@ -1483,8 +1195,6 @@
 
                                 $price_gift = pricesPromotion($datas->Price, $id_checkpromotion)===''?str_replace(',' ,'.', number_format($gifts->price)):pricesPromotion($datas->Price, $id_checkpromotion);
 
-
-                
                                 ?>
 
 
@@ -1506,7 +1216,7 @@
                         @endforeach
                     
                     </div>
-                    <a class="readmore-txt blue" href="{{ route('details', @$groups->link)  }}"><span>Xem tất cả {{ @$groups->name }}</span></a>
+                    <a class="readmore-txt blue" href="{{ route('details', @$groups->link)  }}"><span>Xem tất cả</span></a>
                 </div>
             </div>
         </div>
@@ -1525,13 +1235,7 @@
             <a data-cate="0" data-place="1864" href="{{ $bannerscrollRight->link }}" class="banner-right" id="banner-right-scroll"><img style="cursor:pointer; height:auto;" src="{{ asset($bannerscrollRight->image) }}" alt="Theme Giáng Sinh Phải"></a>        
         </div>
         @endif
-        <?php  
-            
-            $post = Cache::remember('post_home',10000, function() {
-                return App\Models\post::where('active',1)->where('hight_light', 1)->OrderBy('created_at', 'desc')->select('link', 'title', 'image')->limit(7)->get()->toArray();
-            }); 
-
-        ?>
+        
         @if(isset($post) && count($post)>0)
 
         <div class="my_utilities">
@@ -1592,75 +1296,58 @@
     <!-- End -->
     <!-- Hiệu ứng ... rơi -->
 
-    <script type="text/javascript">
-        
-        var pictureSrc ="https://dienmaynguoiviet.vn/images/posts/1677466527_500.png"; //the location of the snowflakes
-        var pictureWidth = 80; //the width of the snowflakes
-        var pictureHeight = 80; //the height of the snowflakes
-        var numFlakes = 6; //the number of snowflakes
-        var downSpeed = 0.008; //the falling speed of snowflakes (portion of screen per 100 ms)
-        var lrFlakes = 1; //the speed that the snowflakes should swing from side to side
+    <?php 
 
 
-        if( typeof( numFlakes ) != 'number' || Math.round( numFlakes ) != numFlakes || numFlakes < 1 ) { numFlakes = 10; }
+        $event_check = Cache::rememberForever('events-show', function(){
 
-        //draw the snowflakes
-        for( var x = 0; x < numFlakes; x++ ) {
-        if( document.layers ) { //releave NS4 bug
-        document.write('<layer id="snFlkDiv'+x+'"><imgsrc="'+pictureSrc+'" height="'+pictureHeight+'"width="'+pictureWidth+'" alt="*" border="0"></layer>');
-        } else {
-        document.write('<div style="position:absolute; z-index:9999;" id="snFlkDiv'+x+'"><img src="'+pictureSrc+'"height="'+pictureHeight+'" width="'+pictureWidth+'" alt="*"border="0"></div>');
-        }
-        }
+            $event_check = App\Models\events::find(1);
 
-        //calculate initial positions (in portions of browser window size)
-        var xcoords = new Array(), ycoords = new Array(), snFlkTemp;
-        for( var x = 0; x < numFlakes; x++ ) {
-        xcoords[x] = ( x + 1 ) / ( numFlakes + 1 );
-        do { snFlkTemp = Math.round( ( numFlakes - 1 ) * Math.random() );
-        } while( typeof( ycoords[snFlkTemp] ) == 'number' );
-        ycoords[snFlkTemp] = x / numFlakes;
-        }
+            return $event_check;
+        });
 
-        //now animate
-        function flakeFall() {
-        if( !getRefToDivNest('snFlkDiv0') ) { return; }
-        var scrWidth = 0, scrHeight = 0, scrollHeight = 0, scrollWidth = 0;
-        //find screen settings for all variations. doing this every time allows for resizing and scrolling
-        if( typeof( window.innerWidth ) == 'number' ) { scrWidth = window.innerWidth; scrHeight = window.innerHeight; } else {
-        if( document.documentElement && (document.documentElement.clientWidth ||document.documentElement.clientHeight ) ) {
-        scrWidth = document.documentElement.clientWidth; scrHeight = document.documentElement.clientHeight; } else {
-        if( document.body && ( document.body.clientWidth || document.body.clientHeight ) ) {
-        scrWidth = document.body.clientWidth; scrHeight = document.body.clientHeight; } } }
-        if( typeof( window.pageYOffset ) == 'number' ) { scrollHeight = pageYOffset; scrollWidth = pageXOffset; } else {
-        if( document.body && ( document.body.scrollLeft ||document.body.scrollTop ) ) { scrollHeight = document.body.scrollTop;scrollWidth = document.body.scrollLeft; } else {
-        if(document.documentElement && (document.documentElement.scrollLeft ||document.documentElement.scrollTop ) ) { scrollHeight =document.documentElement.scrollTop; scrollWidth =document.documentElement.scrollLeft; } }
-        }
-        //move the snowflakes to their new position
-        for( var x = 0; x < numFlakes; x++ ) {
-        if( ycoords[x] * scrHeight > scrHeight - pictureHeight ) { ycoords[x] = 0; }
-        var divRef = getRefToDivNest('snFlkDiv'+x); if( !divRef ) { return; }
-        if( divRef.style ) { divRef = divRef.style; } var oPix = document.childNodes ? 'px' : 0;
-        divRef.top = ( Math.round( ycoords[x] * scrHeight ) + scrollHeight ) + oPix;
-        divRef.left = ( Math.round( ( ( xcoords[x] * scrWidth ) - (pictureWidth / 2 ) ) + ( ( scrWidth / ( ( numFlakes + 1 ) * 4 ) ) * (Math.sin( lrFlakes * ycoords[x] ) - Math.sin( 3 * lrFlakes * ycoords[x]) ) ) ) + scrollWidth ) + oPix;
-        ycoords[x] += downSpeed;
-        }
-        }
+       
 
-        //DHTML handlers
-        function getRefToDivNest(divName) {
-        if( document.layers ) { return document.layers[divName]; } //NS4
-        if( document[divName] ) { return document[divName]; } //NS4 also
-        if( document.getElementById ) { return document.getElementById(divName); } //DOM (IE5+, NS6+, Mozilla0.9+, Opera)
-        if( document.all ) { return document.all[divName]; } //Proprietary DOM - IE4
-        return false;
-        }
+    ?>
 
-        window.setInterval('flakeFall();',100);
+    @if($event_check->active===1)
+    <div class="falling-container" aria-hidden="true">
+        <div class="falling-item">
+            ●
+        </div>
+        <div class="falling-item">
+            ●
+        </div>
+        <div class="falling-item">
+            ●
+        </div>
+        <div class="falling-item">
+            ●
+        </div>
 
-        
-    </script>
-
+        <div class="falling-item">
+            ●
+        </div>
+        <div class="falling-item">
+            ●
+        </div>
+        <!-- <div class="falling-item">
+            ●
+        </div>
+        <div class="falling-item">
+            ●
+        </div>
+        <div class="falling-item">
+            ●
+        </div>
+        <div class="falling-item">
+            ●
+        </div>
+        <div class="falling-item">
+            ●
+        </div> -->
+    </div>
+    @endif
     <!-- End -->
 
     <div class="pine-tree"> 
@@ -1682,6 +1369,21 @@
         </script>
         <?php
         Session::forget('success');
+        ?>
+
+        
+    @endif
+
+
+    @if (session('status-login'))
+
+
+        <script type="text/javascript">
+            swal({ title: '{{ session("status-login") }}', type: 'error' });
+          
+        </script>
+        <?php
+        Session::forget('status-login');
         ?>
 
         
@@ -2152,6 +1854,13 @@
             var option = $(this).attr('data-id');
             $('.option-sg a').removeClass('active');
             choose = (option==0)?1:0;
+
+            if(option===1){
+                $('.prd-promo .readmore-btn').attr('href', '{{ route('details', 'sale') }}');
+            }
+            else{
+                 $('.prd-promo .readmore-btn').attr('href', '{{ route('details', 'combo') }}');
+            }
 
             $(this).addClass('active');
 
