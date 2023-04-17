@@ -676,7 +676,7 @@
                         <li>Giao hàng miễn phí 20km</li>
                         <li>Giá cạnh tranh nhất thị trường</li>
                         <li>Đổi mới 100% trong 7 ngày đầu</li>
-                            ( Trừ Sanaky, Sony chỉ bảo hành tại nhà )
+                            ( Trừ Sanaky, Sony, tivi Samsung chỉ bảo hành tại nhà )
                     </ul>
                     <div class="support">
                       <h5>Tổng Đài mua hàng</h5>
@@ -1716,7 +1716,7 @@
                         <li>Giao hàng miễn phí 20km</li>
                         <li>Giá cạnh tranh nhất thị trường</li>
                         <li>Đổi mới 100% trong 7 ngày đầu</li>
-                            ( Trừ Sanaky, Sony chỉ bảo hành tại nhà )
+                            ( Trừ Sanaky, Sony, tivi Samsung chỉ bảo hành tại nhà )
                     </ul>
                 </div>
             </div>
