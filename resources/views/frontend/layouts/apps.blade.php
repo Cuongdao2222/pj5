@@ -506,7 +506,7 @@
                     right: 0;
                     padding: 0.5rem 0.3rem 0.5rem 0.8rem;
                     border-radius: 13px 0px 0px 13px;
-                    background-color: #fff;
+                    background-color: transparent;
                     z-index: 99;
                     transition: 0.3s;
                 }
@@ -528,6 +528,10 @@
 
                 .zalo-mobile{
                     display: none;
+                }
+
+                .zalo-icon{
+                    left: 73%;
                 }
             }
 
@@ -2566,33 +2570,31 @@
            
         ?>
 
-
-        <div class="hotline position-fixed">
+       
+            
            
-            @if($day_check%2===0)
-            <a target="blank" href="https://zalo.me/0913011888" class="d-flex align-items-center position-relative hotline-fix" target="_blank">
+           
+
+          
+
+       
+        <div class="hotline position-fixed">
+
+             <a target="blank" href="https://zalo.me/0913011888" class="d-flex align-items-center position-relative zalo-icon mb-4" target="_blank">
                
                 <img src="https://page.widget.zalo.me/static/images/2.0/Logo.svg" width="20%">
                 &nbsp
-                <span><b>0913 011 888</b></span>
+                <!-- <span><b>0913 011 888</b></span> -->
             </a>
-            @endif
-            <a href="https://zalo.me/0983612828" class="d-flex align-items-center position-relative hotline-fix mb-2" target="_blank">
+           
+            <a href="https://zalo.me/0983612828" class="d-flex align-items-center position-relative  mb-3 zalo-icon" target="_blank">
                 
                 <img src="https://page.widget.zalo.me/static/images/2.0/Logo.svg" width="20%">
                 &nbsp
-                <span><b>0983 612 828</b></span>
+                <!-- <span><b>0983 612 828</b></span> -->
             </a>
-
-            @if($day_check%2 !=0)
-            <a target="blank" href="https://zalo.me/0913011888" class="d-flex align-items-center position-relative hotline-fix" target="_blank">
-               
-                <img src="https://page.widget.zalo.me/static/images/2.0/Logo.svg" width="20%">
-                &nbsp
-                <span><b>0913 011 888</b></span>
-            </a>
-            @endif
-
+           
+           
             <a href="tel:02473036336" class="d-flex align-items-center position-relative hotline-fix mb-2">
    
             <i class="fa fa-phone"></i>
