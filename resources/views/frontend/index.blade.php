@@ -793,7 +793,7 @@
                             
                             </div>
                             <div class="title-name">
-                                <h3>{{ $value->Name }} {{ $value->product_id }}</h3>
+                                <h3>{{ $value->Name }}</h3>
                             </div>
 
                             <?php 
