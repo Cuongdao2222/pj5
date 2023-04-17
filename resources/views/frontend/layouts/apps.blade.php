@@ -502,7 +502,7 @@
                 }
 
                 .hotline.position-fixed {
-                    bottom: 10%;
+                    bottom: 16%;
                     right: 0;
                     padding: 0.5rem 0.3rem 0.5rem 0.8rem;
                     border-radius: 13px 0px 0px 13px;
