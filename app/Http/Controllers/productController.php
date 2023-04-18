@@ -313,7 +313,7 @@ class productController extends AppBaseController
 
             }
 
-            // file_get_contents("https://api.dienmaynguoiviet.net/public/test-api?product_sku=".$product->ProductSku."&price=".$input['Price']."&string=AtBSvrztfw5hXwxZeIf0fWf3GtuILFeCOBsRtnah");
+            file_get_contents("https://api.dienmaynguoiviet.net/public/test-api?product_sku=".$product->ProductSku."&price=".$input['Price']."&string=AtBSvrztfw5hXwxZeIf0fWf3GtuILFeCOBsRtnah");
 
         }
          
@@ -482,7 +482,7 @@ class productController extends AppBaseController
 
         $product->Price = $price;
 
-        // file_get_contents("https://api.dienmaynguoiviet.net/public/test-api?product_sku=".$product->ProductSku."&price=".$price."&string=AtBSvrztfw5hXwxZeIf0fWf3GtuILFeCOBsRtnah");
+        file_get_contents("https://api.dienmaynguoiviet.net/public/test-api?product_sku=".$product->ProductSku."&price=".$price."&string=AtBSvrztfw5hXwxZeIf0fWf3GtuILFeCOBsRtnah");
 
         $product->user_id = Auth::user()->id;
 
