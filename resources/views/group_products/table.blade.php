@@ -24,7 +24,7 @@
                     unset($data[$key]);
                   ?>    
              <li>
-              <a href="<?php echo $item['slug']?>"><?php echo $item['name']?></a>
+              <a href="<?php echo $item['slug']?>"><?php echo $item['name']?></a> 
               
               <?php recursiveMenu($data, $item['id'], false); ?>
              </li>
@@ -48,7 +48,8 @@
                     unset($data[$key]);
                   ?>    
              <li class="paren1">
-              <a href="javascript:void(0)"  class="click1" data-id="{{ $item['id'] }}" data-show="{{ $item['active'] }}"><?php echo $item['name']?></a>    @if($item['level']==0|| $item['level']==1|| $item['level']==2)<span class="clicks{{ $item['id'] }}" onclick="showChild('sub{{ $item['id'] }}', 'clicks{{ $item['id'] }}')">+</span>@endif {{ $item['active']==0?'Danh mục đang ẩn':'' }}
+              <a href="javascript:void(0)"  class="click1" data-id="{{ $item['id'] }}" data-show="{{ $item['active'] }}"><?php echo $item['name']?></a>   @if($item['level']==0|| $item['level']==1|| $item['level']==2)<span class="clicks{{ $item['id'] }}" onclick="showChild('sub{{ $item['id'] }}', 'clicks{{ $item['id'] }}')">+</span>@endif {{ $item['active']==0?'Danh mục đang ẩn':'' }} &nbsp; &nbsp; &nbsp; <a href="javascript:void(0)" onclick="copy_link('https://dienmaynguoiviet.vn/{{ $item['link'] }}')"><i class="fa fa-clone" aria-hidden="true"></i>
+</a> 
               
               <?php recursiveMenu($data, $item['id'], false, $item['level']); ?>
              </li>
@@ -213,6 +214,13 @@
             }
 
         
+        }
+
+        function copy_link(link) {
+
+            navigator.clipboard.writeText(link);
+            
+            alert('thành công');
         }
 
     </script>
