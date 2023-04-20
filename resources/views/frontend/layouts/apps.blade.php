@@ -485,7 +485,7 @@
 
                 .submenu {
 
-                    left:289px !important;
+                    left:240px !important;
 
                }
 
