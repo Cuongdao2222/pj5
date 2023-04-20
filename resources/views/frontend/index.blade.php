@@ -25,6 +25,17 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('css/index.css') }}?ver=4">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/homes.css') }}?ver=10">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/homecs.css') }}?ver=17">
+        <style type="text/css">
+            
+            .box-left-2{
+                width: 21%;
+            }
+
+            .box-div-slide1{
+                width: 20%;
+                padding: 0 15px;
+            }
+        </style>
 
     @endpush
 
@@ -139,7 +150,7 @@
 
 
         <div class="row div-slide">
-            <div class="col-md-3 left-banner"></div>
+            <div class="box-left-2 left-banner"></div>
             <div class="col-md-7 box-div-slide">
                 <div class="homebanner-container">
                     <!-- Banner chính -->
@@ -178,7 +189,7 @@
 
             @if(!$smart_phone)
 
-            <div class="col-md-2 box-div-slide1">
+            <div class="box-div-slide1">
                 <div class="top-image">
 
                     <div class="homenews">
