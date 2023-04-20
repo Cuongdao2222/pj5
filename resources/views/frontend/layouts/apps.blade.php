@@ -1021,7 +1021,7 @@
                                     <li data-submenu-id="submenu-0">
                                         <div class="dropdown">
                                             <i class="fa-solid fa-tags deal-icon"></i>
-                                            <a href="/deal">Giảm giá đặc biệt</a>
+                                            <a href="/deal"><b>Giảm giá đặc biệt</b></a>
                                         </div>
                                     </li>    
 
