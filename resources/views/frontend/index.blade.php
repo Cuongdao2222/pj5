@@ -178,10 +178,6 @@
 
             @if(!$smart_phone)
 
-            <?php 
-
-            ?>
-
             <div class="col-md-2 box-div-slide1">
                 <div class="top-image">
 
