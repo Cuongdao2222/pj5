@@ -231,7 +231,7 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}?ver=1"> 
         <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/apps.css') }}?ver=14">
-        <link rel="stylesheet" type="text/css" href="{{asset('css/dienmay.css')}}?ver=91">
+        <link rel="stylesheet" type="text/css" href="{{asset('css/dienmay.css')}}?ver=92">
         <link rel="stylesheet" type="text/css" href="{{asset('css/detailsfe.css')}}?ver=7"> 
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -251,7 +251,7 @@
             }
 
             .main-menu{
-                width: 189px;
+                width: 289px;
             }
 
             .bar-top-left {
@@ -485,7 +485,7 @@
 
                 .submenu {
 
-                    left:189px !important;
+                    left:289px !important;
 
                }
 
