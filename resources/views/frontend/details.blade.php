@@ -105,6 +105,15 @@
 
                 display: none;
             }    
+
+            .option-price{
+                height: 30px;
+                width: 40%;
+            }
+
+            .option-price select{
+                height: 30px;
+            }
         }    
     </style>
 
@@ -1171,25 +1180,20 @@
                                 @endif 
                                  
                             </div>
-
-
-                            <!-- <div class="pdetail-promotion">
-                                <div class="pdetail-promotion-body">
-                                    <ul>
-                                        Tặng máy đánh trứng đa năng Roler RHM-1002 trị giá 790,000đ
-                                        <li>Tặng eVoucher trị giá 200,000đ mua phụ kiện IT, phụ kiện Mobile (có giá trị sử dụng trong 07 ngày). Chi tiết xem <a href="https://mediamart.vn/tin-khuyen-mai/tang-voucher-tri-gia-200-000vnd-mua-cac-san-pham-phu-kien" target="_blank">tại đây</a>.</li>
-                                        <li>TÀI TRỢ TRẢ GÓP 0% LÃI SUẤT (*)</li>
-                                    </ul>
-                                    <div class="clearfix"></div>
-                                </div>
-                                </div> -->
                         </div>
+
+                       <!--  <div class="option-price">
+
+                            <select name="option-price" id="option-price_change">
+                                <option value="1">Giá tại kho</option>
+                                <option value="2">Giá giao hàng</option>
+                                <option value="3">Giao hàng + lắp đặt</option>
+                            </select>
+                        </div> -->
 
                         <div class="clearfix"></div>
                         <div class="pdetail-status">
-
-                            
-                           
+            
                             @if($data_cate ===8||$data_cate ===9||$data_cate ===1)
 
                             <a href="tel:02473036336"><div class="buy-button-hotline nhapnhay btn">Gọi 0247.303.6336 để được giảm thêm</div></a>
@@ -1742,6 +1746,20 @@
 
 
 <script type="text/javascript">
+
+
+    $('.option-price').change(function(){
+
+     
+        const price = {{  $value->Price }};
+
+        new_price   =  parseInt(price)+200;
+
+        console.log(price);
+
+        
+
+    })
 
 
     let ar_product = [];
