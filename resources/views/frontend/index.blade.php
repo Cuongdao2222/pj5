@@ -34,6 +34,7 @@
             .box-div-slide1{
                 width: 20%;
                 padding: 0 15px;
+                text-align: justify;
             }
         </style>
 
