@@ -1182,14 +1182,14 @@
                             </div>
                         </div>
 
-                       <!--  <div class="option-price">
+                        <div class="option-price">
 
                             <select name="option-price" id="option-price_change">
                                 <option value="1">Giá tại kho</option>
                                 <option value="2">Giá giao hàng</option>
                                 <option value="3">Giao hàng + lắp đặt</option>
                             </select>
-                        </div> -->
+                        </div>
 
                         <div class="clearfix"></div>
                         <div class="pdetail-status">
