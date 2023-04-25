@@ -2576,52 +2576,22 @@
            
 
           
+          <style type="text/css">
+           .zalo-chat-widget{  
+                bottom: 95px!important;  
+                right: 0px!important;  
+            }  
+           
+        </style>
+       
+      
 
        
-        <div class="hotline position-fixed">
 
-             <a target="blank" href="https://zalo.me/0913011888" class="d-flex align-items-center position-relative zalo-icon mb-4" target="_blank">
-               
-                <img src="https://page.widget.zalo.me/static/images/2.0/Logo.svg" width="20%">
-                &nbsp
-                <!-- <span><b>0913 011 888</b></span> -->
-            </a>
-           
-            <a href="https://zalo.me/0983612828" class="d-flex align-items-center position-relative  mb-3 zalo-icon" target="_blank">
-                
-                <img src="https://page.widget.zalo.me/static/images/2.0/Logo.svg" width="20%">
-                &nbsp
-                <!-- <span><b>0983 612 828</b></span> -->
-            </a>
-           
-           
-            <a href="tel:02473036336" class="d-flex align-items-center position-relative hotline-fix mb-2">
-   
-            <i class="fa fa-phone"></i>
-            <span><b>024 7303 6336</b> <br> <span>Bấm phím 1</span></span>
+        <div style="position:fixed; bottom:0 !important; left:50% !important;transform: translate(0, 0) !important;" class="zalo-chat-widget" data-oaid="1329456933344915716" data-welcome-message="Điện Máy Người Việt rất vui khi được hỗ trợ bạn!" data-autopopup="0" data-width="" data-height=""></div>
 
-           
-        </div>
-
-        <div class="zalo-mobile">
-
-            @if($week%2===0)
-            <a href="https://zalo.me/0913011888" target="_blank">
-                <div style="position: fixed; bottom: 52px; left: 52px; transform: translate(0px, 0px) !important; z-index: 2147483644; border: none; visibility: visible; right: 0px; width: 60px; height: 60px;" class="zalo-chat-widget"data-welcome-message="Điện Máy Người Việt rất vui khi được hỗ trợ bạn!" data-autopopup="0" data-width="" data-height="">
-                    <img src="https://page.widget.zalo.me/static/images/2.0/Logo.svg">
-                </div>
-            </a>
-
-            @else
-           
-            <a href="https://zalo.me/0983612828" target="_blank">
-                <div style="position: fixed; bottom: 28px !important; left: 52px !important; transform: translate(0px, 0px) !important; z-index: 2147483644; border: none; visibility: visible; right: 0px; width: 60px; height: 60px;" class="zalo-chat-widget"data-welcome-message="Điện Máy Người Việt rất vui khi được hỗ trợ bạn!" data-autopopup="0" data-width="" data-height="">
-                    <img src="https://page.widget.zalo.me/static/images/2.0/Logo.svg">
-                </div>
-            </a>
-
-            @endif
-        </div>
+         <script src="{{ asset('/js/zalo.js') }}"></script> 
+       
         
         
  
