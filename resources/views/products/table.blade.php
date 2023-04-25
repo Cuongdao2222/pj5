@@ -122,10 +122,10 @@
             <td style="width: 400px;">
                 <a href="{{ route('products.edit', [$product->id]) }}">{{ $product->Name }}</a>
                 <br>
-                thời gian update :{{ $product->updated_at->format('d/m/Y, H:i:s') }}
+                thời gian update :{{ @$product->updated_at->format('d/m/Y, H:i:s') }}
 
                 <br>
-                người update : {{ App\User::find($product->user_id)->name }} 
+                người update : {{ @App\User::find($product->user_id)->name }} 
                 <br>
 
                 <?php 

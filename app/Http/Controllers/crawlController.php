@@ -3293,6 +3293,13 @@ http://dienmaynguoiviet.com/dieu-hoa-Funiki-SH09MMC-2-chieu-9000BTU/";
 
                 $input['Link'] = $val;
 
+                $date = Carbon::now();
+
+                $input['created_at'] = $date;
+
+                $input['updated_at'] = $date;
+
+
                 DB::table('product1')->insert($input);
             }  
 

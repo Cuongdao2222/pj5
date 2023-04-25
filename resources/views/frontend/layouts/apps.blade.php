@@ -2562,16 +2562,16 @@
             
         </script>
 
-        <?php 
-            $week = Carbon\Carbon::now()->weekOfYear;
+        <div class="hotline position-fixed">
 
-            $day_check = Carbon\Carbon::now()->day;
-
-          
            
-        ?>
+            <a href="tel:02473036336" class="d-flex align-items-center position-relative hotline-fix mb-2">
+   
+            <i class="fa fa-phone"></i>
+            <span><b>024 7303 6336</b> <br> <span>Bấm phím 1</span></span>
 
-       
+           
+        </div>
             
            
            
@@ -2580,7 +2580,7 @@
           <style type="text/css">
            .zalo-chat-widget{  
                 bottom: 95px!important;  
-                right: 0px!important;  
+                right: 0 px!important;  
             }  
            
         </style>
@@ -2589,7 +2589,7 @@
 
        
 
-        <div style="position:fixed; bottom:0 !important; left:50% !important;transform: translate(0, 0) !important;" class="zalo-chat-widget" data-oaid="1329456933344915716" data-welcome-message="Điện Máy Người Việt rất vui khi được hỗ trợ bạn!" data-autopopup="0" data-width="" data-height=""></div>
+        <div style="position:fixed; bottom:0 !important; right:0 !important; !important;transform: translate(0, 0) !important;" class="zalo-chat-widget" data-oaid="1329456933344915716" data-welcome-message="Điện Máy Người Việt rất vui khi được hỗ trợ bạn!" data-autopopup="0" data-width="" data-height=""></div>
 
          <script src="{{ asset('/js/zalo.js') }}"></script> 
        
