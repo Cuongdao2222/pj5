@@ -469,6 +469,11 @@
                        
                 }
 
+                .zalo-chat-widget{  
+                    bottom: 28% !important;  
+                    right: 1%!important;  
+                }  
+
                 .hotline{
                     width: 237px;
                 }
@@ -549,6 +554,14 @@
 
                     font-size: 15px;
                 }
+
+                .zalo-chat-widget{  
+                    bottom: 10% !important;  
+                    left: 10px!important;  
+                }  
+
+
+
 
                 .suggest_link{
                     font-size: 14px;
@@ -2539,17 +2552,6 @@
             </div>
         </div>
 
-
-
-
-        <style type="text/css">
-
-           .zalo-chat-widget{  
-                bottom: 28% !important;  
-                right: 0px!important;  
-            }  
-           
-        </style>
 
        <!--  <button onclick="topFunction()" id="myBtn-top" title="Go to top"><i class="fas fa-angle-up"></i></button> -->
         
