@@ -2,19 +2,7 @@
 
 @section('content')
 
-    @if(isset($product->Meta_id ))
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-12">
-                    <h1>Sửa sản phẩm  {{ $product->Name }}</h1>
-                </div>
-            </div>
-        </div>
-    </section>
-     <?php $metaSeo = App\Models\metaSeo::find($product->Meta_id); ?>
-
-     <?php
+    <?php
 
      function get_Group_Product($id){
             $data_groupProduct = App\Models\groupProduct::where('level', 0)->get()->pluck('id');
@@ -69,7 +57,23 @@
 
             return $result;
         }
-    ?>        
+    ?>   
+
+  
+
+    @if(isset($product->Detail))
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-12">
+                    <h1>Sửa sản phẩm  {{ $product->Name }}</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+     <?php $metaSeo = App\Models\metaSeo::find($product->Meta_id); ?>
+
+     
 
    <!--  <div class="btn btn-warning"><a href="{{ route('metaSeos.edit', 1) }}"></a>Seo</div> -->
     <div class="btn btn-warning {{ (empty($_GET['mota']) && empty($_GET['specifications']) && empty($_GET['seo']) )?'activess':'' }}" ><a href="{{ route('products.edit', $product->id) }}">Cơ bản</a></div>

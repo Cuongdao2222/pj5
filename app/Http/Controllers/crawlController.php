@@ -3120,6 +3120,8 @@ http://dienmaynguoiviet.com/dieu-hoa-Funiki-SH09MMC-2-chieu-9000BTU/";
 
     }
 
+  
+
 
     public function getContentDienmayxanh()
     {
@@ -3265,6 +3267,8 @@ http://dienmaynguoiviet.com/dieu-hoa-Funiki-SH09MMC-2-chieu-9000BTU/";
 
                 preg_match_all('/<img.*?src=[\'"](.*?)[\'"].*?>/i',$content, $matches);
 
+                $content =strip_tags($content, '<p><strong><img><h3>');
+
                 foreach ($matches[1] as $key => $value) {
 
                     // $inputs = [];
@@ -3282,6 +3286,8 @@ http://dienmaynguoiviet.com/dieu-hoa-Funiki-SH09MMC-2-chieu-9000BTU/";
                     // viết lại ảnh đã lưu
 
                     $content = str_replace($value, $img, $content);
+
+                    $content = str_replace('data-src', 'src', $content);
                    
                 }
 
@@ -3291,8 +3297,7 @@ http://dienmaynguoiviet.com/dieu-hoa-Funiki-SH09MMC-2-chieu-9000BTU/";
 
                 $input['Detail'] = $content;
 
-                $input['Link'] = $val;
-
+               
                 $date = Carbon::now();
 
                 $input['created_at'] = $date;
@@ -3300,7 +3305,7 @@ http://dienmaynguoiviet.com/dieu-hoa-Funiki-SH09MMC-2-chieu-9000BTU/";
                 $input['updated_at'] = $date;
 
 
-                DB::table('product1')->insert($input);
+                DB::table('products')->insert($input);
             }  
 
             else{
