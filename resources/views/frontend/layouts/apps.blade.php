@@ -527,13 +527,13 @@
                     color: #fff!important;
                 }
 
-                .zalo-mobile{
+               /* .zalo-mobile{
                     display: none;
-                }
+                }*/
 
-                .zalo-icon{
+              /*  .zalo-icon{
                     left: 73%;
-                }
+                }*/
             }
 
             @media only screen and (max-width: 768px) {
@@ -2545,7 +2545,7 @@
         <style type="text/css">
 
            .zalo-chat-widget{  
-                bottom: 95px!important;  
+                bottom: 28% !important;  
                 right: 0px!important;  
             }  
            
@@ -2573,23 +2573,9 @@
            
         </div>
             
-           
-           
 
-          
-          <style type="text/css">
-           .zalo-chat-widget{  
-                bottom: 95px!important;  
-                right: 0 px!important;  
-            }  
-           
-        </style>
-       
-      
-
-       
-
-        <div style="position:fixed; bottom:0 !important; right:0 !important; !important;transform: translate(0, 0) !important;" class="zalo-chat-widget" data-oaid="1329456933344915716" data-welcome-message="Điện Máy Người Việt rất vui khi được hỗ trợ bạn!" data-autopopup="0" data-width="" data-height=""></div>
+        
+        <div  class="zalo-chat-widget" data-oaid="1329456933344915716" data-welcome-message="Điện Máy Người Việt rất vui khi được hỗ trợ bạn!" data-autopopup="0" data-width="" data-height=""></div>
 
          <script src="{{ asset('/js/zalo.js') }}"></script> 
        
