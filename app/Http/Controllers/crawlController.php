@@ -3122,9 +3122,169 @@ http://dienmaynguoiviet.com/dieu-hoa-Funiki-SH09MMC-2-chieu-9000BTU/";
 
 
 
+    public function updateModels()
+    {
+        $model ='QA43LS05B
+                QA50LS01BA
+                QA55LS01BA
+                QA65LS01B
+                QA32LS03B
+                QA50LS03B
+                QA55LS03B
+                QA65LS03B
+                QA75LS03B
+                QA55S95B
+                QA65S95B
+                QA50Q80C
+                QA55Q80C
+                QA65Q80C
+                QA75Q80C
+                QA85Q80C
+                QA55S95CA
+                QA65S90CA
+                QA65S95CA
+                QA77S95CA
+                GR-Q257MC
+                GR-B53MB
+                GR-B53PS
+                RB30N4190BY/SV
+                R-FVY510PGV0(GMG)
+                R-FW650PGV8(GBK)
+                R-WB640PGV1(GMG)
+                R-SX800GPGV0(GBK)
+                R-ZX740KV(X)
+                R-FW690PGV7(GBW)
+                R-HW540RV(X)
+                S5GOC
+                S5BOC
+                WT1410NHB
+                F2721HVRB
+                FV1414S3BA
+                FV1414S3P
+                FV1413S4W
+                FV1412S3BA
+                FV1412S3PA
+                FV1411S4WA
+                WA23A8377GV/SV
+                WA22R8870GV/SV
+                WA12T5360BY/SV
+                WA14CG5886BVSV
+                WA14CG5745BVSV
+                WA12CG5886BVSV
+                WA12CG5745BVSV
+                NI-S630VRA
+                NI-S530ARA
+                NI-S430GRA
+                NN-GT35NBYUE
+                NN-ST34NBYUE
+                MC-CL609HN49
+                MC-CL607RN49
+                SR-GA721WRA
+                EH-NA98RP645
+                EH-NA98-K645
+                EH-NE27-K645
+                EH-ND57-P645
+                EH-ND57-H645
+                EH-ND37-K645
+                EH-ND37-P645
+                R-205VN-S
+                R-G272VN-S
+                R-G302VN-S
+                R-G371VN-W
+                R-C825VN (ST)
+                R-C932VN (ST)
+                R-G728XVN-BST
+                R-C932XVN-BST
+                R-32A2VN-S
+                R-370VN-S
+                R-289VN(W)
+                KS-IH191V-BK
+                KS-IH191V-GL
+                KS-IH191V-RD
+                KS-COM08V-SL
+                KS-COM110DV-WH
+                KSH-218SNV-SF
+                KSH-228SNV-SF
+                KN-TC50VN-SL
+                KN-TC50VN-WH
+                KSH-D55V
+                KSH-D77V
+                KSH-D1010V
+                KS-N191ETV-CU
+                KS-COM18V
+                KP-30STV
+                KP-20BTV
+                KP-31BTV-CU
+                KP-Y32PV-CU
+                KP-Y40PV-CU
+                KP-40EBV-BK
+                KP-40EBV-WH
+                KP-40EBV-ST
+                KF-AF70EV-ST
+                EM-S154PV-WH
+                EM-S155PV-WH
+                EKJ-10DVPS-RD
+                EKJ-17EVPS-BK
+                EKJ-17EVSD-WD
+                EKJ-15EVS-ST
+                EO-A323RCSV-ST
+                EO-A384RCSV-ST
+                EO-B46RCSV-BK
+                EJ-J256-WH
+                EJ-J415-WH
+                EJ-J407-BK
+                EJ-J407-WH
+                EJ-J130-ST
+                PJ-S40RV-LG
+                FP-J80EV-H
+                FP-JM40V-B
+                FP-GM50E-B
+                DW-D12A-W
+                DW-D12A-W
+                DW-D20A-W
+                3LWED4815FW
+                FFTCM118XBEE
+                AWD712S2
+                WFE2B19
+                WFC3C26P
+                WIO3T133P';
 
-  
 
+        $k =-1;     
+
+        $models  = explode(PHP_EOL, $model); 
+
+        for ($i=5121; $i < 5245; $i++) { 
+            $k++;
+            
+            $data = product::find($i);
+
+            $data->ProductSku =  trim($models[$k]);
+
+            $data->save();
+
+
+            $meta_title =  trim($models[$k]).', giá rẻ, Trả góp 0%';
+
+            $meta_content = 'Mua '.trim($models[$k]).' giá rẻ. Miễn phí giao hàng & Lắp đặt. Đổi lỗi trong 7 ngày đầu. Liên hệ  hotline để mua hàng'; 
+
+            $meta_model = metaSeo::find($data->Meta_id);
+
+            $meta_model->meta_title =$meta_title;
+
+            $meta_model->meta_content =$meta_content;
+
+            $meta_model->meta_og_content =$meta_content;
+
+            $meta_model->meta_og_title =$meta_title;
+
+            $meta_model->meta_key_words =$meta_title;
+
+            $meta_model->save();
+
+        }         
+
+    }
 
     public function getContentDienmayxanh()
     {
