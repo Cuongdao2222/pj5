@@ -70,7 +70,7 @@
  <div class="btn btn-warning"><a href="{{ route('images.create') }}?{{ $product_id }}">Ảnh</a></div>
 
 @if(!empty($product_id))
-<div class="btn btn-warning" ><a href="{{ route('details',  $infoProduct->Link) }}" target="_blank">Xem tại web</a></div>
+<div class="btn btn-warning" ><a href="{{ !empty($infoProduct->Link)?route('details', [$infoProduct->Link]):'' }}" target="_blank">Xem tại web</a></div>
 @endif
 
 
