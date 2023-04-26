@@ -161,6 +161,14 @@
     </a>
 </li>
 
+
+<li class="nav-item">
+    <a href="{{ route('product-new-crawl') }}"
+       class="nav-link {{ Request::is('products*') ? 'active' : '' }}">
+        <p>Sản phẩm mới crawl</p>
+    </a>
+</li>
+
 @endif
 
 @if(Auth::user()->permision == 3)

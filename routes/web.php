@@ -44,6 +44,10 @@ Route::get('/ckfinder.html', 'mainController@ckfinder')->middleware('auth');
 Route::get('/landingpage', 'mainController@landingpage')->name('landingpageFe');
 
 
+
+
+
+
 Route::get('redirect-update-cache', 'redirectLinkController@createCacheRedirect')->name('redirect-update-cache');
 
 Route::get('remove-cache-image', 'imageController@removeCacheImage')->name('remove-cache-image');
@@ -245,6 +249,8 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
     Route::get('fill-product-deal-flash', 'flashdealController@getProductToName')->name('filter-product-deal-flash');
 
     Route::get('landingpage', 'mainController@landingBe')->name('landing');
+
+    Route::get('product-new-crawl', 'productController@newCrawl')->name('product-new-crawl');
 
     Route::get('add-css', 'mainController@addCss')->name('addcss');
 

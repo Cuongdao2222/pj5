@@ -204,6 +204,15 @@ class productController extends AppBaseController
     }
 
 
+    public function newCrawl()
+    {
+        $products = product::where('user_id', 1)->where('Name', NULL)->where('Image', NULL)->Orderby('updated_at', 'desc')->paginate(10);
+        
+        return view('products.index')
+            ->with('products', $products);
+    }
+
+
 
     /**
      * Show the form for editing the specified product.
