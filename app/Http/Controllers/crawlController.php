@@ -3120,137 +3120,268 @@ http://dienmaynguoiviet.com/dieu-hoa-Funiki-SH09MMC-2-chieu-9000BTU/";
 
     }
 
+
+
+
   
 
 
     public function getContentDienmayxanh()
     {
+        $model ='QA43LS05B
+                QA50LS01BA
+                QA55LS01BA
+                QA65LS01B
+                QA32LS03B
+                QA50LS03B
+                QA55LS03B
+                QA65LS03B
+                QA75LS03B
+                QA55S95B
+                QA65S95B
+                QA50Q80C
+                QA55Q80C
+                QA65Q80C
+                QA75Q80C
+                QA85Q80C
+                QA55S95CA
+                QA65S90CA
+                QA65S95CA
+                QA77S95CA
+                GR-Q257MC
+                GR-B53MB
+                GR-B53PS
+                RB30N4190BY/SV
+                R-FVY510PGV0(GMG)
+                R-FW650PGV8(GBK)
+                R-WB640PGV1(GMG)
+                R-SX800GPGV0(GBK)
+                R-ZX740KV(X)
+                R-FW690PGV7(GBW)
+                R-HW540RV(X)
+                S5GOC
+                S5BOC
+                WT1410NHB
+                F2721HVRB
+                FV1414S3BA
+                FV1414S3P
+                FV1413S4W
+                FV1412S3BA
+                FV1412S3PA
+                FV1411S4WA
+                WA23A8377GV/SV
+                WA22R8870GV/SV
+                WA12T5360BY/SV
+                WA14CG5886BVSV
+                WA14CG5745BVSV
+                WA12CG5886BVSV
+                WA12CG5745BVSV
+                NI-S630VRA
+                NI-S530ARA
+                NI-S430GRA
+                NN-GT35NBYUE
+                NN-ST34NBYUE
+                MC-CL609HN49
+                MC-CL607RN49
+                SR-GA721WRA
+                EH-NA98RP645
+                EH-NA98-K645
+                EH-NE27-K645
+                EH-ND57-P645
+                EH-ND57-H645
+                EH-ND37-K645
+                EH-ND37-P645
+                R-205VN-S
+                R-G272VN-S
+                R-G302VN-S
+                R-G371VN-W
+                R-C825VN (ST)
+                R-C932VN (ST)
+                R-G728XVN-BST
+                R-C932XVN-BST
+                R-32A2VN-S
+                R-370VN-S
+                R-289VN(W)
+                KS-IH191V-BK
+                KS-IH191V-GL
+                KS-IH191V-RD
+                KS-COM08V-SL
+                KS-COM110DV-WH
+                KSH-218SNV-SF
+                KSH-228SNV-SF
+                KN-TC50VN-SL
+                KN-TC50VN-WH
+                KSH-D55V
+                KSH-D77V
+                KSH-D1010V
+                KS-N191ETV-CU
+                KS-COM18V
+                KP-30STV
+                KP-20BTV
+                KP-31BTV-CU
+                KP-Y32PV-CU
+                KP-Y40PV-CU
+                KP-40EBV-BK
+                KP-40EBV-WH
+                KP-40EBV-ST
+                KF-AF70EV-ST
+                EM-S154PV-WH
+                EM-S155PV-WH
+                EKJ-10DVPS-RD
+                EKJ-17EVPS-BK
+                EKJ-17EVSD-WD
+                EKJ-15EVS-ST
+                EO-A323RCSV-ST
+                EO-A384RCSV-ST
+                EO-B46RCSV-BK
+                EJ-J256-WH
+                EJ-J415-WH
+                EJ-J407-BK
+                EJ-J407-WH
+                EJ-J130-ST
+                PJ-S40RV-LG
+                FP-J80EV-H
+                FP-JM40V-B
+                FP-GM50E-B
+                DW-D12A-W
+                DW-D12A-W
+                DW-D20A-W
+                3LWED4815FW
+                FFTCM118XBEE
+                AWD712S2
+                WFE2B19
+                WFC3C26P
+                WIO3T133P';
+
         $link = 'https://www.dienmayxanh.com/tivi/smart-man-hinh-xoay-the-sero-qled-samsung-4k-43-inch-qa43ls05b
-        https://www.dienmayxanh.com/tivi/smart-kieu-chu-i-co-chan-the-serif-qled-samsung-4k-50-inch-qa50ls01ba
-        https://www.dienmayxanh.com/tivi/smart-tivi-kieu-chu-i-co-chan-the-serif-qled-samsung-4k-55-inch-qa55ls01ba
-        https://www.dienmayxanh.com/tivi/smart-kieu-chu-i-co-chan-the-serif-qled-samsung-4k-65-inch-qa65ls01b
-        https://www.dienmayxanh.com/tivi/smart-tivi-khung-tranh-the-frame-qled-samsung-full-hd-32-inch-qa32ls03b
-        https://www.dienmayxanh.com/tivi/smart-khung-tranh-the-frame-qled-samsung-4k-50-inch-qa50ls03b
-        https://www.dienmayxanh.com/tivi/smart-khung-tranh-the-frame-qled-samsung-4k-55-inch-qa55ls03b
-        https://www.dienmayxanh.com/tivi/smart-khung-tranh-the-frame-qled-samsung-4k-65-inch-qa65ls03b
-        https://www.dienmayxanh.com/tivi/smart-khung-tranh-the-frame-qled-samsung-4k-75-inch-qa75ls03b
-        https://www.dienmayxanh.com/tivi/smart-tivi-oled-samsung-4k-55-inch-qa55s95b
-        https://www.dienmayxanh.com/tivi/smart-tivi-oled-samsung-4k-65-inch-qa65s95b
-        https://www.dienmayxanh.com/tivi/smart-tivi-qled-4k-50-inch-samsung-qa50q80c
-        https://www.dienmayxanh.com/tivi/smart-tivi-qled-4k-55-inch-samsung-qa55q80c
-        https://www.dienmayxanh.com/tivi/smart-tivi-qled-4k-65-inch-samsung-qa65q80c
-        https://www.dienmayxanh.com/tivi/smart-tivi-qled-4k-75-inch-samsung-qa75q80c
-        https://www.dienmayxanh.com/tivi/smart-tivi-qled-4k-85-inch-samsung-qa85q80c
-        https://www.dienmayxanh.com/tivi/smart-tivi-oled-samsung-4k-55-inch-qa55s95ca
-        https://www.dienmayxanh.com/tivi/smart-tivi-oled-samsung-4k-65-inch-qa65s90ca
-        https://www.dienmayxanh.com/tivi/smart-tivi-oled-samsung-4k-65-inch-qa65s95ca
-        https://www.dienmayxanh.com/tivi/smart-tivi-oled-samsung-4k-77-inch-qa77s95ca
-        https://www.dienmayxanh.com/tu-lanh/tu-lanh-lg-inverter-655-lit-gr-q257mc
-        https://www.dienmayxanh.com/tu-lanh/tu-lanh-lg-gr-b53mb
-        https://www.dienmayxanh.com/tu-lanh/tu-lanh-lg-inverter-530-lit-gr-b53ps
-        https://www.dienmayxanh.com/tu-lanh/samsung-inverter-307-lit-rb30n4190by-sv
-        https://www.dienmayxanh.com/tu-lanh/tu-lanh-hitachi-390-lit-r-fvy510pgv0-gmg
-        https://www.dienmayxanh.com/tu-lanh/hitachi-inverter-509-lit-r-fw650pgv8
-        https://www.dienmayxanh.com/tu-lanh/hitachi-inverter-569-lit-r-wb640pgv1
-        https://www.dienmayxanh.com/tu-lanh/hitachi-inverter-573-lit-r-sx800gpgv0
-        https://www.dienmayxanh.com/tu-lanh/tu-lanh-hitachi-r-zx740kv-x
-        https://www.dienmayxanh.com/tu-lanh/hitachi-r-fw690pgv7-gbw
-        https://www.dienmayxanh.com/tu-lanh/tu-lanh-hitachi-inverter-540-lit-r-hw540rv-x
-        https://www.dienmayxanh.com/may-giat/tu-cham-soc-quan-ao-thong-minh-lg-s5goc
-        https://www.dienmayxanh.com/may-giat/tu-cham-soc-quan-ao-thong-minh-lg-s5boc
-        https://www.dienmayxanh.com/may-giat/may-giat-say-lg-inverter-14-kg-wt1410nhb
-        https://www.dienmayxanh.com/may-giat/may-giat-say-lg-inverter-21-kg-f2721hvrb
-        https://www.dienmayxanh.com/may-giat/may-giat-lg-fv1414s3ba
-        https://www.dienmayxanh.com/may-giat/may-giat-lg-inverter-14-kg-fv1414s3p
-        https://www.dienmayxanh.com/may-giat/may-giat-lg-fv1413s4w
-        https://www.dienmayxanh.com/may-giat/may-giat-lg-fv1412s3ba
-        https://www.dienmayxanh.com/may-giat/may-giat-lg-fv1412s3pa
-        https://www.dienmayxanh.com/may-giat/may-giat-lg-fv1411s4wa
-        https://www.dienmayxanh.com/may-giat/samsung-inverter-23-kg-wa23a8377gv-sv
-        https://www.dienmayxanh.com/may-giat/samsung-wa22r8870gv-sv
-        https://www.dienmayxanh.com/may-giat/samsung-wa12t5360by-sv
-        https://www.dienmayxanh.com/may-giat/may-giat-samsung-14kg-wa14cg5886bvsv
-        https://www.dienmayxanh.com/may-giat/may-giat-samsung-14kg-wa14cg5745bvsv
-        https://www.dienmayxanh.com/may-giat/may-giat-samsung-12kg-wa12cg5886bvsv
-        https://www.dienmayxanh.com/may-giat/may-giat-samsung-12kg-wa12cg5745bvsv
-        https://www.dienmayxanh.com/ban-ui/hoi-nuoc-panasonic-ni-s630vra
-        https://www.dienmayxanh.com/ban-ui/hoi-nuoc-panasonic-ni-s530ara
-        https://www.dienmayxanh.com/ban-ui/hoi-nuoc-panasonic-ni-s430gra
-        https://www.dienmayxanh.com/lo-vi-song/lo-vi-song-panasonic-nn-gt35nbyue-24-lit
-        https://www.dienmayxanh.com/lo-vi-song/lo-vi-song-panasonic-nn-st34nbyue-25-lit
-        https://www.dienmayxanh.com/may-hut-bui/may-hut-bui-dang-hop-panasonic-mc-cl609hn49
-        https://www.dienmayxanh.com/may-hut-bui/may-hut-bui-dang-hop-panasonic-mc-cl607rn49
-        https://www.dienmayxanh.com/noi-com-dien/noi-com-nap-roi-panasonic-72-lit-sr-ga721wra
-        https://www.dienmayxanh.com/may-say-toc/panasonic-eh-na98rp645
-        https://www.dienmayxanh.com/may-say-toc/panasonic-eh-na98-k645
-        https://www.dienmayxanh.com/may-say-toc/may-say-toc-1800w-panasonic-eh-ne27-k645
-        https://www.dienmayxanh.com/may-say-toc/panasonic-eh-nd57-h645
-        https://www.dienmayxanh.com/may-say-toc/panasonic-eh-nd57-h645
-        https://www.dienmayxanh.com/may-say-toc/1800w-panasonic-eh-nd37-k645
-        https://www.dienmayxanh.com/may-say-toc/may-say-toc-1800w-panasonic-eh-nd37-p645
-        https://www.dienmayxanh.com/lo-vi-song/sharp-r-205vn-s-20-lit#2-gia
-        https://www.dienmayxanh.com/lo-vi-song/sharp-r-g272vn-s-20-lit
-        https://www.dienmayxanh.com/lo-vi-song/sharp-r-g302vn-s#2-gia
-        https://www.dienmayxanh.com/lo-vi-song/sharp-r-g371vn-w#2-gia
-        https://www.dienmayxanh.com/lo-vi-song/sharp-r-c825vn-st
-        https://www.dienmayxanh.com/lo-vi-song/sharp-r-c932vn-st
-        https://www.dienmayxanh.com/lo-vi-song/lo-vi-song-sharp-r-g728xvn-bst
-        https://www.dienmayxanh.com/lo-vi-song/lo-vi-song-sharp-r-c932xvn-bst
-        https://www.dienmayxanh.com/lo-vi-song/r-32a2vn-s-23-lit
-        https://www.dienmayxanh.com/lo-vi-song/r-370vn-s-23-lit
-        https://www.dienmayxanh.com/lo-vi-song/sharp-r-289vn-w
-        https://www.dienmayxanh.com/noi-com-dien/sharp-18-lit-ks-ih191v-bk
-        https://www.dienmayxanh.com/noi-com-dien/sharp-18-lit-ks-ih191v-gl
-        https://www.dienmayxanh.com/noi-com-dien/sharp-ks-ih191v-rd-18-lit
-        https://www.dienmayxanh.com/noi-com-dien/sharp-ks-com08v-sl-072-lit
-        https://www.dienmayxanh.com/noi-com-dien/noi-com-dien-tu-sharp-11-lit-ks-com110dv-wh
-        https://www.dienmayxanh.com/noi-com-dien/sharp-ksh-218snv-sf-18-lit
-        https://www.dienmayxanh.com/noi-com-dien/sharp-ksh-228snv-sf-22-lit
-        https://www.dienmayxanh.com/noi-com-dien/sharp-18l-kn-tc50vn-sl-bac
-        https://www.dienmayxanh.com/noi-com-dien/sharp-18l-kn-tc50vn-wh
-        https://www.dienmayxanh.com/noi-com-dien/sharp-5-lit-ksh-d55v
-        https://www.dienmayxanh.com/noi-com-dien/sharp-7-lit-ksh-d77v
-        https://www.dienmayxanh.com/noi-com-dien/sharp-10-lit-ksh-d1010v
-        https://www.dienmayxanh.com/noi-com-dien/sharp-ks-n191etv
-        https://www.dienmayxanh.com/noi-com-dien/dien-tu-sharp-ks-com18v
-        https://www.dienmayxanh.com/binh-thuy-dien/binh-thuy-dien-sharp-kp-30stv
-        https://www.dienmayxanh.com/binh-thuy-dien/dien-sharp-kp-20btv
-        https://www.dienmayxanh.com/binh-thuy-dien/sharp-kp-31btv-cu
-        https://www.dienmayxanh.com/binh-thuy-dien/sharp-kp-y32pv-cu
-        https://www.dienmayxanh.com/binh-thuy-dien/sharp-kp-y40pv-cu
-        https://www.dienmayxanh.com/binh-thuy-dien/binh-thuy-dien-sharp-kp-40ebv-bk-4-lit
-        https://www.dienmayxanh.com/binh-thuy-dien/binh-thuy-dien-sharp-kp-40ebv-wh-4-lit
-        https://www.dienmayxanh.com/binh-thuy-dien/binh-thuy-dien-sharp-kp-40ebv-st-4-lit
-        https://www.dienmayxanh.com/noi-chien-khong-dau/sharp-kf-af70ev-st
-        https://www.dienmayxanh.com/may-xay-sinh-to/sharp-em-s154pv-wh
-        https://www.dienmayxanh.com/may-xay-sinh-to/sharp-em-s155pv-wh
-        https://www.dienmayxanh.com/binh-dun-sieu-toc/sharp-ekj-10dvps-rd
-        https://www.dienmayxanh.com/binh-dun-sieu-toc/binh-dun-sieu-toc-sharp-ekj-17evps-bk
-        https://www.dienmayxanh.com/binh-dun-sieu-toc/binh-dun-sieu-toc-sharp-ekj-17evsd-wd
-        https://www.dienmayxanh.com/binh-dun-sieu-toc/binh-dun-sieu-toc-sharp-ekj-15evs-st
-        https://www.dienmayxanh.com/lo-nuong/sharp-eo-a323rcsv-st
-        https://www.dienmayxanh.com/lo-nuong/sharp-eo-a384rcsv-st
-        https://www.dienmayxanh.com/lo-nuong/lo-nuong-sharp-eo-b46rcsv-bk
-        https://www.dienmayxanh.com/may-vat-cam/may-vat-cam-sharp-ej-j256-wh
-        https://www.dienmayxanh.com/may-vat-cam/may-vat-cam-sharp-ej-j415-wh
-        https://www.dienmayxanh.com/may-vat-cam/may-vat-cam-sharp-ej-j407-bk
-        https://www.dienmayxanh.com/may-vat-cam/may-vat-cam-sharp-ej-j407-wh
-        https://www.dienmayxanh.com/may-vat-cam/may-vat-cam-sharp-ej-j130-st
-        https://www.dienmayxanh.com/quat/dung-sharp-pj-s40rv-lg
-        https://www.dienmayxanh.com/may-loc-khong-khi/may-loc-khong-khi-sharp-fp-j80ev-h
-        https://www.dienmayxanh.com/may-loc-khong-khi/may-loc-khong-khi-sharp-fp-jm40v-b
-        https://www.dienmayxanh.com/may-loc-khong-khi/sharp-fp-gm50e-b
-        https://www.dienmayxanh.com/may-hut-am/may-hut-am-sharp-dw-d12a-w
-        https://www.dienmayxanh.com/may-hut-am/may-hut-am-sharp-dw-d12a-w
-        https://www.dienmayxanh.com/may-hut-am/may-hut-am-sharp-dw-d20a-w
-        https://www.dienmayxanh.com/may-say-quan-ao/may-say-thong-hoi-whirlpool-15-kg-3lwed4815fw
-        https://www.dienmayxanh.com/may-say-quan-ao/may-say-ngung-tu-whirlpool-8-kg-fftcm118xb-ee
-        https://www.dienmayxanh.com/may-say-quan-ao/may-say-thong-hoi-whirlpool-7-kg-awd712s2
-        https://www.dienmayxanh.com/may-rua-chen/whirlpool-wfe-2b19
-        https://www.dienmayxanh.com/may-rua-chen/whirlpool-wfc-3c26p
-        https://www.dienmayxanh.com/may-rua-chen/whirlpool-wio-3t133p';
+https://www.dienmayxanh.com/tivi/smart-kieu-chu-i-co-chan-the-serif-qled-samsung-4k-50-inch-qa50ls01ba
+https://www.dienmayxanh.com/tivi/smart-tivi-kieu-chu-i-co-chan-the-serif-qled-samsung-4k-55-inch-qa55ls01ba
+https://www.dienmayxanh.com/tivi/smart-kieu-chu-i-co-chan-the-serif-qled-samsung-4k-65-inch-qa65ls01b
+https://www.dienmayxanh.com/tivi/smart-tivi-khung-tranh-the-frame-qled-samsung-full-hd-32-inch-qa32ls03b
+https://www.dienmayxanh.com/tivi/smart-khung-tranh-the-frame-qled-samsung-4k-50-inch-qa50ls03b
+https://www.dienmayxanh.com/tivi/smart-khung-tranh-the-frame-qled-samsung-4k-55-inch-qa55ls03b
+https://www.dienmayxanh.com/tivi/smart-khung-tranh-the-frame-qled-samsung-4k-65-inch-qa65ls03b
+https://www.dienmayxanh.com/tivi/smart-khung-tranh-the-frame-qled-samsung-4k-75-inch-qa75ls03b
+https://www.dienmayxanh.com/tivi/smart-tivi-oled-samsung-4k-55-inch-qa55s95b
+https://www.dienmayxanh.com/tivi/smart-tivi-oled-samsung-4k-65-inch-qa65s95b
+https://www.dienmayxanh.com/tivi/smart-tivi-qled-4k-50-inch-samsung-qa50q80c
+https://www.dienmayxanh.com/tivi/smart-tivi-qled-4k-55-inch-samsung-qa55q80c
+https://www.dienmayxanh.com/tivi/smart-tivi-qled-4k-65-inch-samsung-qa65q80c
+https://www.dienmayxanh.com/tivi/smart-tivi-qled-4k-75-inch-samsung-qa75q80c
+https://www.dienmayxanh.com/tivi/smart-tivi-qled-4k-85-inch-samsung-qa85q80c
+https://www.dienmayxanh.com/tivi/smart-tivi-oled-samsung-4k-55-inch-qa55s95ca
+https://www.dienmayxanh.com/tivi/smart-tivi-oled-samsung-4k-65-inch-qa65s90ca
+https://www.dienmayxanh.com/tivi/smart-tivi-oled-samsung-4k-65-inch-qa65s95ca
+https://www.dienmayxanh.com/tivi/smart-tivi-oled-samsung-4k-77-inch-qa77s95ca
+https://www.dienmayxanh.com/tu-lanh/tu-lanh-lg-inverter-655-lit-gr-q257mc
+https://www.dienmayxanh.com/tu-lanh/tu-lanh-lg-gr-b53mb
+https://www.dienmayxanh.com/tu-lanh/tu-lanh-lg-inverter-530-lit-gr-b53ps
+https://www.dienmayxanh.com/tu-lanh/samsung-inverter-307-lit-rb30n4190by-sv
+https://www.dienmayxanh.com/tu-lanh/tu-lanh-hitachi-390-lit-r-fvy510pgv0-gmg
+https://www.dienmayxanh.com/tu-lanh/hitachi-inverter-509-lit-r-fw650pgv8
+https://www.dienmayxanh.com/tu-lanh/hitachi-inverter-569-lit-r-wb640pgv1
+https://www.dienmayxanh.com/tu-lanh/hitachi-inverter-573-lit-r-sx800gpgv0
+https://www.dienmayxanh.com/tu-lanh/tu-lanh-hitachi-r-zx740kv-x
+https://www.dienmayxanh.com/tu-lanh/hitachi-r-fw690pgv7-gbw
+https://www.dienmayxanh.com/tu-lanh/tu-lanh-hitachi-inverter-540-lit-r-hw540rv-x
+https://www.dienmayxanh.com/may-giat/tu-cham-soc-quan-ao-thong-minh-lg-s5goc
+https://www.dienmayxanh.com/may-giat/tu-cham-soc-quan-ao-thong-minh-lg-s5boc
+https://www.dienmayxanh.com/may-giat/may-giat-say-lg-inverter-14-kg-wt1410nhb
+https://www.dienmayxanh.com/may-giat/may-giat-say-lg-inverter-21-kg-f2721hvrb
+https://www.dienmayxanh.com/may-giat/may-giat-lg-fv1414s3ba
+https://www.dienmayxanh.com/may-giat/may-giat-lg-inverter-14-kg-fv1414s3p
+https://www.dienmayxanh.com/may-giat/may-giat-lg-fv1413s4w
+https://www.dienmayxanh.com/may-giat/may-giat-lg-fv1412s3ba
+https://www.dienmayxanh.com/may-giat/may-giat-lg-fv1412s3pa
+https://www.dienmayxanh.com/may-giat/may-giat-lg-fv1411s4wa
+https://www.dienmayxanh.com/may-giat/samsung-inverter-23-kg-wa23a8377gv-sv
+https://www.dienmayxanh.com/may-giat/samsung-wa22r8870gv-sv
+https://www.dienmayxanh.com/may-giat/samsung-wa12t5360by-sv
+https://www.dienmayxanh.com/may-giat/may-giat-samsung-14kg-wa14cg5886bvsv
+https://www.dienmayxanh.com/may-giat/may-giat-samsung-14kg-wa14cg5745bvsv
+https://www.dienmayxanh.com/may-giat/may-giat-samsung-12kg-wa12cg5886bvsv
+https://www.dienmayxanh.com/may-giat/may-giat-samsung-12kg-wa12cg5745bvsv
+https://www.dienmayxanh.com/ban-ui/hoi-nuoc-panasonic-ni-s630vra
+https://www.dienmayxanh.com/ban-ui/hoi-nuoc-panasonic-ni-s530ara
+https://www.dienmayxanh.com/ban-ui/hoi-nuoc-panasonic-ni-s430gra
+https://www.dienmayxanh.com/lo-vi-song/lo-vi-song-panasonic-nn-gt35nbyue-24-lit
+https://www.dienmayxanh.com/lo-vi-song/lo-vi-song-panasonic-nn-st34nbyue-25-lit
+https://www.dienmayxanh.com/may-hut-bui/may-hut-bui-dang-hop-panasonic-mc-cl609hn49
+https://www.dienmayxanh.com/may-hut-bui/may-hut-bui-dang-hop-panasonic-mc-cl607rn49
+https://www.dienmayxanh.com/noi-com-dien/noi-com-nap-roi-panasonic-72-lit-sr-ga721wra
+https://www.dienmayxanh.com/may-say-toc/panasonic-eh-na98rp645
+https://www.dienmayxanh.com/may-say-toc/panasonic-eh-na98-k645
+https://www.dienmayxanh.com/may-say-toc/may-say-toc-1800w-panasonic-eh-ne27-k645
+https://www.dienmayxanh.com/may-say-toc/panasonic-eh-nd57-h645
+https://www.dienmayxanh.com/may-say-toc/panasonic-eh-nd57-h645
+https://www.dienmayxanh.com/may-say-toc/1800w-panasonic-eh-nd37-k645
+https://www.dienmayxanh.com/may-say-toc/may-say-toc-1800w-panasonic-eh-nd37-p645
+https://www.dienmayxanh.com/lo-vi-song/sharp-r-205vn-s-20-lit#2-gia
+https://www.dienmayxanh.com/lo-vi-song/sharp-r-g272vn-s-20-lit
+https://www.dienmayxanh.com/lo-vi-song/sharp-r-g302vn-s#2-gia
+https://www.dienmayxanh.com/lo-vi-song/sharp-r-g371vn-w#2-gia
+https://www.dienmayxanh.com/lo-vi-song/sharp-r-c825vn-st
+https://www.dienmayxanh.com/lo-vi-song/sharp-r-c932vn-st
+https://www.dienmayxanh.com/lo-vi-song/lo-vi-song-sharp-r-g728xvn-bst
+https://www.dienmayxanh.com/lo-vi-song/lo-vi-song-sharp-r-c932xvn-bst
+https://www.dienmayxanh.com/lo-vi-song/r-32a2vn-s-23-lit
+https://www.dienmayxanh.com/lo-vi-song/r-370vn-s-23-lit
+https://www.dienmayxanh.com/lo-vi-song/sharp-r-289vn-w
+https://www.dienmayxanh.com/noi-com-dien/sharp-18-lit-ks-ih191v-bk
+https://www.dienmayxanh.com/noi-com-dien/sharp-18-lit-ks-ih191v-gl
+https://www.dienmayxanh.com/noi-com-dien/sharp-ks-ih191v-rd-18-lit
+https://www.dienmayxanh.com/noi-com-dien/sharp-ks-com08v-sl-072-lit
+https://www.dienmayxanh.com/noi-com-dien/noi-com-dien-tu-sharp-11-lit-ks-com110dv-wh
+https://www.dienmayxanh.com/noi-com-dien/sharp-ksh-218snv-sf-18-lit
+https://www.dienmayxanh.com/noi-com-dien/sharp-ksh-228snv-sf-22-lit
+https://www.dienmayxanh.com/noi-com-dien/sharp-18l-kn-tc50vn-sl-bac
+https://www.dienmayxanh.com/noi-com-dien/sharp-18l-kn-tc50vn-wh
+https://www.dienmayxanh.com/noi-com-dien/sharp-5-lit-ksh-d55v
+https://www.dienmayxanh.com/noi-com-dien/sharp-7-lit-ksh-d77v
+https://www.dienmayxanh.com/noi-com-dien/sharp-10-lit-ksh-d1010v
+https://www.dienmayxanh.com/noi-com-dien/sharp-ks-n191etv
+https://www.dienmayxanh.com/noi-com-dien/dien-tu-sharp-ks-com18v
+https://www.dienmayxanh.com/binh-thuy-dien/binh-thuy-dien-sharp-kp-30stv
+https://www.dienmayxanh.com/binh-thuy-dien/dien-sharp-kp-20btv
+https://www.dienmayxanh.com/binh-thuy-dien/sharp-kp-31btv-cu
+https://www.dienmayxanh.com/binh-thuy-dien/sharp-kp-y32pv-cu
+https://www.dienmayxanh.com/binh-thuy-dien/sharp-kp-y40pv-cu
+https://www.dienmayxanh.com/binh-thuy-dien/binh-thuy-dien-sharp-kp-40ebv-bk-4-lit
+https://www.dienmayxanh.com/binh-thuy-dien/binh-thuy-dien-sharp-kp-40ebv-wh-4-lit
+https://www.dienmayxanh.com/binh-thuy-dien/binh-thuy-dien-sharp-kp-40ebv-st-4-lit
+https://www.dienmayxanh.com/noi-chien-khong-dau/sharp-kf-af70ev-st
+https://www.dienmayxanh.com/may-xay-sinh-to/sharp-em-s154pv-wh
+https://www.dienmayxanh.com/may-xay-sinh-to/sharp-em-s155pv-wh
+https://www.dienmayxanh.com/binh-dun-sieu-toc/sharp-ekj-10dvps-rd
+https://www.dienmayxanh.com/binh-dun-sieu-toc/binh-dun-sieu-toc-sharp-ekj-17evps-bk
+https://www.dienmayxanh.com/binh-dun-sieu-toc/binh-dun-sieu-toc-sharp-ekj-17evsd-wd
+https://www.dienmayxanh.com/binh-dun-sieu-toc/binh-dun-sieu-toc-sharp-ekj-15evs-st
+https://www.dienmayxanh.com/lo-nuong/sharp-eo-a323rcsv-st
+https://www.dienmayxanh.com/lo-nuong/sharp-eo-a384rcsv-st
+https://www.dienmayxanh.com/lo-nuong/lo-nuong-sharp-eo-b46rcsv-bk
+https://www.dienmayxanh.com/may-vat-cam/may-vat-cam-sharp-ej-j256-wh
+https://www.dienmayxanh.com/may-vat-cam/may-vat-cam-sharp-ej-j415-wh
+https://www.dienmayxanh.com/may-vat-cam/may-vat-cam-sharp-ej-j407-bk
+https://www.dienmayxanh.com/may-vat-cam/may-vat-cam-sharp-ej-j407-wh
+https://www.dienmayxanh.com/may-vat-cam/may-vat-cam-sharp-ej-j130-st
+https://www.dienmayxanh.com/quat/dung-sharp-pj-s40rv-lg
+https://www.dienmayxanh.com/may-loc-khong-khi/may-loc-khong-khi-sharp-fp-j80ev-h
+https://www.dienmayxanh.com/may-loc-khong-khi/may-loc-khong-khi-sharp-fp-jm40v-b
+https://www.dienmayxanh.com/may-loc-khong-khi/sharp-fp-gm50e-b
+https://www.dienmayxanh.com/may-hut-am/may-hut-am-sharp-dw-d12a-w
+https://www.dienmayxanh.com/may-hut-am/may-hut-am-sharp-dw-d12a-w
+https://www.dienmayxanh.com/may-hut-am/may-hut-am-sharp-dw-d20a-w
+https://www.dienmayxanh.com/may-say-quan-ao/may-say-thong-hoi-whirlpool-15-kg-3lwed4815fw
+https://www.dienmayxanh.com/may-say-quan-ao/may-say-ngung-tu-whirlpool-8-kg-fftcm118xb-ee
+https://www.dienmayxanh.com/may-say-quan-ao/may-say-thong-hoi-whirlpool-7-kg-awd712s2
+https://www.dienmayxanh.com/may-rua-chen/whirlpool-wfe-2b19
+https://www.dienmayxanh.com/may-rua-chen/whirlpool-wfc-3c26p
+https://www.dienmayxanh.com/may-rua-chen/whirlpool-wio-3t133p
+';
 
         $codess = explode(PHP_EOL, $link);
+
+        $models  = explode(PHP_EOL, $model);
 
         foreach ($codess as $key => $val) {
 
@@ -3303,6 +3434,30 @@ http://dienmaynguoiviet.com/dieu-hoa-Funiki-SH09MMC-2-chieu-9000BTU/";
                 $input['created_at'] = $date;
 
                 $input['updated_at'] = $date;
+
+                $input['ProductSku'] = trim($models[$key]);
+
+                $meta_title = $input['ProductSku'].', giá rẻ, Trả góp 0%';
+
+                $meta_content = 'Mua '.$input['ProductSku'].' giá rẻ. Miễn phí giao hàng & Lắp đặt. Đổi lỗi trong 7 ngày đầu. Liên hệ  hotline để mua hàng'; 
+
+                $meta_model = new metaSeo();
+
+                $meta_model->meta_title =$meta_title;
+
+                $meta_model->meta_content =$meta_content;
+
+                $meta_model->meta_og_content =$meta_content;
+
+                $meta_model->meta_og_title =$meta_title;
+
+                $meta_model->meta_key_words =$meta_title;
+
+                $meta_model->save();
+
+                $input['Meta_id'] = $meta_model['id'];
+
+                $input['user_id'] =  1;
 
 
                 DB::table('products')->insert($input);
