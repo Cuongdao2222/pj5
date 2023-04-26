@@ -665,10 +665,6 @@ class categoryController extends Controller
 
             } 
 
-
-              
-
-
             $data_group_product = Cache::rememberForever('data_group_product_'.$data_cate, function() use ($data_cate){ 
 
                 $data_group_products = groupProduct::find($data_cate);
@@ -693,8 +689,10 @@ class categoryController extends Controller
 
                 return view('frontend.combo', compact('data', 'images', 'other_product', 'meta', 'pageCheck', 'data_cate'));
             }
-            
-            return view('frontend.details', compact('data', 'images', 'other_product', 'meta', 'pageCheck', 'data_cate'));
+
+            $actives_pages_blog = $data->active??'';
+
+            return view('frontend.details', compact('data', 'images', 'other_product', 'meta', 'pageCheck', 'data_cate', 'actives_pages_blog'));
         }
     }
 
