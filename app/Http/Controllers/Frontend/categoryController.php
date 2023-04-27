@@ -690,7 +690,13 @@ class categoryController extends Controller
                 return view('frontend.combo', compact('data', 'images', 'other_product', 'meta', 'pageCheck', 'data_cate'));
             }
 
-            $actives_pages_blog = $data->active??'';
+            // nếu không có ảnh đại diện thì không cho index
+
+            $actives_pages_blog = 1;
+
+            if(empty($data->Image)){
+                $actives_pages_blog = 0;
+            }
 
             return view('frontend.details', compact('data', 'images', 'other_product', 'meta', 'pageCheck', 'data_cate', 'actives_pages_blog'));
         }
