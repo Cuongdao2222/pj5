@@ -80,4 +80,41 @@ class apiController extends Controller
         return Redirect::to('https://dantri.com.vn/');
 
     }
+
+    public function updateProductAll(Request $request)
+    {
+       
+
+        $dataproduct = json_decode($request->getContent());
+
+        $updated = [];
+
+        foreach ($dataproduct as $key => $value) {
+
+            if(!empty($value->price)){
+
+                $product = product::select('Price')->where('ProductSku', trim($value->model))->first();
+
+                if(!empty($product)){
+
+                    $product->Price =   trim( str_replace('.', '', $value->price));
+
+                    $product->save(); 
+
+                }
+
+            }
+
+            $product = product::select('Price')->where('ProductSku', trim($value->model))->first();
+
+            $updated[$key]['model'] = @trim($value->model);
+            $updated[$key]['price'] = @$product->Price;
+          
+        }
+
+        return $updated;
+
+    }
+
+
 }

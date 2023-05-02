@@ -2202,7 +2202,7 @@
 
     }
 
-     function addCartFast(id) {
+    function addCartFast(id) {
     
         $.ajaxSetup({
             headers: {
