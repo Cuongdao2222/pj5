@@ -11,6 +11,8 @@ use App\Models\deal;
 use App\Models\product;
 use Carbon\Carbon;
 
+use Cookie;
+
 use Auth;
 use DB;
 
@@ -18,7 +20,17 @@ use DB;
 
 class indexController extends Controller
 {
-    public function index()
+
+
+    public function setCookie()
+    {
+        return response()->json(['Cookie set successfully.'])->cookie(
+            'test-cookie-2', 'Demo 2', 12000
+        );
+    }
+
+
+    public function index(Request $request)
     {
        
         $banners =  Cache::get('baners');
@@ -114,7 +126,9 @@ class indexController extends Controller
             return htmlspecialchars_decode(view('forget_cache_home.index', compact('banners', 'bannersRight', 'bannerUnderSlider', 'bannerUnderSale','deal','product_sale', 'group','timeDeal_star', 'deal_check', 'now','bannerscrollRight', 'bannerscrollLeft')));
         });
 
+
         return $view;
+
     
     }
     public function cache()

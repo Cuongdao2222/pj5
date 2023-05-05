@@ -8,6 +8,7 @@ use App\Models\product;
 use App\Models\apiUpdate;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Redirect;
+use DB;
 
 
 class apiController extends Controller
@@ -84,7 +85,6 @@ class apiController extends Controller
     public function updateProductAll(Request $request)
     {
        
-
         $dataproduct = json_decode($request->getContent());
 
         $updated = [];
@@ -93,7 +93,7 @@ class apiController extends Controller
 
             if(!empty($value->price)){
 
-                $product = product::select('Price')->where('ProductSku', trim($value->model))->first();
+                $product = product::select('Price')->where('ProductSku','Like','%'.trim($value->model).'%')->first();
 
                 if(!empty($product)){
 
@@ -107,6 +107,8 @@ class apiController extends Controller
 
             $product = product::select('Price')->where('ProductSku', trim($value->model))->first();
 
+            //chạy sản phẩm kiểm tra model 
+
             $updated[$key]['model'] = @trim($value->model);
             $updated[$key]['price'] = @$product->Price;
           
@@ -116,5 +118,35 @@ class apiController extends Controller
 
     }
 
+    public function checkproduct(Request $request)
+    {
+
+        $dataproduct = json_decode($request->getContent());
+
+        $update = [];
+
+        foreach ($dataproduct as $key => $value) {
+
+            $product = product::select('ProductSku')->where('ProductSku', trim($value->model))->first();
+
+            if(empty($product)){
+
+                // $check  = DB::table('run_check_model')->where('model', trim($value->model))->first();
+
+                // if(empty($check)){
+
+                //     $insert = DB::table('run_check_model')->insert(['model'=>$value->model]);
+
+                    
+                // }
+                array_push($update, $value->model);
+               
+            }
+
+        }
+
+        return response()->json(['data' => $update]);
+
+    }
 
 }

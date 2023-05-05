@@ -24,6 +24,7 @@ use App\Models\searchkey;
 use Response;
 use App\Models\historyPd;
 use DB;
+use Cookie;
 
 use App\Models\metaSeo ;
 
@@ -745,11 +746,13 @@ class productController extends AppBaseController
     }
 
 
-    public function search()
+    public function search(Request $request)
     {
 
-    
-        return abort('404');
+        $value2 = $request->cookie('test-cookie-2');
+        dd($value2);
+
+        // return abort('404');
         
     }
 
