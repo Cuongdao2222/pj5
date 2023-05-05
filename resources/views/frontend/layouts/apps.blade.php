@@ -1841,9 +1841,9 @@
                                     <div class="PKLT">
                                         <a href="{{ route('details', 'tiet-kiem-dien') }}"><strong>Tiết kiệm điện</strong></a>
                                         
-                                        <a href="{{route('details','dieu-hoa-tiet-kiem-dien')}}">
+                                        <!-- <a href="{{route('details','dieu-hoa-tiet-kiem-dien')}}">
                                             <h3>Điều hòa tiết kiệm điện</h3>
-                                        </a>
+                                        </a> -->
                                         
                                         <a href="{{route('details','co-inverter')}}">
                                             <h3>Có inverter</h3>

@@ -366,7 +366,7 @@ class productController extends AppBaseController
         if($choose==0){
 
             
-            $product_sale = DB::table('products')->join('sale_product', 'products.id', '=', 'sale_product.product_id')->join('makers', 'products.Maker', '=', 'makers.id')->take(10)->orderBy('sale_order', 'desc')->get();
+            $product_sale = DB::table('products')->join('sale_product', 'products.id', '=', 'sale_product.product_id')->join('makers', 'products.Maker', '=', 'makers.id')->take(5)->orderBy('sale_order', 'desc')->get();
 
             // tạm ẩn khuyến mãi theo nhóm
 
@@ -378,7 +378,7 @@ class productController extends AppBaseController
         
         }
         else{
-            $hot = DB::table('hot_product')->take(10)->get()->pluck('product_id');
+            $hot = DB::table('hot_product')->take(5)->get()->pluck('product_id');
 
             $product_sale = product::whereIn('id', $hot->toArray())->where('active', 1)->orderBy('sale_order', 'desc')->get();
 
