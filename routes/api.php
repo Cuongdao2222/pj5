@@ -41,7 +41,7 @@ Route::resource('gifts', 'giftAPIController');
 
 Route::put('api-update-product/{slug}', 'backend\apiController@updateProduct');
 
-Route::put('api-update-product-all', 'backend\apiController@updateProductAll');
+// Route::put('api-update-product-all', 'backend\apiController@updateProductAll');
 
-Route::put('api-check-product', 'backend\apiController@checkproduct');
+// Route::put('api-check-product', 'backend\apiController@checkproduct');
 

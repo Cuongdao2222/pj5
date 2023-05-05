@@ -378,7 +378,7 @@ class productController extends AppBaseController
         
         }
         else{
-            $hot = DB::table('hot_product')->take(20)->get()->pluck('product_id');
+            $hot = DB::table('hot_product')->take(10)->get()->pluck('product_id');
 
             $product_sale = product::whereIn('id', $hot->toArray())->where('active', 1)->orderBy('sale_order', 'desc')->get();
 
