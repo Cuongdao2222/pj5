@@ -366,7 +366,7 @@ class productController extends AppBaseController
         if($choose==0){
 
             
-            $product_sale = DB::table('products')->join('sale_product', 'products.id', '=', 'sale_product.product_id')->join('makers', 'products.Maker', '=', 'makers.id')->take(20)->orderBy('sale_order', 'desc')->get();
+            $product_sale = DB::table('products')->join('sale_product', 'products.id', '=', 'sale_product.product_id')->join('makers', 'products.Maker', '=', 'makers.id')->take(10)->orderBy('sale_order', 'desc')->get();
 
             // tạm ẩn khuyến mãi theo nhóm
 
