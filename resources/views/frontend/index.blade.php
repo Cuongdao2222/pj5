@@ -11,6 +11,16 @@
     $post_advice = Cache::rememberForever('post_advice', function() {
         return App\Models\post::where('active',1)->where('hight_light', 1)->where('category', 8)->OrderBy('created_at', 'desc')->select('link', 'title')->limit(2)->get();
     });
+
+
+    if(!Cache::has('product_search')){
+
+        $productss = App\Models\product::select('Link', 'Name', 'Image', 'Price', 'id', 'ProductSku', 'promotion', 'promotion_box')->where('active', 1)->get();
+
+        Cache::forever('product_search',$productss);
+    }
+
+    
        
 ?>
 
@@ -962,16 +972,7 @@
                 {
                     $data = Cache::get('product_search')->whereIn('id', $hot->toArray())->sortByDesc('orders_hot');
                 }
-                else{
-
-                    $productss = App\Models\product::select('Link', 'Name', 'Image', 'Price', 'id', 'ProductSku', 'promotion', 'promotion_box')->where('active', 1)->get();
-
-                    Cache::forever('product_search',$productss);
-
-                    $data = Cache::get('product_search')->whereIn('id', $hot->toArray())->sortByDesc('orders_hot');
-                }
-               
-
+            
 
             ?>
 
