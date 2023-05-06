@@ -248,9 +248,6 @@
                     $timestamp_check = $now->diffInSeconds($define[$key_check_between-1]['startTime']);
 
                 }
-                
-
-
 
             }
 
