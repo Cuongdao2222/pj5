@@ -100,6 +100,17 @@
             max-width: 100px;
         }
 
+         @media only screen and (max-width: 767px) {
+
+            .option-price select{
+                width: 55%;
+            } 
+
+            .option-price{
+                text-align: right;
+            }       
+        }
+
         @media only screen and (min-width: 768px) {
             .copy-button{
 
@@ -114,6 +125,8 @@
             .option-price select{
                 height: 30px;
             }
+
+
         }    
     </style>
 
@@ -504,10 +517,21 @@
                             <div class="pdetail-price">
                                 <div class="pdetail-price-box">
                                     {!! @$text !!}
-                                    <h3> {{ str_replace(',' ,'.', number_format($data->Price)) }}₫ </h3>
+                                    <h3> {{ str_replace(',' ,'.', number_format($data->Price)) }} ₫</h3>
+                                </div>
+
+                                <div class="option-price">
+
+                                    <select name="option-price" id="option-price_change">
+                                        <option value="1">Giá tại kho</option>
+                                        <option value="2">Giá giao hàng</option>
+                                        <option value="3">Giao hàng + lắp đặt</option>
+                                    </select>
                                 </div>
 
                             </div>
+
+
 
                             <div class="pdetail-status">
                                 <div class="pdetail-stockavailable">
@@ -1179,14 +1203,14 @@
                             </div>
                         </div>
 
-                       <!--  <div class="option-price">
+                        <div class="option-price">
 
                             <select name="option-price" id="option-price_change">
                                 <option value="1">Giá tại kho</option>
                                 <option value="2">Giá giao hàng</option>
                                 <option value="3">Giao hàng + lắp đặt</option>
                             </select>
-                        </div> -->
+                        </div>
 
                         <div class="clearfix"></div>
                         <div class="pdetail-status">
@@ -1761,14 +1785,25 @@
 
     $('.option-price').change(function(){
 
+        value = $('#option-price_change').val();
+
+        ar_val = [];
+
+        ar_val[1] = 0;
+
+        ar_val[2] = 100000;
+
+        ar_val[3] = 250000;
      
-        const price = {{  $value->Price }};
+        const price = {{  $data->Price }};
 
-        new_price   =  parseInt(price) + 100000;
+        new_price   =  parseInt(price) + ar_val[value];
 
-        // price_format = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(new_price);
+        price_format = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(new_price);
 
-        console.log(price);
+        $('.pdetail-price-box h3').text(price_format.replace('đ', '').trim());
+
+
 
     })
 
