@@ -1395,6 +1395,7 @@
                                                     <h3>Máy lọc không khí Sharp</h3>
                                                 </a>
 
+
                                                 <a href="{{route('details','quat')}}">
                                                     <h3>Quạt</h3>
                                                 </a>
@@ -1427,6 +1428,10 @@
                                                 </a>
                                                 <a href="{{route('details','noi-chien-khong-dau')}}">
                                                     <h3>Nồi chiên không dầu</h3>
+                                                </a>
+
+                                                <a href="{{route('details','lo-nuong')}}">
+                                                    <h3>Lò nướng</h3>
                                                 </a>
                                             </aside>
                                         </div>
@@ -2013,6 +2018,8 @@
                                         <a href="{{route('details','may-say-toc')}}">
                                             <h3>Máy sấy tóc</h3>
                                         </a>
+
+                                        
                                         <a href="{{route('details','may-loc-khong-khi-samsung')}}">
                                             <h3>Máy lọc không khí Samsung</h3>
                                         </a>
@@ -2030,6 +2037,10 @@
                                        
                                         <a href="{{route('details','noi-com-dien')}}">
                                             <h3>Nồi cơm điện</h3>
+                                        </a>
+
+                                        <a href="{{route('details','lo-nuong')}}">
+                                            <h3>Lò nướng</h3>
                                         </a>
                                         <a href="{{route('details','lo-vi-song')}}">
                                             <h3>Lò vi sóng</h3>
@@ -2115,11 +2126,13 @@
                             <a href="{{ route('details','dieu-hoa') }}">Điều hòa</a>
                             <a href="{{ route('details','tu-dong') }}">Tủ đông</a>
                             <a href="{{ route('details','tu-mat') }}">Tủ Mát</a>
-                            <a href="{{ route('details','gia-dung') }}">Gia dụng</a>
+                            <a href="{{ route('details','gia-dung') }}">Gia Dụng</a>
+                            <a href="{{ route('details','lo-nuong') }}">Lò Nướng</a>
                             <a href="{{ route('details','may-loc-nuoc') }}">Máy lọc nước</a>
                             <a href="{{ route('details','may-say-quan-ao') }}">Máy sấy quần áo</a>
                             <a href="{{ route('details','may-loc-nuoc-ao-smith') }}">A.O.Smith</a>
-                            <a href="{{ route('details','quat') }}">Quạt</a>
+                            <a href="{{ route('details','quat') }}">Quat</a>
+                            <a href="{{ route('details','may-cu-trung-bay') }}">Máy cũ, Trưng bày</a>
                             
                                                         
                             <a href="/deal" class="promotion-menu">
