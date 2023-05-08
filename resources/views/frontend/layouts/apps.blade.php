@@ -2119,7 +2119,7 @@
                             <a href="{{ route('details','may-loc-nuoc') }}">Máy lọc nước</a>
                             <a href="{{ route('details','may-say-quan-ao') }}">Máy sấy quần áo</a>
                             <a href="{{ route('details','may-loc-nuoc-ao-smith') }}">A.O.Smith</a>
-                            <a href="{{ route('details','may-cu-trung-bay') }}">Máy cũ, Trưng bày</a>
+                            <a href="{{ route('details','quat') }}">Quạt</a>
                             
                                                         
                             <a href="/deal" class="promotion-menu">
