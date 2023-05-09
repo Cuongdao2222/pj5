@@ -665,12 +665,22 @@ class categoryController extends Controller
 
             } 
 
+            if($data_cate ===8){
+
+                $ar_list = $this->find_List_Id_Group(8, 2);
+
+                dd($ar_list);
+            }
+
+
+
             $data_group_product = Cache::rememberForever('data_group_product_'.$data_cate, function() use ($data_cate){ 
 
                 $data_group_products = groupProduct::find($data_cate);
 
                 return $data_group_products;
             });  
+
 
             $other_product = Cache::rememberForever('other_product_'.$data_group_product->product_id, function() use ($data_group_product){ 
 

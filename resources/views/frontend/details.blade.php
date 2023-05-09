@@ -11,9 +11,9 @@
             $namecate = App\Models\groupProduct::find($data_cate)??'';
 
             return $namecate;
-        });    
+        });   
 
-   
+
 
         if(!empty($thuonghieu[$data_cate])){
 
@@ -102,13 +102,26 @@
 
          @media only screen and (max-width: 767px) {
 
-            .option-price select{
+            .option-price-mobile select{
                 width: 55%;
             } 
 
-            .option-price{
+            .option-price-mobile{
                 text-align: right;
-            }       
+            }
+            .pdetail-price {
+                height: 169px !important;
+            }   
+
+            .pdetail-price-box{
+                height: auto !important;
+            } 
+
+            .box-select-price{
+                height: 79px;
+                margin-left: 96px;
+            }
+       
         }
 
         @media only screen and (min-width: 768px) {
@@ -124,6 +137,10 @@
 
             .option-price select{
                 height: 30px;
+            }
+
+            .show-price-desktop{
+                height: 30px !important;
             }
 
 
@@ -343,6 +360,8 @@
 
     $gift_Price = pricesPromotion($data->Price, $data->id);
 
+
+
 ?>
 
 
@@ -507,7 +526,7 @@
             <div class="pay mobile">
                 <div class="col-12 pdetail-des">
                     <div class="clearfix"></div>
-                    <div>
+                    <div class="info-box">
                         <div class="pdetail-info">
                             <p>Model: <b>{{ @$data->ProductSku  }}</b></p>
                            
@@ -515,28 +534,36 @@
                         <div class="scroll-box">
                            
                             <div class="pdetail-price">
-                                <div class="pdetail-price-box">
+                                <div class="pdetail-price-box show-price-mobile">
                                     {!! @$text !!}
                                     <h3> {{ str_replace(',' ,'.', number_format($data->Price)) }} ₫</h3>
                                 </div>
 
-                                <div class="option-price">
-
-                                    <select name="option-price" id="option-price_change">
-                                        <option value="1">Giá tại kho</option>
-                                        <option value="2">Giá giao hàng</option>
-                                        <option value="3">Giao hàng + lắp đặt</option>
-                                    </select>
-                                </div>
-
-                            </div>
-
-
-
-                            <div class="pdetail-status">
                                 <div class="pdetail-stockavailable">
                                     <span>{{ $status }}</span>
                                 </div>
+
+                               <div class="box-select-price">
+                            
+                                    <input type="radio" id="price-add-1" name="price-add-mobile" class="price-add-mobile" value="1" checked>
+                                    <label for="price-add-1">Giá tại kho: +0 đ</label><br>
+                                    <input type="radio" id="price-add-2" class="price-add-mobile" name="price-add-mobile" value="2">
+                                    <label for="price-add-2">Giao hàng > 20km: +100.000 đ</label><br>  
+                                    @if($data_cate===102)
+                                    <input type="radio" id="price-add-3" name="price-add-mobile" class="price-add-mobile" value="3">
+                                    <label for="price-add-3">Giá lắp đặt: +150.000 đ</label><br><br>
+                                    @endif
+
+                                    @if($data_cate===4)
+                                    <input type="radio" id="price-add-4" name="price-add-mobile" class="price-add-mobile" value="4">
+                                    <label for="price-add-1">Giá lắp đặt: +250.000 đ</label><br>
+                                    @endif
+
+                                </div>
+
+                            </div>
+                            <div class="pdetail-status">
+                                
                                 @if($data_cate ===8||$data_cate ===9||$data_cate ===1)
 
                                 <a href="tel:02473036336"><div class="buy-button-hotline nhapnhay btn">Gọi 0247.303.6336 để được giảm thêm</div></a>
@@ -1180,10 +1207,10 @@
 
                             
 
-                            {!!  @$text??'<b>GIÁ ONLINE</b>' !!}
+                            {!!  @$text??'<b>GIÁ TẠI KHO</b>' !!}
                            
                             
-                            <div class="pdetail-price-box">
+                            <div class="pdetail-price-box show-price-desktop">
 
                                 <h3>
                                     {{str_replace(',' ,'.', number_format($data->Price))  }}₫
@@ -1203,13 +1230,24 @@
                             </div>
                         </div>
 
-                        <div class="option-price">
+                        <br>
 
-                            <select name="option-price" id="option-price_change">
-                                <option value="1">Giá tại kho</option>
-                                <option value="2">Giá giao hàng</option>
-                                <option value="3">Giao hàng + lắp đặt</option>
-                            </select>
+                        <div>
+                            
+                            <input type="radio" id="age1" name="price-add" class="price-add" value="1" checked>
+                            <label for="age1">Giá tại kho: +0 đ</label><br>
+                            <input type="radio" id="age2" class="price-add" name="price-add" value="2">
+                            <label for="age2">Giao hàng > 20km: +100.000 đ</label><br>  
+                            @if($data_cate===102)
+                            <input type="radio" id="price-add-3" name="price-add" class="price-add" value="3">
+                            <label for="price-add-3">Giá lắp đặt: +150.000 đ</label><br><br>
+                            @endif
+
+                            @if($data_cate===4)
+                            <input type="radio" id="price-add-4" name="price-add" class="price-add" value="4">
+                            <label for="price-add-1">Giá lắp đặt: +250.000 đ</label><br>
+                            @endif
+
                         </div>
 
                         <div class="clearfix"></div>
@@ -1783,6 +1821,33 @@
     }
 
 
+    $('.option-price-mobile').change(function(){
+
+        value = $('#option-price_change_mobile').val();
+
+        ar_val = [];
+
+        ar_val[1] = 0;
+
+        ar_val[2] = 100000;
+
+        ar_val[3] = 150000;
+
+        ar_val[4] = 250000;
+     
+        const price = {{  $data->Price }};
+
+        new_price   =  parseInt(price) + ar_val[value];
+
+        price_format = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(new_price);
+
+        $('.show-price-mobile h3').text(price_format.replace('đ', '').trim());
+
+
+
+    });
+
+
     $('.option-price').change(function(){
 
         value = $('#option-price_change').val();
@@ -1793,7 +1858,9 @@
 
         ar_val[2] = 100000;
 
-        ar_val[3] = 250000;
+        ar_val[3] = 150000;
+
+        ar_val[4] = 250000;
      
         const price = {{  $data->Price }};
 
@@ -1801,11 +1868,11 @@
 
         price_format = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(new_price);
 
-        $('.pdetail-price-box h3').text(price_format.replace('đ', '').trim());
+      
+        $('.show-price-desktop h3').text(price_format.replace('đ', '').trim());
 
+    });
 
-
-    })
 
 
     let ar_product = [];
@@ -2258,6 +2325,63 @@
         });
         
     }
+
+    
+
+
+    $('.price-add-mobile').change(function(){
+
+        const value = $("input[name='price-add-mobile']:checked").val();
+
+        ar_val = [];
+
+        ar_val[1] = 0;
+
+        ar_val[2] = 100000;
+
+        ar_val[3] = 150000;
+
+         ar_val[4] = 150000;
+
+        const price = {{  $data->Price }};
+
+        new_price   =  parseInt(price) + ar_val[value];
+
+
+
+
+        price_format = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(new_price);
+
+      
+        $('.show-price-mobile h3').text(price_format.replace('đ', '').trim());
+
+    })
+
+
+    $('.price-add').change(function(){
+
+        const value = $("input[name='price-add']:checked").val();
+
+        ar_val = [];
+
+        ar_val[1] = 0;
+
+        ar_val[2] = 100000;
+
+        ar_val[3] = 150000;
+
+        ar_val[4] = 250000;
+     
+        const price = {{  $data->Price }};
+
+        new_price   =  parseInt(price) + ar_val[value];
+
+        price_format = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(new_price);
+
+      
+        $('.show-price-desktop h3').text(price_format.replace('đ', '').trim());
+
+    })
 
 
     
