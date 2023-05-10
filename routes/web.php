@@ -47,6 +47,7 @@ Route::get('/landingpage', 'mainController@landingpage')->name('landingpageFe');
 
 
 
+Route::get('removePromotion', 'Frontend\indexController@removePromotion');
 
 Route::get('redirect-update-cache', 'redirectLinkController@createCacheRedirect')->name('redirect-update-cache');
 
@@ -190,6 +191,8 @@ Route::post('suggest', 'AjaxController@getProductActive')->middleware('throttle:
 Route::post('filter-price-product', 'AjaxController@filterByValue')->name('filter-option');
 
 Route::post('filter-price-product-by-page', 'AjaxController@filterByPageFilter')->name('filter-option-by-page');
+
+
 
 
 Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
