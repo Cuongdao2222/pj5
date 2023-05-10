@@ -76,6 +76,12 @@ class groupProductController extends AppBaseController
             $input['link'] = convertSlug($input['name']);
         }
 
+        if(!empty($input['price_installation'])){
+
+            $input['price_installation'] = str_replace(',', '', $input['price_installation']);
+            $input['price_installation'] = str_replace('.', '', $input['price_installation']);
+        }
+
         $meta_model = new metaSeo();
 
         $meta_model->meta_title = '';
@@ -163,6 +169,12 @@ class groupProductController extends AppBaseController
 
             $input['parent_id'] = 0;
 
+        }
+
+        if(!empty($input['price_installation'])){
+
+            $input['price_installation'] = str_replace(',', '', $input['price_installation']);
+            $input['price_installation'] = str_replace('.', '', $input['price_installation']);
         }
 
         if (empty($groupProduct)) {
