@@ -293,7 +293,6 @@
 
         $gifts = gift($data['id']);
 
-
         if(empty($gifts)){
 
             if(!empty($groupProductId)){
@@ -319,6 +318,8 @@
         $gift = $gift['gift'];
 
     }
+
+
     
     ?>
 @push('style')
@@ -1250,17 +1251,25 @@
 
                             @if(!empty($gift) && $data->Quantily>0 && $deal_check_add ==false  &&  $data['Price']>0)
 
+                            
+
 
                             <!-- check giá khuyến mãi sản phẩm để tặng voucher -->
 
                             <?php 
+
+
 
                                 if($data->promotion_box==1){
 
                                     $gift_Price = '';
                                 }
                                 else{
-                                   $gift_Price = pricesPromotion($data->Price, $data->id)===''?str_replace(',' ,'.', number_format($gifts->price)):pricesPromotion($data->Price, $data->id);
+
+                                    if(!empty($gifts->price)){
+                                         $gift_Price = pricesPromotion($data->Price, $data->id)===''?str_replace(',' ,'.', number_format($gifts->price)):pricesPromotion($data->Price, $data->id);
+                                    }
+                                   
 
                                 }
 

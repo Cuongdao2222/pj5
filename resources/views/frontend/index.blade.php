@@ -857,10 +857,13 @@
 
                         @if(!empty($gift))
                             <?php 
+
                                 $gifts = $gift['gifts'];
                                 $gift = $gift['gift']; 
-                               
+
                             ?>
+
+
 
                             {{ $gifts->type ==1?'k/m chọn 1 trong 2':'' }}
 
@@ -874,6 +877,8 @@
                             </div>
 
                             @if(!empty($gifts->price))
+
+
                             <?php 
 
                                 $id_checkpromotion = $value->promotion_box==1?'':$value->id;
@@ -902,6 +907,8 @@
                         $gift_Price = pricesPromotion($value->Price, $value->id);
 
                         ?>
+
+                       
 
                         @if(!empty($gift_Price))
 
