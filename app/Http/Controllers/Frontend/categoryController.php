@@ -539,7 +539,32 @@ class categoryController extends Controller
 
                 if(!empty($val['product_id'])&& in_array($id, json_decode($val['product_id']))){
 
+                    array_push($result, $val['id']);
+                }
+               
+            }
 
+        }
+
+        return $result;
+    }  
+
+
+    public function get_Group_Product_Child($id){
+
+        $data_groupProduct = groupProduct::where('level', 2)->get()->pluck('id');
+
+        $infoProductOfGroup = groupProduct::select('product_id', 'id')->whereIn('id', $data_groupProduct)->get()->toArray();
+
+        $result = [];
+    
+
+        if(isset($infoProductOfGroup)){
+
+            foreach($infoProductOfGroup as $key => $val){
+
+
+                if(!empty($val['product_id'])&& in_array($id, json_decode($val['product_id']))){
 
                     array_push($result, $val['id']);
                 }
@@ -549,7 +574,10 @@ class categoryController extends Controller
         }
 
         return $result;
-    }    
+    }
+
+
+
 
     public function details(Request $request, $slug)
     {
@@ -658,22 +686,15 @@ class categoryController extends Controller
            
             $data_cate = 1;
 
-
             if(!empty($group_product && $group_product[0])){
 
                 $data_cate = $group_product[0];
 
             } 
 
-            if($data_cate ===8){
+            // $data_cate_child = $this->get_Group_Product_Child($findID->id);
 
-                $ar_list = $this->find_List_Id_Group(8, 2);
-
-                dd($ar_list);
-            }
-
-
-
+    
             $data_group_product = Cache::rememberForever('data_group_product_'.$data_cate, function() use ($data_cate){ 
 
                 $data_group_products = groupProduct::find($data_cate);
@@ -700,6 +721,26 @@ class categoryController extends Controller
                 return view('frontend.combo', compact('data', 'images', 'other_product', 'meta', 'pageCheck', 'data_cate'));
             }
 
+            $price_installment = groupProduct::find($data_cate)->price_installation;
+
+            if($price_installment==0){
+
+                $data_cates = $this->get_Group_Product_Child($data->id);
+
+                $price_installment = groupProduct::select('price_installation')->whereIn('id', $data_cates)->where('price_installation','>',0)->first();
+
+                if(!empty($price_installment)){
+
+                    $price_installment = $price_installment->price_installation;
+
+                    
+                }
+                else{
+                    $price_installment = 0;
+                }
+
+            }
+
             // nếu không có ảnh đại diện thì không cho index
 
             $actives_pages_blog = 1;
@@ -708,7 +749,7 @@ class categoryController extends Controller
                 $actives_pages_blog = 0;
             }
 
-            return view('frontend.details', compact('data', 'images', 'other_product', 'meta', 'pageCheck', 'data_cate', 'actives_pages_blog'));
+            return view('frontend.details', compact('data', 'images', 'other_product', 'meta', 'pageCheck', 'data_cate', 'actives_pages_blog', 'price_installment'));
         }
     }
 

@@ -549,15 +549,13 @@
                                     <label for="price-add-1">Giá tại kho: +0 đ</label><br>
                                     <input type="radio" id="price-add-2" class="price-add-mobile" name="price-add-mobile" value="2">
                                     <label for="price-add-2">Giao hàng > 20km: +100.000 đ</label><br>  
-                                    @if($data_cate===102)
+
+                                    @if(intval($price_installment)>0)
                                     <input type="radio" id="price-add-3" name="price-add-mobile" class="price-add-mobile" value="3">
-                                    <label for="price-add-3">Giá lắp đặt: +150.000 đ</label><br><br>
+                                    <label for="price-add-3">Giá lắp đặt: +{{ str_replace(',' ,'.', number_format(intval($price_installment))) }} đ</label><br><br>
                                     @endif
 
-                                    @if($data_cate===4)
-                                    <input type="radio" id="price-add-4" name="price-add-mobile" class="price-add-mobile" value="4">
-                                    <label for="price-add-1">Giá lắp đặt: +250.000 đ</label><br>
-                                    @endif
+                                 
 
                                 </div>
 
@@ -1238,15 +1236,11 @@
                             <label for="age1">Giá tại kho: +0 đ</label><br>
                             <input type="radio" id="age2" class="price-add" name="price-add" value="2">
                             <label for="age2">Giao hàng > 20km: +100.000 đ</label><br>  
-                            @if($data_cate===102)
+                            @if(intval($price_installment)>0)
                             <input type="radio" id="price-add-3" name="price-add" class="price-add" value="3">
-                            <label for="price-add-3">Giá lắp đặt: +150.000 đ</label><br><br>
+                            <label for="price-add-3">Giá lắp đặt: +{{ str_replace(',' ,'.', number_format(intval($price_installment))) }} đ</label><br><br>
                             @endif
 
-                            @if($data_cate===4)
-                            <input type="radio" id="price-add-4" name="price-add" class="price-add" value="4">
-                            <label for="price-add-1">Giá lắp đặt: +250.000 đ</label><br>
-                            @endif
 
                         </div>
 
@@ -1322,6 +1316,7 @@
                                     $gift_Price = '';
                                 }
                                 else{
+
                                    $gift_Price = pricesPromotion($data->Price, $data->id)===''?str_replace(',' ,'.', number_format($gifts->price)):pricesPromotion($data->Price, $data->id);
 
                                 }
@@ -2339,9 +2334,9 @@
 
         ar_val[2] = 100000;
 
-        ar_val[3] = 150000;
+        ar_val[3] = {{ intval($price_installment) }};
 
-         ar_val[4] = 150000;
+
 
         const price = {{  $data->Price }};
 
@@ -2368,9 +2363,9 @@
 
         ar_val[2] = 100000;
 
-        ar_val[3] = 150000;
+        ar_val[3] = {{ intval($price_installment) }};
 
-        ar_val[4] = 250000;
+       
      
         const price = {{  $data->Price }};
 
