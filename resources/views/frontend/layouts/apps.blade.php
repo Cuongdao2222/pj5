@@ -1281,9 +1281,9 @@
                                                 <a href="{{route('details','dieu-hoa-sharp')}}">
                                                     <h3>Điều hòa Sharp</h3>
                                                 </a>
-                                                <a href="{{route('details','dieu-hoa-funiki')}}">
+                                                <!-- <a href="{{route('details','dieu-hoa-funiki')}}">
                                                     <h3>Điều hòa Funiki</h3>
-                                                </a>
+                                                </a> -->
                                                 <a href="{{route('details','dieu-hoa-samsung')}}">
                                                     <h3>Điều hòa Samsung</h3>
                                                 </a>
@@ -1828,9 +1828,9 @@
                                         <a href="{{route('details','dieu-hoa-sharp')}}">
                                             <h3>Điều hòa Sharp</h3>
                                         </a>
-                                        <a href="{{route('details','dieu-hoa-funiki')}}">
+                                       <!--  <a href="{{route('details','dieu-hoa-funiki')}}">
                                             <h3>Điều hòa Funiki</h3>
-                                        </a>
+                                        </a> -->
                                         <a href="{{route('details','dieu-hoa-samsung')}}">
                                             <h3>Điều hòa Samsung</h3>
                                         </a>

@@ -209,5 +209,30 @@ class indexController extends Controller
         echo "thanh cong";
     }
 
+    public function removePromotion()
+    {
+        $data = Product::where('promotion', '<p><span style="color:#000000"><strong><span style="font-size:16px"><span style="font-family:Arial,Helvetica,sans-serif">Tặng C&ocirc;ng Lắp Đặt</span></span></strong></span></p>')->get();
+
+        if(!empty($data) && $data->count()>0){
+
+            foreach ($data as  $value) {
+
+                $product = product::find($value->id);
+
+                $product->promotion = '';
+
+                $product->save();
+              
+            }
+
+            echo "xóa khuyến mãi của". $data->count().'sản phẩm';
+        }
+        else{
+            echo "không xóa khuyến mãi của sản phẩm nào";
+        }
+    }
+
+
+
      
 }
