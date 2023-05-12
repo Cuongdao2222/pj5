@@ -359,11 +359,7 @@
 <?php
 
     $gift_Price = pricesPromotion($data->Price, $data->id);
-
-
-
 ?>
-
 
 <div class="locationbox__overlay"></div>
 <div class="locationbox">
