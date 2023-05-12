@@ -585,7 +585,7 @@
                                 @endif
 
 
-                                 @if(!empty($gift) &&  $data->Quantily>0 &&  $data['Price']>0 && $deal_check_add ==false)
+                                 @if(!empty($gift) &&  $data->Quantily>0 &&  $data['Price']>0)
 
                                 <fieldset class="p-gift">
                                         <legend id="data-pricetotal" style="color: #ff0000;font-size: 18px; font-weight: bold" data-pricetotal="0">
@@ -1249,7 +1249,7 @@
                             @endif
 
 
-                            @if(!empty($gift) && $data->Quantily>0 && $deal_check_add ==false  &&  $data['Price']>0)
+                            @if(!empty($gift) && $data->Quantily>0 &&  $data['Price']>0)
 
                             
 
@@ -1572,7 +1572,7 @@
     <div class="clear space10px"></div>
    
        
-    @if(!empty($gift) && $data->Quantily>0 && $deal_check_add ==false)   
+    @if(!empty($gift) && $data->Quantily>0)   
     <div class="promo line_h19">
         <div class="txt_b">Khuyến mại: {{ $gifts->type ==1?'Lựa chọn 1 trong 2 sản phẩm sau':'' }}</div>
         <div style="display: flex;">
