@@ -88,29 +88,33 @@ class apiController extends Controller
         $dataproduct = json_decode($request->getContent());
 
         $updated = [];
+        
+        $price_add ='';
 
         foreach ($dataproduct as $key => $value) {
 
-            if(!empty($value->price)){
+            if(!empty($value->model)){
 
-                $product = product::select('Price')->where('ProductSku','Like','%'.trim($value->model).'%')->first();
+                $product = product::select('Price', 'id')->where('ProductSku', trim($value->model))->first();
 
                 if(!empty($product)){
 
-                    $product->Price =   trim( str_replace('.', '', $value->price));
+                    $product->Price =   trim(str_replace('.', '', $value->price));
 
                     $product->save(); 
+
+                    $price_add = $product->Price;
 
                 }
 
             }
-
-            $product = product::select('Price')->where('ProductSku', trim($value->model))->first();
-
+            
+          
+        
             //chạy sản phẩm kiểm tra model 
 
             $updated[$key]['model'] = @trim($value->model);
-            $updated[$key]['price'] = @$product->Price;
+            $updated[$key]['price'] = $price_add;
           
         }
 
