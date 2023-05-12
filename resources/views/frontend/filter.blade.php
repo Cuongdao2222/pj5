@@ -357,8 +357,7 @@
                                         
                                         <strong class="price">{{ $value->Price==0?'Liên hệ':number_format(str_replace("\xc2\xa0",'',$value->Price) , 0, ',', '.')}}{{ $value->Price!=0?'đ':''   }}</strong>
 
-                                         
-                                        <!-- <p class="item-gift">Quà <b>1.500.000₫</b></p> -->
+                                
                                         <div class="item-rating">
                                             <p>
                                                 <i class="fa-solid fa-star"></i>
@@ -367,7 +366,7 @@
                                                 <i class="fa-solid fa-star"></i>
                                                 <i class="fa-solid fa-star"></i>
                                             </p>
-                                           <!--  <p class="item-rating-total">56</p> -->
+                                           
                                         </div>
 
                                         <?php  
@@ -388,7 +387,6 @@
                                                         Cache::put('gifts_Fe_'.$value->id, $gifts,10000000);
 
                                                     
-
                                                     }
                                                    
                                                     $gift = Cache::get('gifts_Fe_'.$value->id);
