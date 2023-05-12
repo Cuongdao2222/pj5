@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\product;
 use App\Models\apiUpdate;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Redirect;
 use DB;
@@ -80,6 +81,14 @@ class apiController extends Controller
     {
         return Redirect::to('https://dantri.com.vn/');
 
+    }
+
+    public function updateProductInDay()
+    {
+        $now     = Carbon::now();
+        $product = product::whereDate('updated_at', Carbon::today())->get();
+
+        dd($product);
     }
 
     public function updateProductAll(Request $request)
