@@ -510,7 +510,6 @@
                                             </div>
 
                                             @if(!empty($gifts->price))
-
                                             
 
                                             <?php 
