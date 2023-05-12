@@ -106,11 +106,12 @@ class apiController extends Controller
                     $price_add = $product->Price;
 
                 }
+                else{
+                    $price_add ='';
+                }
 
             }
             
-          
-        
             //chạy sản phẩm kiểm tra model 
 
             $updated[$key]['model'] = @trim($value->model);
