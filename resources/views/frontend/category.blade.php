@@ -493,7 +493,7 @@
 
                                         <!-- phần check giá khi lựa chọn -->
 
-                                        @if(!empty($gift)&& $checkdealpd===false)
+                                        @if(!empty($gift))
                                             <?php 
                                                 $gifts = $gift['gifts'];
                                                 $gift = $gift['gift']; 
