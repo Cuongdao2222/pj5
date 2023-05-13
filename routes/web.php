@@ -74,7 +74,7 @@ Route::post('add-lienhe','lienheController@addLienhe')->name('addlienhe');
 
 Route::get('/result.php', 'mainController@resultAlepay');
 
-// Route::get('test-product-update', 'backend\apiController@updateProductInDay');
+Route::get('test-product-update', 'backend\apiController@updateProductInDay');
 
 Route::post('alepay-pay','payController@payAlepay')->name('alepay');
 
