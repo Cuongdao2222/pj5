@@ -956,10 +956,20 @@
 
         <div  class="owl-slider-count" style="display: none;">{{ @$group->count() }}</div> 
         <?php
+
             $defineBannerGr = [0=>6, 1=>7, 2=>8, 3=>9, 6=>10, 7=>11];
 
-         ?>
+            // phần xử lý để cho điều hòa lên đầu
 
+           $group = $group->reverse();
+
+            $group = $group->push($group[3]);
+
+            $group = $group->reverse();
+
+        ?> 
+
+       
         @foreach($group as $key => $groups)
 
             <?php
@@ -973,7 +983,6 @@
                     
                 });
 
-                // xử lý khi không có cache
 
                 if(Cache::has('product_search'))
                 {
@@ -983,8 +992,9 @@
 
             ?>
 
-        @if(!empty($data) && $data->count()>0)
 
+        @if(!empty($data) && $data->count()>0 && $key !=3)
+        
         <?php 
             if(!empty($defineBannerGr[$key])){
                 $banners_group = Cache::rememberForever('banners_groups__'.$defineBannerGr[$key], function() use($defineBannerGr, $key){
@@ -996,7 +1006,7 @@
             }
 
         ?>
-         @if($banners_group->count()>0)
+         @if(!empty($banners_group->count) && $banners_group->count()>0)
 
         <div class="banner"> 
             @foreach($banners_group as $value)
@@ -1007,7 +1017,7 @@
             
         </div>
         @endif
-
+       
         <div class="box-common _cate_1942">
             <ul class="box-common__tab box-tab-mobile">
                 <li class="active-tab" data-cate-id="1942"><a href="{{  @$groups->link }}">{{  @$groups->name }}</a></li>
@@ -1666,7 +1676,7 @@
 
         var number_slider =  parseInt($('.owl-slider-count').text());
 
-        for (i = 0; i < number_slider; i++) {
+        for (i = 0; i <= number_slider; i++) {
 
             $('#banner-product_'+i).owlCarousel({
                 

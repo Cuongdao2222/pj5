@@ -61,7 +61,7 @@
 
   
 
-    @if(isset($product->Detail))
+    @if(isset($product->id))
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
