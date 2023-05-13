@@ -1676,7 +1676,7 @@
 
         var number_slider =  parseInt($('.owl-slider-count').text());
 
-        for (i = 0; i < number_slider; i++) {
+        for (i = 0; i <= number_slider; i++) {
 
             $('#banner-product_'+i).owlCarousel({
                 
