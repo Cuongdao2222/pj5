@@ -462,6 +462,8 @@ class crawlController extends Controller
 
            $updates->active = 0;
 
+           $updates->user_id = 1;
+           
            $updates->save();
 
         }
