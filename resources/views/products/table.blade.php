@@ -146,7 +146,7 @@
 
                 <br>
 
-                @if(!empty($product->Detail))
+                @if(!empty($product->id))
 
                 <div class="btn-primary" onclick="flashPrice('{{ $product->id}}')" id="prices_edit{{ $product->id }}">Sửa</div>
 
