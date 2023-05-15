@@ -226,9 +226,7 @@
                    
                     @if(isset($data))
                     <?php $arr_id_pro = []; $activeDeal = 0;?>
-
-
-                   
+                    
                     @foreach($data as $value)
                         
                             <?php   
@@ -639,9 +637,6 @@
                     propertys = propertys.join(',');
                     
                     @if(!empty($link))
-
-
-                       
                       
                             window.location.href = '{{ route('details',$link) }}?filter=,'+filter+'&group_id={{ @$id_cate  }}&property=,'+propertys+'&link={{$link  }}';
                             
