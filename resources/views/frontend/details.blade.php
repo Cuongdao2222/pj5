@@ -1227,7 +1227,7 @@
 
                         <br>
 
-                        <!-- <div>
+                        <div>
                             
                             <input type="radio" id="age1" name="price-add" class="price-add" value="1" checked>
                             <label for="age1">Giá tại kho: +0 đ</label><br>
@@ -1238,9 +1238,8 @@
                             <label for="price-add-3">Giá lắp đặt: +{{ str_replace(',' ,'.', number_format(intval($price_installment))) }} đ</label><br><br>
                             @endif
 
-
                         </div>
- -->
+
                         <div class="clearfix"></div>
                         <div class="pdetail-status">
             
@@ -1745,9 +1744,9 @@
             text-align: center;
         }
 
-        .pdetail-price{
+        /*.pdetail-price{
             height: 69px;
-        }
+        }*/
         .pdetail-price-box{
             height: 74%;
         }
