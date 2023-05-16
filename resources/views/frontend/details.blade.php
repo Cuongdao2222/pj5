@@ -1227,7 +1227,7 @@
 
                         <br>
 
-                        <div>
+                        <!-- <div>
                             
                             <input type="radio" id="age1" name="price-add" class="price-add" value="1" checked>
                             <label for="age1">Giá tại kho: +0 đ</label><br>
@@ -1240,7 +1240,7 @@
 
 
                         </div>
-
+ -->
                         <div class="clearfix"></div>
                         <div class="pdetail-status">
             
