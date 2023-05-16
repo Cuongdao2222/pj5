@@ -449,6 +449,28 @@ class crawlController extends Controller
         echo "thanh cong";
     }
 
+
+    public function hideProductFuniki()
+    {
+        $product = groupProduct::find(82)->product_id;
+
+        $update  = product::whereIn('id', json_decode($product))->get();
+
+        foreach ($update as $key => $value) {
+           
+           $updates = product::find($value->id);
+
+           $updates->active = 0;
+
+           $updates->user_id = 1;
+           
+           $updates->save();
+
+        }
+
+        echo "thanh cong";
+    }
+
     public function updateQuatity()
     {
         $data = DB::table('qualtity')->get();
