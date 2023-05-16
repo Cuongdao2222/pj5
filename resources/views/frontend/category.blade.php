@@ -65,10 +65,7 @@
 
         </style>
 
-    
     @endpush
-
-   
 
         <div class="locationbox__overlay"></div>
         
