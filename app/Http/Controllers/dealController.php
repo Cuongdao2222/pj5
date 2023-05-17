@@ -226,11 +226,12 @@ class dealController extends Controller
         $val = str_replace(['.',','],'', $request->val);
         if(!empty($val)){
             $deal = deal::find($id);
+            $id_product = $deal->product_id;
+            $products_val = product::find($id_product);
+            $deal->price  = $products_val->Price;
             $deal->deal_price = trim($val);
             $deal->save();
-
-            $id_product = $deal->product_id;
-            $productSku = (product::find($id_product))->ProductSku;
+            $productSku = $products_val->ProductSku;
             file_get_contents("https://api.dienmaynguoiviet.net/public/test-api?product_sku=".$productSku."&price=".trim($val)."&string=AtBSvrztfw5hXwxZeIf0fWf3GtuILFeCOBsRtnah");
 
         }
