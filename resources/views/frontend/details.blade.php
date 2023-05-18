@@ -540,7 +540,7 @@
                                     <span>{{ $status }}</span>
                                 </div>
 
-                               <div class="box-select-price">
+                               <!-- <div class="box-select-price">
                             
                                     <input type="radio" id="price-add-1" name="price-add-mobile" class="price-add-mobile" value="1" checked>
                                     <label for="price-add-1">Giá tại kho: +0 đ</label><br>
@@ -555,7 +555,7 @@
                                  
 
                                 </div>
-
+ -->
                             </div>
                             <div class="pdetail-status">
                                 
@@ -1227,7 +1227,7 @@
 
                         <br>
 
-                        <div>
+                        <!-- <div>
                             
                             <input type="radio" id="age1" name="price-add" class="price-add" value="1" checked>
                             <label for="age1">Giá tại kho: +0 đ</label><br>
@@ -1238,7 +1238,7 @@
                             <label for="price-add-3">Giá lắp đặt: +{{ str_replace(',' ,'.', number_format(intval($price_installment))) }} đ</label><br><br>
                             @endif
 
-                        </div>
+                        </div> -->
 
                         <div class="clearfix"></div>
                         <div class="pdetail-status">
