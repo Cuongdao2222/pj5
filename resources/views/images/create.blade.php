@@ -1,6 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
+
+    <style type="text/css">
+        .btn-show{
+            width: 100%;
+        }
+        .fixed{
+            position: fixed;
+            top:0;
+            z-index: 999;
+            background: green;
+        }
+    </style>
+
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -78,16 +91,17 @@
 
 
     ?>
+    <div class="btn-show">
+        <div class="btn btn-warning" ><a href="{{ route('products.edit', $product_id) }}">Cơ bản</a></div>
 
-    <div class="btn btn-warning" ><a href="{{ route('products.edit', $product_id) }}">Cơ bản</a></div>
+        <div class="btn btn-warning" ><a href="{{ route('group-product-selected', $product_id) }}">Danh mục</a></div>
+         <div class="btn btn-warning btn-info seo-click"><a href="{{ route('products.edit', $product_id) }}?seo=$product_id">SEO</a></div>
 
-    <div class="btn btn-warning" ><a href="{{ route('group-product-selected', $product_id) }}">Danh mục</a></div>
-     <div class="btn btn-warning btn-info seo-click"><a href="{{ route('products.edit', $product_id) }}?seo=$product_id">SEO</a></div>
-
-    <div class="btn btn-warning"><a href="{{ route('products.edit', $product_id) }}?mota={{ $product_id }}">Mô tả</a></div>
-    <div class="btn btn-warning" ><a href="{{ route('filter-property') }}?group-product={{ get_Group_Product($product_id)[0]??'' }}&productId={{ $product_id }}">Thông số</a></div>
-    <div class="btn btn-warning activess"><a href="{{ route('images.create') }}?{{ $product_id }}">Ảnh</a></div>
-    <div class="btn btn-warning" ><a href="{{ route('details',  $product_info->Link) }}" target="_blank">Xem tại web</a></div>
+        <div class="btn btn-warning"><a href="{{ route('products.edit', $product_id) }}?mota={{ $product_id }}">Mô tả</a></div>
+        <div class="btn btn-warning" ><a href="{{ route('filter-property') }}?group-product={{ get_Group_Product($product_id)[0]??'' }}&productId={{ $product_id }}">Thông số</a></div>
+        <div class="btn btn-warning activess"><a href="{{ route('images.create') }}?{{ $product_id }}">Ảnh</a></div>
+        <div class="btn btn-warning" ><a href="{{ route('details',  $product_info->Link) }}" target="_blank">Xem tại web</a></div>
+    </div>   
    
     <div class="content px-3">
 
@@ -183,6 +197,8 @@
     <div><a href="{{ route('products.index') }}">Quay về trang sản phẩm</a></div>
     @endif
 
+    @push('page_scripts')
+
     <script type="text/javascript">
 
          
@@ -239,8 +255,21 @@
 
         });    
 
-       
+        height_check = $('.btn-show').offset().top;
 
+        $(window).scroll(function (){
+
+            if($(window).scrollTop() > height_check){
+
+                $('.btn-show').addClass('fixed');
+            }
+            else{
+                $('.btn-show').removeClass('fixed');
+            }
+
+        });    
 
     </script>
+
+    @endpush
 @endsection

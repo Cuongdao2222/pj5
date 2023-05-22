@@ -2,6 +2,18 @@
 
 @section('content')
 
+    <style type="text/css">
+        .btn-show{
+            width: 100%;
+        }
+        .fixed{
+            position: fixed;
+            top:0;
+            z-index: 999;
+            background: green;
+        }
+    </style>
+
     <?php
 
      function get_Group_Product($id){
@@ -74,20 +86,20 @@
      <?php $metaSeo = App\Models\metaSeo::find($product->Meta_id); ?>
 
      
+    <div class="btn-show"> 
+       <!--  <div class="btn btn-warning"><a href="{{ route('metaSeos.edit', 1) }}"></a>Seo</div> -->
+        <div class="btn btn-warning {{ (empty($_GET['mota']) && empty($_GET['specifications']) && empty($_GET['seo']) )?'activess':'' }}" ><a href="{{ route('products.edit', $product->id) }}">Cơ bản</a></div>
+       <div class="btn btn-warning" ><a href="{{ route('group-product-selected', $product->id) }}">Danh mục</a></div>
 
-   <!--  <div class="btn btn-warning"><a href="{{ route('metaSeos.edit', 1) }}"></a>Seo</div> -->
-    <div class="btn btn-warning {{ (empty($_GET['mota']) && empty($_GET['specifications']) && empty($_GET['seo']) )?'activess':'' }}" ><a href="{{ route('products.edit', $product->id) }}">Cơ bản</a></div>
-   <div class="btn btn-warning" ><a href="{{ route('group-product-selected', $product->id) }}">Danh mục</a></div>
+       <div class="btn btn-warning btn-info seo-click {{ !empty($_GET['seo'])?'activess':'' }}"><a href="{{ route('products.edit', $product->id) }}?seo={{ $product->id }}">SEO</a></div>
 
-   <div class="btn btn-warning btn-info seo-click {{ !empty($_GET['seo'])?'activess':'' }}"><a href="{{ route('products.edit', $product->id) }}?seo={{ $product->id }}">SEO</a></div>
-
-    <div class="btn btn-warning {{ !empty($_GET['mota'])?'activess':'' }}"><a href="{{ route('products.edit', $product->id) }}?mota={{ $product->id }}">Mô tả</a></div>
-    <div class="btn btn-warning  {{ !empty($_GET['specifications'])?'activess':'' }}" ><a href="{{ route('filter-property') }}?group-product={{ get_Group_Product($product->id)[0]??'' }}&productId={{ $product->id }}">Thông số</a></div>
-    <div class="btn btn-warning"><a href="{{ route('images.create') }}?{{ $product->id }}">Ảnh</a></div>
-<!--     <div class="btn btn-warning" ><a href="#mo-ta">Thông số kỹ thuật chi tiết</a></div> -->
-    <div class="btn btn-warning" ><a href="{{ !empty($product->Link)?route('details', [$product->Link]):'' }}" target="_blank">Xem tại web</a></div>
-    <div class="btn btn-warning check-show" ><a class="" href="javascript:void(0)" onclick="show({{ $product->active==0?1:0  }}, {{ $product->id }})"> {{  $product->active==0?'Ẩn':'Hiển thị' }} </a></div>
-    
+        <div class="btn btn-warning {{ !empty($_GET['mota'])?'activess':'' }}"><a href="{{ route('products.edit', $product->id) }}?mota={{ $product->id }}">Mô tả</a></div>
+        <div class="btn btn-warning  {{ !empty($_GET['specifications'])?'activess':'' }}" ><a href="{{ route('filter-property') }}?group-product={{ get_Group_Product($product->id)[0]??'' }}&productId={{ $product->id }}">Thông số</a></div>
+        <div class="btn btn-warning"><a href="{{ route('images.create') }}?{{ $product->id }}">Ảnh</a></div>
+    <!--     <div class="btn btn-warning" ><a href="#mo-ta">Thông số kỹ thuật chi tiết</a></div> -->
+        <div class="btn btn-warning" ><a href="{{ !empty($product->Link)?route('details', [$product->Link]):'' }}" target="_blank">Xem tại web</a></div>
+        <div class="btn btn-warning check-show" ><a class="" href="javascript:void(0)" onclick="show({{ $product->active==0?1:0  }}, {{ $product->id }})"> {{  $product->active==0?'Ẩn':'Hiển thị' }} </a></div>
+    </div> 
     @if(!empty($metaSeo) && !empty($_GET['seo']))
     
    
@@ -179,7 +191,26 @@
     </div>
 @endsection
 
+
+@push('page_scripts')
 <script type="text/javascript">
+
+    height_check = $('.btn-show').offset().top;
+
+    $(window).scroll(function (){
+
+        if($(window).scrollTop() > height_check){
+
+            $('.btn-show').addClass('fixed');
+        }
+        else{
+            $('.btn-show').removeClass('fixed');
+        }
+
+    });    
+   
+
+
     
     function show(active, productId) {
         
@@ -217,3 +248,4 @@
         });
     }
 </script>
+@endpush
