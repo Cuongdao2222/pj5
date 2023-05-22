@@ -74,7 +74,6 @@ Route::post('add-lienhe','lienheController@addLienhe')->name('addlienhe');
 
 Route::get('/result.php', 'mainController@resultAlepay');
 
-Route::get('test-product-update', 'backend\apiController@updateProductInDay');
 
 Route::post('alepay-pay','payController@payAlepay')->name('alepay');
 
@@ -187,8 +186,6 @@ Route::post('suggest', 'AjaxController@getProductActive')->middleware('throttle:
 Route::post('filter-price-product', 'AjaxController@filterByValue')->name('filter-option');
 
 Route::post('filter-price-product-by-page', 'AjaxController@filterByPageFilter')->name('filter-option-by-page');
-
-
 
 
 Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {

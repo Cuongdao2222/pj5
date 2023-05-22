@@ -88,7 +88,24 @@ class apiController extends Controller
         $now     = Carbon::now();
         $product = product::whereDate('updated_at', Carbon::today())->get();
 
-        dd($product);
+        $data_update = [];
+
+        $i = 0;
+
+        foreach ($product as $key => $value) {
+            $i++;
+
+            $data_update[$i]['product'] =  $value->ProductSku;
+
+            $data_update[$i]['price']   =  $value->Price;
+            
+        }
+
+        $data = json_encode($data_update);
+
+        echo $data;
+
+        die();
     }
 
     public function updateProductAll(Request $request)
