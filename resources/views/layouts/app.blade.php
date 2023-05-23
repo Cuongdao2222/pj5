@@ -81,6 +81,11 @@
         .activess a{
             color: #fff;
         }
+        .position{
+            position: fixed;
+            top: 0;
+            width: 100%;
+        }
     
    </style>
     
@@ -104,7 +109,7 @@
 
 <div class="wrapper">
     <!-- Main Header -->
-    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light position">
         <!-- Left navbar links -->
         <ul class="navbar-nav">
             <li class="nav-item">

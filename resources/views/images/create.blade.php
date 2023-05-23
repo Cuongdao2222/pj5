@@ -8,7 +8,7 @@
         }
         .fixed{
             position: fixed;
-            top:0;
+            top:58px;
             z-index: 999;
             background: green;
         }
