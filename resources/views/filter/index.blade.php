@@ -21,10 +21,18 @@
         caption-side:bottom;
     }
 
+    /*.position{
+        position: inherit;
+    }
+*/
     caption {
       font-size: 16px;
       font-weight: bold;
       padding-top: 5px;
+    }
+
+    .btn-show{
+        margin-top:30px;
     }
 </style>
 
@@ -59,19 +67,20 @@
 
     ?>
 
- 
-<div class="btn btn-warning" ><a href="{{ route('products.edit', $product_id) }}">Cơ bản</a></div>
+    <div class="btn-show">
+        <div class="btn btn-warning" ><a href="{{ route('products.edit', $product_id) }}">Cơ bản</a></div>
 
-<div class="btn btn-warning" ><a href="{{ route('group-product-selected', $product_id) }}">Danh mục</a></div>
-<div class="btn btn-warning btn-info seo-click"><a href="{{ route('products.edit', $product_id) }}?seo={{ $product_id }}">SEO</a></div>
-<div class="btn btn-warning"><a href="{{ route('products.edit', $product_id) }}?mota={{ $product_id }}">Mô tả</a></div>
+        <div class="btn btn-warning" ><a href="{{ route('group-product-selected', $product_id) }}">Danh mục</a></div>
+        <div class="btn btn-warning btn-info seo-click"><a href="{{ route('products.edit', $product_id) }}?seo={{ $product_id }}">SEO</a></div>
+        <div class="btn btn-warning"><a href="{{ route('products.edit', $product_id) }}?mota={{ $product_id }}">Mô tả</a></div>
 
-<div class="btn btn-warning activess" ><a href="{{ route('filter-property') }}?group-product={{  $group_id??'' }}&productId={{ $product_id }}">Thông số</a></div>
- <div class="btn btn-warning"><a href="{{ route('images.create') }}?{{ $product_id }}">Ảnh</a></div>
+        <div class="btn btn-warning activess" ><a href="{{ route('filter-property') }}?group-product={{  $group_id??'' }}&productId={{ $product_id }}">Thông số</a></div>
+         <div class="btn btn-warning"><a href="{{ route('images.create') }}?{{ $product_id }}">Ảnh</a></div>
 
-@if(!empty($product_id))
-<div class="btn btn-warning" ><a href="{{ !empty($infoProduct->Link)?route('details', [$infoProduct->Link]):'' }}" target="_blank">Xem tại web</a></div>
-@endif
+        @if(!empty($product_id))
+        <div class="btn btn-warning" ><a href="{{ !empty($infoProduct->Link)?route('details', [$infoProduct->Link]):'' }}" target="_blank">Xem tại web</a></div>
+        @endif
+    </div>    
 
 
 

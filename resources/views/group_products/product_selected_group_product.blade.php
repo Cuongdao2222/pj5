@@ -7,6 +7,10 @@
     .paren1 span{
         cursor: pointer;
     }
+
+    .position{
+        position: inherit;
+    }
 </style>
 
 
