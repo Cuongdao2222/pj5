@@ -48,6 +48,9 @@
     .post-find{
         width: 20%;
     }
+    .content{
+        margin-top:50px;
+    }
 </style>
 
     <form class="form-inline active-pink-3 active-pink-4 post-find" method="get" action="{{ route('findPostAdmin') }}">
