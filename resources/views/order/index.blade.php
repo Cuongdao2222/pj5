@@ -2,6 +2,12 @@
 
 @section('content')
 
+<style type="text/css">
+    .content-wrapper{
+        margin-top:18px;
+    }
+</style>
+
 <div class="paddings">
     <script type="text/javascript" src="/includes/js/scw.js" language="javascript"></script>
     <style type="text/css">.scw           {padding:1px;vertical-align:middle;}iframe.scw     {position:absolute;z-index:1;top:0px;left:0px;visibility:hidden;width:1px;height:1px;}table.scw      {padding:0px;visibility:hidden;position:absolute;cursor:default;width:200px;top:0px;left:0px;z-index:2;text-align:center;}</style>
