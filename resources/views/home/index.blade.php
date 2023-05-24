@@ -8,6 +8,10 @@
         border: 1px solid #a0a0a0;
     }
 
+    .position{
+        position: static;
+    }
+
     #tabMenuDmPro {
         border-bottom: 0 solid #999;
         width: 100%;
