@@ -2,6 +2,12 @@
 
 @section('content')
 
+<style type="text/css">
+    .position{
+        position: static;
+    }
+</style>
+
 <a href="{{ route('redirect.creates') }}">thêm link</a>
 
 <table border="1" bordercolor="#CCCCCC" id="tb_padding" style="border-collapse:collapse; width:100%">
