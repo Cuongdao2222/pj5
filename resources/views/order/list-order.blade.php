@@ -6,6 +6,10 @@
         
     body{margin-top:20px;}
 
+    .position{
+        position: static;
+    }
+
 
     /* USER LIST TABLE */
     .user-list tbody td > img {
