@@ -17,6 +17,9 @@
         tr:nth-child(even) {
           background-color: #dddddd;
         }
+        .position{
+            position: static;
+        }
     </style>
 
 @section('content')
