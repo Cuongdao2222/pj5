@@ -46,6 +46,9 @@
                 padding: 0 15px;
                 text-align: justify;
             }
+            .font-szs{
+                font-size: 14px;
+            }
         </style>
 
     @endpush
@@ -1224,7 +1227,7 @@
                                 ?>
 
 
-                                <span> Quà tặng trị giá <strong>{{  $price_gift }} </strong> </span>
+                                <span class="font-szs"> Quà tặng trị giá <strong>{{  $price_gift }} </strong> </span>
                                
                                 @endif  
 
