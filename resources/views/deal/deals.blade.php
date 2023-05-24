@@ -16,6 +16,9 @@
         float: left;
         margin-right: 15px;
     }
+    .content{
+        margin-top: 52px;
+    }
     .user-list tbody td .user-link {
         display: block;
         font-size: 1.25em;
