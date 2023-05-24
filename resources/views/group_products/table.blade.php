@@ -3,6 +3,9 @@
     .paren1 span{
         cursor: pointer;
     }
+    .position{
+        position: static;
+    }
 </style>
 
 <div class="table-responsive">
