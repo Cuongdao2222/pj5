@@ -18,7 +18,7 @@
           background-color: #dddddd;
         }
         .position{
-            position: static;
+            position: inherit !important;
         }
     </style>
 
