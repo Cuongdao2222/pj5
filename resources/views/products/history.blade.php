@@ -4,6 +4,9 @@
 
 <style type="text/css">
 
+    .position{
+        position: static !important;
+    }
     .div-box {
         border: 1px solid #a0a0a0;
     }
