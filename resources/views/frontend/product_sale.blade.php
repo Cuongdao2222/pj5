@@ -7,6 +7,17 @@
        
         
         @if($value->active==1)
+
+        <?php
+
+            $check_deal =  Cache::get('deals')->where('product_id', $value->id);
+
+            if(!empty($check_deal)&& !empty($check_deal->deal_price) &&$check_deal->active==1){
+                
+                $value->Price = $check_deal->deal_price;
+            }
+
+        ?>
        
         <li data-id="{{ $keys }}" data-pos="1" class="item ">
             <a href='{{ route('details', $value->Link) }}' class=" main-contain" data-s="OnlineSavingCMS" data-site="2" data-pro="3" data-cache="False" data-name="M&#xE1;y gi&#x1EB7;t LG Inverter 8.5 kg FV1408S4W" data-id="227121" data-price="8840000.0" data-brand="LG" data-cate="M&#xE1;y gi&#x1EB7;t" data-box="BoxHome">
