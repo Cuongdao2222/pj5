@@ -10,7 +10,7 @@
 
         <?php
 
-            $check_deal =  Cache::get('deals')->where('product_id', $value->id);
+            $check_deal =  Cache::get('deals')->where('product_id', $value->product_id);
 
             if(!empty($check_deal)&& !empty($check_deal->deal_price) &&$check_deal->active==1){
                 
