@@ -10,11 +10,18 @@
 
         <?php
 
-            $check_deal =  Cache::get('deals')->where('product_id', $value->id);
+            $check_deal =  Cache::get('deals')->where('product_id', $value->id)->all();
 
-            if(!empty($check_deal)&& !empty($check_deal->deal_price) &&$check_deal->active==1){
+            if(!empty($check_deal)){
 
-                $value->Price = $check_deal->deal_price;
+                $check_deal = reset($check_deal);
+
+                if(!empty($check_deal->deal_price) &&$check_deal->active==1){
+                    
+                    $value->Price = $check_deal->deal_price;
+
+                }
+
             }
 
         ?>
