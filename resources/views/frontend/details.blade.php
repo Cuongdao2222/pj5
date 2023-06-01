@@ -88,7 +88,7 @@
     
 
     @endif
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/detail1fe.css') }}?ver=10">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/detail1fe.css') }}?ver=11">
     <style type="text/css">
         .copy-button{
             position: absolute;
@@ -735,7 +735,7 @@
                         <a href="tel:02473036336">0247.303.6336</a>
                       <h5>Tổng Đài mua hàng( Sau 17h )</h5>
                        <a href="tel:0913011888">091.301.1888</a> 
-                       <a href="tel:0983612828">098.361.2828</a>
+                       
                     </div>
                 </div>
             </div>
@@ -1714,6 +1714,7 @@
             font-weight: bold;
             display: block;
             line-height: 30px;
+            width: 100%;
         }
 
         .commitment h5 {
@@ -1761,8 +1762,8 @@
                         <a href="tel:02473036336">0247.303.6336</a>
                     <h5>Tổng Đài mua hàng( Sau 17h )</h5>
                      <div class="style-number-fone">
-                       <a href="tel:0913011888">091.301.1888</a>&nbsp; &nbsp; &nbsp; <span>||</span> &nbsp; &nbsp; &nbsp;
-                        <a href="tel:0983612828">098.361.2828</a>
+                       <a href="tel:0913011888">091.301.1888</a>
+                        
                      </div>
                    
                 </div>
