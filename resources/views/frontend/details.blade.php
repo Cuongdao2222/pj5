@@ -4,7 +4,7 @@
 
     <?php
 
-         $thuonghieu = [1 => 5, 3 => 35, 2 =>56, 4 =>76, 6=>115, 7=>129];
+        $thuonghieu = [1 => 5, 3 => 35, 2 =>56, 4 =>76, 6=>115, 7=>129];
 
         $namecate = Cache::rememberForever('namecate'.$data_cate, function() use($data_cate){
 
@@ -577,8 +577,23 @@
                                 </fieldset>
                                 @endif
 
-                                
+                                @if($data_cate==4)
 
+                                <div class="gift_pro">
+                                    <span class="ttl"><i class="fa-solid fa-hand-point-right"></i> Bảng giá lắp đặt điều hòa</span> 
+                                    <div class="gift_item">
+                                        <ul>
+                                            <li>
+                                                <div class="gift_info">
+                                                    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px">(<a href="https://dienmaynguoiviet.vn/huong-dan-khach-hang-tu-kich-hoat-bao-hanh-san-pham-sharp" target="_blank">Xem chi tiết</a>)</span></span></p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                
+                                @endif
 
                                 @if($checkSharp>-1)
                                 <div class="gift_pro">
@@ -1367,6 +1382,23 @@
                             </div>
 
                              @endif
+
+                             @if($data_cate==4)
+
+                                <div class="gift_pro">
+                                    <span class="ttl"><i class="fa-solid fa-hand-point-right"></i> Bảng giá lắp đặt điều hòa</span> 
+                                    <div class="gift_item">
+                                        <ul>
+                                            <li>
+                                                <div class="gift_info">
+                                                    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><a href="https://dienmaynguoiviet.vn/bang-gia-vat-tu-lap-dat" target="_blank">Xem chi tiết</a></span></span></p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            @endif
 
                             @if($checkSharp>-1)
                             <div class="gift_pro">
