@@ -8,6 +8,7 @@ use App\Models\product;
 use App\Models\apiUpdate;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Cache;
+use App\Models\deal;
 use Illuminate\Support\Facades\Redirect;
 use DB;
 
@@ -149,6 +150,37 @@ class apiController extends Controller
 
         return $updated;
 
+    }
+
+
+    public function checkDealUpdate($value='')
+    {
+        $now     = Carbon::now();
+
+        $product = deal::where('active',1)->whereDate('updated_at', Carbon::today())->get();
+
+        $data_update = [];
+
+        $i = 0;
+        if(!empty($product) && $product->count()>0){
+            foreach ($product as $key => $value) {
+
+                if($now->between($value->start, $value->end)){
+                    $i++;
+
+                    $data_update[$i]['product'] =   product::find($value->product_id)->ProductSku;
+
+                    $data_update[$i]['price']   =  $value->deal_price;
+                }
+            }
+        }
+        
+
+        $data = json_encode($data_update);
+
+        echo $data;
+
+        die();
     }
 
     public function checkproduct(Request $request)

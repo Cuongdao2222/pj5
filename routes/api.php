@@ -43,6 +43,8 @@ Route::put('api-update-product/{slug}', 'backend\apiController@updateProduct');
 
 Route::get('show-list-product-update', 'backend\apiController@updateProductInDay');
 
+Route::get('show-list-deal-update-price', 'backend\apiController@checkDealUpdate');
+
 // Route::put('api-update-product-all', 'backend\apiController@updateProductAll');
 
 // Route::put('api-check-product', 'backend\apiController@checkproduct');
