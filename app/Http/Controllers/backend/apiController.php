@@ -91,15 +91,17 @@ class apiController extends Controller
         $data_update = [];
 
         $i = 0;
+        if(!empty($product) && $product->count()>0){
+            foreach ($product as $key => $value) {
+                $i++;
 
-        foreach ($product as $key => $value) {
-            $i++;
+                $data_update[$i]['product'] =  $value->ProductSku;
 
-            $data_update[$i]['product'] =  $value->ProductSku;
-
-            $data_update[$i]['price']   =  $value->Price;
-            
+                $data_update[$i]['price']   =  $value->Price;
+                
+            }
         }
+        
 
         $data = json_encode($data_update);
 
