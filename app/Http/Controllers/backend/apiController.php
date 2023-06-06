@@ -153,7 +153,7 @@ class apiController extends Controller
     }
 
 
-    public function checkDealUpdate($value='')
+    public function checkDealUpdate()
     {
         $now     = Carbon::now();
 
