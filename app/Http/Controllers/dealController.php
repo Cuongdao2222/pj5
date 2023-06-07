@@ -232,7 +232,7 @@ class dealController extends Controller
             $deal->deal_price = trim($val);
             $deal->save();
             $productSku = $products_val->ProductSku;
-            file_get_contents("https://api.dienmaynguoiviet.net/public/test-api?product_sku=".$productSku."&price=".trim($val)."&string=AtBSvrztfw5hXwxZeIf0fWf3GtuILFeCOBsRtnah");
+            // file_get_contents("https://api.dienmaynguoiviet.net/public/test-api?product_sku=".$productSku."&price=".trim($val)."&string=AtBSvrztfw5hXwxZeIf0fWf3GtuILFeCOBsRtnah");
 
         }
         return response('thanh cong');
