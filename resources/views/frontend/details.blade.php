@@ -2154,7 +2154,7 @@
     
     view_product_id = localStorage.getItem('viewed_product');
 
-    if(view_product_id.length>=24){
+    if(view_product_id.length>=30){
 
          localStorage.clear();
 
