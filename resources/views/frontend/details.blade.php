@@ -2154,7 +2154,12 @@
     
     view_product_id = localStorage.getItem('viewed_product');
 
-    
+    if(view_product_id.length>=24){
+
+         localStorage.clear();
+
+    }
+
     button_buy_height = $('.scroll-box').offset().top;
     view_more_height  = ($('.view-more-related').offset().top);
  
