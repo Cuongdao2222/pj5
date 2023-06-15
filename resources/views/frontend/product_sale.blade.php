@@ -120,7 +120,10 @@
 
                     $price_gift = pricesPromotion($value->Price, $id_checkpromotion)===''?str_replace(',' ,'.', number_format($gifts->price)):pricesPromotion($value->Price, $id_checkpromotion);
                 ?>
-                <span> Quà tặng trị giá {{ $price_gift }} </span>
+                <div class="font-sz">
+                    <span> Quà tặng trị giá {{ $price_gift }} </span>
+                </div>
+               
                 @endif  
 
              
