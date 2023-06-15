@@ -639,8 +639,7 @@ class AjaxController extends Controller
                         array_push($data_product_id, $value);
 
                     }
-                    break;
-
+                   
                 }
             }
             $product_viewer = Cache::get('product_search')->whereIn('id', $data_product_id)->take(12);
