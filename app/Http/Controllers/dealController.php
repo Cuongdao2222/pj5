@@ -176,32 +176,51 @@ class dealController extends Controller
 
     }
 
+
+    public function findDate()
+    {
+        $deal = DB::table('deal')->select('end')->distinct()->get();
+
+        $arr_deal =[];
+
+        $value_deal  = [];
+
+        if($deal->count()>0){
+            foreach ($deal as $key => $value) {
+
+                $count_deal =  DB::table('deal')->where('end', $value->end)->get()->count();
+                
+                array_push($arr_deal, $count_deal);
+
+                array_push($value_deal, $value->end);
+            }
+
+            // sắp xếp lại mảng mà giữ nguyên key
+            arsort($arr_deal);
+
+            // lấy giá trị đâu tiên của mảng để lấy key cần tìm
+
+            $key_first = array_key_first($arr_deal);
+
+            // trả ngày kết thúc cần tính
+
+            return $value_deal[$key_first];
+
+        }
+        
+    }
+
     public function add_Deal(Request $request)
     {
         $start = $request->start;
 
         $end  = $request->end;
 
-        $deal = DB::table('deal')->select('id')->get();
+        $date_end_old = $this->findDate();
 
+        $result  = DB::table('deal')->where('end', $date_end_old)->update(['start'=>$start, 'end'=>$end]);
 
-        if(isset($deal)){
-
-            foreach($deal as $value){
-
-                $add_deal = deal::find($value->id);
-
-                $add_deal->start = $start;
-
-                $add_deal->end = $end;
-
-                $add_deal->save();
-
-
-            }    
-        }
-
-
+        
     }
 
     public function dealOrder(Request $request)
