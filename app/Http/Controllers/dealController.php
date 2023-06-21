@@ -218,7 +218,9 @@ class dealController extends Controller
 
         $date_end_old = $this->findDate();
 
-        $result  = DB::table('deal')->where('end', $date_end_old)->update(['start'=>$start, 'end'=>$end]);
+        DB::table('deal')->update(['active'=> 0]);
+
+        $result  = DB::table('deal')->where('end', $date_end_old)->update(['start'=>$start, 'end'=>$end, 'active'=>1]);
 
         
     }
