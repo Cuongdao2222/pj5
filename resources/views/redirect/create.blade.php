@@ -2,6 +2,12 @@
 
 @section('content')
 
+<style type="text/css">
+    .position{
+        position: static;
+    }
+</style>
+
 <?php 
 
     $request = !empty($redirect)?route('redirect.update', $redirect->id):route('redirect.create');
