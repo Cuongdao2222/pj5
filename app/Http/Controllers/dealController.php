@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Models\product;
 use DB;
+
+
 use App\Models\groupProduct;
 
 use App\Models\deal;
@@ -241,6 +243,8 @@ class dealController extends Controller
 
         
         $result  = DB::table('deal')->where('end', $date_end_old)->update(['start'=>$start, 'end'=>$end, 'active'=>1]);
+
+        Cache::forget('deals');
 
         
     }
