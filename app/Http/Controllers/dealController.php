@@ -204,7 +204,10 @@ class dealController extends Controller
 
             // trả ngày kết thúc cần tính
 
-            return $value_deal[$key_first];
+           
+            $return = [$value_deal[$key_first], $value_deal];
+
+            return $return;
 
         }
         
@@ -216,10 +219,27 @@ class dealController extends Controller
 
         $end  = $request->end;
 
-        $date_end_old = $this->findDate();
+        $data = $this->findDate();
 
-        DB::table('deal')->update(['active'=> 0]);
+        $date_end_old = $data[0];
 
+        $now  = Carbon::now();
+        // Kiểm tra xem ngày còn lại có nhỏ hơn thời gian hiện tại. Nếu nhỏ hơn thì tắt active
+
+        if(!empty($data[1]) && count($data[1])>0 ){
+
+            foreach ($data[1] as  $value) {
+               
+                if(Carbon::parse($value)<$now){
+
+                    DB::table('deal')->where('end', $value)->update(['active'=> 0]);
+
+                }
+
+            }
+        }
+
+        
         $result  = DB::table('deal')->where('end', $date_end_old)->update(['start'=>$start, 'end'=>$end, 'active'=>1]);
 
         
