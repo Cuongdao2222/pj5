@@ -2072,7 +2072,7 @@
                             
                             <a class="list-mn" href="{{route('details','may-loc-nuoc-ao-smith')}}">
                             <i class="fa-regular fa-refrigerator"></i>
-                                <span>Máy lọc nước</span>
+                                <span>A.O.Smith</span>
                             </a>
 
 
@@ -2128,7 +2128,7 @@
                             <a href="{{ route('details','tu-mat') }}">Tủ Mát</a>
                             <a href="{{ route('details','gia-dung') }}">Gia Dụng</a>
                             <a href="{{ route('details','lo-nuong') }}">Lò Nướng</a>
-                            <a href="{{ route('details','may-loc-nuoc') }}">Máy lọc nước</a>
+                            <!-- <a href="{{ route('details','may-loc-nuoc') }}">Máy lọc nước</a> -->
                             <a href="{{ route('details','may-say-quan-ao') }}">Máy sấy quần áo</a>
                             <a href="{{ route('details','may-loc-nuoc-ao-smith') }}">A.O.Smith</a>
                             <a href="{{ route('details','quat') }}">Quạt</a>
