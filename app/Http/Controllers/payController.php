@@ -73,7 +73,7 @@ class payController extends Controller
 
         $installment->address = $data['buyerAddress'];
 
-        $installment->qualtity = 1;
+        $installment->qualtity = $data['totalItem'];
 
         $installment->city = $data['buyerCity'];
 
