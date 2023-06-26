@@ -246,6 +246,10 @@ class dealController extends Controller
 
         Cache::forget('deals');
 
+        $value = Cache::rememberForever('deals', function() {
+            return DB::table('deal')->get();
+        });
+
         
     }
 
