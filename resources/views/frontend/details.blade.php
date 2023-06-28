@@ -1065,8 +1065,17 @@
                     <div class="box03 group desk">
                         @foreach ($chunk as $relationProducts)
                             <?php 
-                                $check_deals_pd =  Cache::get('deals')->where('product_id', $relationProducts->id)->first();
+                                //check cache deals
+                                if (!Cache::has('deals')){
 
+                                     $value = Cache::rememberForever('deals', function() {
+                                        return DB::table('deal')->get();
+                                    });
+                                   
+                                } 
+                              
+                                $check_deals_pd =  Cache::get('deals')->where('product_id', $relationProducts->id)->first();
+                               
                                 if(!empty($check_deals_pd)){
 
                                     $relationProducts->Price = $check_deals_pd['deal_price'];
