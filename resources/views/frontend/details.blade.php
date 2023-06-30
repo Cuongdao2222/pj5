@@ -1061,6 +1061,8 @@
                 
                 <p class="padtex">Có <strong> {{ $relationProduct->count() }} Kích cỡ màn hình.</strong> Bạn đang chọn <strong>{{ $size_tv }} inch</strong></p>
                 <div class="scrolling_inner">
+
+                   
                     @foreach($relationProduct->chunk(4) as $chunk)
                     <div class="box03 group desk">
                         @foreach ($chunk as $relationProducts)
@@ -1075,12 +1077,16 @@
                                 } 
                               
                                 $check_deals_pd =  Cache::get('deals')->where('product_id', $relationProducts->id)->first();
-                               
+
                                 if(!empty($check_deals_pd)){
 
-                                    $relationProducts->Price = $check_deals_pd['deal_price'];
+                                    $relationProducts->Price = $check_deals_pd->deal_price??'';
 
                                 }
+                                else{
+                                    $relationProducts->Price = $relationProducts->Price;
+                                }
+
 
                             ?>
 
