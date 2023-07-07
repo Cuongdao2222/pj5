@@ -139,7 +139,7 @@
                 
                 <label>Giá</label>
 
-                <div style="width: 100%;">
+                <div style="width: 50%;">
                     <input type="" name="flashPrice" value="{{ @str_replace(',' ,'.', number_format($product->Price))}} " id="flashPrice{{$product->id}}" style="width:100%">
                 </div>
 
