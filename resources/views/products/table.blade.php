@@ -139,7 +139,7 @@
                 
                 <label>Giá</label>
 
-                <div style="width: 50%;">
+                <div style="width: 100%;">
                     <input type="" name="flashPrice" value="{{ @str_replace(',' ,'.', number_format($product->Price))}} " id="flashPrice{{$product->id}}" style="width:100%">
                 </div>
 
@@ -184,7 +184,7 @@
                         
                 <label>Giá Deal</label>
 
-                <div style="width: 50%;">
+                <div style="width: 100%;">
                     <input type="" name="flashPrice" value="{{ @str_replace(',' ,'.', number_format($check_deal->deal_price))}} " class="edit_price_deal{{ $check_deal->id }}" style="width:100%">
                 </div>
 
