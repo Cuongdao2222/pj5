@@ -29,9 +29,7 @@
         <th>Quà tặng</th>
        
         <th>Ngày tạo</th>
-        @if(Auth::user()->id==4 || Auth::user()->id==6)
-        <th>Chênh lệch giá</th>
-        @endif
+      
         <th colspan="3">Action</th>
         </tr>
         </thead>
@@ -120,10 +118,10 @@
 
             <tr>
                 <td><img src="{{ asset($product->Image) }}" width="150px" height="150px"></td>
-            <td style="width: 400px;">
+            <td style="width: 300px;">
                 <a href="{{ route('products.edit', [$product->id]) }}">{{ $product->Name }}</a>
                 <br>
-                thời gian update :{{ @$product->updated_at->format('d/m/Y, H:i:s') }}
+                thời gian: {{ @$product->updated_at->format('d/m/Y, H:i:s') }}
 
                 <br>
                 người update : {{ @App\User::find($product->user_id)->name }} 
@@ -137,7 +135,7 @@
                 <a href="{{ route('view-history', $product->id) }}">xem lịch sử</a>
                 @endif
             </td>
-            <td width="200">
+            <td width="100">
                 
                 <label>Giá</label>
 
