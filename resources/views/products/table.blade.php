@@ -135,7 +135,7 @@
                 <a href="{{ route('view-history', $product->id) }}">xem lịch sử</a>
                 @endif
             </td>
-            <td width="50">
+            <td width="200">
                 
                 <label>Giá</label>
 
@@ -190,7 +190,7 @@
 
                 <br>
 
-                <div class="btn-primary" onclick="edit_price_deal({{ $check_deal->id }})" style="width:50%">Sửa</div>
+                <div class="btn-primary" onclick="edit_price_deal({{ $check_deal->id }})" style="width:100%">Sửa</div>
 
                 <br>
                 @endif
