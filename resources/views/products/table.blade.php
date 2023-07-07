@@ -135,7 +135,7 @@
                 <a href="{{ route('view-history', $product->id) }}">xem lịch sử</a>
                 @endif
             </td>
-            <td width="75">
+            <td width="50">
                 
                 <label>Giá</label>
 
