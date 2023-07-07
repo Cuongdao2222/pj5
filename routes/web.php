@@ -41,6 +41,9 @@ Route::get('/cache', 'Frontend\indexController@cache')->name('cache');
 Route::get('/ckfinder.html', 'mainController@ckfinder')->middleware('auth');
 
 
+Route::get('update-qualtity-product-to-sheet', 'apiController@updateQuatityToSheet');
+
+
 Route::get('/landingpage', 'mainController@landingpage')->name('landingpageFe');
 
 

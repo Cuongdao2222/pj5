@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use DB;
+
 class apiController extends Controller
 {
     public function seedDB()
@@ -121,4 +123,48 @@ class apiController extends Controller
        
 
     }
-}
+
+    public function updateQuatityToSheet(Request $request)
+    {
+        
+        $context = stream_context_create(array(
+            'http' => array(
+                
+                'method' => 'GET',
+
+                'header' => "Content-Type: application/x-www-form-urlencoded\r\n".
+                            "token: eecc19a1cabb51a5080f6f56399f7e82",
+            )
+        ));
+
+        // Send the request
+        $response = file_get_contents('https://api.dienmaynguoiviet.net/public/api/show-product-qualtity', FALSE, $context);
+
+        $data = json_decode($response);
+
+        if(count($data)>0){
+
+            foreach($data as $val){
+
+                // kiểm tra sản phẩm có tồn lớn hơn 0;
+
+                if(intval($val->qualtity)>0){
+
+                    // kiểm tra xem model có tồn tại trong db nếu tồn tại thì update số lượng là 10sp
+
+                    $check_model = DB::table('products')->where('ProductSku', $val->model)->first();
+
+                    if(!empty($check_model)){
+
+                        DB::table('products')->where('ProductSku', $val->model)->update(['Quantily'=>10]);
+
+                        dd($val->model);
+
+                    }
+
+                }
+
+            }
+        }
+    }
+}   
