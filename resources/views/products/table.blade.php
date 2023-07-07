@@ -5,7 +5,7 @@
     }
 
     .table td, .table th{
-        padding: 0 3.5px!important;
+        padding: 3.5px!important;
     }
 </style>
 
@@ -27,6 +27,7 @@
        <!--  <th>Sản phẩm Sale</th>
         <th>Sản phẩm Mới</th> -->
         <th>Quà tặng</th>
+       
         <th>Ngày tạo</th>
         @if(Auth::user()->id==4 || Auth::user()->id==6)
         <th>Chênh lệch giá</th>
@@ -136,12 +137,12 @@
                 <a href="{{ route('view-history', $product->id) }}">xem lịch sử</a>
                 @endif
             </td>
-            <td width="100">
+            <td width="200">
                 
                 <label>Giá</label>
 
-                <div>
-                    <input type="" name="flashPrice" value="{{ @str_replace(',' ,'.', number_format($product->Price))}} " id="flashPrice{{$product->id}}">
+                <div style="width: 100%;">
+                    <input type="" name="flashPrice" value="{{ @str_replace(',' ,'.', number_format($product->Price))}} " id="flashPrice{{$product->id}}" style="width:100%">
                 </div>
 
                 <br>
@@ -185,7 +186,7 @@
                         
                 <label>Giá Deal</label>
 
-                <div>
+                <div style="width: 50%;">
                     <input type="" name="flashPrice" value="{{ @str_replace(',' ,'.', number_format($check_deal->deal_price))}} " class="edit_price_deal{{ $check_deal->id }}">
                 </div>
 
@@ -237,7 +238,7 @@
 
           
 
-            <td style="width:40%">
+            <td style="width:20%">
                 <input type="checkbox" id="hot{{ $product->id }}" name="hot"  onclick='handleClick({{ $product->id }});' data-id ="{{ get_Group_Product($product->id)[0]??'' }}" {{ in_array($product->id, $list_hot)?'checked':'' }}>
                 Sản phẩm Show Home
 
@@ -295,9 +296,8 @@
 
             ?>
 
-
-            <td>
-                <select id="gift{{ $product->id }}" onchange="add_gift_group({{ $product->id }})">
+            <td width="350">
+                <select id="gift{{ $product->id }}" onchange="add_gift_group({{ $product->id }})" style="width:100%">
                     <option value="0">Không chọn</option>
 
 
@@ -313,6 +313,9 @@
                        
                 </select>
             </td>
+
+
+           
             <td>{{ $product->created_at->format('d/m/Y, H:i:s') }}</td>
             @if(Auth::user()->id==4 || Auth::user()->id==6)
             <td>{{  str_replace(',' ,'.', number_format(intval($product->Price) - intval($product->InputPrice)))   }}</td>
