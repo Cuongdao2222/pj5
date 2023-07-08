@@ -315,9 +315,7 @@
 
            
             <td>{{ $product->created_at->format('d/m/Y, H:i:s') }}</td>
-            @if(Auth::user()->id==4 || Auth::user()->id==6)
-            <td>{{  str_replace(',' ,'.', number_format(intval($product->Price) - intval($product->InputPrice)))   }}</td>
-            @endif
+          
 
             
                 <td width="120">
