@@ -42,15 +42,17 @@
 
         $checkDaikin = false;
 
-        if(!empty($thuonghieu[$data_cate])&& !empty($ar_groups_info)){
+        // hạ phần check Daikin
+        
+        // if(!empty($thuonghieu[$data_cate])&& !empty($ar_groups_info)){
 
             
-            if(trim(str_replace($namecate->name, '',  $ar_groups_info[0]['name']))==='Daikin'){
-                $checkDaikin = true;
+        //     if(trim(str_replace($namecate->name, '',  $ar_groups_info[0]['name']))==='Daikin'){
+        //         $checkDaikin = true;
 
-            }
+        //     }
 
-        }   
+        // }   
 
         $checkSharp = strpos($data->Name, 'Sharp');
 
