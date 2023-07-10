@@ -16,6 +16,12 @@
     thead{
         font-size: 14px;
     }
+    .btn-group a, .btn-group .btn-danger{
+        font-size: 14px;
+    }
+    .btn-xs{
+        width: 45px;
+    }
 </style>
 
 <div class="table-responsive">
@@ -156,7 +162,7 @@
 
                 @if(!empty($product->id))
 
-                <div class="btn-primary" onclick="flashPrice('{{ $product->id}}')" id="prices_edit{{ $product->id }}" style="width:50%">Sửa</div>
+                <div class="btn-primary" onclick="flashPrice('{{ $product->id}}')" id="prices_edit{{ $product->id }}" style="width:100%">Sửa</div>
 
                
                 @endif
@@ -237,28 +243,28 @@
         
             <td style="width:20%">
                 <input type="checkbox" id="hot{{ $product->id }}" name="hot"  onclick='handleClick({{ $product->id }});' data-id ="{{ get_Group_Product($product->id)[0]??'' }}" {{ in_array($product->id, $list_hot)?'checked':'' }}>
-                Sản phẩm Show Home
+                S/P Show Home
 
                 <br>
 
                  <input type="checkbox" id="sale{{ $product->id }}" name="sale"  onclick='saleClick({{ $product->id }});' data-id ="{{ get_Group_Product($product->id)[0]??'' }}" {{ in_array($product->id, $list_sales)?'checked':'' }}>
-                 Sản phẩm Sale
+                 S/P Sale
                 <br> 
 
                 <input type="checkbox" id="new{{ $product->id }}" name="new"  onclick='newClick({{ $product->id }});' data-id ="{{ get_Group_Product($product->id)[0]??'' }}" {{ in_array($product->id, $list_new)?'checked':'' }}>
-                  Sản phẩm Mới
+                  S/P Mới
                   <br>
                 <input type="checkbox" id="hots{{ $product->id }}" name="hots"  onclick='hotClick({{ $product->id }});' data-id ="{{ get_Group_Product($product->id)[0]??'' }}" {{ in_array($product->id, $list_hots)?'checked':'' }}>
-                  Sản phẩm Hot
+                  S/P Hot
                 <br>
 
                 <input type="checkbox"  name="promotionClick" id="promotionClick{{ $product->id }}"  onclick='promotionClick({{ $product->id }});' data-id ="{{ get_Group_Product($product->id)[0]??'' }}" {{ $product->promotion_box==1?'checked':'' }}>
-                  Nhận khuyến mãi theo option chọn
+                  Nhận K/M theo option chọn
                 <br>
 
                 <input type="checkbox" id="limit{{ $product->id }}" name="limit"  onclick="limit({{ $product->id }})" {{  $product->limits ==1?'checked':'' }}>
 
-                Sản phẩm số lượng có hạn
+                S/P số lượng có hạn
   
             </td>
             
