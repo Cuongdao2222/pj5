@@ -22,6 +22,13 @@
     .btn-xs{
         width: 45px;
     }
+    .card-footer{
+        display: none;
+    }
+    .table:not(.table-dark) {
+
+        margin: 0;
+    }    
 </style>
 
 <div class="table-responsive">
