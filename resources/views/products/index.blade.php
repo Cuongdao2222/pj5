@@ -22,13 +22,11 @@
 
     </button>
 
-
-
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <!-- Search form -->
+                     <div class="btn btn-red"><a href="{{ route('deal') }}">deal sản phẩm</a></div>
                     
                 </div>
                 <div class="col-sm-6">
@@ -38,7 +36,7 @@
                     </a>
                 </div>
 
-                <div class="btn btn-red"><a href="{{ route('deal') }}">deal sản phẩm</a></div>
+    
 
                 <div class="bthongbao"></div>
             </div>

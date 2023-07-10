@@ -20,10 +20,10 @@
         <th>Tên sản phẩm</th>
         <th>Sửa nhanh</th>
         
-        <th>Số lượng trong kho</th>
-        <th>Sắp xếp sản phẩm gợi ý</th>
+        <th>Tồn kho</th>
+        <th>Sắp xếp</th>
         <th>Hiển thị</th>
-        <th>chọn danh mục nhanh</th>
+        <!-- <th>chọn danh mục nhanh</th> -->
 
       
         <th>Tick sản phẩm</th>
@@ -127,7 +127,7 @@
                 thời gian: {{ @$product->updated_at->format('d/m/Y, H:i:s') }}
 
                 <br>
-                người update : {{ @App\User::find($product->user_id)->name }} 
+                update : {{ @App\User::find($product->user_id)->name }} 
                 <br>
 
                 <?php 
@@ -235,10 +235,7 @@
 
             <td><input type="checkbox" id="active{{ $product->id }}" name="active" onclick='active({{ $product->id }})'   {{ $product->active==1?'checked':'' }}></td>
 
-            <td><a href="{{ route('group-product-selected', $product->id) }}"class="btn-primary">Sửa</a></td>
-
-          
-
+        
             <td style="width:20%">
                 <input type="checkbox" id="hot{{ $product->id }}" name="hot"  onclick='handleClick({{ $product->id }});' data-id ="{{ get_Group_Product($product->id)[0]??'' }}" {{ in_array($product->id, $list_hot)?'checked':'' }}>
                 Sản phẩm Show Home
@@ -326,29 +323,29 @@
                     <div class='btn-group' style="display:block;">
                         <a href="{{ !empty($product->Link)?route('details', [$product->Link]):'' }}"
                            class='btn btn-default btn-xs' target="_blank">
-                            <i class="far fa-eye"></i>
+                            view
                         </a>
                         
                         <a href="{{ route('products.edit', [$product->id]) }}"
                            class='btn btn-default btn-xs'>
-                            <i class="far fa-edit"></i>
+                            sửa
                         </a>
                         
 
                          <a href="{{ route('images.create', [$product->id]) }}"
                            class='btn btn-default btn-xs'>
-                            <i class="fas fa-image"></i>
+                            ảnh
                         </a>
 
                         
 
                          <a href="{{ route('filter-property') }}?group-product={{ get_Group_Product($product->id)[0]??'' }}&productId={{ $product->id }}"
                            class='btn btn-default btn-xs'>
-                            <i class="fa fa-filter"></i>
+                           lọc
                         </a>
                         
 
-                        {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
+                        {!! Form::button('xóa', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
                     </div>
                     {!! Form::close() !!}
                 </td>
