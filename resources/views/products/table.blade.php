@@ -10,6 +10,12 @@
     .td-price{
         width: 10%;
     }
+    .btn-primary{
+        margin-top: 8px;
+    }
+    thead{
+        font-size: 14px;
+    }
 </style>
 
 <div class="table-responsive">
@@ -22,7 +28,7 @@
         
         <th>Tồn kho</th>
         <th>Sắp xếp</th>
-        <th>Hiển thị</th>
+        <th>Show</th>
         <!-- <th>chọn danh mục nhanh</th> -->
 
       
@@ -146,13 +152,13 @@
                     <input type="" name="flashPrice" value="{{ @str_replace(',' ,'.', number_format($product->Price))}} " id="flashPrice{{$product->id}}" style="width:100%">
                 </div>
 
-                <br>
+               
 
                 @if(!empty($product->id))
 
                 <div class="btn-primary" onclick="flashPrice('{{ $product->id}}')" id="prices_edit{{ $product->id }}" style="width:50%">Sửa</div>
 
-                <br>
+               
                 @endif
 
                 @if(!empty($product->id))
@@ -207,9 +213,7 @@
                 <label>Sửa</label>
                 <input type="" name="qualtily" value="{{ $product->Quantily }}" id="qualtity{{ $product->id }}" style="width: 100%;">
 
-                <br>
-
-                <br>
+               
 
                 <div class="btn-primary" onclick="flashQualtily('{{ $product->id}}')"  id="qualtity_edit{{ $product->id }}">Sửa</div>
 
@@ -222,14 +226,11 @@
                 <label>Sửa</label>
                 <input type="" name="sale_order" value="{{ $product->sale_order }}" id="sale_order{{ $product->id }}" style="width: 100%;">
 
-                <br>
-
-                <br>
-
+              
                 <div class="btn-primary" onclick="flashOrderSale('{{ $product->id}}')"  id="sale_order_edit{{ $product->id }}">Sửa</div>
 
 
-                <br>
+               
 
             </td>
 
