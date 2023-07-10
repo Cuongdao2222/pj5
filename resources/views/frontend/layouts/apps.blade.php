@@ -22,8 +22,9 @@
         <title>{{ $meta->meta_title }}</title>
         <meta name="description" content="{{ $meta->meta_content }}"/>
         <meta property="og:title" content="{{ $meta->meta_title }}" />
-        
-
+        @if(!empty($data) && !empty($data->Image))
+        <meta property="og:image" content="{{ asset($data->Image) }}"/>
+        @endif
         <meta property="og:description" content="{{ $meta->meta_content }}" /> 
         <meta name="keywords" content="{{ $meta->meta_key_words??'sieu thi dien may, siêu thị điện máy, mua điện máy giá rẻ, siêu thị điện máy uy tín, siêu thị điện máy trực tuyến' }}"/>
         @else
