@@ -6,6 +6,9 @@
     .content-wrapper{
         margin-top:18px;
     }
+    .position{
+        position: static !important;
+    }
 </style>
 
 <div class="paddings">

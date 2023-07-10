@@ -7,7 +7,7 @@
     body{margin-top:20px;}
 
     .position{
-        position: static;
+        position: static !important;
     }
 
 
