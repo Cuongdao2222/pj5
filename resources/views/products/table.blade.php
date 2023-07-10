@@ -197,8 +197,6 @@
                     <input type="" name="flashPrice" value="{{ @str_replace(',' ,'.', number_format($check_deal->deal_price))}} " class="edit_price_deal{{ $check_deal->id }}" style="width:100%">
                 </div>
 
-                <br>
-
                 <div class="btn-primary" onclick="edit_price_deal({{ $check_deal->id }})" style="width:100%">Sửa</div>
 
                 <br>
