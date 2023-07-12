@@ -28,7 +28,10 @@
     .table:not(.table-dark) {
 
         margin: 0;
-    }    
+    }   
+    .date-created{
+        color: #000;
+    } 
 </style>
 
 <div class="table-responsive">
@@ -50,7 +53,7 @@
         <th>Sản phẩm Mới</th> -->
         <th>Quà tặng</th>
        
-        <th>Ngày tạo</th>
+        <th><a href="#" class="date-created">Ngày tạo</a></th>
       
         <th colspan="3">Action</th>
         </tr>

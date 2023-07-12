@@ -729,7 +729,7 @@ class productController extends AppBaseController
 
     public function sosanh()
     {
-        $data = $_GET['list'];
+        $data = $_GET['list']??'';
        
 
         if(empty($data)){

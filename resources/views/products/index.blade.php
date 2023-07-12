@@ -45,7 +45,7 @@
         
 
     </section>
-
+                      
     <div class="content px-3">
 
         @include('flash::message')
@@ -56,11 +56,9 @@
             <div class="card-body p-0">
                 @include('products.table')
 
-                <div class="card-footer clearfix">
-                    <div class="float-right">
+               
                         @include('adminlte-templates::common.paginate', ['records' => $products])
-                    </div>
-                </div>
+                   
             </div>
 
         </div>
