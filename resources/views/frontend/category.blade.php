@@ -465,8 +465,10 @@
 
                                         <!-- nếu tồn tại gift_price thì hiển thị -->
 
+                                        
 
-                                        @if(!empty($parent_id_cate) && !empty($gift_Price) && $parent_id_cate !=8)
+
+                                        @if(!empty($parent_id_cate) && !empty($gift_Price) && $parent_id_cate !=8 && $parent_id_cate !=100)
 
 
                                         <?php 
