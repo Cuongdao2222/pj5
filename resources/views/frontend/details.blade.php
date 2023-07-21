@@ -631,7 +631,7 @@
 
                                 <!-- nếu tồn tại gift_price thì hiển thị -->
 
-                                @if(!empty($gift_Price))
+                                @if(!empty($gift_Price) && $data_cate !=8)
 
                                 <?php 
 
@@ -1307,7 +1307,7 @@
                             @endif
 
                             
-                            @if(!empty($gift_Price))
+                            @if(!empty($gift_Price) && $data_cate !=8)
 
                             <?php 
 

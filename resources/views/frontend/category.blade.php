@@ -172,7 +172,7 @@
 
 
 
-        @if(!empty($parent_id_cate)&&$parent_id_cate==8)
+        @if(!empty($parent_id_cate)&& $parent_id_cate==8)
 
         <select class="option-href" style="width: 35%;">
             <option value="https://dienmaynguoiviet.vn/gia-dung" {{ $id_cate==8?'selected':'' }} >Tất cả sản phẩm</option>
@@ -464,7 +464,7 @@
                                         ?>     
 
                                         <!-- nếu tồn tại gift_price thì hiển thị -->
-                                        @if(!empty($gift_Price))
+                                        @if(!empty($gift_Price) && $id_cate !=8)
 
                                         <?php 
 
