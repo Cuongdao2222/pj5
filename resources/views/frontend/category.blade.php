@@ -124,7 +124,7 @@
             </section>
 
         </div>
-       
+
  
         <div class="box-filter top-box  block-scroll-main cate-1942">
 
@@ -464,14 +464,17 @@
                                         ?>     
 
                                         <!-- nếu tồn tại gift_price thì hiển thị -->
-                                        @if(!empty($gift_Price) && $id_cate !=8)
+
+
+                                        @if(!empty($parent_id_cate) && !empty($gift_Price) && $parent_id_cate !=8)
+
 
                                         <?php 
 
                                             $image_gift_promotion = definePrice($gift_Price);
                                         ?>
 
-                                         <div class="option-gift">
+                                        <div class="option-gift">
                                             
                                             <div class="quatang"><img src="{{ $image_gift_promotion }}"></div>
                                            
@@ -481,6 +484,33 @@
                                             <span class="ttl"><i class="fa-solid fa-gift"></i> Giảm ngay {{ $gift_Price }} đ</span>
 
                                         </div>
+
+                                        @else
+
+                                        @if(!empty($gift_Price))
+
+                                            <!-- trường hợp là bộ lọc -->
+
+                                            @if($id_cate!=8)
+
+                                                <?php 
+
+                                                    $image_gift_promotion = definePrice($gift_Price);
+                                                ?>
+
+                                                <div class="option-gift">
+                                                    
+                                                    <div class="quatang"><img src="{{ $image_gift_promotion }}"></div>
+                                                   
+                                                </div>
+                                                <div class="gift_pro">
+                                                    
+                                                    <span class="ttl"><i class="fa-solid fa-gift"></i> Giảm ngay {{ $gift_Price }} đ</span>
+
+                                                </div>
+                                        
+                                            @endif   
+                                        @endif 
 
                                         @endif
 
