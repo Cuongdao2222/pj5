@@ -498,6 +498,7 @@
             $deal_active = 1;
 
             $ar_Deal_Pd = [];
+
         ?>
 
         @if(!empty($deal_check) && $deal_check->count()>0 && $now->between($deal_check[0]->start, $deal_check[0]->end) && $deal_active ===1)
@@ -629,7 +630,7 @@
         <div class="clearfix"></div> 
 
      
-        <div class="prd-promo has-banner" style="background: #3bbcc6;" data-html-id="3109">
+        <div class="prd-promo has-banner" style="background: #E9162E;" data-html-id="3109">
 
             @if(!empty($bannerUnderSale[0]['image']))
 
@@ -802,6 +803,8 @@
 
                 @else
                 <ul class="listproduct" data-total="39">
+
+
                     @foreach($product_sale as $keys => $value)
                     @if($value->active==1)
 
@@ -858,7 +861,7 @@
 
                         ?>
 
-                        @if(!empty($gift))
+                        @if(!empty($gift) && $value->group_id !=8)
                             <?php 
 
                                 $gifts = $gift['gifts'];
@@ -1020,7 +1023,7 @@
             
         </div>
         @endif
-       
+
         <div class="box-common _cate_1942">
             <ul class="box-common__tab box-tab-mobile">
                 <li class="active-tab" data-cate-id="1942"><a href="{{  @$groups->link }}">{{  @$groups->name }}</a></li>
@@ -1170,7 +1173,7 @@
 
                             ?>
 
-                            @if(!empty($gift_Price))
+                            @if(!empty($gift_Price) && $groups->id !=8)
 
                             <?php 
 

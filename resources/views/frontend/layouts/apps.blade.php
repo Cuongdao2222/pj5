@@ -22,8 +22,9 @@
         <title>{{ $meta->meta_title }}</title>
         <meta name="description" content="{{ $meta->meta_content }}"/>
         <meta property="og:title" content="{{ $meta->meta_title }}" />
-        
-
+        @if(!empty($data) && !empty($data->Image))
+        <meta property="og:image" content="{{ asset($data->Image) }}"/>
+        @endif
         <meta property="og:description" content="{{ $meta->meta_content }}" /> 
         <meta name="keywords" content="{{ $meta->meta_key_words??'sieu thi dien may, siêu thị điện máy, mua điện máy giá rẻ, siêu thị điện máy uy tín, siêu thị điện máy trực tuyến' }}"/>
         @else
@@ -232,7 +233,7 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}?ver=1"> 
         <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/apps.css') }}?ver=14">
-        <link rel="stylesheet" type="text/css" href="{{asset('css/dienmay.css')}}?ver=96">
+        <link rel="stylesheet" type="text/css" href="{{asset('css/dienmay.css')}}?ver=97">
         <link rel="stylesheet" type="text/css" href="{{asset('css/detailsfe.css')}}?ver=7"> 
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -405,7 +406,7 @@
             }
 
             .header__top {
-                background-color: #3bbcc6 !important;
+                background-color: #E9162E !important;
             }
         </style>
 

@@ -124,7 +124,7 @@
             </section>
 
         </div>
-       
+
  
         <div class="box-filter top-box  block-scroll-main cate-1942">
 
@@ -172,7 +172,7 @@
 
 
 
-        @if(!empty($parent_id_cate)&&$parent_id_cate==8)
+        @if(!empty($parent_id_cate)&& $parent_id_cate==8)
 
         <select class="option-href" style="width: 35%;">
             <option value="https://dienmaynguoiviet.vn/gia-dung" {{ $id_cate==8?'selected':'' }} >Tất cả sản phẩm</option>
@@ -464,14 +464,19 @@
                                         ?>     
 
                                         <!-- nếu tồn tại gift_price thì hiển thị -->
-                                        @if(!empty($gift_Price))
+
+                                        
+
+
+                                        @if(!empty($parent_id_cate) && !empty($gift_Price) && $parent_id_cate !=8 && $parent_id_cate !=100)
+
 
                                         <?php 
 
                                             $image_gift_promotion = definePrice($gift_Price);
                                         ?>
 
-                                         <div class="option-gift">
+                                        <div class="option-gift">
                                             
                                             <div class="quatang"><img src="{{ $image_gift_promotion }}"></div>
                                            

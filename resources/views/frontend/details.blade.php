@@ -42,15 +42,17 @@
 
         $checkDaikin = false;
 
-        if(!empty($thuonghieu[$data_cate])&& !empty($ar_groups_info)){
+        // hạ phần check Daikin
+        
+        // if(!empty($thuonghieu[$data_cate])&& !empty($ar_groups_info)){
 
             
-            if(trim(str_replace($namecate->name, '',  $ar_groups_info[0]['name']))==='Daikin'){
-                $checkDaikin = true;
+        //     if(trim(str_replace($namecate->name, '',  $ar_groups_info[0]['name']))==='Daikin'){
+        //         $checkDaikin = true;
 
-            }
+        //     }
 
-        }   
+        // }   
 
         $checkSharp = strpos($data->Name, 'Sharp');
 
@@ -629,7 +631,7 @@
 
                                 <!-- nếu tồn tại gift_price thì hiển thị -->
 
-                                @if(!empty($gift_Price))
+                                @if(!empty($gift_Price) && $data_cate !=8)
 
                                 <?php 
 
@@ -1305,7 +1307,7 @@
                             @endif
 
                             
-                            @if(!empty($gift_Price))
+                            @if(!empty($gift_Price) && $data_cate !=8)
 
                             <?php 
 
