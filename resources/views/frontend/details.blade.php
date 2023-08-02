@@ -90,7 +90,7 @@
     
 
     @endif
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/detail1fe.css') }}?ver=11">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/detail1fe.css') }}?ver=12">
     <style type="text/css">
         .copy-button{
             position: absolute;
