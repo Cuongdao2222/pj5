@@ -31,6 +31,7 @@ use \Carbon\Carbon;
 
 class crawlController extends Controller
 {
+   
     public function addNames()
     {
         $product = product::where('id_group_product', NULL)->get()->pluck('id')->toArray();
@@ -60,6 +61,62 @@ class crawlController extends Controller
         echo "thanh cong";
 
     }
+
+
+     public function updateQuatityToSheet()
+    {
+        
+        $context = stream_context_create(array(
+            'http' => array(
+                
+                'method' => 'GET',
+
+                'header' => "Content-Type: application/x-www-form-urlencoded\r\n".
+                            "token: eecc19a1cabb51a5080f6f56399f7e82",
+            )
+        ));
+
+        // Send the request
+        $response = file_get_contents('http://localhost:8000/api/show-product-qualtity', FALSE, $context);
+
+        $data = json_decode($response);
+
+        $now = Carbon::now();
+
+        if(count($data)>0){
+
+            foreach($data as $val){
+
+                // kiểm tra sản phẩm có tồn lớn hơn 0;
+
+                if(intval($val->qualtity)>0){
+
+                    // kiểm tra xem model có tồn tại trong db nếu tồn tại thì update số lượng là 10sp
+
+                    $check_model = DB::table('products')->where('ProductSku', $val->model)->first();
+
+                    if(!empty($check_model)){
+
+                        $insert = ['name'=>$check_model->ProductSku, 'qty'=>$val->qualtity, 'product_id'=>$check_model->id, 'created_at'=>$now, 'updated_at'=>$now];
+
+                        DB::table('qualtity1')->insert($insert);
+
+                        DB::table('products')->where('ProductSku', $val->model)->update(['Quantily'=>10]);
+
+                    }
+
+                }
+
+            }
+        }
+
+        Cache::flush();
+        file_get_contents(Route('redirect-update-cache'));
+
+        echo "thành công";
+    }
+
+
     public function sosanh()
     {
 

@@ -138,7 +138,7 @@ class apiController extends Controller
         ));
 
         // Send the request
-        $response = file_get_contents('https://api.dienmaynguoiviet.net/public/api/show-product-qualtity', FALSE, $context);
+        $response = file_get_contents('http://localhost:8000/api/show-product-qualtity', FALSE, $context);
 
         $data = json_decode($response);
 
@@ -156,9 +156,11 @@ class apiController extends Controller
 
                     if(!empty($check_model)){
 
-                        DB::table('products')->where('ProductSku', $val->model)->update(['Quantily'=>10]);
+                        $insert = ['name'=>$check_model->ProductSku, 'qty'=>$val->qualtity, 'product_id'=>$check_model->id];
 
-                        dd($val->model);
+                        DB::table('qualtity1')->insert($insert);
+
+                        DB::table('products')->where('ProductSku', $val->model)->update(['Quantily'=>10]);
 
                     }
 
@@ -166,5 +168,7 @@ class apiController extends Controller
 
             }
         }
+
+        echo "thành công";
     }
 }   

@@ -13,7 +13,6 @@
 
 
 
-
 Route::get('/tin-khuyen-mai/', 'Frontend\blogController@index')->middleware('cache.headers:public;max_age=14400;etag')->name('tin');
 
 Route::get('/tin-tong-hop/', 'Frontend\blogController@index')->middleware('cache.headers:public;max_age=14400;etag')->name('tin-th');
