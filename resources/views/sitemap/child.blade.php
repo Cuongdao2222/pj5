@@ -9,7 +9,7 @@
 
     @foreach($product as $products)
 
-    @if(!empty($products->Link))
+    @if(!empty($products->Link) && !empty($products->Image))
     <url>
 		<loc>{{ route('details',$products->Link) }}</loc>
 	</url>
