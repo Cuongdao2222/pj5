@@ -112,6 +112,7 @@ class crawlController extends Controller
 
         Cache::flush();
         file_get_contents(Route('redirect-update-cache'));
+        file_get_contents(Route('homeFe'));
 
         echo "thành công";
     }
