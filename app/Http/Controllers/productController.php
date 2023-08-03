@@ -515,11 +515,7 @@ class productController extends AppBaseController
     {
         $datas = json_decode($request->viewerPD);
 
-        
-
-        if(count($datas)>0){
-
-           
+        if(!empty($datas) && count($datas)>0){
 
             $product_data = product::select('Image', 'Name', 'id', 'Link')->whereIn('id',$datas)->take(3)->get();
 
