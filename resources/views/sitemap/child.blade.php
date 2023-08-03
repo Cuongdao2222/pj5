@@ -5,10 +5,15 @@
 
 
 	@if(isset($product))
+
+
     @foreach($product as $products)
+
+    @if(!empty($products->Link))
     <url>
 		<loc>{{ route('details',$products->Link) }}</loc>
-	</url>	
+	</url>
+	@endif	
 	@endforeach    
     @endif
 </urlset>
