@@ -312,7 +312,7 @@ class dealController extends Controller
     {
        $id = $request->id;
 
-        DB::table('deal')->delete($id);
+       $deal = deal::find($id)->delete();
 
     }
 
