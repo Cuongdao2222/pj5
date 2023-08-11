@@ -533,10 +533,14 @@
                         <div class="scroll-box">
                            
                             <div class="pdetail-price">
+
+                                @if($data->Quantily>-1)
                                 <div class="pdetail-price-box show-price-mobile">
                                     {!! @$text !!}
                                     <h3> {{ str_replace(',' ,'.', number_format($data->Price)) }} ₫</h3>
                                 </div>
+
+                                @endif
 
                                 <div class="pdetail-stockavailable">
                                     <span>{{ $status }}</span>
@@ -1232,16 +1236,24 @@
                             @endif
                             @endif 
 
-                            
+
+                            <!-- ngừng kinh doanh thì ẩn giá -->
+
+                            @if($data->Quantily>-1)
 
                             {!!  @$text??'<b>GIÁ TẠI KHO</b>' !!}
-                           
+                            
+                            @endif
                             
                             <div class="pdetail-price-box show-price-desktop">
+
+                                @if($data->Quantily>-1)
 
                                 <h3>
                                     {{str_replace(',' ,'.', number_format($data->Price))  }}₫
                                 </h3>
+
+                                @endif
 
                                 @if(!empty($data->manuPrice) || !empty($price_old))
                                 <b>Rẻ hơn</b>
