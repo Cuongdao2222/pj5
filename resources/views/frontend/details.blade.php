@@ -635,7 +635,7 @@
 
                                 <!-- nếu tồn tại gift_price thì hiển thị -->
 
-                                @if(!empty($gift_Price) && $data_cate !=8)
+                                @if(!empty($gift_Price) && $data_cate !=8 && $data->Quantily>-1)
 
                                 <?php 
 
@@ -651,38 +651,39 @@
                                 @endif
 
 
-                                 @if(!empty($gift) &&  $data->Quantily>0 &&  $data['Price']>0)
+                                @if(!empty($gift) &&  $data->Quantily>0 &&  $data['Price']>0)
 
                                 <fieldset class="p-gift">
-                                        <legend id="data-pricetotal" style="color: #ff0000;font-size: 18px; font-weight: bold" data-pricetotal="0">
-                                            Khuyến mãi kèm theo
-                                        </legend>
+                                    <legend id="data-pricetotal" style="color: #ff0000;font-size: 18px; font-weight: bold" data-pricetotal="0">
+                                        Khuyến mãi kèm theo
+                                    </legend>
 
-                                      
-                                        <!---->
-                                        <div class="detail-offer">
-                                           
-                                            {{ $gifts->type ==1?'Lựa chọn 1 trong 2 sản phẩm sau':'' }}
-                                            @foreach($gift as $key => $valuegift)
-                                            <div class="select-gift">
-                                                
+                                  
+                                    <!---->
+                                    <div class="detail-offer">
+                                       
+                                        {{ $gifts->type ==1?'Lựa chọn 1 trong 2 sản phẩm sau':'' }}
+                                        @foreach($gift as $key => $valuegift)
+                                        <div class="select-gift">
+                                            
 
-                                                <input type="checkbox" name="gift" value="{{ $valuegift->name }}" class="gift-check">
-                                                
-                                                <img data-src="{{ asset($valuegift->image) }}" height="30px" width="30px" class="lazyload">
+                                            <input type="checkbox" name="gift" value="{{ $valuegift->name }}" class="gift-check">
+                                            
+                                            <img data-src="{{ asset($valuegift->image) }}" height="30px" width="30px" class="lazyload">
 
-                                                @if($valuegift->id ==5)
-                                                <a href="https://dienmaynguoiviet.vn/khau-trang-loc-khi-lg-puricare-the-he-2-ap551awfa-ajp-may-trang"><h4>{{ $valuegift->name }}</h4></a>
-                                                @else
-                                                <h4>{{ $valuegift->name }}</h4>
-                                                @endif
-                                            </div>
-                                            @endforeach
-                                           
+                                            @if($valuegift->id ==5)
+                                            <a href="https://dienmaynguoiviet.vn/khau-trang-loc-khi-lg-puricare-the-he-2-ap551awfa-ajp-may-trang"><h4>{{ $valuegift->name }}</h4></a>
+                                            @else
+                                            <h4>{{ $valuegift->name }}</h4>
+                                            @endif
                                         </div>
-                                        <div class="img-gift clearfix">
-                                        </div>
-                                    </fieldset>
+                                        @endforeach
+                                       
+                                    </div>
+                                    <div class="img-gift clearfix">
+                                    </div>
+                                </fieldset>
+
                                  @endif    
 
                               
@@ -1319,7 +1320,7 @@
                             @endif
 
                             
-                            @if(!empty($gift_Price) && $data_cate !=8)
+                            @if(!empty($gift_Price) && $data_cate !=8 && $data->Quantily>-1)
 
                             <?php 
 
