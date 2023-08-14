@@ -655,7 +655,7 @@ class categoryController extends Controller
 
             
 
-            if(empty($data)){
+            if(empty($data)|| $data->ProductSku ==='4T-C65EK2X'||$data->ProductSku ==='4T-C75EK2X'){
                 return abort('404');
             }
 
