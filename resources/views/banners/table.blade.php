@@ -24,6 +24,15 @@
     
 
 ?>
+
+<style>
+    
+
+.position{
+        position: static !important;
+    }
+    
+</style>
 <select name="option" onchange="location = this.value;">
     @foreach($option as $key => $options)
     <option value="{{ route('banners.index') }}?option={{ $key }}" {{ $key == $optionss?'selected':''  }}>{{ $options['name'] }} ({{ $options['size'] }})  </option>
