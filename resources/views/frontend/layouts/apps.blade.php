@@ -228,7 +228,7 @@
 
 
         <link rel="stylesheet" href="{{ asset('css/lib/bootstrap.min.css') }}">
-       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+       <link rel="stylesheet" href="{{ asset('css/font-awesome_6.0.0_css_all.min.css') }}"/>
         
         <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}?ver=1"> 
         <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
@@ -2650,7 +2650,7 @@
 
     @stack('script')
 
-  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+  <script src="{{ asset('js/jquery.js') }}"></script>
 
   <script>
 
