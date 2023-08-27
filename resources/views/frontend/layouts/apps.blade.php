@@ -411,6 +411,7 @@
 
             #ui-id-2{
                 background: #fff;
+                z-index: 99999;
             }
         </style>
 
