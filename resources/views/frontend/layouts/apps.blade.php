@@ -413,6 +413,13 @@
                 background: #fff;
                 z-index: 99999;
             }
+
+
+            #ui-id-1{
+                z-index: 99999;
+                background: #fff;
+                width: 20% !important;
+            }
         </style>
 
         <?php  
