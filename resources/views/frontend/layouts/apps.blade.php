@@ -408,6 +408,10 @@
             .header__top {
                 background-color: #16cee9 !important;
             }
+
+            #ui-id-2{
+                background: #fff;
+            }
         </style>
 
         <?php  
