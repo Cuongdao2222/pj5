@@ -418,7 +418,7 @@
             #ui-id-1{
                 z-index: 99999;
                 background: #fff;
-                width: 25vmax !important;
+                width: 29vmax !important;
             }
         </style>
 
