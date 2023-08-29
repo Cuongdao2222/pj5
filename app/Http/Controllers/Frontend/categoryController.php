@@ -665,10 +665,17 @@ class categoryController extends Controller
 
             //end check cache
 
-            if(!empty($data) && !empty($_GET['show'])&&($_GET['show']=='tra-gop')){
+
+
+            //tắt trả góp
+
+            // if(!empty($data) && !empty($_GET['show'])&&($_GET['show']=='tra-gop')){
                 
-                return view('frontend.installment', compact('data'));
-            }
+            //     return view('frontend.installment', compact('data'));
+            // }
+
+
+            
 
             if(!empty($data->LinkRedirect)){
 
