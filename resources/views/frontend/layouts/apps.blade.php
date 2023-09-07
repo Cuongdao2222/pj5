@@ -1430,6 +1430,16 @@
                                                 <a href="{{route('details','lo-nuong')}}">
                                                     <h3>Lò nướng</h3>
                                                 </a>
+
+                                                <a href="{{route('details','bep-tu')}}">
+                                                    <h3>Bếp từ</h3>
+                                                </a>
+
+                                                <a href="{{route('details','may-rua-bat')}}">
+                                                    <h3>Máy rửa bát</h3>
+                                                </a>
+
+                                                 
                                             </aside>
                                         </div>
 
@@ -2060,6 +2070,15 @@
                                         <a href="{{route('details','noi-chien-khong-dau')}}">
                                             <h3>Nồi chiên không dầu</h3>
                                         </a>
+
+                                        <a href="{{route('details','bep-tu')}}">
+                                            <h3>Bếp từ</h3>
+                                        </a>
+
+                                        <a href="{{route('details','may-rua-bat')}}">
+                                            <h3>Máy rửa bát</h3>
+                                        </a>
+
                                     </div>
                                 </div>
                             </div>
