@@ -292,9 +292,9 @@ class categoryController extends Controller
 
                 if($Group_product_active==1){
 
-                    $Group_product = json_decode($Group_product->product_id);
+                    $Group_product = json_decode($Group_product->product_id)??[];
 
-                    $page = !empty($_GET['page'])?$_GET['page']:1;
+                    $page = !empty($_GET['page'])?intval($_GET['page']):1;
 
                    
                     $limit = 12;
