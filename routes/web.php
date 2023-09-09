@@ -190,7 +190,6 @@ Route::post('filter-price-product-by-page', 'AjaxController@filterByPageFilter')
 
 Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
-
     Route::post('active-promotion-price', 'giftController@activePromotionPrice')->name('active-promotion-price');
 
     Route::post('remove-click-active-promotion-price', 'giftController@removeClickActivePromotionPrice')->name('remove-click-active-promotion-price');
@@ -200,11 +199,8 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
     Route::get('forget-cache-home', 'backend\indexController@index')->middleware('cache.headers:public;max_age=14400;etag')->name('test');
 
     Route::post('update-gift-date','giftController@updateGiftDate')->name('updateGiftDate');
-    
 
     Route::get('forget-cache', 'Frontend\indexController@cacheClear')->name('test1');
-
-    
 
     Route::get('hot-list', 'hotController@index')->name('host-list');
 
@@ -228,9 +224,7 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::get('/delete-user-permission','customnUserController@deleteUser')->name('deleteUser');
 
-
     Route::post('update-event', 'showController@eventPostShowChecked')->name('update-event');
-
 
     Route::post('promotion-click', 'productController@promotionCheckDefault')->name('promotionCheckDefault');
 
@@ -395,29 +389,23 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::get('image-Product-change', 'imageController@updateImageProduct')->name('image-ajax-product');
 
-
     Route::get('add-active-post', 'postController@addActive')->name('add-active-post');
 
     Route::get('add-hight-light-post', 'postController@addHightLight')->name('add-hight-light-post');
 
     Route::resource('filters', 'filterController');
 
-
     Route::get('/filter', 'Frontend\filterController@index')->name('filter-property');
 
     Route::get('/filter-deal-products-add', 'dealController@GetProductbyId')->name('filter-deal-add');
 
-
     Route::get('/filter-deal-flash-products-add', 'flashdealController@GetProductbyId')->name('filter-deal-flash-add');
-
 
     Route::get('/filter-deal-products-add-deal', 'dealController@add_Deal')->name('result-add');
 
     Route::get('/delete-deal', 'dealController@removeDeal')->name('delete-deal');
 
     Route::get('/remove-flash-deal', 'flashdealController@removeDeal')->name('removeFlashDeal');
-
-
 
     Route::get('redirect/create', 'redirectLinkController@index')->name('redirect.creates');
 
@@ -433,8 +421,6 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::get('banner/delete/{id}','bannerController@destroy')->name('banner.destroy');
 
-
-
     Route::get('/active-deal', 'dealController@activeDeal')->name('active-deal');
 
     Route::get('/active-flash-deal', 'flashdealController@activeDeal')->name('active-flash-deal');                                            
@@ -445,7 +431,6 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
     Route::get('add-gen-api', 'Frontend\orderController@apiInsertGent')->name('insert-api');
 
     Route::post('check-active-image', 'imageController@checkActiveProduct')->name('check-active-image');
-
 
     Route::post('add-promotion', 'AjaxController@add_promotion')->name('add-promotion');
 
@@ -458,7 +443,6 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
     Route::post('rate-form-admin', 'AjaxController@rateFormByAdmin')->name('admin-rate-feedback-form');
 
     Route::post('remote-rate', 'AjaxController@removeRate')->name('remote-rate');
-
 
     Route::post('add-hot-product', 'AjaxController@addHotProduct')->name('add-hot-product');
 
