@@ -53,7 +53,7 @@
         <th>Sản phẩm Mới</th> -->
         <th>Quà tặng</th>
 
-        <th>Quà tặng text</th>
+       
        
         <th><a href="#" class="date-created">Ngày tạo</a></th>
       
@@ -311,7 +311,7 @@
 
             ?>
 
-            <td width="150">
+            <td width="350">
                 <select id="gift{{ $product->id }}" onchange="add_gift_group({{ $product->id }})" style="width:100%">
                     <option value="0">Không chọn</option>
 
@@ -327,10 +327,9 @@
 
                        
                 </select>
+                @if(!empty($product->promotion)) <strong>Quà tặng text:</strong> @endif {!!  $product->promotion?_substrs( strip_tags($product->promotion), 100):'' !!}
             </td>
 
-
-            <td width="200">{!!  $product->promotion?_substrs( strip_tags($product->promotion), 100):'' !!}</td>
             <td>{{ $product->created_at->format('d/m/Y, H:i:s') }}</td>
           
 
