@@ -49,7 +49,9 @@ class productController extends AppBaseController
     {
 
         $products = product::Orderby('updated_at', 'desc')->paginate(10);
-        
+        if(!empty($_GET['promotion'])){
+            $products = product::Orderby('updated_at', 'desc')->where('promotion','!=', '')->paginate(20);
+        }
         return view('products.index')
             ->with('products', $products);
     }

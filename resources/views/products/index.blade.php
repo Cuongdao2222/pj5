@@ -30,14 +30,22 @@
                     
                 </div>
                 <div class="col-sm-6">
-                    <a class="btn btn-primary float-right"
-                       href="{{ route('products.create') }}">
-                        Add New
-                    </a>
+
+                   
+                        <a class="btn btn-primary float-right"
+                           href="{{ route('products.create') }}">
+                            Add New
+                        </a>
+                  
+                        &nbsp;
+                    
+                        <a class="btn btn-primary float-right" href="{{ route('products.index') }}?promotion=1" style="margin-right:20px">
+                            sản phẩm đang khuyến mãi text
+                        </a>
+                    
                 </div>
 
-    
-
+                
                 <div class="bthongbao"></div>
             </div>
         </div>
