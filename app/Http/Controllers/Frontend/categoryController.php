@@ -588,9 +588,9 @@ class categoryController extends Controller
             return redirect()->secure($request->getRequestUri());
         }
 
-        $slug = trim($slug);
+        $slug = strip_tags(trim($slug));
 
-        $link = trim($slug);
+        $link = strip_tags(trim($slug));
 
         // $link_redirect = redirectLink::where('request_path', '/'.$slug)->first();
 
