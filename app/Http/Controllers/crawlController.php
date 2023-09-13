@@ -34,6 +34,13 @@ class crawlController extends Controller
 
     public function crawlNagaKawa()
     {
+
+        $arrContextOptions=array(
+            "ssl"=>array(
+                "verify_peer"=>false,
+                "verify_peer_name"=>false,
+            ),
+        );  
         $code = 'https://nagakawa.com.vn/may-hut-mui-nagakawa-nag1855-70cm
                 https://nagakawa.com.vn/may-hut-mui-nagakawa-nag1853-70cm
                 https://nagakawa.com.vn/may-hut-mui-nagakawa-nag1857-70cm
@@ -61,7 +68,7 @@ class crawlController extends Controller
 
             $url                =  $value;
 
-            $html               = file_get_html(trim($url));
+            $html               = file_get_html(trim($url), false, stream_context_create($arrContextOptions));
 
             $name               = trim(strip_tags($html->find('.title-product', 0)));
 
