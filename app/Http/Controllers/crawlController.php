@@ -31,6 +31,114 @@ use \Carbon\Carbon;
 
 class crawlController extends Controller
 {
+
+    public function crawlNagaKawa()
+    {
+        $code = 'https://nagakawa.com.vn/may-hut-mui-nagakawa-nag1855-70cm
+                https://nagakawa.com.vn/may-hut-mui-nagakawa-nag1853-70cm
+                https://nagakawa.com.vn/may-hut-mui-nagakawa-nag1857-70cm
+                https://nagakawa.com.vn/may-hut-mui-cao-cap-nagakawa-nkch02m70
+                https://nagakawa.com.vn/may-hut-mui-cao-cap-nagakawa-nkch02m70
+                https://nagakawa.com.vn/may-hut-mui-nagakawa-nkth02m70
+                https://nagakawa.com.vn/may-hut-mui-cao-cap-nagakawa-nkth03m70
+                https://nagakawa.com.vn/may-hut-mui-kinh-cong-nkch05m70
+                https://nagakawa.com.vn/may-hut-mui-cao-cap-nagakawa-nkch08m70
+                https://nagakawa.com.vn/may-hut-mui-cao-cap-nagakawa-nkch03m70-1
+                https://nagakawa.com.vn/may-hut-mui-nagakawa-nkch06m70
+                https://nagakawa.com.vn/copy-of-may-hut-mui-kinh-thang-nkth05m70
+                https://nagakawa.com.vn/may-hut-mui-kinh-vat-nkvh02m70
+                https://nagakawa.com.vn/may-rua-bat-nagakawa-nag3601m15
+                https://nagakawa.com.vn/may-rua-bat-nagakawa-nk8d01m
+                https://nagakawa.com.vn/may-rua-bat-cao-cap-nagakawa-nk8d61m
+                https://nagakawa.com.vn/may-rua-bat-nagakawa-nk10d01m
+                https://nagakawa.com.vn/may-rua-bat-nagakawa-nk13d02m
+                https://nagakawa.com.vn/may-rua-bat-nagakawa-nk15d05m
+                https://nagakawa.com.vn/may-rua-bat-nagakawa-nk15d06m-1
+                https://nagakawa.com.vn/may-rua-bat-nagakawa-nk15d03m';
+        $codess = explode(PHP_EOL, $code);
+
+        foreach ($codess as $key => $value) {
+
+            $url                =  $value;
+
+            $html               = file_get_html(trim($url));
+
+            $name               = trim(strip_tags($html->find('.title-product', 0)));
+
+            $details            = html_entity_decode($html->find('.product-content-2',0));
+
+            $Salient_Features   = html_entity_decode($html->find('.product-summary', 0));
+
+            $Specifications     = html_entity_decode($html->find('#product-thongso .content', 0));
+
+            $image              =  '';
+
+            $product_sku        =  trim(strip_tags($html->find('.product-sku', 0)));
+
+            $price              =  str_replace(['.', '₫'], '', strip_tags($html->find('.product-price', 0)));
+
+            $manuPrice          = 0;
+
+            $giftPrice          = 0;
+
+            $limits             = 0;
+
+            $inputPrice         = 0;
+
+            $link               = convertSlug($url);
+
+            $Qualtity           = 0;
+
+            $Maker              = 10;
+
+            $Meta_id            =  $this->addMeta();
+
+            $view               = 0;
+
+            $groupid            = 2;
+
+            $orders_hot         = 0;
+
+            $active             = 0;
+
+            $sale_order         = 0;
+
+            $promotion_box      = 0;
+
+            $user_id            = 1;
+
+            $insert             = ['Name'=>$name, 'Image'=>$image??'', 'ProductSku'=>$product_sku, 'Price'=>$price, 'manuPrice'=>$manuPrice, 'GiftPrice'=>$giftPrice, 'limits'=>$limits, 'InputPrice'=>$inputPrice, 'id_group_product'=>0, 'Link'=>$link, 'LinkRedirect'=>'', 'Detail'=>$details, 'Salient_Features'=>$Salient_Features, 'Specifications'=>$Specifications, 'Quantily'=>$Qualtity, 'promotion'=>'', 'Maker'=>$Maker, 'Meta_id'=>$Meta_id??'', 'views'=>$view, 'Group_id'=>$groupid, 'orders_hot'=>$orders_hot, 'active'=>$active, 'sale_order'=>$sale_order, 'promotion_box'=>$promotion_box, 'user_id'=>$user_id, 'updated_at'=>Carbon::now(), 'created_at'=>Carbon::now()];
+
+            DB::table('products')->insert($insert);
+        }
+        echo "thành công";
+    }
+
+    public function addMeta()
+    {
+        $meta = new metaSeo();
+        $meta->meta_content = '';
+        $meta->meta_title = '';
+        $meta->meta_key_words = '';
+        $meta->meta_og_title = '';
+        $meta->meta_og_content = '';
+        $meta->save();
+        return $meta->id;
+    }
+
+    public function uploadImg($images)
+    {   
+        $images = 'http://'.$images;
+        $images = str_replace('//b', 'b', $images);
+        $img  = '/uploads/product/crawl/'.str_replace(strstr(basename($images), '?'), '', basename($images)) ;
+        file_put_contents(public_path().$img, file_get_contents($images));
+        return $img;
+    }
+
+
+
+
+
     public function addNames()
     {
         $product = product::where('id_group_product', NULL)->get()->pluck('id')->toArray();
