@@ -7,6 +7,14 @@
 
         @foreach($product_viewer as  $value)
         
+        <?php 
+            $check_deal = App\Models\deal::select('deal_price','start', 'end')->where('product_id', $value->id)->where('active', 1)->first();
+
+            if(!empty($check_deal) && !empty(!empty($check_deal->deal_price))){
+
+                $value->Price = $check_deal->deal_price;
+            }    
+        ?>
         <div class="item">
             <a href='{{ route('details', $value->Link) }}' class=" main-contain">
                 <div class="item-label">
