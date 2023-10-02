@@ -251,7 +251,7 @@ class dealController extends Controller
             return DB::table('deal')->get();
         });
 
-        return $data[1];
+        return $data[0];
 
         
     }
