@@ -250,7 +250,7 @@ class dealController extends Controller
             return DB::table('deal')->get();
         });
 
-        return $value;
+        return $end;
 
         
     }
