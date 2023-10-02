@@ -258,9 +258,17 @@
 
                                 ?>
 
+                                <?php 
+
+                                    print_r($deal[0]);
+                                      
+                                ?>
+
                                   Bắt đầu : <input type="text" id="date-picker1" value="{{  str_replace(strstr($deal[0]->start, ','), '', $deal[0]->start) }}">
 
                                   <?php  
+
+
 
                                     $start = str_replace(',','',strstr($deal[0]->start, ','));
 
@@ -911,8 +919,7 @@ $('.accepts').click(function(){
         },
         success: function(result){
 
-            console.log(result);
-           // window.location.reload();
+           window.location.reload();
         }
     });
 
