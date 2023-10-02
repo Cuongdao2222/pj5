@@ -223,7 +223,7 @@ class dealController extends Controller
 
         $data = $this->findDate();
 
-        $date_end_old = $data[0];
+        $date_end_old = $request->end_old;
 
         $now  = Carbon::now();
 

@@ -891,6 +891,7 @@ $('.accepts-time-deal').click(function(){
 
 })
 
+const date_end = $('#date-picker2').val();
 
 
 $('.accepts').click(function(){
@@ -909,8 +910,9 @@ $('.accepts').click(function(){
             start: $('#date-picker1').val()+','+$('#hours1').val(),
 
             end:$('#date-picker2').val()+','+$('#hours2').val(),
+
+            end_old:date_end
            
-            
         },
         success: function(result){
 
