@@ -226,6 +226,7 @@ class dealController extends Controller
         $date_end_old = $data[0];
 
         $now  = Carbon::now();
+
         // Kiểm tra xem ngày còn lại có nhỏ hơn thời gian hiện tại. Nếu nhỏ hơn thì tắt active
 
         if(!empty($data[1]) && count($data[1])>0 ){
@@ -250,7 +251,7 @@ class dealController extends Controller
             return DB::table('deal')->get();
         });
 
-        return $end;
+        return $data[1];
 
         
     }
