@@ -911,8 +911,8 @@ $('.accepts').click(function(){
         },
         success: function(result){
 
-
-           window.location.reload();
+            console.log(result);
+           // window.location.reload();
         }
     });
 
