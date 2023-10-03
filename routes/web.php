@@ -334,7 +334,6 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::get('imagescontent/{id}', 'productController@imagecontent')->name('imagescontent');
 
-
     Route::post('add-price-promotion-auto', 'giftController@addPromotionAuto')->name('add-price-promotion-auto');
 
 
@@ -358,6 +357,8 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
     Route::resource('menus', 'menuController');
 
     Route::resource('posts', 'postController');
+
+    Route::post('add-post-for-image', 'postController@addPostForImage')->name('add-post-for-image');
 
     Route::resource('banners', 'bannerController');
 

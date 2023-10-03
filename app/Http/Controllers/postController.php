@@ -98,22 +98,57 @@ class postController extends AppBaseController
 
         $input['Meta_id'] = $meta_model['id'];
 
-        if(Request::ajax())
-        {
-            $post = DB::table('posts')->create($input);
+        $post = $this->postRepository->create($input);
 
-            return route('imagescontent', $post->id).'?option=2';
-        }
-        else{
-
-            $post = $this->postRepository->create($input);
-
-            return redirect(route('posts.edit', $post->id));
-        }
+        return redirect(route('posts.edit', $post->id));
+        
 
         // Flash::success('Post saved successfully.');
 
         // return redirect(route('posts.index'));
+    }
+
+    public function addPostForImage(Request $request)
+    {
+        $input['title'] = $request->title;
+
+        $input['content'] = $request->content;
+
+        $input['category'] = $request->category;
+
+        $input['shortcontent'] = $request->shortcontent;
+
+        $input['image'] = '/images/product/noimage.png';
+
+       
+        $input['link'] = $this->createSlug($input['title']);
+
+        
+        $input['id_user'] = Auth::id();
+
+        $input['date_post'] = Carbon::now();
+
+        $meta_model = new metaSeo();
+
+
+        $meta_model->meta_title = $input['title'];
+
+        $meta_model->meta_content = $input['shortcontent'];
+
+        $meta_model->meta_og_content = $input['title'];
+
+        $meta_model->meta_key_words = $input['title'];
+
+        $meta_model->meta_og_title = $input['shortcontent'];
+
+        $meta_model->save();
+
+        $input['Meta_id'] = $meta_model['id'];
+
+        $post = post::create($input);
+
+        return route('imagescontent', $post->id).'?option=2';
+      
     }
 
     /**

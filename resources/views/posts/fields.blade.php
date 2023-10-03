@@ -156,6 +156,7 @@
 </table>
 
 @else
+
 <div><a href="javascript:void(0)" onclick="addImageContentBeforePost()">Thêm ảnh content</a></div>
 @endif
 
@@ -211,28 +212,43 @@
     function addImageContentBeforePost() {
 
         content = CKEDITOR.instances.content.getData();
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        $.ajax({
-            type: "POST",
-            url: '{{ route("posts.store") }}',
-            data: {
-                category: $('#category').val(),
-                title: $('#title').val(),
-                shortcontent:$('#shortcontent').val(),
-                content:content
 
-            },
-           
-            success: function(data) {
-              
-                window.location.href = data;
+        if( $('#title').val()===''){
+
+            alert('xin vui lòng nhập title');
+        }
+        else if($('#shortcontent').val()===''){
+            alert('xin vui lòng nhập short content');
+        }
+
+        else if(content ===''){
+            alert('xin vui lòng nhập content');
+        }
+        else{
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                type: "POST",
+                url: '{{ route("add-post-for-image") }}',
+                data: {
+                    category: $('#category').val(),
+                    title: $('#title').val(),
+                    shortcontent:$('#shortcontent').val(),
+                    content:content
+
+                },
                
-            }
-        });
+                success: function(data) {
+                  
+                    window.location.href = data;
+                   
+                }
+            });
+        }     
 
     }
 
