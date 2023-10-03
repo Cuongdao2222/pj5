@@ -263,20 +263,29 @@
 
                                   <?php  
 
+                                    $end_old_show = DB::table('deal_time')->get()->last();
+
 
 
                                     $start = str_replace(',','',strstr($deal[0]->start, ','));
 
-                                    $end    = str_replace(',','',strstr($deal[0]->end, ','));
+                                    $end    =    str_replace(',','',strstr($end_old_show->end, ','));
+
+
+
+
                                   ?>
 
                                    Giờ: 
                                   <select name="time" id="hours1"><?php echo get_times($default = $start, '+30 minutes'); ?></select>
                                   <br>
                                   <br>
-                                  Kết thúc : <input type="text"  id="date-picker2" value="{{ str_replace(strstr($deal[0]->end, ','), '', $deal[0]->end) }}"> Giờ: 
+                                  Kết thúc : <input type="text"  id="date-picker2" value="{{ str_replace(strstr($end_old_show->end, ','), '', $end_old_show->end) }}"> 
+
+                                  Giờ: 
+                                  
                                   <select name="time" id="hours2">
-                                      <?php echo get_times($default = $end, '+30 minutes'); ?>
+                                      <?php echo get_times($default = trim($end), '+30 minutes'); ?>
                                   </select>
                               </td>
                           </tr>
@@ -891,7 +900,7 @@ $('.accepts-time-deal').click(function(){
 
 })
 
-const date_end = $('#date-picker2').val();
+const date_end = $('#date-picker2').val()+','+$('#hours2').val();
 
 
 $('.accepts').click(function(){

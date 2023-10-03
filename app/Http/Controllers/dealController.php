@@ -225,6 +225,7 @@ class dealController extends Controller
 
         $date_end_old = $request->end_old;
 
+       
         $now  = Carbon::now();
 
         // Kiểm tra xem ngày còn lại có nhỏ hơn thời gian hiện tại. Nếu nhỏ hơn thì tắt active
@@ -242,13 +243,14 @@ class dealController extends Controller
             }
         }
 
-        
         $result  = DB::table('deal')->where('end', $date_end_old)->update(['start'=>$start, 'end'=>$end, 'active'=>1]);
+
+        $update_time_deal_old = DB::table('deal_time')->insert(['end'=>$end]);
 
         Cache::forget('deals');
 
         $value = Cache::rememberForever('deals', function() {
-            return DB::table('deal')->get();
+            return DB::table('deal')->where('active', '1')->get();
         });
 
         
