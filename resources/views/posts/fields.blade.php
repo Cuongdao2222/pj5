@@ -7,9 +7,9 @@
 
     }
 
-    #cke_1_contents{
+   /* #cke_1_contents{
         height: 1000px !important;
-    }
+    }*/
 </style>
 
 <div class="col-md-12 draft-article" >
@@ -127,6 +127,8 @@
     
     <br>
 </div>
+
+
 @if(isset($post->id))
 
 <?php  
@@ -152,7 +154,11 @@
     </tbody>
 
 </table>
+
+@else
+<div><a href="javascript:void(0)" onclick="addImageContentBeforePost()">Thêm ảnh content</a></div>
 @endif
+
 
 
 
@@ -201,6 +207,34 @@
 
     });
     var activeReplace = [];
+
+    function addImageContentBeforePost() {
+
+        content = CKEDITOR.instances.content.getData();
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            type: "POST",
+            url: '{{ route("posts.store") }}',
+            data: {
+                category: $('#category').val(),
+                title: $('#title').val(),
+                shortcontent:$('#shortcontent').val(),
+                content:content
+
+            },
+           
+            success: function(data) {
+              
+                window.location.href = data;
+               
+            }
+        });
+
+    }
 
 
    

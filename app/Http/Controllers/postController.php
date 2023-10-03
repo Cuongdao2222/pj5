@@ -98,11 +98,18 @@ class postController extends AppBaseController
 
         $input['Meta_id'] = $meta_model['id'];
 
+        if(Request::ajax())
+        {
+            $post = DB::table('posts')->create($input);
 
+            return route('imagescontent', $post->id).'?option=2';
+        }
+        else{
 
-        $post = $this->postRepository->create($input);
+            $post = $this->postRepository->create($input);
 
-        return redirect(route('posts.edit', $post->id));
+            return redirect(route('posts.edit', $post->id));
+        }
 
         // Flash::success('Post saved successfully.');
 

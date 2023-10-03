@@ -62,6 +62,8 @@
     {!! Form::textarea('Detail', null, ['class' => 'form-control', 'id' =>'content']) !!}
 </div>
 
+
+
     @if(isset($product->id))
 
     <?php  
@@ -497,6 +499,8 @@
         @endif
         console.log(1);
     }
+
+
     
     function clickChangeImageContent() {
 
