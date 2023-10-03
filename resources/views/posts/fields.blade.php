@@ -6,6 +6,10 @@
         border: 2px solid #e74032;
 
     }
+
+    #cke_1_contents{
+        height: 1000px !important;
+    }
 </style>
 
 <div class="col-md-12 draft-article" >
