@@ -317,7 +317,8 @@
 }
 
 .owl-carousel.listproduct .item {
-	width: 100%
+	width: 100%;
+	position: relative;
 }
 
 .owl-carousel.listproduct .owl-item:first-child {
