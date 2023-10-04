@@ -102,6 +102,10 @@
             max-width: 100px;
         }
 
+        .emtry_content{
+            color: black;
+        } 
+
          @media only screen and (max-width: 767px) {
 
             .option-price-mobile select{
