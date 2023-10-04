@@ -19,7 +19,7 @@
             height: 133px;
         }
         .emtry_content{
-            color: #000000;
+            color: #000000 !important;
         } 
     </style>
     <main class="bg-fff">
