@@ -2,12 +2,6 @@
 @section('content') 
 @push('style')
 
-    <style>
-         .emtry_content{
-            color: black !important;
-        } 
-    </style>
-
     <?php
 
         $thuonghieu = [1 => 5, 3 => 35, 2 =>56, 4 =>76, 6=>115, 7=>129];
