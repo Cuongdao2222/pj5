@@ -103,7 +103,7 @@
         }
 
         .emtry_content{
-            color: black;
+            color: black !important;
         } 
 
          @media only screen and (max-width: 767px) {
