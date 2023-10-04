@@ -18,6 +18,9 @@
         .header__top-mobile{
             height: 133px;
         }
+        .emtry_content{
+            color: #000000;
+        } 
     </style>
     <main class="bg-fff">
         <!-- Begin menu blog -->
