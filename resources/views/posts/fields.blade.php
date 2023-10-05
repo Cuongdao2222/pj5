@@ -295,9 +295,7 @@
     
 </script>
 
-<?php 
-    $post_recyle = $_GET['post_recyle']??'';
-?>
+
 
 <script>
     var item_local_store =  JSON.parse(localStorage.getItem('infopost'));
@@ -424,7 +422,9 @@
         CKEDITOR.instances.content.setData(item_local_stores[2]);
         $('#title').val(item_local_stores[0]);
         $('#shortcontent').val(item_local_stores[1]);
-        @if(empty($post_recyle))
+
+        @if(empty(Session::get('post_recyle')))
+
         $('.article-but').css('color', 'red');
         @endif
 
@@ -441,13 +441,16 @@
     // });
 </script>
 
-@if(!empty($post_recyle))
-
+@if(!empty(Session::get('post_recyle')))
     <script type="text/javascript">
         setDataForm();
     </script>
 
-   
+    <?php
+
+        Session::forget('post_recyle');
+    ?>
+
     @endif
 
 

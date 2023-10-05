@@ -14,6 +14,7 @@ use App\Models\deal;
 use App\Models\product;
 use App\Models\imagescontent;
 use App\Models\image;
+use Illuminate\Support\Facades\Session;
 
 class imageController extends AppBaseController
 {
@@ -224,7 +225,10 @@ class imageController extends AppBaseController
                 return redirect(route('products.edit', $input['product_id']).'?mota=1')->with('success-content', 'thanh cong');
             }
             else{
-                return redirect(route('posts.edit', $input['product_id']).'?post_recyle=1')->withInput();
+
+                Session::put('post_recyle', 1);
+                
+                return redirect(route('posts.edit', $input['product_id']))->withInput();
             }
             
             
