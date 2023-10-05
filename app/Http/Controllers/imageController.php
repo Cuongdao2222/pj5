@@ -224,7 +224,7 @@ class imageController extends AppBaseController
                 return redirect(route('products.edit', $input['product_id']).'?mota=1')->with('success-content', 'thanh cong');
             }
             else{
-                return redirect(route('posts.edit', $input['product_id']))->withInput();
+                return redirect(route('posts.edit', $input['product_id']).'?post_recyle=1')->withInput();
             }
             
             

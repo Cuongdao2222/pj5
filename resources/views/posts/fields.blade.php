@@ -48,7 +48,8 @@
 <!-- shortcontent Field -->
 <div class="form-group col-sm-12 col-lg-12">
     {!! Form::label('shortcontent', 'Mô tả ngắn:') !!}
-   <textarea class="form-control content-input" name="shortcontent" cols="50" rows="10" id="shortcontent">{!! strip_tags(@$post->shortcontent) !!}</textarea>
+    {!! Form::textarea('shortcontent', null, ['class' => 'form-control content-input', 'cols'=>50, 'rows'=>10, 'id'=>'shortcontent']) !!}
+
 </div>
 
 
@@ -294,8 +295,9 @@
     
 </script>
 
-
-
+<?php 
+    $post_recyle = $_GET['post_recyle']??'';
+?>
 
 <script>
     var item_local_store =  JSON.parse(localStorage.getItem('infopost'));
@@ -418,16 +420,15 @@
     function setDataForm() {
 
         item_local_stores =  JSON.parse(localStorage.getItem('infopost'));
-        console.log(item_local_stores)
         
         CKEDITOR.instances.content.setData(item_local_stores[2]);
         $('#title').val(item_local_stores[0]);
         $('#shortcontent').val(item_local_stores[1]);
+        @if(empty($post_recyle))
         $('.article-but').css('color', 'red');
+        @endif
 
     }
-
-   
 
     // $(document).ready(function()
     // {
@@ -439,6 +440,15 @@
        
     // });
 </script>
+
+@if(!empty($post_recyle))
+
+    <script type="text/javascript">
+        setDataForm();
+    </script>
+
+   
+    @endif
 
 
 
