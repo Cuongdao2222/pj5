@@ -18,7 +18,7 @@
         .header__top-mobile{
             height: 133px;
         }
-        .emtry_content, .emtry_content h2, .emtry_content h3{
+        .emtry_content, .emtry_content h2, .emtry_content h3, .emtry_content h4, .emtry_content h5{
             color: #000000 !important;
         } 
 
