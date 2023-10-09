@@ -1318,20 +1318,20 @@
 
                                         <div id="submenu-5" class="submenu" style="display: none;">
                                             <aside>
-                                                <strong>Máy sấy quần áo panasonic</strong>
+                                                <a href="{{ route('details', 'may-say-quan-ao-panasonic') }}"><strong>Máy sấy quần áo panasonic</strong></a>
                                                 
                                             </aside>
 
                                             <aside>
-                                                <strong>Máy sấy quần áo LG</strong>
+                                                <a href="{{ route('details', 'may-say-quan-ao-lg') }}"><strong>Máy sấy quần áo LG</strong></a>
                                             </aside>
 
                                             <aside>
-                                                <strong>Máy sấy quần áo Electrolux</strong>
+                                                <a href="{{ route('details', 'may-say-quan-ao-electrolux') }}"><strong>Máy sấy quần áo Electrolux</strong></a>
                                             </aside>
 
                                             <aside>
-                                                <strong>Máy sấy quần áo Samsung</strong>
+                                                <a href="{{ route('details', 'may-say-quan-ao-samsung') }}"><strong>Máy sấy quần áo Samsung</strong></a>
                                             </aside>
                                         </div>
                                     </li>
