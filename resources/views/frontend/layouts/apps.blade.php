@@ -1346,16 +1346,16 @@
 
                                         <div id="submenu-6" class="submenu" style="display: none;">
                                             <aside>
-                                                <strong>Máy Lọc Nước RO-Side Stream</strong>
+                                                <a href="{{ route('details', 'may-say-quan-ao-lg') }}"><strong>Máy Lọc Nước RO-Side Stream</strong></a>
                                                 
                                             </aside>
 
                                             <aside>
-                                                <strong>Máy Lọc Nước Đầu Nguồn</strong>
+                                                <a href="{{ route('details', 'may-loc-nuoc-dau-nguon') }}"><strong>Máy Lọc Nước Đầu Nguồn</strong></a>
                                             </aside>
 
                                             <aside>
-                                                <strong>Máy Lọc Không Khí AO Smith</strong>
+                                                <a href="{{ route('details', 'may-loc-khong-khi-ao-smith') }}"><strong>Máy Lọc Không Khí AO Smith</strong></a>
                                             </aside>
 
                                         </div>
