@@ -12578,7 +12578,7 @@ h1 {
 
 .owl-carousel.listproduct {
 	border: none;
-	display: flex
+/*	display: flex*/
 }
 
 .owl-carousel.listproduct>.item:nth-child(n+6),
