@@ -1059,10 +1059,6 @@
                 <div class="box-common__content">
                     <div class="listproduct slider-home owl-carousel" id="banner-product_{{ $key }}" data-size="{{ $data->count() }}">
 
-                        @if($data->count()===0)
-                            {{ 0 }}
-                        @endif
-
                         @foreach($data as $datas)
 
                         <div class="item"  data-pos="12">
