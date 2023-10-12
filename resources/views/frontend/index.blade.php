@@ -1057,7 +1057,7 @@
                     <div class="loaderweb"></div>
                 </div>
                 <div class="box-common__content">
-                    <div class="listproduct slider-home owl-carousel" id="banner-product_{{ $key }}" data-size="10">
+                    <div class="listproduct slider-home owl-carousel" id="banner-product_{{ $key }}" data-size="{{ $data->count() }}">
 
                         @foreach($data as $datas)
 
