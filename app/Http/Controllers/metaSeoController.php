@@ -9,6 +9,7 @@ use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
+use Illuminate\Support\Facades\Session;
 
 class metaSeoController extends AppBaseController
 {
@@ -121,9 +122,11 @@ class metaSeoController extends AppBaseController
             return redirect(route('metaSeos.index'));
         }
 
-
+        Session::put('post_recyle', 1);
 
         $metaSeo = $this->metaSeoRepository->update($request->all(), $id);
+
+
 
         Flash::success('Meta Seo updated successfully.');
 
