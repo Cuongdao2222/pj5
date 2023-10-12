@@ -960,7 +960,7 @@
         </div>
         
 
-        <div  class="owl-slider-count" style="display: none;">{{ @$group->count() }}</div> 
+        <div  class="owl-slider-count" style="display: none;">13</div> 
         <?php
 
             $defineBannerGr = [0=>6, 1=>7, 2=>8, 3=>9, 6=>10, 7=>11];
