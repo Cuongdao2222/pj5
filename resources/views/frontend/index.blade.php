@@ -1061,7 +1061,7 @@
 
                         @foreach($data as $datas)
 
-                        <div class="item"  data-pos="1">
+                        <div class="item"  data-pos="12">
                             <a href='{{ route('details', $datas->Link) }}'>
                                 @if($datas->Price>=3000000)
                                 <span class="icon_tragop icons-tra-gops">Trả góp <i>0%</i></span>
