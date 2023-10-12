@@ -103,7 +103,7 @@
         }
 
         .emtry_content strong{
-            font-size: 17px;
+            font-size: 17px !important;
         } 
 
 
