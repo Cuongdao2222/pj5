@@ -22,6 +22,10 @@
             color: #000000 !important;
         } 
 
+        .emtry_content strong{
+            font-size: 17px;
+        } 
+
        
     </style>
     <main class="bg-fff">

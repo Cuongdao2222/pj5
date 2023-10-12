@@ -102,12 +102,6 @@
             max-width: 100px;
         }
 
-        .emtry_content strong{
-            font-size: 17px !important;
-        } 
-
-
-
          @media only screen and (max-width: 767px) {
 
             .option-price-mobile select{
