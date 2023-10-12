@@ -102,6 +102,10 @@
             max-width: 100px;
         }
 
+        .emtry_content strong{
+            font-size: 17px;
+        } 
+
 
 
          @media only screen and (max-width: 767px) {
