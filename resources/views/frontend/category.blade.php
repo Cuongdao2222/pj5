@@ -44,6 +44,10 @@
                 line-height: normal;
             }
 
+            .arrow-filter{
+                display: none;
+            }
+
 
             
 
@@ -133,10 +137,9 @@
                 <div class="jsfix scrolling_inner scroll-right">
                     <div><h4 style="line-height: 26px">{!! @$slogan !!}</h4></div>
                     <div class="box-filter block-scroll-main scrolling">
+
                         @if(isset($filter))
                         @foreach($filter as $filters)
-
-                        
                         <?php
 
                             $propertyId = cache()->remember('filterId_'.$filters->id, 1000, function () use($filters){
@@ -149,16 +152,41 @@
 
                         @if($filters->name !=  $filtername)
 
-                        <div class="filter-item block-manu ">
-                            <select class="form-control" id="selectfilter{{ $filters->id }}" name="selectfilter" onchange='mySelectHandler("{{ $filters->id }}")'>
-                                <option value="0">{{ $filters->name }}</option>
-                                @if(isset($propertyId))
+
+                        <div class="filter-item isShowing" propertyid="40562">
+
+
+                            <div class="filter-item__title jsTitle noselecttext showing" data-textorg="Kích cỡ màn hình">
+                                <div class="arrow-filter"></div>
+                                <span>{{ $filters->name }}</span>
+                            </div>
+
+                            @if(isset($propertyId))
+                               
+                            <div class="filter-show" data-groupid="">
                                 @foreach($propertyId as $property)
-                                <option value="{{ $property->id}}"> {{ $property->name}}</option>
-                                @endforeach
+                                @if(isset($propertyId))
+                                <div class="filter-list  props" data-propid="40562">
+                                    <a href="tivi-32-inch" data-order="32" data-tooltip="" data-smooth="1" data-href="32-inch" data-id="265686" class="c-btnbox">
+                                    {{ $property->name}}            
+                                    </a>
+                                </div>
                                 @endif
-                            </select>
+                                @endforeach
+                                
+
+                                <div class="filter-button filter-button-sticky">
+                                    <a href="javascript:void(0)" class="btn-filter-close">Bỏ chọn</a>
+                                    <a href="javascript:filterPros();" class="btn-filter-readmore">Xem <b class="total-reloading">284</b> kết quả</a>
+                                </div>
+                            </div>
+
+                            @endif
+
+
                         </div>
+
+
 
                         @endif
                         
@@ -681,9 +709,17 @@
 
             });
 
-             $('.option-href').on('change', function(){
+            $('.option-href').on('change', function(){
                window.location = $(this).val();
             });
+
+            $('.filter-item__title').click(function(){
+
+                $(this).addClass('active');
+                $(this).find('.arrow-filter').show();
+                $(this).parent().find('.filter-show').show();
+            })
+            
 
         
         </script>
