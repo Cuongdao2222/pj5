@@ -48,8 +48,10 @@
                 display: none;
             }
 
+            .filter-show{
+                flex-wrap: wrap;
+            }
 
-            
 
             @media screen and (max-width:776px) {
 
@@ -153,7 +155,7 @@
                         @if($filters->name !=  $filtername)
 
 
-                        <div class="filter-item isShowing" propertyid="40562">
+                        <div class="filter-item isShowing" propertyid="{{ $filters->id }}">
 
 
                             <div class="filter-item__title jsTitle noselecttext showing" data-textorg="Kích cỡ màn hình">
@@ -711,17 +713,52 @@
 
             $('.option-href').on('change', function(){
                window.location = $(this).val();
-            });
+            })
+
+       
+            property_click = [];
 
             $('.filter-item__title').click(function(){
 
-                $(this).addClass('active');
-                $(this).find('.arrow-filter').show();
-                $(this).parent().find('.filter-show').show();
+                property = $(this).parent().attr('propertyid');
+
+                property_click.push(property);
+
+                // trường hợp bấm 2 lần button thì ẩn thuộc tính đi
+
+                if(property_click.pop() ===property){
+                    // nếu đang bật thì tắt 
+
+                    if($(this).hasClass('active')){
+                        $(this).removeClass('active');
+                        $(this).find('.arrow-filter').hide();
+                        $(this).parent().find('.filter-show').hide();
+                    }
+                    else{
+                         $('.box-filter .filter-item__title').removeClass('active');
+                        $('.box-filter .arrow-filter').hide();
+                        $('.box-filter .filter-show').hide();
+
+                        $(this).addClass('active');
+                        $(this).find('.arrow-filter').show();
+                        $(this).parent().find('.filter-show').css('display', 'flex');
+                    }
+                    
+        
+                }
+                else{
+
+                    $('.box-filter .filter-item__title').removeClass('active');
+                    $('.box-filter .arrow-filter').hide();
+                    $('.box-filter .filter-show').hide();
+
+                    $(this).addClass('active');
+                    $(this).find('.arrow-filter').show();
+                    $(this).parent().find('.filter-show').css('display', 'flex');
+                }
+
             })
             
-
-        
         </script>
         @endpush
 @endsection 
