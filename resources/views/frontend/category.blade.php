@@ -52,7 +52,20 @@
                 flex-wrap: wrap;
             }
 
+            .c-btnbox img {
+               width:59px;
+            }
 
+            
+
+
+            @media screen and (min-width:777px) {
+
+                .filter-mobile{
+                    display: none;
+                }
+
+            }   
             @media screen and (max-width:776px) {
 
                 .option-href{
@@ -67,6 +80,11 @@
                 .box-filter .form-control {
                     width: 117px;
                 }
+
+                .filter-desktop{
+                    display: none;
+                }
+
             }
 
         </style>
@@ -93,7 +111,7 @@
         </div>
 
         <?php 
-             $filtername = '';
+            $filtername = '';
 
             if(!empty($ar_list[1]['name'])){
 
@@ -112,6 +130,8 @@
                 return $banner;
                 
             });
+
+            $manu = ['lg'=>'/images/saker/lg.png', 'tcl'=>'/images/saker/tcl.png', 'samsung'=>'/images/saker/samsung.png', 'sharp'=>'/images/saker/sharp.png', 'sony'=>'/images/saker/sony.png', 'panasonic'=>'/images/saker/panasonic.png', 'electrolux'=>'/images/saker/electrolux.png', 'philips'=>'/images/saker/philips.png', 'funiki'=>'/images/saker/funiki.png', 'hitachi'=>'/images/saker/hitachi.png'];
             
         ?>
         <div class="top-banner">
@@ -155,7 +175,7 @@
                         @if($filters->name !=  $filtername)
 
 
-                        <div class="filter-item isShowing" propertyid="{{ $filters->id }}">
+                        <div class="filter-item isShowing filter-desktop" propertyid="{{ $filters->id }}">
 
 
                             <div class="filter-item__title jsTitle noselecttext showing" data-textorg="Kích cỡ màn hình">
@@ -169,9 +189,18 @@
                                 @foreach($propertyId as $property)
                                 @if(isset($propertyId))
                                 <div class="filter-list  props" data-propid="40562">
+                                    @if(!empty($manu[strtolower($property->name)]))
+
+                                        <a href="javascript:void(0)" data-value="{{ $property->id}}" data-id="{{ $filters->id }}" class="c-btnbox">
+                                            <img src="{{ $manu[strtolower($property->name)] }}" width="68" height="30" alt="{{ $property->name }}">          
+                                        </a>
+
+                                    @else
+
                                     <a href="tivi-32-inch" data-order="32" data-tooltip="" data-smooth="1" data-href="32-inch" data-id="265686" class="c-btnbox">
-                                    {{ $property->name}}            
+                                        {{ trim($property->name)}}            
                                     </a>
+                                    @endif
                                 </div>
                                 @endif
                                 @endforeach
@@ -186,6 +215,19 @@
                             @endif
 
 
+                        </div>
+
+
+
+                        <div class="filter-item block-manu filter-mobile">
+                            <select class="form-control" id="selectfilter{{ $filters->id }}" name="selectfilter" onchange='mySelectHandler("{{ $filters->id }}")'>
+                                <option value="0">{{ $filters->name }}</option>
+                                @if(isset($propertyId))
+                                @foreach($propertyId as $property)
+                                <option value="{{ $property->id}}"> {{ $property->name}}</option>
+                                @endforeach
+                                @endif
+                            </select>
                         </div>
 
 
@@ -636,11 +678,12 @@
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     }
                 });
-            
-            function mySelectHandler(filters){
 
-                property = $('#selectfilter'+filters).val();
+            $('.filter-list a').click(function() {
 
+                filters  = $(this).attr('data-id'); 
+
+                property = $(this).attr('data-value');
 
                 // kiểm tra filter có bị trùng không xóa filter trước + xóa property cùng filter
 
@@ -675,9 +718,10 @@
                     @endif
 
                 }
-
-            }
-
+                 
+             })
+            
+        
             $( "#sort-by-option" ).bind( "change", function() {
                 
 
@@ -718,6 +762,9 @@
        
             property_click = [];
 
+          
+   
+
             $('.filter-item__title').click(function(){
 
                 property = $(this).parent().attr('propertyid');
@@ -733,6 +780,7 @@
                         $(this).removeClass('active');
                         $(this).find('.arrow-filter').hide();
                         $(this).parent().find('.filter-show').hide();
+
                     }
                     else{
                          $('.box-filter .filter-item__title').removeClass('active');
@@ -756,8 +804,48 @@
                     $(this).find('.arrow-filter').show();
                     $(this).parent().find('.filter-show').css('display', 'flex');
                 }
+            });
 
-            })
+             function mySelectHandler(filters){
+
+                property = $('#selectfilter'+filters).val();
+
+
+                // kiểm tra filter có bị trùng không xóa filter trước + xóa property cùng filter
+
+                if(filter.indexOf(filters)>-1){
+                    filter.splice(filter.indexOf(filters),1);
+                    propertys.splice(filter.indexOf(filters),1);
+                }
+
+                //chỉ lấy giá trị 
+                if(property !=0){
+
+                    filter.push(filters);
+
+                    propertys.push(property);
+
+                }
+                
+                // var filterss['code'] = property; 
+
+
+                // khi người dùng select option thì gọi hàm
+                if(filter.length>0){
+
+                    filter = filter.join(',');
+
+                    propertys = propertys.join(',');
+                    
+                    @if(!empty($link))
+                      
+                            window.location.href = '{{ route('details',$link) }}?filter=,'+filter+'&group_id={{ @$id_cate  }}&property=,'+propertys+'&link={{$link  }}';
+                            
+                    @endif
+
+                }
+
+            }
             
         </script>
         @endpush

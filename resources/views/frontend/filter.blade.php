@@ -98,6 +98,18 @@
                 border: none; 
             }
 
+            .arrow-filter{
+                display: none;
+            }
+
+            .filter-show{
+                flex-wrap: wrap;
+            }
+
+            .c-btnbox img {
+               width:59px;
+            }
+
 
             @media screen and (max-width: 776px){
                 .listproduct{
@@ -119,7 +131,23 @@
                 .box-filter .form-control {
                     width: 117px !important;
                 }
-            }    
+
+                .filter-show{
+                    display: static !important;
+                }
+
+                 .filter-desktop{
+                    display: none;
+                }
+            }  
+
+             @media screen and (min-width:777px) {
+
+                .filter-mobile{
+                    display: none;
+                }
+
+            }     
 
 
             
@@ -177,6 +205,8 @@
             $propery_url = $_GET['property']??'';
 
             $propery_url_id = explode(',',$propery_url);
+
+            $manu = ['lg'=>'/images/saker/lg.png', 'tcl'=>'/images/saker/tcl.png', 'samsung'=>'/images/saker/samsung.png', 'sharp'=>'/images/saker/sharp.png', 'sony'=>'/images/saker/sony.png', 'panasonic'=>'/images/saker/panasonic.png', 'electrolux'=>'/images/saker/electrolux.png', 'philips'=>'/images/saker/philips.png', 'funiki'=>'/images/saker/funiki.png', 'hitachi'=>'/images/saker/hitachi.png'];
             
         ?>
         
@@ -228,33 +258,78 @@
                     <div><h4>Điện máy nguời việt là địa chỉ bán tivi chính hãng uy tín tại Hà Nội. Chúng tôi cam kết tất cả sản phẩm đều là hàng chính hãng, nguyên đai, nguyên kiện, mới 100%.</h4></div>
                     <div class="box-filter block-scroll-main scrolling">
 
-                       
-
                         @if(isset($filter))
-
-
                         @foreach($filter as $filters)
-
-                        @if(!empty($filters->id))
-
-
                         <?php
-                            $propertyId =  App\Models\property::where('filterId', $filters->id)->get();
 
+                            $propertyId = cache()->remember('filterId_'.$filters->id, 1000, function () use($filters){
+
+                                $propertyId =  App\Models\property::where('filterId', $filters->id)->get()??'';
+                                return $propertyId;
+                            });
+                           
                         ?>
 
+                       
 
-                        <div class="filter-item block-manu ">
-                            <select class="form-control" id="selectfilter{{ $filters->id }}" name="selectfilter" onchange='demo("{{ $filters->id }}")'>
+                        <div class="filter-item isShowing filter-desktop" propertyid="{{ $filters->id }}">
+
+
+                            <div class="filter-item__title jsTitle noselecttext showing" data-textorg="Kích cỡ màn hình">
+                                <div class="arrow-filter"></div>
+                                <span>{{ $filters->name }}</span>
+                            </div>
+
+                            @if(isset($propertyId))
+                               
+                            <div class="filter-show" data-groupid="">
+                                @foreach($propertyId as $property)
+                                @if(isset($propertyId))
+                                <div class="filter-list  props" data-propid="40562">
+                                    @if(!empty($manu[strtolower($property->name)]))
+
+                                        <a href="javascript:void(0)" data-value="{{ $property->id}}" data-id="{{ $filters->id }}" class="c-btnbox">
+                                            <img src="{{ $manu[strtolower($property->name)] }}" width="68" height="30" alt="{{ $property->name }}">          
+                                        </a>
+
+                                    @else
+
+                                    <a href="tivi-32-inch" data-order="32" data-tooltip="" data-smooth="1" data-href="32-inch" data-id="265686" class="c-btnbox">
+                                        {{ trim($property->name)}}            
+                                    </a>
+                                    @endif
+                                </div>
+                                @endif
+                                @endforeach
+                                
+
+                                <div class="filter-button filter-button-sticky">
+                                    <a href="javascript:void(0)" class="btn-filter-close">Bỏ chọn</a>
+                                    <a href="javascript:filterPros();" class="btn-filter-readmore">Xem <b class="total-reloading">284</b> kết quả</a>
+                                </div>
+                            </div>
+
+                            @endif
+
+
+                        </div>
+
+
+                        <div class="filter-item block-manu filter-mobile">
+                            <select class="form-control" id="selectfilter{{ $filters->id }}" name="selectfilter" onchange='mySelectHandler("{{ $filters->id }}")'>
                                 <option value="0">{{ $filters->name }}</option>
                                 @if(isset($propertyId))
                                 @foreach($propertyId as $property)
-                                <option value="{{ $property->id}}" {{  in_array($property->id, $propery_url_id)?'selected':'' }}> {{ $property->name}}</option>
+                                <option value="{{ $property->id}}"> {{ $property->name}}</option>
                                 @endforeach
                                 @endif
                             </select>
                         </div>
-                        @endif
+
+
+
+                       
+                        
                         @endforeach
                         @endif
                     </div>    
@@ -614,7 +689,140 @@
 
             });
 
+
+            property_click = [];
+
+            $('.filter-item__title').click(function(){
+
+                property = $(this).parent().attr('propertyid');
+
+                property_click.push(property);
+
+                // trường hợp bấm 2 lần button thì ẩn thuộc tính đi
+
+                if(property_click.pop() ===property){
+                    // nếu đang bật thì tắt 
+
+                    if($(this).hasClass('active')){
+                        $(this).removeClass('active');
+                        $(this).find('.arrow-filter').hide();
+                        $(this).parent().find('.filter-show').hide();
+                    }
+                    else{
+                         $('.box-filter .filter-item__title').removeClass('active');
+                        $('.box-filter .arrow-filter').hide();
+                        $('.box-filter .filter-show').hide();
+
+                        $(this).addClass('active');
+                        $(this).find('.arrow-filter').show();
+                        $(this).parent().find('.filter-show').css('display', 'flex');
+                    }
+                    
         
+                }
+                else{
+
+                    $('.box-filter .filter-item__title').removeClass('active');
+                    $('.box-filter .arrow-filter').hide();
+                    $('.box-filter .filter-show').hide();
+
+                    $(this).addClass('active');
+                    $(this).find('.arrow-filter').show();
+                    $(this).parent().find('.filter-show').css('display', 'flex');
+                }
+
+            });
+
+             filter = [];
+
+            propertys = [];
+
+
+
+            function mySelectHandler(filters){
+
+                property = $('#selectfilter'+filters).val();
+
+
+                // kiểm tra filter có bị trùng không xóa filter trước + xóa property cùng filter
+
+                if(filter.indexOf(filters)>-1){
+                    filter.splice(filter.indexOf(filters),1);
+                    propertys.splice(filter.indexOf(filters),1);
+                }
+
+                //chỉ lấy giá trị 
+                if(property !=0){
+
+                    filter.push(filters);
+
+                    propertys.push(property);
+
+                }
+                
+                // var filterss['code'] = property; 
+
+
+                // khi người dùng select option thì gọi hàm
+                if(filter.length>0){
+
+                    filter = filter.join(',');
+
+                    propertys = propertys.join(',');
+                    
+                    @if(!empty($link))
+                      
+                            window.location.href = '{{ route('details',$link) }}?filter=,'+filter+'&group_id={{ @$id_cate  }}&property=,'+propertys+'&link={{$link  }}';
+                            
+                    @endif
+
+                }
+            }
+
+             $('.filter-list a').click(function() {
+
+                filters  = $(this).attr('data-id'); 
+
+                property = $(this).attr('data-value');
+
+                // kiểm tra filter có bị trùng không xóa filter trước + xóa property cùng filter
+
+                if(filter.indexOf(filters)>-1){
+                    filter.splice(filter.indexOf(filters),1);
+                    propertys.splice(filter.indexOf(filters),1);
+                }
+
+                //chỉ lấy giá trị 
+                if(property !=0){
+
+                    filter.push(filters);
+
+                    propertys.push(property);
+
+                }
+                
+                // var filterss['code'] = property; 
+
+
+                // khi người dùng select option thì gọi hàm
+                if(filter.length>0){
+
+                    filter = filter.join(',');
+
+                    propertys = propertys.join(',');
+                    
+                    @if(!empty($link))
+                      
+                            window.location.href = '{{ route('details',$link) }}?filter=,'+filter+'&group_id={{ @$id_cate  }}&property=,'+propertys+'&link={{$link  }}';
+                            
+                    @endif
+
+                }
+                 
+             })
+
+
+            
         </script>
         @endpush
 @endsection 
