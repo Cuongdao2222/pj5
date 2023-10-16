@@ -134,7 +134,7 @@ class indexController extends Controller
        
         $deal = deal::OrderBy('order', 'desc')->get();
 
-        $groups = groupProduct::select('id','name', 'link')->where('parent_id', 0)->get();
+        $groups = groupProduct::select('id','name', 'link', 'active', 'parent_id')->where('parent_id', 0)->get();
 
         if($deal->count()>0){
 

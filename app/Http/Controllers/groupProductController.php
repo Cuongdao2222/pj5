@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Auth;
 use Flash;
 use Response;
 
+use Cache;
+
 use App\Models\groupProduct;
 
 class groupProductController extends AppBaseController
@@ -101,6 +103,12 @@ class groupProductController extends AppBaseController
 
         $groupProduct = $this->groupProductRepository->create($input);
 
+         $groups = groupProduct::select('id','name', 'link', 'active','parent_id')->get();
+
+        Cache::forget('groups');
+
+        Cache::forever('groups', $groups);
+
         Flash::success('Group Product saved successfully.');
 
         return redirect(route('groupProducts.index'));
@@ -186,6 +194,14 @@ class groupProductController extends AppBaseController
 
         $groupProduct = $this->groupProductRepository->update($input, $id);
 
+        // forget cache
+
+        $groups = groupProduct::select('id','name', 'link', 'active','parent_id')->get();
+
+        Cache::forget('groups');
+
+        Cache::forever('groups', $groups);
+
         Flash::success('Group Product updated successfully.');
 
         return redirect(route('groupProducts.index'));
@@ -213,6 +229,12 @@ class groupProductController extends AppBaseController
         $this->groupProductRepository->delete($id);
 
         Flash::success('Group Product deleted successfully.');
+
+        $groups = groupProduct::select('id','name', 'link', 'active','parent_id')->get();
+
+        Cache::forget('groups');
+
+        Cache::forever('groups', $groups);
 
         return redirect(route('groupProducts.index'));
     }
@@ -265,6 +287,13 @@ class groupProductController extends AppBaseController
 
             $all_product_group->save();
 
+            $groups = groupProduct::select('id','name', 'link', 'active','parent_id')->get();
+
+            Cache::forget('groups');
+
+            Cache::forever('groups', $groups);
+
+
             
         }
     }
@@ -281,6 +310,13 @@ class groupProductController extends AppBaseController
         $input['active'] = $groupActive;
 
         $this->groupProductRepository->update($input, $id);
+
+        $groups = groupProduct::select('id','name', 'link', 'active','parent_id')->get();
+
+         Cache::forget('groups');
+
+        Cache::forever('groups', $groups);
+
 
         Flash::success('Group Product saved successfully.');
 
