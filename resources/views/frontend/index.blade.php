@@ -978,13 +978,18 @@
             $group->forget(1);
 
             $group->forget(2);
+
+            $dems = 0;
         ?> 
 
        
         @foreach($group as $key => $groups)
 
+
+
             <?php
-               
+                $dems++;
+
                 $hot = Cache::rememberForever('hot'.$groups->id, function() use($groups){
 
                     $hot = DB::table('hot')->select('product_id')->where('group_id', $groups->id)->orderBy('orders', 'asc')->get()->pluck('product_id');
@@ -1057,7 +1062,7 @@
                     <div class="loaderweb"></div>
                 </div>
                 <div class="box-common__content">
-                    <div class="listproduct slider-home owl-carousel" id="banner-product_{{ $key }}" data-size="{{ $data->count() }}">
+                    <div class="listproduct slider-home owl-carousel" id="banner-product_{{ $dems }}" data-size="{{ $data->count() }}">
 
                         @foreach($data as $datas)
 
