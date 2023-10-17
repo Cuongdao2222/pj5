@@ -1033,10 +1033,6 @@
                                 <?php 
 
                                     $menu =  Cache::get('groups');
-
-
-
-            
                                 ?>
                            
                                 <ul class="main-menu">
@@ -1598,67 +1594,9 @@
                             </div>
                         </li>
 
-
                         @if(!empty($menu)  && $menu->count()>0)
 
-                        <?php 
-
-                            $menu_lv_1 = $menu->where('level', 0)->where('active', 1);
-
-
-                        ?>
-
-                        @foreach($menu_lv_1 as $val)
-                        <li class="child" data-id="danh-muc1">
-                            <a class="list-mn" href="{{route('details','ti-vi')}}">
-                            <i class="fa-regular fa-refrigerator"></i>
-                            <span>{{ $val->name??'' }}</span>
-                            </a>
-
-                            <?php 
-
-                                $menu_level_2 = $menu->where('active', 1)->where('parent_id', $val->id);
-
-                            ?>
-
-                            <div class="navmwg accessories danh-muc1" style="display: none;">
-                                <div class="sub-cate">
-                                    <div class="PKLT">
-
-
-
-                                       
-                                        @if(!empty($menu_level_2)  && $menu_level_2->count()>0)
-
-
-                                        @foreach($menu_level_2 as $val2) 
-                                        <a href="{{ route('details', 'thuong-hieu-tivi') }}"><strong>{{ $val2->name??'12' }}</strong></a>
-                                        
-                                        <?php 
-
-                                            $menu_level_3 = $menu->where('level', 2)->where('active', 1)->where('parent_id', $val2->id);
-                                        ?>
-
-                                        @if(!empty($menu_level_3)  && $menu_level_3->count()>0)
-
-                                        @foreach($menu_level_3 as $val3)
-                                        <a href="{{route('details','tivi-samsung')}}">
-                                            <h3>{{ $val3->name }}</h3>
-                                        </a>
-
-                                        @endforeach
-
-                                        @endif
-                                      
-
-                                        @endforeach
-                                        @endif
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </li>
-                        @endforeach
+                            @include('frontend/menu1')
 
                         @endif
                        

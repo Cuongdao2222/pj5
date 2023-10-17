@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Auth;
 use Flash;
 use Response;
 
+use Illuminate\Support\Facades\Storage;
+
 use Cache;
 
 use App\Models\groupProduct;
@@ -202,6 +204,8 @@ class groupProductController extends AppBaseController
 
         Cache::forever('groups', $groups);
 
+        $this->showMenu();
+
         Flash::success('Group Product updated successfully.');
 
         return redirect(route('groupProducts.index'));
@@ -235,6 +239,8 @@ class groupProductController extends AppBaseController
         Cache::forget('groups');
 
         Cache::forever('groups', $groups);
+
+        $this->showMenu();
 
         return redirect(route('groupProducts.index'));
     }
@@ -293,7 +299,7 @@ class groupProductController extends AppBaseController
 
             Cache::forever('groups', $groups);
 
-
+            $this->showMenu();
             
         }
     }
@@ -316,6 +322,9 @@ class groupProductController extends AppBaseController
          Cache::forget('groups');
 
         Cache::forever('groups', $groups);
+
+        $this->showMenu();
+
 
 
         Flash::success('Group Product saved successfully.');
@@ -484,5 +493,23 @@ class groupProductController extends AppBaseController
          return response('thanh cong');
 
 
+    }
+
+
+    public function showMenu()
+    {
+         
+        if(Cache::has('groups')){
+
+            $menu =  Cache::get('groups');
+
+            $content = view('frontend.menu', compact('menu'));
+
+            Storage::disk('local')->delete('/frontend/menu1.blade.php');
+
+            Storage::disk('local')->put('/frontend/menu1.blade.php',  $content);
+
+        }
+                               
     }
 }
