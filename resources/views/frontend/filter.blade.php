@@ -206,7 +206,7 @@
 
             $propery_url_id = explode(',',$propery_url);
 
-           $manu = ['lg'=>'/images/saker/lg.png', 'tcl'=>'/images/saker/tcl.png', 'samsung'=>'/images/saker/samsung.png', 'sharp'=>'/images/saker/sharp.png', 'sony'=>'/images/saker/sony.png', 'panasonic'=>'/images/saker/panasonic.png', 'electrolux'=>'/images/saker/electrolux.png', 'philips'=>'/images/saker/philips.png', 'funiki'=>'/images/saker/funiki.png', 'hitachi'=>'/images/saker/hitachi.png', 'sanaky'=>'/images/saker/sanaky.png', 'nagakawa'=>'/images/saker/nagakawa.png', 'daikin'=>'/images/saker/daikin.png', 'mitsubishi electric'=>'/images/saker/mitsubishi.png'];
+          $manu = ['lg'=>'/images/saker/lg.png', 'tcl'=>'/images/saker/tcl.png', 'samsung'=>'/images/saker/samsung.png', 'sharp'=>'/images/saker/sharp.png', 'sony'=>'/images/saker/sony.png', 'panasonic'=>'/images/saker/panasonic.png', 'electrolux'=>'/images/saker/electrolux.png', 'philips'=>'/images/saker/philips.png', 'funiki'=>'/images/saker/funiki.png', 'hitachi'=>'/images/saker/hitachi.png', 'sanaky'=>'/images/saker/sanaky.png', 'nagakawa'=>'/images/saker/nagakawa.png', 'daikin'=>'/images/saker/daikin.png', 'mitsubishi electric'=>'/images/saker/mitsubishi.png', 'kangaroo'=>'/images/saker/kangaroo.png', 'midea'=>'/images/saker/midea.png'];
             
         ?>
         
