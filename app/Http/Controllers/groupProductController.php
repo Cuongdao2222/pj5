@@ -499,6 +499,7 @@ class groupProductController extends AppBaseController
     public function showMenu()
     {
          
+        Cache::forget('group_index'); 
         if(Cache::has('groups')){
 
             $menu =  Cache::get('groups');

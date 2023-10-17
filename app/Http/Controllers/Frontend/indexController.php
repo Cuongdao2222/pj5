@@ -37,9 +37,10 @@ class indexController extends Controller
 
         $deal_check = Cache::get('deals')->sortByDesc('end');
 
-        $group = groupProduct::select('id','name', 'link')->where('parent_id', 0)->get();
+        $group = Cache::rememberForever('group_index', function(){
 
-        // $group = Cache::get('groups');
+            return groupProduct::select('id','name', 'link')->where('parent_id', 0)->get();
+        });     
 
         
         $product_sale = Cache::rememberForever('product_sale', function(){

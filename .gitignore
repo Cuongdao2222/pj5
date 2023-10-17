@@ -11,6 +11,8 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+/resources/views/frontend/menu1.blade.php
+/resources/views/frontend/menu.blade.php
 /public/images
 /public/uploads
 /public/media
