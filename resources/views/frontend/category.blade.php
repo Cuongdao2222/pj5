@@ -183,6 +183,8 @@
                                 <span>{{ $filters->name }}</span>
                             </div>
 
+
+
                             @if(isset($propertyId))
                                
                             <div class="filter-show" data-groupid="">
@@ -236,6 +238,65 @@
                         
                         @endforeach
                         @endif
+
+
+                        <?php 
+
+                            dd($filter);
+                        ?>
+                        
+                        <div class="box-quicklink block-scroll-main">
+                            <p class="quick-filter-title">Chọn {{ $id_cate }} theo loại máy giặt:1111</p>
+
+                            <p>
+                            
+                            <div class="lst-quickfilter has-image">
+                                <a href="/may-giat?g=cua-truoc" data-href="may-giat?g=cua-truoc" data-index="4" class="box-quicklink__item bd-radius quicklink-logo">
+                                    <img src="https://cdn.tgdd.vn/ValueIcons/icon-may-giat-cua-ngang.jpg" width="30" alt="Cửa ngang" />
+                                    Cửa ngang
+                                </a>
+                                <a href="/may-giat?g=cua-tren" data-href="may-giat?g=cua-tren" data-index="5" class="box-quicklink__item bd-radius quicklink-logo">
+                                    <img src="https://cdn.tgdd.vn/ValueIcons/icon-may-giat-cua-tren.jpg" width="30" alt="Cửa trên" />
+                                    Cửa trên
+                                </a>
+                                <a href="/may-giat-tu-cham-soc-quan-ao" data-href="may-giat-tu-cham-soc-quan-ao" data-index="7" class="box-quicklink__item bd-radius quicklink-logo">
+                                    <img src="https://cdn.tgdd.vn/ValueIcons/tu-cham-soc-quan-ao-2.png" width="30" alt="Tủ chăm sóc quần áo" />
+                                    Tủ chăm sóc quần áo
+                                </a>
+                                <a href="/may-giat?g=thap-giat-say" data-href="may-giat?g=thap-giat-say" data-index="8" class="box-quicklink__item bd-radius quicklink-logo">
+                                    <img src="https://cdn.tgdd.vn/ValueIcons/icon-thap-giat-say.png" width="30" alt="Tháp giặt sấy" />
+                                    Tháp giặt sấy
+                                </a>
+                            </div>
+
+
+                            <div class="lst-quicklink">
+
+                                <p class="quick-link-title">Tìm kiếm nhiều:</p>
+
+                                <a href="/may-giat-samsung" data-href="https://www.dienmayxanh.com/may-giat-samsung" data-index="1" class="box-quicklink__item bd-radius quicklink-logo">
+                                    <img src="https://cdn.tgdd.vn/Category/Quicklink/1944/2\070521-085629.png" width="30" class="no-text" />
+                                </a>
+                                <a href="/may-giat-lg" data-href="https://www.dienmayxanh.com/may-giat-lg" data-index="2" class="box-quicklink__item bd-radius quicklink-logo">
+                                    <img src="https://cdn.tgdd.vn/Category/Quicklink/1944/2\070521-085532.png" width="30" class="no-text" />
+                                </a>
+                                <a href="/may-giat-panasonic" data-href="https://www.dienmayxanh.com/may-giat-panasonic" data-index="3" class="box-quicklink__item bd-radius quicklink-logo">
+                                    <img src="https://cdn.tgdd.vn/Category/Quicklink/1944/2\100521-103754.png" width="30" class="no-text" />
+                                </a>
+                                <a href="/may-giat-toshiba" data-href="https://www.dienmayxanh.com/may-giat-toshiba" data-index="4" class="box-quicklink__item bd-radius quicklink-logo">
+                                    <img src="https://cdn.tgdd.vn/Category/Quicklink/1944/2\070521-085555.png" width="30" class="no-text" />
+                                </a>
+                                <a href="/may-giat-electrolux" data-href="https://www.dienmayxanh.com/may-giat-electrolux" data-index="5" class="box-quicklink__item bd-radius quicklink-logo">
+                                    <img src="https://cdn.tgdd.vn/Category/Quicklink/1944/2\090823-024809.png" width="30" class="no-text" />
+                                </a>
+                                <a href="/may-giat-aqua-sanyo" data-href="https://www.dienmayxanh.com/may-giat-aqua-sanyo" data-index="6" class="box-quicklink__item bd-radius quicklink-logo">
+                                    <img src="https://cdn.tgdd.vn/Category/Quicklink/1944/2\270521-085642.png" width="30" class="no-text" />
+                                </a>
+
+                               
+                            </div>
+                        </div>
+
                     </div>    
                 </div>       
             </section>
@@ -519,8 +580,6 @@
                                             } 
 
                                         ?>
-
-
 
                                         
                                     </div>
