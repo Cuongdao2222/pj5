@@ -56,6 +56,10 @@
                width:59px;
             }
 
+            .lst-quickfilter{
+                width: 100%;
+            }
+
             
 
 
