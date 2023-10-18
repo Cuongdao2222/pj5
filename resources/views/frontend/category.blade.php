@@ -192,7 +192,7 @@
                                 @if(isset($propertyId))
                                 <div class="filter-list  props" data-propid="40562">
                                     @if(!empty($manu[strtolower($property->name)]))
-
+                                       
                                         <a href="javascript:void(0)" data-value="{{ $property->id}}" data-id="{{ $filters->id }}" class="c-btnbox">
                                             <img src="{{ $manu[strtolower($property->name)] }}" width="68" height="30" alt="{{ $property->name }}">          
                                         </a>
@@ -240,11 +240,32 @@
                         @endif
 
 
-        
+                        <?php 
+
+                            $arr_info_filter[3] = [22,20];
+                            $arr_info_filter[2] = [17,15];
+                            $arr_info_filter[4] = [34,30];
+
+                        ?>    
+
+                           
+                            
+
+
+                        @if(!empty($arr_info_filter[$id_cate]))  
+
+                        <?php 
+
+                            $property_show = Cache::get('filterId_'.$arr_info_filter[$id_cate][0]);
+
+                            $saker_show  = Cache::get('filterId_'.$arr_info_filter[$id_cate][1])
+                        ?>
+
+
                         <div class="box-quicklink block-scroll-main">
                             <p class="quick-filter-title">Chọn {{ $id_cate }} theo loại máy giặt:1111</p>
 
-                            <p>
+                           
                             
                             <div class="lst-quickfilter has-image">
 
@@ -258,34 +279,25 @@
 
                                 @endif
                             </div>
-
+                            <div class="clearfix"></div>
 
                             <div class="lst-quicklink">
 
                                 <p class="quick-link-title">Tìm kiếm nhiều:</p>
 
+                                @if(!empty($saker_show) && $saker_show->count()>0)
+                                @foreach($saker_show as $value)
+
                                 <a href="/may-giat-samsung" data-href="https://www.dienmayxanh.com/may-giat-samsung" data-index="1" class="box-quicklink__item bd-radius quicklink-logo">
                                     <img src="https://cdn.tgdd.vn/Category/Quicklink/1944/2\070521-085629.png" width="30" class="no-text" />
                                 </a>
-                                <a href="/may-giat-lg" data-href="https://www.dienmayxanh.com/may-giat-lg" data-index="2" class="box-quicklink__item bd-radius quicklink-logo">
-                                    <img src="https://cdn.tgdd.vn/Category/Quicklink/1944/2\070521-085532.png" width="30" class="no-text" />
-                                </a>
-                                <a href="/may-giat-panasonic" data-href="https://www.dienmayxanh.com/may-giat-panasonic" data-index="3" class="box-quicklink__item bd-radius quicklink-logo">
-                                    <img src="https://cdn.tgdd.vn/Category/Quicklink/1944/2\100521-103754.png" width="30" class="no-text" />
-                                </a>
-                                <a href="/may-giat-toshiba" data-href="https://www.dienmayxanh.com/may-giat-toshiba" data-index="4" class="box-quicklink__item bd-radius quicklink-logo">
-                                    <img src="https://cdn.tgdd.vn/Category/Quicklink/1944/2\070521-085555.png" width="30" class="no-text" />
-                                </a>
-                                <a href="/may-giat-electrolux" data-href="https://www.dienmayxanh.com/may-giat-electrolux" data-index="5" class="box-quicklink__item bd-radius quicklink-logo">
-                                    <img src="https://cdn.tgdd.vn/Category/Quicklink/1944/2\090823-024809.png" width="30" class="no-text" />
-                                </a>
-                                <a href="/may-giat-aqua-sanyo" data-href="https://www.dienmayxanh.com/may-giat-aqua-sanyo" data-index="6" class="box-quicklink__item bd-radius quicklink-logo">
-                                    <img src="https://cdn.tgdd.vn/Category/Quicklink/1944/2\270521-085642.png" width="30" class="no-text" />
-                                </a>
-
+                                @endforeach
+                                @endif
                                
                             </div>
                         </div>
+
+                        @endif
 
                     </div>    
                 </div>       
