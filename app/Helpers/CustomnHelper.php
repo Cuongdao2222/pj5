@@ -212,7 +212,7 @@ if(!function_exists('pricesPromotion')){
         });
 
         
-        if($id===''||$checkActiveButton===0||$id===1804||$id===1180||3733){
+        if($id===''||$checkActiveButton===0||$id===1804||$id===1180||$id===3733){
 
             $gift_Price = '';
 
