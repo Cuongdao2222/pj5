@@ -292,9 +292,13 @@
                                 @if(!empty($saker_show) && $saker_show->count()>0)
                                 @foreach($saker_show as $value)
 
+                                @if(!empty($manu[strtolower($value->name)] ))
+
+
                                 <a href="/may-giat-samsung" data-href="https://www.dienmayxanh.com/may-giat-samsung" data-index="1" class="box-quicklink__item bd-radius quicklink-logo">
-                                    <img src="https://cdn.tgdd.vn/Category/Quicklink/1944/2\070521-085629.png" width="30" class="no-text" />
+                                    <img src="{{ $manu[strtolower($value->name)] }}" width="30" class="no-text" />
                                 </a>
+                                @endif
                                 @endforeach
                                 @endif
                                
