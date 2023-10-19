@@ -1,3 +1,11 @@
+<style type="text/css">
+    
+     .position{
+        position: static !important;
+    }
+
+</style>
+
 <div class="table-responsive">
     <table class="table" id="categories-table">
         <thead>

@@ -277,7 +277,22 @@
                 <input type="checkbox" id="limit{{ $product->id }}" name="limit"  onclick="limit({{ $product->id }})" {{  $product->limits ==1?'checked':'' }}>
 
                 S/P số lượng có hạn
-  
+                <br>
+
+                <?php 
+
+                    $checkMoneyPromoption = DB::table('money_promotion')->select('product_id')->where('product_id', $product->id)->first();
+
+                    $cacheMoneyPromotion  = Cache::get('money_promotion');
+
+                  
+
+                ?>
+
+                <input type="checkbox" id="promotion_on_click{{ $product->id }}" name="promotion_on_click"  onclick="promotion_on_click({{ $product->id }})" {{  !empty($checkMoneyPromoption)?'checked':'' }}>
+               
+                Xóa khuyến mãi giá 
+                
             </td>
             
 
@@ -945,7 +960,7 @@
             },
             success: function(result){
                 alert('thành công');
-              
+                
             }
            
         });
@@ -965,6 +980,36 @@
            
         });
 
+    }
+
+
+    function promotion_on_click(productId) {
+
+        var checked = $('#promotion_on_click'+productId).is(':checked'); 
+
+        action = checked == true?1:0;
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            type: 'POST',
+            url: "{{ route('promotion-money-change') }}",
+            data: {
+                product_id: productId,
+
+                action:action
+                   
+            },
+            success: function(result){
+                console.log('thành công');
+              
+            }
+           
+        });
+       
     }
 
 </script>

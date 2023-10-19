@@ -250,6 +250,8 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::post('save-css','mainController@saveCss')->name('saveCss');
 
+    Route::post('promotion-money-change','AjaxController@changeMoneyPromotionProduct')->name('promotion-money-change');
+
     Route::get('find-post', 'postController@findPostByValue')->name('findPostAdmin');
 
     Route::post('/editFastPrice', 'productController@editFastPrice')->name('fast-price');
