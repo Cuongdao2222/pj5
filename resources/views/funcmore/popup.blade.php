@@ -28,6 +28,9 @@
         width: 1200px;
     }
 
+    .position{
+        position: static !important;
+    }
 
 </style>
 
