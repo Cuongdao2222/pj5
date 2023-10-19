@@ -277,7 +277,13 @@
                 <input type="checkbox" id="limit{{ $product->id }}" name="limit"  onclick="limit({{ $product->id }})" {{  $product->limits ==1?'checked':'' }}>
 
                 S/P số lượng có hạn
-  
+                <br>
+
+                <input type="checkbox" id="promotion_on_click{{ $product->id }}" name="promotion_on_click"  onclick="promotion_on_click({{ $product->id }})">
+
+
+
+                
             </td>
             
 
@@ -929,6 +935,44 @@
             }
         });
     } 
+
+    function limit(productId) {
+
+        var checked = $('#limit'+productId).is(':checked'); 
+
+        if(checked == true)
+             
+        $.ajax({
+            type: 'POST',
+            url: "{{ route('add-limit-product') }}",
+            data: {
+                product_id: productId,
+                   
+            },
+            success: function(result){
+                alert('thành công');
+              
+            }
+           
+        });
+        else
+        $.ajax({
+           
+            type: 'POST',
+            url: "{{ route('remove-limit-product') }}",
+            data: {
+                product_id: productId,
+                   
+            },
+            success: function(result){
+                alert(' xóa thành cong')
+              
+            }
+           
+        });
+
+    }
+
 
     function limit(productId) {
 
