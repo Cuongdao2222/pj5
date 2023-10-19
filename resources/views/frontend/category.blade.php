@@ -182,7 +182,7 @@
                         <div class="filter-item isShowing filter-desktop" propertyid="{{ $filters->id }}">
 
 
-                            <div class="filter-item__title jsTitle noselecttext showing" data-textorg="Kích cỡ màn hình">
+                            <div class="filter-item__title jsTitle noselecttext showing">
                                 <div class="arrow-filter"></div>
                                 <span>{{ $filters->name }}</span>
                             </div>
@@ -197,13 +197,13 @@
                                 <div class="filter-list  props" data-propid="40562">
                                     @if(!empty($manu[strtolower($property->name)]))
                                        
-                                        <a href="javascript:void(0)" data-value="{{ $property->id}}" data-id="{{ $filters->id }}" class="c-btnbox">
+                                        <a href="{{ route('details',$link) }}?filter=,{{ $filters->id }}&group_id={{ @$id_cate  }}&property=,{{ $property->id }}&link={{$link  }}" data-value="{{ $property->id}}" data-id="{{ $filters->id }}" class="c-btnbox">
                                             <img src="{{ $manu[strtolower($property->name)] }}" width="68" height="30" alt="{{ $property->name }}">          
                                         </a>
 
                                     @else
 
-                                    <a href="javascript:void(0)" data-value="{{ $property->id}}" data-id="{{ $filters->id }}" class="c-btnbox">
+                                    <a href="{{ route('details',$link) }}?filter=,{{ $filters->id }}&group_id={{ @$id_cate  }}&property=,{{ $property->id }}&link={{$link  }}" data-value="{{ $property->id}}" data-value="{{ $property->id}}" data-id="{{ $filters->id }}" class="c-btnbox">
                                         {{ trim($property->name)}}            
                                     </a>
                                     @endif
@@ -275,7 +275,7 @@
 
                                 @if(!empty($property_show) && $property_show->count()>0)
                                 @foreach($property_show as $value)
-                                <a href="/may-giat?g=cua-truoc" data-href="may-giat?g=cua-truoc" data-index="4" class="box-quicklink__item bd-radius quicklink-logo">
+                                <a href="{{ route('details',$link) }}?filter=,{{ $arr_info_filter[$id_cate][0] }}&group_id={{ @$id_cate  }}&property=,{{ $value->id }}&link={{$link  }}" data-href="may-giat?g=cua-truoc" data-index="4" class="box-quicklink__item bd-radius quicklink-logo">
                                     <img src="https://cdn.tgdd.vn/ValueIcons/icon-may-giat-cua-ngang.jpg" width="30" alt="Cửa ngang" />
                                     {{ $value->name }}
                                 </a>
@@ -295,7 +295,7 @@
                                 @if(!empty($manu[strtolower($value->name)] ))
 
 
-                                <a href="/may-giat-samsung" data-href="https://www.dienmayxanh.com/may-giat-samsung" data-index="1" class="box-quicklink__item bd-radius quicklink-logo">
+                                <a href="{{ route('details',$link) }}?filter=,{{ $arr_info_filter[$id_cate][1] }}&group_id={{ @$id_cate  }}&property=,{{ $value->id }}&link={{$link  }}"  data-index="1" class="box-quicklink__item bd-radius quicklink-logo">
                                     <img src="{{ $manu[strtolower($value->name)] }}" width="30" class="no-text" />
                                 </a>
                                 @endif
@@ -748,47 +748,6 @@
                     }
                 });
 
-            $('.filter-list a').click(function() {
-
-                filters  = $(this).attr('data-id'); 
-
-                property = $(this).attr('data-value');
-
-                // kiểm tra filter có bị trùng không xóa filter trước + xóa property cùng filter
-
-                if(filter.indexOf(filters)>-1){
-                    filter.splice(filter.indexOf(filters),1);
-                    propertys.splice(filter.indexOf(filters),1);
-                }
-
-                //chỉ lấy giá trị 
-                if(property !=0){
-
-                    filter.push(filters);
-
-                    propertys.push(property);
-
-                }
-                
-                // var filterss['code'] = property; 
-
-
-                // khi người dùng select option thì gọi hàm
-                if(filter.length>0){
-
-                    filter = filter.join(',');
-
-                    propertys = propertys.join(',');
-                    
-                    @if(!empty($link))
-                      
-                            window.location.href = '{{ route('details',$link) }}?filter=,'+filter+'&group_id={{ @$id_cate  }}&property=,'+propertys+'&link={{$link  }}';
-                            
-                    @endif
-
-                }
-                 
-             })
             
         
             $( "#sort-by-option" ).bind( "change", function() {
@@ -905,6 +864,8 @@
                     filter = filter.join(',');
 
                     propertys = propertys.join(',');
+
+
                     
                     @if(!empty($link))
                       

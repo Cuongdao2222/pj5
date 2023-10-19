@@ -288,13 +288,13 @@
                                 <div class="filter-list  props" data-propid="40562">
                                     @if(!empty($manu[strtolower($property->name)]))
 
-                                        <a href="javascript:void(0)" data-value="{{ $property->id}}" data-id="{{ $filters->id }}" class="c-btnbox">
+                                        <a href="{{ route('details',$link) }}?filter=,{{ $filters->id }}&group_id={{ @$id_cate  }}&property=,{{ $property->id }}&link={{$link  }}" data-value="{{ $property->id}}" data-value="{{ $property->id}}" data-id="{{ $filters->id }}" class="c-btnbox">
                                             <img src="{{ $manu[strtolower($property->name)] }}" width="68" height="30" alt="{{ $property->name }}">          
                                         </a>
 
                                     @else
 
-                                    <a href="javascript:void(0)" data-value="{{ $property->id}}" data-id="{{ $filters->id }}" class="c-btnbox">
+                                    <a href="{{ route('details',$link) }}?filter=,{{ $filters->id }}&group_id={{ @$id_cate  }}&property=,{{ $property->id }}&link={{$link  }}" data-value="{{ $property->id}}" data-value="{{ $property->id}}" data-id="{{ $filters->id }}" class="c-btnbox">
                                         {{ trim($property->name)}}            
                                     </a>
                                     @endif
