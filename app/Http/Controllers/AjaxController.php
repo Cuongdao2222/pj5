@@ -584,6 +584,51 @@ class AjaxController extends Controller
        
     }
 
+
+    public function changeMoneyPromotionProduct(Request $request)
+    {
+        
+        $product_id = trim($request->product_id);
+
+        $action     = $request->action;
+
+
+        if($action==1){
+
+
+            DB::table('money_promotion')->insert(['product_id'=>$product_id]);
+
+
+        }
+        else{
+
+            DB::table('money_promotion')->where('product_id', $product_id)->delete();
+        }
+
+        $money_promotion = DB::table('money_promotion')->select('product_id')->get();
+
+        $ar_list = [];
+
+        if(!empty($money_promotion) && $money_promotion->count()>0 ){
+
+            foreach ($money_promotion as  $value) {
+
+                array_push($ar_list, $value->product_id);
+               
+            }
+
+        }
+
+
+        if(Cache::has('money_promotion')){
+
+            Cache::forget('money_promotion');
+
+        }
+       
+        Cache::forever('money_promotion', $ar_list);
+    }
+
     protected function checkActive(Request $request)
     {
         $id = $request->product_id;

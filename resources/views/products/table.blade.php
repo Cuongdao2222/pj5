@@ -279,10 +279,19 @@
                 S/P số lượng có hạn
                 <br>
 
-                <input type="checkbox" id="promotion_on_click{{ $product->id }}" name="promotion_on_click"  onclick="promotion_on_click({{ $product->id }})">
+                <?php 
 
+                    $checkMoneyPromoption = DB::table('money_promotion')->select('product_id')->where('product_id', $product->id)->first();
 
+                    $cacheMoneyPromotion  = Cache::get('money_promotion');
 
+                  
+
+                ?>
+
+                <input type="checkbox" id="promotion_on_click{{ $product->id }}" name="promotion_on_click"  onclick="promotion_on_click({{ $product->id }})" {{  !empty($checkMoneyPromoption)?'checked':'' }}>
+               
+                Xóa khuyến mãi giá 
                 
             </td>
             
@@ -951,7 +960,7 @@
             },
             success: function(result){
                 alert('thành công');
-              
+                
             }
            
         });
@@ -974,41 +983,33 @@
     }
 
 
-    function limit(productId) {
+    function promotion_on_click(productId) {
 
-        var checked = $('#limit'+productId).is(':checked'); 
+        var checked = $('#promotion_on_click'+productId).is(':checked'); 
 
-        if(checked == true)
-             
+        action = checked == true?1:0;
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
         $.ajax({
             type: 'POST',
-            url: "{{ route('add-limit-product') }}",
+            url: "{{ route('promotion-money-change') }}",
             data: {
                 product_id: productId,
+
+                action:action
                    
             },
             success: function(result){
-                alert('thành công');
+                console.log('thành công');
               
             }
            
         });
-        else
-        $.ajax({
-           
-            type: 'POST',
-            url: "{{ route('remove-limit-product') }}",
-            data: {
-                product_id: productId,
-                   
-            },
-            success: function(result){
-                alert(' xóa thành cong')
-              
-            }
-           
-        });
-
+       
     }
 
 </script>
