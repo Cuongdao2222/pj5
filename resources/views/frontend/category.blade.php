@@ -69,7 +69,7 @@
                     display: none;
                 }
 
-                @if($id_cate ===1)
+                @if(!empty($id_cate) && $id_cate ===1)
 
                 .has-image .box-quicklink__item:not(.no-text) img{
                     height: 13px !important;
