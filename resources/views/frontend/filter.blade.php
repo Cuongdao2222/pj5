@@ -323,7 +323,6 @@
                                 <?php
 
                                     $data_filter_url = str_replace($ar_index_key[$number_key], '', $data_filter_url);
-                                    $data_filter_url = str_replace(',', '', $data_filter_url);
                                 ?>
                                 
                                 <div class="filter-list  props" data-propid="40562">
