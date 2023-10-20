@@ -324,7 +324,7 @@
 
                                 @else
 
-                                <a href="{{ route('details',$link) }}?filter=,{{ $filters->id }}&group_id={{ @$id_cate  }}&property=,{{ $value->id }}&link={{$link  }}"class="c-btnbox">
+                                <a href="{{ route('details',$link) }}?filter=,{{ $arr_info_filter[$id_cate][1] }}&group_id={{ @$id_cate  }}&property=,{{ $value->id }}&link={{$link  }}"class="c-btnbox">
                                         {{ trim($value->name)}}            
                                     </a>
                                 @endif
