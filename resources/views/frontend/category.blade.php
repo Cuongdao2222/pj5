@@ -69,11 +69,23 @@
                     display: none;
                 }
 
+                @if($id_cate ===1)
+
+                .has-image .box-quicklink__item:not(.no-text) img{
+                    height: 13px !important;
+                }
+
+                @endif
+
             }   
             @media screen and (max-width:776px) {
 
                 .option-href{
                     display: block;
+                }
+
+                .box-filter section{
+                    height: 151px;
                 }
 
                 .box-filter{
@@ -116,6 +128,8 @@
 
         <?php 
             $filtername = '';
+
+        
 
             if(!empty($ar_list[1]['name'])){
 
@@ -176,15 +190,13 @@
                            
                         ?>
 
-                        @if($filters->name !=  $filtername)
-
+                        @if($filters->name !=  $filtername) 
 
                         <div class="filter-item isShowing filter-desktop" propertyid="{{ $filters->id }}">
 
-
                             <div class="filter-item__title jsTitle noselecttext showing">
                                 <div class="arrow-filter"></div>
-                                <span>{{ $filters->name }}</span>
+                                <span>{{ $filters->name }} </span>
                             </div>
 
 
@@ -204,7 +216,9 @@
                                     @else
 
                                     <a href="{{ route('details',$link) }}?filter=,{{ $filters->id }}&group_id={{ @$id_cate  }}&property=,{{ $property->id }}&link={{$link  }}" data-value="{{ $property->id}}" data-value="{{ $property->id}}" data-id="{{ $filters->id }}" class="c-btnbox">
-                                        {{ trim($property->name)}}            
+                                        
+                                        {{ trim($property->name)  }}   
+                                               
                                     </a>
                                     @endif
                                 </div>
@@ -245,7 +259,7 @@
 
 
                         <?php 
-
+                             $arr_info_filter[1] = [14,24];
                             $arr_info_filter[3] = [22,20];
                             $arr_info_filter[2] = [17,15];
                             $arr_info_filter[4] = [34,30];
@@ -267,7 +281,7 @@
 
 
                         <div class="box-quicklink block-scroll-main">
-                            <p class="quick-filter-title">Chọn {{ $id_cate }} theo loại máy giặt:1111</p>
+                            <p class="quick-filter-title">Chọn  theo loại {{ $name_cate_show }}</p>
 
                            
                             
@@ -275,10 +289,18 @@
 
                                 @if(!empty($property_show) && $property_show->count()>0)
                                 @foreach($property_show as $value)
+
+
                                 <a href="{{ route('details',$link) }}?filter=,{{ $arr_info_filter[$id_cate][0] }}&group_id={{ @$id_cate  }}&property=,{{ $value->id }}&link={{$link  }}" data-href="may-giat?g=cua-truoc" data-index="4" class="box-quicklink__item bd-radius quicklink-logo">
-                                    <img src="https://cdn.tgdd.vn/ValueIcons/icon-may-giat-cua-ngang.jpg" width="30" alt="Cửa ngang" />
+                                    <img src="{{ asset('uploads/icon/'.$value->id.'.png') }}" width="30" alt="{{ $value->name }}" />
+
+                                    @if($id_cate != 1)
                                     {{ $value->name }}
+
+                                    @endif
                                 </a>
+
+
                                 @endforeach
 
                                 @endif
@@ -289,6 +311,7 @@
 
                                 <p class="quick-link-title">Tìm kiếm nhiều:</p>
 
+
                                 @if(!empty($saker_show) && $saker_show->count()>0)
                                 @foreach($saker_show as $value)
 
@@ -298,6 +321,12 @@
                                 <a href="{{ route('details',$link) }}?filter=,{{ $arr_info_filter[$id_cate][1] }}&group_id={{ @$id_cate  }}&property=,{{ $value->id }}&link={{$link  }}"  data-index="1" class="box-quicklink__item bd-radius quicklink-logo">
                                     <img src="{{ $manu[strtolower($value->name)] }}" width="30" class="no-text" />
                                 </a>
+
+                                @else
+
+                                <a href="{{ route('details',$link) }}?filter=,{{ $filters->id }}&group_id={{ @$id_cate  }}&property=,{{ $property->id }}&link={{$link  }}" data-value="{{ $property->id}}" data-value="{{ $property->id}}" data-id="{{ $filters->id }}" class="c-btnbox">
+                                        {{ trim($value->name)}}            
+                                    </a>
                                 @endif
                                 @endforeach
                                 @endif

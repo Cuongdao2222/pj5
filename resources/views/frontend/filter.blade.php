@@ -258,8 +258,10 @@
                     <div><h4>Điện máy nguời việt là địa chỉ bán tivi chính hãng uy tín tại Hà Nội. Chúng tôi cam kết tất cả sản phẩm đều là hàng chính hãng, nguyên đai, nguyên kiện, mới 100%.</h4></div>
                     <div class="box-filter block-scroll-main scrolling">
 
+                      
+
                         @if(isset($filter))
-                        @foreach($filter as $filters)
+                        @foreach($filter as $number_key => $filters)
                         <?php
 
                             $propertyId = cache()->remember('filterId_'.$filters->id, 1000, function () use($filters){
@@ -267,6 +269,8 @@
                                 $propertyId =  App\Models\property::where('filterId', $filters->id)->get()??'';
                                 return $propertyId;
                             });
+
+                            $ar_index_key[$number_key] = [];
                            
                         ?>
 
@@ -277,29 +281,66 @@
 
                             <div class="filter-item__title jsTitle noselecttext showing" data-textorg="Kích cỡ màn hình">
                                 <div class="arrow-filter"></div>
-                                <span>{{ $filters->name }}</span>
+
+                                <?php 
+
+                                    $name_filter = $filters->name;
+
+                                    $data_filter_url = $_GET['property'];
+
+                                    $ar_data_filter_url = explode(',', $data_filter_url);
+
+                                    
+
+                                   
+                                    foreach($propertyId as $key => $property){
+
+                                        if( in_array($property->id, $ar_data_filter_url) ){
+
+                                            $name_filter = $property->name;
+
+                                            array_push($ar_index_key[$number_key], $property->id);
+
+                                            
+                                        }
+                                       
+                                    }
+
+                                   
+
+                                ?>
+                                <span>{{ $name_filter }}</span>
+
+                                
                             </div>
 
                             @if(isset($propertyId))
                                
                             <div class="filter-show" data-groupid="">
-                                @foreach($propertyId as $property)
-                                @if(isset($propertyId))
+                                @foreach($propertyId as $keys => $property)
+
+                                <?php
+
+                                    $data_filter_url = str_replace($ar_index_key[$number_key], '', $data_filter_url);
+                                ?>
+                                
                                 <div class="filter-list  props" data-propid="40562">
                                     @if(!empty($manu[strtolower($property->name)]))
 
-                                        <a href="{{ route('details',$link) }}?filter=,{{ $filters->id }}&group_id={{ @$id_cate  }}&property=,{{ $property->id }}&link={{$link  }}" data-value="{{ $property->id}}" data-value="{{ $property->id}}" data-id="{{ $filters->id }}" class="c-btnbox">
-                                            <img src="{{ $manu[strtolower($property->name)] }}" width="68" height="30" alt="{{ $property->name }}">          
+
+
+                                        <a href="{{ route('details',$link) }}?filter=,{{ $filters->id }}&group_id={{ @$id_cate  }}&property={{ $data_filter_url }},{{ $property->id }}&link={{$link  }}" data-value="{{ $property->id}}" data-value="{{ $property->id}}" data-id="{{ $filters->id }}" class="c-btnbox">
+                                            <img src="{{ $manu[strtolower($property->name)] }}" width="68" height="30" alt="{{ $property->name }}">  
                                         </a>
 
                                     @else
 
-                                    <a href="{{ route('details',$link) }}?filter=,{{ $filters->id }}&group_id={{ @$id_cate  }}&property=,{{ $property->id }}&link={{$link  }}" data-value="{{ $property->id}}" data-value="{{ $property->id}}" data-id="{{ $filters->id }}" class="c-btnbox">
-                                        {{ trim($property->name)}}            
+                                    <a href="{{ route('details',$link) }}?filter=,{{ $filters->id }}&group_id={{ @$id_cate  }}&property={{ $data_filter_url }},{{ $property->id }}&link={{$link  }}" data-value="{{ $property->id}}" data-value="{{ $property->id}}" data-id="{{ $filters->id }}" class="c-btnbox">
+                                        {{ trim($property->name) }}          
                                     </a>
                                     @endif
                                 </div>
-                                @endif
+                              
                                 @endforeach
                                 
 

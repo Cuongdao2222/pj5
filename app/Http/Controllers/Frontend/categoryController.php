@@ -88,6 +88,8 @@ class categoryController extends Controller
             if(!empty($findID)){
 
                 $id_cate = $findID->id;
+
+
                 $groupProduct_level = $findID->level;
                 $ar_list = $this->find_List_Id_Group($id_cate,$groupProduct_level);
 
@@ -248,6 +250,8 @@ class categoryController extends Controller
            
             $id_cate = $findID->id;
 
+            $name_cate_show = $findID->name;
+
             $groupProduct_level = $findID->level;
 
             $ar_list = $this->find_List_Id_Group($id_cate,$groupProduct_level);
@@ -350,6 +354,7 @@ class categoryController extends Controller
                 'groupProduct_level'=>$groupProduct_level,
                 'parent_id_cate'=>$parent_id_cate,
                 'page'=>$page??1,
+                'name_cate_show'=>$name_cate_show,
 
             ];
 
