@@ -260,7 +260,7 @@
 
                       
 
-                        @if(isset($filter) && count($filter)>0 && array_key_exists('id', $filter))
+                        @if(!empty($filter) && is_array($filter) && array_key_exists('id', $filter))
 
                         
                         @foreach($filter as $number_key => $filters)
