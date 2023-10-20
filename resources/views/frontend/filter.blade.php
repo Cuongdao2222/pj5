@@ -260,9 +260,12 @@
 
                       
 
-                        @if(isset($filter) && count($filter)>0)
+                        @if(isset($filter) && count($filter)>0 && array_key_exists('id', $filter))
+
+                        
                         @foreach($filter as $number_key => $filters)
                         <?php
+
 
                             $propertyId = cache()->remember('filterId_'.$filters->id, 1000, function () use($filters){
 
