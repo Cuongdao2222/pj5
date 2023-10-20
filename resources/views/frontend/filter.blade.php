@@ -258,7 +258,7 @@
                     <div><h4>Điện máy nguời việt là địa chỉ bán tivi chính hãng uy tín tại Hà Nội. Chúng tôi cam kết tất cả sản phẩm đều là hàng chính hãng, nguyên đai, nguyên kiện, mới 100%.</h4></div>
                     <div class="box-filter block-scroll-main scrolling">
 
-                      
+                        @if(!is_array($filter))
 
                         @if(!empty($filter) && $filter->count()>0)
 
@@ -276,8 +276,6 @@
                             $ar_index_key[$number_key] = [];
                            
                         ?>
-
-                       
 
                         <div class="filter-item isShowing filter-desktop" propertyid="{{ $filters->id }}">
 
@@ -370,11 +368,10 @@
                             </select>
                         </div>
 
-
-
-                       
                         
                         @endforeach
+                        @endif
+
                         @endif
                     </div>    
                 </div>       
