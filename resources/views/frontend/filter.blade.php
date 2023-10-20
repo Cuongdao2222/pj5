@@ -260,7 +260,7 @@
 
                       
 
-                        @if(isset($filter))
+                        @if(isset($filter) && count($filter)>0)
                         @foreach($filter as $number_key => $filters)
                         <?php
 
