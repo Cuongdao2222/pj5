@@ -210,13 +210,20 @@
             $filter_url_id  = explode(',',$filter_url);
             $filter_url_id  = array_unique($filter_url_id);
 
+
+
             // xóa phần tử rỗng trong mảng
 
             $filter_url_id = array_filter($filter_url_id, function ($value) {
               return !empty($value);
             });
 
+             $propery_url_id = array_filter($propery_url_id, function ($value) {
+              return !empty($value);
+            });
+
             $filter_url_show = implode(',', $filter_url_id);
+
 
           $manu = ['lg'=>'/images/saker/lg.png', 'tcl'=>'/images/saker/tcl.png', 'samsung'=>'/images/saker/samsung.png', 'sharp'=>'/images/saker/sharp.png', 'sony'=>'/images/saker/sony.png', 'panasonic'=>'/images/saker/panasonic.png', 'electrolux'=>'/images/saker/electrolux.png', 'philips'=>'/images/saker/philips.png', 'funiki'=>'/images/saker/funiki.png', 'hitachi'=>'/images/saker/hitachi.png', 'sanaky'=>'/images/saker/sanaky.png', 'nagakawa'=>'/images/saker/nagakawa.png', 'daikin'=>'/images/saker/daikin.png', 'mitsubishi electric'=>'/images/saker/mitsubishi.png', 'kangaroo'=>'/images/saker/kangaroo.png', 'midea'=>'/images/saker/midea.png', 'mitsubishi'=>'/images/saker/mitsubishi.png'];
             
@@ -389,6 +396,13 @@
                 </div>       
             </section>
         </div>
+
+        <?php 
+
+            $get_sort = !empty($_GET['sort'])?$_GET['sort']:'';
+
+            
+        ?>
         <section id="categoryPage" class="desktops" data-id="1942" data-name="Tivi" data-template="cate">
 
             
@@ -402,9 +416,9 @@
                     <label for="standard-select">Xếp theo</label>
                     <div class="select">
                       <select id="sort-by-option">
-                        <option value="id">Nổi bật</option>
-                        <option value="asc">Giá tăng dần</option>
-                        <option value="desc">Giá giảm dần</option>
+                        <option value="id" {{ empty($get_sort)?'selected':'' }}>Nổi bật</option>
+                        <option value="asc" {{ $get_sort==='asc'?'selected':'' }}>Giá tăng dần</option>
+                        <option value="desc" {{ $get_sort==='desc'?'selected':'' }}>Giá giảm dần</option>
                       </select>
                     </div>
                 </div>
@@ -712,35 +726,27 @@
 
             }
 
-            $( "#sort-by-option" ).bind("change", function() {
+          
                 
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
+                $( "#sort-by-option" ).bind( "change", function() {
+
+                    option = $(this).val()==='id'?'':'&sort='+$(this).val();
+
+                    
+
+                    $replace_link = window.location.href;
+
+                    $replace_link= $replace_link.replace('&sort=desc','');
+
+                    $replace_link= $replace_link.replace('&sort=asc','');
+
+                    window.location.href = $replace_link+option;
+                    
+
                 });
 
-                $.ajax({
+
        
-                type: 'POST',
-                    url: "{{ route('filter-option-by-page') }}",
-                    data: {
-                        json_id_product: $('.lists-id').text(),
-                        action:$(this).val(),
-                        idcate: '{{ $id_cate??'' }}'
-                        
-                    },
-                    success: function(result){
-
-                        $('.container-productbox').html('');
-
-                        $('.container-productbox').html(result);
-
-
-                    }
-                });
-
-            });
 
 
             property_click = [];

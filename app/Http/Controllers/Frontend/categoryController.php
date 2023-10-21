@@ -66,6 +66,7 @@ class categoryController extends Controller
 
             $property = !empty($_GET['property'])?explode(',', $_GET['property']):'';
 
+            $sort     = !empty($_GET['sort'])?$_GET['sort']:'';
 
             $new_filter = [];
 
@@ -199,7 +200,26 @@ class categoryController extends Controller
 
                                 }
 
-                                $product_search = product::whereIn('id', $result_product)->whereIn('id', $checkidgroup_id)->where('active', 1)->get();
+
+
+
+                                if(!empty($sort)){
+
+                                    $check_sort = ['asc', 'desc']; 
+
+                                   
+                                    if(in_array(trim($sort), $check_sort)  ){
+
+                                        $product_search = product::whereIn('id', $result_product)->whereIn('id', $checkidgroup_id)->where('active', 1)->OrderBy('price', trim($sort))->get();
+                                    }   
+                                    else{
+                                        abort('404');
+                                    }
+
+                                }
+                                else{
+                                    $product_search = product::whereIn('id', $result_product)->whereIn('id', $checkidgroup_id)->where('active', 1)->OrderBy('price', 'asc')->get();
+                                }
                             }
 
                         }
