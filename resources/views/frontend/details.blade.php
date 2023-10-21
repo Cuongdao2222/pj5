@@ -1083,7 +1083,7 @@
                                    
                                 } 
                               
-                                $check_deals_pd =  Cache::get('deals')->where('product_id', $relationProducts->id)->first();
+                                $check_deals_pd =  Cache::get('deals')->where('product_id', $relationProducts->id)->where('active', 1)->first();
 
                                 if(!empty($check_deals_pd)){
 

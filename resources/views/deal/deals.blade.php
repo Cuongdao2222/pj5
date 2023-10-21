@@ -356,7 +356,7 @@
 
                                 <td>
                                     <!-- <div><a href="javascript:void(0)" onclick="update_product({{ $val->id }})">Sửa lại</a></div> -->
-                                    <div id="is_feature_1208">
+                                    <div id="is_feature_{{ $val->product_id }}">
                                         <span><a href="javascript:set_feature('{{  $val->id }}','{{ $val->active }}')">{!! $val->active==0?'<b style="color:green;">Hiển thị</b>':'<b style="color:red">Hạ xuống</b>' !!}</a></span>
                                     </div>
                                     <div><a href="javascript:;" onclick="delete_deal('{{ $val->id }}')">xóa</a></div>
