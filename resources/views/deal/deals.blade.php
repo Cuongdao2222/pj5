@@ -402,7 +402,14 @@
                                     Còn {{ floor($hour) }} giờ {{ (int)$minutes }} phút nữa 
                                     
                                     @else
-                                      Hết thời gian deal                                  
+                                        <?php 
+
+                                            // update lại active khi sản phẩm hết thời gian chạy
+
+                                            $update = DB::table('deal')->where('id', $val->id)->update(['active'=>0]);
+                                        ?>
+
+                                        Hết thời gian deal                                  
                                      @endif
                                     <br>
                                     <a href="javascript:void(0)" onclick="setTimeDeal({{ $val->id }})">Sửa</a>

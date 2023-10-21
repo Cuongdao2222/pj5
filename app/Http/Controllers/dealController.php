@@ -20,6 +20,7 @@ class dealController extends Controller
 {
     public function index()
     {
+        
         return view('deal.deals');
 
     }
