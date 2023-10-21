@@ -101,7 +101,19 @@ class categoryController extends Controller
 
                 $parent_cate_id = $ar_list[0]['id'];
 
+            
+
+                // xóa phần tử rỗng trong mảng
+
+                $filter = array_filter($filter, function ($value) {
+                  return !empty($value);
+                });
+
+               
+
+
                 $list_data_group = filter::where('group_product_id', $parent_cate_id)->whereIn('id', $filter)->select('value')->get()->toArray();
+
 
 
                 if($parent_cate_id == 8){
@@ -110,6 +122,8 @@ class categoryController extends Controller
                 }
 
                 $filter = filter::where('group_product_id', $parent_cate_id)->select('name', 'id')->get();
+
+
 
                 $fill = [];
 
@@ -132,11 +146,11 @@ class categoryController extends Controller
             
                     if(!empty($list_data_group[0]['value'])){
 
-
                         foreach ($list_data_group as $key => $value) {
                             foreach($value as $values){
 
                                 $arr = json_decode($values, true);
+
 
                                 if(isset($arr)){
 
