@@ -318,6 +318,7 @@
                                 $products = DB::table('deal')->OrderBy('id', 'desc')->distinct()->get()->toArray();
 
                                 $k =0;
+                                $z =0;
 
                             ?>
                             @isset($products)
@@ -406,10 +407,27 @@
 
                                             // update lại active khi sản phẩm hết thời gian chạy
 
-                                            $update = DB::table('deal')->where('id', $val->id)->update(['active'=>0]);
+                                            if($val->active==1){
+
+                                                $z++;
+
+                                                $update = DB::table('deal')->where('id', $val->id)->update(['active'=>0]);
+
+                                                if($z===1){
+
+                                                    Cache::forget('deals');
+                                                    $deal = App\Models\deal::get();
+
+                                                    Cache::forever('deals',$deal);
+
+                                                }
+
+                                            }
+
+                                           
                                         ?>
 
-                                        Hết thời gian deal                                  
+                                        Hết thời gian deal                             
                                      @endif
                                     <br>
                                     <a href="javascript:void(0)" onclick="setTimeDeal({{ $val->id }})">Sửa</a>
@@ -428,10 +446,7 @@
                 
             </div>
 
-
-
         </div>
-
 
         <div class="modal fade" id="modal-product" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
