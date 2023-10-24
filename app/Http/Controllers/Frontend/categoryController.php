@@ -244,7 +244,17 @@ class categoryController extends Controller
 
             }
 
-             return view('frontend.filter', compact('product_search', 'link', 'filter', 'id_cate', 'ar_list', 'groupProduct_level'));
+            $meta = [];
+
+            if(Cache::has('meta_id_'.$findID->Meta_id)){
+
+                 $meta = Cache::get('meta_id_'.$findID->Meta_id);
+
+
+            }
+
+
+            return view('frontend.filter', compact('product_search', 'link', 'filter', 'id_cate', 'ar_list', 'groupProduct_level', 'meta'));
 
         }
         else{
