@@ -210,8 +210,6 @@
             $filter_url_id  = explode(',',$filter_url);
             $filter_url_id  = array_unique($filter_url_id);
 
-
-
             // xóa phần tử rỗng trong mảng
 
             $filter_url_id = array_filter($filter_url_id, function ($value) {
@@ -222,8 +220,10 @@
               return !empty($value);
             });
 
+
             $filter_url_show = implode(',', $filter_url_id);
 
+           
 
           $manu = ['lg'=>'/images/saker/lg.png', 'tcl'=>'/images/saker/tcl.png', 'samsung'=>'/images/saker/samsung.png', 'sharp'=>'/images/saker/sharp.png', 'sony'=>'/images/saker/sony.png', 'panasonic'=>'/images/saker/panasonic.png', 'electrolux'=>'/images/saker/electrolux.png', 'philips'=>'/images/saker/philips.png', 'funiki'=>'/images/saker/funiki.png', 'hitachi'=>'/images/saker/hitachi.png', 'sanaky'=>'/images/saker/sanaky.png', 'nagakawa'=>'/images/saker/nagakawa.png', 'daikin'=>'/images/saker/daikin.png', 'mitsubishi electric'=>'/images/saker/mitsubishi.png', 'kangaroo'=>'/images/saker/kangaroo.png', 'midea'=>'/images/saker/midea.png', 'mitsubishi'=>'/images/saker/mitsubishi.png'];
             
@@ -310,8 +310,6 @@
 
                                     $ar_data_filter_url = explode(',', $data_filter_url);
 
-                                    
-
                                    
                                     foreach($propertyId as $key => $property){
 
@@ -326,38 +324,67 @@
                                        
                                     }
 
-                                   
-
                                 ?>
                                 <span>{{ $name_filter }}</span>
 
                                 
                             </div>
 
+
+                            <?php 
+
+                                // xóa phần tử rỗng trong mảng $ar_data_filter_url
+
+                                $ar_data_filter_url = array_filter($ar_data_filter_url, function ($value) {
+
+                                  return !empty($value);
+
+                                });
+
+                               
+                               
+                            ?>
+
                             @if(isset($propertyId))
+
+
                                
                             <div class="filter-show" data-groupid="">
                                 @foreach($propertyId as $keys => $property)
 
                                 <?php
 
-                                    $data_filter_url = str_replace($ar_index_key[$number_key], '', $data_filter_url);
+                                    // $data_filter_url = str_replace($ar_index_key[$number_key], '', $data_filter_url);
+
+                                    // $data_filter_url =  explode(',', $data_filter_url);
+
+
+                                    $data_filter_url = array_filter([$ar_data_filter_url,$ar_index_key[$number_key]], function ($value){
+
+                                        return !empty($value);
+
+                                    });
+
+
+                                    $data_filter_url = implode(',', $ar_data_filter_url);
+
+                                  
                                 ?>
                                 
                                 <div class="filter-list  props" data-propid="40562">
                                     @if(!empty($manu[strtolower($property->name)]))
-
-
-
                                         <a href="{{ route('details',$link) }}?filter=,{{ $filter_url_show }},{{ $filters->id }}&group_id={{ @$id_cate  }}&property={{ $data_filter_url }},{{ $property->id }}&link={{$link  }}" data-value="{{ $property->id}}" data-value="{{ $property->id}}" data-id="{{ $filters->id }}" class="c-btnbox">
                                             <img src="{{ $manu[strtolower($property->name)] }}" width="68" height="30" alt="{{ $property->name }}">  
                                         </a>
 
+                                        
                                     @else
+                                        
+                                        <a href="{{ route('details',$link) }}?filter=,{{ $filter_url_show }},{{ $filters->id }}&group_id={{ @$id_cate  }}&property={{ $data_filter_url }},{{ $property->id }}&link={{$link  }}" data-value="{{ $property->id}}" data-value="{{ $property->id}}" data-id="{{ $filters->id }}" class="c-btnbox">
+                                            {{ trim($property->name) }}          
+                                        </a>
+                                       
 
-                                    <a href="{{ route('details',$link) }}?filter=,{{ $filter_url_show }},{{ $filters->id }}&group_id={{ @$id_cate  }}&property={{ $data_filter_url }},{{ $property->id }}&link={{$link  }}" data-value="{{ $property->id}}" data-value="{{ $property->id}}" data-id="{{ $filters->id }}" class="c-btnbox">
-                                        {{ trim($property->name) }}          
-                                    </a>
                                     @endif
                                 </div>
                               
