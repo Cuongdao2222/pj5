@@ -351,8 +351,7 @@
 
                                 });
 
-                               
-                               
+                            
                             ?>
 
                             @if(isset($propertyId))
@@ -378,8 +377,11 @@
 
                                     });
 
+
+
                                   
                                     $data_filter_url = implode(',', $data_filter_url);
+
 
                                 ?>
                                 
@@ -394,7 +396,7 @@
                                         
                                     @else
                                         
-                                        <a href="{{ route('details',$link) }}?filter=,{{ $show_filter }},{{ $filters->id }}&group_id={{ @$id_cate  }}&property={{ $data_filter_url }},{{ $property->id }}&link={{$link  }}" data-value="{{ $property->id}}" data-value="{{ $property->id}}" data-id="{{ $filters->id }}" class="c-btnbox">
+                                        <a href="{{ route('details',$link) }}?filter=,{{ $filter_url_show }},{{ $show_filter }}&group_id={{ @$id_cate  }}&property={{ $data_filter_url }},{{ $property->id }}&link={{$link  }}" data-value="{{ $property->id}}" data-value="{{ $property->id}}" data-id="{{ $filters->id }}" class="c-btnbox">
                                             {{ trim($property->name) }}          
                                         </a>
                                        
@@ -412,7 +414,6 @@
                             </div>
 
                             @endif
-
 
                         </div>
 
