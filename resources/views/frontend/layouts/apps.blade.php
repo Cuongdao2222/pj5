@@ -232,7 +232,7 @@
         
         <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}?ver=1"> 
         <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/apps.css') }}?ver=15">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/apps.css') }}?ver=16">
         <link rel="stylesheet" type="text/css" href="{{asset('css/dienmay.css')}}?ver=103">
         <link rel="stylesheet" type="text/css" href="{{asset('css/detailsfe.css')}}?ver=7"> 
         <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -1349,12 +1349,12 @@
                                             <span>
                                                 <img src="{{ asset('media/category/cat_d8bc7e22dcd3dcc525a4f3e9c7b433bc.png') }}" class="iconss-sp">
                                             </span>
-                                            <a href="{{ route('details', 'may-loc-nuoc-ao-smith') }}" class=""> A.O.Smith</a>
+                                            <a href="{{ route('details', 'may-loc-nuoc') }}" class=""> A.O.Smith</a>
                                         </div>
 
                                         <div id="submenu-6" class="submenu" style="display: none;">
                                             <aside>
-                                                <a href="{{ route('details', 'may-say-quan-ao-lg') }}"><strong>Máy Lọc Nước RO-Side Stream</strong></a>
+                                                <a href="{{ route('details', 'may-loc-nuoc') }}"><strong>Máy Lọc Nước RO-Side Stream</strong></a>
                                                 
                                             </aside>
 
@@ -1628,7 +1628,7 @@
                             <a href="{{ route('details','lo-nuong') }}">Lò Nướng</a>
                             <!-- <a href="{{ route('details','may-loc-nuoc') }}">Máy lọc nước</a> -->
                             <a href="{{ route('details','may-say-quan-ao') }}">Máy sấy quần áo</a>
-                            <a href="{{ route('details','may-loc-nuoc-ao-smith') }}">A.O.Smith</a>
+                            <a href="{{ route('details','may-loc-nuoc') }}">A.O.Smith</a>
                             <a href="{{ route('details','quat') }}">Quạt</a>
                             <a href="{{ route('details','may-cu-trung-bay') }}">Máy cũ, Trưng bày</a>
                             
