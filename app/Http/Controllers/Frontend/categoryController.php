@@ -246,10 +246,9 @@ class categoryController extends Controller
 
             $meta = [];
 
-            if(Cache::has('meta_id_'.$findID->Meta_id)){
+            if(Cache::has('meta_id_'.$findID->Meta_id) && !empty($findID->Meta_id)){
 
                  $meta = Cache::get('meta_id_'.$findID->Meta_id);
-
 
             }
 
