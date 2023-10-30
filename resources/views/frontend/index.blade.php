@@ -986,7 +986,6 @@
         @foreach($group as $key => $groups)
 
 
-
             <?php
                 $dems++;
 
@@ -1009,7 +1008,7 @@
             ?>
 
 
-        @if(!empty($data) && $data->count()>0 && $key !=3)
+        @if(!empty($data) && $data->count()>0)
         
         <?php 
             if(!empty($defineBannerGr[$key])){
