@@ -35,6 +35,11 @@
         width: 36%;
     }
 
+    .td-info h3{
+        color: red;
+        font-weight: bold;
+    }
+
     .fa-angle-right{
         display: none;
     }
@@ -65,12 +70,12 @@
 
                     $data_id = $_GET['cate']??6;
 
-                    $ar_gr[1] = ['Tên sản phẩm','Ảnh sản phẩm','Kích cỡ màn hình', 'Độ phân giải', 'Công nghệ âm thanh', 'Nơi sản xuất', 'Cổng HDMI', 'Công nghệ xử lý hình ảnh', 'Kích thước có chân, đặt bàn', 'Kích thước không chân, treo tường'];
-                    $ar_gr[2] = ['Tên sản phẩm','Ảnh sản phẩm','Khối lượng giặt', 'Khối lượng sấy', 'Tốc độ quay vắt', 'Kiểu động cơ', 'Lồng giặt', 'Công nghệ giặt', 'Kích thước - Khối lượng', 'Nơi sản xuất'];
-                    $ar_gr[3] = ['Tên sản phẩm','Ảnh sản phẩm','Dung tích sử dụng', 'Dung tích ngăn đá', 'Dung tích ngăn lạnh', 'Công nghệ Inverter', 'Kiểu tủ', 'Kích thước - Khối lượng', 'Nơi sản xuất'];
-                    $ar_gr[4] = ['Tên sản phẩm','Ảnh sản phẩm','Loại máy', 'Công suất làm lạnh', 'Công suất sưởi ấm', 'Phạm vi làm lạnh hiệu quả', 'Chế độ tiết kiệm điện', 'Loại Gas sử dụng', 'Nơi sản xuất', 'Năm ra mắt'];
+                    $ar_gr[1] = ['Tên sản phẩm','Giá sản phẩm','Ảnh sản phẩm','Kích cỡ màn hình', 'Độ phân giải', 'Công nghệ âm thanh', 'Nơi sản xuất', 'Cổng HDMI', 'Công nghệ xử lý hình ảnh', 'Kích thước có chân, đặt bàn', 'Kích thước không chân, treo tường'];
+                    $ar_gr[2] = ['Tên sản phẩm','Giá sản phẩm','Ảnh sản phẩm','Khối lượng giặt', 'Khối lượng sấy', 'Tốc độ quay vắt', 'Kiểu động cơ', 'Lồng giặt', 'Công nghệ giặt', 'Kích thước - Khối lượng', 'Nơi sản xuất'];
+                    $ar_gr[3] = ['Tên sản phẩm','Giá sản phẩm','Ảnh sản phẩm','Dung tích sử dụng', 'Dung tích ngăn đá', 'Dung tích ngăn lạnh', 'Công nghệ Inverter', 'Kiểu tủ', 'Kích thước - Khối lượng', 'Nơi sản xuất'];
+                    $ar_gr[4] = ['Tên sản phẩm','Giá sản phẩm','Ảnh sản phẩm','Loại máy', 'Công suất làm lạnh', 'Công suất sưởi ấm', 'Phạm vi làm lạnh hiệu quả', 'Chế độ tiết kiệm điện', 'Loại Gas sử dụng', 'Nơi sản xuất', 'Năm ra mắt'];
 
-                    $ar_gr[5] = ['Tên sản phẩm', 'Ảnh sản phẩm', 'Đặc điểm nổi bật'];  
+                    $ar_gr[5] = ['Tên sản phẩm','Giá sản phẩm','Ảnh sản phẩm', 'Đặc điểm nổi bật'];  
                     $ar = $data_id<5?$ar_gr[$data_id]:$ar_gr[5];
 
                 
@@ -87,6 +92,8 @@
                     $list_filter = [];
 
                     $pd_filter = [];
+
+                    $now  = Carbon\Carbon::now();
                     foreach ($data as $keys => $value) {
 
                         $product = App\Models\product::find($value);
@@ -121,6 +128,18 @@
                                     }
                                 } 
 
+                                // kiểm tra giá deal
+
+                                $check_deal = App\Models\deal::select('deal_price','start', 'end', 'active')->where('product_id', $product->id)->where('active', 1)->first();
+
+                                if(!empty($check_deal) && !empty($check_deal->deal_price) && $now->between($check_deal->start, $check_deal->end)){
+
+                                    $product->Price = $check_deal->deal_price;
+
+                                }    
+
+                                $pd_filter[$keys]['Giá sản phẩm'] = '<h3>'.str_replace(',' ,'.', number_format($product->Price)).' đ </h3>';
+                
                                $pd_filter[$keys]['Ảnh sản phẩm'] = htmlspecialchars_decode('<img width="327" class="code-image" src="'.asset($product->Image).'">');
                                $pd_filter[$keys]['Tên sản phẩm'] = '<b>'.$product->Name.'</b>';
                                $pd_filter[$keys]['id'] = $product->active===1&&$product->Quantily>0?$product->id:'';
@@ -131,6 +150,7 @@
                         }
                         else{
                             $pd_filter[$keys]['Tên sản phẩm'] = $product->Name;
+                            $pd_filter[$keys]['Giá sản phẩm'] = '<h3>'.str_replace(',' ,'.', number_format($product->Price)).' đ </h3>';
                             $pd_filter[$keys]['Ảnh sản phẩm'] = '<img width="327" class="code-image" src="'.asset($product->Image).'">';
                             $pd_filter[$keys]['Đặc điểm nổi bật'] = str_replace(['Xem thêm', 'Đặc điểm nổi bật'], '', html_entity_decode($product->Salient_Features));
                             $pd_filter[$keys]['id'] = $product->active===1&&$product->Quantily>0?$product->id:'';
