@@ -4,6 +4,7 @@
 <html lang="vi-VN">
     <head>
          <?php  
+
             $requestcheck = \Request::route();
 
             if(!empty($requestcheck)){
@@ -771,8 +772,23 @@
                 z-index: 2;
                 width: 3vw;
             }
+
+            @if(!empty(Auth::user()->id) && Auth::user()->id==1)
+
+                .phpdebugbar{
+                    display:block;
+                }
+            @else 
+            
+               .phpdebugbar{
+                    display:none;
+                }
+            @endif
+
         </style>
         @stack('style')
+
+
         
     </head>
     <body class="theme-lunar-new-year">
