@@ -23,7 +23,7 @@ if (!function_exists('groupGift')) {
     // id truyền vào là id category của sản phẩm
     function groupGift($id){
 
-        $gift_group = Cache::remember('gift_group'.$id,1000,  function() use($id){
+        $gift_group = Cache::remember('gift_group'.$id,100000,  function() use($id){
             return DB::table('gift_group')->where('group_product', $id)->get();
         });
         $now = Carbon\Carbon::now();
