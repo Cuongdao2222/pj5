@@ -190,6 +190,8 @@ Route::post('filter-price-product-by-page', 'AjaxController@filterByPageFilter')
 
 Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
+    Route::get('test-home', 'Frontend\indexController@index')->middleware('throttle:90');
+
     Route::post('active-promotion-price', 'giftController@activePromotionPrice')->name('active-promotion-price');
 
     Route::post('remove-click-active-promotion-price', 'giftController@removeClickActivePromotionPrice')->name('remove-click-active-promotion-price');
