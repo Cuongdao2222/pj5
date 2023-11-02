@@ -112,16 +112,20 @@ class indexController extends Controller
             return banners::where('option', 13)->OrderBy('stt', 'asc')->where('active', 1)->first()??'';
         });
 
-        $view = Cache::rememberForever('view-homes',  function() use($banners, $bannersRight, $bannerUnderSlider,$bannerUnderSale, $deal, $product_sale, $group, $timeDeal_star, $deal_check, $now, $bannerscrollRight, $bannerscrollLeft){
+        $useragent=$_SERVER['HTTP_USER_AGENT']??'';
 
-            $view = view('frontend.index', compact('banners', 'bannersRight', 'bannerUnderSlider', 'bannerUnderSale','deal','product_sale', 'group','timeDeal_star', 'deal_check', 'now','bannerscrollRight', 'bannerscrollLeft'));
+
+
+        $view = Cache::rememberForever('view-homes',  function() use($banners, $bannersRight, $bannerUnderSlider,$bannerUnderSale, $deal, $product_sale, $group, $timeDeal_star, $deal_check, $now, $bannerscrollRight, $bannerscrollLeft, $useragent){
+
+            $view = view('frontend.index', compact('banners', 'bannersRight', 'bannerUnderSlider', 'bannerUnderSale','deal','product_sale', 'group','timeDeal_star', 'deal_check', 'now','bannerscrollRight', 'bannerscrollLeft','useragent'));
 
              return  html_entity_decode($view);
         });
 
         echo $view;
 
-        // return view('frontend.index', compact('banners', 'bannersRight', 'bannerUnderSlider', 'bannerUnderSale','deal','product_sale', 'group','timeDeal_star', 'deal_check', 'now','bannerscrollRight', 'bannerscrollLeft'));
+        // return view('frontend.index', compact('banners', 'bannersRight', 'bannerUnderSlider', 'bannerUnderSale','deal','product_sale', 'group','timeDeal_star', 'deal_check', 'now','bannerscrollRight', 'bannerscrollLeft', 'useragent'));
     }
 
 
