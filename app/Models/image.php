@@ -27,6 +27,7 @@ class image extends Model
         static::created(function ($instance) {
            // update cache content
            Cache::forget('image_product'.$instance->product_id);
+           Cache::forget('view-homes');
           
         });
 
@@ -34,6 +35,7 @@ class image extends Model
            // update cache content
           
            Cache::forget('image_product'.$instance->product_id);
+           Cache::forget('view-homes');
          
 
 
@@ -41,6 +43,7 @@ class image extends Model
 
         static::deleted(function ($instance) {
            Cache::forget('image_product'.$instance->product_id);
+           Cache::forget('view-homes');
           
         });
     }   
