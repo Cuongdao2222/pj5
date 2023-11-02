@@ -29,6 +29,7 @@ class post extends Model
             Cache::forget('post_promotion');
             Cache::forget('post_home');
             Cache::forget('post_advice');
+            Cache::forget('view-homes');
            
         });
 
@@ -37,6 +38,7 @@ class post extends Model
             Cache::forget('post_promotion');
             Cache::forget('post_home');
             Cache::forget('post_advice');
+            Cache::forget('view-homes');
 
         });
 
@@ -45,6 +47,7 @@ class post extends Model
             Cache::forget('post_promotion');
             Cache::forget('post_home');
             Cache::forget('post_advice');
+            Cache::forget('view-homes');
 
         });    
     }

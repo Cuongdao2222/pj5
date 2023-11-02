@@ -27,6 +27,7 @@ class banners extends Model
             Cache::forget('bannerUnderSlider');
             Cache::forget('bannerUnderSale');
             Cache::forget('baners');
+            Cache::forget('view-homes');
            
         });
 
@@ -35,6 +36,7 @@ class banners extends Model
             Cache::forget('bannerUnderSlider');
             Cache::forget('bannerUnderSale');
             Cache::forget('baners');
+            Cache::forget('view-homes');
         });
 
         static::created(function ($instance) {
@@ -42,6 +44,7 @@ class banners extends Model
             Cache::forget('bannerUnderSlider');
             Cache::forget('bannerUnderSale');
             Cache::forget('baners');
+            Cache::forget('view-homes');
         });    
     }
     
