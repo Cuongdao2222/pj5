@@ -1043,14 +1043,7 @@
                             <div class="bar-top-left" style="display: none;">
                             @endif
 
-                                @if(Cache::has('groups'))
-
-
-                                <?php 
-
-                                    $menu =  Cache::get('groups');
-                                ?>
-                           
+                                
                                 <ul class="main-menu">
 
                                     <li data-submenu-id="submenu-0">
@@ -1606,9 +1599,18 @@
 
                                 </ul>
 
-                                @endif
+                                
                             </div>
                         </li>
+
+                        @if(Cache::has('groups'))
+
+
+                            <?php 
+
+                                $menu =  Cache::get('groups');
+                            ?>
+                        @endif  
 
                         @if(!empty($menu)  && $menu->count()>0)
 
