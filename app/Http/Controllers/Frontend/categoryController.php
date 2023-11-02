@@ -246,6 +246,14 @@ class categoryController extends Controller
 
             $meta = [];
 
+            $actives_pages_blog = 1;
+
+            if(!empty($product_search) && count($product_search)===0){
+
+                $actives_pages_blog = 0;
+
+            }
+            
             
 
             if(!empty($findID->Meta_id) && Cache::has('meta_id_'.$findID->Meta_id) ){
@@ -255,7 +263,7 @@ class categoryController extends Controller
             }
 
 
-            return view('frontend.filter', compact('product_search', 'link', 'filter', 'id_cate', 'ar_list', 'groupProduct_level', 'meta'));
+            return view('frontend.filter', compact('product_search', 'link', 'filter', 'id_cate', 'ar_list', 'groupProduct_level', 'meta','actives_pages_blog'));
 
         }
         else{
