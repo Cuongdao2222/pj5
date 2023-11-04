@@ -316,6 +316,13 @@ class giftController extends AppBaseController
        
         $active = $request->active;
 
+        if($active ==0){
+
+            DB::table('money_promotion')->delete();
+
+            Cache::forget('money_promotion');
+        }
+
         $update =  priceAutoPromotionActive::find(1);
 
         $update->active = $active;

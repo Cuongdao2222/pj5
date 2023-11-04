@@ -403,15 +403,29 @@
 
                     $price_auto_promotion_active  = DB::table('price_auto_promotion_active')->where('id', 1)->first();
 
+                    $count_number_pd =0;
+
+                    if(Cache::has('money_promotion')){
+
+                        $remote_money_price = Cache::get('money_promotion');
+
+                        $count_number_pd = count($remote_money_price);
+                    }
                     
                 ?>
+
+               
 
                 <input type="checkbox" id="active3881" name="active" onclick="active_action_auto_promotion_price({{ $price_auto_promotion_active->active }})"  
                 {{ $price_auto_promotion_active->active===1?'checked':'' }}>
 
 
                 <h5 class="modal-title" id="exampleModalLabel">Khuyến mãi theo giá sản phẩm</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                
+
+                 <a href="{{ route('products.index') }}?promotion_money=1" target="_blank">Số sản phẩm đang tắt khuyến mãi là {{ $count_number_pd }} xem ngay </a>
+
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>

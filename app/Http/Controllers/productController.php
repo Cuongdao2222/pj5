@@ -47,8 +47,23 @@ class productController extends AppBaseController
      */
     public function index(Request $request)
     {
+        $show_pd_promotion_money = $_GET['promotion_money']??'';
 
         $products = product::Orderby('updated_at', 'desc')->paginate(10);
+
+        if(!empty($show_pd_promotion_money)){
+
+            if(Cache::has('money_promotion')){
+
+                $product_id_ar = collect(Cache::get('money_promotion'));
+
+                $products = product::whereIn('id', $product_id_ar)->paginate(10);
+
+            }
+
+        }
+        
+
         if(!empty($_GET['promotion'])){
             $products = product::Orderby('updated_at', 'desc')->where('promotion','!=', '')->paginate(20);
         }
