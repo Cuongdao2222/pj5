@@ -329,6 +329,8 @@ class giftController extends AppBaseController
 
         $update->save();
 
+        Cache::forget('view-homes');
+
         return response('thành công');
 
     }
