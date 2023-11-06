@@ -422,9 +422,9 @@
 
                 <h5 class="modal-title" id="exampleModalLabel">Khuyến mãi theo giá sản phẩm</h5>
                 
-
+                @if($count_number_pd>0)
                  <a href="{{ route('products.index') }}?promotion_money=1" target="_blank">Số sản phẩm đang tắt khuyến mãi là {{ $count_number_pd }} xem ngay </a>
-
+                @endif
                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
