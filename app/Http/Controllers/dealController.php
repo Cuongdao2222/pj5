@@ -250,6 +250,8 @@ class dealController extends Controller
 
         Cache::forget('deals');
 
+        Cache::forget('view-homes');
+
         $value = Cache::rememberForever('deals', function() {
             return DB::table('deal')->where('active', '1')->get();
         });
