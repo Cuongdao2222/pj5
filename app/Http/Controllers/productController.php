@@ -387,11 +387,11 @@ class productController extends AppBaseController
 
             // tạm ẩn khuyến mãi theo nhóm
 
-            // $data = DB::table('group_product')->where('id', 333)->first();
+            $data = DB::table('group_product')->where('id', 333)->first();
 
-            // $data_convert = json_decode($data->product_id);
+            $data_convert = json_decode($data->product_id);
 
-            // $product_sale = product::whereIn('id', $data_convert)->orderBy('id', 'desc')->get();
+            $product_sale = product::whereIn('id', $data_convert)->orderBy('id', 'desc')->get();
         
         }
         else{

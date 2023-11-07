@@ -1569,8 +1569,8 @@
                        
                 },
                 success: function(result){
-                   $('#js-compare-holder').html('');
-                   $('#js-compare-holder').append(result);
+                    $('#js-compare-holder').html('');
+                    $('#js-compare-holder').append(result);
                 }
             });         
             
@@ -1885,6 +1885,8 @@
         
 
         $('.option-sale').click(function(){
+
+
             
             var option = $(this).attr('data-id');
             $('.option-sg a').removeClass('active');
