@@ -194,7 +194,7 @@
 
 
 
-            @if($smart_phone ===false)
+            
 
             <div class="box-div-slide1">
                 <div class="top-image">
@@ -241,7 +241,7 @@
                 </div>
 
             </div>
-            @endif
+            
         </div>
         
         
