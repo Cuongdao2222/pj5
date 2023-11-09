@@ -997,6 +997,9 @@
                 {
                     $data = Cache::get('product_search')->whereIn('id', $hot->toArray())->sortByDesc('orders_hot');
                 }
+                else{
+                    $data = App\Models\product::whereIn('id', $hot->toArray())->Orderby('orders_hot', 'desc')->get();
+                }
             
 
             ?>
