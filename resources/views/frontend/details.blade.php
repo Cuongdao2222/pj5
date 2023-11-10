@@ -1502,14 +1502,12 @@
                                 (Visa, Master, JCB)
                                 </a>
                                 @else
-                                 <a target="_blank" class="add-card-buttons add-cart-button" href="javascript:void(0)" onclick="addCartFast({{ $data->id }})">
-                                <strong>THÊM VÀO GIỎ HÀNG </strong>
-                              
+                                <a class="add-card-buttons add-cart-button" href="javascript:void(0)" onclick="addCartFast({{ $data->id }})">
+                                    <strong>THÊM VÀO GIỎ HÀNG </strong>
                                 </a>
                                 
                                 @endif
 
-                                
                                 <br><br>
                                 {!!  $data->Specifications  !!} 
                             </div>
