@@ -1904,26 +1904,26 @@
 
             $(this).addClass('active');
 
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
+            // $.ajaxSetup({
+            //     headers: {
+            //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            //     }
+            // });
 
-            $.ajax({
-                type: 'POST',
-                url: "{{ route('showProductSale') }}",
-                data: {
-                    choose: choose,
-                },
-                success: function(result){
+            // $.ajax({
+            //     type: 'POST',
+            //     url: "{{ route('showProductSale') }}",
+            //     data: {
+            //         choose: choose,
+            //     },
+            //     success: function(result){
 
-                    $('.block-product__content ul').remove();
+            //         $('.block-product__content ul').remove();
                    
-                   $('.block-product__content').prepend(result);
+            //        $('.block-product__content').prepend(result);
 
-                }
-            });
+            //     }
+            // });
 
         });
 
