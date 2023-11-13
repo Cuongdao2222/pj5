@@ -52,6 +52,7 @@
             @media only screen and (max-width: 767px) {
                 .box-div-slide1{
                     width: 100%;
+                    height: 260px;
                 }    
             }    
         </style>
