@@ -9,7 +9,7 @@
     });
 
     $post_advice = Cache::rememberForever('post_advice', function() {
-        return App\Models\post::where('active',1)->where('hight_light', 1)->where('category', 8)->OrderBy('created_at', 'desc')->select('link', 'title')->limit(2)->get();
+        return App\Models\post::where('active',1)->where('hight_light', 1)->where('category', 8)->OrderBy('created_at', 'desc')->select('link', 'title')->limit(4)->get();
     });
 
 
@@ -197,7 +197,7 @@
             
 
             <div class="box-div-slide1">
-                <div class="top-image">
+               <!--  <div class="top-image">
 
                     <div class="homenews">
                         <span><a href="{{ route('details', 'tin-tuc-khuyen-mai') }}">Tin tức khuyến mãi</a></span>
@@ -222,7 +222,7 @@
 
                    
                 </div>
-
+ -->
                 <div class="homenews">
                     <span><a href="{{ route('details', 'tu-van-mua-sam') }}">Tư vấn tiêu dùng</a></span>
                     <ul>
