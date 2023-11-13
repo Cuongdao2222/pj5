@@ -153,8 +153,6 @@
     </div>
 
     <section>
-
-
         <div class="row div-slide">
             <div class="box-left-2 left-banner"></div>
             <div class="col-md-7 box-div-slide">
