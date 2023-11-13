@@ -168,8 +168,7 @@
                                 <a aria-label="slide" data-cate="0" data-place="1535" href="{{ $value->link }}" ><img  data-src="{{ asset($value->image) }}" alt="{{ $value->title }}" class="lazyload"></a>
                             </div>
                             @endforeach
-                            @endif
-                            
+                            @endif 
                         </div>
                         <div id="sync2" class="slider-banner owl-carousel">
                             @if(isset($banners))
