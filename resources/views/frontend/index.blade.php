@@ -19,7 +19,6 @@
         Cache::forever('product_search',$productss);
     }
 
-    
 ?>
 
 @extends('frontend.layouts.apps')
