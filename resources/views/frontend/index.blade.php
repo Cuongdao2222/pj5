@@ -12,7 +12,6 @@
         return App\Models\post::where('active',1)->where('hight_light', 1)->where('category', 8)->OrderBy('created_at', 'desc')->select('link', 'title')->limit(4)->get();
     });
 
-
     if(!Cache::has('product_search')){
 
         $productss = App\Models\product::select('Link', 'Name', 'Image', 'Price', 'id', 'ProductSku', 'promotion', 'promotion_box')->where('active', 1)->get();
