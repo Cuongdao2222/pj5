@@ -198,32 +198,7 @@
             
 
             <div class="box-div-slide1">
-               <!--  <div class="top-image">
-
-                    <div class="homenews">
-                        <span><a href="{{ route('details', 'tin-tuc-khuyen-mai') }}">Tin tức khuyến mãi</a></span>
-                        <ul>
-
-                            @if($post_promotion->count()>0)
-
-                            @foreach($post_promotion as $value)
-
-                            <li>
-                                <a href="{{ route('details', $value->link) }}">{{ @$value->title }}</a>
-                            </li>
-
-                            @endforeach
-
-                            @endif
-
-                          
-                        </ul>
-                    </div>
-
-
-                   
-                </div>
- -->
+               
                 <div class="homenews">
                     <span><a href="{{ route('details', 'tu-van-mua-sam') }}">Tư vấn tiêu dùng</a></span>
                     <ul>
