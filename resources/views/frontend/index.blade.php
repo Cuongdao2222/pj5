@@ -193,10 +193,6 @@
                 </div>
             </div>
 
-
-
-            
-
             <div class="box-div-slide1">
                
                 <div class="homenews">
