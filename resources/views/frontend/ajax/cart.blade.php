@@ -81,7 +81,7 @@
 
     <br>
     <div>
-        <button type="button" class="btn btn-info add-discount add-click">Add</button>
+        <div  class="btn btn-info add-discount add-click">Add</div>
     </div>
     
 
@@ -179,8 +179,8 @@
 
     function cong(key, rowId){
 
-        if(!$('.add-discount').hasClass('add-click')){
-            $('.add-discount').addClass('add-click');
+        if(!$('.add-discount').is(':visible')){
+            $('.add-discount').show();
         }
 
         const val_number = $('.buy-quantity'+key).val();
@@ -229,7 +229,7 @@
             },
             success: function(result){
 
-                $('.add-discount').removeClass('add-click');
+                $('.add-discount').hide();
 
                 if(result ===0){
                     alert('Mã giảm giá không đúng hoặc đã được sử dụng hết. Vui lòng kiểm tra lại')
