@@ -246,6 +246,10 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::get('add-css', 'mainController@addCss')->name('addcss');
 
+    Route::resource('discount', 'discountController');
+
+    Route::post('add-discount', 'discountController@addDiscount')->name('add-discount');
+
     Route::get('view-history/{id}', 'productController@viewHistoryPD')->name('view-history');
 
     Route::get('readfile-css/{id}', 'mainController@readFileCss')->name('readCss');

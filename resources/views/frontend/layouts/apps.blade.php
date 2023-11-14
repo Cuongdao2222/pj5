@@ -1814,6 +1814,9 @@
                                     </div>
                                 </div> -->
                                 <!--ajxTaxInvoice-->
+
+                               
+
                                 <div class="item-form">
                                     <h4 style="font-size:15px; margin-top:20px;">Hình thức thanh toán:</h4>
                                     <table style="width:100%;">

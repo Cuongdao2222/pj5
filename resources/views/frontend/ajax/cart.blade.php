@@ -1,5 +1,20 @@
 
 <div id="number-product-cart" style="display:none">{{ count($data_cart) }}</div>
+<style type="text/css">
+    .item-form{
+        text-align: right;
+    }
+    #discount_code{
+        width: 35%;
+        border: 1px solid #dddddd;
+        padding: 5px;
+    }
+
+    .discount-div{
+        border: 0;
+    }
+</style>
+
 <div style="width:100%;">
     <?php  
 
@@ -57,7 +72,24 @@
 
 </div>
 
+<div class="item-form"> 
 
+    <div>
+        <input type="text" name="discount-code" id="discount_code" value="" placeholder="Mã giảm giá"> 
+
+    </div>    
+
+    <br>
+    <div>
+        <button type="button" class="btn btn-info add-discount add-click">Add</button>
+    </div>
+    
+
+</div>
+
+<div class="cart-foot discount-div"> <b>Mã giảm giá:</b> <span style="float: right;"><span class="sub1 discount-price">0</span> đ</span> </div>    
+
+<br>
 
 <div class="cart-foot">
     <b>Tổng tiền:</b>
@@ -101,6 +133,10 @@
     }
 
     function tru(key, rowId){
+
+        if(!$('.add-discount').hasClass('add-click')){
+            $('.add-discount').addClass('add-click');
+        }
         const val_number = $('.buy-quantity'+key).val();
         val_numbers =  parseInt(val_number);
 
@@ -141,7 +177,12 @@
         }
     }
 
-     function cong(key, rowId){
+    function cong(key, rowId){
+
+        if(!$('.add-discount').hasClass('add-click')){
+            $('.add-discount').addClass('add-click');
+        }
+
         const val_number = $('.buy-quantity'+key).val();
         val_numbers =  parseInt(val_number);
 
@@ -174,4 +215,49 @@
             
         }
     }
+
+    $('.add-click').click(function () {
+       
+       const discount = $('#discount_code').val();
+
+        $.ajax({
+            type: 'POST',
+            url: "{{ route('add-discount') }}",
+            data: {
+                discount: discount,
+               
+            },
+            success: function(result){
+
+                $('.add-discount').removeClass('add-click');
+
+                if(result ===0){
+                    alert('Mã giảm giá không đúng hoặc đã được sử dụng hết. Vui lòng kiểm tra lại')
+                }
+                else{
+                    var price =  $('.total-cart-price').text().replaceAll('.','');
+            
+                    price = price - parseInt(result);
+                              
+                    formattedPrice = price.toLocaleString('en-US', {
+                      style: 'currency',
+                      currency: 'VND',
+                    });
+
+                    resultDiscount = parseInt(result).toLocaleString('en-US', {
+                      style: 'currency',
+                      currency: 'VND',
+                    });
+
+                    $('.discount-price').text('-'+resultDiscount.replace('₫',''));
+
+                    $('.total-cart-price').text(formattedPrice.replace('₫',''));
+
+                }
+                
+            }
+        });
+    })
+
+   
 </script>
