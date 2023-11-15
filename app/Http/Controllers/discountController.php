@@ -32,9 +32,16 @@ class discountController extends Controller
 
         $discount = strip_tags($discount);
 
-        $discount = DB::table('discount')->select('price', 'used', 'quantity')->where('code', $discount)->first();
+        $discount = DB::table('discount')->select('price', 'used', 'quantity', 'code')->where('code', $discount)->first();
 
         if(!empty($discount) && $discount->quantity >$discount->used){
+
+            if ($request->session()->has('discount')) {
+
+                $request->session()->forget('discount');
+            }
+
+            $request->session()->push('discount', ['price'=>$discount->price??0, 'code'=>$discount->code]);
 
             return $discount->price;
 

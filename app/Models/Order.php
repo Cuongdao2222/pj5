@@ -19,6 +19,7 @@ class Order extends Model
         'province',
         'orderId',
         'total_price',
+        'discount_price',
     ];
 
 }

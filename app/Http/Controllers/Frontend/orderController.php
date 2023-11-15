@@ -25,9 +25,24 @@ class orderController extends Controller
     {
         $host = request()->getHttpHost();
 
-        if($host === env('APP_DOMAIN')){
+        $cart  = Cart::content();
 
-            $cart  = Cart::content();
+        $discount = 0;
+
+        if($request->session()->has('discount')){
+
+            $discounts = Session::get('discount');
+
+            $discount  = $discounts[0]['price'];
+
+            // giảm số lượng mã giảm giá xuống trong db
+
+            $quantityDiscount = DB::table('discount')->select('used')->where('code', $discounts[0]['code'])->first();
+
+            DB::table('discount')->where('code', $discounts[0]['code'])->update(['used' => $quantityDiscount->used+1]);
+        }
+
+        
 
             $carts = [];
 
@@ -39,7 +54,7 @@ class orderController extends Controller
                 $key++;
                 $carts[$key]['orderId'] = $data->rowId;
                 $carts[$key]['id'] = $data->id;
-                $carts[$key]['price'] = $data->price;
+                $carts[$key]['price'] =   $data->price;
                 $carts[$key]['name'] = $data->name;
                 $carts[$key]['qty'] = $data->qty;
 
@@ -70,9 +85,13 @@ class orderController extends Controller
 
             $carts = json_encode($carts);
 
+            $input['discount'] = $request->session()->has('discount')?$discounts[0]['code']:'';
+
+            $input['discount_price'] = $request->session()->has('discount')?$discounts[0]['price']:'';
+
             $input['product'] = $carts;
 
-            $input['total_price'] = array_sum($totalPrice);
+            $input['total_price'] = array_sum($totalPrice) -  intval($discount);
 
             $mail =  $input["mail"]??'khachhang@gmail.com';
 
@@ -85,6 +104,8 @@ class orderController extends Controller
             }
 
             $check = $order::create($input);
+
+
 
           
 
@@ -111,14 +132,15 @@ class orderController extends Controller
             // khi mua thành công thì xóa giỏ hàng
             Cart::destroy();
 
+            if ($request->session()->has('discount')) {
+
+                $request->session()->forget('discount');
+            }
+                
             Session::flash('success', 'Mua thành công sản phẩm!'); 
 
             return redirect('/');
-        }
-        else{
-
-            return abort('403');
-        }
+       
     }
 
     public function orderList()

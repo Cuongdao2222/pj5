@@ -2274,7 +2274,9 @@
       }  
     
     function addToCart(id) {
-    
+        $('.form-info-cart').removeClass('hide');
+        $('.cart-container').addClass('hide');
+
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -2295,6 +2297,8 @@
 
             },
             success: function(result){
+
+
     
                //  numberProductCart = $(".number-cart").text();
     

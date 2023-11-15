@@ -1678,11 +1678,13 @@
                         </button>
                     </div>
                     <div class="modal-body">
+
+                        
                         <div id="tbl_list_cartss">
                             
                         </div>
 
-                        <div class="c3_col_1">
+                        <div class="c3_col_1 form-info-cart {{ $number_cart<=0?'hide':'' }}" >
                             <form class="c3_box" id="form-sub" method="post"  action="{{ route('order') }}">
                                 {{ csrf_field() }}
                                 <div class="title_box_cart"> Thông tin khách hàng</div>
@@ -1818,7 +1820,7 @@
                                
 
                                 <div class="item-form">
-                                    <h4 style="font-size:15px; margin-top:20px;">Hình thức thanh toán:</h4>
+                                    
                                     <table style="width:100%;">
                                         <tbody>
                                           
@@ -1845,6 +1847,40 @@
 
                             </form>
                         </div>
+                        
+                        <style type="text/css">
+                            .cart-container {
+                                    text-align: center;
+                                    padding: 20px;
+/*                                    border: 1px solid #ccc;*/
+                                    border-radius: 8px;
+                                    background-color: #fff;
+                                }
+
+                                .empty-cart-message {
+                                    font-size: 18px;
+                                    color: #555;
+                                    margin-top: 30px;
+                                }
+
+                                .cart-icon {
+                                    font-size: 40px;
+                                    color: #ccc;
+                                }
+
+                                #exampleModal .modal-body{
+                                    min-height: 200px;
+                                }
+                        </style>
+
+                        <div class="cart-container {{ $number_cart>0?'hide':'' }}">
+                            <div class="cart-icon">🛒</div>
+                            <div class="empty-cart-message">
+                                <p>Không có sản phẩm nào trong giỏ hàng</p>
+                                
+                            </div>
+                        </div>
+                        
                     </div>
                     
                 </div>

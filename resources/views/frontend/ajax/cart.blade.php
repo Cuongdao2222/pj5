@@ -1,5 +1,7 @@
 
 <div id="number-product-cart" style="display:none">{{ count($data_cart) }}</div>
+
+
 <style type="text/css">
     .item-form{
         text-align: right;
@@ -14,7 +16,7 @@
         border: 0;
     }
 </style>
-
+@if(count($data_cart)>0)
 <div style="width:100%;">
     <?php  
 
@@ -72,6 +74,8 @@
 
 </div>
 
+
+
 <div class="item-form"> 
 
     <div>
@@ -95,7 +99,7 @@
     <b>Tổng tiền:</b>
     <span style="float: right;"><span class="sub1 total-cart-price">{{ number_format($totalPrice , 0, ',', '.')}}</span> đ</span>
 </div>
-
+@endif
 <script type="text/javascript">
     
     function removeProductCart(id) {
@@ -120,7 +124,14 @@
 
                 $('#tbl_list_cartss').append(result);
 
+                
+
                 const numberCart = $('#number-product-cart').text();
+
+                if(numberCart==0){
+                    $('.form-info-cart').addClass('hide');
+                    $('.cart-container').removeClass('hide');
+                }
 
                 $('.number-cart').text(numberCart);
 
@@ -231,7 +242,7 @@
 
                 $('.add-discount').hide();
 
-                if(result ===0){
+                if(result ==0){
                     alert('Mã giảm giá không đúng hoặc đã được sử dụng hết. Vui lòng kiểm tra lại')
                 }
                 else{

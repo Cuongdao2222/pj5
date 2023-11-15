@@ -85,6 +85,8 @@
     @if( Auth::user()->id ==1)
     <div><a href="javascript:void(0)" onclick="testApis()"><button>testApi</button></a></div>
     @endif
+
+
     <table width="100%">
         <tbody>
             <tr>
@@ -103,6 +105,9 @@
                                     <td width="100">Thời gian đặt hàng</td>
 
                                     <td width="130">Quà tặng của đơn hàng</td>
+
+                                    <td width="130">Mã giảm giá của đơn hàng</td>
+
                                     <td>Giá trị đơn hàng</td>
                                     <td width="120">Xem chi tiết</td>
                                 </tr>
@@ -122,6 +127,8 @@
                                     <td width="130">{{ @$orders->created_at }}</td>
 
                                     <td>{{ json_decode($orders->product)[$keys]->gift??'' }}</td>
+
+                                    <td width="190">{{ !empty($orders->discount_price)?'-'.str_replace(',' ,'.', number_format($orders->discount_price)):0 }}</td>
                                     <td>{{str_replace(',' ,'.', number_format($orders->total_price)) }}</td>
                                     <td width="120"><a href="{{ route('order_list_view', $orders->id) }}">Xem</a></td>
                                     
