@@ -211,9 +211,9 @@
 </li>
 
 <li class="nav-item">
-    <a href="{{ route('flashDeal') }}"
+    <a href="{{ route('discount.index') }}"
        class="nav-link {{ Request::is('flashDeal') ? 'active' : '' }}">
-        <p>Flash Deal</p>
+        <p>Mã giảm giá</p>
     </a>
 </li>
 
