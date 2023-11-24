@@ -47,6 +47,11 @@
                 font-size: 14px;
             }
 
+            .event{
+                width: 50px;
+                height: 50px;
+            }
+
             @media only screen and (max-width: 767px) {
                 .box-div-slide1{
                     width: 100%;
@@ -54,6 +59,8 @@
                 }    
             }    
         </style>
+
+
 
     @endpush
 
@@ -1033,9 +1040,12 @@
                                 <span class="icon_tragop icons-tra-gops">Trả góp <i>0%</i></span>
                                 @endif
 
-                                @if(in_array($datas->id, $new_product->toArray()))
-                                <span class="icon_tragop icons-new">Model 2022</span>
-                                @endif
+                               <div class="event">
+                                   <img src="{{ asset('images/background-image/event.png') }}">
+                               </div>
+                                
+                                
+                              
                                 
                                 <div class="item-img">
                                     <img data-src="{{ asset($datas->Image) }}" class="lazyload"   alt="{{ $datas->Name }}" width=210 height=210>
