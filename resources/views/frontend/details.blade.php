@@ -488,7 +488,7 @@
                             @endif
                             @endif
 
-                             <div class="sakers">
+                             <div class="sakers event-dt">
                                     <img src="{{ asset('images/background-image/event.png') }}"   class="lazyload">
                             </div>
 

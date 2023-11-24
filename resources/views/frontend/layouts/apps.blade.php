@@ -269,11 +269,16 @@
             .category__all{
                 color: #fff !important;
                
+            }
+
+            .event-dt .event{
+                display:block;
             } 
 
             .event{
                 width: 50px;
                 height: 50px;
+                
             }
 
             .list-menu .category{
