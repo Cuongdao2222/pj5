@@ -102,6 +102,13 @@
             max-width: 100px;
         }
 
+        .sakers{
+            position: absolute;
+            top:20px;
+
+            left: 50px;
+        }
+
          @media only screen and (max-width: 767px) {
 
             .option-price-mobile select{
@@ -480,6 +487,10 @@
                             </div>
                             @endif
                             @endif
+
+                             <div class="sakers">
+                                    <img src="{{ asset('images/background-image/event.png') }}"   class="lazyload">
+                            </div>
 
 
                         </div>

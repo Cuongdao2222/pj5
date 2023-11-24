@@ -47,11 +47,7 @@
                 font-size: 14px;
             }
 
-             .event{
-                width: 50px;
-                height: 50px;
-            }
-
+             
             @media only screen and (max-width: 767px) {
                 .box-div-slide1{
                     width: 100%;

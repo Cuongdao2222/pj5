@@ -271,7 +271,10 @@
                
             } 
 
-
+            .event{
+                width: 50px;
+                height: 50px;
+            }
 
             .list-menu .category{
                 width: 11%;

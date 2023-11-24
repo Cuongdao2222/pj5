@@ -60,6 +60,10 @@
                 width: 100%;
             }
 
+            .event img{
+                width: 100%;
+            }
+
             
 
 
@@ -507,6 +511,9 @@
                                     <span class="icon_tragop icons-tra-gops">Trả góp <i>0%</i></span>
                                     @endif
 
+                                    <div class="event">
+                                       <img src="{{ asset('images/background-image/event.png') }}">
+                                   </div>
 
                                     <div class="item-img item-img_1942">
                                         <img class="lazyload thumb" data-src="{{ asset($value->Image) }}" alt="{{ $value->Name }}" style="width:100%"> 
