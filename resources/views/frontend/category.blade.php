@@ -212,8 +212,17 @@
                                 @if(isset($propertyId))
                                 <div class="filter-list  props" data-propid="40562">
                                     @if(!empty($manu[strtolower($property->name)]))
+
+
+                                        <?php 
+
+                                            $link_cate = App\Models\groupProduct::where('name', 'like', '%'.$name_cate_show.' '.$property->name)->first();
+
+                                            $linkss = $link_cate->link??'';
+
+                                        ?>
                                        
-                                        <a href="{{ route('details',$link) }}?filter=,{{ $filters->id }}&group_id={{ @$id_cate  }}&property=,{{ $property->id }}&link={{$link  }}" data-value="{{ $property->id}}" data-id="{{ $filters->id }}" class="c-btnbox">
+                                        <a href="{{ route('details', $linkss)  }}" data-value="{{ $property->id}}" data-id="{{ $filters->id }}" class="c-btnbox">
                                             <img src="{{ $manu[strtolower($property->name)] }}" width="68" height="30" alt="{{ $property->name }}">          
                                         </a>
 
@@ -292,16 +301,29 @@
                             <div class="lst-quickfilter has-image">
 
                                 @if(!empty($property_show) && $property_show->count()>0)
+
+
                                 @foreach($property_show as $value)
 
+                                <?php 
 
-                                <a href="{{ route('details',$link) }}?filter=,{{ $arr_info_filter[$id_cate][0] }}&group_id={{ @$id_cate  }}&property=,{{ $value->id }}&link={{$link  }}" data-href="may-giat?g=cua-truoc" data-index="4" class="box-quicklink__item bd-radius quicklink-logo">
+                                    $link_cate = App\Models\groupProduct::where('name', 'like', '%'.$name_cate_show.' '.$value->name)->first();
+
+                                    $linkss = $link_cate->link??'';
+
+                                ?>
+
+
+                                <a href="{{ route('details', $linkss)  }}" data-href="may-giat?g=cua-truoc" data-index="4" class="box-quicklink__item bd-radius quicklink-logo">
                                     <img src="{{ asset('uploads/icon/'.$value->id.'.png') }}" width="30" alt="{{ $value->name }}" />
 
                                     @if($id_cate != 1)
                                     {{ $value->name }}
 
                                     @endif
+
+                                    
+                                   
                                 </a>
 
 
@@ -316,8 +338,14 @@
                                 <p class="quick-link-title">Tìm kiếm nhiều:</p>
 
 
+                               
+
                                 @if(!empty($saker_show) && $saker_show->count()>0)
+
+
                                 @foreach($saker_show as $value)
+
+
 
                                 @if(!empty($manu[strtolower($value->name)] ))
 
