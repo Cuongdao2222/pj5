@@ -246,13 +246,16 @@ class categoryController extends Controller
 
             $meta = [];
 
-            $actives_pages_blog = 1;
 
-            if(!empty($product_search) && count($product_search)===0){
+            // tắt index page filter
 
-                $actives_pages_blog = 0;
+            $actives_pages_blog = 0;
 
-            }
+            // if(!empty($product_search) && count($product_search)===0){
+
+            //     $actives_pages_blog = 0;
+
+            // }
             
             
 
