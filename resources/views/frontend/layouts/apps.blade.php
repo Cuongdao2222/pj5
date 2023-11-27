@@ -271,7 +271,7 @@
                
             }
 
-            .event-dt .event{
+            .event-dt, .event{
                 display:none;
             } 
 
