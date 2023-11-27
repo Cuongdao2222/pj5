@@ -272,7 +272,7 @@
             }
 
             .event-dt .event{
-                display:block;
+                display:none;
             } 
 
             .event{
