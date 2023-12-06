@@ -322,6 +322,37 @@ class postController extends AppBaseController
        }
     }
 
+    public function addMultiImage(Request $request)
+    {
+        $request->validate([
+            'images' => 'required|array|max:10', // Allow a maximum of 10 images
+            'images.*' => 'required|image|max:2048', // Validate each image
+        ]);
+
+        $time = time();
+
+        $now = Carbon::now();
+
+        $option = $request->option;
+
+        $product_id = $request->product_id;
+
+          // Store the uploaded images
+        foreach ($request->file('images') as $image) {
+            $filename = $time.'_'.$image->getClientOriginalName();
+
+            $image->storeAs('uploads/product', $filename, 'public');
+
+            DB::table('imagescontent')->insert(['option'=>$option,'image'=>$filename, 'product_id'=>$product_id, 'created_at'=>$now, 'updated_at'=>$now]);
+            
+        }
+
+        $data = DB::table('imagescontent')->where('product_id', $product_id)->get();
+
+        return view('frontend.ajax.image_content_page', compact('data'));
+
+    }
+
     public function searchTitle(Request $request)
     {
         $title = $request->title;

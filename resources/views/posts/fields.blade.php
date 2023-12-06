@@ -137,7 +137,7 @@
     $imagecontent = App\Models\imagescontent::where('product_id', $post->id)->where('option',2)->get();
 ?>
 
-<div><a href="{{ route('imagescontent', $post->id) }}?option=2">Thêm ảnh content</a></div>
+<div><a  onclick="addImageContentBeforePost()">Thêm ảnh content</a></div>
 
 
 <table class="big_table" border="1" bordercolor="#CCCCCC" cellspacing="0" cellpadding="3">
@@ -160,6 +160,39 @@
 
 <div><a href="javascript:void(0)" onclick="addImageContentBeforePost()">Thêm ảnh content</a></div>
 @endif
+
+
+<!-- Modal -->
+<div class="modal fade" id="add-image" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Thêm ảnh</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="multiImageUploadForm">
+                    @csrf
+                    <div>
+                        <input type="file" name="images[]" id="imageInput" multiple>
+
+                    </div>
+                    
+                    <br>
+
+                    
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button id="uploadButton" type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+            </div>
+            
+        </div>
+    </div>
+</div>
 
 
 
@@ -207,49 +240,94 @@
             autofocus: true   
         });  
 
-    });
-    var activeReplace = [];
+        $('#uploadButton').on('click', function() {
+            var formData = new FormData();
+            var images = $('#imageInput')[0].files;
 
-    function addImageContentBeforePost() {
+            for (var i = 0; i < images.length; i++) {
+                formData.append('images[]', images[i]);
+            }
 
-        content = CKEDITOR.instances.content.getData();
+            formData.append('product_id', {{ $post->id }});
 
-        if( $('#title').val()===''){
-
-            alert('xin vui lòng nhập title');
-        }
-        else if($('#shortcontent').val()===''){
-            alert('xin vui lòng nhập short content');
-        }
-
-        else if(content ===''){
-            alert('xin vui lòng nhập content');
-        }
-        else{
+            formData.append('option', 2);
 
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-            $.ajax({
-                type: "POST",
-                url: '{{ route("add-post-for-image") }}',
-                data: {
-                    category: $('#category').val(),
-                    title: $('#title').val(),
-                    shortcontent:$('#shortcontent').val(),
-                    content:content
 
+            $.ajax({
+                url: '{{ route("add-image-multi-post") }}',
+                method: 'POST',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function(response) {
+
+                     $('#add-image').modal('hide');
+
+                     console.log(response);
+
+                    $('.big_table tr').html('');
+                    $('.big_table tr').append(response);
+
+
+                    
                 },
-               
-                success: function(data) {
-                  
-                    window.location.href = data;
-                   
+                error: function(error) {
+                    // Handle error in image upload
+                    alert('Image upload failed');
                 }
             });
-        }     
+        });
+
+    });
+    var activeReplace = [];
+
+    function addImageContentBeforePost() {
+
+        $('#add-image').modal('show');
+
+        // content = CKEDITOR.instances.content.getData();
+
+        // if( $('#title').val()===''){
+
+        //     alert('xin vui lòng nhập title');
+        // }
+        // else if($('#shortcontent').val()===''){
+        //     alert('xin vui lòng nhập short content');
+        // }
+
+        // else if(content ===''){
+        //     alert('xin vui lòng nhập content');
+        // }
+        // else{
+
+        //     $.ajaxSetup({
+        //         headers: {
+        //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        //         }
+        //     });
+        //     $.ajax({
+        //         type: "POST",
+        //         url: '{{ route("add-post-for-image") }}',
+        //         data: {
+        //             category: $('#category').val(),
+        //             title: $('#title').val(),
+        //             shortcontent:$('#shortcontent').val(),
+        //             content:content
+
+        //         },
+               
+        //         success: function(data) {
+                  
+        //             window.location.href = data;
+                   
+        //         }
+        //     });
+        // }     
 
     }
 
