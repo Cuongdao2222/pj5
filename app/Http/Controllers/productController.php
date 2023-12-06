@@ -451,7 +451,7 @@ class productController extends AppBaseController
         
         if(isset($resultProduct)){
 
-            $products = Product::whereIn('id', $resultProduct)->paginate(50);
+            $products = Product::whereIn('id', $resultProduct)->paginate(150);
 
             return view('products.index')
             ->with('products', $products);
