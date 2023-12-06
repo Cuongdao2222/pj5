@@ -34,6 +34,21 @@
     } 
 </style>
 
+<?php 
+
+$search = $_GET['search']??''; 
+
+?>
+
+@if(!empty($search))
+
+    <?php 
+
+        $count_pd = !empty($products)?count($products):0;
+    ?>
+    <span>Tìm thấy {{ $count_pd }} sản phẩm </span>
+@endif
+
 <div class="table-responsive">
     <table class="table" id="products-table">
         <thead>
