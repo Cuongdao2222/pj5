@@ -58,6 +58,8 @@ class product extends Model
 
             Cache::forget('view-homes');
 
+            Cache::forget('ar_skips');
+
             Cache::forget('product_sale');
             $productss = product::select('Link', 'Name', 'Image', 'Price', 'id', 'ProductSku','manuPrice', 'orders_hot')->where('active', 1)->get();
             Cache::forever('product_search',$productss);
@@ -67,6 +69,8 @@ class product extends Model
             Cache::forget('product_search');
             Cache::forget('product_sale');
             Cache::forget('view-homes');
+
+            Cache::forget('ar_skips');
             $productss = product::select('Link', 'Name', 'Image', 'Price', 'id', 'ProductSku','manuPrice', 'orders_hot')->where('active', 1)->get();
             Cache::forever('product_search',$productss);
         });    
