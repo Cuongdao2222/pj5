@@ -235,9 +235,27 @@ if(!function_exists('pricesPromotion')){
             $remote_money_price = Cache::get('money_promotion');
         }
 
-        
-        if($id===''||$checkActiveButton===0||in_array($id, $remote_money_price) ){
+         // xóa khuyến mãi sản phẩm của tivi sony, tivi samsung, tủ lạnh hitachi
 
+        $ar_skip = Cache::rememberForever('ar_skips', function(){
+
+            $data = DB::table('group_product')->select('product_id')->whereIn('id', [36,12,14])->get()->toArray();
+
+            $ar_skip = array_merge(json_decode($data[0]->product_id), json_decode($data[1]->product_id), json_decode($data[2]->product_id));
+
+            $ar_skip_get = [];
+
+            foreach ($ar_skip as $value) {
+                
+                array_push($ar_skip_get, intval($value));
+            }
+
+            return $ar_skip_get;
+        });
+
+       
+
+        if($id===''||$checkActiveButton===0||in_array($id, $remote_money_price) || in_array($id, $ar_skip)){
 
             $gift_Price = '';
 
