@@ -100,9 +100,9 @@ class postController extends AppBaseController
 
         $post = $this->postRepository->create($input);
 
-        // Xóa ảnh nháp content trong bài viết theo người viết thêm vào
+        // Sửa lại phần ảnh đã up trong bài viết của người dùng
 
-        DB::table('imagescontent')->where('product_id', Auth::id())->delete();
+        DB::table('imagescontent')->where('product_id', Auth::id())->update(['product_id', $post['id']]);
 
         return redirect(route('posts.edit', $post->id));
         
