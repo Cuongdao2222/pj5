@@ -7,6 +7,11 @@
 
     }
 
+    .add-content-image a{
+        cursor: pointer;
+        color: #007bff !important;
+    }
+
    /* #cke_1_contents{
         height: 1000px !important;
     }*/
@@ -110,7 +115,7 @@
         top:-120px; left:50px; width:auto;
         text-align: center}
     </style>
-    <table class="big_table" border="1" bordercolor="#CCCCCC" cellspacing="0" cellpadding="3">
+    <table class="big_table big-content-image" border="1" bordercolor="#CCCCCC" cellspacing="0" cellpadding="3">
         <tbody>
             <tr>
                 @if(isset($matches[1]))
@@ -137,15 +142,17 @@
     $imagecontent = App\Models\imagescontent::where('product_id', $post->id)->where('option',2)->get();
 ?>
 
-<div><a  onclick="addImageContentBeforePost()">Thêm ảnh content</a></div>
+<div class="add-content-image">
+    <a  onclick="addImageContentBeforePost()">Thêm ảnh content</a>
+</div>
 
 
-<table class="big_table" border="1" bordercolor="#CCCCCC" cellspacing="0" cellpadding="3">
+<table class="big_table big-content-image" border="1" bordercolor="#CCCCCC" cellspacing="0" cellpadding="3">
     <tbody>
         <tr>
             @if(isset($imagecontent))
             @foreach($imagecontent as $key => $values)
-            <td class="img1{{ $key }}"><a href="javascript:void(0);" onclick="click1('images1{{ $key }}', '{{ asset($values->image) }}')"><img src="{{ asset($values->image) }}" style="max-width:100px; max-height:130px" id="img1{{ $key }}"></a></td>
+            <td class="img1{{ $key }}"><a href="javascript:void(0);" onclick="click1('images1{{ $key }}', '{{ asset("uploads/product/".$values->image) }}')"><img src="{{ asset('uploads/product/'.$values->image) }}" style="max-width:100px; max-height:130px" id="img1{{ $key }}"></a></td>
          
             @endforeach
             @endif
@@ -240,6 +247,13 @@
             autofocus: true   
         });  
 
+         // nếu tồn tại id thì lấy id còn không thì lấy id người post
+  
+        <?php 
+
+             $post_id = !empty($post->id)?$post->id:Auth::user()->id;
+        ?>
+
         $('#uploadButton').on('click', function() {
             var formData = new FormData();
             var images = $('#imageInput')[0].files;
@@ -248,7 +262,8 @@
                 formData.append('images[]', images[i]);
             }
 
-            formData.append('product_id', {{ $post->id }});
+          
+            formData.append('product_id', {{ $post_id }});
 
             formData.append('option', 2);
 
@@ -265,16 +280,11 @@
                 contentType: false,
                 processData: false,
                 success: function(response) {
-
+                    console.log(response);
                      $('#add-image').modal('hide');
+                    $('.big-content-image tr').html('');
+                    $('.big-content-image tr').append(response);
 
-                     console.log(response);
-
-                    $('.big_table tr').html('');
-                    $('.big_table tr').append(response);
-
-
-                    
                 },
                 error: function(error) {
                     // Handle error in image upload
