@@ -115,7 +115,7 @@
         top:-120px; left:50px; width:auto;
         text-align: center}
     </style>
-    <table class="big_table big-content-image" border="1" bordercolor="#CCCCCC" cellspacing="0" cellpadding="3">
+    <table class="big_table big-content" border="1" bordercolor="#CCCCCC" cellspacing="0" cellpadding="3">
         <tbody>
             <tr>
                 @if(isset($matches[1]))
@@ -166,6 +166,15 @@
 @else
 
 <div><a href="javascript:void(0)" onclick="addImageContentBeforePost()">Thêm ảnh content</a></div>
+
+<table class="big_table big-content-image" border="1" bordercolor="#CCCCCC" cellspacing="0" cellpadding="3">
+    <tbody>
+        <tr>
+
+        </tr>
+    
+    </tbody>
+</table>    
 @endif
 
 
