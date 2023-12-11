@@ -102,11 +102,15 @@ class postController extends AppBaseController
 
         // Sửa lại phần ảnh đã up trong bài viết của người dùng
 
-        DB::table('imagescontent')->where('product_id', Auth::id())->update(['product_id', $post['id']]);
+        $post_check = DB::table('imagescontent')->where('product_id', Auth::id())->first();
+
+        if(!empty($post_check)){
+
+            DB::table('imagescontent')->where('product_id', Auth::id())->update(['product_id'=>$post['id']]);
+        }
 
         return redirect(route('posts.edit', $post->id));
         
-
         // Flash::success('Post saved successfully.');
 
         // return redirect(route('posts.index'));
