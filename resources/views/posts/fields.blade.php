@@ -164,7 +164,7 @@
 </table>
 
 @else
-
+<input type="hidden" name="id_product" id="id_product">
 <div><a href="javascript:void(0)" onclick="addImageContentBeforePost()">Thêm ảnh content</a></div>
 
 <table class="big_table big-content-image" border="1" bordercolor="#CCCCCC" cellspacing="0" cellpadding="3">
@@ -305,6 +305,8 @@
     });
     var activeReplace = [];
 
+    var showMeta =0;
+
     function addImageContentBeforePost() {
 
         $('#add-image').modal('show');
@@ -324,28 +326,32 @@
         // }
         // else{
 
-        //     $.ajaxSetup({
-        //         headers: {
-        //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        //         }
-        //     });
-        //     $.ajax({
-        //         type: "POST",
-        //         url: '{{ route("add-post-for-image") }}',
-        //         data: {
-        //             category: $('#category').val(),
-        //             title: $('#title').val(),
-        //             shortcontent:$('#shortcontent').val(),
-        //             content:content
+        //     if(showMeta===0){
+        //         $.ajaxSetup({
+        //             headers: {
+        //                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        //             }
+        //         });
+        //         $.ajax({
+        //             type: "POST",
+        //             url: '{{ route("add-post-for-image") }}',
+        //             data: {
+        //                 category: $('#category').val(),
+        //                 title: $('#title').val(),
+        //                 shortcontent:$('#shortcontent').val(),
+        //                 content:content
 
-        //         },
-               
-        //         success: function(data) {
-                  
-        //             window.location.href = data;
+        //             },
                    
-        //         }
-        //     });
+        //             success: function(data) {
+                        
+        //                 $('.content-header').prepend(data);
+        //                 showMeta=1;
+                        
+        //             }
+        //         });
+        //     }
+            
         // }     
 
     }

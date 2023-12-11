@@ -20,6 +20,12 @@
             {!! Form::open(['route' => 'posts.store', 'files' => true]) !!}
 
             <div class="card-body">
+                <div class="row">
+                    @include('meta_seos.fields')
+                </div>
+            </div>
+
+            <div class="card-body">
 
                 <div class="row">
                     @include('posts.fields')

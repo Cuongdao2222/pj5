@@ -153,9 +153,13 @@ class postController extends AppBaseController
 
         $input['Meta_id'] = $meta_model['id'];
 
-        $post = post::create($input);
+        $meta_id_model = $meta_model['id'];
 
-        return route('imagescontent', $post->id).'?option=2';
+        return view('meta_seos.ajax', compact('meta_id_model'));
+
+        // $post = post::create($input);
+
+        // return route('imagescontent', $post->id).'?option=2';
       
     }
 
