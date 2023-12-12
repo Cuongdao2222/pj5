@@ -31,7 +31,7 @@
   
         <link rel="stylesheet" type="text/css" href="{{ asset('css/index.css') }}?ver=4">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/homes.css') }}?ver=10">
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/homecs.css') }}?ver=18">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/homecs.css') }}?ver=19">
         <style type="text/css">
            
             .box-left-2{
@@ -47,13 +47,60 @@
                 font-size: 14px;
             }
 
+            .show-banner-flash-sale{
+                position: relative;
+            }
+
+            label#minute::after,  label#hour::after{
+                color: #FFFFFF;
+                right: -11px;
+            }
+
              
             @media only screen and (max-width: 767px) {
                 .box-div-slide1{
                     width: 100%;
                     height: 260px;
                 }    
-            }    
+            } 
+
+            .gvdshock {
+                position: absolute;
+                top: 50%;
+                bottom: 10%;
+                left: 101px;
+                width: 100%;
+                z-index: 999;
+            }  
+
+
+
+            .endtime {
+                color: #fff;
+                margin-left: 2px;
+                display: inline-block;
+            }
+
+            .theme-fs .timeline-title .endtime .title-end {
+                font-size: 20px;
+                line-height: 24px;
+                color: #fff;
+            } 
+
+            .countdown-timer label {
+                background-color: #D95B00;
+                color: #FFFFFF;
+                border: 1px solid #D95B00;
+                font-size: 22px;
+                line-height: 27px;
+                border-radius: 9px;
+                padding: 1px 3px
+                background-color: #D95B00;
+               
+            }
+
+            
+
         </style>
 
     @endpush
@@ -197,7 +244,7 @@
                             @foreach($post_advice as $value)
 
                             <li>
-                                <a href="{{ route('details', $value->link) }}">{{ @$value->title }}</a>
+                                <a href="{{ route('details', $value->link) }}">{{ @_substrs($value->title, 63) }}</a>
                             </li>
 
                             @endforeach
@@ -469,7 +516,20 @@
             </div>
             
 
-             <div class="img-flashsale desktop" style="width: 100%;">
+             <div class="img-flashsale desktop show-banner-flash-sale" style="width: 100%;">
+
+                <div class="gvdshock">
+                    <div class="endtime" data-countdown="12/12/2023 11:59:00 PM" data-begin="12/12/2023 8:00:00 AM">
+                        <span class="title-end">Kết thúc sau</span>
+                        <span class="countdown-timer">
+                            <label id="hour">10</label>
+                            <span>:</span>
+                            <label id="minute">02</label>
+                            <span>:</span>
+                            <label id="second">42</label>
+                        </span>
+                    </div>
+                </div>
                 <a href="{{ route('details', 'deal') }}"><img src="{{ asset('images/template/gift-image-dmx.gif') }}" style="width: 100%"></a>
 
             </div>
@@ -536,14 +596,14 @@
                                                     <i class="fa-solid fa-star"></i>
                                                 </p>
                                                 <div class="line_break">|</div>
-                                                    <div class="reviewCount">0 đánh giá</div>
+                                                    <div class="reviewCount">{{ $value->Qualtily??0  }} Sản ph</div>
                                                 </div>
                                                 <div class="container-timeline">
                                                 <span class="timeline"><span style="width: 2%"></span></span>
                                                <!--  <p>Đã bán <span style="color: #EE1E25">2</span> / 100 sản phẩm</p> -->
                                             </div>
                                             <div style="width: 100%; height: 1px; background: #ECECEC; margin-top: 8px"></div>
-                                            <div class="countdown-flash-sale">
+                                            <div class="countdown-flash-sale mobiles">
                                                 <div class="time-cd time-fl time{{ $key }}">
 
                                                     <span class="timestamp" style="display: none;">{{   $now->diffInSeconds($value->end) }}</span>
@@ -1329,6 +1389,9 @@
     ?>
 
     @if($event_check->active===1)
+
+
+    
     <div class="falling-container" aria-hidden="true">
         <div class="falling-item">
             ●
@@ -1369,12 +1432,12 @@
     <!-- End -->
 
     <div class="pine-tree"> 
-        <img class="pine-tree-left " src="{{ asset('public/background/mai-tree.png')}}" data-was-processed="true"> 
-        <img class="pine-tree-right " src="{{ asset('public/background/dao-tree.png')}}" data-was-processed="true"> 
-        <!-- <img class="tuyet-left loading" src="{{ asset('public/background/Asset6@3x.png')}}" data-was-processed="true"> 
-        <img class="tuyet-right loading" src="{{ asset('public/background/Asset7@3x.png')}}" data-was-processed="true">  -->
-       <!--  <img class="santa-left loading" src="{{ asset('public/background/Asset4@3x.png')}}" data-was-processed="true"> 
-        <img class="santa-right loading" src="{{ asset('public/background/Asset8@3x.png')}}" data-was-processed="true"> -->
+      <!--   <img class="pine-tree-left " src="{{ asset('public/background/mai-tree.png')}}" data-was-processed="true"> 
+        <img class="pine-tree-right " src="{{ asset('public/background/dao-tree.png')}}" data-was-processed="true">  -->
+         <img class="tuyet-left loading" src="{{ asset('background/Asset5@3x.png')}}" data-was-processed="true"> 
+        <img class="tuyet-right loading" src="{{ asset('background/Asset3@3x.png')}}" data-was-processed="true">  
+         <img class="santa-left loading" src="{{ asset('background/Asset5@3x.png')}}" data-was-processed="true"> 
+        <img class="santa-right loading" src="{{ asset('background/Asset3@3x.png')}}" data-was-processed="true">
     </div>
 
      <script src="https://unpkg.com/sweetalert2@7.18.0/dist/sweetalert2.all.js"></script>
@@ -1465,6 +1528,19 @@
                 }
             });
         }
+
+         document.addEventListener("DOMContentLoaded", function () {
+
+            const text = document.querySelector(".option-sale span");
+           
+            document.addEventListener("mousemove", function (e) {
+                const x = e.clientX;
+                const y = e.clientY;
+
+                text.style.transform = `translate(${x}px, ${y}px)`;
+            });
+        });    
+      
        
         //  $('.sticky-sidebar').hide();
         // $(window).scroll(function (){
@@ -1659,6 +1735,15 @@
             $('.time'+key+' .hourss').text(h<10?'0'+hour:''+hour);
             $('.time'+key+' .secondss').text(s<10?'0'+seconds:''+seconds);
             $('.time'+key+' .minutess').text(m<10?'0'+minutes:''+minutes); 
+
+            if(key===0){
+
+                $('.countdown-timer #hour').text(h<10?'0'+hour:''+hour);
+                $('.countdown-timer #second').text(s<10?'0'+seconds:''+seconds);
+                $('.countdown-timer #minute').text(m<10?'0'+minutes:''+minutes); 
+
+
+            }
         }
        
                                                                                                                                                                  

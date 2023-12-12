@@ -432,35 +432,7 @@
                 width: 29vmax !important;
             }
 
-            .theme-xmas.header:after {
-                content: '';
-                background-size: 100%;
-                width: 355px;
-                height: 120px;
-                position: absolute;
-                z-index: 2;
-                background-image:  url('{{ asset("images/template/header-rope-right-23.png")  }}');
-                top: 0;
-                left: calc((100% - 1200px)/2 + 1196px);
-                background-repeat: no-repeat;
-            }
-
-            .theme-xmas.header:before {
-                content: '';
-                background-size: 100%;
-                width: 355px;
-                height: 120px;
-                position: absolute;
-                z-index: 2;
-                background-image: url('{{ asset("images/template/header-rope-left-23.png")  }}');
-                right: calc((100% - 1200px)/2 + 1200px);
-                top: 0;
-                background-repeat: no-repeat;
-            }   
-            .header-pc{
-                height: 80px;
-            } 
-
+            
         </style>
 
         <?php  
@@ -518,10 +490,38 @@
                    
                     bottom:93px; 
                     right:8px; 
-                    display: none;
-
-                       
+                    display: none;   
                 }
+
+                .theme-xmas.header:after {
+                content: '';
+                background-size: 100%;
+                width: 355px;
+                height: 120px;
+                position: absolute;
+                z-index: 2;
+                background-image:  url('{{ asset("images/template/header-rope-right-23.png")  }}');
+                top: 0;
+                left: calc((100% - 1200px)/2 + 1196px);
+                background-repeat: no-repeat;
+            }
+
+            .theme-xmas.header:before {
+                content: '';
+                background-size: 100%;
+                width: 355px;
+                height: 120px;
+                position: absolute;
+                z-index: 2;
+                background-image: url('{{ asset("images/template/header-rope-left-23.png")  }}');
+                right: calc((100% - 1200px)/2 + 1200px);
+                top: 0;
+                background-repeat: no-repeat;
+            }   
+            .header-pc{
+                height: 80px;
+            } 
+
 
                 .zalo-chat-widget{  
                     bottom: 28% !important;  
@@ -562,7 +562,7 @@
                 }
 
                 .hotline.position-fixed {
-                    bottom: 16%;
+                    bottom: 21%;
                     right: 0;
                     padding: 0.5rem 0.3rem 0.5rem 0.8rem;
                     border-radius: 13px 0px 0px 13px;
@@ -788,7 +788,7 @@
                 bottom: 0;
                 left: 1vw;
                 cursor: pointer;
-                z-index: 0;
+                z-index: 999;
                 width: 9vw;
             }
 
@@ -810,7 +810,7 @@
                 right: 0;
                 cursor: pointer;
                 z-index: 2;
-                width: 3vw;
+/*                width: 3vw;*/
             }
 
             @if(!empty(Auth::user()->id) && Auth::user()->id==1)
