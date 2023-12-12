@@ -467,7 +467,14 @@
                 <a href="{{ route('details', 'deal') }}"><img src="{{ asset('images/template/flashsalemb.jpg') }}" style="width: 100%"></a>
 
             </div>
-           
+            
+
+             <div class="img-flashsale desktop" style="width: 100%;">
+                <a href="{{ route('details', 'deal') }}"><img src="{{ asset('images/template/gift-image-dmx.gif') }}" style="width: 100%"></a>
+
+            </div>
+
+            
             <div class="mt-1">
                 <div class="flash-sale" style="height: 305px;">
                     

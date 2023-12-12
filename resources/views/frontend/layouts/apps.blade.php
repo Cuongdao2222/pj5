@@ -244,6 +244,8 @@
                 overflow-x: hidden;
             }*/
 
+
+
             .category__all{
                 padding: 0 !important;
                 width: 100% !important;
@@ -429,6 +431,36 @@
                 background: #fff;
                 width: 29vmax !important;
             }
+
+            .theme-xmas.header:after {
+                content: '';
+                background-size: 100%;
+                width: 355px;
+                height: 120px;
+                position: absolute;
+                z-index: 2;
+                background-image:  url('{{ asset("images/template/header-rope-right-23.png")  }}');
+                top: 0;
+                left: calc((100% - 1200px)/2 + 1196px);
+                background-repeat: no-repeat;
+            }
+
+            .theme-xmas.header:before {
+                content: '';
+                background-size: 100%;
+                width: 355px;
+                height: 120px;
+                position: absolute;
+                z-index: 2;
+                background-image: url('{{ asset("images/template/header-rope-left-23.png")  }}');
+                right: calc((100% - 1200px)/2 + 1200px);
+                top: 0;
+                background-repeat: no-repeat;
+            }   
+            .header-pc{
+                height: 80px;
+            } 
+
         </style>
 
         <?php  
@@ -874,7 +906,7 @@
         
         @endif
 
-        <header class="header   theme-lunar-new-year" data-sub="0">
+        <header class="header   theme-xmas" data-sub="0">
 
             <div class="header__top desktop header-pc">
                 <section>
