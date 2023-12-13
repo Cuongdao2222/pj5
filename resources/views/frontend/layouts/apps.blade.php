@@ -1966,11 +1966,11 @@
 
                             <div class="form-group row">
                                 <label class="col-md-4 col-form-label" for="Password">Mật khẩu</label>
-                                <div class="col-md-8"><input class="form-control" type="password" data-val="true" data-val-length="The Mật khẩu must be at least 4 and at max 100 characters long." data-val-length-max="100" data-val-length-min="4" data-val-required="Trường Mật khẩu là bắt buộc." id="Passwords" maxlength="100" name="Passwords"> <span class="text-danger field-validation-valid" data-valmsg-for="Password" data-valmsg-replace="true" autocomplete="on"></span></div>
+                                <div class="col-md-8"><input class="form-control" type="password"></span></div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-4 col-form-label" for="ConfirmPassword">Xác nhận mật khẩu</label>
-                                <div class="col-md-8"><input class="form-control" type="password" data-val="true" data-val-equalto="The password and confirmation password do not match." data-val-equalto-other="*.Password" id="ConfirmPassword" name="ConfirmPassword"> <span class="text-danger field-validation-valid" data-valmsg-for="ConfirmPassword" data-valmsg-replace="true" autocomplete="on"></span></div>
+                                <div class="col-md-8"><input class="form-control" type="password"  id="ConfirmPassword" name="ConfirmPassword" autocomplete="on"> <span class="text-danger field-validation-valid"></span></div>
                             </div>
 
                              
