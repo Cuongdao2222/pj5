@@ -254,7 +254,7 @@
                             @foreach($post_advice as $value)
 
                             <li>
-                                <a href="{{ route('details', $value->link) }}">{{ @_substrs($value->title, 61) }}</a>
+                                <a href="{{ route('details', $value->link) }}">{{ @_substrs($value->title, 60) }}</a>
                             </li>
 
                             @endforeach
@@ -606,7 +606,7 @@
                                                     <i class="fa-solid fa-star"></i>
                                                 </p>
                                                 <div class="line_break">|</div>
-                                                    <div class="reviewCount">{{ $value->Qualtily??0  }} Sản ph</div>
+                                                    <div class="reviewCount">{{ $value->Qualtily??0  }} Sản phẩm</div>
                                                 </div>
                                                 <div class="container-timeline">
                                                 <span class="timeline"><span style="width: 2%"></span></span>
