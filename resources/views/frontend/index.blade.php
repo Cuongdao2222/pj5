@@ -606,7 +606,7 @@
                                                     <i class="fa-solid fa-star"></i>
                                                 </p>
                                                 <div class="line_break">|</div>
-                                                    <div class="reviewCount">{{ $value->Qualtily??0  }} Sản phẩm</div>
+                                                    <div class="reviewCount">{{ $value->Qualtily??5  }} Sản phẩm</div>
                                                 </div>
                                                 <div class="container-timeline">
                                                 <span class="timeline"><span style="width: 2%"></span></span>
