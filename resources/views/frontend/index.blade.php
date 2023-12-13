@@ -254,7 +254,7 @@
                             @foreach($post_advice as $value)
 
                             <li>
-                                <a href="{{ route('details', $value->link) }}">{{ @_substrs($value->title, 63) }}</a>
+                                <a href="{{ route('details', $value->link) }}">{{ @_substrs($value->title, 61) }}</a>
                             </li>
 
                             @endforeach
