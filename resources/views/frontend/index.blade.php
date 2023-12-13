@@ -30,7 +30,7 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('css/home.css') }}?ver=26">
   
         <link rel="stylesheet" type="text/css" href="{{ asset('css/index.css') }}?ver=4">
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/homes.css') }}?ver=10">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/homes.css') }}?ver=11">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/homecs.css') }}?ver=19">
         <style type="text/css">
            
@@ -666,7 +666,7 @@
         <div class="clearfix"></div> 
 
      
-        <div class="prd-promo has-banner" style="background: #16cee9;" data-html-id="3109">
+        <div class="prd-promo has-banner" style="background: #e53131;" data-html-id="3109">
 
             @if(!empty($bannerUnderSale[0]['image']))
 

@@ -13002,14 +13002,18 @@ body.theme-lunar-new-year {
 	padding-left: 10px;
 	padding-top: 10px;
 /*	background: transparent url(https://dienmaynguoiviet.vn/images/background-image/bg_luxury.png) no-repeat center top;*/
-	background: #16cee9;
+	background: #e53131;
 ;
 	border-top-right-radius: 8px;
 	border-top-left-radius: 8px
 }
 
 .theme-lunar-new-year .box-common .box-common__tab li:hover {
-	border: 1px solid #ffd400
+	border: 1px solid #fff
+}
+
+.box-common__tab a{
+	color: #000 !important;
 }
 
 .theme-lunar-new-year .box-common .box-common__tab li.active-tab {
