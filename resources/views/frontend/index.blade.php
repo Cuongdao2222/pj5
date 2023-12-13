@@ -56,6 +56,14 @@
                 right: -11px;
             }
 
+            .text {
+            font-size: 20px;
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            position: absolute;
+            pointer-events: none; /* Tắt sự kiện chuột cho phần tử này */
+        }
+
              
             @media only screen and (max-width: 767px) {
                 .box-div-slide1{
@@ -197,6 +205,8 @@
             </div>
         </div>
     </div>
+
+    
 
     <section>
         <div class="row div-slide">
@@ -530,7 +540,7 @@
                         </span>
                     </div>
                 </div>
-                <a href="{{ route('details', 'deal') }}"><img src="{{ asset('images/template/gift-image-dmx.gif') }}" style="width: 100%"></a>
+                <a href="{{ route('details', 'deal') }}"><img src="{{ asset('images/template/gift-image-dmx.jpg') }}" style="width: 100%"></a>
 
             </div>
 
@@ -1529,17 +1539,16 @@
             });
         }
 
-         document.addEventListener("DOMContentLoaded", function () {
+        //  document.addEventListener("DOMContentLoaded", function () {
 
-            const text = document.querySelector(".option-sale span");
-           
-            document.addEventListener("mousemove", function (e) {
-                const x = e.clientX;
-                const y = e.clientY;
+        //      const text = document.querySelector(".text");
+        //     document.addEventListener("mousemove", function (e) {
+        //         const x = e.clientX;
+        //         const y = e.clientY;
 
-                text.style.transform = `translate(${x}px, ${y}px)`;
-            });
-        });    
+        //         text.style.transform = `translate(${x}px, ${y}px)`;
+        //     });
+        // });    
       
        
         //  $('.sticky-sidebar').hide();
