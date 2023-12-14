@@ -96,6 +96,7 @@ class product extends Model
         'sale_order',
         'promotion_box',
         'LinkRedirect',
+        'Quantily',
         
 
     ];

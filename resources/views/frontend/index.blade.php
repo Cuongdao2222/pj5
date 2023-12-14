@@ -568,6 +568,8 @@
                                     $seconds =floor($timestamp);
 
                                     $ar_Deal_Pd[$value->product_id] = $value->deal_price;
+
+                                    $count_pd =  App\Models\product::find($value->product_id);
                                 ?>
 
                                 <div class="item">
@@ -606,10 +608,23 @@
                                                     <i class="fa-solid fa-star"></i>
                                                 </p>
                                                 <div class="line_break">|</div>
-                                                    <div class="reviewCount">{{ $value->Qualtily??5  }} Sản phẩm</div>
+                                                    <?php 
+
+                                                        if(!empty($count_pd->Quantily) && $count_pd->Quantily<20){
+                                                            $number_percent =   floor( (intval($count_pd->Quantily)/20)*100);
+                                                        }
+                                                        else{
+                                                            $number_percent =0;
+                                                        }
+                                                        
+
+                                                    ?>
+                                                    <div class="reviewCount">{{ $count_pd->Quantily  }} Sản phẩm</div>
+
+                                                    
                                                 </div>
                                                 <div class="container-timeline">
-                                                <span class="timeline"><span style="width: 2%"></span></span>
+                                                <input style="background-size: 40% 100%" type="range" value="{{  $number_percent }}" max="10" wfd-id="id23">
                                                <!--  <p>Đã bán <span style="color: #EE1E25">2</span> / 100 sản phẩm</p> -->
                                             </div>
                                             <div style="width: 100%; height: 1px; background: #ECECEC; margin-top: 8px"></div>
