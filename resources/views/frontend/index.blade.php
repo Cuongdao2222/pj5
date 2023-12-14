@@ -480,7 +480,7 @@
                         @if($checksoon==0)
 
                         <?php 
-                            $percent = floor((intval($value->price)- intval($value->deal_price))/intval($value->price)*100);
+                            $percent = floor((intval($value->price)- intval($value->deal_price))/intval($value->price)*10);
 
 
                         ?>
