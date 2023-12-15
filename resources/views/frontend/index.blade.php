@@ -53,7 +53,7 @@
                     border-radius: 3px;
                     display: block;
                     color: #111;
-                    height: 300px !important;
+                    height: auto !important;
                     padding: 10px;
                 }
 
