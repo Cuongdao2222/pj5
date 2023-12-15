@@ -260,7 +260,7 @@ class AjaxController extends Controller
 
             if(!Cache::has('product_search')){
 
-                $productss = product::select('Link', 'Name', 'Image', 'Price', 'id', 'ProductSku', 'promotion')->where('active', 1)->get();
+                $productss = product::select('Link', 'Name', 'Image', 'Price', 'id', 'ProductSku', 'promotion',  'Sailent_Features')->where('active', 1)->get();
 
                 Cache::forever('product_search',$productss);
 
@@ -1186,7 +1186,7 @@ class AjaxController extends Controller
 
                 if(!Cache::has('product_search')){
 
-                    $productss = product::select('Link', 'Name', 'Image', 'Price', 'id', 'ProductSku', 'promotion_box')->where('active', 1)->get();
+                    $productss = product::select('Link', 'Name', 'Image', 'Price', 'id', 'ProductSku', 'promotion_box', 'Sailent_Features')->where('active', 1)->get();
 
                     Cache::forever('product_search',$productss);
 

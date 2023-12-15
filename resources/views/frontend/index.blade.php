@@ -14,7 +14,7 @@
 
     if(!Cache::has('product_search')){
 
-        $productss = App\Models\product::select('Link', 'Name', 'Image', 'Price', 'id', 'ProductSku', 'promotion', 'promotion_box')->where('active', 1)->get();
+        $productss = App\Models\product::select('Link', 'Name', 'Image', 'Price', 'id', 'ProductSku', 'promotion', 'promotion_box', 'Salient_Features')->where('active', 1)->get();
 
         Cache::forever('product_search',$productss);
     }
@@ -33,7 +33,53 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('css/homes.css') }}?ver=11">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/homecs.css') }}?ver=19">
         <style type="text/css">
+                .sprites {
+                    color: #000;
+                    font-weight: bold;
+
+                    margin: 10px 0;
+
+
+                }
            
+                .gift-info {
+                    position: absolute;
+                    top: 0;
+                    left: 100%;
+                    width: 350px;
+                    z-index: 999;
+                    background: #fff;
+                    border: 1px solid #ddd;
+                    border-radius: 3px;
+                    display: block;
+                    color: #111;
+                    height: 300px !important;
+                    padding: 10px;
+                }
+
+                .product_item a {
+                    display: block;
+                    overflow: hidden;
+                    padding: 0 7px;
+                }
+
+                .thumbnail-product img {
+                    width: 100%;
+                    height: auto;
+                }
+
+               .gift-info .title {
+                    background: linear-gradient(to right,#F6E4DB,#D09E8A);
+                    padding: 10px 10px;
+                    font-size: 16px;
+                    color: #414042;
+                }
+
+                ol{
+                    font-size: 12px !important;
+                }
+
+
             .box-left-2{
                 width: 21%;
             }
@@ -121,7 +167,7 @@
 
         if(!Cache::has('product_search')){
 
-            $productss = App\Models\product::select('Link', 'Name', 'Image', 'Price', 'id', 'ProductSku', 'promotion', 'promotion_box')->where('active', 1)->get();
+            $productss = App\Models\product::select('Link', 'Name', 'Image', 'Price', 'id', 'ProductSku', 'Sailent_Features', 'promotion', 'promotion_box')->where('active', 1)->get();
 
             Cache::forever('product_search',$productss);
 
@@ -209,6 +255,11 @@
     
 
     <section>
+
+        <div class="gift-info">
+           
+        </div>
+  
         <div class="row div-slide">
             <div class="box-left-2 left-banner"></div>
             <div class="col-md-7 box-div-slide">
@@ -344,7 +395,6 @@
 
         @foreach($saleFlash as $keys => $vals)
 
-        
         @if($now < $time4)
 
 
@@ -415,8 +465,6 @@
                    
                 </div>
             </nav>
-
-           
 
         <div class="container-productbox product-view-all">
 
@@ -546,7 +594,7 @@
 
             
             <div class="mt-1">
-                <div class="flash-sale" style="height: 305px;">
+                <div class="flash-sale mouse-mover" style="height: 305px;">
                     
                     <span id="banner-flash-sale"><a href="{{ route('dealFe') }}">
                     <img width="256" src="{{  asset('images/background-image/Flash_Sale_Theme_256x396.jpg')}}" style="width: auto; height: 300px" alt="banner-fs">
@@ -572,7 +620,7 @@
                                     $count_pd =  App\Models\product::find($value->product_id);
                                 ?>
 
-                                <div class="item">
+                                <div class="item" id="items-{{ $key }}">
                                     <a href="{{ route('details', $value->link) }}">
                                         <div class="img">
                                             <img width="327" src="{{ asset($value->image) }}"  data-src="{{ asset($value->image) }}" title="{{ $value->name }}">
@@ -661,12 +709,14 @@
                                             </div>
                                         </a>
                                     </div>
+
+
+                                    @include('frontend.layouts.more-info', ['value'=>$count_pd, 'deal_price'=>$value->deal_price])
                                 </div>
 
                                 @endif
 
                                 @endforeach
-
                             </div>
                         </div>
                     </div>
@@ -858,13 +908,14 @@
 
 
                 @else
-                <ul class="listproduct" data-total="39">
+                <ul class="listproduct mouse-mover" data-total="39">
 
 
                     @foreach($product_sale as $keys => $value)
                     @if($value->active==1)
 
-                    <li data-id="{{ $keys }}" data-pos="1" class="item ">
+                    <li data-id="{{ $keys }}" data-pos="1" class="item " id="list_{{ $keys }}">
+
                         <a href='{{ route('details', $value->Link) }}' class=" main-contain" data-s="OnlineSavingCMS" data-site="2" data-pro="3" data-cache="False" data-name="M&#xE1;y gi&#x1EB7;t LG Inverter 8.5 kg FV1408S4W" data-id="227121" data-price="8840000.0" data-brand="LG" data-cate="M&#xE1;y gi&#x1EB7;t" data-box="BoxHome">
                             <div class="event">
                                    <img src="{{ asset('images/background-image/event.png')  }}">
@@ -999,6 +1050,11 @@
                             <i class="fa-solid fa-plus"></i>
                                 so sánh
                         </a>
+
+
+
+
+                        @include('frontend.layouts.more-info', ['value'=>$value])
                     </li>
                     @endif
                     @endforeach
@@ -1120,12 +1176,12 @@
                 <div class="preloader">
                     <div class="loaderweb"></div>
                 </div>
-                <div class="box-common__content">
+                <div class="box-common__content mouse-mover">
                     <div class="listproduct slider-home owl-carousel" id="banner-product_{{ $dems }}" data-size="{{ $data->count() }}">
 
-                        @foreach($data as $datas)
+                        @foreach($data as $key =>$datas)
 
-                        <div class="item"  data-pos="12">
+                        <div class="item"  data-pos="12" id="list_show_group_{{ $key }}">
                             <a href='{{ route('details', $datas->Link) }}'>
                                 @if($datas->Price>=3000000)
                                 <span class="icon_tragop icons-tra-gops">Trả góp <i>0%</i></span>
@@ -1188,7 +1244,7 @@
                                     @if(!empty($datas->manuPrice))
 
                                     <?php
-                                    $discount =  round(((intval($datas->manuPrice) - intval($datas->Price))/intval($datas->manuPrice))*100)
+                                        $discount =  round(((intval($datas->manuPrice) - intval($datas->Price))/intval($datas->manuPrice))*100)
                                     ?>
                                     
                                     <span class="price_market">{{ @number_format($datas->manuPrice , 0, ',', '.')}} <sup>đ</sup></span>
@@ -1196,6 +1252,8 @@
                                     <span class="discount_percent">-{{ $discount }}%</span>
 
                                     @endif
+
+                                   
 
                                 </div>
                                 
@@ -1231,9 +1289,9 @@
                                    
                                     $gift = Cache::get('gifts_Fe_'.$datas->id);
                                 ?>
-
-
                             </a>
+
+                            @include('frontend.layouts.more-info', ['value'=>$datas])
 
 
                              <!-- phần quà khuyến mãi 1-->
@@ -2084,7 +2142,35 @@
                     }
                 });    
             }
-        
+
+        var movingText = $(".gift-info");
+
+        movingText.hide();
+
+          // Xử lý sự kiện khi chuột di chuyển
+        $(".mouse-mover .item").on("mousemove", function(event) {
+            movingText.show();
+            var id = $(this).attr("id");
+
+            var data = $("#"+id+" .gifts-info").html();
+
+            $(".gift-info").html('');
+            $(".gift-info").html(data);
+
+            var x = event.pageX+15;
+            var y = event.pageY+15;
+
+            // Cập nhật vị trí của chữ theo vị trí của chuột
+            movingText.css({
+              "left": x,
+              "top": y,
+            });
+          })
+          .on("mouseout", function(event) {
+            // Fade out element when mouse leaves
+            movingText.hide();
+          });
+      
     </script>
 
 
