@@ -313,8 +313,8 @@
 
                                 ?>
 
-
-                                <a href="{{ route('details', $linkss)  }}" data-href="may-giat?g=cua-truoc" data-index="4" class="box-quicklink__item bd-radius quicklink-logo">
+                                @if(!empty($linkss))
+                                <a href="{{ route('details', $linkss)  }}"  data-index="4" class="box-quicklink__item bd-radius quicklink-logo">
                                     <img src="{{ asset('uploads/icon/'.$value->id.'.png') }}" width="30" alt="{{ $value->name }}" />
 
                                     @if($id_cate != 1)
@@ -322,10 +322,8 @@
 
                                     @endif
 
-                                    
-                                   
                                 </a>
-
+                                @endif
 
                                 @endforeach
 
