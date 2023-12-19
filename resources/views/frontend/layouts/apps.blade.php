@@ -513,26 +513,26 @@
 
                 .theme-xmas.header:after {
                 content: '';
-                background-size: 100%;
-                width: 355px;
-                height: 120px;
+                background-size: 90%;
+                width: 20%;
+                height: 18%;
                 position: absolute;
                 z-index: 2;
                 background-image:  url('{{ asset("images/template/header-rope-right-23.png")  }}');
                 top: 0;
-                left: calc((100% - 1200px)/2 + 1196px);
+                right: 0;
                 background-repeat: no-repeat;
             }
 
             .theme-xmas.header:before {
                 content: '';
-                background-size: 100%;
-                width: 355px;
-                height: 120px;
+                background-size: 90%;
+                width: 20%;
+                height: 18%;
                 position: absolute;
                 z-index: 2;
                 background-image: url('{{ asset("images/template/header-rope-left-23.png")  }}');
-                right: calc((100% - 1200px)/2 + 1200px);
+                left: 0;
                 top: 0;
                 background-repeat: no-repeat;
             }   
