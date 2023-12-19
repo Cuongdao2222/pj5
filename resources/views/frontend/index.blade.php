@@ -599,7 +599,14 @@
 
                                     $ar_Deal_Pd[$value->product_id] = $value->deal_price;
 
-                                    $count_pd =  App\Models\product::find($value->product_id);
+                                     $count_pd  =  Cache::rememberForever('count_pd' , function() use($value){
+
+                                        return   App\Models\product::find($value->product_id);
+                                    });
+
+
+
+                                    
                                 ?>
 
                                 <div class="item" id="items-{{ $key }}">
