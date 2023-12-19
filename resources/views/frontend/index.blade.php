@@ -592,7 +592,7 @@
                         </span>
                     </div>
                 </div>
-                <a href="{{ route('details', 'deal') }}"><img src="{{ asset('images/template/gif11.gif') }}" style="width: 100%"></a>
+                <a href="{{ route('details', 'deal') }}"><img src="{{ asset('images/template/gif11.gif') }}?ver=1" style="width: 100%"></a>
 
             </div>
 
