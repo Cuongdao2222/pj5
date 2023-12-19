@@ -391,6 +391,11 @@
 
         ?>
 
+        <?php 
+
+            dd(bannerUnderSlider);
+        ?>
+
         @if($date_flashdeal->isToday())
 
         <?php 
@@ -406,6 +411,8 @@
 
                 $groups_deal = 0;
                 $k = 0;
+
+
 
             ?>
            
