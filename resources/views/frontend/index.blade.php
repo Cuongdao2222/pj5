@@ -580,11 +580,11 @@
                     <div class="endtime" data-countdown="12/12/2023 11:59:00 PM" data-begin="12/12/2023 8:00:00 AM">
                         <span class="title-end">Kết thúc sau</span>
                         <span class="countdown-timer">
-                            <label id="hour">10</label>
+                            <label id="hour"></label>
                             <span>:</span>
-                            <label id="minute">02</label>
+                            <label id="minute"></label>
                             <span>:</span>
-                            <label id="second">42</label>
+                            <label id="second"></label>
                         </span>
                     </div>
                 </div>
