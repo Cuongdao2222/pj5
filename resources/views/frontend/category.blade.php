@@ -313,7 +313,7 @@
 
                                 ?>
 
-                                @if(!empty($linkss))
+                              
                                 <a href="{{ route('details', $linkss)  }}"  data-index="4" class="box-quicklink__item bd-radius quicklink-logo">
                                     <img src="{{ asset('uploads/icon/'.$value->id.'.png') }}" width="30" alt="{{ $value->name }}" />
 
@@ -323,7 +323,7 @@
                                     @endif
 
                                 </a>
-                                @endif
+                              
 
                                 @endforeach
 
