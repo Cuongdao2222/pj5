@@ -211,88 +211,92 @@ if(!function_exists('pricesPromotion')){
             return $active;
         });
 
-        if(!Cache::has('money_promotion')){
+        if($checkActiveButton===0){
 
-            $money_promotion = DB::table('money_promotion')->select('product_id')->get();
+            if(!Cache::has('money_promotion')){
 
-            $ar_list = [];
+                $money_promotion = DB::table('money_promotion')->select('product_id')->get();
 
-            if(!empty($money_promotion) && $money_promotion->count()>0 ){
+                $ar_list = [];
 
-                foreach ($money_promotion as  $value) {
+                if(!empty($money_promotion) && $money_promotion->count()>0 ){
 
-                    array_push($ar_list, $value->product_id);
-                   
-                }
+                    foreach ($money_promotion as  $value) {
 
-            }
-
-            $remote_money_price = $ar_list;
-
-        }
-
-        else{
-            $remote_money_price = Cache::get('money_promotion');
-        }
-
-         // xóa khuyến mãi sản phẩm của tivi sony, tivi samsung, tủ lạnh hitachi
-
-        $ar_skip = Cache::rememberForever('ar_skips', function(){
-
-            $data = DB::table('group_product')->select('product_id')->whereIn('id', [36,12,14])->get()->toArray();
-
-            $ar_skip = array_merge(json_decode($data[0]->product_id), json_decode($data[1]->product_id), json_decode($data[2]->product_id));
-
-            $ar_skip_get = [];
-
-            foreach ($ar_skip as $value) {
-                
-                array_push($ar_skip_get, intval($value));
-            }
-
-            return $ar_skip_get;
-        });
-
-       
-
-        if($id===''||$checkActiveButton===0||in_array($id, $remote_money_price) || in_array($id, $ar_skip)){
-
-            $gift_Price = '';
-
-        }
-        else{
-
-            $data_price = Cache::rememberForever('price_auto_promotion', function(){
-
-                $data_price = App\Models\pricePromotionAuto::get();
-
-                return $data_price;
-            });
-
-
-            if(!empty($data_price) && $data_price->count()>0){
-
-                foreach ($data_price as  $value) {
-
-                    $arr_all_price = json_decode($value->price_compare);
-
-                    array_push($arr_all_price, $price);
-
-                    // sắp xếp lại mảng theo chiều tăng dần
-
-                    sort($arr_all_price);
-
-                    if($arr_all_price[1] === $price){
-
-                        $gift_Price = $value->voucher_name;
+                        array_push($ar_list, $value->product_id);
+                       
                     }
 
                 }
 
+                $remote_money_price = $ar_list;
+
             }
-            
+
+            else{
+                $remote_money_price = Cache::get('money_promotion');
+            }
+
+             // xóa khuyến mãi sản phẩm của tivi sony, tivi samsung, tủ lạnh hitachi
+
+            $ar_skip = Cache::rememberForever('ar_skips', function(){
+
+                $data = DB::table('group_product')->select('product_id')->whereIn('id', [36,12,14])->get()->toArray();
+
+                $ar_skip = array_merge(json_decode($data[0]->product_id), json_decode($data[1]->product_id), json_decode($data[2]->product_id));
+
+                $ar_skip_get = [];
+
+                foreach ($ar_skip as $value) {
+                    
+                    array_push($ar_skip_get, intval($value));
+                }
+
+                return $ar_skip_get;
+            });
+
+           
+
+            if($id===''||$checkActiveButton===0||in_array($id, $remote_money_price) || in_array($id, $ar_skip)){
+
+                $gift_Price = '';
+
+            }
+            else{
+
+                $data_price = Cache::rememberForever('price_auto_promotion', function(){
+
+                    $data_price = App\Models\pricePromotionAuto::get();
+
+                    return $data_price;
+                });
+
+
+                if(!empty($data_price) && $data_price->count()>0){
+
+                    foreach ($data_price as  $value) {
+
+                        $arr_all_price = json_decode($value->price_compare);
+
+                        array_push($arr_all_price, $price);
+
+                        // sắp xếp lại mảng theo chiều tăng dần
+
+                        sort($arr_all_price);
+
+                        if($arr_all_price[1] === $price){
+
+                            $gift_Price = $value->voucher_name;
+                        }
+
+                    }
+
+                }
+                
+            }
+
         }
-        
+
         return $gift_Price;
     }
 
