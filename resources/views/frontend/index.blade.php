@@ -41,6 +41,10 @@
 
 
                 }
+
+                .max-height{
+                     max-height: 600px !important;
+                }
            
                 .gift-info {
                     position: absolute;
@@ -53,7 +57,7 @@
                     border-radius: 3px;
                     display: block;
                     color: #111;
-                    height: 300px !important;
+                    max-height: 350px;
                     padding: 10px;
                 }
 
@@ -2153,6 +2157,20 @@
             var id = $(this).attr("id");
 
             var data = $("#"+id+" .gifts-info").html();
+            // nếu text dài thì add thêm height để chống tràn
+
+            number_text_promotion =  parseInt($("#"+id+" .gifts-info").attr('data-text'));
+
+            if(number_text_promotion >300){
+                $(".gift-info").addClass('max-height');
+            }
+
+            if(number_text_promotion <300 && $(".gift-info").hasClass('max-height')){
+                $(".gift-info").removeClass('max-height');
+            }
+            
+            // end check
+
 
             $(".gift-info").html('');
             $(".gift-info").html(data);
