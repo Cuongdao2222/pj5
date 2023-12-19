@@ -211,7 +211,7 @@ if(!function_exists('pricesPromotion')){
             return $active;
         });
 
-        if($checkActiveButton===0){
+        if($checkActiveButton!=0){
 
             if(!Cache::has('money_promotion')){
 
