@@ -343,33 +343,7 @@
                 @endif
             </div>
         </div>
-        <!-- <section class="menus-banner">
-            <strong class="name-box">Có thể bạn quan tâm</strong>
-            <ul>
-
-                @if(!empty($bannerUnderSlider))
-                @foreach($bannerUnderSlider as $slider)
-                <li class="col-">
-                    <a href="{{ $slider->link }}">
-                        <picture>
-                            <source media="(min-width:1201px)" >
-                            <img  data-src="{{ asset($slider->image) }}" class="lazyload">
-                        </picture>
-                    </a>
-                    <p>
-               &nbsp; <a href="{{ $slider->link }}">{{ $slider->title }}</a></p>
-                    
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{ $slider->link }}"><strong class="strongtitle">{{ @$slider->slogan }}</strong>
-                    @if(!empty($slider->slogan))
-                    <span aria-label="Next" class="Next">›</span>
-                    @endif
-                   </a>
-                </li>
-                @endforeach
-                @endif
-               
-            </ul>
-        </section> -->
+       
         <?php 
            
            

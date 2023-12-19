@@ -86,7 +86,7 @@ class indexController extends Controller
 
         if(!Cache::has('bannerUnderSlider')){
             $bannerUnderSlider = Cache::rememberForever('bannerUnderSlider', function() {
-                return banners::where('option', 3)->OrderBy('stt', 'asc')->where('active', 1)->first();
+                return banners::where('option', 3)->OrderBy('stt', 'asc')->where('active', 1)->orderBy('id', 'desc')->first();
             });
 
         }
