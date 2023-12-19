@@ -106,7 +106,7 @@ class banner extends Model
      */
     public static $rules = [
        
-        'image' => 'required|max:10000|mimes:jpg,jpeg,png',
+        'image' => 'required|max:10000|mimes:jpg,jpeg,png,gif',
         'title' => 'required',
         'link' => 'required',
     ];
