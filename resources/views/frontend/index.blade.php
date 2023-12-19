@@ -565,8 +565,8 @@
                             <label id="hour"></label>
                             <span>:</span>
                             <label id="minute"></label>
-                            <span>:</span>
-                            <label id="second"></label>
+                           <!--  <span>:</span>
+                            <label id="second"></label> -->
                         </span>
                     </div>
                 </div>
