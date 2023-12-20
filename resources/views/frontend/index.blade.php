@@ -1754,11 +1754,15 @@
         number_deal_product =10;
         //in time 
       
-        setInterval(function(){
-            for (var i = 0 ; i < loop; i++) {
-                run(i);
-            }
+        // setInterval(function(){
+        //     for (var i = 0 ; i < loop; i++) {
+        //         run(i);
+        //     }
 
+        // }, 1000);
+
+        setTimeout(function() {
+            run(0);
         }, 1000);
 
         function run(key) {
@@ -1815,6 +1819,10 @@
 
 
             }
+
+            setTimeout(function() {
+                run(0);
+            }, 1000);
         }
        
                                                                                                                                                                  
