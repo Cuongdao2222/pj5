@@ -131,7 +131,9 @@
                 z-index: 999;
             }  
 
-
+            .gvdshock .endtime{
+                margin-left: 9% !important;
+            }
 
             .endtime {
                 color: #fff;
