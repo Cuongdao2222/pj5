@@ -126,7 +126,7 @@
                 position: absolute;
                 top: 50%;
                 bottom: 10%;
-                left: 101px;
+                left: 0;
                 width: 100%;
                 z-index: 999;
             }  
