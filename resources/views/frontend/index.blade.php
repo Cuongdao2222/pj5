@@ -1807,9 +1807,9 @@
             minutes =  m.toString();
             
             seconds =  s.toString();
-            $('.time'+key+' .hourss').text(h<10?'0'+hour:''+hour);
-            $('.time'+key+' .secondss').text(s<10?'0'+seconds:''+seconds);
-            $('.time'+key+' .minutess').text(m<10?'0'+minutes:''+minutes); 
+            // $('.time'+key+' .hourss').text(h<10?'0'+hour:''+hour);
+            // $('.time'+key+' .secondss').text(s<10?'0'+seconds:''+seconds);
+            // $('.time'+key+' .minutess').text(m<10?'0'+minutes:''+minutes); 
 
             if(key===0){
 
@@ -1819,6 +1819,11 @@
 
 
             }
+
+            // nhảy time bản mobile khi tắt set giờ riêng
+            $('.mobiles .time .hourss').text(h<10?'0'+hour:''+hour);
+            $('.mobiles .time .secondss').text(s<10?'0'+seconds:''+seconds);
+            $('.mobiles .time .minutess').text(m<10?'0'+minutes:''+minutes); 
 
             setTimeout(function() {
                 run(0);
