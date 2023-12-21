@@ -489,7 +489,7 @@
                             @endif
 
                              <div class="sakers event-dt">
-                                    <img src="{{ asset('images/background-image/event.png') }}"   class="lazyload">
+                                    <img src="{{ asset('images/background-image/event.png') }}?ver=1"   class="lazyload">
                             </div>
 
 
@@ -550,6 +550,7 @@
                                     {!! @$text !!}
                                     <h3> {{ str_replace(',' ,'.', number_format($data->Price)) }} ₫</h3>
                                 </div>
+
 
                                 @endif
 
