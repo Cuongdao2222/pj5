@@ -836,7 +836,7 @@
 
                         <?php 
 
-                        $gift_Price = pricesPromotion($value->Price, $value->id);
+                        $gift_Price = pricesPromotion($value->Price, $value->product_id);
 
                         ?>
 

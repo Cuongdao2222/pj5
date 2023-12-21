@@ -515,7 +515,7 @@
                 .theme-xmas.header:after {
                 content: '';
                 background-size: 90%;
-                width: 20%;
+                width: 12%;
                 height: 18%;
                 position: absolute;
                 z-index: 2;
@@ -528,7 +528,7 @@
             .theme-xmas.header:before {
                 content: '';
                 background-size: 90%;
-                width: 20%;
+                width: 12%;
                 height: 18%;
                 position: absolute;
                 z-index: 2;
