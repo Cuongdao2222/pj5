@@ -122,26 +122,24 @@ class indexController extends Controller
 
                 $smart_phone = true;
 
+                return view('frontend.index', compact('banners', 'bannersRight', 'bannerUnderSlider', 'bannerUnderSale','deal','product_sale', 'group','timeDeal_star', 'deal_check', 'now','bannerscrollRight', 'bannerscrollLeft','smart_phone'));
+
             }
 
         }
 
 
-        // $view = Cache::rememberForever('view-homes',  function() use($banners, $bannersRight, $bannerUnderSlider,$bannerUnderSale, $deal, $product_sale, $group, $timeDeal_star, $deal_check, $now, $bannerscrollRight, $bannerscrollLeft, $smart_phone){
+        $view = Cache::rememberForever('view-homes',  function() use($banners, $bannersRight, $bannerUnderSlider,$bannerUnderSale, $deal, $product_sale, $group, $timeDeal_star, $deal_check, $now, $bannerscrollRight, $bannerscrollLeft, $smart_phone){
 
-        //     $view = view('frontend.index', compact('banners', 'bannersRight', 'bannerUnderSlider', 'bannerUnderSale','deal','product_sale', 'group','timeDeal_star', 'deal_check', 'now','bannerscrollRight', 'bannerscrollLeft','smart_phone'));
+            $view = view('frontend.index', compact('banners', 'bannersRight', 'bannerUnderSlider', 'bannerUnderSale','deal','product_sale', 'group','timeDeal_star', 'deal_check', 'now','bannerscrollRight', 'bannerscrollLeft','smart_phone'));
 
-        //      return  html_entity_decode($view);
-        // });
+             return  html_entity_decode($view);
+        });
 
-        // if($smart_phone===false){
-        //      echo $view;
-        // }
-        // else{
-        //     return view('frontend.index', compact('banners', 'bannersRight', 'bannerUnderSlider', 'bannerUnderSale','deal','product_sale', 'group','timeDeal_star', 'deal_check', 'now','bannerscrollRight', 'bannerscrollLeft','smart_phone'));
-        // }
-
-        return view('frontend.index', compact('banners', 'bannersRight', 'bannerUnderSlider', 'bannerUnderSale','deal','product_sale', 'group','timeDeal_star', 'deal_check', 'now','bannerscrollRight', 'bannerscrollLeft','smart_phone'));
+        if($smart_phone===false){
+             echo $view;
+        }
+    
 
     }
 
