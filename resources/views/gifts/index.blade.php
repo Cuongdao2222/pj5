@@ -9,6 +9,10 @@
     .group_gift{
         cursor: pointer;
     }
+
+    #promotionProductPrice .modal-content{
+        width: 800px !important;
+    }
 </style>
     <section class="content-header">
         <div class="container-fluid">
@@ -441,7 +445,8 @@
                         <tr>
                             <th>Khuyến mãi</th>
                             <th>Số tiền giảm </th>
-                            <th colspan="3">Ảnh</th>
+                            <th colspan="1">Ảnh</th>
+                            <th colspan="1">Ẩn khuyến mãi</th>
                             <th >Xóa</th>
                         </tr>
                     </thead>
@@ -469,6 +474,10 @@
                             <td> {{ $value->voucher_name  }} đ  </td>
                             <td width="120">
                                 <img src="{{ asset($value->image) }}" width="150px" height="150px">
+                            </td>
+
+                            <td>
+                                <input type="checkbox" name="hide-price-check">
                             </td>
 
                             <td><a href="javascript:void(0)" onclick="remove_active_promotion_price_auto({{ $value->id }})">Xóa</a> </td>

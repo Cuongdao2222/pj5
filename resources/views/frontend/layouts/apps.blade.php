@@ -274,13 +274,14 @@
             }
 
             .event-dt, .event{
-                display:none;
+                display:block;
             } 
 
             .event{
-                width: 50px;
-                height: 50px;
-                
+                width: 70px;
+                height: 70px;
+                margin-top: 25px;
+            
             }
 
             .list-menu .category{
