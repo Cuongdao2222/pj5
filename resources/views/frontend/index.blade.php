@@ -878,7 +878,7 @@
 
                             <?php 
 
-                                $id_checkpromotion = $value->promotion_box==1?'':$value->id;
+                                $id_checkpromotion = $value->promotion_box==1?'':$value->product_id;
 
                                 $price_gift = pricesPromotion($value->Price, $id_checkpromotion)===''?str_replace(',' ,'.', number_format($gifts->price)):pricesPromotion($value->Price, $id_checkpromotion);
 
