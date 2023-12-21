@@ -184,7 +184,7 @@ if(!function_exists('definePrice')){
         }
         elseif($gift_Price==='200.000'){
             $image = 'https://dienmaynguoiviet.vn/uploads/gift/1677808513_200k.jpg';
-        }
+        } 
         elseif($gift_Price==='100.000'){
 
             $image  = 'https://dienmaynguoiviet.vn/uploads/gift/1677808522_100k.jpg';
@@ -230,6 +230,8 @@ if(!function_exists('pricesPromotion')){
                 }
 
                 $remote_money_price = $ar_list;
+
+                Cache::forever('money_promotion',$remote_money_price);
 
             }
 
