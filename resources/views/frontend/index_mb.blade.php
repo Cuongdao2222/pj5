@@ -736,65 +736,68 @@
 
             @if(!empty($product_sale)&&$product_sale->count()>0)
 
-            <div class="option-mbile-sg">
-                <div>
-                    <button class="btn btn-primary optionsg active" data-id="0"><span>Cho bạn</span></button>
-                </div>
+           
+           <div class="option-sg">
 
-                <div class="ml-2">
-                    <button class="btn btn-primary optionsg" data-id="1"><span>Sản phẩm Luxury</span></button>
-                </div>
-   
+                <a href="javascript:void(0)" data-is-recommend-tab="true" class="active option-sale" data-id="1">
+                    <img data-src="{{ asset('background/like2.png') }}" class=" ls-is-cached lazyloaded" alt="Cho bạn" width="50" height="50" src="{{ asset('background/like2.png') }}">
+                    <span>Cho bạn</span>
+                </a>
+
+                <a href="javascript:void(0)" data-campaign="282" data-group="3507"  class="option-sale" data-id="0">
+                    <img data-src="{{ asset('background/like1.png') }}" class="ls-is-cached lazyloaded" alt="Sản phẩm luxury" width="50" height="50" src="{{ asset('background/like1.png') }}">
+                    <span>Sản phẩm Luxury</span>
+                </a>
+                
             </div>
-
-        
+            
             <div class="block-product__content mobile-sale-product" data-is-recommend-tab="true">
 
-                <ul class="listproduct mouse-mover" data-total="39">
+                <div class="listproduct slider-promo owl-carousel banner-sale" id="banner-sale-mobile" data-size="20">
 
+                @foreach($product_sale as  $value)
+                @if($value->active==1)
+                <div class="item">
+                    
+                    <a href='{{ route('details', $value->Link) }}' class=" main-contain" data-s="OnlineSavingCMS" data-site="2" data-pro="3" data-cache="False" data-name="M&#xE1;y gi&#x1EB7;t LG Inverter 8.5 kg FV1408S4W" data-id="227121" data-price="8840000.0" data-brand="LG" data-cate="M&#xE1;y gi&#x1EB7;t" data-box="BoxHome">
+                        <div class="item-label">
 
-                    @foreach($product_sale as $keys => $value)
-                    @if($value->active==1)
-
-                    <li data-id="{{ $keys }}" data-pos="1" class="item " id="list_{{ $keys }}">
-
-                        <a href='{{ route('details', $value->Link) }}' class=" main-contain" data-s="OnlineSavingCMS" data-site="2" data-pro="3" data-cache="False" data-name="M&#xE1;y gi&#x1EB7;t LG Inverter 8.5 kg FV1408S4W" data-id="227121" data-price="8840000.0" data-brand="LG" data-cate="M&#xE1;y gi&#x1EB7;t" data-box="BoxHome">
                             <div class="event">
-                                   <img src="{{ asset('images/background-image/event.png')  }}?ver=1">
+                                   <img src="{{ asset('images/background-image/event.png') }}?ver=1">
                                </div>
-                            <div class="item-img">
-                                <img data-src="{{ asset($value->Image) }}"   class="lazyload"  data-src="{{ asset($value->Image) }}" alt="{{ $value->Name }}" width=210 height=210>
-                            
-                            </div>
-                            <div class="title-name">
-                                <h3>{{ $value->Name }}</h3>
-                            </div>
+                        </div>
+                        <div class="item-img">
+                            <img data-src="{{ asset($value->Image) }}"   class="lazyload"  data-src="{{ asset($value->Image) }}" alt="{{ $value->Name }}" width=210 height=210>
+                        
+                        </div>
+                        <div class="title-name">
+                            <h3>{{ $value->Name }}</h3>
+                        </div>
 
-                            <?php 
+                        <?php 
 
-                                $check_deal_sale = $deal->where('product_id', $value->product_id)->first();
+                            $check_deal_sale = $deal->where('product_id', $value->product_id)->first();
 
-                                
-                                if(!empty($check_deal_sale) && $now->between($deal[0]->start, $deal[0]->end)){
+                            if(!empty($check_deal_sale) && $now->between($deal[0]->start, $deal[0]->end)){
 
-                                    $value->Price = $check_deal_sale->deal_price;
+                                $value->Price = $check_deal_sale->deal_price;
+                            }
+                           
+                        ?>
+                        
+                        <strong class="price">{{  @str_replace(',' ,'.', number_format($value->Price))  }}.&#x20AB;</strong>
+                        <div class="item-rating">
+                            <p>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </p>
+                        </div>
+                    </a>
 
-                                }
-                            ?>
-                            
-                            <strong class="price">{{  @str_replace(',' ,'.', number_format($value->Price))  }}.&#x20AB;</strong>
-                            <div class="item-rating">
-                                <p>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </p>
-                            </div>
-                        </a>
-
-                        <?php  
+                    <?php  
 
                             if(!Cache::has('gifts_Fe_'.$value->id)){
 
@@ -811,52 +814,7 @@
 
                         ?>
 
-                        @if(!empty($gift) && $value->group_id !=8)
-                            <?php 
-
-                                $gifts = $gift['gifts'];
-                                $gift = $gift['gift']; 
-
-                            ?>
-
-
-
-                            {{ $gifts->type ==1?'k/m chọn 1 trong 2':'' }}
-
-
-                            <div class="option-gift">
-
-                                 @foreach($gift as $gifts)
-
-                                <div class="quatang"><img src="{{ asset($gifts->image) }}"></div>
-                                @endforeach
-                            </div>
-
-                            @if(!empty($gifts->price))
-
-
-                            <?php 
-
-                                $id_checkpromotion = $value->promotion_box==1?'':$value->product_id;
-
-                                $price_gift = pricesPromotion($value->Price, $id_checkpromotion)===''?str_replace(',' ,'.', number_format($gifts->price)):pricesPromotion($value->Price, $id_checkpromotion);
-
-            
-                            ?>
-
-                            <div class="font-sz">    
-                                <span> Quà tặng trị giá <strong>{{  $price_gift }} </strong> </span>
-                            </div>
-                            @endif  
-
-                         
-
-                        @endif
-
-
-
-                        <!-- phần quà khuyến mãi -->
-
+                        <!-- // Trường hợp  đang chạy sự kiện -->
 
                         <?php 
 
@@ -864,10 +822,7 @@
 
                         ?>
 
-                       
-
                         @if(!empty($gift_Price))
-
                         <?php 
 
                             $image_gift_promotion = definePrice($gift_Price);
@@ -878,7 +833,6 @@
                             <div class="quatang"><img src="{{ $image_gift_promotion }}"></div>
                            
                         </div>
-                      
 
                         <div class="font-sz">
                             <span> Giảm ngay <strong>{{ $gift_Price  }} đ</strong> </span>
@@ -886,22 +840,45 @@
 
                         @endif
 
-                       
+                        @if(!empty($gift))
+                            <?php 
+                                $gifts = $gift['gifts'];
+                                $gift = $gift['gift']; 
+                               
+                            ?>
 
-                        <a href="javascript:void(0)" class="compare-show" data-id="{{ $value->product_id }}">
-                            <i class="fa-solid fa-plus"></i>
-                                so sánh
-                        </a>
+                            {{ $gifts->type ==1?'k/m chọn 1 trong 2':'' }}
+                            <div class="option-gift">
 
+                                 @foreach($gift as $gifts)
 
+                                <div class="quatang"><img src="{{ asset($gifts->image) }}"></div>
+                                @endforeach
+                            </div>
 
+                            @if(!empty($gifts->price))
 
-                        @include('frontend.layouts.more-info', ['value'=>$value])
-                    </li>
-                    @endif
-                    @endforeach
-                </ul>
-                
+                            <?php 
+
+                                $id_checkpromotion = $value->promotion_box==1?'':$value->product_id;
+
+                                $price_gift = pricesPromotion($value->Price, $id_checkpromotion)===''?str_replace(',' ,'.', number_format($gifts->price)):pricesPromotion($value->Price, $id_checkpromotion);
+
+                            ?>
+
+                            <span> Quà tặng trị giá <strong>{{  $price_gift }}  </strong> </span>
+                            @endif  
+                        @endif
+                    <a href="javascript:void(0)" class="compare-show" data-id="{{ $value->product_id }}">
+                        <i class="fa-solid fa-plus"></i>
+                            so sánh
+                    </a>
+                </div>
+                @endif
+
+                @endforeach
+                </div>
+
                 <div class="prd-promo__top clearfix" >
                     <a class="readmore-btn" href="{{ route('sale-home') }}"><span>Xem tất cả</span></a>                
                 </div>
