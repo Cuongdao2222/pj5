@@ -737,18 +737,15 @@
             @if(!empty($product_sale)&&$product_sale->count()>0)
 
            
-           <div class="option-sg">
+           <div class="option-mbile-sg">
+                <div>
+                    <button class="btn btn-primary optionsg active" data-id="0"><span>Cho bạn</span></button>
+                </div>
 
-                <a href="javascript:void(0)" data-is-recommend-tab="true" class="active option-sale" data-id="1">
-                    <img data-src="{{ asset('background/like2.png') }}" class=" ls-is-cached lazyloaded" alt="Cho bạn" width="50" height="50" src="{{ asset('background/like2.png') }}">
-                    <span>Cho bạn</span>
-                </a>
-
-                <a href="javascript:void(0)" data-campaign="282" data-group="3507"  class="option-sale" data-id="0">
-                    <img data-src="{{ asset('background/like1.png') }}" class="ls-is-cached lazyloaded" alt="Sản phẩm luxury" width="50" height="50" src="{{ asset('background/like1.png') }}">
-                    <span>Sản phẩm Luxury</span>
-                </a>
-                
+                <div class="ml-2">
+                    <button class="btn btn-primary optionsg" data-id="1"><span>Sản phẩm Luxury</span></button>
+                </div>
+   
             </div>
             
             <div class="block-product__content mobile-sale-product" data-is-recommend-tab="true">
