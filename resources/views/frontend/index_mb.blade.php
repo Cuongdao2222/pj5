@@ -894,17 +894,17 @@
 
             // phần xử lý để cho máy giặt lên đầu
 
-            $group = $group->reverse();
+            // $group = $group->reverse();
 
-            $group = $group->push($group[2]);
+            // $group = $group->push($group[2]);
 
-            $group = $group->push($group[1]);
+            // $group = $group->push($group[1]);
 
-            $group = $group->reverse();
+            // $group = $group->reverse();
 
-            $group->forget(1);
+            // $group->forget(1);
 
-            $group->forget(2);
+            // $group->forget(2);
 
             $dems = 0;
         ?> 
