@@ -143,7 +143,15 @@ class crawlController extends Controller
     }
 
 
+    public function updateMitsuBishi()
+    {
+        $data = groupProduct::find(287);
+        $id   = json_decode($data->product_id);
 
+        $update = DB::table('products')->whereIn('id', $id)->update(['Quantily'=>-1]);
+
+        echo "thanh cong";
+    }
 
 
     public function addNames()
@@ -363,6 +371,9 @@ class crawlController extends Controller
          print_r($value);
        
     }
+
+
+
 
     public function echo(){
          $banners = banners::where('option','=',0)->take(6)->OrderBy('stt', 'asc')->where('active','=',1)->select('title', 'image', 'title', 'link')->get();
