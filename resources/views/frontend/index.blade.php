@@ -1135,7 +1135,7 @@
                                 ?>
                             </a>
 
-                            @include('frontend.layouts.more-info', ['value'=>$datas])
+                            @include('frontend.layouts.more-info', ['value'=>$datas, 'deal_price'=>$ar_Deal_Pd[$datas->id]??''])
 
 
                              <!-- phần quà khuyến mãi 1-->
