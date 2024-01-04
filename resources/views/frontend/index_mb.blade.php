@@ -1329,12 +1329,12 @@
     <!-- End -->
 
     <div class="pine-tree"> 
-      <!--   <img class="pine-tree-left " src="{{ asset('public/background/mai-tree.png')}}" data-was-processed="true"> 
+       <!--   <img class="pine-tree-left " src="{{ asset('public/background/mai-tree.png')}}" data-was-processed="true"> 
         <img class="pine-tree-right " src="{{ asset('public/background/dao-tree.png')}}" data-was-processed="true">  -->
-         <img class="tuyet-left loading" src="{{ asset('background/Asset5@3x.png')}}" data-was-processed="true"> 
-        <img class="tuyet-right loading" src="{{ asset('background/Asset3@3x.png')}}" data-was-processed="true">  
-         <img class="santa-left loading" src="{{ asset('background/Asset5@3x.png')}}" data-was-processed="true"> 
-        <img class="santa-right loading" src="{{ asset('background/Asset3@3x.png')}}" data-was-processed="true">
+         <img class="tuyet-left loading" src="{{ asset('background/mai-tree.png')}}" data-was-processed="true"> 
+        <!-- <img class="tuyet-right loading" src="{{ asset('background/mai-tree.png')}}" data-was-processed="true">   -->
+         <!-- <img class="santa-left loading" src="{{ asset('background/dao-tree.png')}}" data-was-processed="true">  -->
+        <img class="santa-right loading" src="{{ asset('background/dao-tree.png')}}" data-was-processed="true">
     </div>
 
      <script src="https://unpkg.com/sweetalert2@7.18.0/dist/sweetalert2.all.js"></script>
@@ -1970,47 +1970,47 @@
                 });    
             }
 
-        var movingText = $(".gift-info");
+        // var movingText = $(".gift-info");
 
-        movingText.hide();
+        // movingText.hide();
 
-          // Xử lý sự kiện khi chuột di chuyển
-        $(".mouse-mover .item").on("mousemove", function(event) {
-            movingText.show();
-            var id = $(this).attr("id");
+        //   // Xử lý sự kiện khi chuột di chuyển
+        // $(".mouse-mover .item").on("mousemove", function(event) {
+        //     movingText.show();
+        //     var id = $(this).attr("id");
 
-            var data = $("#"+id+" .gifts-info").html();
-            // nếu text dài thì add thêm height để chống tràn
+        //     var data = $("#"+id+" .gifts-info").html();
+        //     // nếu text dài thì add thêm height để chống tràn
 
-            number_text_promotion =  parseInt($("#"+id+" .gifts-info").attr('data-text'));
+        //     number_text_promotion =  parseInt($("#"+id+" .gifts-info").attr('data-text'));
 
-            if(number_text_promotion >300){
-                $(".gift-info").addClass('max-height');
-            }
+        //     if(number_text_promotion >300){
+        //         $(".gift-info").addClass('max-height');
+        //     }
 
-            if(number_text_promotion <300 && $(".gift-info").hasClass('max-height')){
-                $(".gift-info").removeClass('max-height');
-            }
+        //     if(number_text_promotion <300 && $(".gift-info").hasClass('max-height')){
+        //         $(".gift-info").removeClass('max-height');
+        //     }
             
-            // end check
+        //     // end check
 
 
-            $(".gift-info").html('');
-            $(".gift-info").html(data);
+        //     $(".gift-info").html('');
+        //     $(".gift-info").html(data);
 
-            var x = event.pageX+15;
-            var y = event.pageY+15;
+        //     var x = event.pageX+15;
+        //     var y = event.pageY+15;
 
-            // Cập nhật vị trí của chữ theo vị trí của chuột
-            movingText.css({
-              "left": x,
-              "top": y,
-            });
-          })
-          .on("mouseout", function(event) {
-            // Fade out element when mouse leaves
-            movingText.hide();
-          });
+        //     // Cập nhật vị trí của chữ theo vị trí của chuột
+        //     movingText.css({
+        //       "left": x,
+        //       "top": y,
+        //     });
+        //   })
+        //   .on("mouseout", function(event) {
+        //     // Fade out element when mouse leaves
+        //     movingText.hide();
+        //   });
       
     </script>
 
