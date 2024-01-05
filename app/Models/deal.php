@@ -18,6 +18,7 @@ class deal extends Model
                // update cache content
                Cache::forget('deals');
                Cache::forever('deals',$instance->get());
+               Cache::forget('count_pd_'.$instance->product_id);
                Cache::forget('view-homes');
           });
 
@@ -26,6 +27,7 @@ class deal extends Model
                Cache::forget('deals');
                Cache::forever('deals',$instance->get());
                Cache::forget('deal_details'.$instance->product_id);
+               Cache::forget('count_pd_'.$instance->product_id);
                Cache::forever('deal_details'.$instance->product_id,$instance);
 
                Cache::forget('view-homes');
@@ -35,6 +37,7 @@ class deal extends Model
                Cache::forget('deals');
                Cache::forever('deals',$instance->get());
                Cache::forget('deal_details'.$instance->product_id);
+               Cache::forget('count_pd_'.$instance->product_id);
                Cache::forever('deal_details'.$instance->product_id,$instance);
                Cache::forget('view-homes');
           });
