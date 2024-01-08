@@ -538,7 +538,7 @@
                                     @endif
 
                                     <div class="event">
-                                       <img src="{{ asset('images/background-image/event.png') }}?ver=1">
+                                       <img src="{{ asset('images/background-image/event.png') }}?ver=2">
                                    </div>
 
                                     <div class="item-img item-img_1942">

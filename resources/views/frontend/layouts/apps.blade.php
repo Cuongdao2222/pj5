@@ -274,7 +274,7 @@
             }
 
             .event-dt, .event{
-                display:none;
+                display:block;
             } 
 
             .event{
