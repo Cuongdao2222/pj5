@@ -760,7 +760,7 @@
                         <div class="item-label">
 
                             <div class="event">
-                                   <img src="{{ asset('images/background-image/event.png') }}?ver=2">
+                                   <img src="{{ asset('images/background-image/event.png') }}?ver=3">
                                </div>
                         </div>
                         <div class="item-img">
@@ -1002,7 +1002,7 @@
                                 @endif
 
                                 <div class="event">
-                                    <img src="{{ asset('images/background-image/event.png') }}?ver=2">
+                                    <img src="{{ asset('images/background-image/event.png') }}?ver=3">
                                     
                                 </div>
                                
