@@ -152,6 +152,10 @@
                 height: 30px !important;
             }
 
+            .theme-xmas.header:before, .theme-xmas.header:after{
+                height: 90% !important;
+            }
+
 
         }    
     </style>
