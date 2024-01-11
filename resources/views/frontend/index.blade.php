@@ -1045,7 +1045,7 @@
                                 @if(in_array($datas->id, $hots->toArray()))
                                 <p class="result-labels"><img class="sale-banner ls-is-cached lazyloaded" alt="hot" data-src="{{ asset('images/background-image/i-con-hot.gif') }}" src="{{ asset('images/background-image/i-con-hot.gif') }}"></p>
                                 @else
-                                <div style="height: 30px;"></div>
+                                
                                 @endif
 
                                <div class="title-name">
