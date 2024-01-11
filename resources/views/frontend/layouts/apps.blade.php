@@ -437,6 +437,10 @@
                 width: 29vmax !important;
             }
 
+            .listproduct .item-img, .listproduct .item .item-img img{
+                margin-top: 0;
+            }
+
             
         </style>
 
