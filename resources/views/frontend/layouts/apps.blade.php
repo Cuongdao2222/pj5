@@ -274,13 +274,17 @@
             }
 
             .event-dt, .event{
-                display:none;
+                display:block;
             } 
 
             .event{
                 width: 70px;
                 height: 70px;
-                margin-top: 25px;
+                
+                position: absolute;
+                top: 0;
+                left: 10px;
+                z-index: 999;
             
             }
 
