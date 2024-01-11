@@ -389,8 +389,6 @@
                 $groups_deal = 0;
                 $k = 0;
 
-
-
             ?>
            
             <a href="{{ route('show-flash-deal') }}" target="_blank"><div class="container cIVWIZ" style="background-image: url(https://dienmaynguoiviet.vn/uploads/banner/1668001535_9ec673f17e637893c11a2a983045e7c6.jpg);"></div></a>
@@ -623,6 +621,10 @@
                                     </a>
                                     <div class="desc desc-deal{{$key}}">
                                         <a href="{{ route('details', $value->link) }}">
+
+                                            <div class="event">
+                                               <img src="{{ asset('images/background-image/event.png')  }}?ver=3">
+                                            </div>
                                             <h4 class="title">{{ $value->name }}</h4>
                                             <div class="container-price">
                                                    <div>
@@ -767,8 +769,9 @@
 
                         <a href='{{ route('details', $value->Link) }}' class=" main-contain" data-s="OnlineSavingCMS" data-site="2" data-pro="3" data-cache="False" data-name="M&#xE1;y gi&#x1EB7;t LG Inverter 8.5 kg FV1408S4W" data-id="227121" data-price="8840000.0" data-brand="LG" data-cate="M&#xE1;y gi&#x1EB7;t" data-box="BoxHome">
                             <div class="event">
-                                   <img src="{{ asset('images/background-image/event.png')  }}?ver=3">
-                               </div>
+                               <img src="{{ asset('images/background-image/event.png')  }}?ver=3">
+                            </div>
+
                             <div class="item-img">
                                 <img data-src="{{ asset($value->Image) }}"   class="lazyload"  data-src="{{ asset($value->Image) }}" alt="{{ $value->Name }}" width=210 height=210>
                             
