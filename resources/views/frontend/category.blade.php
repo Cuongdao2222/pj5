@@ -293,7 +293,7 @@
                         ?>
 
 
-                        <div class="box-quicklink block-scroll-main">
+                        <div class="box-quicklink block-scroll-main filter-desktop">
                             <p class="quick-filter-title">Chọn  theo loại {{ $name_cate_show }}</p>
 
                            
