@@ -262,9 +262,9 @@
 
     <section>
 
-        <div class="gift-info">
+       <!--  <div class="gift-info">
            
-        </div>
+        </div> -->
   
         <div class="row div-slide">
             <div class="box-left-2 left-banner"></div>
