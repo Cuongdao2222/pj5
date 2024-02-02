@@ -315,11 +315,18 @@
 
                             <?php  
                                 $now = Carbon\Carbon::now();
+
                                 $products = DB::table('deal')->OrderBy('id', 'desc')->distinct()->get()->toArray();
 
-                                $k =0;
-                                $z =0;
+                                
 
+                                $product_id_deal = array_map(function($item) {
+                                    return $item->product_id;
+                                }, $products);
+
+                                $k =0;
+
+                                
                             ?>
                             @isset($products)
                             @foreach($products as $val)
@@ -638,15 +645,25 @@ $('.update-bt-all').click(function(){
 
 function selectProduct(id){
 
-    if( $('#row_'+id+' .update-bt-all').val()=='sản phẩm đã được chọn'){
-        alert('bạn đã chọn sản phẩm này rồi');
+    var product_deal_id = '{{ implode(",", $product_id_deal) }}'; 
 
+    var check_deal_id_dupple = product_deal_id.includes(id);
+
+    if(check_deal_id_dupple){
+
+        alert('sản phẩm này đã có trong deal, vui lòng xem lại');
     }
     else{
-        $('#select-price').modal('show');
-        $('#row_id').val(id)
-    }
+        if( $('#row_'+id+' .update-bt-all').val()=='sản phẩm đã được chọn'){
+            alert('bạn đã chọn sản phẩm này rồi');
 
+        }
+        else{
+            $('#select-price').modal('show');
+            $('#row_id').val(id)
+        }
+
+    }
 
 }
 
