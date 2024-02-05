@@ -414,6 +414,8 @@
 
                                             // update lại active khi sản phẩm hết thời gian chạy
 
+                                            $z =0;
+
                                             if($val->active==1){
 
                                                 $z++;
