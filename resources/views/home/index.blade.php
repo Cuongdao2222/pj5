@@ -18,7 +18,7 @@
     }
 
     td{
-        font-size: 16px !important;
+        font-size: 14px !important;
     }
 
     .text_arrow {
