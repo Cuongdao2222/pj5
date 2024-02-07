@@ -17,6 +17,10 @@
         width: 100%;
     }
 
+    td{
+        font-size: 16px !important;
+    }
+
     .text_arrow {
         color: #000039;
         font-weight: 700;
