@@ -99,6 +99,8 @@ class apiController extends Controller
                 $data_update[$i]['product'] =  $value->ProductSku;
 
                 $data_update[$i]['price']   =  $value->Price;
+
+                $data_update[$i]['id']   =  $value->id;
                 
             }
         }
