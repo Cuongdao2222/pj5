@@ -559,7 +559,7 @@
 
             </div>
             
-
+            @if(!empty($bannerUnderSlider->image))
              <div class="img-flashsale desktop show-banner-flash-sale" style="width: 100%;">
 
                 <div class="gvdshock">
@@ -574,11 +574,12 @@
                         </span>
                     </div>
                 </div>
-                @if(!empty($bannerUnderSlider->image))
+                
                 <a href="{{ route('details', 'deal') }}"><img src="{{ asset($bannerUnderSlider->image) }}?ver=1" style="width: 100%"></a>
-                @endif
+                
 
             </div>
+            @endif
 
             
             <div class="mt-1">
@@ -675,7 +676,7 @@
                                                <!--  <p>Đã bán <span style="color: #EE1E25">2</span> / 100 sản phẩm</p> -->
                                             </div>
                                             <div style="width: 100%; height: 1px; background: #ECECEC; margin-top: 8px"></div>
-                                            <div class="countdown-flash-sale mobiles">
+                                            <div class="countdown-flash-sale">
                                                 <div class="time-cd time-fl time{{ $key }}">
 
                                                     <span class="timestamp" style="display: none;">{{   $now->diffInSeconds($value->end) }}</span>
@@ -1615,16 +1616,16 @@
         number_deal_product =10;
         //in time 
       
-        // setInterval(function(){
-        //     for (var i = 0 ; i < loop; i++) {
-        //         run(i);
-        //     }
+        setInterval(function(){
+            for (var i = 0 ; i < loop; i++) {
+                run(i);
+            }
 
-        // }, 1000);
-
-        setTimeout(function() {
-            run(0);
         }, 1000);
+
+        // setTimeout(function() {
+        //     run(0);
+        // }, 1000);
 
         function run(key) {
             var hour =  $('.time'+key+' .hourss').text();
@@ -2051,10 +2052,8 @@
     </script>
 
 
-   <!--   <script type="text/javascript">
-            
-
-
+    <script type="text/javascript">
+        
             loop = {{ $deal->count() }};
 
             times = [];
@@ -2063,19 +2062,19 @@
             number_deal_product =10;
             //in time 
           
-            setInterval(function(){
-                for (var i = 0 ; i < loop; i++) {
-                    run(i);
-                }
+            // setInterval(function(){
+            //     for (var i = 0 ; i < loop; i++) {
+            //         run(i);
+            //     }
 
-                @foreach($define as $key => $value)
+            //     @foreach($define as $key => $value)
 
-                runs('.key{{ $key }}');
+            //     runs('.key{{ $key }}');
 
-                @endforeach
+            //     @endforeach
                 
                 
-            }, 1000);
+            // }, 1000);
 
             function runs(key) {
 
@@ -2296,6 +2295,6 @@
                     }
                 }
             });
-        </script> -->
+        </script> 
     @endpush
 @endsection      
