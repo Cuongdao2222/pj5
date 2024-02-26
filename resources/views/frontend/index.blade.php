@@ -574,7 +574,9 @@
                         </span>
                     </div>
                 </div>
+                @if(!empty($bannerUnderSlider->image))
                 <a href="{{ route('details', 'deal') }}"><img src="{{ asset($bannerUnderSlider->image) }}?ver=1" style="width: 100%"></a>
+                @endif
 
             </div>
 
