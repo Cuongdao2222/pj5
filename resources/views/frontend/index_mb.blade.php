@@ -557,7 +557,7 @@
 
             </div>
             
-
+             @if(!empty($bannerUnderSlider->image))
              <div class="img-flashsale desktop show-banner-flash-sale" style="width: 100%;">
 
                 <div class="gvdshock">
@@ -575,6 +575,7 @@
                 <a href="{{ route('details', 'deal') }}"><img src="{{ asset($bannerUnderSlider->image) }}?ver=1" style="width: 100%"></a>
 
             </div>
+            @endif
 
             
             <div class="mt-1">
