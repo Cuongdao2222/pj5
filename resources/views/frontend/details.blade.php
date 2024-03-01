@@ -1554,7 +1554,7 @@
         <div class="related view-more-related viewer-product">
         </div>
         <div class="col-md-8 clearfix" id="comment_pro">
-            <article id="article-comment-2131" itemprop="comment" itemscope="" itemtype="https://schema.org/Comment">
+            <div>
                 <?php 
                    
                     if(!Cache::has('comment'.$data->id) ){
@@ -1582,7 +1582,7 @@
                 </div>
                 @endforeach
                 @endif
-            </article>
+            </div>
             <div class="rate-text">
                 <!-- <h3 style="margin-bottom: 0;margin-top: 40px;"> Đánh giá  {{ $data->Name }}</h3> -->
                 <p style="background: #f3f3f3;padding: 10px;border-radius: 3px;margin: 10px 0;">Đánh giá sản phẩm nhận Coupon 20.000đ dành cho khách mua hàng tại Điện máy người việt.</p>
