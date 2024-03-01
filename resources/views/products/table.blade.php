@@ -182,7 +182,7 @@ $search = $_GET['search']??'';
                 <label>Giá</label>
 
                 <div style="width: 100%;">
-                    <input type="" name="flashPrice" value="{{ @str_replace(',' ,'.', number_format($product->Price))}} " id="flashPrice{{$product->id}}" style="width:100%">
+                    <input type="" name="flashPrice" autocomplete="off" value="{{ @str_replace(',' ,'.', number_format($product->Price))}} " id="flashPrice{{$product->id}}" style="width:100%">
                 </div>
 
                
