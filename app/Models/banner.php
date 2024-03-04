@@ -39,6 +39,7 @@ class banner extends Model
             Cache::forget('bannerscrollleft');
             Cache::forget('bannerscrollRight');
             Cache::forget('ar_skips');
+            Cache::forget('view-homes');
             
            
         });
@@ -57,6 +58,7 @@ class banner extends Model
             Cache::forget('bannerscrollleft');
             Cache::forget('bannerscrollRight');
             Cache::forget('ar_skips');
+            Cache::forget('view-homes');
         });
 
         static::created(function ($instance) {
@@ -73,6 +75,7 @@ class banner extends Model
             Cache::forget('bannerscrollleft');
             Cache::forget('bannerscrollRight');
             Cache::forget('ar_skips');
+            Cache::forget('view-homes');
         });    
     }
 
