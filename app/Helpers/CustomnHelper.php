@@ -299,7 +299,7 @@ if(!function_exists('pricesPromotion')){
 
         }
 
-        if($gift_Price==50000){
+        if($gift_Price=='50.000'){
             $gift_Price ='';
         }
 
