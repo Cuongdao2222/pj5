@@ -299,6 +299,10 @@ if(!function_exists('pricesPromotion')){
 
         }
 
+        if($gift_Price==50000){
+            $gift_Price ='';
+        }
+
         return $gift_Price;
     }
 
