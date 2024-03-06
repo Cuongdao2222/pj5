@@ -177,7 +177,7 @@
 
         if(!Cache::has('product_search')){
 
-            $productss = App\Models\product::select('Link', 'Name', 'Image', 'Price', 'id', 'ProductSku', 'Salent_Features', 'promotion', 'promotion_box')->where('active', 1)->get();
+            $productss = App\Models\product::select('Link', 'Name', 'Image', 'Price', 'id', 'ProductSku', 'Salient_Features', 'promotion', 'promotion_box')->where('active', 1)->get();
 
             Cache::forever('product_search',$productss);
 
