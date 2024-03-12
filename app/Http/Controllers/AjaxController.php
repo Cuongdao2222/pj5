@@ -690,8 +690,13 @@ class AjaxController extends Controller
 
             $data_product_id = array_reverse($data_product_id);
 
-            $product_viewer = Cache::get('product_search')->whereIn('id', $data_product_id)->take(12);
-            
+            $product_viewer = '';
+
+            if(Cache::has('product_search')){
+
+                $product_viewer = Cache::get('product_search')->whereIn('id', $data_product_id)->take(12);
+            }
+
             return view('frontend.ajax.viewer-product', compact('product_viewer'));      
         }    
     }
