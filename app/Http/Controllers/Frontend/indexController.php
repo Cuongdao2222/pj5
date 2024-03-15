@@ -85,8 +85,9 @@ class indexController extends Controller
         }
 
         if(!Cache::has('bannerUnderSlider')){
+
             $bannerUnderSlider = Cache::rememberForever('bannerUnderSlider', function() {
-                return banners::where('option', 3)->OrderBy('stt', 'asc')->where('active', 1)->orderBy('id', 'desc')->first();
+                return banners::where('option', 3)->OrderBy('stt', 'asc')->where('active', 1)->orderBy('id', 'desc')->first()??'';
             });
 
         }
@@ -135,6 +136,7 @@ class indexController extends Controller
 
              return  html_entity_decode($view);
         });
+
 
         if($smart_phone===false){
              echo $view;
@@ -214,6 +216,7 @@ class indexController extends Controller
             });
 
         }
+
         else{
             $bannerUnderSlider = Cache::get('bannerUnderSlider');
         }
