@@ -429,7 +429,7 @@ h4 a,
 h5 a,
 h6 a {
 	font: 19px/18px Arial, Helvetica, sans-serif;
-	color: #333;
+/*	color: #333;*/
 	outline: none
 }
 
