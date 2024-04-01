@@ -999,6 +999,12 @@
                     <meta property="position" content="1">
                 </li>
                 @if(!empty($groupLink))
+
+                <?php 
+
+                    $groupLink = str_replace('ao-smith', 'may-loc-nuoc', $groupLink);
+                          
+                    ?>
                 <li>
                     <span>›</span>
                     <a href="{{ route('details', $groupLink??'') }}">{{ @$groupName }}</a>
@@ -1010,6 +1016,8 @@
                 <li>
                     <span>›</span>
                     <a href="{{ route('details',$ar_groups_info[0]['link']) }}">{{ $ar_groups_info[0]['name'] }}</a>
+
+
                    
                 </li>
                 @endif
