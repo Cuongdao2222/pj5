@@ -221,10 +221,13 @@
                                             $linkss = $link_cate->link??'';
 
                                         ?>
+
+                                        @if(!empty($linkss))
                                        
                                         <a href="{{ route('details', $linkss)  }}" data-value="{{ $property->id}}" data-id="{{ $filters->id }}" class="c-btnbox">
                                             <img src="{{ $manu[strtolower($property->name)] }}" width="68" height="30" alt="{{ $property->name }}">          
                                         </a>
+                                        @endif
 
                                     @else
 
