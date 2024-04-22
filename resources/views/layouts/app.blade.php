@@ -48,12 +48,16 @@
    <script src="{{ asset('js/ckeditor/ckeditor.js') }}?ver=1"></script>
 <!--    <script src={{ asset('js/ckfinder/ckfinder.js') }}></script> -->
 
+    @if(empty($page_no_jquery))
    <script
   src="https://code.jquery.com/jquery-3.6.0.min.js"
   integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
   crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+  @else
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+  @endif
 
-    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
 
    <style>
        #box_tuvan{
