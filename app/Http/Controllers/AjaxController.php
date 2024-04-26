@@ -34,6 +34,9 @@ use Illuminate\Support\Facades\Auth;
 
 use Gloudemans\Shoppingcart\Facades\Cart;
 
+
+
+
 use DB;
 
 use App\Models\newProduct;
@@ -643,12 +646,11 @@ class AjaxController extends Controller
 
         if(!empty($check_deal)){
 
-
             $update = deal::find($check_deal->id);
 
             $update->active = $active;
 
-            $update->save;
+            $update->save();
 
         }
 
