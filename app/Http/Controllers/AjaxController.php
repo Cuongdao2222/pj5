@@ -643,7 +643,6 @@ class AjaxController extends Controller
 
         if(!empty($check_deal)){
 
-            $active = ['active'=>$active];
 
             $update = deal::find($check_deal->id);
 
