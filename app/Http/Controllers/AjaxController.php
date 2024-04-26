@@ -637,6 +637,23 @@ class AjaxController extends Controller
 
         $product = product::find($id);
 
+        $check_deal = DB::table('deal')->select('id')->where('product_id', $id)->first();
+
+        //khi tồn tại deal thì check để ẩn hoặc hiện deal
+
+        if(!empty($check_deal)){
+
+            $active = ['active'=>$active];
+
+            $update = deal::find($check_deal->id);
+
+            $update->active = $active;
+
+            $update->save;
+
+        }
+
+        
         $product->active = $active;
 
         $product->save();
