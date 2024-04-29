@@ -6,7 +6,7 @@
 
 
     <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}?">
-    <link rel="stylesheet" href="{{ asset('css/styles.css') }}?v=8881288.8883.159">
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}?v=8881288.8883.160">
     <link rel="stylesheet" href="{{ asset('css/customs.css') }}?v=245754.75.52928">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&subset=vietnamese" rel="stylesheet">
     
