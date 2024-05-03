@@ -1430,12 +1430,12 @@
 
                                         <div id="submenu-6" class="submenu" style="display: none;">
                                             <aside>
-                                                <a href="{{ route('details', 'may-loc-nuoc') }}"><strong>Máy Lọc Nước RO-Side Stream</strong></a>
+                                                <a href="{{ route('details', 'may-loc-nuoc-aosmith') }}"><strong>Máy Lọc Nước Ao Smith</strong></a>
                                                 
                                             </aside>
 
                                             <aside>
-                                                <a href="{{ route('details', 'may-loc-nuoc-dau-nguon') }}"><strong>Máy Lọc Nước Đầu Nguồn</strong></a>
+                                                <a href="{{ route('details', 'may-loc-nuoc-dau-nguon-aosmith') }}"><strong>Máy Lọc Nước Đầu Nguồn Ao Smith</strong></a>
                                             </aside>
 
                                             <aside>
