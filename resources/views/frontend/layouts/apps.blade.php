@@ -2265,7 +2265,7 @@
   
 
      <!--Start of Tawk.to Script-->
-   <!--  <script src="{{asset('js/tawto.js')}}"></script> -->
+    <script src="{{asset('js/tawto.js')}}"></script>
    
     <!--End of Tawk.to Script-->
 
