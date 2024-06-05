@@ -439,6 +439,9 @@
             .listproduct .item-img, .listproduct .item .item-img img{
                 margin-top: 0;
             }
+            .bar-top-lefts img{
+                    width:27px;
+                }
 
             
         </style>
