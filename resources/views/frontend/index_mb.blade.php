@@ -1372,7 +1372,9 @@
     @push('script')
 
     <style type="text/css">
-        
+        .pine-tree{
+            display: none;
+        }
     </style>
 
 
