@@ -234,7 +234,7 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}?ver=1"> 
         <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
         <link rel="stylesheet" type="text/css" href="{{ asset('css/apps.css') }}?ver=19">
-        <link rel="stylesheet" type="text/css" href="{{asset('css/dienmay.css')}}?ver=107">
+        <link rel="stylesheet" type="text/css" href="{{asset('css/dienmay.css')}}?ver=108">
         <link rel="stylesheet" type="text/css" href="{{asset('css/detailsfe.css')}}?ver=7"> 
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
