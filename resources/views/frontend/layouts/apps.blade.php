@@ -520,6 +520,10 @@
                     display: block;   
                 }
 
+                .line-mobile{
+                    display: none;
+                }
+
                 .theme-xmas.header:after {
                 content: '';
                 background-size: 90%;
@@ -2160,14 +2164,14 @@
 
         
 
-        <div class="hotlines">   
+        <div class="mobiles hotlines">   
             <a href="tel:02473036336"><img src="{{ asset('images/template/tongdai02473036336.png') }}" alt="hotline" style="height:55px; z-index: 999;"></a>
               
             <div class="clear"></div>
               
         </div>
 
-        <div class="hotlines mobiles"  style="bottom:35px">   
+        <div class="hotlines line-mobile"  style="bottom:35px">   
             <a href="tel:0913011888"><img src="{{ asset('images/template/tongdai0247.png') }}" alt="hotline" style="height:55px; z-index: 999;"></a>
               
             <div class="clear"></div>
