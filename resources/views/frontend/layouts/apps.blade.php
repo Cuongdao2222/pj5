@@ -635,6 +635,10 @@
                       display: -webkit-box;
                   }  
 
+                .show-mobile{
+                    bottom: 35px !important;
+                }  
+
                 .ui-widget-content p{
 
                     font-size: 15px;
@@ -2171,7 +2175,7 @@
               
         </div>
 
-        <div class="hotlines "  style="bottom:35px">   
+        <div class="hotlines show-mobile">   
             <a href="tel:0913011888"><img src="{{ asset('images/template/tongdai0247.png') }}" alt="hotline" style="height:55px; z-index: 999;"></a>
               
             <div class="clear"></div>
