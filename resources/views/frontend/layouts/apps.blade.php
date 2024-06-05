@@ -250,7 +250,6 @@
                 padding: 0 !important;
                 width: 100% !important;
             }
-
             .category{
                 box-shadow: none !important;
             }
@@ -494,6 +493,8 @@
             .danh-muc1, .danh-muc2{
                 left: 0px !important;
             } 
+
+           
 
             .hotlines{
                 position:fixed; 
@@ -1123,8 +1124,8 @@
 
                                     <li data-submenu-id="submenu-0">
                                         <div class="dropdown">
-                                            <i class="fa-solid fa-tags deal-icon"></i>
-                                            <a href="/deal"><b>GIẢM GIÁ ĐẶC BIỆT</b></a>
+                                            <img src="{{ asset('images/template/deal_icon.ico')  }}">
+                                            <a href="/deal"><b>SIÊU SALE 6.6</b></a>
                                         </div>
                                     </li>    
 

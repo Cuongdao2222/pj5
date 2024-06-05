@@ -45,6 +45,11 @@
                 .max-height{
                      max-height: 600px !important;
                 }
+
+                .bar-top-lefts img{
+                    width:27px;
+                }
+
            
                 .gift-info {
                     position: absolute;
