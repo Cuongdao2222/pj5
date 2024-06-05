@@ -439,7 +439,7 @@
             .listproduct .item-img, .listproduct .item .item-img img{
                 margin-top: 0;
             }
-            .bar-top-lefts img{
+            .bar-top-lefts img, .bar-top-left img{
                     width:27px;
                 }
 
