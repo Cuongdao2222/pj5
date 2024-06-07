@@ -20,6 +20,13 @@
         <ol>
             {!!  $value->promotion??'' !!}
         </ol>
+
+        @else
+            @if(!empty($gift_Price))
+                <div class="gift-title sprites">Thông tin khuyến mại</div>
+                <span> Giảm ngay {{ $gift_Price  }} đ </span>
+            @endif
+
         @endif
         <div class="gift-title sprites">Đặc điểm nổi bật</div>
         <ol>
