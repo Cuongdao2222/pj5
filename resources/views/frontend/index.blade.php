@@ -714,7 +714,7 @@
                                     </div>
 
 
-                                    @include('frontend.layouts.more-info', ['value'=>$count_pd, 'deal_price'=>$value->deal_price])
+                                    @include('frontend.layouts.more-info', ['value'=>$count_pd, 'deal_price'=>$value->deal_price,'gift_Price'=>$gift_Price])
                                 </div>
 
                                 @endif
@@ -912,7 +912,7 @@
 
 
 
-                        @include('frontend.layouts.more-info', ['value'=>$value])
+                        @include('frontend.layouts.more-info', ['value'=>$value, 'gift_Price'=>$gift_Price])
                     </li>
                     @endif
                     @endforeach
@@ -1145,7 +1145,7 @@
                                 ?>
                             </a>
 
-                            @include('frontend.layouts.more-info', ['value'=>$datas, 'deal_price'=>$ar_Deal_Pd[$datas->id]??''])
+                            @include('frontend.layouts.more-info', ['value'=>$datas, 'deal_price'=>$ar_Deal_Pd[$datas->id]??'', 'gift_Price'=>$gift_Price])
 
 
                              <!-- phần quà khuyến mãi 1-->
