@@ -346,8 +346,8 @@
 
                                 @foreach($saker_show as $value)
 
-                                <!-- ẩn điều hòa funiki -->
-                                @if($value->id != 123)
+                                <!-- ẩn điều hòa funiki tủ lạnh mitsu -->
+                                @if(!in_array($value->id, [58, 123]))
 
 
                                     @if(!empty($manu[strtolower($value->name)] ))
