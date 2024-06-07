@@ -649,7 +649,7 @@
                 }
 
                 .zalo-chat-widget{  
-                    bottom: 37% !important;  
+                    bottom: 24% !important;  
 /*                    left: 10px!important;  */
                 }  
 
