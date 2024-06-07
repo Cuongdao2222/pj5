@@ -1145,7 +1145,7 @@
                                 ?>
                             </a>
 
-                            @include('frontend.layouts.more-info', ['value'=>$datas, 'deal_price'=>$ar_Deal_Pd[$datas->id]??'', 'gift_Price'=>$gift_Price])
+                            @include('frontend.layouts.more-info', ['value'=>$datas, 'deal_price'=>$ar_Deal_Pd[$datas->id]??'', 'gift_Price'=>''])
 
 
                              <!-- phần quà khuyến mãi 1-->
