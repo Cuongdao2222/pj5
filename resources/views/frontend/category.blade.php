@@ -153,7 +153,7 @@
                 
             });
 
-            $manu = ['lg'=>'/images/saker/lg.png', 'tcl'=>'/images/saker/tcl.png', 'samsung'=>'/images/saker/samsung.png', 'sharp'=>'/images/saker/sharp.png', 'sony'=>'/images/saker/sony.png', 'panasonic'=>'/images/saker/panasonic.png', 'electrolux'=>'/images/saker/electrolux.png', 'philips'=>'/images/saker/philips.png', 'hitachi'=>'/images/saker/hitachi.png', 'sanaky'=>'/images/saker/sanaky.png', 'nagakawa'=>'/images/saker/nagakawa.png', 'daikin'=>'/images/saker/daikin.png', 'mitsubishi electric'=>'/images/saker/mitsubishi.png', 'kangaroo'=>'/images/saker/kangaroo.png', 'midea'=>'/images/saker/midea.png', 'mitsubishi'=>'/images/saker/mitsubishi.png', 'hisense'=>'/uploads/icon/431.png'];
+            $manu = ['lg'=>'/images/saker/lg.png', 'tcl'=>'/images/saker/tcl.png', 'samsung'=>'/images/saker/samsung.png', 'sharp'=>'/images/saker/sharp.png', 'sony'=>'/images/saker/sony.png', 'panasonic'=>'/images/saker/panasonic.png', 'electrolux'=>'/images/saker/electrolux.png', 'philips'=>'/images/saker/philips.png', 'funiki'=>'/images/saker/funiki.png', 'hitachi'=>'/images/saker/hitachi.png', 'sanaky'=>'/images/saker/sanaky.png', 'nagakawa'=>'/images/saker/nagakawa.png', 'daikin'=>'/images/saker/daikin.png', 'mitsubishi electric'=>'/images/saker/mitsubishi.png', 'kangaroo'=>'/images/saker/kangaroo.png', 'midea'=>'/images/saker/midea.png', 'mitsubishi'=>'/images/saker/mitsubishi.png', 'hisense'=>'/uploads/icon/431.png'];
             
         ?>
         <div class="top-banner">
@@ -346,21 +346,27 @@
 
                                 @foreach($saker_show as $value)
 
+                                <!-- ẩn điều hòa funiki -->
+                                @if($value->id != 123)
 
 
-                                @if(!empty($manu[strtolower($value->name)] ))
+                                    @if(!empty($manu[strtolower($value->name)] ))
 
 
-                                <a href="{{ route('details',$link) }}?filter=,{{ $arr_info_filter[$id_cate][1] }}&group_id={{ @$id_cate  }}&property=,{{ $value->id }}&link={{$link  }}"  data-index="1" class="box-quicklink__item bd-radius quicklink-logo">
-                                    <img src="{{ $manu[strtolower($value->name)] }}" width="30" class="no-text" />
-                                </a>
 
-                                @else
 
-                                <a href="{{ route('details',$link) }}?filter=,{{ $arr_info_filter[$id_cate][1] }}&group_id={{ @$id_cate  }}&property=,{{ $value->id }}&link={{$link  }}"class="c-btnbox">
-                                        {{ trim($value->name)}}            
-                                    </a>
+                                        <a href="{{ route('details',$link) }}?filter=,{{ $arr_info_filter[$id_cate][1] }}&group_id={{ @$id_cate  }}&property=,{{ $value->id }}&link={{$link  }}"  data-index="1" class="box-quicklink__item bd-radius quicklink-logo">
+                                            <img src="{{ $manu[strtolower($value->name)] }}" width="30" class="no-text" />
+                                        </a>
+
+                                    @else
+
+                                    <a href="{{ route('details',$link) }}?filter=,{{ $arr_info_filter[$id_cate][1] }}&group_id={{ @$id_cate  }}&property=,{{ $value->id }}&link={{$link  }}"class="c-btnbox">
+                                            {{ trim($value->name)}}            
+                                        </a>
+                                    @endif
                                 @endif
+                                    
                                 @endforeach
                                 @endif
                                
