@@ -714,7 +714,7 @@
                                     </div>
 
 
-                                    @include('frontend.layouts.more-info', ['value'=>$count_pd, 'deal_price'=>$value->deal_price,'gift_Price'=>$gift_Price])
+                                    @include('frontend.layouts.more-info', ['value'=>$count_pd, 'deal_price'=>$value->deal_price,'gift_Price'=>!empty($gift_Price)?$gift_Price:''])
                                 </div>
 
                                 @endif
