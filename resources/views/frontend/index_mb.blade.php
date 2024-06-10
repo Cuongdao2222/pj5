@@ -740,7 +740,7 @@
            
            <div class="option-mbile-sg">
                 <div>
-                    <button class="btn btn-primary optionsg active" data-id="0"><span>Cho bạn</span></button>
+                    <button class="btn btn-primary optionsg active" data-id="0"><span>Tivi xem Euro</span></button>
                 </div>
 
                 <div class="ml-2">
