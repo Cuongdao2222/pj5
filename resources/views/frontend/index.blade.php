@@ -50,9 +50,7 @@
                      max-height: 600px !important;
                 }
 
-                
-
-           
+               
                 .gift-info {
                     position: absolute;
                     top: 0;
@@ -1010,7 +1008,7 @@
         </div>
         @endif
 
-        <div class="box-common _cate_1942">
+        <div class="box-common _cate_1942 box-banner-{{ $groups->id }}">
             <ul class="box-common__tab box-tab-mobile">
                 <li class="active-tab" data-cate-id="1942"><a href="{{  @$groups->link }}">{{  @$groups->name }}</a></li>
                 <?php
@@ -1243,6 +1241,7 @@
                     
                     </div>
                     <a class="readmore-txt blue" href="{{ route('details', @$groups->link)  }}"><span>Xem tất cả</span></a>
+
                 </div>
 
                 @else
@@ -1447,7 +1446,9 @@
                             @endforeach
                         
                         </div>
-                        <a class="readmore-txt blue" href="{{ route('details', @$groups->link)  }}"><span>Xem tất cả</span></a>
+
+                        <div class="prd-promo__top clearfix"> <a class="readmore-btn" href="{{ route('details', @$groups->link)  }}"><span>Xem tất cả</span></a> </div>
+                        <!-- <a class="readmore-txt blue" href="{{ route('details', @$groups->link)  }}"><span>Xem tất cả</span></a> -->
                     </div>
 
 
