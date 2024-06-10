@@ -1154,16 +1154,18 @@
                                 ?>
                             </a>
 
-                            @include('frontend.layouts.more-info', ['value'=>$datas, 'deal_price'=>$ar_Deal_Pd[$datas->id]??'', 'gift_Price'=>''])
-
-
-                             <!-- phần quà khuyến mãi 1-->
-
-                           <?php 
+                            <?php 
 
                             $gift_Price = pricesPromotion($datas->Price, $datas->id);
 
                             ?>
+
+                            @include('frontend.layouts.more-info', ['value'=>$datas, 'deal_price'=>$ar_Deal_Pd[$datas->id]??'', 'gift_Price'=>$gift_Price])
+
+
+                             <!-- phần quà khuyến mãi 1-->
+
+                           
 
                             @if(!empty($gift_Price) && $groups->id !=8)
 
@@ -1357,16 +1359,18 @@
                                     ?>
                                 </a>
 
-                                @include('frontend.layouts.more-info', ['value'=>$datas, 'deal_price'=>$ar_Deal_Pd[$datas->id]??'', 'gift_Price'=>''])
+                                <?php 
+
+                                    $gift_Price = pricesPromotion($datas->Price, $datas->id);
+
+                                ?>
+
+                                @include('frontend.layouts.more-info', ['value'=>$datas, 'deal_price'=>$ar_Deal_Pd[$datas->id]??'', 'gift_Price'=>$gift_Price])
 
 
                                  <!-- phần quà khuyến mãi 1-->
 
-                               <?php 
 
-                                $gift_Price = pricesPromotion($datas->Price, $datas->id);
-
-                                ?>
 
                                 @if(!empty($gift_Price) && $groups->id !=8)
 
