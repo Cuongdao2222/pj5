@@ -45,7 +45,7 @@ class indexController extends Controller
         
         $product_sale = Cache::rememberForever('product_sale', function(){
 
-            $product_sales = DB::table('products')->join('sale_product', 'products.id', '=', 'sale_product.product_id')->join('makers', 'products.Maker', '=', 'makers.id')->Orderby('products.sale_order','desc')->take(5)->get();
+            $product_sales = DB::table('products')->join('sale_product', 'products.id', '=', 'sale_product.product_id')->join('makers', 'products.Maker', '=', 'makers.id')->Orderby('products.sale_order','desc')->take(15)->get();
 
             return $product_sales;
         });
