@@ -36,10 +36,7 @@
                 .sprites {
                     color: #000;
                     font-weight: bold;
-
                     margin: 10px 0;
-
-
                 }
 
                 .op1{
@@ -167,8 +164,6 @@
                 background-color: #D95B00;
                
             }
-
-            
 
         </style>
 
@@ -810,7 +805,9 @@
                                     <i class="fa-solid fa-star"></i>
                                 </p>
                             </div>
+
                         </a>
+                        <div class="commit"><span>Cam kết bán đúng giá </span></div> 
 
                         <?php  
 
@@ -1118,6 +1115,7 @@
 
                                 </div>
                                 
+                                
                            
                                 <div class="item-rating">
                                     <p>
@@ -1128,6 +1126,7 @@
                                         <i class="fa-solid fa-star"></i>
                                     </p>
                                 </div>
+                                <div class="commit"><span>Cam kết bán đúng giá </span></div> 
 
                                 <?php  
 
@@ -1324,7 +1323,7 @@
 
                                     </div>
                                     
-                               
+                                    <div class="commit"><span>Cam kết bán đúng giá </span></div> 
                                     <div class="item-rating">
                                         <p>
                                             <i class="fa-solid fa-star"></i>

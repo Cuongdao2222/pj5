@@ -793,6 +793,7 @@
                                 <i class="fa-solid fa-star"></i>
                             </p>
                         </div>
+                        <div class="commit"><span>Cam kết bán đúng giá </span></div> 
                     </a>
 
                     <?php  
@@ -1072,7 +1073,7 @@
 
                                 </div>
                                 
-                           
+                                <div class="commit"><span>Cam kết bán đúng giá </span></div> 
                                 <div class="item-rating">
                                     <p>
                                         <i class="fa-solid fa-star"></i>

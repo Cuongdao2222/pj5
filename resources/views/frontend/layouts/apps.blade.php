@@ -243,7 +243,10 @@
             /*body.theme-lunar-new-year{
                 overflow-x: hidden;
             }*/
-
+            .commit{
+                margin-bottom: 10px;
+                color: #000;
+            }
 
 
             .category__all{
@@ -638,6 +641,10 @@
                       overflow: hidden;
                       display: -webkit-box;
                   }  
+
+                 .commit{
+                    font-size: 15px;
+                }  
 
                 .show-mobile{
                     bottom: 35px !important;

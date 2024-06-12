@@ -623,6 +623,8 @@
                                            <!--  <p class="item-rating-total">56</p> -->
                                         </div>
 
+                                        <div class="commit"><span>Cam kết bán đúng giá </span></div> 
+
                                         <?php
                                             // check quà phần tìm kiếm sản phẩm
                                             if(empty($id_cate)){
