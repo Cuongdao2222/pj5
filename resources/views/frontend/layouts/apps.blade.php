@@ -1136,8 +1136,8 @@
                                         <div class="dropdown">
                                              <i class="fa-solid fa-tags deal-icon"></i>
                                             
-                                            <a href="/deal"><b>SIÊU SALE 6.6</b></a>
-                                            <img src="{{ asset('images/template/icon_sale_hot.png')  }}">
+                                            <a href="/deal"><b>GIẢM GIÁ - DEAL HOT</b></a>
+                                          
                                         </div>
                                     </li>    
 
