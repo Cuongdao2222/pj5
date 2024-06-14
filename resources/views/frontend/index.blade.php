@@ -30,7 +30,7 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('css/home.css') }}?ver=28">
   
         <link rel="stylesheet" type="text/css" href="{{ asset('css/index.css') }}?ver=4">
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/homes.css') }}?ver=11">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/homes.css') }}?ver=12">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/homecs.css') }}?ver=20">
         <style type="text/css">
                 .sprites {
