@@ -248,6 +248,10 @@
                 color: #000;
             }
 
+            .commit span{
+                font-size: 14px;
+            }
+
 
             .category__all{
                 padding: 0 !important;
@@ -525,6 +529,18 @@
                     bottom:93px; 
                     right:8px; 
                     display: block;   
+                }
+                .item-rating{
+                    display: none !important;
+                }
+
+                .phones-hotline{
+                    width: auto !important;
+                    padding: 7px 0;
+                }
+
+                .phones-hotline a{
+                    font-size: 13px;
                 }
 
                 .line-mobile{
@@ -1008,36 +1024,14 @@
 
                     
 
-                    <div class="fas-phones">          
-                        <a href="https://tracking.dienmaynguoiviet.vn/" class="header__history tin-km">Tra cứu đơn hàng</a>
+                    <div class="fas-phones phones-hotline">          
+                        <a href="tel: 0913011888" class="header__history tin-km">Hotline:0913.011.888</a>
                        
                     </div>
 
                 
 
-                    @if( !empty($userClient) && !empty($userClient['status']) && $userClient['status']==='Đăng nhập thành công')
-
-                        <div class="border-rd">
-                        
-                            <a rel="nofollow"  href="{{ route('logout-Fe') }}">
-                                <span style="color:#fff; font-size: 12px;">Đăng xuất</span>
-                            </a>
-                        </div>
-                       
-                    
-                    @else
-
-
-                    <div  class="header__cart fas-phones">
-                         <i class="fa fa-user phones-customn" aria-hidden="true"></i>
-                         <div class="div-text">
-                            <span class="tel-head logins-modal">Đăng nhập</span>
-                            <span class="tvbhclient register-form">Đăng ký</span>
-                        </div>
-                    </div>
-
-                    @endif
-
+                   
                     <div class="fas-phones">          
                         <a href="{{ route('tins') }}" class="header__history tin-km">Tin tức, khuyến mãi </a>
                         <!-- <div class="bordercol"></div> -->
