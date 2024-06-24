@@ -126,9 +126,7 @@
         <div class="span16 container form-post">
             @if(count($data_cart)>0)
             <h5 class="modal-title" id="exampleModalLabel">Thông tin giỏ hàng</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span> </button> 
-        
-       
+           
             <div id="tbl_list_cartss">
                 <div id="number-product-cart" style="display:none">1</div>
                
