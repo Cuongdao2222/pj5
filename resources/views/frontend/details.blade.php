@@ -2298,15 +2298,13 @@
       }  
     
     function addToCart(id) {
-        $('.form-info-cart').removeClass('hide');
-        $('.cart-container').addClass('hide');
-
+    
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-    
+
         $.ajax({
             type: 'POST',
             url: "{{ route('cart') }}",
@@ -2322,27 +2320,11 @@
             },
             success: function(result){
 
+               window.location.href = '{{ route('show-cart') }}'; 
 
-    
-               //  numberProductCart = $(".number-cart").text();
-    
-               //  console.log(numberProductCart);
-               
-               // numberCart = result.find(numberProductCart);
-    
-                $('#tbl_list_cartss').append(result);
-    
-                const numberCart = $('#number-product-cart').text();
-    
-                $('.number-cart').text(numberCart);
-    
-                $('#exampleModal').modal('show'); 
-                $('.loader').hide();
-                
             }
         });
-        
-    }
+    }    
 
     function isValid(p) {
         var phoneRe = /(84|0[3|5|7|8|9])+([0-9]{8})\b/;

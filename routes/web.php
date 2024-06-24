@@ -50,6 +50,8 @@ Route::get('redirect-update-cache', 'redirectLinkController@createCacheRedirect'
 
 Route::get('remove-cache-image', 'imageController@removeCacheImage')->name('remove-cache-image');
 
+Route::get('cart/index', 'AjaxController@showCart')->name('show-cart');
+
 
 Route::get('/sale', 'mainController@sale')->name('sale-home');
 
