@@ -19,6 +19,8 @@
             margin-bottom: 20px;
         }
 
+
+
         .item-form .error{
             color: red;
         }
@@ -112,7 +114,7 @@
             background-color: transparent;
         }
         #tbl_list_cartss{
-            height: 210px;
+            height: auto;
             padding: 5px 15px;
         }
     </style>
