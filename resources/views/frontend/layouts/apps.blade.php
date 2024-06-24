@@ -447,8 +447,245 @@
                 margin-top: 0;
             }
             .bar-top-lefts img, .bar-top-left img{
-                    width:27px;
-                }
+                width:27px;
+            }
+
+             @media only screen and (min-width: 601px) {
+        /*.div-foot{
+            margin-left: 330px;
+        }*/
+
+
+        .banner-ads-text .header-menu__navs{
+            height: 40px;
+        }
+
+
+        .ft-dmca img{
+            width: 100%;
+        }
+       /* .nk-menu .span16{
+            padding: 0;
+        }*/
+
+        .ring-phone {
+            float: left;
+            position: fixed;
+            right: 150px;
+            bottom: 10px;
+            z-index: 99999;
+        }
+
+        .coccoc-alo-phone {
+            background-color: transparent;
+            width: 100px;
+            height: 100px;
+            cursor: pointer;
+            z-index: 200000 !important;
+            -webkit-backface-visibility: hidden;
+            -webkit-transform: translateZ(0);
+            -webkit-transition: visibility .5s;
+            -moz-transition: visibility .5s;
+            -o-transition: visibility .5s;
+            transition: visibility .5s;
+            position: relative;
+            z-index: 10;
+        }
+
+        .coccoc-alo-phone.coccoc-alo-green .coccoc-alo-ph-circle {
+            background: linear-gradient(90deg, #d1a94e, #fdf5a1, #cfac54);
+            opacity: .5;
+        }
+
+        .coccoc-alo-phone.coccoc-alo-green .coccoc-alo-ph-circle-fill {
+            background: linear-gradient(90deg, #d1a94e, #fdf5a1, #cfac54);
+            opacity: .75 !important;
+        }
+
+        .coccoc-alo-ph-img-circle {
+            width: 50px;
+            height: 50px;
+            top: 25px;
+            left: 25px;
+            position: absolute;
+            background: rgba(30, 30, 30, 0.1) url({{ asset('images/template//phone-fix.png') }} no-repeat center center;
+            -webkit-border-radius: 100%;
+            -moz-border-radius: 100%;
+            border-radius: 100%;
+            border: 2px solid transparent;
+            opacity: 1;
+            -webkit-animation: coccoc-alo-circle-img-anim 1s infinite ease-in-out;
+            -moz-animation: coccoc-alo-circle-img-anim 1s infinite ease-in-out;
+            -ms-animation: coccoc-alo-circle-img-anim 1s infinite ease-in-out;
+            -o-animation: coccoc-alo-circle-img-anim 1s infinite ease-in-out;
+            animation: coccoc-alo-circle-img-anim 1s infinite ease-in-out;
+            background-size: cover;
+        }
+
+        .coccoc-alo-ph-circle {
+            width: 100px;
+            height: 100px;
+            top: 0;
+            left: 0;
+            position: absolute;
+            background-color: transparent;
+            -webkit-border-radius: 100%;
+            -moz-border-radius: 100%;
+            border-radius: 100%;
+            border: 2px solid rgba(30, 30, 30, 0.4);
+            opacity: .1;
+            -webkit-animation: coccoc-alo-circle-anim 1.2s infinite ease-in-out;
+            -moz-animation: coccoc-alo-circle-anim 1.2s infinite ease-in-out;
+            -ms-animation: coccoc-alo-circle-anim 1.2s infinite ease-in-out;
+            -o-animation: coccoc-alo-circle-anim 1.2s infinite ease-in-out;
+            animation: coccoc-alo-circle-anim 1.2s infinite ease-in-out;
+            -webkit-transition: all .5s;
+            -moz-transition: all .5s;
+            -o-transition: all .5s;
+            transition: all .5s;
+            z-index: 10;
+        }
+
+        .ring-phone:hover .list-phone {
+            width: 160px;
+            transition: .5s;
+            opacity: 1;
+        }
+
+        .list-phone {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            float: left;
+            transform: translateY(-50%);
+            z-index: 1;
+            width: 1px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            transition: .5s;
+            overflow: hidden;
+            opacity: 0;
+        }
+
+        .list-phone a {
+            width: 124px;
+            float: right;
+            line-height: 30px;
+            margin: 3px 0;
+            border-radius: 15px;
+            padding: 0 10px;
+            text-decoration: none;
+            color: #000;
+            font-size: 16px;
+            font-weight: 700;
+            background: linear-gradient(0deg, #d1a94e, #fdf5a1, #cfac54);
+        }
+
+        .coccoc-alo-ph-circle-fill {
+            width: 70px;
+            height: 70px;
+            top: 15px;
+            left: 15px;
+            position: absolute;
+            background-color: #000;
+            -webkit-border-radius: 100%;
+            -moz-border-radius: 100%;
+            border-radius: 100%;
+            border: 2px solid transparent;
+            opacity: .1;
+            -webkit-animation: coccoc-alo-circle-fill-anim 2.3s infinite ease-in-out;
+            -moz-animation: coccoc-alo-circle-fill-anim 2.3s infinite ease-in-out;
+            -ms-animation: coccoc-alo-circle-fill-anim 2.3s infinite ease-in-out;
+            -o-animation: coccoc-alo-circle-fill-anim 2.3s infinite ease-in-out;
+            animation: coccoc-alo-circle-fill-anim 2.3s infinite ease-in-out;
+            -webkit-transition: all .5s;
+            -moz-transition: all .5s;
+            -o-transition: all .5s;
+            transition: all .5s;
+        }
+
+        .coccoc-alo-ph-img-circle {
+            width: 50px;
+            height: 50px;
+            top: 25px;
+            left: 25px;
+            position: absolute;
+            background: rgba(30, 30, 30, 0.1) url({{ asset('images/template/phone-fix.png')  }}) no-repeat center center;
+            -webkit-border-radius: 100%;
+            -moz-border-radius: 100%;
+            border-radius: 100%;
+            border: 2px solid transparent;
+            opacity: 1;
+            -webkit-animation: coccoc-alo-circle-img-anim 1s infinite ease-in-out;
+            -moz-animation: coccoc-alo-circle-img-anim 1s infinite ease-in-out;
+            -ms-animation: coccoc-alo-circle-img-anim 1s infinite ease-in-out;
+            -o-animation: coccoc-alo-circle-img-anim 1s infinite ease-in-out;
+            animation: coccoc-alo-circle-img-anim 1s infinite ease-in-out;
+            background-size: cover;
+        }
+        .footer-new * {
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        @keyframes coccoc-alo-circle-anim {
+            0% {
+                transform: rotate(0) scale(.5) skew(1deg);
+                opacity: .1;
+            }
+            30% {
+                transform: rotate(0) scale(.7) skew(1deg);
+                opacity: .5;
+            }
+
+            100% {
+                transform: rotate(0) scale(1) skew(1deg);
+                opacity: .1;
+            }
+        }    
+
+        @keyframes coccoc-alo-circle-fill-anim {
+
+            0% {
+                transform: rotate(0) scale(.7) skew(1deg);
+                opacity: .2;
+            }
+            50% {
+                transform: rotate(0) scale(1) skew(1deg);
+                opacity: .2;
+            }
+            100% {
+                transform: rotate(0) scale(.7) skew(1deg);
+                opacity: .2;
+            }
+        }    
+
+        @keyframes coccoc-alo-circle-img-anim {
+            0% {
+                transform: rotate(0) scale(1) skew(1deg);
+            }
+            10% {
+                transform: rotate(-25deg) scale(1) skew(1deg);
+            }
+            20% {
+                transform: rotate(25deg) scale(1) skew(1deg);
+            }
+            30% {
+                transform: rotate(-25deg) scale(1) skew(1deg);
+            }
+            40% {
+                transform: rotate(25deg) scale(1) skew(1deg);
+            }
+            50% {
+                transform: rotate(0) scale(1) skew(1deg);
+            }
+            100% {
+                transform: rotate(0) scale(1) skew(1deg);
+            }
+        }    
+    } 
+
 
             
         </style>
@@ -2182,12 +2419,12 @@
               
         </div>
 
-        <div class="hotlines show-mobile">   
+       <!--  <div class="hotlines show-mobile">   
             <a href="tel:0913011888"><img src="{{ asset('images/template/tongdai0247.png') }}" alt="hotline" style="height:55px; z-index: 999;"></a>
               
             <div class="clear"></div>
               
-        </div>
+        </div> -->
 
         <div class="global-compare-group">
             <div class="title text-22 text-white d-flex align-items-center justify-content-between font-600">
@@ -2221,17 +2458,14 @@
             
         </script>
 
-        <div class="hotline position-fixed">
-
-           
-            <a href="tel:02473036336" class="d-flex align-items-center position-relative hotline-fix mb-2">
-   
-            <i class="fa fa-phone"></i>
-            <span><b>024 7303 6336</b> <br> <span>Bấm phím 1</span></span>
-
-           
+       <div class="ring-phone">
+            <div class="coccoc-alo-phone coccoc-alo-green coccoc-alo-show">
+                <div class="coccoc-alo-ph-circle"></div>
+                <div class="coccoc-alo-ph-circle-fill"></div>
+                <div class="coccoc-alo-ph-img-circle"></div>
+                <div class="list-phone"><a href="tel:02473036336">024.7303.6336</a> <a href="tel:0913011888">0913.011.888</a> </div>
+            </div>
         </div>
-
      
 
         <div class="zalo-mobile">
