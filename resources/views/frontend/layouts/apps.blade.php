@@ -815,7 +815,7 @@
 
 
                 .zalo-chat-widget{  
-                    bottom: 28% !important;  
+                    bottom: 17% !important;  
                     right: 1%!important;  
                 }  
 
