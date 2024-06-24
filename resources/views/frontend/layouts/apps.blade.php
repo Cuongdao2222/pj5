@@ -893,7 +893,11 @@
                       -webkit-box-orient: vertical;
                       overflow: hidden;
                       display: -webkit-box;
-                  }  
+                  } 
+
+                .list-phone{
+                    display: none;
+                }   
 
                  .commit{
                     font-size: 15px;
@@ -1253,7 +1257,7 @@
                         $number_cart = count($cart);
                        
                      ?>   
-                    <a href="{{ route('show-cart') }}" class="header__cart " onclick="showToCart()" style="margin-right: -58px;">
+                    <a href="{{ route('show-cart') }}" class="header__cart " style="margin-right: -58px;">
 
                         <i class="fa fa-shopping-cart" aria-hidden="true" style="font-size:22px"></i>
                         <b id="count_shopping_cart_store"><span class="number-cart">{{ $number_cart }}</span></b>
