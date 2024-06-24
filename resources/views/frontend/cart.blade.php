@@ -2,128 +2,134 @@
 
 @section('content')
 
+     <style type="text/css"> 
+        .item-form{
+            text-align: left;
+        }
+        ul li{
+            font-size: 14px !important;
+        }
+        .item-form input{
+            width: 100%;
+            border: 1px solid #dddddd;
+            padding: 5px;
+        }
+
+        .form-post{
+            margin-bottom: 20px;
+        }
+
+        .item-form .error{
+            color: red;
+        }
+
+        .cart_col_1 {
+            width: 23%;
+        }
+
+        .cart_col_2 {
+            width: 44%;
+        }
+
+        .product_list_cart .cart_col_3 {
+            width: 36%;
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product_list_cart .col_price{
+            color: #c10017;
+        }
+
+        .option-group .step_option {
+            float: left;
+            cursor: pointer;
+            text-align: left;
+            margin-bottom: 0px;
+            width: auto !important;
+            margin-right: 25px;
+        }
+
+        .st_opt_active {
+            background: #0e76bd;
+        }
+
+        .st_opt {
+            display: block;
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+            float: left;
+            border: 1px solid #b2b2b2;
+            margin-right: 10px;
+            border-radius: 50%;
+        }
+
+        .total-cart-price, .cart-foot span {
+            color: #c10017;
+            font-weight: bold;
+        }
+        .discount-div{
+            border: 0;
+        } 
+        .c3_box .item-form {
+            padding: 5px 15px;
+        }
+
+        .c3_box textarea {
+            display: block;
+            padding: 9px 0;
+            height: 105px;
+            border: 1px solid #d9d9d9;
+            border-radius: 4px;
+            margin: 10px 0 5px;
+            text-indent: 10px;
+            width: 100%;
+            outline: none;
+        }
+
+        .btn-primary {
+            color: #fff;
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .product_list_cart{
+            display: flex;
+        }
+
+        .product_list_cart .col_input input, .product_list_cart .col_input a {
+            width: 35px;
+            height: 30px;
+            text-align: center;
+            display: inline-block;
+            border: 1px solid #ccc;
+            line-height: 30px;
+            float: right;
+            margin-right: -1px;
+            background-color: transparent;
+        }
+        #tbl_list_cartss{
+            height: 210px;
+            padding: 5px 15px;
+        }
+    </style>
+
     <div id="number-product-cart" style="display:none">{{ count($data_cart) }}</div>
 
     <div class="row">
+        
         <div class="span16 container form-post">
-
+            @if(count($data_cart)>0)
             <h5 class="modal-title" id="exampleModalLabel">Thông tin giỏ hàng</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span> </button> 
         
        
             <div id="tbl_list_cartss">
                 <div id="number-product-cart" style="display:none">1</div>
-                <style type="text/css"> 
-                    .item-form{
-                        text-align: left;
-                    }
-                    .item-form input{
-                        width: 100%;
-                        border: 1px solid #dddddd;
-                        padding: 5px;
-                    }
-
-                    .form-post{
-                        margin-bottom: 20px;
-                    }
-
-                    .item-form .error{
-                        color: red;
-                    }
-
-                    .cart_col_1 {
-                        width: 23%;
-                    }
-
-                    .cart_col_2 {
-                        width: 44%;
-                    }
-
-                    .product_list_cart .cart_col_3 {
-                        width: 36%;
-                        text-align: right;
-                        display: flex;
-                        flex-direction: column;
-                        justify-content: space-between;
-                    }
-
-                    .product_list_cart .col_price{
-                        color: #c10017;
-                    }
-
-                    .option-group .step_option {
-                        float: left;
-                        cursor: pointer;
-                        text-align: left;
-                        margin-bottom: 0px;
-                        width: auto !important;
-                        margin-right: 25px;
-                    }
-
-                    .st_opt_active {
-                        background: #0e76bd;
-                    }
-
-                    .st_opt {
-                        display: block;
-                        width: 16px;
-                        height: 16px;
-                        cursor: pointer;
-                        float: left;
-                        border: 1px solid #b2b2b2;
-                        margin-right: 10px;
-                        border-radius: 50%;
-                    }
-
-                    .total-cart-price, .cart-foot span {
-                        color: #c10017;
-                        font-weight: bold;
-                    }
-                    .discount-div{
-                        border: 0;
-                    } 
-                    .c3_box .item-form {
-                        padding: 5px 15px;
-                    }
-
-                    .c3_box textarea {
-                        display: block;
-                        padding: 9px 0;
-                        height: 105px;
-                        border: 1px solid #d9d9d9;
-                        border-radius: 4px;
-                        margin: 10px 0 5px;
-                        text-indent: 10px;
-                        width: 100%;
-                        outline: none;
-                    }
-
-                    .btn-primary {
-                        color: #fff;
-                        background-color: #007bff;
-                        border-color: #007bff;
-                    }
-
-                    .product_list_cart{
-                        display: flex;
-                    }
-
-                    .product_list_cart .col_input input, .product_list_cart .col_input a {
-                        width: 35px;
-                        height: 30px;
-                        text-align: center;
-                        display: inline-block;
-                        border: 1px solid #ccc;
-                        line-height: 30px;
-                        float: right;
-                        margin-right: -1px;
-                        background-color: transparent;
-                    }
-                    #tbl_list_cartss{
-                        height: 210px;
-                        padding: 5px 15px;
-                    }
-                </style>
+               
                 <div style="width:100%;">
 
                     <?php  
@@ -183,7 +189,7 @@
                     
                     $.ajax({
                         type: 'POST',
-                        url: "https://muasamtaikho.vn/remove-cart",
+                        url: "{{ route('removeCart') }}",
                         data: {
                             product_id: id,
                                
@@ -217,7 +223,7 @@
                         
                             $.ajax({
                                 type: 'POST',
-                                url: "https://muasamtaikho.vn/add-cart-number",
+                                url: "{{ route('addCartNumber') }}",
                                 data: {
                                     rowId: rowId,
                                     number:val_numbers
@@ -450,8 +456,20 @@
                     <p>Không có sản phẩm nào trong giỏ hàng</p>
                 </div>
             </div>
-        </div>    
+
+             @else
+            <div class="cart-container {{ $number_cart>0?'hide':'' }}">
+            <div class="cart-icon">🛒</div>
+            <div class="empty-cart-message">
+                <p>Không có sản phẩm nào trong giỏ hàng</p>
+                
+            </div>
+            @endif
+        </div> 
+       
     </div>
+
+</div>
 
 @push('js')
 
