@@ -781,10 +781,12 @@
 
                     @foreach($product_sale as $keys => $value)
 
+                    
+                    @if($value->active==1 && $dems<6)
+
                     <?php 
                         $dems++;
                     ?>
-                    @if($value->active==1 && $dems<6)
 
                     <li data-id="{{ $keys }}" data-pos="{{ $dems }}" class="item list_sale" id="list_{{ $keys }}">
 
