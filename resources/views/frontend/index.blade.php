@@ -262,8 +262,7 @@
         </div>
     </div>
 
-    
-
+   
     <section>
 
         <div class="gift-info">
@@ -280,10 +279,20 @@
 
                             @if(isset($banners))
 
-                            @foreach($banners as $value)
-                            <div class="item" data-dot="<span>{{ $value->title }}</span>">
-                                <a aria-label="slide" data-cate="0" data-place="1535" href="{{ $value->link }}" ><img  src="{{ asset($value->image) }}" alt="{{ $value->title }}"></a>
-                            </div>
+                    
+                            @foreach($banners as $key => $value)
+
+                                @if($key===0)
+                                    <div class="item" data-dot="<span>{{ $value->title }}</span>">
+                                        <a aria-label="slide" data-cate="0" data-place="1535" href="{{ $value->link }}" ><img  src="{{ asset($value->image) }}" alt="{{ $value->title }}" ></a>
+                                    </div>
+                                
+                                @else
+                                <div class="item" data-dot="<span>{{ $value->title }}</span>">
+                                    <a aria-label="slide" data-cate="0" data-place="1535" href="{{ $value->link }}" ><img  data-src="{{ asset($value->image) }}" alt="{{ $value->title }}" class="lazyload"></a>
+                                </div>
+
+                                @endif
                             @endforeach
                             @endif 
                         </div>
