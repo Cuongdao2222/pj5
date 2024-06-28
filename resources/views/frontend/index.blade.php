@@ -782,7 +782,7 @@
                     @foreach($product_sale as $keys => $value)
 
                     
-                    @if($value->active==1 && $dems<6)
+                    @if($value->active==1 && $dems<5)
 
                     <?php 
                         $dems++;
