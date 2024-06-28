@@ -773,9 +773,18 @@
 
                 <ul class="listproduct mouse-mover" data-total="39">
 
+                    <?php 
+
+                        $dems =0;
+                    ?>
+
 
                     @foreach($product_sale as $keys => $value)
-                    @if($value->active==1)
+
+                    <?php 
+                        $dems++;
+                    ?>
+                    @if($value->active==1 && $dems<6)
 
                     <li data-id="{{ $keys }}" data-pos="1" class="item list_sale" id="list_{{ $keys }}">
 
