@@ -31,7 +31,7 @@
 
                     if (strpos(strtolower($data->Name), strtolower(str_replace($namecate->name, '', $value->name)))>-1) {
 
-                        array_push($ar_groups_info, ['name'=>  $value->name, 'link'=>$value->link]);
+                        array_push($ar_groups_info, ['name'=>  $value->name, 'link'=>$value->link, 'id'=>$value->id]);
                     }
                     
                 }
@@ -330,6 +330,7 @@
         }
     }
 
+    // dd($groupProductId);
     
     Cache::forget('gifts_Fe_sss'.$data['id']);
     if(!Cache::has('gifts_Fe_sss'.$data['id'])){
@@ -998,6 +999,7 @@
                     <a href="{{route('homeFe')}}">Trang chủ</a>
                     <meta property="position" content="1">
                 </li>
+
                 @if(!empty($groupLink))
 
                 <?php 
@@ -1064,6 +1066,8 @@
            
             @if(!empty($data_cate) && $data_cate==1)
 
+            @if($ar_groups_info[0]['id'] != 384)
+
             <?php
 
                 $cutModel1 = str_replace('UA', '', $data->ProductSku);
@@ -1121,6 +1125,8 @@
 
                             ?>
 
+
+
                             <a class="one_size  {{ $relationProducts->ProductSku==$data->ProductSku?'act':'' }}" href="{{ route('details', $relationProducts->Link) }}"><label class="container-detail"><span class="size-pro">{{  str_replace( $cutModel, '', $relationProducts->ProductSku)  }} inch</span><span class="price-pro">{{ str_replace(',' ,'.', number_format(@$relationProducts->Price))  }}đ</span></label></a>
                         
                         @endforeach
@@ -1128,6 +1134,8 @@
                     </div>
                     @endforeach
                 </div>
+            @endif
+
             @endif
                 
             @endif
