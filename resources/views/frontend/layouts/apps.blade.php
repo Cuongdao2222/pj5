@@ -450,18 +450,7 @@
                 width:27px;
             }
 
-             @media only screen and (min-width: 601px) {
-        /*.div-foot{
-            margin-left: 330px;
-        }*/
-
-
-        .banner-ads-text .header-menu__navs{
-            height: 40px;
-        }
-
-
-        .ft-dmca img{
+    .ft-dmca img{
             width: 100%;
         }
        /* .nk-menu .span16{
@@ -623,11 +612,7 @@
             -o-animation: coccoc-alo-circle-img-anim 1s infinite ease-in-out;
             animation: coccoc-alo-circle-img-anim 1s infinite ease-in-out;
             background-size: cover;
-        }
-        .footer-new * {
-            -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-        }
+        } 
 
         @keyframes coccoc-alo-circle-anim {
             0% {
@@ -683,8 +668,34 @@
             100% {
                 transform: rotate(0) scale(1) skew(1deg);
             }
+        }           
+
+        @media only screen and (min-width: 601px) {
+            /*.div-foot{
+                margin-left: 330px;
+            }*/
+
+
+            .banner-ads-text .header-menu__navs{
+                height: 40px;
+            }
+
+            .footer-new * {
+                -webkit-box-sizing: border-box;
+                box-sizing: border-box;
+            }
+        } 
+
+         @media only screen and (max-width: 600px) {
+
+             .ring-phone {
+
+                left: 0 !important;
+            }
+
         }    
-    } 
+
+
 
 
             
@@ -895,9 +906,9 @@
                       display: -webkit-box;
                   } 
 
-                .list-phone{
+               /* .list-phone{
                     display: none;
-                }   
+                }   */
 
                  .commit{
                     font-size: 15px;
@@ -913,7 +924,7 @@
                 }
 
                 .zalo-chat-widget{  
-                    bottom: 24% !important;  
+                    bottom: 0;  
 /*                    left: 10px!important;  */
                 }  
 
@@ -2416,12 +2427,12 @@
 
         
 
-        <div class="mobiles hotlines line-mobile">   
+        <!-- <div class="mobiles hotlines line-mobile">   
             <a href="tel:02473036336"><img src="{{ asset('images/template/tongdai02473036336.png') }}" alt="hotline" style="height:55px; z-index: 999;"></a>
               
             <div class="clear"></div>
               
-        </div>
+        </div> -->
 
        <!--  <div class="hotlines show-mobile">   
             <a href="tel:0913011888"><img src="{{ asset('images/template/tongdai0247.png') }}" alt="hotline" style="height:55px; z-index: 999;"></a>
