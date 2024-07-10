@@ -460,7 +460,7 @@
         .ring-phone {
             float: left;
             position: fixed;
-            right: 950px;
+            right: 50%;
             bottom: 10px;
             z-index: 99999;
         }
