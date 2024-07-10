@@ -460,7 +460,7 @@
         .ring-phone {
             float: left;
             position: fixed;
-            right: 150px;
+            right: 950px;
             bottom: 10px;
             z-index: 99999;
         }
@@ -826,7 +826,7 @@
 
 
                 .zalo-chat-widget{  
-                    bottom: 17% !important;  
+                    bottom: 6% !important;  
                     right: 1%!important;  
                 }  
 
