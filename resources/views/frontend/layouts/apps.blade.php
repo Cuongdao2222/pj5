@@ -2483,21 +2483,21 @@
         </div>
      
 
-        <div class="zalo-mobile">
+      <!--   <div class="zalo-mobile">
 
             <a href="https://zalo.me/0913011888" target="_blank">
                 <div style="position: fixed; bottom: 52px; right: 52px; transform: translate(0px, 0px) !important; z-index: 2147483644; border: none; visibility: visible; right: 0px; width: 60px; height: 60px;" class="zalo-chat-widget"data-welcome-message="Điện Máy Người Việt rất vui khi được hỗ trợ bạn!" data-autopopup="0" data-width="" data-height="">
                     <img src="https://page.widget.zalo.me/static/images/2.0/Logo.svg">
                 </div>
             </a>
-        </div>    
+        </div>     -->
           
             
 
         
-       <!--  <div  class="zalo-chat-widget" data-oaid="1329456933344915716" data-welcome-message="Điện Máy Người Việt rất vui khi được hỗ trợ bạn!" data-autopopup="0" data-width="" data-height=""></div>
+        <div  class="zalo-chat-widget" data-oaid="1329456933344915716" data-welcome-message="Điện Máy Người Việt rất vui khi được hỗ trợ bạn!" data-autopopup="0" data-width="" data-height=""></div>
 
-         <script src="{{ asset('/js/zalo.js') }}"></script>  -->
+         <script src="{{ asset('/js/zalo.js') }}"></script> 
        
         
         

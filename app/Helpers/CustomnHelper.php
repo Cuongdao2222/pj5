@@ -243,7 +243,7 @@ if(!function_exists('pricesPromotion')){
 
             $ar_skip = Cache::rememberForever('ar_skips', function(){
 
-                $data = DB::table('group_product')->select('product_id')->whereIn('id', [36,12,14])->get()->toArray();
+                $data = DB::table('group_product')->select('product_id')->whereIn('id', [36,12,14,384])->get()->toArray();
 
                 $ar_skip = array_merge(json_decode($data[0]->product_id), json_decode($data[1]->product_id), json_decode($data[2]->product_id));
 
