@@ -1869,8 +1869,22 @@
                         <li>Thanh toán tại nhà</li>
                         <li>Giao hàng miễn phí 20km</li>
                         <li>Giá cạnh tranh nhất thị trường</li>
+                        <?php 
+
+                            $skip_id = [];
+                            if (Cache::has('ar_skips')) {
+                               $skip_id = Cache::get('ar_skips');
+                            }
+
+                        ?>
+                        @if(!empty($skip_id) && in_array($data->id, $skip_id))
+
+                        <li>Bảo hành chính hãng</li>
+
+                        @else
                         <li>Đổi mới 100% trong 7 ngày đầu</li>
                             ( Trừ Sanaky, Sony, tivi Samsung chỉ bảo hành tại nhà )
+                        @endif    
                     </ul>
                 </div>
             </div>
