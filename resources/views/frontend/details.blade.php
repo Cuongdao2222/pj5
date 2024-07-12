@@ -137,7 +137,11 @@
             .copy-button{
 
                 display: none;
-            }    
+            }   
+
+            .prod-info-right fr{
+                margin-top: 20px;
+            } 
 
             .option-price{
                 height: 30px;
@@ -768,6 +772,7 @@
                         <li>Giá cạnh tranh nhất thị trường</li>
                         <li>Đổi mới 100% trong 7 ngày đầu</li>
                             ( Trừ Sanaky, Sony, tivi Samsung chỉ bảo hành tại nhà )
+                         <li><a href="https://dienmaynguoiviet.vn/page/chinh-sach-doi-tra-hang">Xem thêm chi tiết</a></li>    
                     </ul>
                     <div class="support">
                       <h5>Tổng Đài mua hàng</h5>
@@ -1540,6 +1545,42 @@
                                 
                                 @endif
 
+                                <br>
+
+                                <div class="prod-info-right fr">
+
+                                   
+                                    <div class="commitment">
+                                        <div class="support">
+                                            <h5>Tổng Đài mua hàng</h5>
+                                                <a href="tel:02473036336">0247.303.6336</a>
+                                            <h5>Tổng Đài mua hàng( Sau 17h )</h5>
+                                             <div class="style-number-fone">
+                                               <a href="tel:0913011888">091.301.1888</a>
+                                                
+                                             </div>
+                                           
+                                        </div>
+                                        <br>
+                                        <div class="support1">
+                                            <h4>Yên tâm mua sắm</h4>
+                                            <ul>
+                                                <li>Bảo hành tại nhà</li>
+                                                <li>Lắp đặt miễn phí</li>
+                                          (Trừ điều hòa, bình nước nóng)
+                                                <li>Thanh toán tại nhà</li>
+                                                <li>Giao hàng miễn phí 20km</li>
+                                                <li>Giá cạnh tranh nhất thị trường</li>
+                                                <li>Bảo hành chính hãng</li>
+                                                 <li><a href="https://dienmaynguoiviet.vn/page/chinh-sach-doi-tra-hang">Xem thêm chi tiết</a></li>
+                                                
+                                            </ul>
+                                        </div>
+                                    </div>
+                                  
+                                    <div class="clear"></div>
+                                </div>
+
                                 <br><br>
                                 {!!  $data->Specifications  !!} 
                             </div>
@@ -1771,11 +1812,6 @@
             <i class="icondetail-thongso"></i> <span class="txt_15">Thông số kỹ thuật</span>
             </a>
         </div>
-
-       
-
-        
-       
     </div>
 
     <div class="clear"></div>
@@ -1847,7 +1883,7 @@
 
     <div class="prod-info-right fr">
 
-        <div>
+        
             <div class="commitment">
                 <div class="support">
                     <h5>Tổng Đài mua hàng</h5>
@@ -1869,22 +1905,9 @@
                         <li>Thanh toán tại nhà</li>
                         <li>Giao hàng miễn phí 20km</li>
                         <li>Giá cạnh tranh nhất thị trường</li>
-                        <?php 
-
-                            $skip_id = [];
-                            if (Cache::has('ar_skips')) {
-                               $skip_id = Cache::get('ar_skips');
-                            }
-
-                        ?>
-                        @if(!empty($skip_id) && in_array($data->id, $skip_id))
-
                         <li>Bảo hành chính hãng</li>
-
-                        @else
-                        <li>Đổi mới 100% trong 7 ngày đầu</li>
-                            ( Trừ Sanaky, Sony, tivi Samsung chỉ bảo hành tại nhà )
-                        @endif    
+                        <li><a href="https://dienmaynguoiviet.vn/page/chinh-sach-doi-tra-hang">Xem thêm chi tiết</a></li>
+                        
                     </ul>
                 </div>
             </div>
