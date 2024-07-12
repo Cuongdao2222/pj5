@@ -139,7 +139,7 @@
                 display: none;
             }   
 
-            .prod-info-right .fr{
+            .prod-info-right{
                 margin-top: 20px;
             } 
 
