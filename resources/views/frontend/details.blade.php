@@ -371,7 +371,7 @@
     
     ?>
 @push('style')
-<link rel="stylesheet" type="text/css" href="{{ asset('css/detailsfe.css') }}?ver=7">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/detailsfe.css') }}?ver=8">
 @endpush
 
 
