@@ -897,6 +897,11 @@ function changeFlashDeal(id) {
 
 }   
 
+function kiemTraNgay(ngay) {
+  const regex = /^(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-\d{4}$/;
+  return regex.test(ngay);
+}
+
 
 
 
@@ -920,23 +925,30 @@ function set_feature(id, active){
 
 $('.accepts-time-deal').click(function(){
 
-    $.ajax({
+    if(kiemTraNgay($('#date-picker3').val()) && kiemTraNgay($('#date-picker4').val())){
+        $.ajax({
 
-    type: 'GET',
-        url: "{{ route('updateTimeDeal') }}",
-        data: {
-            start: $('#date-picker3').val()+','+$('#hours3').val(),
+        type: 'GET',
+            url: "{{ route('updateTimeDeal') }}",
+            data: {
+                start: $('#date-picker3').val()+','+$('#hours3').val(),
 
-            end:$('#date-picker4').val()+','+$('#hours4').val(),
-            id:$('#time-deal').val()
-           
-            
-        },
-        success: function(result){
+                end:$('#date-picker4').val()+','+$('#hours4').val(),
+                id:$('#time-deal').val()
+               
+                
+            },
+            success: function(result){
 
-           window.location.reload();
-        }
-    });
+               window.location.reload();
+            }
+        });
+    }
+    else{
+        alert('Kiểm tra lại định dạng, định dạng ngày có dạng xx-xx-xxxx');
+    }
+
+    
 
 
 })
@@ -946,29 +958,35 @@ const date_end = $('#date-picker2').val()+','+$('#hours2').val();
 
 $('.accepts').click(function(){
 
-    $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    if(kiemTraNgay($('#date-picker1').val()) && kiemTraNgay($('#date-picker2').val())){
+
+        $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+        $.ajax({
+
+        type: 'GET',
+            url: "{{ route('result-add') }}",
+            data: {
+                start: $('#date-picker1').val()+','+$('#hours1').val(),
+
+                end:$('#date-picker2').val()+','+$('#hours2').val(),
+
+                end_old:date_end
+               
+            },
+            success: function(result){
+
+               window.location.reload();
             }
         });
-
-    $.ajax({
-
-    type: 'GET',
-        url: "{{ route('result-add') }}",
-        data: {
-            start: $('#date-picker1').val()+','+$('#hours1').val(),
-
-            end:$('#date-picker2').val()+','+$('#hours2').val(),
-
-            end_old:date_end
-           
-        },
-        success: function(result){
-
-           window.location.reload();
-        }
-    });
+    } 
+    else{
+        alert('Kiểm tra lại định dạng, định dạng ngày có dạng xx-xx-xxxx');
+    }   
 
 })
 
