@@ -726,22 +726,31 @@ function update_product(id){
     $('#edit-deal').val(id);
 }
 function edit_price_deal(id){
+    
     let val = $('.edit_price_deal'+id).val();
-    $.ajax({
 
-    type: 'GET',
-        url: "{{ route('editPricedeal') }}",
-        data: {
-            product_id:id,
-            val: val
-            
-        },
-        success: function(result){
-           window.location.reload();
-           
-        }
-    });
+    if(validatePrice(val)){
 
+        $.ajax({
+
+        type: 'GET',
+            url: "{{ route('editPricedeal') }}",
+            data: {
+                product_id:id,
+                val: val
+                
+            },
+            success: function(result){
+               window.location.reload();
+               
+            }
+        });
+
+    }
+    else{
+        alert('Giá tiền nhập không đúng định dạng');
+    }
+    
 }
 
 
@@ -900,6 +909,27 @@ function changeFlashDeal(id) {
 function kiemTraNgay(ngay) {
   const regex = /^(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-\d{4}$/;
   return regex.test(ngay);
+}
+function validatePrice(priceString) {
+  // Regex cơ bản để kiểm tra định dạng giá tiền
+  const priceRegex = /^\d+(?:,\d{3})*(?:\.\d{1,2})?$/;
+
+  // Xóa bỏ dấu cách và ký tự thừa
+  const price = priceString.trim().replace(/[^0-9.,]/g, '');
+
+  // Kiểm tra định dạng giá tiền
+  if (!priceRegex.test(price)) {
+    return false;
+  }
+
+  // Kiểm tra giá trị tối đa (tùy chọn)
+  const maxPrice = 1000000000; // Giá trị tối đa cho phép (1tỉ)
+  if (parseFloat(price) > maxPrice) {
+    return false;
+  }
+
+  // Giá tiền hợp lệ
+  return true;
 }
 
 
