@@ -911,6 +911,8 @@ function kiemTraNgay(ngay) {
   return regex.test(ngay);
 }
 function validatePrice(priceString) {
+
+  priceString = priceString.replaceAll(".", "");  
   // Regex cơ bản để kiểm tra định dạng giá tiền
   const priceRegex = /^\d+(?:,\d{3})*(?:\.\d{1,2})?$/;
 
