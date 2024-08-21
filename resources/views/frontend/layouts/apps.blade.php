@@ -132,7 +132,7 @@
         }
         </script>
         <link rel="alternate" type="application/rss+xml" title="RSS Feed for https://dienmaynguoiviet.vn" href="/product.rss" />
-        <meta property="og:image" content="{{ asset('images/template/logo.png') }}" />
+        <meta property="og:image" content="{{ asset('images/template/logo.png') }}?ver=1" />
         <!-- Global site tag (gtag.js) - Google Ads: 971664599 -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=AW-971664599"></script>
         <script>
@@ -1225,7 +1225,7 @@
             <div class="header__top desktop header-pc">
                 <section>
                     <a href="{{route('homeFe')}}" class="header__logo">
-                        <img src="{{ asset('images/template/logo.png') }}">   
+                        <img src="{{ asset('images/template/logo.png') }}?ver=1">   
                    
                     </a>
                    
@@ -1300,7 +1300,7 @@
                     <div class="col-xs-12" style="display: flex; height: 63px;">
                         <div class="col-6">
                             <a href="/" class="header__logo">
-                                <img src="{{ asset('images/template/logo.png') }}">   
+                                <img src="{{ asset('images/template/logo.png') }}?ver=1">   
                            
                             </a>
                         </div>
