@@ -1071,7 +1071,7 @@
            
             @if(!empty($data_cate) && $data_cate==1)
 
-            @if($ar_groups_info[0]['id'] != 384)
+            @if(!empty($ar_groups_info[0]) && $ar_groups_info[0]['id'] != 384)
 
             <?php
 
