@@ -116,6 +116,7 @@
             font-size: 16px !important;
         }
 
+
          @media only screen and (max-width: 767px) {
 
             .option-price-mobile select{
@@ -144,7 +145,12 @@
             .copy-button{
 
                 display: none;
-            }   
+            }  
+
+            table tr ul {
+                padding: 0 40px;
+            }
+ 
 
             .prod-info-right{
                 margin-top: 20px;
