@@ -113,7 +113,8 @@ class groupProductController extends AppBaseController
 
         Flash::success('Group Product saved successfully.');
 
-        return redirect(route('groupProducts.index'));
+
+        return redirect()->back();
     }
 
     /**
@@ -208,8 +209,7 @@ class groupProductController extends AppBaseController
 
         Flash::success('Group Product updated successfully.');
 
-        return redirect(route('groupProducts.index'));
-    }
+        return redirect()->back();
 
     /**
      * Remove the specified groupProduct from storage.
