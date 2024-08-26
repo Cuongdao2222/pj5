@@ -108,6 +108,13 @@
 
             left: 50px;
         }
+        h2 a{
+            font-size: 16px;
+        }
+
+        h3 a{
+            font-size: 16px !important;
+        }
 
          @media only screen and (max-width: 767px) {
 
