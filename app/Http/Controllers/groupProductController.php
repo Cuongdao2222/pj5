@@ -211,6 +211,7 @@ class groupProductController extends AppBaseController
 
         return redirect()->back();
 
+    }    
     /**
      * Remove the specified groupProduct from storage.
      *
