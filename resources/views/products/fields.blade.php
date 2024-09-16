@@ -58,7 +58,7 @@
 
 
 <div class="form-group col-sm-12 col-lg-12">
-    {!! Form::label('Detail', 'Mô tả:', ['id' =>'mo-ta'], ['rel' =>'nofollow']) !!}
+    {!! Form::label('Detail', 'Mô tả: '.$product->Name??'', ['id' =>'mo-ta'], ['rel' =>'nofollow']) !!}
     {!! Form::textarea('Detail', null, ['class' => 'form-control', 'id' =>'content']) !!}
 </div>
 
