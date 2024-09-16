@@ -102,7 +102,8 @@
     </div> 
     @if(!empty($metaSeo) && !empty($_GET['seo']))
     
-   
+    <h3>{{ $product->Name??'' }}</h3>
+
     <div class="content px-3">
         @include('adminlte-templates::common.errors')
 
