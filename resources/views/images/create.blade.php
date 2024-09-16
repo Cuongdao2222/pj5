@@ -115,7 +115,7 @@
 
         @if(!empty($imageProduct))
 
-        <h3>ảnh đại diện đang được chọn</h3>
+        <h3>ảnh đại diện đang được chọn cho sản phẩm {{  (App\Models\product::find($product_id))->Name }}</h3>
         <div class="">
             <img src="{{ asset($imageProduct) }}" style="width: 10%;">
         </div>
