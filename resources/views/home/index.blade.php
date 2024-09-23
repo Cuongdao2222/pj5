@@ -227,7 +227,7 @@
                                     <td width="130">Điện thọai</td>
                                     <td width="130">Sản phẩm</td>
                                     <td>Thời gian</td>
-                                    <td width="40">Hoạt động</td>
+                                    <td width="40">active</td>
                                     <td width="120">Hoạt động</td>
 
                                 </tr>
