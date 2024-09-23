@@ -46,6 +46,8 @@ class lienheController extends Controller
     {
         $callphone = call::find($id);
         $callphone->active = 1;
+
+        dd($callphone);
         $callphone->save();
         return redirect()->back();
     }
