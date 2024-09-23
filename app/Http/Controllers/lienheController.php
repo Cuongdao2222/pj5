@@ -48,8 +48,8 @@ class lienheController extends Controller
         $callphone->active = 1;
 
 
-        $callphone->save();
-        dd($callphone);
+        $result = $callphone->save();
+        dd($result);
         return redirect()->back();
     }
 
