@@ -669,7 +669,7 @@
 
                                 <!-- nếu tồn tại gift_price thì hiển thị -->
 
-                                @if(!empty($gift_Price) && $data_cate !=8 && $data->Quantily>-1)
+                                @if(!empty($gift_Price) && $data_cate !=8 && $data->Quantily>0)
 
                                 <?php 
 
