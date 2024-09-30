@@ -244,7 +244,9 @@ class dealController extends Controller
             }
         }
 
-        $result  = DB::table('deal')->where('end', $date_end_old)->update(['start'=>$start, 'end'=>$end, 'active'=>1]);
+
+
+        $result  = DB::table('deal')->where('end', $date_end_old)->update(['start'=>$start, 'end'=>$end]);
 
         $update_time_deal_old = DB::table('deal_time')->insert(['end'=>$end]);
 
