@@ -835,11 +835,11 @@ class categoryController extends Controller
 
             $dataPD = product::find($value);
             
-            $ar['details'] = $dataPD->Detail;
+            $ar[]['details'] = $dataPD->Detail;
 
-            $ar['Name'] = $dataPD->Detail;
+            $ar[]['Name'] = $dataPD->Detail;
 
-            $ar['Image'] = $dataPD->Image;
+            $ar[]['Image'] = $dataPD->Image;
         }
 
         $datass = json_encode($ar);
