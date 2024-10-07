@@ -843,6 +843,8 @@ class categoryController extends Controller
 
             $ar[$key]['Specifications'] = $dataPD->Specifications;
 
+            $ar[$key]['Salient_Features'] = $dataPD->Salient_Features;
+
         }
 
         $datass = json_encode($ar);
