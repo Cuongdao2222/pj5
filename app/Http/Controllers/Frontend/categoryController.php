@@ -837,7 +837,7 @@ class categoryController extends Controller
             
             $ar[$key]['details'] = $dataPD->Detail;
 
-            $ar[$key]['Name'] = $dataPD->Detail;
+            $ar[$key]['Name'] = $dataPD->Name;
 
             $ar[$key]['Image'] = $dataPD->Image;
 
