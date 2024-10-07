@@ -844,7 +844,7 @@ class categoryController extends Controller
 
         $datass = json_encode($ar);
 
-        dd($datass);
+        echo($datass);
 
     }
 
