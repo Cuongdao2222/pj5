@@ -40,6 +40,8 @@ Route::get('/cache', 'Frontend\indexController@cache')->name('cache');
 
 Route::get('/ckfinder.html', 'mainController@ckfinder')->middleware('auth');
 
+Route::get('/show-data-tcl', 'Frontend\categoryController@show_data_tcl');
+
 
 Route::get('/landingpage', 'mainController@landingpage')->name('landingpageFe');
 

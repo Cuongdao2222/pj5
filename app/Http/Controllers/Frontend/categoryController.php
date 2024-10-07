@@ -822,4 +822,30 @@ class categoryController extends Controller
 
     }
 
+     public function show_data_tcl()
+    {
+        
+        $datas = groupProduct::find(15);
+
+        $data = json_decode($datas->product_id);
+
+        $ar = [];
+
+        foreach ($data as $key => $value) {
+
+            $dataPD = product::find($value);
+            
+            $ar['details'] = $dataPD->Detail;
+
+            $ar['Name'] = $dataPD->Detail;
+
+            $ar['Image'] = $dataPD->Image;
+        }
+
+        $datass = json_encode($ar);
+
+        echo $datass;
+
+    }
+
 }
