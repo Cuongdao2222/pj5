@@ -845,6 +845,8 @@ class categoryController extends Controller
 
             $ar[$key]['Salient_Features'] = $dataPD->Salient_Features;
 
+            $ar[$key]['crawl_link'] = 'https://dienmaynguoiviet.vn/'.$dataPD->Link;
+
         }
 
         $datass = json_encode($ar);
