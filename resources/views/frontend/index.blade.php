@@ -122,7 +122,7 @@
                     width: 100%;
                     height: 260px;
                 }    
-                
+
             } 
 
             .gvdshock {
@@ -1028,7 +1028,7 @@
 
         <div class="box-common _cate_1942 box-banner-{{ $groups->id }}">
             <ul class="box-common__tab box-tab-mobile">
-                <li class="active-tab" data-cate-id="1942"><a href="{{  @$groups->link }}">{{  @$groups->name }}</a></li>
+                <li class="active-tab" data-cate-id="1942"><a href="{{  @$groups->link }}">{{ str_replace('Máy sấy  Electrolux', 'Máy sấy Elec', $groups->name)  }}</a></li>
                 <?php
 
                     $listGroupsShows = Cache::rememberForever('listGroupsShow'.$groups->id, function() use($groups){
