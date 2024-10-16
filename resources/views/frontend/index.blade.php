@@ -30,7 +30,7 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('css/home.css') }}?ver=28">
   
         <link rel="stylesheet" type="text/css" href="{{ asset('css/index.css') }}?ver=4">
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/homes.css') }}?ver=12">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/homes.css') }}?ver=13">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/homecs.css') }}?ver=20">
         <style type="text/css">
                 .sprites {
@@ -740,7 +740,7 @@
         <div class="clearfix"></div> 
 
      
-        <div class="prd-promo has-banner" style="background: #1aa1d5;" data-html-id="3109">
+        <div class="prd-promo has-banner" style="background: #f52222;" data-html-id="3109">
 
             @if(!empty($bannerUnderSale[0]['image']))
 
