@@ -1028,7 +1028,7 @@
 
         <div class="box-common _cate_1942 box-banner-{{ $groups->id }}">
             <ul class="box-common__tab box-tab-mobile">
-                <li class="active-tab" data-cate-id="1942"><a href="{{  @$groups->link }}">{{ str_replace('Máy sấy  Electrolux', 'Máy sấy Elec', $groups->name)  }}</a></li>
+                <li class="active-tab" data-cate-id="1942"><a href="{{  @$groups->link }}">{{  @$groups->name }}</a></li>
                 <?php
 
                     $listGroupsShows = Cache::rememberForever('listGroupsShow'.$groups->id, function() use($groups){
@@ -1044,7 +1044,7 @@
                 @foreach($listGroupsShows as $valueslist)
 
             
-                <li data-cate-id="2162" data-prop-value-ids="90016" class="desk-t"><a href="{{ route('details', $valueslist->link) }}">
+                <li data-cate-id="2162" data-prop-value-ids="90016" class="desk-t"><a href="{{ route('details', $valueslist->link) }}" style="font-size:12px">
                     {{ @str_replace('quần áo', '', $valueslist->name)  }}</a></li>
                 @endforeach
                 @endif
