@@ -235,7 +235,7 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}?ver=1"> 
         <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
         <link rel="stylesheet" type="text/css" href="{{ asset('css/apps.css') }}?ver=19">
-        <link rel="stylesheet" type="text/css" href="{{asset('css/dienmay.css')}}?ver=109">
+        <link rel="stylesheet" type="text/css" href="{{asset('css/dienmay.css')}}?ver=110">
         <link rel="stylesheet" type="text/css" href="{{asset('css/detailsfe.css')}}?ver=7"> 
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -255,7 +255,7 @@
 
 
             .category__all{
-                padding: 0 !important;
+                padding-left: 15px !important;
                 width: 100% !important;
             }
             .category{
@@ -296,7 +296,8 @@
             }
 
             .list-menu .category{
-                width: 11%;
+                width: 240px;
+                border: 1px solid #ddd;
             }
 
             .compare-pro-holder a {
@@ -1383,7 +1384,7 @@
 
                                 
                                 <ul class="main-menu">
-
+                                   
                                     <li data-submenu-id="submenu-0">
                                         <div class="dropdown">
                                              <i class="fa-solid fa-tags deal-icon"></i>

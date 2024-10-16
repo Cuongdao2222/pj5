@@ -3302,8 +3302,8 @@ header.header.manusearch .header__search input {
 
 .category__all {
 	color: #2f80ed;
-	/*padding-right: 10px;*/
-	text-align: right
+	padding-left: 10px;
+	text-align: left;
 }
 
 .header__main .txt-list {
