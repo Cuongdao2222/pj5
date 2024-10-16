@@ -782,7 +782,7 @@
 
                 .box-common__tab li {
 
-                    width: 150px;
+                    width: 170px;
                 }    
                 .item-rating{
                     display: none !important;
