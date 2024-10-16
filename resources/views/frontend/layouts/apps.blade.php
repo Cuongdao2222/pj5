@@ -296,7 +296,7 @@
             }
 
             .list-menu .category{
-                width: 240px;
+                width: 243px;
                 border: 1px solid #ddd;
             }
 
