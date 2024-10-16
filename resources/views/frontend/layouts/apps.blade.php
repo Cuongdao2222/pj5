@@ -779,6 +779,11 @@
                     right:8px; 
                     display: block;   
                 }
+
+                .box-common__tab li {
+
+                    width: 150px;
+                }    
                 .item-rating{
                     display: none !important;
                 }
@@ -1947,11 +1952,7 @@
                             ?>
                         @endif  
 
-                        @if(!empty($menu)  && $menu->count()>0)
-
-                            @include('frontend/menu1')
-
-                        @endif
+                        
                        
                         
                     </ul>

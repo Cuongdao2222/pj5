@@ -122,6 +122,7 @@
                     width: 100%;
                     height: 260px;
                 }    
+                
             } 
 
             .gvdshock {
