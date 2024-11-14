@@ -1039,15 +1039,7 @@
                     });
                 ?>
 
-                @if(!empty($listGroupsShows) && $listGroupsShows->count()>0)
-
-                @foreach($listGroupsShows as $valueslist)
-
-            
-                <li data-cate-id="2162" data-prop-value-ids="90016" class="desk-t"><a href="{{ route('details', $valueslist->link) }}" style="font-size:12px">
-                    {{ @str_replace('quần áo', '', $valueslist->name)  }}</a></li>
-                @endforeach
-                @endif
+                
             </ul>
 
 
