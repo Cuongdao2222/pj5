@@ -1077,7 +1077,7 @@
                 <span>{{ $status }}</span>
 
                 &nbsp 
-                <a href="https://goo.gl/maps/TozxKHRZeHfrafMt9" title="#" class="adress_stock"><i class="fa fa-map-marker"></i> Địa chỉ kho hàng</a>
+                <a href="https://goo.gl/maps/TozxKHRZeHfrafMt9" title="#" class="adress_stock"><i class="fa fa-map-marker"></i> Kho Hàng Điện Máy Người Việt</a>
 
             </div>
 
