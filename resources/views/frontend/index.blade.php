@@ -2142,6 +2142,8 @@
 
             $(this).addClass('active');
 
+           
+
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -2157,9 +2159,9 @@
                 success: function(result){
                     console.log(result)
 
-                   //  $('.block-product__content ul').remove();
+                    $('.block-product__content ul').remove();
                    
-                   // $('.block-product__content').prepend(result);
+                   $('.block-product__content').prepend(result);
 
                 }
             });
