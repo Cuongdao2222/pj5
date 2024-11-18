@@ -1699,7 +1699,7 @@
                                             <span>
                                                 <img src="{{ asset('media/category/cat_d8bc7e22dcd3dcc525a4f3e9c7b433bc.png') }}" class="iconss-sp">
                                             </span>
-                                            <a href="{{ route('details', 'may-loc-nuoc') }}" class=""> A.O.Smith</a>
+                                            <a href="{{ route('details', 'may-loc-nuoc-aosmith') }}" class=""> A.O.Smith</a>
                                         </div>
 
                                         <div id="submenu-6" class="submenu" style="display: none;">
@@ -1983,7 +1983,7 @@
                             <a href="{{ route('details','lo-nuong') }}">Lò Nướng</a>
                             <!-- <a href="{{ route('details','may-loc-nuoc') }}">Máy lọc nước</a> -->
                             <a href="{{ route('details','may-say-quan-ao') }}">Máy sấy quần áo</a>
-                            <a href="{{ route('details','may-loc-nuoc') }}">A.O.Smith</a>
+                            <a href="{{ route('details','may-loc-nuoc-aosmith') }}">A.O.Smith</a>
                             <a href="{{ route('details','quat') }}">Quạt</a>
                             <a href="{{ route('details','may-cu-trung-bay') }}">Máy cũ, Trưng bày</a>
                             
