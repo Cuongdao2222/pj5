@@ -33,6 +33,7 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\EncryptCookies::class,
             \App\Http\Middleware\BlockIpMiddleware::class,
              \App\Http\Middleware\urlTo::class,
+            
            
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Session\Middleware\StartSession::class,
