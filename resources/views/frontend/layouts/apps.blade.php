@@ -234,8 +234,8 @@
         
         <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}?ver=1"> 
         <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/apps.css') }}?ver=19">
-        <link rel="stylesheet" type="text/css" href="{{asset('css/dienmay.css')}}?ver=110">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/apps.css') }}?ver=20">
+        <link rel="stylesheet" type="text/css" href="{{asset('css/dienmay.css')}}?ver=111">
         <link rel="stylesheet" type="text/css" href="{{asset('css/detailsfe.css')}}?ver=7"> 
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -429,9 +429,9 @@
                 width: 20px;
             }
 
-            .header__top {
-                background-color: #f52222 !important;
-            }
+          /*  .header__top {
+                background-color: #000000 !important;
+            }*/
 
             #ui-id-2{
                 background: #fff;
