@@ -1065,7 +1065,7 @@
                                     
                                 </div>
                                 <div class="item-img">
-                                    <img data-src="{{ asset($datas->Image) }}"  alt="{{ $datas->Name }}" width=210 height=210>
+                                    <img src="{{ asset($datas->Image) }}" class="lazyload"   alt="{{ $datas->Name }}" width=210 height=210>
                                     
                                 </div>
 
