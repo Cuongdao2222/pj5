@@ -695,6 +695,10 @@
                 left: 0 !important;
             }
 
+            .header__top-mobile{
+                background: #000;
+            }
+
         }    
 
 
