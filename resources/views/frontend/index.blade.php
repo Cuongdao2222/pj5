@@ -797,7 +797,7 @@
                             </div>
 
                             <div class="item-img">
-                                <img data-src="{{ asset($value->Image) }}"   class="lazyload"  data-src="{{ asset($value->Image) }}" alt="{{ $value->Name }}" width=210 height=210>
+                                <img data-src="{{ asset($value->Image) }}"  data-src="{{ asset($value->Image) }}" alt="{{ $value->Name }}" width=210 height=210>
                             
                             </div>
                             <div class="title-name">
@@ -1019,7 +1019,7 @@
         <div class="banner"> 
             @foreach($banners_group as $value)
             <a href="{{ $value->link }}" title="{{ $value->title }}" class="item" target="_self"> 
-                <img src="{{ asset($value->image) }}" data-src="{{ asset($value->image) }}" class="lazy loaded" alt="{ $value->title }}" data-was-processed="true"> 
+                <img src="{{ asset($value->image) }}" data-src="{{ asset($value->image) }}"  alt="{ $value->title }}" data-was-processed="true"> 
             </a> 
             @endforeach
             
@@ -1065,7 +1065,7 @@
                                     
                                 </div>
                                 <div class="item-img">
-                                    <img data-src="{{ asset($datas->Image) }}" class="lazyload"   alt="{{ $datas->Name }}" width=210 height=210>
+                                    <img data-src="{{ asset($datas->Image) }}"  alt="{{ $datas->Name }}" width=210 height=210>
                                     
                                 </div>
 
