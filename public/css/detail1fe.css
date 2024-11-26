@@ -189,7 +189,7 @@ width: auto !important;
 } 
 @media screen and (max-width: 776px){
         .header__top {
-            background-color: #DD2C44;
+            background-color: #000000;
         }   
 
          .commitment ul {
