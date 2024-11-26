@@ -2676,7 +2676,7 @@
         
         // turn off popup
         
-        lazyload();
+        // lazyload();
 
         $('.box-promotion-close').bind("click", function(){
 
