@@ -763,7 +763,7 @@
                 </a>
 
                 <a href="javascript:void(0)" data-campaign="282" data-group="3507"  class="option-sale" data-id="0">
-                    <img data-src="{{ asset('background/like1.png') }}" class="ls-is-cached lazyloaded" alt="Sản phẩm luxury" width="50" height="50" src="{{ asset('background/like1.png') }}">
+                    <img src="{{ asset('background/like1.png') }}" class="ls-is-cached lazyloaded" alt="Sản phẩm luxury" width="50" height="50" src="{{ asset('background/like1.png') }}">
                     <span>Sản phẩm Luxury</span>
                 </a>
                 
@@ -797,7 +797,7 @@
                             </div>
 
                             <div class="item-img">
-                                <img data-src="{{ asset($value->Image) }}"  data-src="{{ asset($value->Image) }}" alt="{{ $value->Name }}" width=210 height=210>
+                                <img src="{{ asset($value->Image) }}"  data-src="{{ asset($value->Image) }}" alt="{{ $value->Name }}" width=210 height=210>
                             
                             </div>
                             <div class="title-name">
