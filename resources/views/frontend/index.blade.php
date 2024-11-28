@@ -31,7 +31,7 @@
   
         <link rel="stylesheet" type="text/css" href="{{ asset('css/index.css') }}?ver=4">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/homes.css') }}?ver=13">
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/homecs.css') }}?ver=20">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/homecs.css') }}?ver=21">
         <style type="text/css">
                 .sprites {
                     color: #000;
