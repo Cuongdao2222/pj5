@@ -408,7 +408,7 @@
 }
 .option-sg a.active,
 .option-mbile-sg .active {
-  background-color: #fff430 !important;
+  background-color: #000 !important;
 }
 .option-mbile-sg .active span {
   color: #f20028;
@@ -433,7 +433,7 @@
   display: inline-block;
   overflow: hidden;
   vertical-align: middle;
-  color: #555;
+  color: #fff;
   font-size: 18px;
   line-height: 22px;
   padding: 8px 0 0;
