@@ -762,7 +762,7 @@
                     <span>Tivi màn hình lớn xem Euro</span>
                 </a>
 
-                <a href="javascript:void(0)" data-campaign="282" data-group="3507"  class="option-sale" data-id="0">
+                <a href="javascript:void(0)"  data-group="3507"  class="option-sale" data-id="0">
                     <img src="{{ asset('background/like1.png') }}" class="ls-is-cached" alt="Sản phẩm luxury" width="50" height="50" src="{{ asset('background/like1.png') }}">
                     <span>Sản phẩm Luxury</span>
                 </a>
