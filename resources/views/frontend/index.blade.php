@@ -1422,6 +1422,8 @@
                                     {{ $gifts->type ==1?'k/m chọn 1 trong 2':'' }}
                                     <div class="option-gift">
 
+                                        
+
                                          @foreach($gift as $gifts)
 
                                         <div class="quatang"><img src="{{ asset($gifts->image) }}"></div>
