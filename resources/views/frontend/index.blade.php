@@ -797,7 +797,7 @@
                             </div>
 
                             <div class="item-img">
-                                <img src="{{ asset($value->Image) }}"  data-src="{{ asset($value->Image) }}" alt="{{ $value->Name }}" width=210 height=210>
+                                <img src="{{ asset($value->Image) }}"   alt="{{ $value->Name }}" width=210 height=210>
                             
                             </div>
                             <div class="title-name">
@@ -1070,7 +1070,7 @@
                                 </div>
 
                                 @if(in_array($datas->id, $hots->toArray()))
-                                <p class="result-labels"><img class="sale-banner ls-is-cached lazyloaded" alt="hot" src="{{ asset('images/background-image/i-con-hot.gif') }}"></p>
+                                <p class="result-labels"><img class="sale-banner ls-is-cached" alt="hot" src="{{ asset('images/background-image/i-con-hot.gif') }}"></p>
                                 @else
                                 
                                 @endif
