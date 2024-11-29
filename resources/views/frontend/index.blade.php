@@ -1065,12 +1065,12 @@
                                     
                                 </div>
                                 <div class="item-img">
-                                    <img src="{{ asset($datas->Image) }}" class="lazyload"   alt="{{ $datas->Name }}" width=210 height=210>
+                                    <img src="{{ asset($datas->Image) }}"    alt="{{ $datas->Name }}" width=210 height=210>
                                     
                                 </div>
 
                                 @if(in_array($datas->id, $hots->toArray()))
-                                <p class="result-labels"><img class="sale-banner ls-is-cached lazyloaded" alt="hot" data-src="{{ asset('images/background-image/i-con-hot.gif') }}" src="{{ asset('images/background-image/i-con-hot.gif') }}"></p>
+                                <p class="result-labels"><img class="sale-banner ls-is-cached lazyloaded" alt="hot" src="{{ asset('images/background-image/i-con-hot.gif') }}"></p>
                                 @else
                                 
                                 @endif
