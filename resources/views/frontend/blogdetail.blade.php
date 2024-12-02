@@ -6,7 +6,7 @@
 
 
     <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}?">
-    <link rel="stylesheet" href="{{ asset('css/styles.css') }}?v=8881288.8883.161">
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}?v=121">
     <link rel="stylesheet" href="{{ asset('css/customs.css') }}?v=245754.75.52928">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&subset=vietnamese" rel="stylesheet">
     
@@ -15,6 +15,10 @@
     <!-- begin main -->
 
      <style type="text/css">
+
+        em{
+            font-style: italic;
+        }
         .header__top-mobile{
             height: 133px;
         }
@@ -22,9 +26,118 @@
             color: #000000 !important;
         } 
 
-        .emtry_content strong{
+        .nd a{
+            font-size: revert !important;
+        }
+        .blog-detail .box-ads .img{
+            max-width: 40%;
+            margin-right: 2%;
+/*            width: 36%;*/
+        }
+
+        .detail-buy .info .btn-buy {
+            background: -webkit-linear-gradient(top, #f89406, #f76b1c);
+            border: 1px solid #d97f00;
+            padding: 5px 15px;
+            text-align: center;
+            color: #fff;
+            text-transform: uppercase;
+            border-radius: 4px;
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            font-size: 14px;
+            font-weight: 300;
+            display: block;
+            margin-top: 5px;
+            width: 135px;
+        }
+
+         .listproducts{
+            border: 1px solid #ddd;
+        }
+
+        .detail-buy .info .price-current {
+                display: block;
+                overflow: hidden;
+                padding: 3px 0;
+                font-size: 22px;
+                color: #d0021b;
+                font-weight: 600;
+                margin: 0;
+            }
+
+        @media only screen and (max-width: 600px) {
+
+            .nd ul {
+                padding-bottom: 20px;
+
+            }    
+
+        }    
+
+        
+
+
+
+        @media only screen and (min-width: 600px) {
+
+            .detail-buy {
+                width: 710px;
+                display: flex !important;
+                position: relative;
+/*                border: 1px solid #f3f3f3;*/
+                padding: 10px 5px;
+                margin-bottom: 20px;
+            }
+
+            .listproducts img{
+                height: 153px;
+            }
+
+            .listproducts .price-old {
+                color: #666;
+                display: inline-block;
+                font-size: 14px;
+                line-height: 17px;
+                text-decoration-line: line-through;
+            }
+
+           
+
+            .detail-buy .info h3 {
+                color: #333;
+                font-weight: 600;
+                font-size: 16px;
+                overflow: hidden;
+                max-width: 290px;
+                line-height: 1.5;
+                margin: 4px 0;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 3;
+                overflow: hidden;
+            }
+
+            
+
+            p.prRating {
+                padding: 0;
+                font-size: 12px;
+                display: flex
+            ;
+                width: 170px;
+                align-items: center;
+                margin: 0;
+                margin-bottom: 7px;
+            }
+
+        }    
+
+        
+
+        /*.emtry_content strong{
             font-size: 17px;
-        } 
+        } */
 
        
     </style>
@@ -33,9 +146,9 @@
         <div class="menu_blog">
             <ul class="dm_container">
                 <li>
-                    <a href="/tu-van-tivi/">
+                    <a href="/tu-van-ti-vi/">
                     <img src="{{ asset('images/template/logo/tivi.png') }}" alt="">
-                    <span>Tư vấn
+                    <span>Tư vấn 
                     <br> tivi</span>
                     </a>
                 </li>
@@ -130,10 +243,39 @@
                               
                                
                             </div>
+
+                          <!--   <div class="box-ads">
+                                <ul class="listproducts listproduct-shortcode listproduct-col5 btn-has">
+                                    <div class="detail-buy  clearfix">
+                                        <div class="img">
+                                            <a href="/quat/dung-senko-dh1600?itm_source=knh&amp;itm_medium=shortcode&amp;itm_content=268450" rel="dofollow noopener">
+                                                    <label class="no-installment"></label>
+                                                <img data-src="https://cdn.tgdd.vn/Products/Images/1992/268450/268450-600x600.jpg" onerror="ImgError(this)" class=" ls-is-cached lazyloaded" alt="Quạt đứng Senko 3 cánh DH1600 47W" src="http://localhost:8000/uploads/product/1663815651_Smart Tivi QLED Samsung QA55Q60B 55 inch 4K (10).jpg">
+                                            </a>
+                                        </div>
+                                        <div class="info">
+                                            <h3>Quạt đứng Senko 3 cánh DH1600 47W</h3>
+                                                    <p class="price-current">
+                                                        610.000₫
+                                                    </p>
+                                                    <div class="info-price">
+                                                        <p class="price-old">700.000₫</p>
+                                                        <span class="percent">-12%</span>
+                                                    </div>
+                                                    <p class="prRating">
+                                                        
+                                                        
+                                                    </p>
+                                            <a href="/quat/dung-senko-dh1600?itm_source=knh&amp;itm_medium=shortcode&amp;itm_content=268450" class="btn-buy" target="_blank">Xem chi tiết</a>
+                                        </div>
+                                    </div>
+                                </ul>
+                            </div> -->
+
                             <div class="emtry_content Description nd">
                                 <?php 
 
-                                    $content = preg_replace("/<a(.*?)>/", "<a$1 target=\"_blank\">",  $data->content);
+                                    $content = preg_replace("/<a(.*?)>/", "<a$1 target=\"_blank\">",  $new_content);
                                 ?>
                             
                                 {!!   $content  !!}
@@ -189,10 +331,28 @@
     <!--<hr>-->
     <!-- begin footer -->
     @push('script')
-     <script type="text/javascript">
+    <script type="text/javascript">
+         document.addEventListener("DOMContentLoaded", function() {
+            // Lấy tất cả các thẻ img trên trang
+            const images = document.querySelectorAll('img');
+
+            // Lặp qua từng ảnh
+            images.forEach(function(img) {
+                // Kiểm tra xem ảnh có thuộc tính alt không
+                if (img.hasAttribute('alt')) {
+                    // Lấy giá trị của alt
+                    const altText = img.getAttribute('alt');
+                    
+                    // Sao chép giá trị alt sang title
+                    img.setAttribute('title', altText);
+                }
+            });
+        });
+    </script>
+    <!--  <script type="text/javascript">
         $('img').closest('p').css('text-align', 'center');
         
-    </script>
+    </script> -->
 
 
     @endpush

@@ -14,6 +14,8 @@ use App\Models\groupProduct;
 use App\Models\filter;
 use App\Models\post;
 
+use App\Models\deal;
+
 use App\Models\category;
 
 use App\Models\metaSeo;
@@ -473,6 +475,87 @@ class categoryController extends Controller
         return $groupProduct_info;
     }
 
+    public function returnShowPdBlog($model)
+    {
+
+       
+        $deal = Cache::get('deals')->sortByDesc('order');
+
+        if(!Cache::has('deals')){
+            $deal = deal::get();
+
+            Cache::forever('deals',$deal);
+
+        }
+
+        $data_model = DB::table('products')->where('ProductSku', $model)->select('id', 'Name', 'Image', 'Price', 'Link', 'manuPrice')->get()->first();
+
+
+
+        $rep = '';
+
+        if(!empty($data_model)){
+
+            $check_deal_sale = $deal->where('product_id', $data_model->id)->first();
+
+            if(!empty($check_deal_sale) && $now->between($deal[0]->start, $deal[0]->end)){
+
+                $data_model->Price = $check_deal_sale->deal_price;
+
+            }
+
+            $rep ='
+            <div class="box-ads">
+                <ul class="listproducts listproduct-shortcode listproduct-col5 btn-has">
+                    <div class="detail-buy  clearfix">
+                        <div class="img">
+                            <a href="'. $data_model->Link.'" >
+                                    <label class="no-installment"></label>
+                                <img src="'. asset($data_model->Image).'"  class=" ls-is-cached" alt="'. asset($data_model->Name).'" >
+                            </a>
+                        </div>
+                        <div class="info">
+                            <h3>'.$data_model->Name.'</h3>
+                                    <p class="price-current">
+                                        '.@str_replace(',' ,'.', number_format($data_model->Price)).'₫
+                                    </p>
+
+                                    
+                                    <p class="prRating">
+                                        
+                                        
+                                    </p>
+                            <a href="'.route('details', $data_model->Link).'" class="btn-buy" target="_blank">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </ul>
+            </div>
+            ';
+
+        } 
+
+       
+        return $rep;
+
+    }
+
+    public function showConvertArea($html)
+    {
+        // Regex để tìm thẻ textarea
+        $pattern = '/<textarea([^>]*)>(.*?)<\/textarea>/s';
+
+        // Thay thế bằng thẻ khác
+        $new_html = preg_replace_callback($pattern, function ($matches) {
+            $content = trim($matches[2]); // Nội dung bên trong thẻ textarea
+            $attributes = $matches[1];   // Thuộc tính của thẻ textarea
+
+            // Có thể chuyển thuộc tính vào class hoặc data-attribute của thẻ mới
+            return $this->returnShowPdBlog(trim($content));
+        }, $html);
+
+        return  $new_html;
+    }
+
    
 
     public function blogDetailView($slug)
@@ -498,6 +581,13 @@ class categoryController extends Controller
 
         $meta = metaSeo::find($data->Meta_id);
 
+    
+        $content = preg_replace("/<a(.*?)>/", "<a$1 target=\"_blank\">",  $data->content);
+
+        $html = $content;
+
+        $new_content =  $this->showConvertArea($html);
+
         $page = 'blogdetail';
 
         $actives_pages_blog = $data->active;
@@ -519,7 +609,7 @@ class categoryController extends Controller
         // }
 
 
-        echo view('frontend.blogdetail',compact( 'name_cate', 'related_news', 'meta', 'data', 'page', 'actives_pages_blog'));
+        echo view('frontend.blogdetail',compact( 'name_cate', 'related_news', 'meta', 'data', 'page', 'actives_pages_blog', 'new_content'));
 
         die();
     }
