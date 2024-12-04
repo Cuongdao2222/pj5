@@ -740,12 +740,12 @@
            
            <div class="option-mbile-sg">
                 <div>
-                    <button class="btn btn-primary optionsg active" data-id="0"><span>Tivi xem Euro</span></button>
+                    <button class="btn btn-primary optionsg active" data-id="0"><span>Tivi màn hình lớn </span></button>
                 </div>
 
-                <div class="ml-2">
+                <!-- <div class="ml-2">
                     <button class="btn btn-primary optionsg" data-id="1"><span>Sản phẩm Luxury</span></button>
-                </div>
+                </div> -->
    
             </div>
             
