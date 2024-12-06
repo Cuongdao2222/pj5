@@ -343,7 +343,6 @@
         
     </section>
 
-
     <section>
 
         <div class="bar-top">
@@ -363,9 +362,7 @@
         </div>
        
         <?php 
-           
-           
-
+         
             if(!empty($deal) && $deal->count()>0 ){
 
                 $timeDeal_star =$deal->first()->start;
@@ -384,9 +381,6 @@
             
 
         ?>
-
-
-
 
         @if($date_flashdeal->isToday())
 
@@ -564,18 +558,11 @@
 
             $ar_Deal_Pd = [];
 
-             
-            dd($deal_check[0]->end);
-
-
         ?>
 
         @if(!empty($deal_check) && $deal_check->count()>0 && $now->between($deal_check[0]->start, $deal_check[0]->end) && $deal_active ===1)
 
        
-
-       
-
 
         <!-- flash sale -->
             <div class="img-flashsale mobiles" style="width: 100%;">
@@ -605,6 +592,9 @@
             </div>
             @endif
 
+
+
+
             
             <div class="mt-1">
                 <div class="flash-sale mouse-mover" style="height: 305px;">
@@ -617,6 +607,8 @@
                             <div id="sync1S" class="slider-banner owl-carousel flash-sale-banner">
 
                                 @foreach($deal as $key => $value)
+
+                               
                                
                                 @if( !empty($value->active) && $value->active ==1 && $now->between($value->start, $value->end))
 
@@ -1580,60 +1572,151 @@
        
 
     ?>
+    <style type="text/css">
+        .snowflake {
+            color: #ddd;
+            }
+            @-webkit-keyframes snowflakes-fall {
+            0% {
+            top: -10%;
+            }
+            100% {
+            top: 100%;
+            }
+            }
+            @-webkit-keyframes snowflakes-shake {
+            0% {
+            -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+            }
+            50% {
+            -webkit-transform: translateX(80px);
+            transform: translateX(80px);
+            }
+            100% {
+            -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+            }
+            }
+            @keyframes snowflakes-fall {
+            0% {
+            top: -10%;
+            }
+            100% {
+            top: 100%;
+            }
+            }
+            @keyframes snowflakes-shake {
+            0% {
+            transform: translateX(0px);
+            }
+            50% {
+            transform: translateX(80px);
+            }
+            100% {
+            transform: translateX(0px);
+            }
+            }
+            .snowflake {
+            position: fixed;
+            top: -10%;
+            z-index: 9999;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            cursor: default;
+            -webkit-animation-name: snowflakes-fall, snowflakes-shake;
+            -webkit-animation-duration: 10s, 3s;
+            -webkit-animation-timing-function: linear, ease-in-out;
+            -webkit-animation-iteration-count: infinite, infinite;
+            -webkit-animation-play-state: running, running;
+            animation-name: snowflakes-fall, snowflakes-shake;
+            animation-duration: 10s, 3s;
+            animation-timing-function: linear, ease-in-out;
+            animation-iteration-count: infinite, infinite;
+            animation-play-state: running, running;
+            }
+            .snowflake:nth-of-type(0) {
+            left: 1%;
+            -webkit-animation-delay: 0s, 0s;
+            animation-delay: 0s, 0s;
+            }
+            .snowflake:nth-of-type(1) {
+            left: 10%;
+            -webkit-animation-delay: 1s, 1s;
+            animation-delay: 1s, 1s;
+            }
+            .snowflake:nth-of-type(2) {
+            left: 20%;
+            -webkit-animation-delay: 6s, 0.5s;
+            animation-delay: 6s, 0.5s;
+            }
+            .snowflake:nth-of-type(3) {
+            left: 30%;
+            -webkit-animation-delay: 4s, 2s;
+            animation-delay: 4s, 2s;
+            }
+            .snowflake:nth-of-type(4) {
+            left: 40%;
+            -webkit-animation-delay: 2s, 2s;
+            animation-delay: 2s, 2s;
+            }
+            .snowflake:nth-of-type(5) {
+            left: 50%;
+            -webkit-animation-delay: 8s, 3s;
+            animation-delay: 8s, 3s;
+            }
+            .snowflake:nth-of-type(6) {
+            left: 60%;
+            -webkit-animation-delay: 6s, 2s;
+            animation-delay: 6s, 2s;
+            }
+            .snowflake:nth-of-type(7) {
+            left: 70%;
+            -webkit-animation-delay: 2.5s, 1s;
+            animation-delay: 2.5s, 1s;
+            }
+            .snowflake:nth-of-type(8) {
+            left: 80%;
+            -webkit-animation-delay: 1s, 0s;
+            animation-delay: 1s, 0s;
+            }
+            .snowflake:nth-of-type(9) {
+            left: 90%;
+            -webkit-animation-delay: 3s, 1.5s;
+            animation-delay: 3s, 1.5s;
+            }
+    </style>
 
 
-
-    
-
-
-    
-    <div class="falling-container" aria-hidden="true">
-        <div class="falling-item">
-            ●
-        </div>
-        <div class="falling-item">
-            ●
-        </div>
-        <div class="falling-item">
-            ●
-        </div>
-        <div class="falling-item">
-            ●
-        </div>
-
-        <div class="falling-item">
-            ●
-        </div>
-        <div class="falling-item">
-            ●
-        </div>
-        <!-- <div class="falling-item">
-            ●
-        </div>
-        <div class="falling-item">
-            ●
-        </div>
-        <div class="falling-item">
-            ●
-        </div>
-        <div class="falling-item">
-            ●
-        </div>
-        <div class="falling-item">
-            ●
-        </div> -->
+    <div class="snowflakes" aria-hidden="true">
+        <div class="snowflake" style="font-size: 30px;">❅</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake" style="font-size: 40px;">❆ </div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake" style="font-size: 30px;">❆</div>
+        <div class="snowflake" style="font-size: 22px;">❅</div>
+        <div class="snowflake" style="font-size: 50px;">❆</div>
+        <div class="snowflake" style="font-size: 20px;">❅</div>
+        <div class="snowflake" style="font-size: 70px;">❆</div>
+        <div class="snowflake" style="font-size: 20px;">❆</div>
     </div>
+   
+
+    
+   
    
     <!-- End -->
 
-    <!-- <div class="pine-tree"> 
-      <img class="pine-tree-left " src="{{ asset('public/background/mai-tree.png')}}" data-was-processed="true"> 
-        <img class="pine-tree-right " src="{{ asset('public/background/dao-tree.png')}}" data-was-processed="true">
-        <img class="tuyet-left loading" src="{{ asset('background/mai-tree.png')}}" data-was-processed="true"> 
-        <img class="tuyet-right loading" src="{{ asset('background/mai-tree.png')}}" data-was-processed="true"> 
-        <img class="santa-left loading" src="{{ asset('background/dao-tree.png')}}" data-was-processed="true"> 
-        <img class="santa-right loading" src="{{ asset('background/dao-tree.png')}}" data-was-processed="true">
-    </div> -->
+    <div class="pine-tree"> 
+      <img class="pine-tree-left " src="{{ asset('background/Asset3@3x.png')}}" data-was-processed="true"> 
+        <img class="pine-tree-right " src="{{ asset('background/Asset3@3x.png')}}" data-was-processed="true">
+        <img class="tuyet-left loading" src="{{ asset('background/Asset5@3x.png')}}" data-was-processed="true"> 
+        <img class="tuyet-right loading" src="{{ asset('background/Asset5@3x.png')}}" data-was-processed="true"> 
+       <!--  <img class="santa-left loading" src="{{ asset('background/dao-tree.png')}}" data-was-processed="true"> 
+        <img class="santa-right loading" src="{{ asset('background/dao-tree.png')}}" data-was-processed="true"> -->
+    </div>
 
      <script src="https://unpkg.com/sweetalert2@7.18.0/dist/sweetalert2.all.js"></script>
    
