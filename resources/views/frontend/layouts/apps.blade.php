@@ -429,9 +429,9 @@
                 width: 20px;
             }
 
-          /*  .header__top {
-                background-color: #000000 !important;
-            }*/
+            .header__top {
+                background-color: #f52222 !important;
+            }
 
             #ui-id-2{
                 background: #fff;
