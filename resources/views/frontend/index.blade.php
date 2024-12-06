@@ -215,6 +215,8 @@
 
         $deal = Cache::get('deals')->sortByDesc('order');
 
+
+
         $add_date = $date_string_flash_deal;
         $time1_start = \Carbon\Carbon::createFromDate($add_date.', 9:00');
         $time1 = \Carbon\Carbon::createFromDate($add_date.', 12:00');
@@ -364,9 +366,11 @@
            
            
 
-            if(!empty($deal)){
+            if(!empty($deal) && $deal->count()>0 ){
 
                 $timeDeal_star =$deal->first()->start;
+
+               
 
                 $timeDeal_star =  \Carbon\Carbon::create($timeDeal_star);
 
@@ -380,6 +384,7 @@
             
 
         ?>
+
 
 
 
@@ -559,9 +564,18 @@
 
             $ar_Deal_Pd = [];
 
+             
+            dd($deal_check[0]->end);
+
+
         ?>
 
         @if(!empty($deal_check) && $deal_check->count()>0 && $now->between($deal_check[0]->start, $deal_check[0]->end) && $deal_active ===1)
+
+       
+
+       
+
 
         <!-- flash sale -->
             <div class="img-flashsale mobiles" style="width: 100%;">
@@ -737,6 +751,9 @@
          @endif 
 
          @endif
+
+
+
           
         <div class="clearfix"></div> 
 
@@ -947,6 +964,8 @@
             
             
         </div>
+
+
         
 
         <div  class="owl-slider-count" style="display: none;">13</div> 
@@ -1476,6 +1495,8 @@
         @endforeach
         <!-- End  -->
 
+
+
         @if(!empty($bannerscrollRight) && !empty($bannerscrollLeft))
         <!-- Banner dọc 2 bên -->
         <div class="sticky-sidebar">
@@ -1560,9 +1581,9 @@
 
     ?>
 
-    
 
-    @if($event_check->active===1)
+
+    
 
 
     
@@ -1602,7 +1623,7 @@
             ●
         </div> -->
     </div>
-    @endif
+   
     <!-- End -->
 
     <!-- <div class="pine-tree"> 
@@ -1631,6 +1652,8 @@
 
         
     @endif
+
+
 
 
     @push('script')
@@ -1835,21 +1858,7 @@
         }
 
       
-        loop = {{ $deal->count() }};
-
-
-        times = [];
-                  
-        time = {{ $timestamp }};
-        number_deal_product =10;
-        //in time 
-      
-        setInterval(function(){
-            for (var i = 0 ; i < loop; i++) {
-                run(i);
-            }
-
-        }, 1000);
+        
 
         // setTimeout(function() {
         //     run(0);

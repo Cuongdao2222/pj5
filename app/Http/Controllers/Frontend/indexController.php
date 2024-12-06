@@ -26,14 +26,24 @@ class indexController extends Controller
 
         $now  = Carbon::now();
 
-        if(!Cache::has('deals')){
-            $deal = deal::get();
+         $deal = Cache::rememberForever('deals', function(){
 
-            Cache::forever('deals',$deal);
+             $deals = deal::get();
 
-        }
+            return $deals;
+        });   
+
+      
 
         $deal = Cache::get('deals')->sortByDesc('order');
+
+        
+
+        // foreach ($deal as $key => $value) {
+        //     print($value);
+
+        //     die;
+        // }
 
         $deal_check = Cache::get('deals')->sortByDesc('end');
 
@@ -55,6 +65,8 @@ class indexController extends Controller
         // $product_sale = Cache::get('sale_products');
 
          $timeDeal_star = Cache::get('deal_start'); 
+
+        
 
 
         if(!Cache::has('groups')||empty($product_sale) ){
