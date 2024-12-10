@@ -2388,19 +2388,19 @@
             number_deal_product =10;
             //in time 
           
-            // setInterval(function(){
-            //     for (var i = 0 ; i < loop; i++) {
-            //         run(i);
-            //     }
+            setInterval(function(){
+                for (var i = 0 ; i < loop; i++) {
+                    run(i);
+                }
 
-            //     @foreach($define as $key => $value)
+                @foreach($define as $key => $value)
 
-            //     runs('.key{{ $key }}');
+                runs('.key{{ $key }}');
 
-            //     @endforeach
+                @endforeach
                 
                 
-            // }, 1000);
+            }, 1000);
 
             function runs(key) {
 
