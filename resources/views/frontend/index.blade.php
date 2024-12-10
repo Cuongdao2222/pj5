@@ -1272,7 +1272,17 @@
                     <div class="box-common__content mouse-mover">
                         <div class="listproduct slider-home" id="banner-product_{{ $dems }}" data-size="{{ $data->count() }}">
 
+                            <?php 
+
+                                $demtv =0;
+                            ?>
+
                             @foreach($data as $key =>$datas)
+
+                            <?php
+
+                                $demtv++;
+                            ?>
 
                             <div class="item"  data-pos="12" id="list_show_group_{{ $key }}">
                                 <a href='{{ route('details', $datas->Link) }}'>
@@ -1467,6 +1477,12 @@
                                 @endif
 
                             </div>
+
+                            <?php
+                                if($demtv>15){
+                                    break;
+                                }
+                            ?>
                             
                             @endforeach
                         
