@@ -1572,140 +1572,22 @@
        
 
     ?>
-    <style type="text/css">
-        .snowflake {
-            color: #ddd;
-            }
-            @-webkit-keyframes snowflakes-fall {
-            0% {
-            top: -10%;
-            }
-            100% {
-            top: 100%;
-            }
-            }
-            @-webkit-keyframes snowflakes-shake {
-            0% {
-            -webkit-transform: translateX(0px);
-            transform: translateX(0px);
-            }
-            50% {
-            -webkit-transform: translateX(80px);
-            transform: translateX(80px);
-            }
-            100% {
-            -webkit-transform: translateX(0px);
-            transform: translateX(0px);
-            }
-            }
-            @keyframes snowflakes-fall {
-            0% {
-            top: -10%;
-            }
-            100% {
-            top: 100%;
-            }
-            }
-            @keyframes snowflakes-shake {
-            0% {
-            transform: translateX(0px);
-            }
-            50% {
-            transform: translateX(80px);
-            }
-            100% {
-            transform: translateX(0px);
-            }
-            }
-            .snowflake {
-            position: fixed;
-            top: -10%;
-            z-index: 9999;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-            cursor: default;
-            -webkit-animation-name: snowflakes-fall, snowflakes-shake;
-            -webkit-animation-duration: 10s, 3s;
-            -webkit-animation-timing-function: linear, ease-in-out;
-            -webkit-animation-iteration-count: infinite, infinite;
-            -webkit-animation-play-state: running, running;
-            animation-name: snowflakes-fall, snowflakes-shake;
-            animation-duration: 10s, 3s;
-            animation-timing-function: linear, ease-in-out;
-            animation-iteration-count: infinite, infinite;
-            animation-play-state: running, running;
-            }
-            .snowflake:nth-of-type(0) {
-            left: 1%;
-            -webkit-animation-delay: 0s, 0s;
-            animation-delay: 0s, 0s;
-            }
-            .snowflake:nth-of-type(1) {
-            left: 10%;
-            -webkit-animation-delay: 1s, 1s;
-            animation-delay: 1s, 1s;
-            }
-            .snowflake:nth-of-type(2) {
-            left: 20%;
-            -webkit-animation-delay: 6s, 0.5s;
-            animation-delay: 6s, 0.5s;
-            }
-            .snowflake:nth-of-type(3) {
-            left: 30%;
-            -webkit-animation-delay: 4s, 2s;
-            animation-delay: 4s, 2s;
-            }
-            .snowflake:nth-of-type(4) {
-            left: 40%;
-            -webkit-animation-delay: 2s, 2s;
-            animation-delay: 2s, 2s;
-            }
-            .snowflake:nth-of-type(5) {
-            left: 50%;
-            -webkit-animation-delay: 8s, 3s;
-            animation-delay: 8s, 3s;
-            }
-            .snowflake:nth-of-type(6) {
-            left: 60%;
-            -webkit-animation-delay: 6s, 2s;
-            animation-delay: 6s, 2s;
-            }
-            .snowflake:nth-of-type(7) {
-            left: 70%;
-            -webkit-animation-delay: 2.5s, 1s;
-            animation-delay: 2.5s, 1s;
-            }
-            .snowflake:nth-of-type(8) {
-            left: 80%;
-            -webkit-animation-delay: 1s, 0s;
-            animation-delay: 1s, 0s;
-            }
-            .snowflake:nth-of-type(9) {
-            left: 90%;
-            -webkit-animation-delay: 3s, 1.5s;
-            animation-delay: 3s, 1.5s;
-            }
-    </style>
-
-
-    <div class="snowflakes" aria-hidden="true">
-        <div class="snowflake" style="font-size: 30px;">❅</div>
-        <div class="snowflake">❅</div>
-        <div class="snowflake" style="font-size: 40px;">❆ </div>
-        <div class="snowflake">❅</div>
-        <div class="snowflake" style="font-size: 30px;">❆</div>
-        <div class="snowflake" style="font-size: 22px;">❅</div>
-        <div class="snowflake" style="font-size: 50px;">❆</div>
-        <div class="snowflake" style="font-size: 20px;">❅</div>
-        <div class="snowflake" style="font-size: 70px;">❆</div>
-        <div class="snowflake" style="font-size: 20px;">❆</div>
-    </div>
+   
    
 
-    
-   
+    <style>
+    #snowflakeContainer{position:absolute;left:0px;top:0px;}
+    .snowflake{padding-left:15px;font-size:14px;line-height:24px;position:fixed;color:#ebebeb;user-select:none;z-index:1000;-moz-user-select:none;-ms-user-select:none;-khtml-user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;}
+    .snowflake:hover {cursor:default}
+</style>
+<div id='snowflakeContainer'>
+<p class='snowflake'>❄</p>
+</div>
+<script style='text/javascript'>
+    //<![CDATA[
+    var requestAnimationFrame=window.requestAnimationFrame||window.mozRequestAnimationFrame||window.webkitRequestAnimationFrame||window.msRequestAnimationFrame;var transforms=["transform","msTransform","webkitTransform","mozTransform","oTransform"];var transformProperty=getSupportedPropertyName(transforms);var snowflakes=[];var browserWidth;var browserHeight;var numberOfSnowflakes=50;var resetPosition=false;function setup(){window.addEventListener("DOMContentLoaded",generateSnowflakes,false);window.addEventListener("resize",setResetFlag,false)}setup();function getSupportedPropertyName(b){for(var a=0;a<b.length;a++){if(typeof document.body.style[b[a]]!="undefined"){return b[a]}}return null}function Snowflake(b,a,d,e,c){this.element=b;this.radius=a;this.speed=d;this.xPos=e;this.yPos=c;this.counter=0;this.sign=Math.random()<0.5?1:-1;this.element.style.opacity=0.5+Math.random();this.element.style.fontSize=4+Math.random()*30+"px"}Snowflake.prototype.update=function(){this.counter+=this.speed/5000;this.xPos+=this.sign*this.speed*Math.cos(this.counter)/40;this.yPos+=Math.sin(this.counter)/40+this.speed/30;setTranslate3DTransform(this.element,Math.round(this.xPos),Math.round(this.yPos));if(this.yPos>browserHeight){this.yPos=-50}};function setTranslate3DTransform(a,c,b){var d="translate3d("+c+"px, "+b+"px, 0)";a.style[transformProperty]=d}function generateSnowflakes(){var b=document.querySelector(".snowflake");var h=b.parentNode;browserWidth=document.documentElement.clientWidth;browserHeight=document.documentElement.clientHeight;for(var d=0;d<numberOfSnowflakes;d++){var j=b.cloneNode(true);h.appendChild(j);var e=getPosition(50,browserWidth);var a=getPosition(50,browserHeight);var c=5+Math.random()*40;var g=4+Math.random()*10;var f=new Snowflake(j,g,c,e,a);snowflakes.push(f)}h.removeChild(b);moveSnowflakes()}function moveSnowflakes(){for(var b=0;b<snowflakes.length;b++){var a=snowflakes[b];a.update()}if(resetPosition){browserWidth=document.documentElement.clientWidth;browserHeight=document.documentElement.clientHeight;for(var b=0;b<snowflakes.length;b++){var a=snowflakes[b];a.xPos=getPosition(50,browserWidth);a.yPos=getPosition(50,browserHeight)}resetPosition=false}requestAnimationFrame(moveSnowflakes)}function getPosition(b,a){return Math.round(-1*b+Math.random()*(a+2*b))}function setResetFlag(a){resetPosition=true};
+    //]]>
+</script>
    
     <!-- End -->
 
