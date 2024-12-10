@@ -2386,7 +2386,21 @@
                       
             time = {{ $timestamp??15500 }};
             number_deal_product =10;
+
+
             //in time 
+
+            setTimeout(function() {
+                for (var i = 0 ; i < loop; i++) {
+                    run(i);
+                }
+
+                @foreach($define as $key => $value)
+
+                runs('.key{{ $key }}');
+
+                @endforeach
+            }, 1000);
           
             // setInterval(function(){
             //     for (var i = 0 ; i < loop; i++) {
@@ -2444,6 +2458,10 @@
         
                 let currentTimeStr ='<span class="hour">'+ currentHour+'</span>:<span class="minutes">'+currentMinutes+'</span>:<span class="second">'+currentSeconds+'</span>';
                 $(key+' .clock').html(currentTimeStr);
+
+                setTimeout(function() {
+                    runs(key);
+                }, 1000);
             }    
 
 
@@ -2549,6 +2567,10 @@
                 $('.time'+key+' .hourss').text(h<10?'0'+hour:''+hour);
                 $('.time'+key+' .secondss').text(s<10?'0'+seconds:''+seconds);
                 $('.time'+key+' .minutess').text(m<10?'0'+minutes:''+minutes); 
+
+                setTimeout(function() {
+                    run(key);
+                }, 1000);
             }
            
                                                                                                                                                                      
