@@ -274,8 +274,11 @@
 
                             <div class="emtry_content Description nd">
                                 <?php 
+                                    if(!empty($new_content)){
+                                        $content = preg_replace("/<a(.*?)>/", "<a$1 target=\"_blank\">",  $new_content);
+                                    }
 
-                                    $content = preg_replace("/<a(.*?)>/", "<a$1 target=\"_blank\">",  $new_content);
+                                    
                                 ?>
                             
                                 {!!   $content  !!}
