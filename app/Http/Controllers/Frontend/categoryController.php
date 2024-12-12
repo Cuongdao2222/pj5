@@ -663,7 +663,9 @@ class categoryController extends Controller
 
         $meta = metaSeo::find($data->Meta_id);
 
-        return view('frontend.blogdetail',compact('name_cate', 'related_news', 'meta', 'data'));
+        $content = $data->content;
+
+        return view('frontend.blogdetail',compact('name_cate', 'related_news', 'meta', 'data', 'content'));
 
     }
     public function index($slug)
