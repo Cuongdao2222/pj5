@@ -435,7 +435,7 @@ class productController extends AppBaseController
 
         $resultProduct = [];
 
-        $find_first = Product::select('id')->where('Name','LIKE', '%'. $data .'%')->OrWhere('ProductSku', 'LIKE', '%' . $data . '%')->OrderBy('id', 'desc')->take(50)->get()->pluck('id');
+        $find_first = Product::select('id')->where('Name','LIKE', '%'. $data .'%')->OrWhere('ProductSku', 'LIKE', '%' . $data . '%')->OrderBy('id', 'desc')->get()->pluck('id');
 
     
         if(isset($find_first)){
@@ -451,7 +451,7 @@ class productController extends AppBaseController
         
         if(isset($resultProduct)){
 
-            $products = Product::whereIn('id', $resultProduct)->paginate(150);
+            $products = Product::whereIn('id', $resultProduct)->paginate(40);
 
             return view('products.index')
             ->with('products', $products);
