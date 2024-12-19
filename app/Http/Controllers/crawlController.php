@@ -141,8 +141,8 @@ class crawlController extends Controller
 
         foreach ($list_pd as $key => $value) {
             
-            dd($value);
-            
+            echo $value.'<br>';
+
         }
     }
 
