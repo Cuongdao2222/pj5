@@ -154,6 +154,8 @@ class crawlController extends Controller
             }
             else{
                 echo "tìm thấy sản phẩm $value bị lỗi";
+
+                die;
             }
 
             
