@@ -34,6 +34,8 @@ Route::post('showDealClick','flashdealController@showDealByIdClick')->name('show
 
 Route::get('checkPSK', 'crawlController@checkProductSku');
 
+Route::get('sua-ton', 'crawlController@edit_ton_gr');
+
 Route::get('flash-deal', 'dealController@dealShowFlash')->name('show-flash-deal');
 
 Route::get('/cache', 'Frontend\indexController@cache')->name('cache');
