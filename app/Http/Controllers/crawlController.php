@@ -135,7 +135,7 @@ class crawlController extends Controller
 
     public function edit_ton_gr()
     {
-        $group = groupProduct::find(12);
+        $group = groupProduct::find(13);
 
         $list_pd =  json_decode($group->product_id);
 
