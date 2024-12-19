@@ -145,11 +145,18 @@ class crawlController extends Controller
             
             $product = product::find($value);
 
-            $product->Quantily = 0;
+            if(!empty($product)){
+                $product->Quantily = 0;
 
-            $product->save();
+                $product->save();
 
-            $dem ++;
+                $dem ++;
+            }
+            else{
+                echo "tìm thấy sản phẩm $value bị lỗi";
+            }
+
+            
 
         }
 
