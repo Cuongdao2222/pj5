@@ -141,6 +141,8 @@ class crawlController extends Controller
 
         $dem = 0;
 
+        $false = [];
+
         foreach ($list_pd as $key => $value) {
             
             $product = product::find($value);
@@ -153,16 +155,18 @@ class crawlController extends Controller
                 $dem ++;
             }
             else{
-                echo "tìm thấy sản phẩm $value bị lỗi";
+                array_push($false, $value);
 
-                die;
             }
 
             
 
         }
 
-        echo "Sửa thành công $dem sản phẩm";
+        echo "<pre>";
+        print_r($false);
+
+        echo"</pre>";
     }
 
     public function remove_active_post()
