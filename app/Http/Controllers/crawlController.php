@@ -139,11 +139,21 @@ class crawlController extends Controller
 
         $list_pd =  json_decode($group->product_id);
 
+        $dem = 0;
+
         foreach ($list_pd as $key => $value) {
             
-            echo $value.'<br>';
+            $product = product::find($value);
+
+            $product->Quantily = 0;
+
+            $product->save();
+
+            $dem ++;
 
         }
+
+        echo "Sửa thành công $dem sản phẩm";
     }
 
     public function remove_active_post()
