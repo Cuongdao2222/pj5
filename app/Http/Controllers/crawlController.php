@@ -136,10 +136,7 @@ class crawlController extends Controller
     public function edit_ton_gr()
     {
 
-        echo "string";
-
-        die;
-        $group = groupProduct::find(2);
+        $group = groupProduct::find(3);
 
         $list_pd =  json_decode($group->product_id);
 
@@ -162,8 +159,6 @@ class crawlController extends Controller
                 array_push($false, $value);
 
             }
-
-            
 
         }
 
