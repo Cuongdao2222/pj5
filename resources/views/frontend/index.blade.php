@@ -792,7 +792,7 @@
                     @foreach($product_sale as $keys => $value)
 
                     
-                    @if($value->active==1 && $dems<10)
+                    @if($value->active==1 && $dems<6)
 
                     <?php 
                         $dems++;
@@ -1479,7 +1479,7 @@
                             </div>
 
                             <?php
-                                if($demtv>=15){
+                                if($demtv>=6){
                                     break;
                                 }
                             ?>
