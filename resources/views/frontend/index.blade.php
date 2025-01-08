@@ -635,7 +635,7 @@
                                 <div class="item" id="items-{{ $key }}">
                                     <a href="{{ route('details', $value->link) }}">
                                         <div class="img">
-                                            <img width="327" src="{{ asset($value->image) }}"  data-src="{{ asset($value->image) }}" title="{{ $value->name }}" class="lazyload">
+                                            <img width="327" src="{{ asset($value->image) }}"   title="{{ $value->name }}" >
                                         </div>
                                     </a>
                                     <div class="desc desc-deal{{$key}}">
