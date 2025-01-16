@@ -1807,7 +1807,7 @@
 }
 
 .falling-item:nth-of-type(3) {
-    left: 40%;
+    left: 30%;
     -webkit-animation-delay: 4s, 2s;
     animation-delay: 4s, 2s;
     font-size: 2.4em;
@@ -1815,7 +1815,7 @@
 }
 
 .falling-item:nth-of-type(4) {
-    left: 50%;
+    left: 40%;
     -webkit-animation-delay: 3s, 1.5s;
     animation-delay: 3s, 1.5s;
     font-size: 2.1em;
@@ -1823,7 +1823,7 @@
 }
 
 .falling-item:nth-of-type(5) {
-    left: 80%;
+    left: 50%;
     -webkit-animation-delay: 2s, 2s;
     animation-delay: 2s, 2s;
     font-size: 2.3em;
@@ -1831,11 +1831,26 @@
 }
 
 .falling-item:nth-of-type(6) {
-    left: 90%;
+    left: 60%;
     -webkit-animation-delay: 1s, 0s;
     animation-delay: 1s, 0s;
     font-size: 2.2em;
     background-image: url(//cdn.tgdd.vn/mwgcart/mwg-site/ContentMwg/images/lunar_new_year/Flower/yellow_6-min.png)
+}
+.falling-item:nth-of-type(7) {
+    left: 70%;
+    -webkit-animation-delay: 1s, 0s;
+    animation-delay: 1s, 0s;
+    font-size: 2.2em;
+    background-image: url(//cdn.tgdd.vn/mwgcart/mwg-site/ContentMwg/images/lunar_new_year/Flower/yellow_5-min.png)
+}
+
+.falling-item:nth-of-type(8) {
+    left: 80%;
+    -webkit-animation-delay: 1s, 0s;
+    animation-delay: 1s, 0s;
+    font-size: 2.2em;
+    background-image: url(//cdn.tgdd.vn/mwgcart/mwg-site/ContentMwg/images/lunar_new_year/Flower/yellow_4-min.png)
 }
 
     </style>
@@ -1866,15 +1881,7 @@
         <div class="falling-item">
             ●
         </div>
-        <div class="falling-item">
-            ●
-        </div>
-        <div class="falling-item">
-            ●
-        </div>
-        <div class="falling-item">
-            ●
-        </div>
+       
     </div>
 
    
