@@ -830,6 +830,7 @@
                 left: 0;
                 top: 0;
                 background-repeat: no-repeat;
+                display: none;
             }   
             .header-pc{
                 height: 80px;
