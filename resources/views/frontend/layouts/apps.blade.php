@@ -817,6 +817,7 @@
                 top: 0;
                 right: 0;
                 background-repeat: no-repeat;
+                display: none;
             }
 
             .theme-xmas.header:before {
