@@ -1791,7 +1791,7 @@
     -webkit-animation-delay: 6s, .5s;
     animation-delay: 6s, .5s;
     font-size: 2.5em;
-    background-image: url({{ asset('image/post/tet') }}/pink_1-min.png)
+    background-image: url({{ asset('image/posts/tet') }}/pink_1-min.png)
 }
 
 .falling-item:nth-of-type(2) {
@@ -1799,7 +1799,7 @@
     -webkit-animation-delay: 5s, 5.5s;
     animation-delay: 5s, 5.5s;
     font-size: 1.9em;
-    background-image: url({{ asset('image/post/tet') }}/yellow_2-min.png)
+    background-image: url({{ asset('image/posts/tet') }}/yellow_2-min.png)
 }
 
 .falling-item:nth-of-type(3) {
@@ -1807,7 +1807,7 @@
     -webkit-animation-delay: 4s, 2s;
     animation-delay: 4s, 2s;
     font-size: 2.4em;
-    background-image: url({{ asset('image/post/tet') }}/pink_3-min.png)
+    background-image: url({{ asset('image/posts/tet') }}/pink_3-min.png)
 }
 
 .falling-item:nth-of-type(4) {
@@ -1815,7 +1815,7 @@
     -webkit-animation-delay: 3s, 1.5s;
     animation-delay: 3s, 1.5s;
     font-size: 2.1em;
-    background-image: url({{ asset('image/post/tet') }}/yellow_4-min.png)
+    background-image: url({{ asset('image/posts/tet') }}/yellow_4-min.png)
 }
 
 .falling-item:nth-of-type(5) {
@@ -1823,7 +1823,7 @@
     -webkit-animation-delay: 2s, 2s;
     animation-delay: 2s, 2s;
     font-size: 2.3em;
-    background-image: url({{ asset('image/post/tet') }}/pink_5-min.png)
+    background-image: url({{ asset('image/posts/tet') }}/pink_5-min.png)
 }
 
 .falling-item:nth-of-type(6) {
@@ -1831,14 +1831,14 @@
     -webkit-animation-delay: 1s, 0s;
     animation-delay: 1s, 0s;
     font-size: 2.2em;
-    background-image: url({{ asset('image/post/tet') }}/yellow_6-min.png)
+    background-image: url({{ asset('image/posts/tet') }}/yellow_6-min.png)
 }
 .falling-item:nth-of-type(7) {
     left: 70%;
     -webkit-animation-delay: 1s, 0s;
     animation-delay: 1s, 0s;
     font-size: 2.2em;
-    background-image: url({{ asset('image/post/tet') }}/yellow_5-min.png)
+    background-image: url({{ asset('image/posts/tet') }}/yellow_5-min.png)
 }
 
 .falling-item:nth-of-type(8) {
@@ -1846,7 +1846,7 @@
     -webkit-animation-delay: 1s, 0s;
     animation-delay: 1s, 0s;
     font-size: 2.2em;
-    background-image: url({{ asset('image/post/tet') }}/yellow_4-min.png)
+    background-image: url({{ asset('image/posts/tet') }}/yellow_4-min.png)
 }
 
     </style>
