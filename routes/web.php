@@ -252,7 +252,9 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::get('product-new-crawl', 'productController@newCrawl')->name('product');
 
-    Route::get('update-sheet-data-post', 'productController@update_sheet_data_post')->name('update-sheet->post');
+    // Route::get('update-sheet-data-post', 'productController@update_sheet_data_post')->name('update-sheet post');
+
+    Route::post('update-data-sheet-price-ajax', 'productController@showDataAjaxUpdateToSheet')->name('update data price sheet api');
 
     Route::get('add-css', 'mainController@addCss')->name('addcss');
 

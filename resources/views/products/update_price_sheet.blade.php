@@ -28,7 +28,12 @@
 
     <div style="height:100px"></div>
 
-    <a href="{{ Route('update-sheet->post') }}">cập nhật giá từ sheet</a>
+  
+
+     <a href="javascript:void(0)" onclick="updatePreviousRow()">cập nhật giá từ sheet</a>
+
+
+
     <div>
         <h1>Bảng Giá Sản Phẩm</h1>
     </div>
@@ -77,6 +82,8 @@
                         $old_data_price = DB::table('history_product')->select('price_old')->where('product_id', $product->id)->get()->last();
                     }
 
+
+
                     
                 ?>
                 <td>{{ @str_replace(',' ,'.', number_format( str_replace('.', '', $product->Price))) }}</td>
@@ -87,7 +94,16 @@
                 @endif
                 <td>{{ @Carbon\Carbon::parse($product->updated_at)->format('d/m/Y H:i:s') }}</td>
                 <td>{{ @$product->ProductSku }}</td>
-                <td>Pending</td>
+
+                <?php 
+
+                    $status ='';
+
+                    if(!empty($product->Price)){
+                        $status = intval(str_replace('.', '', $val[1]))=== intval(str_replace('.', '', $product->Price))?'done':'pending';
+                    }    
+                ?>
+                <td>{{  $status  }}</td>
             </tr>
             @endforeach
             @endif
@@ -100,7 +116,7 @@
              // Lấy bảng
             const table = document.getElementById('priceTable');
 
-            const totalRows = table.rows.length;
+            // const totalRows = table.rows.length;
 
             
             // Kiểm tra dòng trên có tồn tại không
@@ -124,29 +140,56 @@
             console.log(totalRows);
         }
 
-        // ['1','83M4PSA', '145.000.000', '145.000.000', '', '2025-01-23', '83M4PSA', 'done'];
 
-        // function updatePreviousRow(currentRowIndex, newData) {
-        //     // Lấy bảng
-        //     const table = document.getElementById('priceTable');
 
-        //     // Kiểm tra nếu dòng trước tồn tại
-        //     if (currentRowIndex <= 1) {
-        //         alert('Không có dòng trên để cập nhật!');
-        //         return;
-        //     }
+        
 
-        //     // Lấy dòng trên
-        //     const previousRow = table.rows[currentRowIndex - 1];
+        function updatePreviousRow() {
+            table = document.getElementById('priceTable');
+            const totalRows = table.rows.length;
 
-        //     // Cập nhật dữ liệu  trong dòng trên
+            // parseInt(totalRows)
+            for (i = 2; i <= totalRows; i++) {
+
+                currentRowIndex =i;
+                 // Lấy dòng trên
+                const previousRow = table.rows[currentRowIndex - 1];
+
+                // Duyệt qua các ô của dòng trên và lấy dữ liệu
+                const rowData = [];
+                for (let cell of previousRow.cells) {
+                    rowData.push(cell.textContent.trim());
+                }
+               
+
+                $.ajax({
+                    type: 'POST',
+                    url: "{{ route('update data price sheet api') }}",
+                    data: {
+                        data:   JSON.stringify(rowData)
+                       
+                    },
+                   
+                    success: function(result){
+
+
+                        console.log(result);
+                        newData = result;
+
+                        // // Lấy dòng trên
+                     
+                       
+                         // Cập nhật dữ liệu từng ô trong dòng trên
+                        for (let j = 0; j < previousRow.cells.length; j++) {
+                            previousRow.cells[j].textContent = newData[j] || previousRow.cells[j].textContent;
+                        }
+                        
+                    }
+                });
+
+            }
            
-        //     previousRow.cells[currentRowIndex].textContent = newData;
-
-           
-
-        //     // alert(`Dòng trên (dòng ${currentRowIndex - 1}) đã được cập nhật!`);
-        // }
+        }
     </script>
 </body>
 

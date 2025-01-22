@@ -161,6 +161,35 @@ class productController extends AppBaseController
         return redirect()->back();
     }
 
+    public function showDataAjaxUpdateToSheet(Request $request)
+    {
+        $data = json_decode($request->data);
+
+        $product = DB::table('products')->select('Price', 'id', 'ProductSku')->where('ProductSku', $data[1])->first();
+        $price_new = str_replace('.', '', $data[2]);
+        if(!empty($product)){
+
+            $products_history   = new historyPd();
+            $products_history->product_id = $product->id;
+            $products_history->user_id = Auth::user()->id;
+
+            $products_history->price_old =  $product->Price;
+
+            $products_history->save();
+
+
+
+            $update = product::find($product->id);
+            $update->price = str_replace('.', '', $price_new);
+            $update->save();
+        }
+
+        $data[7] = 'done';
+
+        return $data;    
+
+    }
+
 
 
     
