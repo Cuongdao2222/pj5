@@ -161,15 +161,14 @@
     </a>
 </li>
 
+@endif
 
 <li class="nav-item">
-    <a href="{{ route('product-new-crawl') }}"
+    <a href="{{ route('products.index') }}"
        class="nav-link {{ Request::is('products*') ? 'active' : '' }}">
-        <p>Sản phẩm mới crawl</p>
+        <p>update giá từ sheet</p>
     </a>
 </li>
-
-@endif
 
 @if(Auth::user()->permision == 3)
 

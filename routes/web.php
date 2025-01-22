@@ -250,6 +250,10 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::get('product-new-crawl', 'productController@newCrawl')->name('product-new-crawl');
 
+    Route::get('product-new-crawl', 'productController@newCrawl')->name('product');
+
+    Route::get('update-sheet-data-post', 'productController@update_sheet_data_post')->name('update-sheet->post');
+
     Route::get('add-css', 'mainController@addCss')->name('addcss');
 
     Route::resource('discount', 'discountController');
@@ -273,6 +277,10 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
     Route::post('/edit-fast-Qualtity', 'productController@editFastQualtity')->name('edit-fast-qualtity');
 
     Route::post('/edit-sale-order', 'productController@editSaleOrder')->name('edit-sale-order');
+
+    Route::get('/update-price-sheet-data', 'productController@update_price_sheet_data')->name('update_price_sheet_data');
+
+    
 
     Route::get('update-permision', 'customnUserController@updatePermision')->name('updatePermission');
 

@@ -95,6 +95,73 @@ class productController extends AppBaseController
 
     }
 
+    public function update_price_sheet_data()
+    {
+        $context = stream_context_create(array(
+            'http' => array(
+                
+                'method' => 'GET',
+
+                'header' => "Content-Type: application/x-www-form-urlencoded\r\n".
+                            "token: eecc19a1cabb51a5080f6f56399f7e82",
+                
+            )
+        ));
+
+        $link_api ='https://api.dienmaynguoiviet.net/api/show-price-sheet-data';
+
+        $response = json_decode(file_get_contents($link_api, FALSE, $context));
+
+        return view('products.update_price_sheet', compact('response'));
+
+    }
+
+    public function update_sheet_data_post()
+    {
+        $context = stream_context_create(array(
+            'http' => array(
+                
+                'method' => 'GET',
+
+                'header' => "Content-Type: application/x-www-form-urlencoded\r\n".
+                            "token: eecc19a1cabb51a5080f6f56399f7e82",
+                
+            )
+        ));
+
+        $link_api ='https://api.dienmaynguoiviet.net/api/show-price-sheet-data';
+
+        $response = json_decode(file_get_contents($link_api, FALSE, $context));
+
+
+        if(!empty($response->values)){
+
+            foreach($response->values as $val){
+
+                $product = DB::table('products')->select('Price', 'id', 'ProductSku')->where('ProductSku', $val[0])->first();
+
+                if(!empty($product)){
+
+                    $products_history   = new historyPd();
+                    $products_history->product_id = $product->id;
+                    $products_history->user_id = Auth::user()->id;
+
+                    $products_history->price_old =  $product->Price;
+
+                    $products_history->save();
+
+                    $update = product::find($product->id);
+                    $update->price = str_replace('.', '', $val[1]);
+                    $update->save();
+                }
+
+            }
+        }
+
+        return redirect()->back();
+    }
+
+
 
     
 
@@ -251,6 +318,7 @@ class productController extends AppBaseController
 
         return view('products.edit')->with('product', $product);
     }
+
 
     /**
      * Update the specified product in storage.
