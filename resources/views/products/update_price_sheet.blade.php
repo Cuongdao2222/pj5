@@ -172,13 +172,8 @@
                    
                     success: function(result){
 
-
-                        console.log(result);
                         newData = result;
 
-                        // // Lấy dòng trên
-                     
-                       
                          // Cập nhật dữ liệu từng ô trong dòng trên
                         for (let j = 0; j < previousRow.cells.length; j++) {
                             previousRow.cells[j].textContent = newData[j] || previousRow.cells[j].textContent;
