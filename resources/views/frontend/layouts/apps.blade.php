@@ -262,6 +262,33 @@
                 box-shadow: none !important;
             }
 
+/*            popup*/
+
+            .box-promotion img{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            .box-promotion-item{
+               
+                position: fixed;
+                inset: 0;
+                background: rgba(0, 0, 0, 0.7);
+                z-index: 9999;
+                width: 100%;
+                height: 100%;
+            }
+
+            .box-promotion-close{
+                position: absolute;
+                top:0;
+
+                color: red;
+                font-size: 25px;
+            }
+
             .main-menu{
                 width: 240px;
             }
@@ -1208,7 +1235,7 @@
         @if($popup->option ==0)
 
         <div id="box-promotion" class="box-promotion box-promotion-active">
-            <div class="box-promotion-item" style="width: 500px;height: 500px;left: 34%;top: 23%;">
+            <div class="box-promotion-item" style="width: 100%;height: 100%;">
                 <div class="box-banner">
                     <a href="{{ $popup->link }}" target="_blank" rel="nofollow"><img src="{{ asset( $popup->image) }}" alt="pop-up"></a>
                 </div>
@@ -1219,7 +1246,7 @@
 
         @if(!empty($requestcheck)&& \Request::route()->getName() =="homeFe")
         <div id="box-promotion" class="box-promotion box-promotion-active">
-            <div class="box-promotion-item" style="width: 500px;height: 500px;left: 34%;top: 23%;">
+            <div class="box-promotion-item" style="width: 100%;height: 100%;">
                 <div class="box-banner">
                     <a href="{{ $popup->link }}" target="_blank" rel="nofollow"><img src="{{ asset( $popup->image) }}" alt="pop-up"></a>
                 </div>
