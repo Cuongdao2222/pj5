@@ -264,11 +264,14 @@
 
 /*            popup*/
 
-            .box-promotion img{
+            #box-promotion .box-banner{
                 position: absolute;
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%);
+                width: 540px;
+                height: 540px;
+                
             }
 
             .box-promotion-item{
@@ -1238,8 +1241,9 @@
             <div class="box-promotion-item" style="width: 100%;height: 100%;">
                 <div class="box-banner">
                     <a href="{{ $popup->link }}" target="_blank" rel="nofollow"><img src="{{ asset( $popup->image) }}" alt="pop-up"></a>
+                    <a class="box-promotion-close" href="javascript:void(0)" title="Đóng lại">x</a>
                 </div>
-                <a class="box-promotion-close" href="javascript:void(0)" title="Đóng lại">x</a>
+                
             </div>
         </div>
         @else
@@ -1249,8 +1253,9 @@
             <div class="box-promotion-item" style="width: 100%;height: 100%;">
                 <div class="box-banner">
                     <a href="{{ $popup->link }}" target="_blank" rel="nofollow"><img src="{{ asset( $popup->image) }}" alt="pop-up"></a>
+                    <a class="box-promotion-close" href="javascript:void(0)" title="Đóng lại">[x]</a>
                 </div>
-                <a class="box-promotion-close" href="javascript:void(0)" title="Đóng lại">[x]</a>
+                
             </div>
         </div>
 
@@ -3137,6 +3142,35 @@
                 $('.client-login').show();
             }
         })
+
+        var close_popup =1; 
+
+        // Select the element by class name
+        const targetDiv = document.querySelector('.box-banner');
+
+        if(close_popup==1){
+            // Add a click event listener to the document
+            document.addEventListener('click', (event) => {
+                // Check if the clicked element is outside the target div
+                if (!targetDiv.contains(event.target)) {
+                    if ( typeof(Storage) !== "undefined") {
+                   
+                        sessionStorage.setItem('popup','1');
+                       
+                       
+                    } else {
+                        alert('Trình duyệt của bạn đã quá cũ. Hãy nâng cấp trình duyệt ngay!');
+                    }
+                    $('.box-promotion-active').hide();
+
+                    close_popup=0;
+                    
+                }
+            });
+
+        }
+
+        
 
        
     
