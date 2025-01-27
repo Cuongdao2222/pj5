@@ -28,7 +28,6 @@
     @push('style')
 
         <link rel="stylesheet" type="text/css" href="{{ asset('css/home.css') }}?ver=30">
-  
         <link rel="stylesheet" type="text/css" href="{{ asset('css/index.css') }}?ver=4">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/homes.css') }}?ver=13">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/homecs.css') }}?ver=22">
