@@ -262,6 +262,36 @@
                 box-shadow: none !important;
             }
 
+/*            popup*/
+
+            #box-promotion .box-banner{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 540px;
+                height: 540px;
+                
+            }
+
+            .box-promotion-item{
+               
+                position: fixed;
+                inset: 0;
+                background: rgba(0, 0, 0, 0.7);
+                z-index: 9999;
+                width: 100%;
+                height: 100%;
+            }
+
+            .box-promotion-close{
+                position: absolute;
+                top:0;
+
+                color: red;
+                font-size: 25px;
+            }
+
             .main-menu{
                 width: 240px;
             }
@@ -1208,22 +1238,24 @@
         @if($popup->option ==0)
 
         <div id="box-promotion" class="box-promotion box-promotion-active">
-            <div class="box-promotion-item" style="width: 500px;height: 500px;left: 34%;top: 23%;">
+            <div class="box-promotion-item" style="width: 100%;height: 100%;">
                 <div class="box-banner">
                     <a href="{{ $popup->link }}" target="_blank" rel="nofollow"><img src="{{ asset( $popup->image) }}" alt="pop-up"></a>
+                    <a class="box-promotion-close" href="javascript:void(0)" title="Đóng lại">x</a>
                 </div>
-                <a class="box-promotion-close" href="javascript:void(0)" title="Đóng lại">x</a>
+                
             </div>
         </div>
         @else
 
         @if(!empty($requestcheck)&& \Request::route()->getName() =="homeFe")
         <div id="box-promotion" class="box-promotion box-promotion-active">
-            <div class="box-promotion-item" style="width: 500px;height: 500px;left: 34%;top: 23%;">
+            <div class="box-promotion-item" style="width: 100%;height: 100%;">
                 <div class="box-banner">
                     <a href="{{ $popup->link }}" target="_blank" rel="nofollow"><img src="{{ asset( $popup->image) }}" alt="pop-up"></a>
+                    <a class="box-promotion-close" href="javascript:void(0)" title="Đóng lại">[x]</a>
                 </div>
-                <a class="box-promotion-close" href="javascript:void(0)" title="Đóng lại">[x]</a>
+                
             </div>
         </div>
 
@@ -3110,6 +3142,35 @@
                 $('.client-login').show();
             }
         })
+
+        var close_popup =1; 
+
+        // Select the element by class name
+        const targetDiv = document.querySelector('.box-banner');
+
+        if(close_popup==1){
+            // Add a click event listener to the document
+            document.addEventListener('click', (event) => {
+                // Check if the clicked element is outside the target div
+                if (!targetDiv.contains(event.target)) {
+                    if ( typeof(Storage) !== "undefined") {
+                   
+                        sessionStorage.setItem('popup','1');
+                       
+                       
+                    } else {
+                        alert('Trình duyệt của bạn đã quá cũ. Hãy nâng cấp trình duyệt ngay!');
+                    }
+                    $('.box-promotion-active').hide();
+
+                    close_popup=0;
+                    
+                }
+            });
+
+        }
+
+        
 
        
     
