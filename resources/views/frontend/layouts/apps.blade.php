@@ -1240,7 +1240,7 @@
         <div id="box-promotion" class="box-promotion box-promotion-active">
             <div class="box-promotion-item" style="width: 100%;height: 100%;">
                 <div class="box-banner">
-                    <a href="{{ $popup->link }}" target="_blank" rel="nofollow"><img src="{{ asset( $popup->image) }}" alt="pop-up"></a>
+                   <img src="{{ asset( $popup->image) }}" alt="pop-up">
                     <a class="box-promotion-close" href="javascript:void(0)" title="Đóng lại">x</a>
                 </div>
                 
