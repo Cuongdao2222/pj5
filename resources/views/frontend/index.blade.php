@@ -2149,7 +2149,7 @@
             var hour =  $('.time'+key+' .hourss').text();
             var minutes =  $('.time'+key+' .minutess').text();
             var second =  $('.time'+key+' .secondss').text();
-            console.log(hour)
+            
             h =  parseInt(hour);
             m = parseInt(minutes);
             s = parseInt(second);
