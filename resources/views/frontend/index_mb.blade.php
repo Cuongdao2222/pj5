@@ -588,11 +588,20 @@
                         <div class="col-flash col-flash-2 active">
                             <div id="sync1S" class="slider-banner owl-carousel flash-sale-banner">
 
+                                <?php 
+
+                                    $key_dem = -1;
+                                ?>
+
                                 @foreach($deal as $key => $value)
+
+
                                
                                 @if( !empty($value->active) && $value->active ==1 && $now->between($value->start, $value->end))
 
                                 <?php 
+                                    $key_dem++;
+
                                     $timestamp = $now->diffInSeconds($value->end);
                                     $hour =  floor($timestamp/3600);
                                     $timestamp = floor($timestamp % 3600);
@@ -669,7 +678,7 @@
                                             </div>
                                             <div style="width: 100%; height: 1px; background: #ECECEC; margin-top: 8px"></div>
                                             <div class="countdown-flash-sale mobiles">
-                                                <div class="time-cd time-fl time{{ $key }}">
+                                                <div class="time-cd time-fl time{{ $key_dem }}">
 
                                                     <span class="timestamp" style="display: none;">{{   $now->diffInSeconds($value->end) }}</span>
                                                    
