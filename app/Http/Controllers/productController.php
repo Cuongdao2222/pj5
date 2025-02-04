@@ -182,6 +182,8 @@ class productController extends AppBaseController
             $update = product::find($product->id);
             $update->price = str_replace('.', '', $price_new);
             $update->save();
+
+            Cache::forget('data-detail'.$update->Link);
         }
 
         $data[7] = 'done';
