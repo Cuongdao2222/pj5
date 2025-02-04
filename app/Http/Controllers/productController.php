@@ -187,7 +187,6 @@ class productController extends AppBaseController
                 Cache::forget('data-detail'.$update->Link);
             }
 
-            
         }
 
         $data[7] = 'done';
