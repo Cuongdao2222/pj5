@@ -50,6 +50,7 @@ $search = $_GET['search']??'';
 @endif
 
 <div class="table-responsive">
+    <a href="{{ route('update_price_sheet_data') }}">update giá sản phẩm từ sheet</a>
     <table class="table" id="products-table">
         <thead>
         <tr>

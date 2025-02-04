@@ -185,7 +185,8 @@ class productController extends AppBaseController
         }
 
         $data[7] = 'done';
-
+        $data[3] = $price_new;
+ 
         return $data;    
 
     }
