@@ -172,12 +172,16 @@
                    
                     success: function(result){
 
-                        newData = result;
+                        // console.log(result);
 
-                         // Cập nhật dữ liệu từng ô trong dòng trên
-                        for (let j = 0; j < previousRow.cells.length; j++) {
-                            previousRow.cells[j].textContent = newData[j] || previousRow.cells[j].textContent;
-                        }
+                        window.location.reload();
+
+                        // newData = result;
+
+                        //  // Cập nhật dữ liệu từng ô trong dòng trên
+                        // for (let j = 0; j < previousRow.cells.length; j++) {
+                        //     previousRow.cells[j].textContent = newData[j] || previousRow.cells[j].textContent;
+                        // }
                         
                     }
                 });

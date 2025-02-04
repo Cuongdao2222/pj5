@@ -163,42 +163,60 @@ class productController extends AppBaseController
 
     public function showDataAjaxUpdateToSheet(Request $request)
     {
-        $data = json_decode($request->data);
 
-        $product = DB::table('products')->select('Price', 'id', 'ProductSku')->where('ProductSku', $data[1])->first();
-        $price_new = str_replace('.', '', $data[2]);
-        if(!empty($product)){
+         $context = stream_context_create(array(
+            'http' => array(
+                
+                'method' => 'GET',
+
+                'header' => "Content-Type: application/x-www-form-urlencoded\r\n".
+                            "token: eecc19a1cabb51a5080f6f56399f7e82",
+                
+            )
+        ));
+
+        $link_api ='https://api.dienmaynguoiviet.net/api/show-price-sheet-data';
+
+        $response = json_decode(file_get_contents($link_api, FALSE, $context));
+
+        $data = $response->values;
+
+        if(!empty($data)){
+            foreach ($data as $key => $value) {
+            
+                $product = DB::table('products')->select('Price', 'id', 'ProductSku')->where('ProductSku', $value[0])->first();
+                $price_new = str_replace('.', '', $value[1]);
+                if(!empty($product)){
 
 
 
-            $products_history   = new historyPd();
-            $products_history->product_id = $product->id;
-            $products_history->user_id = Auth::user()->id;
+                    $products_history   = new historyPd();
+                    $products_history->product_id = $product->id;
+                    $products_history->user_id = Auth::user()->id;
 
-            $products_history->price_old =  $product->Price;
+                    $products_history->price_old =  $product->Price;
 
-            $price_repair = str_replace('.', '', $price_new);
+                    $price_repair = str_replace('.', '', $price_new);
 
-            if(intval($products_history->price_old)!= intval($price_repair)){
-                $products_history->save();
-                $update = product::find($product->id);
-                $update->price = str_replace('.', '', $price_new);
-                $update->save();
-                Cache::forget('data-detail'.$update->Link);
+                    if(intval($products_history->price_old)!= intval($price_repair)){
+                        $products_history->save();
+                        $update = product::find($product->id);
+                        $update->price = str_replace('.', '', $price_new);
+                        $update->save();
+                        Cache::forget('data-detail'.$update->Link);
+                    }
+
+                }
+
             }
 
         }
 
-        $data[7] = 'done';
-        // $data[3] = $price_new;
- 
-        return $data;    
+    
 
     }
 
 
-
-    
 
     /**
      * Store a newly created product in storage.
