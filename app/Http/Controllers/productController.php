@@ -169,25 +169,29 @@ class productController extends AppBaseController
         $price_new = str_replace('.', '', $data[2]);
         if(!empty($product)){
 
+
+
             $products_history   = new historyPd();
             $products_history->product_id = $product->id;
             $products_history->user_id = Auth::user()->id;
 
             $products_history->price_old =  $product->Price;
 
-            $products_history->save();
+            $price_repair = str_replace('.', '', $price_new);
 
+            if(intval($products_history->price_old)!= intval($price_repair)){
+                $products_history->save();
+                $update = product::find($product->id);
+                $update->price = str_replace('.', '', $price_new);
+                $update->save();
+                Cache::forget('data-detail'.$update->Link);
+            }
 
-
-            $update = product::find($product->id);
-            $update->price = str_replace('.', '', $price_new);
-            $update->save();
-
-            Cache::forget('data-detail'.$update->Link);
+            
         }
 
         $data[7] = 'done';
-        $data[3] = $price_new;
+        // $data[3] = $price_new;
  
         return $data;    
 
