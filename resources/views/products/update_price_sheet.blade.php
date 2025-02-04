@@ -88,7 +88,7 @@
                 ?>
                 <td>{{ @str_replace(',' ,'.', number_format( str_replace('.', '', $product->Price))) }}</td>
                 @if(!empty($product->id) && !empty($old_data_price))
-                <td>{{ @str_replace(',' ,'.', number_format( str_replace('.', '', $old_data_price->price_old)))  }}</td>
+                <td>{{ @str_replace(',' ,'.', number_format( str_replace('.', '', $old_data_price->price_old)))  }} <a href="{{ route('view-history', $product->id) }}"> lịch sử giá</a></td>
                 @else
                 <td></td>
                 @endif
