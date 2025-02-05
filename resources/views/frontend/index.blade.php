@@ -749,7 +749,7 @@
         <div class="clearfix"></div> 
 
      
-        <div class="prd-promo has-banner" style="background: #f52222;" data-html-id="3109">
+        <div class="prd-promo has-banner" style="background: #CBEBFB;" data-html-id="3109">
 
             @if(!empty($bannerUnderSale[0]['image']))
 
