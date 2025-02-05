@@ -120,6 +120,10 @@
                     width: 100%;
                     height: 260px;
                 }    
+
+                .owl-carousel .owl-item img{
+                    height: 100% !important;
+                }
             } 
 
             .gvdshock {
