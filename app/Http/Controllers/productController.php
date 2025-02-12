@@ -187,9 +187,6 @@ class productController extends AppBaseController
                 $product = DB::table('products')->select('Price', 'id', 'ProductSku')->where('ProductSku', $value[0])->first();
                 $price_new = str_replace('.', '', $value[1]);
                 if(!empty($product)){
-
-
-
                     $products_history   = new historyPd();
                     $products_history->product_id = $product->id;
                     $products_history->user_id = Auth::user()->id;
@@ -212,11 +209,7 @@ class productController extends AppBaseController
 
         }
 
-    
-
     }
-
-
 
     /**
      * Store a newly created product in storage.

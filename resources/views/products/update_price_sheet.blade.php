@@ -145,6 +145,13 @@
         
 
         function updatePreviousRow() {
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            
             table = document.getElementById('priceTable');
             const totalRows = table.rows.length;
 
