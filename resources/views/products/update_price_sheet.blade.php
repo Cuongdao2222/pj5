@@ -53,14 +53,14 @@
         </thead>
         <tbody>
 
-            @if(!empty($response->values))
+            @if(!empty($response['values']))
 
             <?php 
 
                 $dem =0;
             ?>
 
-            @foreach($response->values as $val)
+            @foreach($response['values'] as $val)
 
             <?php 
 

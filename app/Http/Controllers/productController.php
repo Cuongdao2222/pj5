@@ -148,19 +148,26 @@ class productController extends AppBaseController
         ));
 
         $link_api ='https://api.dienmaynguoiviet.net/api/show-price-sheet-data';
-
-        try {
             
-            $data = $this->check_error_api($link_api);
-            $response = json_decode(file_get_contents($link_api, FALSE, $context));
+        $response = $this->check_error_api($link_api);
 
-            return view('products.update_price_sheet', compact('response'));
-           
-        } catch (Exception $e) {
-            echo "Xin vui lòng thử f5 lại sau 1 phút";
+      
+
+        if(!empty($response['values'])){
+
+          
+             return view('products.update_price_sheet', compact('response'));
         }
+        else{
+            echo "Xin vui lòng thử f5 lại sau 1 phút";
+            die;
+        }    
+        // }
+        // $response = json_decode(file_get_contents($link_api, FALSE, $context));
 
-        
+        // // return view('products.update_price_sheet', compact('response'));
+
+        // dd($response);
 
     }
 
