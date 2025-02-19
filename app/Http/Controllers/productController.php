@@ -95,6 +95,45 @@ class productController extends AppBaseController
 
     }
 
+    public function check_error_api()
+    {
+       $ch = curl_init($url);
+
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            "Content-Type: application/x-www-form-urlencoded",
+            "token: eecc19a1cabb51a5080f6f56399f7e82"
+        ]);
+
+        $response = curl_exec($ch);
+        $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        $error = curl_error($ch);
+
+        curl_close($ch);
+
+        if ($error) {
+            throw new Exception("❌ Lỗi cURL: " . $error);
+        }
+
+        if ($http_code == 500) {
+            throw new Exception("❌ API lỗi 500: Internal Server Error");
+        } elseif ($http_code == 403) {
+            throw new Exception("🚫 API lỗi 403: Không có quyền truy cập!");
+        } elseif ($http_code == 404) {
+            throw new Exception("🔍 API lỗi 404: Không tìm thấy API!");
+        }
+
+        $data = json_decode($response, true);
+        if ($data === null) {
+            throw new Exception("⚠️ Lỗi JSON: Không thể parse dữ liệu!");
+        }
+
+        return $data;
+    }
+
     public function update_price_sheet_data()
     {
         $context = stream_context_create(array(
@@ -110,18 +149,18 @@ class productController extends AppBaseController
 
         $link_api ='https://api.dienmaynguoiviet.net/api/show-price-sheet-data';
 
-        $check_err_api = @file_get_contents($link_api, FALSE, $context);
+        try {
+            
+            $data = $this->fetchApiData($link_api);
+            $response = json_decode(file_get_contents($link_api, FALSE, $context));
 
-        if($check_err_api=== FALSE){
-
-            echo "xin chờ 1 phút rồi F5 lại";//quá quota đọc sheet của api google sheet
-
-            die;
+            return view('products.update_price_sheet', compact('response'));
+           
+        } catch (Exception $e) {
+            echo "Xin vui lòng thử f5 lại sau 1 phút";
         }
 
-        $response = json_decode(file_get_contents($link_api, FALSE, $context));
-
-        return view('products.update_price_sheet', compact('response'));
+        
 
     }
 
