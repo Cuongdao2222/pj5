@@ -110,6 +110,15 @@ class productController extends AppBaseController
 
         $link_api ='https://api.dienmaynguoiviet.net/api/show-price-sheet-data';
 
+        $check_err_api = @file_get_contents($link_api, FALSE, $context);
+
+        if($check_err_api=== FALSE){
+
+            echo "xin chờ 1 phút rồi F5 lại";
+
+            die;
+        }
+
         $response = json_decode(file_get_contents($link_api, FALSE, $context));
 
         return view('products.update_price_sheet', compact('response'));
