@@ -256,6 +256,9 @@ class productController extends AppBaseController
             }
 
         }
+        Cache::forget('product_search');
+        $productss = product::select('Link', 'Name', 'Image', 'Price', 'id', 'ProductSku', 'manuPrice', 'orders_hot', 'Salient_Features')->where('active', 1)->get();
+                    Cache::forever('product_search',$productss);
 
     }
 
