@@ -114,7 +114,7 @@ class productController extends AppBaseController
 
         if($check_err_api=== FALSE){
 
-            echo "xin chờ 1 phút rồi F5 lại";
+            echo "xin chờ 1 phút rồi F5 lại";//quá quota đọc sheet của api google sheet
 
             die;
         }
