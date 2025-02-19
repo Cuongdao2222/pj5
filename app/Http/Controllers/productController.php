@@ -95,7 +95,7 @@ class productController extends AppBaseController
 
     }
 
-    public function check_error_api()
+    public function check_error_api($url)
     {
        $ch = curl_init($url);
 
@@ -151,7 +151,7 @@ class productController extends AppBaseController
 
         try {
             
-            $data = $this->fetchApiData($link_api);
+            $data = $this->check_error_api($link_api);
             $response = json_decode(file_get_contents($link_api, FALSE, $context));
 
             return view('products.update_price_sheet', compact('response'));
