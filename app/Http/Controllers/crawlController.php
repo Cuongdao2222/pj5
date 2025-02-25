@@ -136,7 +136,7 @@ class crawlController extends Controller
     public function edit_ton_gr()
     {
 
-        $group = groupProduct::find(4);
+        $group = groupProduct::find(3);
 
         $list_pd =  json_decode($group->product_id);
 
@@ -162,7 +162,7 @@ class crawlController extends Controller
 
         }
 
-        echo "sửa tồn $dem sản phẩm điều hòa ";
+        echo "sửa tồn $dem sản phẩm tủ lạnh ";
 
         echo "<pre>";
         print_r($false);
