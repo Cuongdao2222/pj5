@@ -162,7 +162,7 @@ class crawlController extends Controller
 
         }
 
-        echo "sửa tồn tivi lg thành công";
+        echo "sửa tồn $dem sản phẩm tivi lg thành công";
 
         echo "<pre>";
         print_r($false);
