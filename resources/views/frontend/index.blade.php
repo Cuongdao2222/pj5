@@ -1258,7 +1258,7 @@
                         </div>
 
                         <?php
-                            if($demtv>=11){
+                            if($demtv>=10){
                                 break;
                             }
                         ?>
