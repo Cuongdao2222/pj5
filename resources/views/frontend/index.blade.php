@@ -791,7 +791,7 @@
                     @foreach($product_sale as $keys => $value)
 
                     
-                    @if($value->active==1 && $dems<9)
+                    @if($value->active==1 && $dems<5)
 
                     <?php 
                         $dems++;
@@ -1043,7 +1043,7 @@
 
                     $listGroupsShows = Cache::rememberForever('listGroupsShow'.$groups->id, function() use($groups){
 
-                         $listGroupsShow =   App\Models\groupProduct::select('name', 'link')->where('parent_id', $groups->id)->take(4)->get();
+                         $listGroupsShow =   App\Models\groupProduct::select('name', 'link')->where('parent_id', $groups->id)->take(8)->get();
 
                         return $listGroupsShow??'';
                     });
