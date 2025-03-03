@@ -1047,13 +1047,21 @@
                 <div class="preloader">
                     <div class="loaderweb"></div>
                 </div>
-
-                @if($groups->id !=1)
-
+                <!-- hiển thị tivi mero -->
                 <div class="box-common__content mouse-mover">
-                    <div class="listproduct slider-home owl-carousel" id="banner-product_{{ $dems }}" data-size="{{ $data->count() }}">
+                    <div class="listproduct slider-home" id="banner-product_{{ $dems }}" data-size="{{ $data->count() }}">
+
+                        <?php 
+
+                            $demtv =0;
+                        ?>
 
                         @foreach($data as $key =>$datas)
+
+                        <?php
+
+                            $demtv++;
+                        ?>
 
                         <div class="item"  data-pos="12" id="list_show_group_{{ $key }}">
                             <a href='{{ route('details', $datas->Link) }}'>
@@ -1065,12 +1073,12 @@
                                     
                                 </div>
                                 <div class="item-img">
-                                    <img src="{{ asset($datas->Image) }}"    alt="{{ $datas->Name }}" width=210 height=210>
+                                    <img src="{{ asset($datas->Image) }}" alt="{{ $datas->Name }}" width=210 height=210>
                                     
                                 </div>
 
                                 @if(in_array($datas->id, $hots->toArray()))
-                                <p class="result-labels"><img class="sale-banner ls-is-cached" alt="hot" src="{{ asset('images/background-image/i-con-hot.gif') }}"></p>
+                                <p class="result-labels"><img class="sale-banner ls-is-cached" alt="hot" src="{{ asset('images/background-image/i-con-hot.gif') }}" src="{{ asset('images/background-image/i-con-hot.gif') }}"></p>
                                 @else
                                 
                                 @endif
@@ -1128,8 +1136,7 @@
 
                                 </div>
                                 
-                                
-                           
+                                <div class="commit"><span>Cam kết bán đúng giá </span></div> 
                                 <div class="item-rating">
                                     <p>
                                         <i class="fa-solid fa-star"></i>
@@ -1139,7 +1146,6 @@
                                         <i class="fa-solid fa-star"></i>
                                     </p>
                                 </div>
-                                <div class="commit"><span>Cam kết bán đúng giá </span></div> 
 
                                 <?php  
 
@@ -1166,7 +1172,7 @@
 
                             <?php 
 
-                            $gift_Price = pricesPromotion($datas->Price, $datas->id);
+                                $gift_Price = pricesPromotion($datas->Price, $datas->id);
 
                             ?>
 
@@ -1175,7 +1181,7 @@
 
                              <!-- phần quà khuyến mãi 1-->
 
-                           
+
 
                             @if(!empty($gift_Price) && $groups->id !=8)
 
@@ -1201,7 +1207,7 @@
                             <!-- end -->
                            
 
-                           <!--  <a href="javascript:void(0)" class="compare-show" data-id="{{ $datas->id }}" data-group="{{ $groups->id }}">
+                            <!-- <a href="javascript:void(0)" class="compare-show" data-id="{{ $datas->id }}" data-group="{{ $groups->id }}">
                                 <i class="fa-solid fa-plus"></i>
                                     so sánh
                             </a> -->
@@ -1215,6 +1221,8 @@
 
                                 {{ $gifts->type ==1?'k/m chọn 1 trong 2':'' }}
                                 <div class="option-gift">
+
+
 
                                      @foreach($gift as $gifts)
 
@@ -1248,242 +1256,21 @@
                             @endif
 
                         </div>
+
+                        <?php
+                            if($demtv>=11){
+                                break;
+                            }
+                        ?>
                         
                         @endforeach
                     
                     </div>
-                    <a class="readmore-txt blue" href="{{ route('details', @$groups->link)  }}"><span>Xem tất cả</span></a>
 
+                    <div class="prd-promo__top clearfix"> <a class="readmore-btn" href="{{ route('details', @$groups->link)  }}"><span>Xem tất cả</span></a> </div>
+                    <!-- <a class="readmore-txt blue" href="{{ route('details', @$groups->link)  }}"><span>Xem tất cả</span></a> -->
                 </div>
 
-                @else
-                    <!-- hiển thị tivi mero -->
-                    <div class="box-common__content mouse-mover">
-                        <div class="listproduct slider-home" id="banner-product_{{ $dems }}" data-size="{{ $data->count() }}">
-
-                            <?php 
-
-                                $demtv =0;
-                            ?>
-
-                            @foreach($data as $key =>$datas)
-
-                            <?php
-
-                                $demtv++;
-                            ?>
-
-                            <div class="item"  data-pos="12" id="list_show_group_{{ $key }}">
-                                <a href='{{ route('details', $datas->Link) }}'>
-                                    @if($datas->Price>=3000000)
-                                    <span class="icon_tragop icons-tra-gops">Trả góp <i>0%</i></span>
-                                    @endif
-                                    <div class="event">
-                                        <img src="{{ asset('images/background-image/event.png') }}?ver=3">
-                                        
-                                    </div>
-                                    <div class="item-img">
-                                        <img src="{{ asset($datas->Image) }}" alt="{{ $datas->Name }}" width=210 height=210>
-                                        
-                                    </div>
-
-                                    @if(in_array($datas->id, $hots->toArray()))
-                                    <p class="result-labels"><img class="sale-banner ls-is-cached" alt="hot" src="{{ asset('images/background-image/i-con-hot.gif') }}" src="{{ asset('images/background-image/i-con-hot.gif') }}"></p>
-                                    @else
-                                    
-                                    @endif
-
-                                   <div class="title-name">
-                                        <h3>{{ $datas->Name }}</h3>
-                                    </div>
-                                    @if($groups->id<5)
-                                    <?php
-                                            if($groups->id == 1){
-                                                $searchstring = 'inch';
-                                            }
-                                            else{
-                                                $searchstring = 'inverter';
-
-                                            }
-                                           
-                                        $infoName  = str_replace($datas->ProductSku,'', strstr($datas->Name, $datas->ProductSku));
-                                        if(!empty($infoName)){
-
-                                            $arNames = [];
-                                            if(strpos($datas->Name, $searchstring)){
-
-                                                $arNames = explode($searchstring, $infoName);
-
-                                            }
-                                        }
-                                    ?>
-                                   
-                                    <div class="item-compare">
-                                        @if(!empty($arNames))
-                                        <span>{{ @$arNames[0] }} {{ !empty($arNames)?$searchstring:'' }}</span>
-                                        <span>{{ @$arNames[1] }}</span>
-                                        @endif
-                                        
-                                    </div>
-                                    
-                                    @endif
-                                    <div class="icons-promotion-per">
-                                        <strong class="price">{{ @number_format(!empty($ar_Deal_Pd[$datas->id])?$ar_Deal_Pd[$datas->id]:$datas->Price , 0, ',', '.')}}&#x20AB;</strong>
-
-                                        @if(!empty($datas->manuPrice))
-
-                                        <?php
-                                            $discount =  round(((intval($datas->manuPrice) - intval($datas->Price))/intval($datas->manuPrice))*100)
-                                        ?>
-                                        
-                                        <span class="price_market">{{ @number_format($datas->manuPrice , 0, ',', '.')}} <sup>đ</sup></span>
-
-                                        <span class="discount_percent">-{{ $discount }}%</span>
-
-                                        @endif
-
-                                       
-
-                                    </div>
-                                    
-                                    <div class="commit"><span>Cam kết bán đúng giá </span></div> 
-                                    <div class="item-rating">
-                                        <p>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                        </p>
-                                    </div>
-
-                                    <?php  
-
-                                        if(!Cache::has('gifts_Fe_'.$datas->id)){
-
-                                            $gifts = gift($datas->id);
-            
-
-                                            if(empty($gifts)){
-                                                $gifts = groupGift($groups->id);
-                                                
-                                                if(empty($gifts)){
-
-                                                    $gifts =[];
-                                                }
-                                            }
-                                            Cache::put('gifts_Fe_'.$datas->id, $gifts,100);
-
-                                        }
-                                       
-                                        $gift = Cache::get('gifts_Fe_'.$datas->id);
-                                    ?>
-                                </a>
-
-                                <?php 
-
-                                    $gift_Price = pricesPromotion($datas->Price, $datas->id);
-
-                                ?>
-
-                                @include('frontend.layouts.more-info', ['value'=>$datas, 'deal_price'=>$ar_Deal_Pd[$datas->id]??'', 'gift_Price'=>$gift_Price])
-
-
-                                 <!-- phần quà khuyến mãi 1-->
-
-
-
-                                @if(!empty($gift_Price) && $groups->id !=8)
-
-                                <?php 
-
-                                    $image_gift_promotion = definePrice($gift_Price);
-                                ?>
-
-                                 <div class="option-gift">
-                                    
-                                    <div class="quatang"><img src="{{ $image_gift_promotion }}"></div>
-                                   
-                                </div>
-                                
-
-                                <div class="font-sz">
-                                    <span> Giảm ngay <strong>{{ $gift_Price  }} đ</strong> </span>
-                                </div>
-
-                                @endif
-
-
-                                <!-- end -->
-                               
-
-                                <!-- <a href="javascript:void(0)" class="compare-show" data-id="{{ $datas->id }}" data-group="{{ $groups->id }}">
-                                    <i class="fa-solid fa-plus"></i>
-                                        so sánh
-                                </a> -->
-
-                                @if(!empty($gift))
-                                    <?php 
-                                        $gifts = $gift['gifts'];
-                                        $gift = $gift['gift']; 
-                                       
-                                    ?>
-
-                                    {{ $gifts->type ==1?'k/m chọn 1 trong 2':'' }}
-                                    <div class="option-gift">
-
-
-
-                                         @foreach($gift as $gifts)
-
-                                        <div class="quatang"><img src="{{ asset($gifts->image) }}"></div>
-                                        @endforeach
-                                    </div>
-
-                                    @if(!empty($gifts->price))
-
-
-                                    <?php 
-
-                                    $id_checkpromotion = $datas->promotion_box==1?'':$datas->id;
-
-                                    $price_gift = pricesPromotion($datas->Price, $id_checkpromotion)===''?str_replace(',' ,'.', number_format($gifts->price)):pricesPromotion($datas->Price, $id_checkpromotion);
-
-                                    ?>
-
-
-                                    <span class="font-szs"> Quà tặng trị giá <strong>{{  $price_gift }} </strong> </span>
-                                   
-                                    @endif  
-
-                                @endif
-
-                                @if(!empty($datas->promotion))
-                                    <div class="gift-text mt-2">
-                                        <span>Có 1 khuyến mãi</span>
-                                    </div>
-
-                                @endif
-
-                            </div>
-
-                            <?php
-                                if($demtv>=11){
-                                    break;
-                                }
-                            ?>
-                            
-                            @endforeach
-                        
-                        </div>
-
-                        <div class="prd-promo__top clearfix"> <a class="readmore-btn" href="{{ route('details', @$groups->link)  }}"><span>Xem tất cả</span></a> </div>
-                        <!-- <a class="readmore-txt blue" href="{{ route('details', @$groups->link)  }}"><span>Xem tất cả</span></a> -->
-                    </div>
-
-
-
-                @endif
             </div>
         </div>
 
@@ -2216,32 +2003,7 @@
 
         var number_slider =  parseInt($('.owl-slider-count').text());
 
-        for (i = 0; i <= number_slider; i++) {
-
-            // xóa tạm tivi khỏi owlCarousel
-            if(i>1){
-
-                $('#banner-product_'+i).owlCarousel({
-                    
-                    margin:10,
-                    nav:false,
-                    navText: ["<i class='fa fa-chevron-left'></i>","<i class='fa fa-chevron-right'></i>"],
-                    loop: true,
-                    items:2,
-                    
-                    responsive:{
-                       
-                        600:{
-                            items:3
-                           
-                        },
-                        1000:{
-                            items:5
-                        }
-                    }
-                });
-            } 
-        }
+       
 
 
         $('#banner-sale-mobile').owlCarousel({
