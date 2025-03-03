@@ -1084,77 +1084,7 @@
            
             @if(!empty($data_cate) && $data_cate==1)
 
-            @if(!empty($ar_groups_info[0]) && $ar_groups_info[0]['id'] != 384)
-
-            <?php
-
-                $cutModel1 = str_replace('UA', '', $data->ProductSku);
-
-                $cutModel = substr(trim($cutModel1),2);
-
-                $data_model = Cache::get('product_search');
-
-                $relationProduct = collect($data_model)->filter(function ($item) use ($cutModel) {
-                  
-                    return false !== strpos($item->ProductSku, $cutModel);
-                });
-
-                $relationProduct =  $relationProduct->sortBy('Name');
-
-
-
-            ?>
-            @if($relationProduct->count()>1)
-               
-                <?php 
-
-                    $size_tv = str_replace($cutModel, '', $data->ProductSku);
-                   
-                ?>
-                
-                <p class="padtex">Có <strong> {{ $relationProduct->count() }} Kích cỡ màn hình.</strong> Bạn đang chọn <strong>{{ $size_tv }} inch</strong></p>
-                <div class="scrolling_inner">
-
-                   
-                    @foreach($relationProduct->chunk(4) as $chunk)
-                    <div class="box03 group desk">
-                        @foreach ($chunk as $relationProducts)
-                            <?php 
-                                //check cache deals
-                                if (!Cache::has('deals')){
-
-                                     $value = Cache::rememberForever('deals', function() {
-                                        return DB::table('deal')->get();
-                                    });
-                                   
-                                } 
-                              
-                                $check_deals_pd =  Cache::get('deals')->where('product_id', $relationProducts->id)->where('active', 1)->first();
-
-                                if(!empty($check_deals_pd)){
-
-                                    $relationProducts->Price = $check_deals_pd->deal_price??'';
-
-                                }
-                                else{
-                                    $relationProducts->Price = $relationProducts->Price;
-                                }
-
-
-                            ?>
-
-
-
-                            <a class="one_size  {{ $relationProducts->ProductSku==$data->ProductSku?'act':'' }}" href="{{ route('details', $relationProducts->Link) }}"><label class="container-detail"><span class="size-pro">{{  str_replace( $cutModel, '', $relationProducts->ProductSku)  }} inch</span><span class="price-pro">{{ str_replace(',' ,'.', number_format(@$relationProducts->Price))  }}đ</span></label></a>
-                        
-                        @endforeach
-                       
-                    </div>
-                    @endforeach
-                </div>
-            @endif
-
-            @endif
+            
                 
             @endif
 
