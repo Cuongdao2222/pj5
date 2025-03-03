@@ -932,10 +932,10 @@
 
                        
 
-                        <a href="javascript:void(0)" class="compare-show" data-id="{{ $value->product_id }}">
+                        <!-- <a href="javascript:void(0)" class="compare-show" data-id="{{ $value->product_id }}">
                             <i class="fa-solid fa-plus"></i>
                                 so sánh
-                        </a>
+                        </a> -->
 
 
 
@@ -1211,10 +1211,10 @@
                             <!-- end -->
                            
 
-                            <a href="javascript:void(0)" class="compare-show" data-id="{{ $datas->id }}" data-group="{{ $groups->id }}">
+                           <!--  <a href="javascript:void(0)" class="compare-show" data-id="{{ $datas->id }}" data-group="{{ $groups->id }}">
                                 <i class="fa-solid fa-plus"></i>
                                     so sánh
-                            </a>
+                            </a> -->
 
                             @if(!empty($gift))
                                 <?php 
@@ -1427,10 +1427,10 @@
                                 <!-- end -->
                                
 
-                                <a href="javascript:void(0)" class="compare-show" data-id="{{ $datas->id }}" data-group="{{ $groups->id }}">
+                                <!-- <a href="javascript:void(0)" class="compare-show" data-id="{{ $datas->id }}" data-group="{{ $groups->id }}">
                                     <i class="fa-solid fa-plus"></i>
                                         so sánh
-                                </a>
+                                </a> -->
 
                                 @if(!empty($gift))
                                     <?php 
