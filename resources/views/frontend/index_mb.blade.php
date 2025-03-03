@@ -1284,10 +1284,13 @@
         
     </section>
     <!-- End -->
+    <?php 
+        $off_hieuung = 0
+    ?>
+    <!-- End -->
     <!-- Hiệu ứng ... rơi -->
 
-    <!-- Hiệu ứng ... rơi -->
-
+   @if($off_hieuung === 1) 
     
 
     <style type="text/css">
@@ -1574,6 +1577,8 @@
          <!-- <img class="santa-left loading" src="{{ asset('background/dao-tree.png')}}" data-was-processed="true">  -->
         <img class="santa-right loading" src="{{ asset('background/dao-tree.png')}}" data-was-processed="true">
     </div>
+
+    @endif
 
      <script src="https://unpkg.com/sweetalert2@7.18.0/dist/sweetalert2.all.js"></script>
     @if (session('success'))
