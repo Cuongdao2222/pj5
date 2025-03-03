@@ -2221,7 +2221,7 @@
             // xóa tạm tivi khỏi owlCarousel
             if(i>1){
 
-                $('#banner-products_'+i).owlCarousel({
+                $('#banner-product_'+i).owlCarousel({
                     
                     margin:10,
                     nav:false,
