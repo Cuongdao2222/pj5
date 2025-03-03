@@ -1468,7 +1468,7 @@
                             </div>
 
                             <?php
-                                if($demtv>=11){
+                                if($demtv>=10){
                                     break;
                                 }
                             ?>
@@ -2221,7 +2221,7 @@
             // xóa tạm tivi khỏi owlCarousel
             if(i>1){
 
-                $('#banner-product_'+i).owlCarousel({
+                $('#banner-products_'+i).owlCarousel({
                     
                     margin:10,
                     nav:false,
