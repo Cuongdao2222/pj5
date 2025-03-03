@@ -1051,7 +1051,7 @@
                 @if($groups->id !=1)
 
                 <div class="box-common__content mouse-mover">
-                    <div class="listproduct slider-home owl-carousel" id="banner-product_{{ $dems }}" data-size="{{ $data->count() }}">
+                    <div class="listproduct slider-home" id="banner-product_{{ $dems }}" data-size="{{ $data->count() }}">
 
                         @foreach($data as $key =>$datas)
 
