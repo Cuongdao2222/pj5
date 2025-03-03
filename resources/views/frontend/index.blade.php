@@ -1043,7 +1043,7 @@
 
                     $listGroupsShows = Cache::rememberForever('listGroupsShow'.$groups->id, function() use($groups){
 
-                         $listGroupsShow =   App\Models\groupProduct::select('name', 'link')->where('parent_id', $groups->id)->take(8)->get();
+                         $listGroupsShow =   App\Models\groupProduct::select('name', 'link')->where('parent_id', $groups->id)->take(4)->get();
 
                         return $listGroupsShow??'';
                     });
@@ -1478,7 +1478,7 @@
                             </div>
 
                             <?php
-                                if($demtv>=5){
+                                if($demtv>=8){
                                     break;
                                 }
                             ?>
