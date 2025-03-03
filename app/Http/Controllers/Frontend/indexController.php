@@ -252,7 +252,7 @@ class indexController extends Controller
         $bannerscrollRight = Cache::rememberForever('bannerscrollRight', function() {
             return banners::where('option', 12)->OrderBy('stt', 'asc')->where('active', 1)->first()??'';
         });
-
+        
         $bannerscrollLeft = Cache::rememberForever('bannerscrollleft', function() {
             return banners::where('option', 13)->OrderBy('stt', 'asc')->where('active', 1)->first()??'';
         });
