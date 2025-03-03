@@ -1039,16 +1039,6 @@
         <div class="box-common _cate_1942 box-banner-{{ $groups->id }}">
             <ul class="box-common__tab box-tab-mobile">
                 <li class="active-tab" data-cate-id="1942"><a href="{{  @$groups->link }}">{{  @$groups->name }}</a></li>
-                <?php
-
-                    $listGroupsShows = Cache::rememberForever('listGroupsShow'.$groups->id, function() use($groups){
-
-                         $listGroupsShow =   App\Models\groupProduct::select('name', 'link')->where('parent_id', $groups->id)->take(4)->get();
-
-                        return $listGroupsShow??'';
-                    });
-                ?>
-
                 
             </ul>
 
@@ -1478,7 +1468,7 @@
                             </div>
 
                             <?php
-                                if($demtv>=8){
+                                if($demtv>=11){
                                     break;
                                 }
                             ?>
