@@ -975,7 +975,11 @@
                 </div>
             </div>
 
-             {!!  $data->Specifications  !!} 
+
+            <div class="show-infomation-pd" style="height:30px; overflow: hidden;">
+                {!!  $data->Specifications  !!} 
+            </div>    
+             
             <div class="content" id="contents-scroll">
                  
 
