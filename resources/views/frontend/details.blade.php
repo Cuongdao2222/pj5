@@ -976,7 +976,7 @@
             </div>
 
 
-            <div class="show-infomation-pd" style="height:200px; overflow: hidden;">
+            <div class="show-infomation-pd" style="height:220px; overflow: hidden;">
                 {!!  $data->Specifications  !!} 
             </div>    
 
