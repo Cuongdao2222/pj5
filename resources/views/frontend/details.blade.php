@@ -974,6 +974,8 @@
                 <div class="pop">
                 </div>
             </div>
+
+             {!!  $data->Specifications  !!} 
             <div class="content" id="contents-scroll">
                  
 
@@ -1524,17 +1526,15 @@
                                     <div class="clear"></div>
                                 </div>
 
-                                <br><br>
-                                {!!  $data->Specifications  !!} 
+                                
+                               
                             </div>
                             @else
 
                             <div class="pdetail-add-to-cart pdetail-installment specifications-img">
                                 <div class="inline">
                                     <button type="button" class="btn btn-lg btn-add-cart btn-add-cart redirectCart">Liên hệ</button>
-                                </div>
-
-                                {!!  $data->Specifications  !!} 
+                                </div>   
                             </div>
                            
                             @endif
