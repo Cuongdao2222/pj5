@@ -310,14 +310,14 @@
 
                                 <?php 
 
-                                    $link_cate = App\Models\groupProduct::where('name', 'like', '%'.$name_cate_show.' '.$value->name)->first();
+                                    $link_cate = App\Models\groupProduct::where('name', 'like', '%'.$value->name)->first();
 
                                     $linkss = $link_cate->link??'';
 
                                 ?>
 
                               
-                                <a href="{{ route('details', $linkss)  }}"  data-index="{{ $name_cate_show.' '.$value->name }}" class="box-quicklink__item bd-radius quicklink-logo">
+                                <a href="{{ route('details', $linkss)  }}"  data-index="4" class="box-quicklink__item bd-radius quicklink-logo">
                                     <img src="{{ asset('uploads/icon/'.$value->id.'.png') }}" width="30" alt="{{ $value->name }}" />
 
                                     @if($id_cate != 1)
