@@ -50,7 +50,7 @@ $search = $_GET['search']??'';
 @endif
 
 <div class="table-responsive">
-    <a href="{{ route('update_price_sheet_data') }}" onclick="return confirmAction()">update giá sản phẩm từ sheet</a>
+    <a href="{{ route('update_price_sheet_data') }}" >update giá sản phẩm từ sheet</a>
     <table class="table" id="products-table">
         <thead>
         <tr>
@@ -934,9 +934,9 @@ $search = $_GET['search']??'';
 
     }
 
-    function confirmAction() {
-        return confirm("Bạn có chắc chắn muốn chuyển trang không?");
-    }
+    // function confirmAction() {
+    //     return confirm("Bạn có chắc chắn muốn chuyển trang không?");
+    // }
  
 
 
