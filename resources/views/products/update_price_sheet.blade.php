@@ -146,54 +146,63 @@
 
         function updatePreviousRow() {
 
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            
-            table = document.getElementById('priceTable');
-            const totalRows = table.rows.length;
+             if (!confirm("Bạn có chắc chắn muốn thay đổi không?")) {
+                event.preventDefault(); // Ngăn chặn chuyển trang nếu bấm Cancel
+            }
+            else{
 
-            // parseInt(totalRows)
-            for (i = 2; i <= totalRows; i++) {
-
-                currentRowIndex =i;
-                 // Lấy dòng trên
-                const previousRow = table.rows[currentRowIndex - 1];
-
-                // Duyệt qua các ô của dòng trên và lấy dữ liệu
-                const rowData = [];
-                for (let cell of previousRow.cells) {
-                    rowData.push(cell.textContent.trim());
-                }
-               
-
-                $.ajax({
-                    type: 'POST',
-                    url: "{{ route('update data price sheet api') }}",
-                    data: {
-                        data:   JSON.stringify(rowData)
-                       
-                    },
-                   
-                    success: function(result){
-
-                        // console.log(result);
-
-                        window.location.reload();
-
-                        // newData = result;
-
-                        //  // Cập nhật dữ liệu từng ô trong dòng trên
-                        // for (let j = 0; j < previousRow.cells.length; j++) {
-                        //     previousRow.cells[j].textContent = newData[j] || previousRow.cells[j].textContent;
-                        // }
-                        
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     }
                 });
+                
+                table = document.getElementById('priceTable');
+                const totalRows = table.rows.length;
+
+                // parseInt(totalRows)
+                for (i = 2; i <= totalRows; i++) {
+
+                    currentRowIndex =i;
+                     // Lấy dòng trên
+                    const previousRow = table.rows[currentRowIndex - 1];
+
+                    // Duyệt qua các ô của dòng trên và lấy dữ liệu
+                    const rowData = [];
+                    for (let cell of previousRow.cells) {
+                        rowData.push(cell.textContent.trim());
+                    }
+                   
+
+                    $.ajax({
+                        type: 'POST',
+                        url: "{{ route('update data price sheet api') }}",
+                        data: {
+                            data:   JSON.stringify(rowData)
+                           
+                        },
+                       
+                        success: function(result){
+
+                            // console.log(result);
+
+                            window.location.reload();
+
+                            // newData = result;
+
+                            //  // Cập nhật dữ liệu từng ô trong dòng trên
+                            // for (let j = 0; j < previousRow.cells.length; j++) {
+                            //     previousRow.cells[j].textContent = newData[j] || previousRow.cells[j].textContent;
+                            // }
+                            
+                        }
+                    });
+
+                }
 
             }
+
+            
            
         }
     </script>
