@@ -307,8 +307,8 @@
 
                                 <?php 
 
-                                    $define_new_cate = ['Tủ lạnh Tủ nhiều cửa (Multi door)', 'Tủ lạnh Dung tích lớn (Side by side)', 'Tủ lạnh Tủ lạnh mini'];
-                                    $rewrite_name_cate = ['Tủ lạnh multidoor', 'Tủ lạnh Side By Side', 'Tủ lạnh mini'];
+                                    $define_new_cate = ['Tủ lạnh Tủ nhiều cửa (Multi door)', 'Tủ lạnh Dung tích lớn (Side by side)', 'Tủ lạnh Tủ lạnh mini', 'Điều hòa Điều hòa tủ đứng', 'Điều hòa Điều hòa treo tường'];
+                                    $rewrite_name_cate = ['Tủ lạnh multidoor', 'Tủ lạnh Side By Side', 'Tủ lạnh mini', 'Điều hòa tủ đứng', 'Điều hòa treo tường'];
                                 ?>
 
 
