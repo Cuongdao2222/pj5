@@ -307,7 +307,8 @@
 
                                 <?php 
 
-                                    $define_new_cate = ['Tủ lạnh '];
+                                    $define_new_cate = ['Tủ lạnh Tủ nhiều cửa (Multi door)', 'Tủ lạnh Dung tích lớn (Side by side)', 'Tủ lạnh Tủ lạnh mini'];
+                                    $rewrite_name_cate = ['Tủ lạnh multidoor', 'Tủ lạnh Side By Side', 'Tủ lạnh mini'];
                                 ?>
 
 
@@ -315,7 +316,11 @@
 
                                 <?php 
 
-                                    $link_cate = App\Models\groupProduct::where('name', 'like', '%'.$name_cate_show.' '.$value->name)->first();
+                                    $group_name_add = $name_cate_show.' '.$value->name;
+
+                                    $group_name_adds = str_replace($define_new_cate, $rewrite_name_cate, $group_name_add);
+
+                                    $link_cate = App\Models\groupProduct::where('name', 'like', '%'.$group_name_adds)->first();
 
                                     $linkss = $link_cate->link??'';
 
