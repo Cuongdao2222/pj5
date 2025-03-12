@@ -1659,10 +1659,7 @@
 
                     <strong class="price">{{  str_replace(',' ,'.', number_format($value->Price))  }}&#x20AB;</strong>
                     </a>
-                    <a href="javascript:void(0)" class="compare-show" onclick="compareShow({{ $value->id }})">
-                        <i class="fa-solid fa-plus"></i>
-                            so sánh
-                    </a>
+                    
                 </div>
 
                 @endif
