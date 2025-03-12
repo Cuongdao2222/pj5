@@ -1073,10 +1073,7 @@
                  <span style="font-weight: bold; font-size:17px ">Model: {{ $data->ProductSku }} </span> 
                 &nbsp
 
-                <a href="javascript:void(0)" class="compare-show" onclick="compareShow({{ $data->id }})">
-                    <i class="fa-solid fa-plus"></i>
-                        so sánh
-                </a>
+                
             </div>
 
             <hr>
