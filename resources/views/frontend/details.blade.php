@@ -980,7 +980,7 @@
             </div>
 
 
-            <div class="show-infomation-pd" style="height:220px; overflow: hidden;">
+            <div class="show-infomation-pd" style="height:230px; overflow: hidden;">
                 {!!  $data->Specifications  !!} 
             </div>    
 
