@@ -109,11 +109,11 @@
             left: 50px;
         }
         h2 a{
-            font-size: 16px;
+            font-size: 18px;
         }
 
         h3 a{
-            font-size: 16px !important;
+            font-size: 18px !important;
         }
 
 
