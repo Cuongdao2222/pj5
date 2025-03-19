@@ -173,6 +173,10 @@
                 height: 90% !important;
             }
 
+            h3 span strong{
+                font-size: 17px;
+            }
+
 
         }    
     </style>
