@@ -11,7 +11,7 @@
         border-radius: 5px;
         padding: 5px;
     }
-    
+
 </style>
 <?php
     $Group = App\Models\groupProduct::select('id', 'name')->get();
@@ -498,7 +498,7 @@
             CKEDITOR.instances['content'].setData(item_local_store)
 
         @endif
-        console.log(1);
+        
     }
 
 
