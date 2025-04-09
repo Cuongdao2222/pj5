@@ -27,7 +27,7 @@ body
 	/* Fix for missing scrollbars with RTL texts. (#10488) */
 	word-wrap: break-word;
 }
-strong{
+h2 strong{
     font-weight: bold !important;
 }
 
