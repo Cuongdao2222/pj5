@@ -11,9 +11,7 @@
         border-radius: 5px;
         padding: 5px;
     }
-    strong{
-        font-weight: bold !important;
-    }
+    
 </style>
 <?php
     $Group = App\Models\groupProduct::select('id', 'name')->get();
