@@ -70,7 +70,7 @@
                 if(!empty($post->content)){
 
                     $contens = $post->content;
-                    $contens = preg_replace('/<strong>(.*?)<\/strong>/', '<span>$1</span>', $contens);
+                    $contens = preg_replace('/<strong>(.*?)<\/strong>/', '<b>$1</b>', $contens);
 
                     $images = preg_match_all('/<img.*?src=[\'"](.*?)[\'"].*?>/i', $contens, $matches);
 
