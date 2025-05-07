@@ -170,7 +170,7 @@
                     $product->Detail = $content1;
                     $product->Detail = str_replace(['http://dienmaynguoiviet.net', 'https://dienmaynguoiviet.net'], 'https://dienmaynguoiviet.vn', $product->Detail);
                     // thay thẻ strong cho đỡ lỗi font chữ 
-                    $product->Detail = preg_replace('/<strong>(.*?)<\/strong>/', '<span style="color:#000000; font-weight:600;">$1</span>', $product->Detail);
+                    $product->Detail = preg_replace('/<strong>(.*?)<\/strong>/', '<b>$1</b>', $product->Detail);
 
                     
                   
