@@ -849,7 +849,7 @@ class productController extends AppBaseController
 
                 $resultProduct = $resultProduct[0]->toArray();
 
-                $data = Cache::get('product_search')->whereIn('id', $resultProduct)->forPage(1, 20);
+                $data = Cache::get('product_search')->whereIn('id', $resultProduct)->forPage(1, 50);
 
                 return view('frontend.category',compact('data','numberdata','page_search'));
                
