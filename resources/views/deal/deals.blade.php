@@ -651,6 +651,8 @@ function selectProduct(id){
 
     var check_deal_id_dupple = product_deal_id.includes(id);
 
+    console.log(check_deal_id_dupple);
+
     if(check_deal_id_dupple){
 
         alert('sản phẩm này đã có trong deal, vui lòng xem lại');
