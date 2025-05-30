@@ -649,15 +649,13 @@ function selectProduct(id){
 
     var product_deal_id = '{{ implode(",", $product_id_deal) }}'; 
 
-    var check_deal_id_dupple = product_deal_id.includes(id);
+    product_deal_id.split(',').map(Number); 
 
-    console.log(product_deal_id);
-
-    if(check_deal_id_dupple){
+    if (product_deal_id.includes(id)) {
 
         alert('sản phẩm này đã có trong deal, vui lòng xem lại');
-    }
-    else{
+
+    } else {
         if( $('#row_'+id+' .update-bt-all').val()=='sản phẩm đã được chọn'){
             alert('bạn đã chọn sản phẩm này rồi');
 
@@ -666,8 +664,8 @@ function selectProduct(id){
             $('#select-price').modal('show');
             $('#row_id').val(id)
         }
-
     }
+
 
 }
 
