@@ -647,13 +647,7 @@ $('.update-bt-all').click(function(){
 
 function selectProduct(id){
 
-    var product_deal_id = '{{ implode(",", $product_id_deal) }}'; 
-
-    product_deal_id.split(',').map(Number); 
-
-    console.log(product_deal_id)
-
-    console.log(id)
+    const product_deal_id = '{{ implode(",", $product_id_deal) }}'.split(',').map(Number); 
 
     if (product_deal_id.includes(id)) {
 
