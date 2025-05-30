@@ -651,7 +651,7 @@ function selectProduct(id){
 
     var check_deal_id_dupple = product_deal_id.includes(id);
 
-    console.log(check_deal_id_dupple);
+    console.log(product_deal_id);
 
     if(check_deal_id_dupple){
 
