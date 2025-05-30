@@ -653,7 +653,7 @@ function selectProduct(id){
 
     if (product_deal_id.includes(id)) {
 
-        alert('sản phẩm này đã có trong deal, vui lòng xem lại');
+        alert('sản phẩm này đã có trong deal, vui lòng xem lại nhé');
 
     } else {
         if( $('#row_'+id+' .update-bt-all').val()=='sản phẩm đã được chọn'){
