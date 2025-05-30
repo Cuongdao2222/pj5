@@ -653,6 +653,8 @@ function selectProduct(id){
 
     console.log(product_deal_id)
 
+    console.log(id)
+
     if (product_deal_id.includes(id)) {
 
         alert('sản phẩm này đã có trong deal, vui lòng xem lại nhé');
