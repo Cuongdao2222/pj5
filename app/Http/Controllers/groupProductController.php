@@ -98,6 +98,8 @@ class groupProductController extends AppBaseController
 
         $meta_model->meta_key_words ='';
 
+         return redirect()->route('groupProducts.edit',  ['id'=> 1]);
+
         $meta_model->save();
 
         $groupProduct = $this->groupProductRepository->create($input);
@@ -112,7 +114,7 @@ class groupProductController extends AppBaseController
 
 
 
-        return redirect()->route('groupProducts.edit',  ['id'=> $meta_model['id']]);
+       
     }
 
     /**
