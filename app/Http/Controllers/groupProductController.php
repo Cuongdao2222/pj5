@@ -100,8 +100,6 @@ class groupProductController extends AppBaseController
 
         $meta_model->save();
 
-        dd($meta_model);
-       
         $input['Meta_id'] = $meta_model['id'];
 
         $groupProduct = $this->groupProductRepository->create($input);
@@ -115,7 +113,7 @@ class groupProductController extends AppBaseController
         Flash::success('Group Product saved successfully.');
 
 
-        return redirect()->back();
+        return redirect()->route('groupProducts.edit', $meta_model['id']);
     }
 
     /**
