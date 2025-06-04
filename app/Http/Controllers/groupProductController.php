@@ -98,7 +98,7 @@ class groupProductController extends AppBaseController
 
         $meta_model->meta_key_words ='';
 
-         return redirect()->route('groupProducts.edit',  ['id'=> 1]);
+         return redirect()->route('groupProducts.edit',  1);
 
         $meta_model->save();
 
