@@ -111,6 +111,7 @@ class groupProductController extends AppBaseController
         Flash::success('Group Product saved successfully.');
 
 
+
         return redirect()->route('groupProducts.edit',  ['id'=> $meta_model['id']]);
     }
 
