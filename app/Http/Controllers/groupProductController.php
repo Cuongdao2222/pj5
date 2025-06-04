@@ -102,7 +102,6 @@ class groupProductController extends AppBaseController
     
         $groupProduct = $this->groupProductRepository->create($input);
 
-        dd($groupProduct);
 
          $groups = groupProduct::select('id','name', 'link', 'active','parent_id')->get();
 
@@ -112,7 +111,7 @@ class groupProductController extends AppBaseController
 
         Flash::success('Group Product saved successfully.');
 
-        return redirect()->route('groupProducts.edit',  1);
+        return redirect()->route('groupProducts.edit',  $groupProduct['id']);
 
 
 
