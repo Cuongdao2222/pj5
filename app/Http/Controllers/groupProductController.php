@@ -100,6 +100,7 @@ class groupProductController extends AppBaseController
 
         $meta_model->save();
 
+        dd($meta_model);
        
         $input['Meta_id'] = $meta_model['id'];
 
