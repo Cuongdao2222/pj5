@@ -1460,6 +1460,10 @@
                                                 <a href="{{route('details','tivi-sharp')}}">
                                                     <h3>Tivi Sharp</h3>
                                                 </a>
+
+                                                <a href="{{route('details','tivi-hisense')}}">
+                                                    <h3>Tivi Hisense</h3>
+                                                </a>
                                             </aside>
                                             <aside>
                                                 <a href="{{ route('details', 'loai-tivi') }}"><strong>Loại tivi</strong></a>
@@ -1555,6 +1559,11 @@
                                                 <a href="{{route('details','tu-lanh-hitachi')}}">
                                                     <h3>Tủ lạnh Hitachi</h3>
                                                 </a>
+
+                                                <a href="{{route('details','tu-lanh-hisense')}}">
+                                                    <h3>Tủ lạnh Hisense</h3>
+                                                </a>
+                                                
                                             </aside>
                                             <aside>
 
@@ -1641,6 +1650,10 @@
                                                 </a>
                                                 <a href="{{route('details','may-giat-sharp')}}">
                                                     <h3>Máy giặt Sharp</h3>
+                                                </a>
+
+                                                <a href="{{route('details','may-giat-hisense')}}">
+                                                    <h3>Máy giặt Hisense</h3>
                                                 </a>
 
                                             </aside>
