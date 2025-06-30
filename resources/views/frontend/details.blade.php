@@ -1868,7 +1868,7 @@
 
 </div>
 @push('style')
-<link rel="stylesheet" type="text/css" href="{{ asset('css/details.css') }}?ver=8">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/details.css') }}?ver=9">
 @endpush
 @push('script')
 
