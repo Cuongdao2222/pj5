@@ -820,8 +820,10 @@ class categoryController extends Controller
 
 
             if(!empty($data) && !empty($_GET['show'])&&($_GET['show']=='tra-gop')){
+
+                return abort('404');
                 
-                return view('frontend.installment', compact('data'));
+                // return view('frontend.installment', compact('data'));
             }
 
             if(!empty($data->LinkRedirect)){
