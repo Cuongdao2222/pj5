@@ -746,14 +746,14 @@
                                 <div class="clearfix"></div>
 
                                 @if((int)$data['Price']>=3000000)
-                                <div class="installment-purchase pdetail-installment">
+                                <!-- <div class="installment-purchase pdetail-installment">
                                    
                                     <a target="_blank"  href="{{ route('details', $data->Link)  }}?show=tra-gop" admicro-data-event="101725" admicro-data-auto="1" admicro-data-order="false" class="but-1-gop">
                                     <strong>TRẢ GÓP QUA THẺ</strong>
                                     <br>
                                     (Visa, Master, JCB)
                                     </a>
-                                </div>
+                                </div> -->
                                 @endif
 
                                 @else
@@ -1485,11 +1485,11 @@
                                 <strong>GIỎ HÀNG</strong>
                                 </a>
 
-                                 <a target="_blank" class="but-tra-gop installments-but" href="{{ route('details', $data->Link)  }}?show=tra-gop" admicro-data-event="101725" admicro-data-auto="1" admicro-data-order="false">
+                                 <!-- <a target="_blank" class="but-tra-gop installments-but" href="{{ route('details', $data->Link)  }}?show=tra-gop" admicro-data-event="101725" admicro-data-auto="1" admicro-data-order="false">
                                 <strong>TRẢ GÓP QUA THẺ</strong>
                                 <br>
                                 (Visa, Master, JCB)
-                                </a>
+                                </a> -->
                                 @else
                                 <a class="add-card-buttons add-cart-button" href="javascript:void(0)" onclick="addCartFast({{ $data->id }})">
                                     <strong>THÊM VÀO GIỎ HÀNG </strong>
@@ -1735,7 +1735,7 @@
         </div>
         @endif
         @if((int)$data->Price>=3000000)
-        <div class="clear space10px credit">
+        <!-- <div class="clear space10px credit">
            
             <a class="btn-buy txt_center cor5px"  href="{{ route('details', $data->Link)  }}?show=tra-gop" style="background: #ffde00; border-bottom: 0;">
             <i class="fa fa-shopping-cart"></i> <span class="txt_15" >Trả góp qua thẻ</span>
@@ -1744,7 +1744,7 @@
             <a class="btn-buy txt_center cor5px"  href="javascript:void(0)" style="border-bottom: 0;" onclick="addCartFast({{ $data->id }})">
             <i class="fa fa-shopping-cart"></i> <span class="txt_15">Thêm vào giỏ hàng</span>
             </a>
-        </div>
+        </div> -->
         @endif
 
          <br>
