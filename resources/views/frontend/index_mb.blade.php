@@ -122,7 +122,7 @@
                 }    
 
                 .owl-carousel .owl-item img{
-                    height: 100% !important;
+                    height: auto;
                 }
             } 
 
