@@ -439,7 +439,7 @@
         </div>
 
         <div class="products py-4">
-            <h3 class="mb-4">Sản phẩm đang xem</h3>
+            <h3 class="mb-4">Sản phẩm Đã xem</h3>
             <div class="row">
                 <div class="col-md-3">
                     <div class="product">
