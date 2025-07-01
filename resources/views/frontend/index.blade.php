@@ -438,6 +438,40 @@
             </div>
         </div>
 
+        <div class="products py-4">
+            <h3 class="mb-4">Sản phẩm đang xem</h3>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="product">
+                        <img src="tu-mat-phap.jpg" alt="Tủ mát Pháp" class="img-fluid">
+                        <p>Tủ mát Pháp 242L HSR</p>
+                        <span>8.080.000đ</span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product">
+                        <img src="sony-tv.jpg" alt="Sony Google TV" class="img-fluid">
+                        <p>Sony Google TV KD-65X75K</p>
+                        <span>20.390.000đ</span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product">
+                        <img src="lg-tv.jpg" alt="LG Smart TV" class="img-fluid">
+                        <p>LG Smart TV 65UQ8000PSX</p>
+                        <span>Nâng kính donate</span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product">
+                        <img src="samsung-tv.jpg" alt="Samsung Smart TV" class="img-fluid">
+                        <p>Samsung Smart TV OLED</p>
+                        <span>52.000.000đ</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="bar-top">
            <!--  <div class="bar-top-left-none"></div> -->
            
