@@ -32,6 +32,75 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('css/homes.css') }}?ver=13">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/homecs.css') }}?ver=22">
         <style type="text/css">
+
+                /*css test*/
+
+                .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.search-bar input {
+    padding: 5px;
+    width: 300px;
+}
+
+.search-bar button {
+    padding: 5px 10px;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.user-options {
+    font-size: 14px;
+}
+
+.banner {
+    background-color: #00a2e8;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.banner-content h2 {
+    margin: 0;
+}
+
+.banner-content ul {
+    list-style: none;
+    padding: 0;
+}
+
+.banner-content li {
+    display: inline;
+    margin: 0 10px;
+}
+
+.banner-content button {
+    background-color: yellow;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.category-item, .promotion {
+    background-color: #f0f0f0;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.product {
+    text-align: center;
+}
+
+.product img {
+    width: 100%;
+    height: auto;
+}
+/*endcss*/
+
                 .sprites {
                     color: #000;
                     font-weight: bold;
@@ -344,6 +413,30 @@
     </section>
 
     <section>
+
+        <div class="categories py-4">
+            <div class="row">
+                <div class="col-6 col-md"><div class="category-item">Máy lạnh</div></div>
+                <div class="col-6 col-md"><div class="category-item">Quạt điện</div></div>
+                <div class="col-6 col-md"><div class="category-item">Máy giặt</div></div>
+                <div class="col-6 col-md"><div class="category-item">Máy lọc kk</div></div>
+                <div class="col-6 col-md"><div class="category-item">Tủ đông mát</div></div>
+                <div class="col-6 col-md"><div class="category-item">Nồi cơm điện</div></div>
+                <div class="col-6 col-md"><div class="category-item">Máy lọc nước</div></div>
+                <div class="col-6 col-md"><div class="category-item">Sức khỏe </div></div>
+            </div>
+
+            <div class="row">
+                <div class="col-6 col-md"><div class="category-item">Máy lạnh</div></div>
+                <div class="col-6 col-md"><div class="category-item">Quạt điện</div></div>
+                <div class="col-6 col-md"><div class="category-item">Máy giặt</div></div>
+                <div class="col-6 col-md"><div class="category-item">Máy lọc kk</div></div>
+                <div class="col-6 col-md"><div class="category-item">Tủ đông mát</div></div>
+                <div class="col-6 col-md"><div class="category-item">Nồi cơm điện</div></div>
+                <div class="col-6 col-md"><div class="category-item">Máy lọc nước</div></div>
+                <div class="col-6 col-md"><div class="category-item">Sức khỏe</div></div>
+            </div>
+        </div>
 
         <div class="bar-top">
            <!--  <div class="bar-top-left-none"></div> -->
