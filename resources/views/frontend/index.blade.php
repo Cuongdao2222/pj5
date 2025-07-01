@@ -38,6 +38,14 @@
                     margin: 10px 0;
                 }
 
+
+                .banner {
+                    background-color: #00a2e8;
+                    color: white;
+                    text-align: center;
+                    padding: 20px;
+                }
+
                 .op1{
                     width: 400px !important;
                 }
@@ -275,6 +283,18 @@
             <div class="box-left-2 left-banner"></div>
             <div class="col-md-7 box-div-slide">
                 <div class="homebanner-container">
+                    <section class="banner">
+                        <div class="banner-content">
+                            <h2>4 NĂM BẢO HÀNH <span>(tùy sản phẩm)</span></h2>
+                            <ul>
+                                <li>Giảm đến 5 TRIỆU</li>
+                                <li>Trưng TV, Tủ lạnh miễn phí</li>
+                                <li>Trả góp 0% lãi</li>
+                                <li>100% quà ngon</li>
+                            </ul>
+                            <button>XEM NGAY</button>
+                        </div>
+                    </section>
                     <!-- Banner chính -->
                     <aside class="homebanner">
                         <div id="sync1" class="slider-banner owl-carousel homebanners">
