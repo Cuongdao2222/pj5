@@ -480,6 +480,7 @@ header .container {
                     
                     <div class="category-item">
                         <img src="https://dienmaynguoiviet.vn/media/category/cat_4d485476e07e02638e8e2133cdf8f56d.png" class="iconss-sp">
+                        <br>
                         <span>Tivi</span>
                     </div>
                 </div>
