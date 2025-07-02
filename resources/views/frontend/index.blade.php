@@ -132,6 +132,10 @@ header .container {
     font-size: 14px;
 }
 
+.homebanner-container .banner{
+    display: none;
+}
+
 .product-details span{
     font-size: 14px;
     color: red;
