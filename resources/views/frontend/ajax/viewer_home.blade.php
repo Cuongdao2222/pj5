@@ -13,6 +13,7 @@
                 $value->Price = $check_deal->deal_price;
             }    
         ?>
+        
         <div class="col-md-3">
             <a href='{{ route('details', $value->Link) }}'>
                 <div class="product">

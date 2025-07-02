@@ -35,7 +35,25 @@
 
                 /*css test*/
 
-                .logo {
+                body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #00a2e8;
+    color: white;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    align-items: center;
+}
+
+.logo {
     font-size: 24px;
     font-weight: bold;
 }
@@ -61,7 +79,6 @@
     color: white;
     text-align: center;
     padding: 20px;
-    display: none;
 }
 
 .banner-content h2 {
@@ -92,13 +109,41 @@
     margin-bottom: 10px;
 }
 
-.product {
-    text-align: center;
+/* Đảm bảo 8 cột đều nhau trên medium và lớn hơn */
+@media (min-width: 768px) {
+    .categories .row > [class*="col-"] {
+        flex: 0 0 auto;
+        width: 12.5%; /* 100% / 8 = 12.5% */
+    }
 }
 
-.product img {
-    width: 100%;
+.product {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.product-content {
+    display: flex;
+    align-items: center;
+}
+
+.product-image {
+    width: 50px; /* Giảm kích thước ảnh */
     height: auto;
+    margin-right: 10px;
+}
+
+.product-details {
+    flex-grow: 1;
+}
+
+.product-details p {
+    margin: 0;
+}
+
+.product-details span {
+    display: block;
 }
 /*endcss*/
 
