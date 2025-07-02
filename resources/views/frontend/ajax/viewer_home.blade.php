@@ -1,4 +1,5 @@
 
+
 @if(!empty($product_viewer))
 <div class="products py-4">
     <h3 class="mb-4">Sản phẩm Đã xem</h3>
@@ -13,13 +14,18 @@
                 $value->Price = $check_deal->deal_price;
             }    
         ?>
-        
+
         <div class="col-md-3">
             <a href='{{ route('details', $value->Link) }}'>
                 <div class="product">
-                    <img src="{{ asset($value->Image) }}" alt="{{ @$value->Name }}" class="img-fluid">
-                    <p>{{ @$value->Name }}</p>
-                    <span>{{  str_replace(',' ,'.', number_format($value->Price))  }}đ</span>
+                    <div class="product-content">
+                        <img src="{{ asset($value->Image) }}" alt="{{ @$value->Name }}" class="product-image">
+                        <div class="product-details">
+                            <p>{{ @$value->Name }}</p>
+                            <span>{{  str_replace(',' ,'.', number_format($value->Price))  }}đ</span>
+                        </div>
+                        
+                    </div>    
                 </div>
             </a>     
         </div>
@@ -27,3 +33,5 @@
     </div>
 </div>
  @endif
+
+
