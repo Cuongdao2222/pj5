@@ -16,7 +16,7 @@
         <div class="col-md-3">
             <a href='{{ route('details', $value->Link) }}'>
                 <div class="product">
-                    <img src="tu-mat-phap.jpg" alt="Tủ mát Pháp" class="img-fluid">
+                    <img src="{{ asset($value->Image) }}" alt="{{ @$value->Name }}" class="img-fluid">
                     <p>{{ @$value->Name }}</p>
                     <span>{{  str_replace(',' ,'.', number_format($value->Price))  }}đ</span>
                 </div>
