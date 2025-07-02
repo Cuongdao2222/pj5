@@ -141,6 +141,9 @@ header .container {
     color: red;
     font-weight: bold;
 }
+.py-4 span{
+    font-size: 14px;
+}
 
 .product-image {
     width: 50px; /* Giảm kích thước ảnh */
