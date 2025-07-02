@@ -477,8 +477,11 @@ header .container {
         <div class="categories py-4">
             <div class="row">
                 <div class="col-6 col-md">
-                    <img src="https://dienmaynguoiviet.vn/media/category/cat_4d485476e07e02638e8e2133cdf8f56d.png" class="iconss-sp">
-                    <div class="category-item">Tivi</div>
+                    
+                    <div class="category-item">
+                        <img src="https://dienmaynguoiviet.vn/media/category/cat_4d485476e07e02638e8e2133cdf8f56d.png" class="iconss-sp">
+                        <span>Tivi</span>
+                    </div>
                 </div>
                 <div class="col-6 col-md"><div class="category-item">Quạt điện</div></div>
                 <div class="col-6 col-md"><div class="category-item">Máy giặt</div></div>
