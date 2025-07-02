@@ -128,6 +128,10 @@ header .container {
     align-items: center;
 }
 
+.product-details p{
+    font-size: 14px;
+}
+
 .product-image {
     width: 50px; /* Giảm kích thước ảnh */
     height: auto;
