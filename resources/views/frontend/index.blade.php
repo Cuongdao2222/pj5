@@ -156,6 +156,10 @@ header .container {
     margin: 0;
 }
 
+.py-4 .iconss-sp{
+    margin-bottom: 20px;
+}
+
 .product-details span {
     display: block;
 }
