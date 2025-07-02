@@ -1867,7 +1867,7 @@
         }
 
 
-
+         view_product_id = localStorage.getItem('viewed_product');
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
