@@ -25,4 +25,4 @@
         @endforeach
     </div>
 </div>
- @endforeach
+ @endif
