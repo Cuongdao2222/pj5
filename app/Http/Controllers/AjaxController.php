@@ -715,6 +715,7 @@ class AjaxController extends Controller
 
             $data_product_id = array_reverse($data_product_id);
 
+            $view =  $request->view;
             $product_viewer = '';
 
             if(Cache::has('product_search')){
@@ -722,7 +723,14 @@ class AjaxController extends Controller
                 $product_viewer = Cache::get('product_search')->whereIn('id', $data_product_id)->take(12);
             }
 
-            return view('frontend.ajax.viewer-product', compact('product_viewer'));      
+            if($view=='index'){
+                return view('frontend.ajax.viewer_home', compact('product_viewer'));
+            }
+            else{
+                return view('frontend.ajax.viewer-product', compact('product_viewer'));   
+            }
+
+               
         }    
     }
 

@@ -438,39 +438,8 @@
                 <div class="col-6 col-md"><div class="category-item">Sức khỏe</div></div>
             </div>
         </div>
-
-        <div class="products py-4">
-            <h3 class="mb-4">Sản phẩm Đã xem</h3>
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="product">
-                        <img src="tu-mat-phap.jpg" alt="Tủ mát Pháp" class="img-fluid">
-                        <p>Tủ mát Pháp 242L HSR</p>
-                        <span>8.080.000đ</span>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="product">
-                        <img src="sony-tv.jpg" alt="Sony Google TV" class="img-fluid">
-                        <p>Sony Google TV KD-65X75K</p>
-                        <span>20.390.000đ</span>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="product">
-                        <img src="lg-tv.jpg" alt="LG Smart TV" class="img-fluid">
-                        <p>LG Smart TV 65UQ8000PSX</p>
-                        <span>Nâng kính donate</span>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="product">
-                        <img src="samsung-tv.jpg" alt="Samsung Smart TV" class="img-fluid">
-                        <p>Samsung Smart TV OLED</p>
-                        <span>52.000.000đ</span>
-                    </div>
-                </div>
-            </div>
+        <div class="viewer-home">
+            
         </div>
 
         <div class="bar-top">
@@ -1878,13 +1847,14 @@
             type: 'POST',
             url: "{{ route('show-viewed-product') }}",
             data: {
-                product_id: view_product_id
+                product_id: view_product_id,
+                view:'index'
                    
             },
             success: function(result){
-                console.log(result)
+                
                // // numberCart = result.find($("#number-product-cart").text());
-               // $('.viewer-product').append(result);
+               $('.viewer-home').append(result);
                
             }
         });  

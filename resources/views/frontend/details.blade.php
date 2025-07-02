@@ -2275,7 +2275,8 @@
         type: 'POST',
         url: "{{ route('show-viewed-product') }}",
         data: {
-            product_id: view_product_id
+            product_id: view_product_id,
+            view:'detail'
                
         },
         success: function(result){
