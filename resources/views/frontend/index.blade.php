@@ -484,76 +484,95 @@ header .container {
         <div class="categories py-4">
             <div class="row">
                 <div class="col-6 col-md">
-                    <div class="category-item">
-                        <img src="https://dienmaynguoiviet.vn/media/category/cat_4d485476e07e02638e8e2133cdf8f56d.png" class="iconss-sp">
-                        <br>
-                        <span>Tivi</span>
-                    </div>
+                    <a href="{{ route('details','ti-vi') }}">
+                        <div class="category-item">
+                            <img src="https://dienmaynguoiviet.vn/media/category/cat_4d485476e07e02638e8e2133cdf8f56d.png" class="iconss-sp">
+                            <br>
+                            <span>Tivi</span>
+                        </div>
+                    </a>
+                    
                 </div>
                 <div class="col-6 col-md">
-                    <div class="category-item">
-                        <img src="https://dienmaynguoiviet.vn/media/category/cat_16d7d1935af1373f80a43ad4bd87c845.png" class="iconss-sp">
-                        <br>
-                        <span>Tủ lạnh</span>
-                    </div>
+
+                    <a href="{{ route('details','tu-lanh') }}">
+                        <div class="category-item">
+                            <img src="https://dienmaynguoiviet.vn/media/category/cat_16d7d1935af1373f80a43ad4bd87c845.png" class="iconss-sp">
+                            <br>
+                            <span>Tủ lạnh</span>
+                        </div>
+                    </a>
                 </div>
                 <div class="col-6 col-md">
-                    <div class="category-item">
-                        <img src="https://dienmaynguoiviet.vn/media/category/cat_16d7d1935af1373f80a43ad4bd87c845.png" class="iconss-sp">
-                        <br>
-                        <span>Máy giặt</span>
-                    </div>
+                    <a href="{{ route('details','may-giat') }}">
+                        <div class="category-item">
+                            <img src="https://dienmaynguoiviet.vn/media/category/cat_16d7d1935af1373f80a43ad4bd87c845.png" class="iconss-sp">
+                            <br>
+                            <span>Máy giặt</span>
+                        </div>
+                    </a>
                 </div>
                 <div class="col-6 col-md">
-                    <div class="category-item">
-                        <img src="https://dienmaynguoiviet.vn/media/category/cat_4d485476e07e02638e8e2133cdf8f56d.png" class="iconss-sp">
-                        <br>
-                        <span>Điều hòa</span>
-                    </div>
+                    <a href="{{ route('details','dieu-hoa') }}">
+                        <div class="category-item">
+                            <img src="https://dienmaynguoiviet.vn/media/category/cat_4d485476e07e02638e8e2133cdf8f56d.png" class="iconss-sp">
+                            <br>
+                            <span>Điều hòa</span>
+                        </div>
+                    </a>
                 </div>
                 <div class="col-6 col-md">
-                    <div class="category-item">
-                        <img src="https://dienmaynguoiviet.vn/media/category/cat_22b19c0055ddb1f48a2a6bf7b652c01f.png" class="iconss-sp">
-                        <br>
-                        <span>Máy sấy quần áo</span>
-                    </div>
+                    <a href="{{ route('details','may-say') }}">
+                        <div class="category-item">
+                            <img src="https://dienmaynguoiviet.vn/media/category/cat_22b19c0055ddb1f48a2a6bf7b652c01f.png" class="iconss-sp">
+                            <br>
+                            <span>Máy sấy quần áo</span>
+                        </div>
+                    </a>
                 </div>
                 <div class="col-6 col-md">
-                    <div class="category-item">
-                        <img src="https://dienmaynguoiviet.vn/media/category/cat_22b19c0055ddb1f48a2a6bf7b652c01f.png" class="iconss-sp">
-                        <br>
-                        <span>Ao Smith</span>
-                    </div>
+                    <a href="{{ route('details','ao-smith') }}">
+                        <div class="category-item">
+                            <img src="https://dienmaynguoiviet.vn/media/category/cat_22b19c0055ddb1f48a2a6bf7b652c01f.png" class="iconss-sp">
+                            <br>
+                            <span>Ao Smith</span>
+                        </div>
+                    </a>
                 </div>
                 
                 <div class="col-6 col-md">
-                    <div class="category-item">
-                        <img src="https://dienmaynguoiviet.vn/media/category/cat_a22746738a475a75211f96a98549a811.png" class="iconss-sp">
-                        <br>
-                        <span>Gia dụng</span>
-                    </div>
+                    <a href="{{ route('details','gia-dung') }}">
+                        <div class="category-item">
+                            <img src="https://dienmaynguoiviet.vn/media/category/cat_a22746738a475a75211f96a98549a811.png" class="iconss-sp">
+                            <br>
+                            <span>Gia dụng</span>
+                        </div>
+                    </a>
                 </div>
 
                 <div class="col-6 col-md">
-                    <div class="category-item">
-                        <img src="https://dienmaynguoiviet.vn/media/category/cat_f64d8213e904929e9114d7eb68ffe7e5.png" class="iconss-sp">
-                        <br>
-                        <span>Tủ đông</span>
-                    </div>
+                    <a href="{{ route('details','tu-dong') }}">
+                        <div class="category-item">
+                            <img src="https://dienmaynguoiviet.vn/media/category/cat_f64d8213e904929e9114d7eb68ffe7e5.png" class="iconss-sp">
+                            <br>
+                            <span>Tủ đông</span>
+                        </div>
+                    </a>
                 </div>
 
                 
             </div>
 
             <div class="row">
-                <div class="col-6 col-md">
-                    <div class="category-item">
-                        <img src="https://dienmaynguoiviet.vn/media/category/cat_16d7d1935af1373f80a43ad4bd87c845.png" class="iconss-sp">
-                        <br>
-                        <span>Tủ mát</span>
+                <a href="{{ route('details','tu-mat') }}">
+                    <div class="col-6 col-md">
+                        <div class="category-item">
+                            <img src="https://dienmaynguoiviet.vn/media/category/cat_16d7d1935af1373f80a43ad4bd87c845.png" class="iconss-sp">
+                            <br>
+                            <span>Tủ mát</span>
+                        </div>
                     </div>
-                </div>
-                
+                </a>
             </div>
         </div>
         <div class="viewer-home">
