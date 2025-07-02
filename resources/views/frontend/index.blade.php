@@ -1867,6 +1867,29 @@
         }
 
 
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $.ajax({
+            type: 'POST',
+            url: "{{ route('show-viewed-product') }}",
+            data: {
+                product_id: view_product_id
+                   
+            },
+            success: function(result){
+                console.log(result)
+               // // numberCart = result.find($("#number-product-cart").text());
+               // $('.viewer-product').append(result);
+               
+            }
+        });  
+
+
         function addToCart(id) {
     
             $.ajaxSetup({
