@@ -61,6 +61,7 @@
     color: white;
     text-align: center;
     padding: 20px;
+    display: none;
 }
 
 .banner-content h2 {
