@@ -132,6 +132,12 @@ header .container {
     font-size: 14px;
 }
 
+.product-details span{
+    font-size: 14px;
+    color: red;
+    font-weight: bold;
+}
+
 .product-image {
     width: 50px; /* Giảm kích thước ảnh */
     height: auto;
