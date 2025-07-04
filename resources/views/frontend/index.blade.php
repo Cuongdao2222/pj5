@@ -1237,7 +1237,7 @@ header .container {
                 <?php
                     $dems++;
 
-                    echo $dem;
+                    echo $dems;
 
                     $hot = Cache::rememberForever('hot'.$groups->id, function() use($groups){
 
