@@ -103,7 +103,7 @@ header .container {
 }
 
 .category-item, .promotion {
-    background-color: #f0f0f0;
+    background-color: #fff;
     text-align: center;
     padding: 10px;
     margin-bottom: 10px;
