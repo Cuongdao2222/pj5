@@ -1222,21 +1222,22 @@ header .container {
 
         <div class="box-common _cate_1942 box-banner" >
             <ul class="box-common__tab box-tab-mobile">
-                <li class="tab active-tab" data-cate-id="1942">Tivi</li>
-                <li class="tab" data-cate-id="1942">Máy giặt</li>
-                <li class="tab" data-cate-id="1942">Tủ lạnh</li>
-                <li class="tab" data-cate-id="1942">Điều hòa</li>
-                <li class="tab" data-cate-id="1942">Aosmith</li>
-                <li class="tab" data-cate-id="1942">Máy sấy quần áo</li>
-                <li class="tab" data-cate-id="1942">Gia dụng</li>
+                <li class="tab active-tab" data-cate-id="banner-product_1">Tivi</li>
+                <li class="tab" data-cate-id="banner-product_2">Máy giặt</li>
+                <li class="tab" data-cate-id="banner-product_3">Tủ lạnh</li>
+                <li class="tab" data-cate-id="banner-product_4">Điều hòa</li>
+                <li class="tab" data-cate-id="banner-product_5">Aosmith</li>
+                <li class="tab" data-cate-id="banner-product_6">Máy sấy quần áo</li>
+                <li class="tab" data-cate-id="banner-product_7">Gia dụng</li>
 
             </ul>
 
             @foreach($group as $key => $groups)
 
-
                 <?php
                     $dems++;
+
+                    echo $dem;
 
                     $hot = Cache::rememberForever('hot'.$groups->id, function() use($groups){
 
