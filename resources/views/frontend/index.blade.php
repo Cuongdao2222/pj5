@@ -1281,7 +1281,7 @@ header .container {
                     </div>
                     <!-- hiển thị tivi mero -->
                     <div class="box-common__content mouse-mover">
-                        <div class="listproduct slider-home {{ $dem !=1?'hide':'' }}" id="banner-product_{{ $dems }}" data-size="{{ $data->count() }}">
+                        <div class="listproduct slider-home {{ $dems !=1?'hide':'' }}" id="banner-product_{{ $dems }}" data-size="{{ $data->count() }}">
 
                             <?php 
 
