@@ -1237,7 +1237,7 @@ header .container {
                 <?php
                     $dems++;
 
-                    echo $dems;
+
 
                     $hot = Cache::rememberForever('hot'.$groups->id, function() use($groups){
 
@@ -1281,7 +1281,7 @@ header .container {
                     </div>
                     <!-- hiển thị tivi mero -->
                     <div class="box-common__content mouse-mover">
-                        <div class="listproduct slider-home {{ $groups->id!=1?'hide':'' }}" id="banner-product_{{ $dems }}" data-size="{{ $data->count() }}">
+                        <div class="listproduct slider-home " id="banner-product_{{ $dems }}" data-size="{{ $data->count() }}">
 
                             <?php 
 
