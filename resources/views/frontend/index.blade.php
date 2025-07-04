@@ -1220,7 +1220,7 @@ header .container {
        
         
 
-        <div class="box-common _cate_1942 box-banner-{{ $groups->id }}" >
+        <div class="box-common _cate_1942 box-banner" >
             <ul class="box-common__tab box-tab-mobile">
                 <li class="tab active-tab" data-cate-id="1942"><a href="#">Tivi</a></li>
                 <li class="tab" data-cate-id="1942"><a href="#">Máy giặt</a></li>
