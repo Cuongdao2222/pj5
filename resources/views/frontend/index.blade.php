@@ -563,14 +563,14 @@ header .container {
                 <div class="col-6 col-md">
                     <a href="{{ route('details','tu-dong') }}">
                         <div class="category-item">
-                            <img src="https://dienmaynguoiviet.vn/media/category/cat_f64d8213e904929e9114d7eb68ffe7e5.png" class="iconss-sp">
+                            <img src="https://dienmaynguoiviet.vn/media/category/cat_16d7d1935af1373f80a43ad4bd87c845.png" class="iconss-sp">
                             <br>
-                            <span>Tủ đông</span>
+                            <span>Tủ mát</span>
                         </div>
                     </a>
                 </div>
 
-                <div class="col-6 col-md">
+                <!-- <div class="col-6 col-md">
                     <a href="{{ route('details','tu-dong') }}">
                         <div class="category-item">
                             <img src="https://dienmaynguoiviet.vn/media/category/cat_f64d8213e904929e9114d7eb68ffe7e5.png" class="iconss-sp">
@@ -578,7 +578,7 @@ header .container {
                             <span>Tủ đông</span>
                         </div>
                     </a>
-                </div>
+                </div> -->
 
                 
             </div>
