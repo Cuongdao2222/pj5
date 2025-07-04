@@ -1499,7 +1499,7 @@ header .container {
                         
                         </div>
 
-                        <div class="prd-promo__top clearfix"> <a class="readmore-btn {{ $groups->id!=1?'hide':'' }}" href="{{ route('details', @$groups->link)  }}"><span>Xem tất cả</span></a> </div>
+                        <div class="prd-promo__top clearfix product_show_all_{{ $dems }}"> <a class="readmore-btn {{ $groups->id!=1?'hide':'' }}" href="{{ route('details', @$groups->link)  }}"><span>Xem tất cả</span></a> </div>
                         <!-- <a class="readmore-txt blue" href="{{ route('details', @$groups->link)  }}"><span>Xem tất cả</span></a> -->
                     </div>
 
@@ -1968,9 +1968,13 @@ header .container {
             $('.tab').removeClass('active-tab');
             $(this).addClass('active-tab');
             $('.listproduct').addClass('hide');
+            $('.prd-promo__top').addClass('hide');
             id_show = $(this).attr('data-cate-id')
 
-           
+            newStr = id_show.replace("banner-product_", "product_show_all_");
+
+            $('.'+newStr).removeClass('hide');
+
 
             $('#'+id_show).removeClass('hide');
 
