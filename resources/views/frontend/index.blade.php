@@ -1273,13 +1273,13 @@ header .container {
 
         <div class="box-common _cate_1942 box-banner-{{ $groups->id }} {{ $groups->id!=1?'hide':'' }}" >
             <ul class="box-common__tab box-tab-mobile">
-                <li class="active-tab" data-cate-id="1942"><a href="#">Tivi</a></li>
-                <li class="active-tab" data-cate-id="1942"><a href="#">Máy giặt</a></li>
-                <li class="active-tab" data-cate-id="1942"><a href="#">Tủ lạnh</a></li>
-                <li class="active-tab" data-cate-id="1942"><a href="#">Điều hòa</a></li>
-                <li class="active-tab" data-cate-id="1942"><a href="#">Aosmith</a></li>
-                <li class="active-tab" data-cate-id="1942"><a href="#">Máy sấy quần áo</a></li>
-                <li class="active-tab" data-cate-id="1942"><a href="#">Gia dụng</a></li>
+                <li class="tab active-tab" data-cate-id="1942"><a href="#">Tivi</a></li>
+                <li class="tab" data-cate-id="1942"><a href="#">Máy giặt</a></li>
+                <li class="tab" data-cate-id="1942"><a href="#">Tủ lạnh</a></li>
+                <li class="tab" data-cate-id="1942"><a href="#">Điều hòa</a></li>
+                <li class="tab" data-cate-id="1942"><a href="#">Aosmith</a></li>
+                <li class="tab" data-cate-id="1942"><a href="#">Máy sấy quần áo</a></li>
+                <li class="tab" data-cate-id="1942"><a href="#">Gia dụng</a></li>
 
             </ul>
 
