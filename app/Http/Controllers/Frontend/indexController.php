@@ -52,6 +52,8 @@ class indexController extends Controller
             return groupProduct::select('id','name', 'link')->where('parent_id', 0)->get();
         });     
 
+        dd($group);
+
         
         $product_sale = Cache::rememberForever('product_sale', function(){
 
