@@ -1089,8 +1089,8 @@
                 }   
 
                 #sync1  .owl-item img {
-                    height: 305px !important;
-                    width: 717px !important;
+                    height: auto !important;
+                    width: 100% !important;
                 } 
 
                 /*#sync1 .item img{
