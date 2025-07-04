@@ -1498,7 +1498,7 @@ header .container {
                         
                         </div>
 
-                        <div class="prd-promo__top clearfix"> <a class="readmore-btn" href="{{ route('details', @$groups->link)  }}"><span>Xem tất cả</span></a> </div>
+                        <div class="prd-promo__top clearfix"> <a class="readmore-btn {{ $groups->id!=1?'hide':'' }}" href="{{ route('details', @$groups->link)  }}"><span>Xem tất cả</span></a> </div>
                         <!-- <a class="readmore-txt blue" href="{{ route('details', @$groups->link)  }}"><span>Xem tất cả</span></a> -->
                     </div>
 
