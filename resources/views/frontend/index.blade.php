@@ -408,1200 +408,1199 @@ header .container {
         </div>
     </div>
 
-    <div class="header__top">
-        <section>
+    
+    <section>
 
-            <div class="gift-info">
-               
-            </div>
-      
-            <div class="row div-slide">
-                
-                <div class="col-md-12 box-div-slide">
-                    <div class="homebanner-container">
-                        <section class="banner">
-                            <div class="banner-content">
-                                <h2>4 NĂM BẢO HÀNH <span>(tùy sản phẩm)</span></h2>
-                                <ul>
-                                    <li>Giảm đến 5 TRIỆU</li>
-                                    <li>Trưng TV, Tủ lạnh miễn phí</li>
-                                    <li>Trả góp 0% lãi</li>
-                                    <li>100% quà ngon</li>
-                                </ul>
-                                <button>XEM NGAY</button>
-                            </div>
-                        </section>
-                        <!-- Banner chính -->
-                        <aside class="homebanner">
-                            <div id="sync1" class="slider-banner owl-carousel homebanners">
+        <div class="gift-info">
+           
+        </div>
+  
+        <div class="row div-slide">
+            
+            <div class="col-md-12 box-div-slide">
+                <div class="homebanner-container">
+                    <section class="banner">
+                        <div class="banner-content">
+                            <h2>4 NĂM BẢO HÀNH <span>(tùy sản phẩm)</span></h2>
+                            <ul>
+                                <li>Giảm đến 5 TRIỆU</li>
+                                <li>Trưng TV, Tủ lạnh miễn phí</li>
+                                <li>Trả góp 0% lãi</li>
+                                <li>100% quà ngon</li>
+                            </ul>
+                            <button>XEM NGAY</button>
+                        </div>
+                    </section>
+                    <!-- Banner chính -->
+                    <aside class="homebanner">
+                        <div id="sync1" class="slider-banner owl-carousel homebanners">
 
-                                @if(isset($banners))
+                            @if(isset($banners))
 
-                        
-                                @foreach($banners as $key => $value)
+                    
+                            @foreach($banners as $key => $value)
 
-                                    @if($key===0)
-                                        <div class="item" data-dot="<span>{{ $value->title }}</span>">
-                                            <a aria-label="slide" data-cate="0" data-place="1535" href="{{ $value->link }}" ><img  src="{{ asset($value->image) }}" alt="{{ $value->title }}" ></a>
-                                        </div>
-                                    
-                                    @else
+                                @if($key===0)
                                     <div class="item" data-dot="<span>{{ $value->title }}</span>">
-                                        <a aria-label="slide" data-cate="0" data-place="1535" href="{{ $value->link }}" ><img  data-src="{{ asset($value->image) }}" alt="{{ $value->title }}" class="lazyload"></a>
+                                        <a aria-label="slide" data-cate="0" data-place="1535" href="{{ $value->link }}" ><img  src="{{ asset($value->image) }}" alt="{{ $value->title }}" ></a>
                                     </div>
-
-                                    @endif
-                                @endforeach
-                                @endif 
-                            </div>
-                            <div id="sync2" class="slider-banner owl-carousel">
-                                @if(isset($banners))
-                                @foreach($banners as $value)
-                                <div class="item">
-                                    <h3>
-                                        {{  $value->title }}
-                                    </h3>
-                                </div>
-                                @endforeach
-                                @endif
                                 
+                                @else
+                                <div class="item" data-dot="<span>{{ $value->title }}</span>">
+                                    <a aria-label="slide" data-cate="0" data-place="1535" href="{{ $value->link }}" ><img  data-src="{{ asset($value->image) }}" alt="{{ $value->title }}" class="lazyload"></a>
+                                </div>
+
+                                @endif
+                            @endforeach
+                            @endif 
+                        </div>
+                        <div id="sync2" class="slider-banner owl-carousel">
+                            @if(isset($banners))
+                            @foreach($banners as $value)
+                            <div class="item">
+                                <h3>
+                                    {{  $value->title }}
+                                </h3>
                             </div>
-                        </aside>
+                            @endforeach
+                            @endif
+                            
+                        </div>
+                    </aside>
 
-                        <!-- End -->
-                    </div>
+                    <!-- End -->
                 </div>
-
-                
-                
             </div>
+
             
             
-        </section>
+        </div>
+        
+        
+    </section>
 
-        <section>
+    <section>
 
-            <div class="categories py-4">
-                <div class="row">
-                    <div class="col-6 col-md">
-                        <a href="{{ route('details','ti-vi') }}">
-                            <div class="category-item">
-                                <img src="https://dienmaynguoiviet.vn/media/category/cat_4d485476e07e02638e8e2133cdf8f56d.png" class="iconss-sp">
-                                <br>
-                                <span>Tivi</span>
-                            </div>
-                        </a>
-                        
-                    </div>
-                    <div class="col-6 col-md">
-
-                        <a href="{{ route('details','tu-lanh') }}">
-                            <div class="category-item">
-                                <img src="https://dienmaynguoiviet.vn/media/category/cat_16d7d1935af1373f80a43ad4bd87c845.png" class="iconss-sp">
-                                <br>
-                                <span>Tủ lạnh</span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-6 col-md">
-                        <a href="{{ route('details','may-giat') }}">
-                            <div class="category-item">
-                                <img src="https://dienmaynguoiviet.vn/media/category/cat_16d7d1935af1373f80a43ad4bd87c845.png" class="iconss-sp">
-                                <br>
-                                <span>Máy giặt</span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-6 col-md">
-                        <a href="{{ route('details','dieu-hoa') }}">
-                            <div class="category-item">
-                                <img src="https://dienmaynguoiviet.vn/media/category/cat_4d485476e07e02638e8e2133cdf8f56d.png" class="iconss-sp">
-                                <br>
-                                <span>Điều hòa</span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-6 col-md">
-                        <a href="{{ route('details','may-say') }}">
-                            <div class="category-item">
-                                <img src="https://dienmaynguoiviet.vn/media/category/cat_22b19c0055ddb1f48a2a6bf7b652c01f.png" class="iconss-sp">
-                                <br>
-                                <span>Máy sấy quần áo</span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-6 col-md">
-                        <a href="{{ route('details','ao-smith') }}">
-                            <div class="category-item">
-                                <img src="https://dienmaynguoiviet.vn/media/category/cat_22b19c0055ddb1f48a2a6bf7b652c01f.png" class="iconss-sp">
-                                <br>
-                                <span>Ao Smith</span>
-                            </div>
-                        </a>
-                    </div>
-                    
-                    <div class="col-6 col-md">
-                        <a href="{{ route('details','gia-dung') }}">
-                            <div class="category-item">
-                                <img src="https://dienmaynguoiviet.vn/media/category/cat_a22746738a475a75211f96a98549a811.png" class="iconss-sp">
-                                <br>
-                                <span>Gia dụng</span>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-6 col-md">
-                        <a href="{{ route('details','tu-dong') }}">
-                            <div class="category-item">
-                                <img src="https://dienmaynguoiviet.vn/media/category/cat_f64d8213e904929e9114d7eb68ffe7e5.png" class="iconss-sp">
-                                <br>
-                                <span>Tủ đông</span>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-6 col-md">
-                        <a href="{{ route('details','tu-dong') }}">
-                            <div class="category-item">
-                                <img src="https://dienmaynguoiviet.vn/media/category/cat_16d7d1935af1373f80a43ad4bd87c845.png" class="iconss-sp">
-                                <br>
-                                <span>Tủ mát</span>
-                            </div>
-                        </a>
-                    </div>
-
-                    <!-- <div class="col-6 col-md">
-                        <a href="{{ route('details','tu-dong') }}">
-                            <div class="category-item">
-                                <img src="https://dienmaynguoiviet.vn/media/category/cat_f64d8213e904929e9114d7eb68ffe7e5.png" class="iconss-sp">
-                                <br>
-                                <span>Tủ đông</span>
-                            </div>
-                        </a>
-                    </div> -->
-
+        <div class="categories py-4">
+            <div class="row">
+                <div class="col-6 col-md">
+                    <a href="{{ route('details','ti-vi') }}">
+                        <div class="category-item">
+                            <img src="https://dienmaynguoiviet.vn/media/category/cat_4d485476e07e02638e8e2133cdf8f56d.png" class="iconss-sp">
+                            <br>
+                            <span>Tivi</span>
+                        </div>
+                    </a>
                     
                 </div>
+                <div class="col-6 col-md">
 
-                <!-- <div class="row">
-                    <a href="{{ route('details','tu-mat') }}">
-                        <div class="col-6 col-md">
-                            <div class="category-item">
-                                <img src="https://dienmaynguoiviet.vn/media/category/cat_16d7d1935af1373f80a43ad4bd87c845.png" class="iconss-sp">
-                                <br>
-                                <span>Tủ mát</span>
-                            </div>
+                    <a href="{{ route('details','tu-lanh') }}">
+                        <div class="category-item">
+                            <img src="https://dienmaynguoiviet.vn/media/category/cat_16d7d1935af1373f80a43ad4bd87c845.png" class="iconss-sp">
+                            <br>
+                            <span>Tủ lạnh</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-6 col-md">
+                    <a href="{{ route('details','may-giat') }}">
+                        <div class="category-item">
+                            <img src="https://dienmaynguoiviet.vn/media/category/cat_16d7d1935af1373f80a43ad4bd87c845.png" class="iconss-sp">
+                            <br>
+                            <span>Máy giặt</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-6 col-md">
+                    <a href="{{ route('details','dieu-hoa') }}">
+                        <div class="category-item">
+                            <img src="https://dienmaynguoiviet.vn/media/category/cat_4d485476e07e02638e8e2133cdf8f56d.png" class="iconss-sp">
+                            <br>
+                            <span>Điều hòa</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-6 col-md">
+                    <a href="{{ route('details','may-say') }}">
+                        <div class="category-item">
+                            <img src="https://dienmaynguoiviet.vn/media/category/cat_22b19c0055ddb1f48a2a6bf7b652c01f.png" class="iconss-sp">
+                            <br>
+                            <span>Máy sấy quần áo</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-6 col-md">
+                    <a href="{{ route('details','ao-smith') }}">
+                        <div class="category-item">
+                            <img src="https://dienmaynguoiviet.vn/media/category/cat_22b19c0055ddb1f48a2a6bf7b652c01f.png" class="iconss-sp">
+                            <br>
+                            <span>Ao Smith</span>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="col-6 col-md">
+                    <a href="{{ route('details','gia-dung') }}">
+                        <div class="category-item">
+                            <img src="https://dienmaynguoiviet.vn/media/category/cat_a22746738a475a75211f96a98549a811.png" class="iconss-sp">
+                            <br>
+                            <span>Gia dụng</span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-6 col-md">
+                    <a href="{{ route('details','tu-dong') }}">
+                        <div class="category-item">
+                            <img src="https://dienmaynguoiviet.vn/media/category/cat_f64d8213e904929e9114d7eb68ffe7e5.png" class="iconss-sp">
+                            <br>
+                            <span>Tủ đông</span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-6 col-md">
+                    <a href="{{ route('details','tu-dong') }}">
+                        <div class="category-item">
+                            <img src="https://dienmaynguoiviet.vn/media/category/cat_16d7d1935af1373f80a43ad4bd87c845.png" class="iconss-sp">
+                            <br>
+                            <span>Tủ mát</span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- <div class="col-6 col-md">
+                    <a href="{{ route('details','tu-dong') }}">
+                        <div class="category-item">
+                            <img src="https://dienmaynguoiviet.vn/media/category/cat_f64d8213e904929e9114d7eb68ffe7e5.png" class="iconss-sp">
+                            <br>
+                            <span>Tủ đông</span>
                         </div>
                     </a>
                 </div> -->
-            </div>
-            <div class="viewer-home">
-                
-            </div>
-
-            <div class="bar-top">
-               <!--  <div class="bar-top-left-none"></div> -->
-               
-                <div class="preorder-hot"> 
-                    @if(isset( $bannersRight ))
-
-                    @foreach( $bannersRight as $values)
-
-                    <a  aria-label="slide" data-cate="0" data-place="1539" href="{{ $values->link }}">
-                        <img   data-src="{{ asset($values->image) }}"  alt="{{ $values->title }}" class="lazyload">
-                    </a>
-                    @endforeach
-                    @endif
-                </div>
-            </div>
-           
-            <?php 
-             
-                if(!empty($deal) && $deal->count()>0 ){
-
-                    $timeDeal_star =$deal->first()->start;
-
-                   
-
-                    $timeDeal_star =  \Carbon\Carbon::create($timeDeal_star);
-
-                    $timeDeal_end = $deal->first()->end;
-
-                    $timeDeal_end =  \Carbon\Carbon::create($timeDeal_end);
-
-                    $timestamp = $now->diffInSeconds($timeDeal_end);
-                }
 
                 
+            </div>
 
-            ?>
+            <!-- <div class="row">
+                <a href="{{ route('details','tu-mat') }}">
+                    <div class="col-6 col-md">
+                        <div class="category-item">
+                            <img src="https://dienmaynguoiviet.vn/media/category/cat_16d7d1935af1373f80a43ad4bd87c845.png" class="iconss-sp">
+                            <br>
+                            <span>Tủ mát</span>
+                        </div>
+                    </div>
+                </a>
+            </div> -->
+        </div>
+        <div class="viewer-home">
+            
+        </div>
 
-            @if($date_flashdeal->isToday())
+        <div class="bar-top">
+           <!--  <div class="bar-top-left-none"></div> -->
+           
+            <div class="preorder-hot"> 
+                @if(isset( $bannersRight ))
+
+                @foreach( $bannersRight as $values)
+
+                <a  aria-label="slide" data-cate="0" data-place="1539" href="{{ $values->link }}">
+                    <img   data-src="{{ asset($values->image) }}"  alt="{{ $values->title }}" class="lazyload">
+                </a>
+                @endforeach
+                @endif
+            </div>
+        </div>
+       
+        <?php 
+         
+            if(!empty($deal) && $deal->count()>0 ){
+
+                $timeDeal_star =$deal->first()->start;
+
+               
+
+                $timeDeal_star =  \Carbon\Carbon::create($timeDeal_star);
+
+                $timeDeal_end = $deal->first()->end;
+
+                $timeDeal_end =  \Carbon\Carbon::create($timeDeal_end);
+
+                $timestamp = $now->diffInSeconds($timeDeal_end);
+            }
+
+            
+
+        ?>
+
+        @if($date_flashdeal->isToday())
+
+        <?php 
+            $saleFlash = DB::table('flash_deal')->get();
+        ?>
+
+        @foreach($saleFlash as $keys => $vals)
+
+        @if($now < $time4)
+
 
             <?php 
-                $saleFlash = DB::table('flash_deal')->get();
+
+                $groups_deal = 0;
+                $k = 0;
+
             ?>
-
-            @foreach($saleFlash as $keys => $vals)
-
-            @if($now < $time4)
-
-
-                <?php 
-
-                    $groups_deal = 0;
-                    $k = 0;
-
-                ?>
-               
-                <a href="{{ route('show-flash-deal') }}" target="_blank"><div class="container cIVWIZ" style="background-image: url(https://dienmaynguoiviet.vn/uploads/banner/1668001535_9ec673f17e637893c11a2a983045e7c6.jpg);"></div></a>
-                <nav class="navbar navbar-expand-lg navbar-light bg-light">
            
-                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <a href="{{ route('show-flash-deal') }}" target="_blank"><div class="container cIVWIZ" style="background-image: url(https://dienmaynguoiviet.vn/uploads/banner/1668001535_9ec673f17e637893c11a2a983045e7c6.jpg);"></div></a>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+       
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+
+                    <?php 
+
+                        $flashDeal = App\Models\flashdeal::where('flash_deal_id', $vals->id)->where('flash_deal_time_id', 1)->where('active',1)->OrderBy('order','desc')->take(4)->get();
+
+                       // Khi chưa đến giờ flashdeal kiểm tra để hiển thị deal
+
+                        $checksoon = 1;
+                    ?>
+                    @foreach($define as $key => $value)
+
+                    @if($now<$value['endTime'])
 
                         <?php 
+                            $k++;
+                           
+                            if($now->between($value['startTime'], $value['endTime'])){
 
-                            $flashDeal = App\Models\flashdeal::where('flash_deal_id', $vals->id)->where('flash_deal_time_id', 1)->where('active',1)->OrderBy('order','desc')->take(4)->get();
+                                $timestamp = $now->diffInSeconds($value['endTime']);
+                                $hour =  floor($timestamp/3600);
+                                $timestamp = floor($timestamp % 3600);
+                                $minutes =floor($timestamp/60);
+                                $timestamp = floor($timestamp % 60);
+                                $seconds =floor($timestamp);
 
-                           // Khi chưa đến giờ flashdeal kiểm tra để hiển thị deal
+                                $groups_deal = $key;
 
-                            $checksoon = 1;
-                        ?>
-                        @foreach($define as $key => $value)
+                                $groups_deal+=1;
 
-                        @if($now<$value['endTime'])
 
-                            <?php 
-                                $k++;
+                                $flashDeal = App\Models\flashdeal::where('flash_deal_id', $vals->id)->where('flash_deal_time_id', $groups_deal)->where('active',1)->OrderBy('order','desc')->take(4)->get();
+                                $checksoon = 0;
+
+                            }
+
+                    ?>  
+
+                   
+                    <div class="navbar-nav col-md-3 {{  $k==1?'actives':'' }} active_{{ $key+1 }}">
+                        <div class="nav-item nav-link active div-pd" > 
+                            <div>
+                                <a class="deal{{ $vals->id }}" href="javascript:void(0)" onclick="clickDeal({{ $vals->id }},{{ $key+1 }}, {{ $k }})">
+                                    <div class="UCDJ9O">{{ $value['start'] }}</div>
+                                    <div class="higiZo">{{ $now->between($value['startTime'], $value['endTime'])?'Đang diễn ra':'sắp diễn ra'}}</div>
+                                </a>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                     @endif
+                    @endforeach
+                   
+                </div>
+            </nav>
+
+        <div class="container-productbox product-view-all">
+
+            <div class="row list-pro listpd">
+
+
+                @if(!empty($flashDeal) && $flashDeal->count()>0)
+                @foreach($flashDeal as $key => $value)
+
+                                
+                <div class="col-md-3 col-6 lists">
+                    <div class="item  __cate_1942">
+                       
+                            
+                            <div class="item-img item-img_1942">  <a href="{{ route('details', $value->link) }}" data-box="BoxCate" class="main-contain" target="_blank"> <img class="thumb lazyloaded" data-src="{{ asset($value->image) }}" alt="{{ $value->name }}" style="width:auto; height: 184px;" src="{{ asset($value->image) }}" ></a> </div>
+                            <div class="items-title">
+                                <div class="name">
+                                     <a href="{{ route('details', $value->link) }}" data-box="BoxCate" class="main-contain" target="_blank">    
+                                         <span> {{ $value->name }} </span>
+                                     </a>
+                                </div>
+
+                                <div class="IKgh3U"><div class="qOgYxF"><span>{{ @str_replace(',' ,'.', number_format($value->price)) }}</span><span class="-92Xgq">₫ </span></div></div>
+                                <div class="price-sale">
+                                    <div class="btn-buy-price">
+
+                                        <?php 
+                                            $str_len[7] = '?.???.000';
+                                            $str_len[8] = '??.???.000';
+                                            $str_len[9] = '???.???.000';
+                                        ?>
+
+                                         @if($vals->price !=0)
+                                        <strong class="price">{{ $checksoon ==1?'???.000':@str_replace(',' ,'.', number_format($vals->price)) }}&#x20AB</strong>
+                                         @else
+
+                                         <?php 
+                                            $price_strlen = $str_len[strlen($value->deal_price)]??'???.000';
+                                         ?>
+                                         <strong class="price">{{   $checksoon ==1 ?$price_strlen:@str_replace(',' ,'.', number_format($value->deal_price)) }} &#x20AB</strong>
+                                         @endif
+                                        <div class="progress">
+
+                                            <div class="progress-done" data-done="70">
+                                                70%
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="btn-buys">
+                                        <button type="button" class="btn btn-danger btn-buy-click" onclick="addToCart('{{ $value->product_id }}')">Mua ngay</button>
+                                    </div>
+                                    
+                                </div>
+                                
                                
-                                if($now->between($value['startTime'], $value['endTime'])){
+                            </div>
+                        
+                        <div class="item-bottom"> <a href="#" class="shiping"></a> </div>
 
-                                    $timestamp = $now->diffInSeconds($value['endTime']);
+                        @if($checksoon==0)
+
+                        <?php 
+                            $percent = floor((intval($value->price)- intval($value->deal_price))/intval($value->price)*10);
+
+
+                        ?>
+
+                        @if($percent>0)
+                        <div class="_5ICO3M yV54ZD X7gzZ7">
+                            <div class="_8PundJ"><span class="percent">{{ $percent }}%</span><span class="tSV5KQ">giảm</span></div>
+                        </div>
+                        @endif
+                        @endif
+                        <!-- <a href="javascript:void(0)" class="item-ss"> <i></i> So sánh </a> --> 
+                    </div>
+                </div>
+
+                @endforeach
+                @endif
+            </div>
+            <div class="clearfix"></div>
+            <div class="prd-promo__top clearfix"> <a class="readmore-btn" href="{{ route('show-flash-deal') }}" target="_blank"><span>Xem tất cả</span></a> </div>
+            <!-- <div class="view-more "> <a href="javascript:;">Xem thêm <span class="remain">133</span> Tivi</a> </div> --> 
+        </div>
+
+        @endif
+        @endforeach
+
+
+
+        @else
+
+        <?php 
+            $deal_active = 1;
+
+            $ar_Deal_Pd = [];
+
+        ?>
+
+        @if(!empty($deal_check) && $deal_check->count()>0 && $now->between($deal_check[0]->start, $deal_check[0]->end) && $deal_active ===1)
+
+       
+
+        <!-- flash sale -->
+            <div class="img-flashsale mobiles" style="width: 100%;">
+                <a href="{{ route('details', 'deal') }}"><img src="{{ asset('images/template/flashsalemb.jpg') }}" style="width: 100%"></a>
+
+            </div>
+            
+            @if(!empty($bannerUnderSlider->image))
+             <div class="img-flashsale desktop show-banner-flash-sale" style="width: 100%;">
+
+                <div class="gvdshock">
+                    <div class="endtime" data-countdown="12/12/2023 11:59:00 PM" data-begin="12/12/2023 8:00:00 AM">
+                        <span class="title-end">Kết thúc sau</span>
+                        <span class="countdown-timer">
+                            <label id="hour"></label>
+                            <span>:</span>
+                            <label id="minute"></label>
+                            <span>:</span>
+                            <label id="second"></label>
+                        </span>
+                    </div>
+                </div>
+                
+                <a href="{{ route('details', 'deal') }}"><img src="{{ asset($bannerUnderSlider->image) }}?ver=1" style="width: 100%"></a>
+                
+
+            </div>
+            @endif
+
+
+
+
+            
+            <div class="mt-1">
+                <div class="flash-sale mouse-mover" style="height: 305px;">
+                    
+                    <span id="banner-flash-sale"><a href="{{ route('dealFe') }}">
+                    <img width="256" src="{{  asset('images/background-image/Flash_Sale_Theme_256x396.jpg')}}" style="width: auto; height: 300px" alt="banner-fs">
+                    </a></span>
+                    <div class="flash-product nk-product-of-flash-sales">
+                        <div class="col-flash col-flash-2 active">
+                            <div id="sync1S" class="slider-banner owl-carousel flash-sale-banner">
+
+                                @foreach($deal as $key => $value)
+
+                               
+                               
+                                @if( !empty($value->active) && $value->active ==1 && $now->between($value->start, $value->end))
+
+                                <?php 
+                                    $timestamp = $now->diffInSeconds($value->end);
                                     $hour =  floor($timestamp/3600);
                                     $timestamp = floor($timestamp % 3600);
                                     $minutes =floor($timestamp/60);
                                     $timestamp = floor($timestamp % 60);
                                     $seconds =floor($timestamp);
 
-                                    $groups_deal = $key;
+                                    $ar_Deal_Pd[$value->product_id] = $value->deal_price;
 
-                                    $groups_deal+=1;
+                                     $count_pd  =  Cache::rememberForever('count_pd_'.$value->product_id , function() use($value){
+
+                                        return   App\Models\product::find($value->product_id);
+                                    });
 
 
-                                    $flashDeal = App\Models\flashdeal::where('flash_deal_id', $vals->id)->where('flash_deal_time_id', $groups_deal)->where('active',1)->OrderBy('order','desc')->take(4)->get();
-                                    $checksoon = 0;
 
-                                }
+                                    
+                                ?>
 
-                        ?>  
-
-                       
-                        <div class="navbar-nav col-md-3 {{  $k==1?'actives':'' }} active_{{ $key+1 }}">
-                            <div class="nav-item nav-link active div-pd" > 
-                                <div>
-                                    <a class="deal{{ $vals->id }}" href="javascript:void(0)" onclick="clickDeal({{ $vals->id }},{{ $key+1 }}, {{ $k }})">
-                                        <div class="UCDJ9O">{{ $value['start'] }}</div>
-                                        <div class="higiZo">{{ $now->between($value['startTime'], $value['endTime'])?'Đang diễn ra':'sắp diễn ra'}}</div>
+                                <div class="item" id="items-{{ $key }}">
+                                    <a href="{{ route('details', $value->link) }}">
+                                        <div class="img">
+                                            <img width="327" src="{{ asset($value->image) }}"   title="{{ $value->name }}" >
+                                        </div>
                                     </a>
-                                </div>
-                            </div>
-
-
-                        </div>
-
-                         @endif
-                        @endforeach
-                       
-                    </div>
-                </nav>
-
-            <div class="container-productbox product-view-all">
-
-                <div class="row list-pro listpd">
-
-
-                    @if(!empty($flashDeal) && $flashDeal->count()>0)
-                    @foreach($flashDeal as $key => $value)
-
-                                    
-                    <div class="col-md-3 col-6 lists">
-                        <div class="item  __cate_1942">
-                           
-                                
-                                <div class="item-img item-img_1942">  <a href="{{ route('details', $value->link) }}" data-box="BoxCate" class="main-contain" target="_blank"> <img class="thumb lazyloaded" data-src="{{ asset($value->image) }}" alt="{{ $value->name }}" style="width:auto; height: 184px;" src="{{ asset($value->image) }}" ></a> </div>
-                                <div class="items-title">
-                                    <div class="name">
-                                         <a href="{{ route('details', $value->link) }}" data-box="BoxCate" class="main-contain" target="_blank">    
-                                             <span> {{ $value->name }} </span>
-                                         </a>
-                                    </div>
-
-                                    <div class="IKgh3U"><div class="qOgYxF"><span>{{ @str_replace(',' ,'.', number_format($value->price)) }}</span><span class="-92Xgq">₫ </span></div></div>
-                                    <div class="price-sale">
-                                        <div class="btn-buy-price">
-
-                                            <?php 
-                                                $str_len[7] = '?.???.000';
-                                                $str_len[8] = '??.???.000';
-                                                $str_len[9] = '???.???.000';
-                                            ?>
-
-                                             @if($vals->price !=0)
-                                            <strong class="price">{{ $checksoon ==1?'???.000':@str_replace(',' ,'.', number_format($vals->price)) }}&#x20AB</strong>
-                                             @else
-
-                                             <?php 
-                                                $price_strlen = $str_len[strlen($value->deal_price)]??'???.000';
-                                             ?>
-                                             <strong class="price">{{   $checksoon ==1 ?$price_strlen:@str_replace(',' ,'.', number_format($value->deal_price)) }} &#x20AB</strong>
-                                             @endif
-                                            <div class="progress">
-
-                                                <div class="progress-done" data-done="70">
-                                                    70%
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                        <div class="btn-buys">
-                                            <button type="button" class="btn btn-danger btn-buy-click" onclick="addToCart('{{ $value->product_id }}')">Mua ngay</button>
-                                        </div>
-                                        
-                                    </div>
-                                    
-                                   
-                                </div>
-                            
-                            <div class="item-bottom"> <a href="#" class="shiping"></a> </div>
-
-                            @if($checksoon==0)
-
-                            <?php 
-                                $percent = floor((intval($value->price)- intval($value->deal_price))/intval($value->price)*10);
-
-
-                            ?>
-
-                            @if($percent>0)
-                            <div class="_5ICO3M yV54ZD X7gzZ7">
-                                <div class="_8PundJ"><span class="percent">{{ $percent }}%</span><span class="tSV5KQ">giảm</span></div>
-                            </div>
-                            @endif
-                            @endif
-                            <!-- <a href="javascript:void(0)" class="item-ss"> <i></i> So sánh </a> --> 
-                        </div>
-                    </div>
-
-                    @endforeach
-                    @endif
-                </div>
-                <div class="clearfix"></div>
-                <div class="prd-promo__top clearfix"> <a class="readmore-btn" href="{{ route('show-flash-deal') }}" target="_blank"><span>Xem tất cả</span></a> </div>
-                <!-- <div class="view-more "> <a href="javascript:;">Xem thêm <span class="remain">133</span> Tivi</a> </div> --> 
-            </div>
-
-            @endif
-            @endforeach
-
-
-
-            @else
-
-            <?php 
-                $deal_active = 1;
-
-                $ar_Deal_Pd = [];
-
-            ?>
-
-            @if(!empty($deal_check) && $deal_check->count()>0 && $now->between($deal_check[0]->start, $deal_check[0]->end) && $deal_active ===1)
-
-           
-
-            <!-- flash sale -->
-                <div class="img-flashsale mobiles" style="width: 100%;">
-                    <a href="{{ route('details', 'deal') }}"><img src="{{ asset('images/template/flashsalemb.jpg') }}" style="width: 100%"></a>
-
-                </div>
-                
-                @if(!empty($bannerUnderSlider->image))
-                 <div class="img-flashsale desktop show-banner-flash-sale" style="width: 100%;">
-
-                    <div class="gvdshock">
-                        <div class="endtime" data-countdown="12/12/2023 11:59:00 PM" data-begin="12/12/2023 8:00:00 AM">
-                            <span class="title-end">Kết thúc sau</span>
-                            <span class="countdown-timer">
-                                <label id="hour"></label>
-                                <span>:</span>
-                                <label id="minute"></label>
-                                <span>:</span>
-                                <label id="second"></label>
-                            </span>
-                        </div>
-                    </div>
-                    
-                    <a href="{{ route('details', 'deal') }}"><img src="{{ asset($bannerUnderSlider->image) }}?ver=1" style="width: 100%"></a>
-                    
-
-                </div>
-                @endif
-
-
-
-
-                
-                <div class="mt-1">
-                    <div class="flash-sale mouse-mover" style="height: 305px;">
-                        
-                        <span id="banner-flash-sale"><a href="{{ route('dealFe') }}">
-                        <img width="256" src="{{  asset('images/background-image/Flash_Sale_Theme_256x396.jpg')}}" style="width: auto; height: 300px" alt="banner-fs">
-                        </a></span>
-                        <div class="flash-product nk-product-of-flash-sales">
-                            <div class="col-flash col-flash-2 active">
-                                <div id="sync1S" class="slider-banner owl-carousel flash-sale-banner">
-
-                                    @foreach($deal as $key => $value)
-
-                                   
-                                   
-                                    @if( !empty($value->active) && $value->active ==1 && $now->between($value->start, $value->end))
-
-                                    <?php 
-                                        $timestamp = $now->diffInSeconds($value->end);
-                                        $hour =  floor($timestamp/3600);
-                                        $timestamp = floor($timestamp % 3600);
-                                        $minutes =floor($timestamp/60);
-                                        $timestamp = floor($timestamp % 60);
-                                        $seconds =floor($timestamp);
-
-                                        $ar_Deal_Pd[$value->product_id] = $value->deal_price;
-
-                                         $count_pd  =  Cache::rememberForever('count_pd_'.$value->product_id , function() use($value){
-
-                                            return   App\Models\product::find($value->product_id);
-                                        });
-
-
-
-                                        
-                                    ?>
-
-                                    <div class="item" id="items-{{ $key }}">
+                                    <div class="desc desc-deal{{$key}}">
                                         <a href="{{ route('details', $value->link) }}">
-                                            <div class="img">
-                                                <img width="327" src="{{ asset($value->image) }}"   title="{{ $value->name }}" >
+
+                                            <div class="event">
+                                               <img src="{{ asset('images/background-image/event.png')  }}?ver=3">
+                                            </div>
+                                            <h4 class="title">{{ $value->name }}</h4>
+                                            <div class="container-price">
+                                                   <div>
+                                                       <span class="price-old">{{ @str_replace(',' ,'.', number_format($value->price)) }}&#x20AB;</span>
+                                                       &nbsp
+
+                                                       <?php
+                                                            $discount_deal =  round(((intval($value->price) - intval($value->deal_price))/intval($value->price))*100)
+                                                        ?>
+                                                        
+                                                        <span class="discount_percent">-{{ $discount_deal }}%</span>
+                                                   </div>
+                                            </div>
+                                            <div style="margin-top: 11px">
+                                                <div class="nk-top-stickers"><span class="nk-sticker nk-new">Mới</span></div><div>
+                                                        <p class="title-shock-price">Giá sốc online</p>
+                                                        <span class="price-new">{{ @str_replace(',' ,'.', number_format($value->deal_price)) }}&#x20AB;</span>
+                                                    </div>
+                                            </div>
+                                            <div class="review_product star">
+                                               <p>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                </p>
+                                                <div class="line_break">|</div>
+                                                    <?php 
+
+                                                        if(!empty($count_pd->Quantily) && $count_pd->Quantily<20){
+                                                            $number_percent =   floor( (intval($count_pd->Quantily)/20)*100);
+                                                        }
+                                                        else{
+                                                            $number_percent =0;
+                                                        }
+                                                        
+
+                                                    ?>
+                                                    <div class="reviewCount">{{ $count_pd->Quantily  }} Sản phẩm</div>
+
+                                                    
+                                                </div>
+                                                <div class="container-timeline">
+                                                <input style="background-size: 40% 100%" type="range" value="{{  $number_percent }}" max="10" wfd-id="id23">
+                                               <!--  <p>Đã bán <span style="color: #EE1E25">2</span> / 100 sản phẩm</p> -->
+                                            </div>
+                                            <div style="width: 100%; height: 1px; background: #ECECEC; margin-top: 8px"></div>
+                                            <div class="countdown-flash-sale">
+                                                <div class="time-cd time-fl time{{ $key }}">
+
+                                                    <span class="timestamp" style="display: none;">{{   $now->diffInSeconds($value->end) }}</span>
+                                                   
+                                                   
+                                                    <div class="time">
+                                                        <span class="hours">
+                                                            <span class="hourss"> {{ $hour }}</span>
+                                                            
+                                                            <div style="margin-top: 2px; width:100%; height:1px; background: #FF3647"></div>
+                                                            <span>Giờ</span>
+                                                        </span>
+                                                        <p style="font-size: 28px; line-height: 55px;font-weight: bold;color: #101010; margin: 0 7px" >:</p>
+
+                                                        <span class="hours">
+                                                            <span class="minutess">{{ $minutes }}</span>
+                                                            <div style="margin-top: 2px; width:100%; height:1px; background: #FF3647"></div>
+                                                            <span>phút</span>
+                                                        </span>
+                                                        <p style="font-size: 28px; line-height: 55px;font-weight: bold;color: #101010; margin: 0 7px">:</p>
+                                                        <span class="hours">
+                                                            <span class="secondss"> {{ $seconds }}</span>
+                                                            <div style="margin-top: 2px; width:100%; height:1px; background: #FF3647"></div>
+                                                            <span>giây</span>
+                                                        </span>
+                                                       
+                                                      
+                                                    </div>
+                                                </div>
                                             </div>
                                         </a>
-                                        <div class="desc desc-deal{{$key}}">
-                                            <a href="{{ route('details', $value->link) }}">
-
-                                                <div class="event">
-                                                   <img src="{{ asset('images/background-image/event.png')  }}?ver=3">
-                                                </div>
-                                                <h4 class="title">{{ $value->name }}</h4>
-                                                <div class="container-price">
-                                                       <div>
-                                                           <span class="price-old">{{ @str_replace(',' ,'.', number_format($value->price)) }}&#x20AB;</span>
-                                                           &nbsp
-
-                                                           <?php
-                                                                $discount_deal =  round(((intval($value->price) - intval($value->deal_price))/intval($value->price))*100)
-                                                            ?>
-                                                            
-                                                            <span class="discount_percent">-{{ $discount_deal }}%</span>
-                                                       </div>
-                                                </div>
-                                                <div style="margin-top: 11px">
-                                                    <div class="nk-top-stickers"><span class="nk-sticker nk-new">Mới</span></div><div>
-                                                            <p class="title-shock-price">Giá sốc online</p>
-                                                            <span class="price-new">{{ @str_replace(',' ,'.', number_format($value->deal_price)) }}&#x20AB;</span>
-                                                        </div>
-                                                </div>
-                                                <div class="review_product star">
-                                                   <p>
-                                                        <i class="fa-solid fa-star"></i>
-                                                        <i class="fa-solid fa-star"></i>
-                                                        <i class="fa-solid fa-star"></i>
-                                                        <i class="fa-solid fa-star"></i>
-                                                        <i class="fa-solid fa-star"></i>
-                                                    </p>
-                                                    <div class="line_break">|</div>
-                                                        <?php 
-
-                                                            if(!empty($count_pd->Quantily) && $count_pd->Quantily<20){
-                                                                $number_percent =   floor( (intval($count_pd->Quantily)/20)*100);
-                                                            }
-                                                            else{
-                                                                $number_percent =0;
-                                                            }
-                                                            
-
-                                                        ?>
-                                                        <div class="reviewCount">{{ $count_pd->Quantily  }} Sản phẩm</div>
-
-                                                        
-                                                    </div>
-                                                    <div class="container-timeline">
-                                                    <input style="background-size: 40% 100%" type="range" value="{{  $number_percent }}" max="10" wfd-id="id23">
-                                                   <!--  <p>Đã bán <span style="color: #EE1E25">2</span> / 100 sản phẩm</p> -->
-                                                </div>
-                                                <div style="width: 100%; height: 1px; background: #ECECEC; margin-top: 8px"></div>
-                                                <div class="countdown-flash-sale">
-                                                    <div class="time-cd time-fl time{{ $key }}">
-
-                                                        <span class="timestamp" style="display: none;">{{   $now->diffInSeconds($value->end) }}</span>
-                                                       
-                                                       
-                                                        <div class="time">
-                                                            <span class="hours">
-                                                                <span class="hourss"> {{ $hour }}</span>
-                                                                
-                                                                <div style="margin-top: 2px; width:100%; height:1px; background: #FF3647"></div>
-                                                                <span>Giờ</span>
-                                                            </span>
-                                                            <p style="font-size: 28px; line-height: 55px;font-weight: bold;color: #101010; margin: 0 7px" >:</p>
-
-                                                            <span class="hours">
-                                                                <span class="minutess">{{ $minutes }}</span>
-                                                                <div style="margin-top: 2px; width:100%; height:1px; background: #FF3647"></div>
-                                                                <span>phút</span>
-                                                            </span>
-                                                            <p style="font-size: 28px; line-height: 55px;font-weight: bold;color: #101010; margin: 0 7px">:</p>
-                                                            <span class="hours">
-                                                                <span class="secondss"> {{ $seconds }}</span>
-                                                                <div style="margin-top: 2px; width:100%; height:1px; background: #FF3647"></div>
-                                                                <span>giây</span>
-                                                            </span>
-                                                           
-                                                          
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-
-
-                                        @include('frontend.layouts.more-info', ['value'=>$count_pd, 'deal_price'=>$value->deal_price,'gift_Price'=>!empty($gift_Price)?$gift_Price:''])
                                     </div>
 
-                                    @endif
 
-                                    @endforeach
+                                    @include('frontend.layouts.more-info', ['value'=>$count_pd, 'deal_price'=>$value->deal_price,'gift_Price'=>!empty($gift_Price)?$gift_Price:''])
                                 </div>
+
+                                @endif
+
+                                @endforeach
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-               <!--  end flash  -->
-             @endif 
+           <!--  end flash  -->
+         @endif 
 
-             @endif
-
-
-
-              
-            <div class="clearfix"></div> 
-
-         
-            <div class="prd-promo has-banner" style="background: #42b6ed;" data-html-id="3109">
-
-                @if(!empty($bannerUnderSale[0]['image']))
-
-                <!-- <div class="prd-promo__top clearfix" >
-
-                    <a data-cate="0" data-place="1868" href="#" ><img style="cursor:pointer" src="{{ asset($bannerUnderSale[0]['image']) }}" alt="banner-summer" width="1200"></a>                
-                </div>  -->
-
-                @endif
+         @endif
 
 
-                @if(!empty($product_sale)&&$product_sale->count()>0)
 
-                <div class="option-sg">
+          
+        <div class="clearfix"></div> 
 
-                    <a href="javascript:void(0)" data-is-recommend-tab="true" class="active option-sale op1" data-id="1">
-                        <img data-src="{{ asset('background/like2.png') }}" class=" ls-is-cached lazyloaded" alt="Tivi màn hình lớn" width="50" height="50" src="{{ asset('background/like2.png') }}">
-                        <span>Tivi màn hình lớn</span>
-                    </a>
+     
+        <div class="prd-promo has-banner" style="background: #42b6ed;" data-html-id="3109">
 
-                   <!--  <a href="javascript:void(0)"  data-group="3507"  class="option-sale" data-id="0">
-                        <img src="{{ asset('background/like1.png') }}" class="ls-is-cached" alt="Sản phẩm luxury" width="50" height="50" src="{{ asset('background/like1.png') }}">
-                        <span>Sản phẩm Luxury</span>
-                    </a> -->
+            @if(!empty($bannerUnderSale[0]['image']))
+
+            <!-- <div class="prd-promo__top clearfix" >
+
+                <a data-cate="0" data-place="1868" href="#" ><img style="cursor:pointer" src="{{ asset($bannerUnderSale[0]['image']) }}" alt="banner-summer" width="1200"></a>                
+            </div>  -->
+
+            @endif
+
+
+            @if(!empty($product_sale)&&$product_sale->count()>0)
+
+            <div class="option-sg">
+
+                <a href="javascript:void(0)" data-is-recommend-tab="true" class="active option-sale op1" data-id="1">
+                    <img data-src="{{ asset('background/like2.png') }}" class=" ls-is-cached lazyloaded" alt="Tivi màn hình lớn" width="50" height="50" src="{{ asset('background/like2.png') }}">
+                    <span>Tivi màn hình lớn</span>
+                </a>
+
+               <!--  <a href="javascript:void(0)"  data-group="3507"  class="option-sale" data-id="0">
+                    <img src="{{ asset('background/like1.png') }}" class="ls-is-cached" alt="Sản phẩm luxury" width="50" height="50" src="{{ asset('background/like1.png') }}">
+                    <span>Sản phẩm Luxury</span>
+                </a> -->
+                
+            </div>
+
+        
+            <div class="block-product__content mobile-sale-product" data-is-recommend-tab="true">
+
+                <ul class="listproduct mouse-mover" data-total="39">
+
+                    <?php 
+
+                        $dems =0;
+                    ?>
+
+
+                    @foreach($product_sale as $keys => $value)
+
                     
-                </div>
+                    @if($value->active==1 && $dems<5)
 
-            
-                <div class="block-product__content mobile-sale-product" data-is-recommend-tab="true">
+                    <?php 
+                        $dems++;
+                    ?>
 
-                    <ul class="listproduct mouse-mover" data-total="39">
+                    <li data-id="{{ $keys }}" data-pos="{{ $dems }}" class="item list_sale" id="list_{{ $keys }}">
 
-                        <?php 
+                        <a href='{{ route('details', $value->Link) }}' class=" main-contain" data-s="OnlineSavingCMS" data-site="2" data-pro="3" data-cache="False" data-name="M&#xE1;y gi&#x1EB7;t LG Inverter 8.5 kg FV1408S4W" data-id="227121" data-price="8840000.0" data-brand="LG" data-cate="M&#xE1;y gi&#x1EB7;t" data-box="BoxHome">
+                            <div class="event">
+                               <img src="{{ asset('images/background-image/event.png')  }}?ver=3">
+                            </div>
 
-                            $dems =0;
-                        ?>
+                            <div class="item-img">
+                                <img src="{{ asset($value->Image) }}"   alt="{{ $value->Name }}" width=210 height=210>
+                            
+                            </div>
+                            <div class="title-name">
+                                <h3>{{ $value->Name }}</h3>
+                            </div>
 
+                            <?php 
 
-                        @foreach($product_sale as $keys => $value)
+                                $check_deal_sale = $deal->where('product_id', $value->product_id)->first();
 
-                        
-                        @if($value->active==1 && $dems<5)
-
-                        <?php 
-                            $dems++;
-                        ?>
-
-                        <li data-id="{{ $keys }}" data-pos="{{ $dems }}" class="item list_sale" id="list_{{ $keys }}">
-
-                            <a href='{{ route('details', $value->Link) }}' class=" main-contain" data-s="OnlineSavingCMS" data-site="2" data-pro="3" data-cache="False" data-name="M&#xE1;y gi&#x1EB7;t LG Inverter 8.5 kg FV1408S4W" data-id="227121" data-price="8840000.0" data-brand="LG" data-cate="M&#xE1;y gi&#x1EB7;t" data-box="BoxHome">
-                                <div class="event">
-                                   <img src="{{ asset('images/background-image/event.png')  }}?ver=3">
-                                </div>
-
-                                <div class="item-img">
-                                    <img src="{{ asset($value->Image) }}"   alt="{{ $value->Name }}" width=210 height=210>
                                 
-                                </div>
-                                <div class="title-name">
-                                    <h3>{{ $value->Name }}</h3>
-                                </div>
+                                if(!empty($check_deal_sale) && $now->between($deal[0]->start, $deal[0]->end)){
 
-                                <?php 
-
-                                    $check_deal_sale = $deal->where('product_id', $value->product_id)->first();
-
-                                    
-                                    if(!empty($check_deal_sale) && $now->between($deal[0]->start, $deal[0]->end)){
-
-                                        $value->Price = $check_deal_sale->deal_price;
-
-                                    }
-                                ?>
-                                
-                                <strong class="price">{{  @str_replace(',' ,'.', number_format($value->Price))  }}.&#x20AB;</strong>
-                                <div class="item-rating">
-                                    <p>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                    </p>
-                                </div>
-
-                            </a>
-                            <div class="commit"><span>Cam kết bán đúng giá </span></div> 
-
-                            <?php  
-
-                                if(!Cache::has('gifts_Fe_'.$value->id)){
-
-                                    $gifts = gift($value->product_id);
-                                    
-                                    
-                                    Cache::put('gifts_Fe_'.$value->product_id, $gifts,100);
+                                    $value->Price = $check_deal_sale->deal_price;
 
                                 }
-                                
-                                $gift = Cache::get('gifts_Fe_'.$value->product_id);
-
-
-
                             ?>
-
-                            @if(!empty($gift) && $value->group_id !=8)
-                                <?php 
-
-                                    $gifts = $gift['gifts'];
-                                    $gift = $gift['gift']; 
-
-                                ?>
-
-
-
-                                {{ $gifts->type ==1?'k/m chọn 1 trong 2':'' }}
-
-
-                                <div class="option-gift">
-
-                                     @foreach($gift as $gifts)
-
-                                    <div class="quatang"><img src="{{ asset($gifts->image) }}"></div>
-                                    @endforeach
-                                </div>
-
-                                @if(!empty($gifts->price))
-
-
-                                <?php 
-
-                                    $id_checkpromotion = $value->promotion_box==1?'':$value->product_id;
-
-                                    $price_gift = pricesPromotion($value->Price, $id_checkpromotion)===''?str_replace(',' ,'.', number_format($gifts->price)):pricesPromotion($value->Price, $id_checkpromotion);
-
-                
-                                ?>
-
-                                <div class="font-sz">    
-                                    <span> Quà tặng trị giá <strong>{{  $price_gift }} </strong> </span>
-                                </div>
-                                @endif  
-
-                             
-
-                            @endif
-
-
-
-                            <!-- phần quà khuyến mãi -->
-
-
-                            <?php 
-
-                            $gift_Price = pricesPromotion($value->Price, $value->product_id);
-
-                            ?>
-
-                           
-
-                            @if(!empty($gift_Price))
-
-                            <?php 
-
-                                $image_gift_promotion = definePrice($gift_Price);
-                            ?>
-
-                             <div class="option-gift">
-                                
-                                <div class="quatang"><img src="{{ $image_gift_promotion }}"></div>
-                               
-                            </div>
-                          
-
-                            <div class="font-sz">
-                                <span> Giảm ngay <strong>{{ $gift_Price  }} đ</strong> </span>
-                            </div>
-
-                            @endif
-
-                           
-
-                            <!-- <a href="javascript:void(0)" class="compare-show" data-id="{{ $value->product_id }}">
-                                <i class="fa-solid fa-plus"></i>
-                                    so sánh
-                            </a> -->
-
-
-
-
-                            @include('frontend.layouts.more-info', ['value'=>$value, 'gift_Price'=>$gift_Price])
-                        </li>
-                        @endif
-                        @endforeach
-                    </ul>
-                    
-                    <div class="prd-promo__top clearfix" >
-                        <a class="readmore-btn" href="{{ route('sale-home') }}"><span>Xem tất cả</span></a>                
-                    </div>
-                </div>
-                @endif
-
-                
-                
-            </div>
-
-
-            
-
-            <div  class="owl-slider-count" style="display: none;">13</div> 
-            <?php
-
-                $defineBannerGr = [0=>6, 1=>7, 2=>8, 3=>9, 6=>10, 7=>11];
-
-
-                // phần xử lý để cho máy giặt lên đầu
-
-                // $group = $group->reverse();
-
-                // $group = $group->push($group[2]);
-
-                // $group = $group->push($group[1]);
-
-                // $group = $group->reverse();
-
-                // $group->forget(1);
-
-                // $group->forget(2);
-
-                $dems = 0;
-            ?> 
-
-           
-            
-
-            <div class="box-common _cate_1942 box-banner" >
-                <ul class="box-common__tab box-tab-mobile">
-                    <li class="tab active-tab" data-cate-id="banner-product_1">Tivi</li>
-                    <li class="tab" data-cate-id="banner-product_2">Máy giặt</li>
-                    <li class="tab" data-cate-id="banner-product_3">Tủ lạnh</li>
-                    <li class="tab" data-cate-id="banner-product_4">Điều hòa</li>
-                    <li class="tab" data-cate-id="banner-product_5">Aosmith</li>
-                    <li class="tab" data-cate-id="banner-product_6">Máy sấy quần áo</li>
-                    <li class="tab" data-cate-id="banner-product_7">Gia dụng</li>
-
-                </ul>
-
-                @foreach($group as $key => $groups)
-
-                    <?php
-                        $dems++;
-
-
-
-                        $hot = Cache::rememberForever('hot'.$groups->id, function() use($groups){
-
-                            $hot = DB::table('hot')->select('product_id')->where('group_id', $groups->id)->orderBy('orders', 'asc')->get()->pluck('product_id');
-
-                            return $hot;
-
                             
-                        });
+                            <strong class="price">{{  @str_replace(',' ,'.', number_format($value->Price))  }}.&#x20AB;</strong>
+                            <div class="item-rating">
+                                <p>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </p>
+                            </div>
+
+                        </a>
+                        <div class="commit"><span>Cam kết bán đúng giá </span></div> 
+
+                        <?php  
+
+                            if(!Cache::has('gifts_Fe_'.$value->id)){
+
+                                $gifts = gift($value->product_id);
+                                
+                                
+                                Cache::put('gifts_Fe_'.$value->product_id, $gifts,100);
+
+                            }
+                            
+                            $gift = Cache::get('gifts_Fe_'.$value->product_id);
 
 
-                        if(Cache::has('product_search'))
-                        {
-                            $data = Cache::get('product_search')->whereIn('id', $hot->toArray())->sortByDesc('orders_hot');
-                        }
-                        else{
-                            $data = App\Models\product::whereIn('id', $hot->toArray())->Orderby('orders_hot', 'desc')->get();
-                        }
-                    
 
-                    ?>
+                        ?>
+
+                        @if(!empty($gift) && $value->group_id !=8)
+                            <?php 
+
+                                $gifts = $gift['gifts'];
+                                $gift = $gift['gift']; 
+
+                            ?>
 
 
-                    @if(!empty($data) && $data->count()>0)
-                    
-                    <?php 
-                        if(!empty($defineBannerGr[$key])){
-                            $banners_group = Cache::rememberForever('banners_groups__'.$defineBannerGr[$key], function() use($defineBannerGr, $key){
 
-                                $banners_group = App\Models\banners::where('option', $defineBannerGr[$key])->where('active', 1)->get();
+                            {{ $gifts->type ==1?'k/m chọn 1 trong 2':'' }}
 
-                                return $banners_group;
-                            });
-                        }
 
-                    ?>
-               
-                    <div class="box-common__main relative">
-                        <div class="preloader">
-                            <div class="loaderweb"></div>
+                            <div class="option-gift">
+
+                                 @foreach($gift as $gifts)
+
+                                <div class="quatang"><img src="{{ asset($gifts->image) }}"></div>
+                                @endforeach
+                            </div>
+
+                            @if(!empty($gifts->price))
+
+
+                            <?php 
+
+                                $id_checkpromotion = $value->promotion_box==1?'':$value->product_id;
+
+                                $price_gift = pricesPromotion($value->Price, $id_checkpromotion)===''?str_replace(',' ,'.', number_format($gifts->price)):pricesPromotion($value->Price, $id_checkpromotion);
+
+            
+                            ?>
+
+                            <div class="font-sz">    
+                                <span> Quà tặng trị giá <strong>{{  $price_gift }} </strong> </span>
+                            </div>
+                            @endif  
+
+                         
+
+                        @endif
+
+
+
+                        <!-- phần quà khuyến mãi -->
+
+
+                        <?php 
+
+                        $gift_Price = pricesPromotion($value->Price, $value->product_id);
+
+                        ?>
+
+                       
+
+                        @if(!empty($gift_Price))
+
+                        <?php 
+
+                            $image_gift_promotion = definePrice($gift_Price);
+                        ?>
+
+                         <div class="option-gift">
+                            
+                            <div class="quatang"><img src="{{ $image_gift_promotion }}"></div>
+                           
                         </div>
-                        <!-- hiển thị tivi mero -->
-                        <div class="box-common__content mouse-mover">
-                            <div class="listproduct slider-home {{ $dems !=1?'hide':'' }}" id="banner-product_{{ $dems }}" data-size="{{ $data->count() }}">
+                      
 
-                                <?php 
+                        <div class="font-sz">
+                            <span> Giảm ngay <strong>{{ $gift_Price  }} đ</strong> </span>
+                        </div>
 
-                                    $demtv =0;
-                                ?>
+                        @endif
 
-                                @foreach($data as $key =>$datas)
+                       
 
-                                <?php
+                        <!-- <a href="javascript:void(0)" class="compare-show" data-id="{{ $value->product_id }}">
+                            <i class="fa-solid fa-plus"></i>
+                                so sánh
+                        </a> -->
 
-                                    $demtv++;
-                                ?>
 
-                                <div class="item"  data-pos="12" id="list_show_group_{{ $key }}">
-                                    <a href='{{ route('details', $datas->Link) }}'>
-                                        @if($datas->Price>=3000000)
-                                        <span class="icon_tragop icons-tra-gops">Trả góp <i>0%</i></span>
-                                        @endif
-                                        <div class="event">
-                                            <img src="{{ asset('images/background-image/event.png') }}?ver=3">
-                                            
-                                        </div>
-                                        <div class="item-img">
-                                            <img src="{{ asset($datas->Image) }}" alt="{{ $datas->Name }}" width=210 height=210>
-                                            
-                                        </div>
 
-                                        @if(in_array($datas->id, $hots->toArray()))
-                                        <p class="result-labels"><img class="sale-banner ls-is-cached" alt="hot" src="{{ asset('images/background-image/i-con-hot.gif') }}" src="{{ asset('images/background-image/i-con-hot.gif') }}"></p>
-                                        @else
-                                        
-                                        @endif
 
-                                       <div class="title-name">
-                                            <h3>{{ $datas->Name }}</h3>
-                                        </div>
-                                        @if($groups->id<5)
-                                        <?php
-                                                if($groups->id == 1){
-                                                    $searchstring = 'inch';
-                                                }
-                                                else{
-                                                    $searchstring = 'inverter';
+                        @include('frontend.layouts.more-info', ['value'=>$value, 'gift_Price'=>$gift_Price])
+                    </li>
+                    @endif
+                    @endforeach
+                </ul>
+                
+                <div class="prd-promo__top clearfix" >
+                    <a class="readmore-btn" href="{{ route('sale-home') }}"><span>Xem tất cả</span></a>                
+                </div>
+            </div>
+            @endif
 
-                                                }
-                                               
-                                            $infoName  = str_replace($datas->ProductSku,'', strstr($datas->Name, $datas->ProductSku));
-                                            if(!empty($infoName)){
+            
+            
+        </div>
 
-                                                $arNames = [];
-                                                if(strpos($datas->Name, $searchstring)){
 
-                                                    $arNames = explode($searchstring, $infoName);
+        
 
-                                                }
-                                            }
-                                        ?>
-                                       
-                                        <div class="item-compare">
-                                            @if(!empty($arNames))
-                                            <span>{{ @$arNames[0] }} {{ !empty($arNames)?$searchstring:'' }}</span>
-                                            <span>{{ @$arNames[1] }}</span>
-                                            @endif
-                                            
-                                        </div>
-                                        
-                                        @endif
-                                        <div class="icons-promotion-per">
-                                            <strong class="price">{{ @number_format(!empty($ar_Deal_Pd[$datas->id])?$ar_Deal_Pd[$datas->id]:$datas->Price , 0, ',', '.')}}&#x20AB;</strong>
+        <div  class="owl-slider-count" style="display: none;">13</div> 
+        <?php
 
-                                            @if(!empty($datas->manuPrice))
+            $defineBannerGr = [0=>6, 1=>7, 2=>8, 3=>9, 6=>10, 7=>11];
 
-                                            <?php
-                                                $discount =  round(((intval($datas->manuPrice) - intval($datas->Price))/intval($datas->manuPrice))*100)
-                                            ?>
-                                            
-                                            <span class="price_market">{{ @number_format($datas->manuPrice , 0, ',', '.')}} <sup>đ</sup></span>
 
-                                            <span class="discount_percent">-{{ $discount }}%</span>
+            // phần xử lý để cho máy giặt lên đầu
 
-                                            @endif
+            // $group = $group->reverse();
 
-                                           
+            // $group = $group->push($group[2]);
 
-                                        </div>
-                                        
-                                        <div class="commit"><span>Cam kết bán đúng giá </span></div> 
-                                        <div class="item-rating">
-                                            <p>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                            </p>
-                                        </div>
+            // $group = $group->push($group[1]);
 
-                                        <?php  
+            // $group = $group->reverse();
 
-                                            if(!Cache::has('gifts_Fe_'.$datas->id)){
+            // $group->forget(1);
 
-                                                $gifts = gift($datas->id);
+            // $group->forget(2);
+
+            $dems = 0;
+        ?> 
+
+       
+        
+
+        <div class="box-common _cate_1942 box-banner" >
+            <ul class="box-common__tab box-tab-mobile">
+                <li class="tab active-tab" data-cate-id="banner-product_1">Tivi</li>
+                <li class="tab" data-cate-id="banner-product_2">Máy giặt</li>
+                <li class="tab" data-cate-id="banner-product_3">Tủ lạnh</li>
+                <li class="tab" data-cate-id="banner-product_4">Điều hòa</li>
+                <li class="tab" data-cate-id="banner-product_5">Aosmith</li>
+                <li class="tab" data-cate-id="banner-product_6">Máy sấy quần áo</li>
+                <li class="tab" data-cate-id="banner-product_7">Gia dụng</li>
+
+            </ul>
+
+            @foreach($group as $key => $groups)
+
+                <?php
+                    $dems++;
+
+
+
+                    $hot = Cache::rememberForever('hot'.$groups->id, function() use($groups){
+
+                        $hot = DB::table('hot')->select('product_id')->where('group_id', $groups->id)->orderBy('orders', 'asc')->get()->pluck('product_id');
+
+                        return $hot;
+
+                        
+                    });
+
+
+                    if(Cache::has('product_search'))
+                    {
+                        $data = Cache::get('product_search')->whereIn('id', $hot->toArray())->sortByDesc('orders_hot');
+                    }
+                    else{
+                        $data = App\Models\product::whereIn('id', $hot->toArray())->Orderby('orders_hot', 'desc')->get();
+                    }
                 
 
-                                                if(empty($gifts)){
-                                                    $gifts = groupGift($groups->id);
-                                                    
-                                                    if(empty($gifts)){
+                ?>
 
-                                                        $gifts =[];
-                                                    }
-                                                }
-                                                Cache::put('gifts_Fe_'.$datas->id, $gifts,100);
+
+                @if(!empty($data) && $data->count()>0)
+                
+                <?php 
+                    if(!empty($defineBannerGr[$key])){
+                        $banners_group = Cache::rememberForever('banners_groups__'.$defineBannerGr[$key], function() use($defineBannerGr, $key){
+
+                            $banners_group = App\Models\banners::where('option', $defineBannerGr[$key])->where('active', 1)->get();
+
+                            return $banners_group;
+                        });
+                    }
+
+                ?>
+           
+                <div class="box-common__main relative">
+                    <div class="preloader">
+                        <div class="loaderweb"></div>
+                    </div>
+                    <!-- hiển thị tivi mero -->
+                    <div class="box-common__content mouse-mover">
+                        <div class="listproduct slider-home {{ $dems !=1?'hide':'' }}" id="banner-product_{{ $dems }}" data-size="{{ $data->count() }}">
+
+                            <?php 
+
+                                $demtv =0;
+                            ?>
+
+                            @foreach($data as $key =>$datas)
+
+                            <?php
+
+                                $demtv++;
+                            ?>
+
+                            <div class="item"  data-pos="12" id="list_show_group_{{ $key }}">
+                                <a href='{{ route('details', $datas->Link) }}'>
+                                    @if($datas->Price>=3000000)
+                                    <span class="icon_tragop icons-tra-gops">Trả góp <i>0%</i></span>
+                                    @endif
+                                    <div class="event">
+                                        <img src="{{ asset('images/background-image/event.png') }}?ver=3">
+                                        
+                                    </div>
+                                    <div class="item-img">
+                                        <img src="{{ asset($datas->Image) }}" alt="{{ $datas->Name }}" width=210 height=210>
+                                        
+                                    </div>
+
+                                    @if(in_array($datas->id, $hots->toArray()))
+                                    <p class="result-labels"><img class="sale-banner ls-is-cached" alt="hot" src="{{ asset('images/background-image/i-con-hot.gif') }}" src="{{ asset('images/background-image/i-con-hot.gif') }}"></p>
+                                    @else
+                                    
+                                    @endif
+
+                                   <div class="title-name">
+                                        <h3>{{ $datas->Name }}</h3>
+                                    </div>
+                                    @if($groups->id<5)
+                                    <?php
+                                            if($groups->id == 1){
+                                                $searchstring = 'inch';
+                                            }
+                                            else{
+                                                $searchstring = 'inverter';
 
                                             }
                                            
-                                            $gift = Cache::get('gifts_Fe_'.$datas->id);
-                                        ?>
-                                    </a>
+                                        $infoName  = str_replace($datas->ProductSku,'', strstr($datas->Name, $datas->ProductSku));
+                                        if(!empty($infoName)){
 
-                                    <?php 
+                                            $arNames = [];
+                                            if(strpos($datas->Name, $searchstring)){
 
-                                        $gift_Price = pricesPromotion($datas->Price, $datas->id);
+                                                $arNames = explode($searchstring, $infoName);
 
+                                            }
+                                        }
                                     ?>
-
-                                    @include('frontend.layouts.more-info', ['value'=>$datas, 'deal_price'=>$ar_Deal_Pd[$datas->id]??'', 'gift_Price'=>$gift_Price])
-
-
-                                     <!-- phần quà khuyến mãi 1-->
-
-
-
-                                    @if(!empty($gift_Price) && $groups->id !=8)
-
-                                    <?php 
-
-                                        $image_gift_promotion = definePrice($gift_Price);
-                                    ?>
-
-                                     <div class="option-gift">
+                                   
+                                    <div class="item-compare">
+                                        @if(!empty($arNames))
+                                        <span>{{ @$arNames[0] }} {{ !empty($arNames)?$searchstring:'' }}</span>
+                                        <span>{{ @$arNames[1] }}</span>
+                                        @endif
                                         
-                                        <div class="quatang"><img src="{{ $image_gift_promotion }}"></div>
-                                       
                                     </div>
                                     
+                                    @endif
+                                    <div class="icons-promotion-per">
+                                        <strong class="price">{{ @number_format(!empty($ar_Deal_Pd[$datas->id])?$ar_Deal_Pd[$datas->id]:$datas->Price , 0, ',', '.')}}&#x20AB;</strong>
 
-                                    <div class="font-sz">
-                                        <span> Giảm ngay <strong>{{ $gift_Price  }} đ</strong> </span>
+                                        @if(!empty($datas->manuPrice))
+
+                                        <?php
+                                            $discount =  round(((intval($datas->manuPrice) - intval($datas->Price))/intval($datas->manuPrice))*100)
+                                        ?>
+                                        
+                                        <span class="price_market">{{ @number_format($datas->manuPrice , 0, ',', '.')}} <sup>đ</sup></span>
+
+                                        <span class="discount_percent">-{{ $discount }}%</span>
+
+                                        @endif
+
+                                       
+
+                                    </div>
+                                    
+                                    <div class="commit"><span>Cam kết bán đúng giá </span></div> 
+                                    <div class="item-rating">
+                                        <p>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                        </p>
                                     </div>
 
-                                    @endif
+                                    <?php  
 
+                                        if(!Cache::has('gifts_Fe_'.$datas->id)){
 
-                                    <!-- end -->
-                                   
+                                            $gifts = gift($datas->id);
+            
 
-                                    <!-- <a href="javascript:void(0)" class="compare-show" data-id="{{ $datas->id }}" data-group="{{ $groups->id }}">
-                                        <i class="fa-solid fa-plus"></i>
-                                            so sánh
-                                    </a> -->
+                                            if(empty($gifts)){
+                                                $gifts = groupGift($groups->id);
+                                                
+                                                if(empty($gifts)){
 
-                                    @if(!empty($gift))
-                                        <?php 
-                                            $gifts = $gift['gifts'];
-                                            $gift = $gift['gift']; 
-                                           
-                                        ?>
+                                                    $gifts =[];
+                                                }
+                                            }
+                                            Cache::put('gifts_Fe_'.$datas->id, $gifts,100);
 
-                                        {{ $gifts->type ==1?'k/m chọn 1 trong 2':'' }}
-                                        <div class="option-gift">
-
-
-
-                                             @foreach($gift as $gifts)
-
-                                            <div class="quatang"><img src="{{ asset($gifts->image) }}"></div>
-                                            @endforeach
-                                        </div>
-
-                                        @if(!empty($gifts->price))
-
-
-                                        <?php 
-
-                                        $id_checkpromotion = $datas->promotion_box==1?'':$datas->id;
-
-                                        $price_gift = pricesPromotion($datas->Price, $id_checkpromotion)===''?str_replace(',' ,'.', number_format($gifts->price)):pricesPromotion($datas->Price, $id_checkpromotion);
-
-                                        ?>
-
-
-                                        <span class="font-szs"> Quà tặng trị giá <strong>{{  $price_gift }} </strong> </span>
+                                        }
                                        
-                                        @endif  
+                                        $gift = Cache::get('gifts_Fe_'.$datas->id);
+                                    ?>
+                                </a>
 
-                                    @endif
+                                <?php 
 
-                                    @if(!empty($datas->promotion))
-                                        <div class="gift-text mt-2">
-                                            <span>Có 1 khuyến mãi</span>
-                                        </div>
+                                    $gift_Price = pricesPromotion($datas->Price, $datas->id);
 
-                                    @endif
+                                ?>
 
+                                @include('frontend.layouts.more-info', ['value'=>$datas, 'deal_price'=>$ar_Deal_Pd[$datas->id]??'', 'gift_Price'=>$gift_Price])
+
+
+                                 <!-- phần quà khuyến mãi 1-->
+
+
+
+                                @if(!empty($gift_Price) && $groups->id !=8)
+
+                                <?php 
+
+                                    $image_gift_promotion = definePrice($gift_Price);
+                                ?>
+
+                                 <div class="option-gift">
+                                    
+                                    <div class="quatang"><img src="{{ $image_gift_promotion }}"></div>
+                                   
+                                </div>
+                                
+
+                                <div class="font-sz">
+                                    <span> Giảm ngay <strong>{{ $gift_Price  }} đ</strong> </span>
                                 </div>
 
-                                <?php
-                                    if($demtv>=10){
-                                        break;
-                                    }
-                                ?>
-                                
-                                @endforeach
-                            
+                                @endif
+
+
+                                <!-- end -->
+                               
+
+                                <!-- <a href="javascript:void(0)" class="compare-show" data-id="{{ $datas->id }}" data-group="{{ $groups->id }}">
+                                    <i class="fa-solid fa-plus"></i>
+                                        so sánh
+                                </a> -->
+
+                                @if(!empty($gift))
+                                    <?php 
+                                        $gifts = $gift['gifts'];
+                                        $gift = $gift['gift']; 
+                                       
+                                    ?>
+
+                                    {{ $gifts->type ==1?'k/m chọn 1 trong 2':'' }}
+                                    <div class="option-gift">
+
+
+
+                                         @foreach($gift as $gifts)
+
+                                        <div class="quatang"><img src="{{ asset($gifts->image) }}"></div>
+                                        @endforeach
+                                    </div>
+
+                                    @if(!empty($gifts->price))
+
+
+                                    <?php 
+
+                                    $id_checkpromotion = $datas->promotion_box==1?'':$datas->id;
+
+                                    $price_gift = pricesPromotion($datas->Price, $id_checkpromotion)===''?str_replace(',' ,'.', number_format($gifts->price)):pricesPromotion($datas->Price, $id_checkpromotion);
+
+                                    ?>
+
+
+                                    <span class="font-szs"> Quà tặng trị giá <strong>{{  $price_gift }} </strong> </span>
+                                   
+                                    @endif  
+
+                                @endif
+
+                                @if(!empty($datas->promotion))
+                                    <div class="gift-text mt-2">
+                                        <span>Có 1 khuyến mãi</span>
+                                    </div>
+
+                                @endif
+
                             </div>
 
-                            <div class="prd-promo__top clearfix product_show_all_{{ $dems }}"> <a class="readmore-btn {{ $groups->id!=1?'hide':'' }}" href="{{ route('details', @$groups->link)  }}"><span>Xem tất cả</span></a> </div>
-                            <!-- <a class="readmore-txt blue" href="{{ route('details', @$groups->link)  }}"><span>Xem tất cả</span></a> -->
+                            <?php
+                                if($demtv>=10){
+                                    break;
+                                }
+                            ?>
+                            
+                            @endforeach
+                        
                         </div>
 
+                        <div class="prd-promo__top clearfix product_show_all_{{ $dems }}"> <a class="readmore-btn {{ $groups->id!=1?'hide':'' }}" href="{{ route('details', @$groups->link)  }}"><span>Xem tất cả</span></a> </div>
+                        <!-- <a class="readmore-txt blue" href="{{ route('details', @$groups->link)  }}"><span>Xem tất cả</span></a> -->
                     </div>
-                    @endif
-                @endforeach
-                <!-- End  -->
-            </div>
 
+                </div>
+                @endif
+            @endforeach
+            <!-- End  -->
+        </div>
+
+       
+        
+
+
+
+        @if(!empty($bannerscrollRight) && !empty($bannerscrollLeft))
+        <!-- Banner dọc 2 bên -->
+        <div class="sticky-sidebar">
+            <a data-cate="0" data-place="1863" href="{{ $bannerscrollLeft->link }}" class="banner-left" id="banner-left-scroll">
+                <img style="cursor:pointer; height:auto;" src="{{ asset($bannerscrollLeft->image) }}" alt="Theme Giáng Sinh Trái" width="179" height="271">
+            </a>
+            <a data-cate="0" data-place="1864" href="{{ $bannerscrollRight->link }}" class="banner-right" id="banner-right-scroll"><img style="cursor:pointer; height:auto;" src="{{ asset($bannerscrollRight->image) }}" alt="Theme Giáng Sinh Phải"></a>        
+        </div>
+        @endif
+        
+        @if(isset($post) && count($post)>0)
+
+        <div class="my_utilities">
+            <p class="title_pro news-home">Tin tức nổi bật </p>
+
+            <br>
            
-            
-
-
-
-            @if(!empty($bannerscrollRight) && !empty($bannerscrollLeft))
-            <!-- Banner dọc 2 bên -->
-            <div class="sticky-sidebar">
-                <a data-cate="0" data-place="1863" href="{{ $bannerscrollLeft->link }}" class="banner-left" id="banner-left-scroll">
-                    <img style="cursor:pointer; height:auto;" src="{{ asset($bannerscrollLeft->image) }}" alt="Theme Giáng Sinh Trái" width="179" height="271">
-                </a>
-                <a data-cate="0" data-place="1864" href="{{ $bannerscrollRight->link }}" class="banner-right" id="banner-right-scroll"><img style="cursor:pointer; height:auto;" src="{{ asset($bannerscrollRight->image) }}" alt="Theme Giáng Sinh Phải"></a>        
-            </div>
-            @endif
-            
-            @if(isset($post) && count($post)>0)
-
-            <div class="my_utilities">
-                <p class="title_pro news-home">Tin tức nổi bật </p>
-
-                <br>
-               
-                <div class="videos">
-                    <a href="{{ route('details', $post[0]['link']) }}" class="video_big not_video " title="{{ $post[0]['title'] }}" idx="5229">
-                        <div class="img_video"> <img src="{{ asset($post[0]['image']) }}" data-src="{{ asset($post[0]['image']) }}" alt="Iphone lock là gì? Các cách kiểm tra Iphone lock dễ dàng" class="lazy loaded" style="width: 100%;" data-was-processed="true"> </div>
-                        <div class="title_video">
-                            <h3> <span>{{ $post[0]['title'] }}</span> </h3>
-                        </div>
-                    </a>
-
-                    <div class="video_small">
-
-                        @for($i=1; $i<count($post); $i++)
-
-                            <a href="{{ route('details', $post[$i]['link']) }}" class="video_small_item not_video " title="{{ $post[$i]['title'] }}" idx="5228">
-                                <div class="img_video"> <img src="{{ asset($post[$i]['image']) }}" data-src="{{ asset($post[$i]['image']) }}" class="lazy loaded" alt="{{ $post[$i]['title'] }}" data-was-processed="true"> </div>
-                                <div class="title_video">
-                                    <h3> <span>{{ $post[$i]['title'] }}</span> </h3>
-                                </div>
-                            </a>
-
-                        @endfor
-                       
+            <div class="videos">
+                <a href="{{ route('details', $post[0]['link']) }}" class="video_big not_video " title="{{ $post[0]['title'] }}" idx="5229">
+                    <div class="img_video"> <img src="{{ asset($post[0]['image']) }}" data-src="{{ asset($post[0]['image']) }}" alt="Iphone lock là gì? Các cách kiểm tra Iphone lock dễ dàng" class="lazy loaded" style="width: 100%;" data-was-processed="true"> </div>
+                    <div class="title_video">
+                        <h3> <span>{{ $post[0]['title'] }}</span> </h3>
                     </div>
+                </a>
+
+                <div class="video_small">
+
+                    @for($i=1; $i<count($post); $i++)
+
+                        <a href="{{ route('details', $post[$i]['link']) }}" class="video_small_item not_video " title="{{ $post[$i]['title'] }}" idx="5228">
+                            <div class="img_video"> <img src="{{ asset($post[$i]['image']) }}" data-src="{{ asset($post[$i]['image']) }}" class="lazy loaded" alt="{{ $post[$i]['title'] }}" data-was-processed="true"> </div>
+                            <div class="title_video">
+                                <h3> <span>{{ $post[$i]['title'] }}</span> </h3>
+                            </div>
+                        </a>
+
+                    @endfor
+                   
                 </div>
             </div>
+        </div>
+        @endif
+                    
+
+        <div class="bottom-search">
+            <p>Tìm kiếm nhiều:</p>
+
+            <?php 
+                if(empty(Cache::get('link_much'))){
+                    $links=   DB::table('muchsearch')->get(); 
+
+                    Cache::put('link_much',  $links, 10000);
+                }
+              
+                $link = Cache::get('link_much');
+
+             ?>
+
+            @isset($link)
+            @foreach($link as $links)
+            <a href="{{ $links->link }}" target="_blank">• {{@$links->title  }}</a> 
+            @endforeach
             @endif
-                        
-
-            <div class="bottom-search">
-                <p>Tìm kiếm nhiều:</p>
-
-                <?php 
-                    if(empty(Cache::get('link_much'))){
-                        $links=   DB::table('muchsearch')->get(); 
-
-                        Cache::put('link_much',  $links, 10000);
-                    }
-                  
-                    $link = Cache::get('link_much');
-
-                 ?>
-
-                @isset($link)
-                @foreach($link as $links)
-                <a href="{{ $links->link }}" target="_blank">• {{@$links->title  }}</a> 
-                @endforeach
-                @endif
-            
-            </div>
-            
-        </section>
-    </div>    
+        
+        </div>
+        
+    </section>
 
     <?php 
         $off_hieuung = 0
