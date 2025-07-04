@@ -1222,13 +1222,13 @@ header .container {
 
         <div class="box-common _cate_1942 box-banner" >
             <ul class="box-common__tab box-tab-mobile">
-                <li class="tab active-tab" data-cate-id="1942"><a href="#">Tivi</a></li>
-                <li class="tab" data-cate-id="1942"><a href="#">Máy giặt</a></li>
-                <li class="tab" data-cate-id="1942"><a href="#">Tủ lạnh</a></li>
-                <li class="tab" data-cate-id="1942"><a href="#">Điều hòa</a></li>
-                <li class="tab" data-cate-id="1942"><a href="#">Aosmith</a></li>
-                <li class="tab" data-cate-id="1942"><a href="#">Máy sấy quần áo</a></li>
-                <li class="tab" data-cate-id="1942"><a href="#">Gia dụng</a></li>
+                <li class="tab active-tab" data-cate-id="1942">Tivi</li>
+                <li class="tab" data-cate-id="1942">Máy giặt</li>
+                <li class="tab" data-cate-id="1942">Tủ lạnh</li>
+                <li class="tab" data-cate-id="1942">Điều hòa</li>
+                <li class="tab" data-cate-id="1942">Aosmith</li>
+                <li class="tab" data-cate-id="1942">Máy sấy quần áo</li>
+                <li class="tab" data-cate-id="1942">Gia dụng</li>
 
             </ul>
 
@@ -1967,7 +1967,7 @@ header .container {
             $('.tab').removeClass('active-tab');
             $(this).addClass('active-tab');
             $('.listproduct').addClass('hide');
-            
+
 
         }
         if ($(window).width < 600){
