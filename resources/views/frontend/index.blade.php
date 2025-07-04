@@ -415,7 +415,7 @@ header .container {
            
         </div>
   
-        <div class="row div-slide">
+        <div class="div-slide">
             
             <div class="col-md-12 box-div-slide">
                 <div class="homebanner-container">
