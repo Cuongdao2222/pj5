@@ -1968,6 +1968,9 @@ header .container {
             $('.tab').removeClass('active-tab');
             $(this).addClass('active-tab');
             $('.listproduct').addClass('hide');
+            id_show = $(this).attr('data-cate-id')
+
+            $('#')+id_show.removeClass('hide');
 
 
         })
