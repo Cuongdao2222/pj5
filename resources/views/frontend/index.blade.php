@@ -1246,7 +1246,7 @@ header .container {
                 <li class="tab" data-cate-id="banner-product_2">Máy giặt</li>
                 <li class="tab" data-cate-id="banner-product_3">Tủ lạnh</li>
                 <li class="tab" data-cate-id="banner-product_4">Điều hòa</li>
-                <li class="tab" data-cate-id="banner-product_5">Aosmith</li>
+                <li class="tab" data-cate-id="banner-product_9">Aosmith</li>
                 <li class="tab" data-cate-id="banner-product_8">Máy sấy quần áo</li>
                 <li class="tab" data-cate-id="banner-product_7">Gia dụng</li>
 
