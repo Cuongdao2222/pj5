@@ -1274,7 +1274,13 @@ header .container {
         <div class="box-common _cate_1942 box-banner-{{ $groups->id }}">
             <ul class="box-common__tab box-tab-mobile">
                 <li class="active-tab" data-cate-id="1942"><a href="{{  @$groups->link }}">{{  @$groups->name }}</a></li>
-                
+                <li class="active-tab" data-cate-id="1942"><a href="{{  @$groups->link }}">Máy giặt</a></li>
+                <li class="active-tab" data-cate-id="1942"><a href="{{  @$groups->link }}">Tủ lạnh</a></li>
+                <li class="active-tab" data-cate-id="1942"><a href="{{  @$groups->link }}">Điều hòa</a></li>
+                <li class="active-tab" data-cate-id="1942"><a href="{{  @$groups->link }}">Aosmith</a></li>
+                <li class="active-tab" data-cate-id="1942"><a href="{{  @$groups->link }}">Máy sấy quần áo</a></li>
+                <li class="active-tab" data-cate-id="1942"><a href="{{  @$groups->link }}">Gia dụng</a></li>
+
             </ul>
 
 
