@@ -1962,6 +1962,14 @@ header .container {
 
 
     <script type="text/javascript">
+
+        $('.tab').click(){
+            $('.tab').removeClass('active-tab');
+            $(this).addClass('active-tab');
+            $('.listproduct').addClass('hide');
+            
+
+        }
         if ($(window).width < 600){
             
 
