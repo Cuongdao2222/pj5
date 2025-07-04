@@ -1401,8 +1401,8 @@
             <div class="header__main">
                 <section>
 
-                    <div class="category mobile">
-                        <p class="category__txts" style="display:none">
+                    <div class="category">
+                        <p class="category__txts">
                         <span class="menu-list">
                             <i class="fa fa-bars" aria-hidden="true"></i>
                         </span></p>
