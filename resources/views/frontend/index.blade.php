@@ -1970,6 +1970,8 @@ header .container {
             $('.listproduct').addClass('hide');
             id_show = $(this).attr('data-cate-id')
 
+            console.log(id_show);
+
             $('#')+id_show.removeClass('hide');
 
 
