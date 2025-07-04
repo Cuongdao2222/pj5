@@ -1357,11 +1357,9 @@
 
                         <a href="#" class="category__all"><i class="fa fa-bars" aria-hidden="true"></i> Tất cả danh mục</a>
 
-                            @if(!empty($requestcheck)&& \Request::route()->getName() =="homeFe")
-                            <div class="bar-top-lefts" style="display: block;">
-                            @else
+                            
                             <div class="bar-top-left" style="display: none;">
-                            @endif
+                          
 
                                 
                                 <ul class="main-menu">
