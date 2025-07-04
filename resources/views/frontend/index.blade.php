@@ -560,10 +560,30 @@ header .container {
                     </a>
                 </div>
 
+                <div class="col-6 col-md">
+                    <a href="{{ route('details','tu-dong') }}">
+                        <div class="category-item">
+                            <img src="https://dienmaynguoiviet.vn/media/category/cat_f64d8213e904929e9114d7eb68ffe7e5.png" class="iconss-sp">
+                            <br>
+                            <span>Tủ đông</span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-6 col-md">
+                    <a href="{{ route('details','tu-dong') }}">
+                        <div class="category-item">
+                            <img src="https://dienmaynguoiviet.vn/media/category/cat_f64d8213e904929e9114d7eb68ffe7e5.png" class="iconss-sp">
+                            <br>
+                            <span>Tủ đông</span>
+                        </div>
+                    </a>
+                </div>
+
                 
             </div>
 
-            <div class="row">
+            <!-- <div class="row">
                 <a href="{{ route('details','tu-mat') }}">
                     <div class="col-6 col-md">
                         <div class="category-item">
@@ -573,7 +593,7 @@ header .container {
                         </div>
                     </div>
                 </a>
-            </div>
+            </div> -->
         </div>
         <div class="viewer-home">
             
