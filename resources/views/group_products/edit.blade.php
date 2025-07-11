@@ -15,6 +15,8 @@
 
      <?php $metaSeo = App\Models\metaSeo::find($groupProduct->Meta_id); ?>
 
+    {{ $groupProduct->Meta_id }}
+
      @if(!empty($metaSeo))
     <div class="btn btn-info seo-click"> Dùng cho SEO </div>
    
