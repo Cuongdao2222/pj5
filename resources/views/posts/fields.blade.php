@@ -142,16 +142,20 @@
         border-radius: 5px;
         padding: 5px;
     }
+    .flex{
+        display: flex;
+    }
 </style>
 
-<!-- Content Field -->
-<div class="btn-primary button" style="width: 10%;" onclick ='removeHref()'>Xóa link content</div>
+<div class="flex">
+    <!-- Content Field -->
+    <div class="btn-primary button" style="width: 10%;" onclick ='removeHref()'>Xóa link content</div>
 
-&nbsp &nbsp &nbsp &nbsp
+    &nbsp &nbsp &nbsp &nbsp
 
-<div class="btn-primary button" style="width: 10%;" onclick ='removeHref_byselected()'>Xóa link bôi đen </div>
+    <div class="btn-primary button" style="width: 10%;" onclick ='removeHref_byselected()'>Xóa link bôi đen </div>
 
-
+</div>
 <div class="form-group col-sm-12 col-md-12">
     {!! Form::label('content', 'Content:') !!}
     {!! Form::textarea('content', null, ['class' => 'form-control content-input']) !!}
