@@ -286,14 +286,14 @@ class postController extends AppBaseController
 
         if(!empty($input('datetime'))){
 
+            dd($input('datetime'));
+
             $datetime = $input('datetime');
 
             $expireAt = Carbon::parse($datetime); 
 
             Cache::put('set_time_post_'.$id, $datetime, $expireAt);
-        } 
-
-        dd($input('datetime')) ;
+        }   
 
         if($input['category'] == 5){
 
