@@ -112,9 +112,9 @@ class postController extends AppBaseController
             DB::table('imagescontent')->where('product_id', Auth::id())->update(['product_id'=>$post['id']]);
         }
 
-        if(!empty($input('datetime'))){
+        if(!empty($input['datetime'])){
 
-            $datetime = $input('datetime');
+            $datetime = $input['datetime'];
 
             $expireAt = Carbon::parse($datetime); 
 
@@ -282,23 +282,16 @@ class postController extends AppBaseController
 
         $post = $this->postRepository->update($input, $id);
 
-      
-
         Flash::success('Post updated successfully.');
 
-        dd($input);
+        if(!empty($input['datetime'] )){
 
-        // if(!empty($input('datetime') )){
+            $datetime = $input['datetime'];
 
-        //     dd($input('datetime'));
-        //     die;
+            $expireAt = Carbon::parse($datetime); 
 
-        //     // $datetime = $input('datetime');
-
-        //     // $expireAt = Carbon::parse($datetime); 
-
-        //     // Cache::put('set_time_post_'.$id, $datetime, $expireAt);
-        // }   
+            Cache::put('set_time_post_'.$id, $datetime, $expireAt);
+        }   
 
         if($input['category'] == 5){
 
