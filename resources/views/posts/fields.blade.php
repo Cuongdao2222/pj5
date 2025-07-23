@@ -39,7 +39,7 @@
 
             $datetime = Cache::get('set_time_post_'.$post->id);
 
-            echo $datetime;
+            echo $post->id;
             
             if($datetime){
 
