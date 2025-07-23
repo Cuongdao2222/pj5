@@ -122,11 +122,11 @@
 </style>
 
 <!-- Content Field -->
-<div class="btn-primary button" onclick ='removeHref()'>Xóa link content</div>
+<div class="btn-primary button" style="width: 10%;" onclick ='removeHref()'>Xóa link content</div>
 
 &nbsp &nbsp &nbsp &nbsp
 
-<div class="btn-primary button" onclick ='removeHref_byselected()'>Xóa link bôi đen </div>
+<div class="btn-primary button" style="width: 10%;" onclick ='removeHref_byselected()'>Xóa link bôi đen </div>
 
 
 <div class="form-group col-sm-12 col-md-12">
