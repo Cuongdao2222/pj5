@@ -291,7 +291,16 @@ class postController extends AppBaseController
         else{
             return redirect()->back();
             // return redirect(route('posts.index'));
-        }    
+        } 
+
+        if(!empty($input('datetime'))){
+
+            $datetime = $input('datetime');
+
+            $expireAt = Carbon::parse($datetime); 
+
+            Cache::put('set_time_post_'.$id, $datetime, $expireAt);
+        }   
     }
 
     /**
