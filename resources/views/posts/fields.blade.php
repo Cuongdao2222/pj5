@@ -54,8 +54,9 @@
         }}
     ?>    
 </script>
-
+@if(!empty($datetime))
 {{ $datetime }}
+@endif
 <br>
 <!-- Title Field -->
 <div class="form-group col-sm-6">
