@@ -282,13 +282,14 @@ class postController extends AppBaseController
 
         $post = $this->postRepository->update($input, $id);
 
-        dd($input);
+      
 
         Flash::success('Post updated successfully.');
 
         if(!empty($input('datetime') )){
 
             dd($input('datetime'));
+            die;
 
             // $datetime = $input('datetime');
 
