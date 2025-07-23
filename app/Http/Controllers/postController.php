@@ -286,17 +286,19 @@ class postController extends AppBaseController
 
         Flash::success('Post updated successfully.');
 
-        if(!empty($input('datetime') )){
+        dd($input);
 
-            dd($input('datetime'));
-            die;
+        // if(!empty($input('datetime') )){
 
-            // $datetime = $input('datetime');
+        //     dd($input('datetime'));
+        //     die;
 
-            // $expireAt = Carbon::parse($datetime); 
+        //     // $datetime = $input('datetime');
 
-            // Cache::put('set_time_post_'.$id, $datetime, $expireAt);
-        }   
+        //     // $expireAt = Carbon::parse($datetime); 
+
+        //     // Cache::put('set_time_post_'.$id, $datetime, $expireAt);
+        // }   
 
         if($input['category'] == 5){
 
