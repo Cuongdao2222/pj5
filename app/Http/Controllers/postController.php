@@ -293,6 +293,8 @@ class postController extends AppBaseController
             // return redirect(route('posts.index'));
         } 
 
+        dd($input('datetime'));
+
         if(!empty($input('datetime'))){
 
             $datetime = $input('datetime');
