@@ -8,6 +8,7 @@ use App\Repositories\postRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
+use Illuminate\Support\Facades\Cache;
 use DB;
 use Response;
 use App\Models\metaSeo;
@@ -284,7 +285,7 @@ class postController extends AppBaseController
 
         Flash::success('Post updated successfully.');
 
-        if(!empty($input['datetime'] )){
+        if(!empty($input['datetime']) ){
 
             $datetime = $input['datetime'];
 
