@@ -46,7 +46,14 @@
     // Optional: Gán lại nếu có dữ liệu từ Laravel
         const datetimeFromLaravel = @json($datetime ?? null);
         if (datetimeFromLaravel) {
-            const formatted = new Date(datetimeFromLaravel).toISOString().slice(0, 16);
+            const dateVN = new Date(datetimeFromLaravel);
+
+            // Chuyển sang giờ Hà Nội (UTC+7) và format cho input datetime-local
+            const offset = dateVN.getTimezoneOffset(); // phút, VD: -420 với VN
+            const localDate = new Date(dateVN.getTime() - offset * 60 * 1000);
+            
+            const formatted = localDate.toISOString().slice(0, 16); // đúng định dạng yyyy-MM-ddTHH:mm
+
             picker.value = formatted;
             hiddenInput.value = formatted;
         }
