@@ -38,6 +38,8 @@
         if(!empty($post->id)){
 
             $datetime = Cache::get('set_time_post_'.$post->id);
+
+            echo $datetime;
             
             if($datetime){
 
