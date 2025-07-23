@@ -67,11 +67,11 @@
 
         $now = now();
 
-        if ($now->lessThan($userDatetime)) {
-            echo 'Giờ hiện tại NHỎ hơn thời gian đã cài';
+        if ($now->greaterThan($userDatetime)) {
+            echo 'Giờ hiện tại Lớn hơn thời gian đã cài';
         }
         else{
-            echo 'Giờ hiện tại Lớn hơn thời gian đã cài';
+            echo 'Giờ hiện tại Nhỏ hơn thời gian đã cài';
         }
     }    
 ?>
