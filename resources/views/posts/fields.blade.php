@@ -23,16 +23,36 @@
 <div class="form-group col-sm-12">
     <label for="datetime">Cài Ngày và giờ cho bài viết:</label>
         <input type="datetime-local" id="datetime">
-</div>        
+        <!-- Input ẩn để Laravel nhận -->
+        <input type="hidden" name="datetime" id="hidden-datetime">
+       
 <script>
-    
-    const datetimeInput = document.getElementById('datetime');
-    datetimeInput.addEventListener('change', function () {
-        const selected = new Date(this.value);
-        console.log(selected)
-      
+    const picker = document.getElementById('datetime');
+    const hiddenInput = document.getElementById('hidden-datetime');
+   
+    picker.addEventListener('change', function () {
+        hiddenInput.value = this.value;
     });
 
+    <?php 
+        if(!empty($post->id)){
+
+            $datetime = Cache::get('set_time_post_'.$post->id);
+            
+            if($datetime){
+
+    ?>
+
+    // Optional: Gán lại nếu có dữ liệu từ Laravel
+        const datetimeFromLaravel = @json($datetime ?? null);
+        if (datetimeFromLaravel) {
+            const formatted = new Date(datetimeFromLaravel).toISOString().slice(0, 16);
+            picker.value = formatted;
+            hiddenInput.value = formatted;
+        }
+    <?php 
+        }}
+    ?>    
 </script>
 <br>
 <!-- Title Field -->

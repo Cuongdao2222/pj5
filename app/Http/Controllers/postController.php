@@ -90,6 +90,9 @@ class postController extends AppBaseController
 
         $meta_model->meta_og_content = $input['title'];
 
+        
+
+
         $meta_model->meta_key_words = $input['title'];
 
         $meta_model->meta_og_title = $input['shortcontent'];
@@ -109,6 +112,16 @@ class postController extends AppBaseController
             DB::table('imagescontent')->where('product_id', Auth::id())->update(['product_id'=>$post['id']]);
         }
 
+        if(!empty($input('datetime'))){
+
+            $datetime = $input('datetime');
+
+            $expireAt = Carbon::parse($datetime); 
+
+            Cache::put('set_time_post_'.$post->id, $datetime, $expireAt);
+        }
+
+        
         return redirect(route('posts.edit', $post->id));
         
         // Flash::success('Post saved successfully.');
