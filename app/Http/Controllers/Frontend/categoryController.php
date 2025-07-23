@@ -572,6 +572,20 @@ class categoryController extends Controller
             
         }
 
+        $datetime = Cache::get('set_time_post_'.$value->id);
+                        
+        if(!empty($datetime)){
+
+            $userDatetime = Carbon::parse($datetime);
+
+            $now = Carbon::now();
+
+            if ($now->lessThan($userDatetime)) {
+
+                return abort('404');
+            }    
+        }
+
         $category = category::find($data->category);
 
 
@@ -590,7 +604,11 @@ class categoryController extends Controller
 
         $page = 'blogdetail';
 
+
+
         $actives_pages_blog = $data->active;
+
+
 
         // đếm số lượt view
 

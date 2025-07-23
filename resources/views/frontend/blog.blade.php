@@ -113,18 +113,53 @@
                         @isset($data)
                         @foreach($data as $value)
                         @if($value->category!=5)
-                        
-                        <div class="blog-list-item">
-                            <a href="{{ route('details', $value->link) }}" class="img">
-                            <img src="{{ asset($value->image) }}" data-src ="{{ asset($value->image) }}" alt="{{ $value->title }}">
-                            </a>
-                            <div class="blog-flex">
-                                <a href="{{ route('details', $value->link) }}" class="name">{{ $value->title }}</a>
-                                
-                                
-                                <a href="{{ route('details', $value->link) }}" class="linkview">Xem chi tiết ›</a>
+                        <?php 
+                            $datetime = Cache::get('set_time_post_'.$value->id);
+                        ?>
+
+                        @if(!empty($datetime))
+                        <?php 
+                            
+                            $userDatetime = Carbon\Carbon::parse($datetime);
+
+                            $now = now();
+
+                            if ($now->greaterThan($userDatetime)) {
+            
+                        ?>
+                            <div class="blog-list-item">
+                                <a href="{{ route('details', $value->link) }}" class="img">
+                                <img src="{{ asset($value->image) }}" data-src ="{{ asset($value->image) }}" alt="{{ $value->title }}">
+                                </a>
+                                <div class="blog-flex">
+                                    <a href="{{ route('details', $value->link) }}" class="name">{{ $value->title }}</a>
+                                    
+                                    
+                                    <a href="{{ route('details', $value->link) }}" class="linkview">Xem chi tiết ›</a>
+                                </div>
                             </div>
-                        </div>
+                        <?php 
+
+                            }
+                        ?>
+
+                        @else
+                            <div class="blog-list-item">
+                                <a href="{{ route('details', $value->link) }}" class="img">
+                                <img src="{{ asset($value->image) }}" data-src ="{{ asset($value->image) }}" alt="{{ $value->title }}">
+                                </a>
+                                <div class="blog-flex">
+                                    <a href="{{ route('details', $value->link) }}" class="name">{{ $value->title }}</a>
+                                    
+                                    
+                                    <a href="{{ route('details', $value->link) }}" class="linkview">Xem chi tiết ›</a>
+                                </div>
+                            </div>
+                        @endif
+
+
+
+
                         @endif
                         @endforeach
                         @endisset

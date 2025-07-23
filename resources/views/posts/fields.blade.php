@@ -68,10 +68,10 @@
         $now = now();
 
         if ($now->greaterThan($userDatetime)) {
-            echo 'Giờ hiện tại Lớn hơn thời gian đã cài';
+            echo 'Bài viết đã được hiển thị';
         }
         else{
-            echo 'Giờ hiện tại Nhỏ hơn thời gian đã cài';
+            echo 'Bài viết đang bị ẩn';
         }
     }    
 ?>
