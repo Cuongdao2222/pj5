@@ -38,8 +38,6 @@
         if(!empty($post->id)){
 
             $datetime = Cache::get('set_time_post_'.$post->id);
-
-            echo $post->id;
             
             if($datetime){
 
@@ -56,6 +54,8 @@
         }}
     ?>    
 </script>
+
+{{ $datetime }}
 <br>
 <!-- Title Field -->
 <div class="form-group col-sm-6">
