@@ -572,7 +572,7 @@ class categoryController extends Controller
             
         }
 
-        $datetime = Cache::get('set_time_post_'.$value->id);
+        $datetime = Cache::get('set_time_post_'.$data->->id);
                         
         if(!empty($datetime)){
 
