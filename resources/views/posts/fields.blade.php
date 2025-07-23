@@ -20,9 +20,10 @@
 <div class="col-md-12 draft-article" >
     <button type="button" class="btn btn-info article-but" onclick="setDataForm()">Bài viết nháp</button>
 </div>
-
-<label for="datetime">Cài Ngày và giờ cho bài viết:</label>
-    <input type="datetime-local" id="datetime">
+<div class="form-group col-sm-12">
+    <label for="datetime">Cài Ngày và giờ cho bài viết:</label>
+        <input type="datetime-local" id="datetime">
+</div>        
 <script>
     
     const datetimeInput = document.getElementById('datetime');
