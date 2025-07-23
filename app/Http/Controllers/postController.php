@@ -295,6 +295,8 @@ class postController extends AppBaseController
 
         dd($input('datetime'));
 
+        die;
+
         if(!empty($input('datetime'))){
 
             $datetime = $input('datetime');
