@@ -21,6 +21,19 @@
     <button type="button" class="btn btn-info article-but" onclick="setDataForm()">Bài viết nháp</button>
 </div>
 
+<label for="datetime">Cài Ngày và giờ cho bài viết:</label>
+    <input type="datetime-local" id="datetime">
+<script>
+    
+    const datetimeInput = document.getElementById('datetime');
+    datetimeInput.addEventListener('change', function () {
+        const selected = new Date(this.value);
+        console.log(selected)
+      
+    });
+
+</script>
+
 <!-- Title Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('title', 'Title:') !!}
