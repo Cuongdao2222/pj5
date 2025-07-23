@@ -284,6 +284,17 @@ class postController extends AppBaseController
 
         Flash::success('Post updated successfully.');
 
+        if(!empty($input('datetime'))){
+
+            $datetime = $input('datetime');
+
+            $expireAt = Carbon::parse($datetime); 
+
+            Cache::put('set_time_post_'.$id, $datetime, $expireAt);
+        } 
+
+        dd($input('datetime')) ;
+
         if($input['category'] == 5){
 
             return redirect(route('postcd'));
@@ -293,18 +304,8 @@ class postController extends AppBaseController
             // return redirect(route('posts.index'));
         } 
 
-        dd($input('datetime'));
 
-        die;
-
-        if(!empty($input('datetime'))){
-
-            $datetime = $input('datetime');
-
-            $expireAt = Carbon::parse($datetime); 
-
-            Cache::put('set_time_post_'.$id, $datetime, $expireAt);
-        }   
+       
     }
 
     /**
