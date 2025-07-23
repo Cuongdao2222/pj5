@@ -12,6 +12,8 @@
             </div>
         </div>
     </section>
+
+    <a href="{{ route('details', $post->link) }}">Link bài viết</a>
      <?php $metaSeo = App\Models\metaSeo::find($post->Meta_id); ?>
     <section class="content-header">
         <div class="container-fluid">
