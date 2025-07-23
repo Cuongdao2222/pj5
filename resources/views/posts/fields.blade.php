@@ -61,9 +61,20 @@
         }}
     ?>    
 </script>
-@if(!empty($datetime))
-{{ $datetime }}
-@endif
+<?php 
+    if(!empty($datetime)){
+        $userDatetime = Carbon::parse($datetime);
+
+        $now = now();
+
+        if ($now->lessThan($userDatetime)) {
+            echo 'Giờ hiện tại NHỎ hơn thời gian đã cài';
+        }
+        else{
+            echo 'Giờ hiện tại Lớn hơn thời gian đã cài';
+        }
+    }    
+?>
 <br>
 <!-- Title Field -->
 <div class="form-group col-sm-6">
