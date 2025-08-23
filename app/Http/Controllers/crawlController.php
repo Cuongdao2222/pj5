@@ -137,7 +137,7 @@ class crawlController extends Controller
     {
         die;
 
-        $group = groupProduct::find(2);
+        $group = groupProduct::find(8);
 
         $list_pd =  json_decode($group->product_id);
 
@@ -163,7 +163,7 @@ class crawlController extends Controller
 
         }
 
-        echo "sửa tồn $dem sản phẩm Máy giặt ";
+        echo "sửa tồn $dem sản phẩm Gia dụng ";
 
         echo "<pre>";
         print_r($false);
