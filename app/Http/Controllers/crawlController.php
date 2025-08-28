@@ -135,7 +135,7 @@ class crawlController extends Controller
 
     public function edit_ton_gr()
     {
-        // die;
+        die;
 
         // Kiểm tra sản phẩm có trong deal không?
 
