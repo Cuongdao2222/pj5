@@ -135,9 +135,19 @@ class crawlController extends Controller
 
     public function edit_ton_gr()
     {
-        die;
+        // die;
 
-        $group = groupProduct::find(8);
+        // Kiểm tra sản phẩm có trong deal không?
+
+        $data = deal::select('id')->get();
+
+        $break = [];
+
+        foreach ($data as $key => $value) {
+            array_push($break, $value->id);
+        }
+
+        $group = groupProduct::find(2);
 
         $list_pd =  json_decode($group->product_id);
 
@@ -146,29 +156,44 @@ class crawlController extends Controller
         $false = [];
 
         foreach ($list_pd as $key => $value) {
+
+            if(!in_array($value, $break)){
+
+                $product = product::find($value);
+
+                if(!empty($product)){
+                    $product->Quantily = 0;
+
+                    $product->save();
+
+                    $dem ++;
+                }
+                else{
+                    array_push($false, $value);
+
+                }
+
+            }
             
-            $product = product::find($value);
-
-            if(!empty($product)){
-                $product->Quantily = 0;
-
-                $product->save();
-
-                $dem ++;
-            }
-            else{
-                array_push($false, $value);
-
-            }
-
         }
 
-        echo "sửa tồn $dem sản phẩm Gia dụng ";
+        echo "sửa tồn $dem sản phẩm  ";
 
         echo "<pre>";
         print_r($false);
 
         echo"</pre>";
+    }
+
+    public function delete_product_deal($value='')
+    {
+        $data = deal::select('id')->get();
+
+        $break = [];
+
+        foreach ($data as $key => $value) {
+            array_push($break, $value->id);
+        }
     }
 
     public function remove_active_post()
