@@ -135,7 +135,7 @@ class crawlController extends Controller
 
     public function edit_ton_gr()
     {
-        die;
+        // die;
 
         // Kiểm tra sản phẩm có trong deal không?
 
@@ -147,7 +147,7 @@ class crawlController extends Controller
             array_push($break, $value->id);
         }
 
-        $group = groupProduct::find(4);
+        $group = groupProduct::find(13);
 
         $list_pd =  json_decode($group->product_id);
 
