@@ -147,7 +147,7 @@ class crawlController extends Controller
             array_push($break, $value->id);
         }
 
-        $group = groupProduct::find(3);
+        $group = groupProduct::find(4);
 
         $list_pd =  json_decode($group->product_id);
 
