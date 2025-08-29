@@ -460,7 +460,7 @@
             }
 
             .header__top {
-                background-color: #42b6ed !important;
+                background-color: #FA001C !important;
             }
 
             #ui-id-2{
