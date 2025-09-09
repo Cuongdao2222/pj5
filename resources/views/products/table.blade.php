@@ -160,7 +160,7 @@ $search = $_GET['search']??'';
         @foreach($products as $product)
 
             <tr>
-                <td><img src="{{ asset($product->Image) }}" width="100px"></td>
+                <td><img src="{{ asset($product->Image) }}" loading="lazy" width="100px"></td>
             <td style="width: 500px;">
                 <a href="{{ route('products.edit', [$product->id]) }}">{{ $product->Name }}</a>
                 <br>
