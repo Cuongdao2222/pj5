@@ -188,7 +188,17 @@ class productController extends AppBaseController
             
         $response = $this->check_error_api($link_api);
 
-        dd($response);
+        if(!empty($response['values'])){
+            foreach($response['values'] as $key => $val){
+                if($key>1){
+
+                    echo $val[0].'<br>';
+
+                }
+            }    
+        }    
+
+       
         
     }
 
