@@ -30,7 +30,7 @@
 
   
 
-     <a href="javascript:void(0)" onclick="updatePreviousRow()">cập nhật tồn từ sheet</a>
+     <a href="javascript:void(0)" onclick="update_quantity_to_sheet()">cập nhật tồn từ sheet</a>
 
     @if(!empty($response['values']))
 
@@ -90,6 +90,12 @@
     @endif
 
 </body>
+
+<script type="text/javascript">
+        function update_quantity_to_sheet() {
+            alert('Chức năng đang hoàn thiện xin vui lòng quay lại sau');
+        }    
+</script>            
 
 
 </html>
