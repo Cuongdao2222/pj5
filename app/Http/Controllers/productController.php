@@ -115,20 +115,20 @@ class productController extends AppBaseController
         curl_close($ch);
 
         if ($error) {
-            throw new Exception("❌ Lỗi cURL: " . $error);
+            throw new \Exception("❌ Lỗi cURL: " . $error);
         }
 
         if ($http_code == 500) {
-            throw new Exception("❌ API lỗi 500: Internal Server Error");
+            throw new \Exception("❌ API lỗi 500: Internal Server Error");
         } elseif ($http_code == 403) {
-            throw new Exception("🚫 API lỗi 403: Không có quyền truy cập!");
+            throw new \Exception("🚫 API lỗi 403: Không có quyền truy cập!");
         } elseif ($http_code == 404) {
-            throw new Exception("🔍 API lỗi 404: Không tìm thấy API!");
+            throw new \Exception("🔍 API lỗi 404: Không tìm thấy API!");
         }
 
         $data = json_decode($response, true);
         if ($data === null) {
-            throw new Exception("⚠️ Lỗi JSON: Không thể parse dữ liệu!");
+            throw new \Exception("⚠️ Lỗi JSON: Không thể parse dữ liệu!");
         }
 
         return $data;
