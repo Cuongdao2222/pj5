@@ -171,6 +171,27 @@ class productController extends AppBaseController
 
     }
 
+    public function update_quantity_sheet_data()
+    {
+        $context = stream_context_create(array(
+            'http' => array(
+                
+                'method' => 'GET',
+
+                'header' => "Content-Type: application/x-www-form-urlencoded\r\n".
+                            "token: eecc19a1cabb51a5080f6f56399f7e82",
+                
+            )
+        ));
+
+        $link_api ='https://api.dienmaynguoiviet.net/api/show-quantity-sheet-data';
+            
+        $response = $this->check_error_api($link_api);
+
+        dd($response->values);
+        
+    }
+
     public function update_sheet_data_post()
     {
         $context = stream_context_create(array(

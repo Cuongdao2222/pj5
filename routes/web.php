@@ -365,6 +365,8 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::get('show-product-group-promotion', 'productController@showDataForGroupProduct')->name('show-product-group-promotion');
 
+    Route::get('show-quantity-update-to-sheet', 'productController@update_quantity_sheet_data');
+
    
     Route::get('add-hight-light', 'landingController@add_Hight_Light')->name('add-hight-light');
 
