@@ -41,16 +41,20 @@
         ?>
 
     <div>
-        <h3>Bảng nhóm sản phẩm sẽ reset</h3>
+        <h3>Bảng nhóm sản phẩm sẽ reset   </h3>
         <ul>
             @for ($i=1; $i < count($data_quantity); $i++)
             <?php 
                 $dems++;
+                $group_name = DB::table('group_product')->select('name,id')->where('id', $data_quantity[$i][1])->first();
             ?>
 
-            <li>{{ $data_quantity[$i][1] }}</li>
+            <li>{{ @$group_name->name  }}</li>
             @endfor
         </ul>
+    </div>
+    <div>
+        <h4>Cập nhật tồn random(5-15) cho các model sản phẩm dưới</h4>
     </div>
     
     <table id="priceTable">
