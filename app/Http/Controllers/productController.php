@@ -190,9 +190,13 @@ class productController extends AppBaseController
 
 
         if(!empty($response['values'])){
-            echo "<pre>";
-            print_r($response['values']);
-            echo "</pre>";
+
+            $data_quantity = $response['values'];
+
+            for ($i=1; $i < count($data_quantity); $i++) { 
+                echo $data_quantity[$i][0];
+            }
+            
             
         }    
 
