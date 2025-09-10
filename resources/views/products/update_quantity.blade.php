@@ -30,12 +30,27 @@
 
   
 
-     <a href="javascript:void(0)" onclick="updatePreviousRow()">cập nhật giá từ sheet</a>
+     <a href="javascript:void(0)" onclick="updatePreviousRow()">cập nhật tồn từ sheet</a>
 
+    @if(!empty($response['values']))
 
+        <?php 
+            $data_quantity = $response['values'];
+            $dem =0;
+            $dems = 0;
+        ?>
 
     <div>
-        <h1>Bảng Giá Sản Phẩm</h1>
+        <h3>Bảng nhóm sản phẩm sẽ reset</h3>
+        <ul>
+            @for ($i=1; $i < count($data_quantity); $i++)
+            <?php 
+                $dems++;
+            ?>
+
+            <li>{{ $data_quantity[$i][1] }}</li>
+            @endfor
+        </ul>
     </div>
     
     <table id="priceTable">
@@ -50,12 +65,7 @@
         <tbody>
 
 
-            @if(!empty($response['values']))
-
-            <?php 
-                $data_quantity = $response['values'];
-                $dem =0;
-            ?>
+           
 
             @for ($i=1; $i < count($data_quantity); $i++)
 
@@ -69,10 +79,11 @@
                
             </tr>
             @endfor
-            @endif
+           
             
         </tbody>
     </table>
+    @endif
 
 </body>
 
