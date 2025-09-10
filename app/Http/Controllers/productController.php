@@ -188,20 +188,16 @@ class productController extends AppBaseController
             
         $response = $this->check_error_api($link_api);
 
-
         if(!empty($response['values'])){
 
-            $data_quantity = $response['values'];
+          
+             return view('products.update_quantity', compact('response'));
+        }
+        else{
+            echo "Xin vui lòng thử f5 lại sau 1 phút";
+            die;
+        }   
 
-            for ($i=1; $i < count($data_quantity); $i++) { 
-                echo $data_quantity[$i][0].'<br>';
-            }
-            
-            
-        }    
-
-       
-        
     }
 
     public function update_sheet_data_post()
