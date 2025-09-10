@@ -192,7 +192,7 @@ class productController extends AppBaseController
             foreach($response['values'] as $key => $val){
                 if($key>1){
 
-                    echo $val[0].'<br>';
+                    print_r($val);
 
                 }
             }    
