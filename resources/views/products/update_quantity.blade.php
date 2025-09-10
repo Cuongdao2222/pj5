@@ -46,7 +46,7 @@
             @for ($i=1; $i < count($data_quantity); $i++)
             <?php 
                 $dems++;
-                $group_name = DB::table('group_product')->select('name,id')->where('id', $data_quantity[$i][1])->first();
+                $group_name = DB::table('group_product')->select('name','id')->where('id', $data_quantity[$i][1])->first();
             ?>
 
             <li>{{ @$group_name->name  }}</li>
