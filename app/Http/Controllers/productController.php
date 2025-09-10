@@ -188,7 +188,7 @@ class productController extends AppBaseController
             
         $response = $this->check_error_api($link_api);
 
-        dd($response->values);
+        dd($response);
         
     }
 
