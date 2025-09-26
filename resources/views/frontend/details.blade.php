@@ -1487,6 +1487,23 @@
                             </div>
                             @endif
 
+                            @if($checkHisense>-1)
+
+                                <div class="gift_pro">
+                                    <span class="ttl"><i class="fa-solid fa-hand-point-right"></i> Hướng dẫn kích hoạt</span> 
+                                    <div class="gift_item">
+                                        <ul>
+                                            <li>
+                                                <div class="gift_info">
+                                                    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px">Hướng dẫn khách hàng tự kích hoạt bảo hành sản phẩm Hisense (<a href="https://dienmaynguoiviet.vn/huong-dan-kich-hoat-bao-hanh-dien-tu-hisense" target="_blank">Xem chi tiết</a>)</span></span></p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            @endif
+
 
                             @if($checkDaikin===true)
                             <div class="gift_pro">
