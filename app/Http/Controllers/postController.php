@@ -397,10 +397,15 @@ class postController extends AppBaseController
 
         if ($exists) {
             DB::table('imagescontent')->where('id', $id)->delete();
+
+            return redirect()->back();
             // Đã xóa
         }
+        else{
+            echo "Không thể xóa ảnh này";
+        }
        
-        return redirect()->back();
+        
     }
 
     public function searchTitle(Request $request)
