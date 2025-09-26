@@ -219,6 +219,7 @@
 
                 
             </td>
+            <br>
             <td>
                 <a href="">Xóa ảnh</a>
             </td>
