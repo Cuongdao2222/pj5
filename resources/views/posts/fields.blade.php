@@ -216,6 +216,10 @@
             <td class="img1{{ $key }}">
                 <a href="javascript:void(0);" onclick="click1('images1{{ $key }}', '{{ asset("uploads/product/".$values->image) }}')"><img src="{{ asset('uploads/product/'.$values->image) }}" style="max-width:100px; max-height:130px" id="img1{{ $key }}"></a>
 
+
+                
+            </td>
+            <td>
                 <a href="">Xóa ảnh</a>
             </td>
          
