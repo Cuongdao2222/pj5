@@ -391,6 +391,18 @@ class postController extends AppBaseController
 
     }
 
+    public function removeImageContent($id)
+    {
+        $exists = DB::table('imagescontent')->where('id', $id)->exists();
+
+        if ($exists) {
+            DB::table('imagescontent')->where('id', $id)->delete();
+            // Đã xóa
+        }
+       
+        return redirect()->back();
+    }
+
     public function searchTitle(Request $request)
     {
         $title = $request->title;

@@ -212,6 +212,8 @@ Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
     Route::get('hot-list', 'hotController@index')->name('host-list');
 
+    Route::get('remove-image-content/{id}', 'hotController@index')->name('removeImageContent');
+
     Route::post('update-order-hot','hotController@hotOrderProduct')->name('order-hot');
 
     Route::get('seachtitlePost', 'postController@searchTitle')->name('searTitlePost');
