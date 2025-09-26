@@ -290,6 +290,15 @@
 </div>
 <div class="clearfix"></div>
 
+@if(session('scroll_to_bottom'))
+    <script>
+        window.onload = function() {
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+        }
+    </script>
+    {{ session()->forget('scroll_to_bottom') }}
+@endif
+
 <script type="text/javascript">
 
     $(document).ready(function() {

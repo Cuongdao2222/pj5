@@ -398,7 +398,7 @@ class postController extends AppBaseController
         if ($exists) {
             DB::table('imagescontent')->where('id', $id)->delete();
 
-            return redirect()->back();
+            return redirect()->back()->with('scroll_to_bottom', true);;
             // Đã xóa
         }
         else{
