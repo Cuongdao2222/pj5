@@ -138,20 +138,18 @@ class crawlController extends Controller
 
         $id = $_GET['id'];
 
-        print_r($id);
-        die;
-
+    
         // Kiểm tra sản phẩm có trong deal không?
 
-        $data = deal::select('id')->get();
+        // $data = deal::select('id')->get();
 
-        $break = [];
+        // $break = [];
 
-        foreach ($data as $key => $value) {
-            array_push($break, $value->id);
-        }
+        // foreach ($data as $key => $value) {
+        //     array_push($break, $value->id);
+        // }
 
-        $group = groupProduct::find(269);
+        $group = groupProduct::find($id);
 
         $list_pd =  json_decode($group->product_id);
 
@@ -181,7 +179,7 @@ class crawlController extends Controller
             
         }
 
-        echo "sửa tồn $dem sản phẩm  ";
+        echo "sửa tồn $dem sản phẩm  $group->name";
 
         echo "<pre>";
         print_r($false);
