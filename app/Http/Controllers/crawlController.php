@@ -143,7 +143,7 @@ class crawlController extends Controller
 
         // $data = deal::select('id')->get();
 
-        // $break = [];
+        $break = [];
 
         // foreach ($data as $key => $value) {
         //     array_push($break, $value->id);
