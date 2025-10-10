@@ -138,7 +138,7 @@ class crawlController extends Controller
 
         $id = $_GET['id'];
 
-        die;
+        // die;
 
     
         // Kiểm tra sản phẩm có trong deal không?
