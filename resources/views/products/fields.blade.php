@@ -128,6 +128,8 @@
 
                 ?> 
                 <td class="img1{{ $key }}"><a href="javascript:void(0);" onclick="click1('images1{{ $key }}', '{{ asset($images) }}')"><img src="{{ asset($images) }}" style="max-width:100px; max-height:130px" id="img1{{ $key }}"></a></td>
+
+                <a href="{{ route('removeImageContent', $values->id) }}">Xóa ảnh</a>
              
                 @endforeach
                 @endif
