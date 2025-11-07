@@ -91,17 +91,29 @@
 
      
     <div class="btn-show"> 
-       <!--  <div class="btn btn-warning"><a href="{{ route('metaSeos.edit', 1) }}"></a>Seo</div> -->
-        <div class="btn btn-warning {{ (empty($_GET['mota']) && empty($_GET['specifications']) && empty($_GET['seo']) )?'activess':'' }}" ><a href="{{ route('products.edit', $product->id) }}">Cơ bản</a></div>
-       <div class="btn btn-warning" ><a href="{{ route('group-product-selected', $product->id) }}">Danh mục</a></div>
+      
+        <a class="btn btn-warning {{ (empty($_GET['mota']) && empty($_GET['specifications']) && empty($_GET['seo']) )?'activess':'' }}" 
+           href="{{ route('products.edit', $product->id) }}">Cơ bản</a>
 
-       <div class="btn btn-warning btn-info seo-click {{ !empty($_GET['seo'])?'activess':'' }}"><a href="{{ route('products.edit', $product->id) }}?seo={{ $product->id }}">SEO</a></div>
+        <a class="btn btn-warning" 
+           href="{{ route('group-product-selected', $product->id) }}">Danh mục</a>
 
-        <div class="btn btn-warning {{ !empty($_GET['mota'])?'activess':'' }}"><a href="{{ route('products.edit', $product->id) }}?mota={{ $product->id }}">Mô tả</a></div>
-        <div class="btn btn-warning  {{ !empty($_GET['specifications'])?'activess':'' }}" ><a href="{{ route('filter-property') }}?group-product={{ get_Group_Product($product->id)[0]??'' }}&productId={{ $product->id }}">Thông số</a></div>
-        <div class="btn btn-warning"><a href="{{ route('images.create') }}?{{ $product->id }}">Ảnh</a></div>
-    <!--     <div class="btn btn-warning" ><a href="#mo-ta">Thông số kỹ thuật chi tiết</a></div> -->
-        <div class="btn btn-warning" ><a href="{{ !empty($product->Link)?route('details', [$product->Link]):'' }}" target="_blank">Xem tại web</a></div>
+        <a class="btn btn-warning btn-info seo-click {{ !empty($_GET['seo'])?'activess':'' }}" 
+           href="{{ route('products.edit', $product->id) }}?seo={{ $product->id }}">SEO</a>
+
+        <a class="btn btn-warning {{ !empty($_GET['mota'])?'activess':'' }}" 
+           href="{{ route('products.edit', $product->id) }}?mota={{ $product->id }}">Mô tả</a>
+
+        <a class="btn btn-warning {{ !empty($_GET['specifications'])?'activess':'' }}" 
+           href="{{ route('filter-property') }}?group-product={{ get_Group_Product($product->id)[0]??'' }}&productId={{ $product->id }}">Thông số</a>
+
+        <a class="btn btn-warning" 
+           href="{{ route('images.create') }}?{{ $product->id }}">Ảnh</a>
+
+        <a class="btn btn-warning" 
+           href="{{ !empty($product->Link)?route('details', [$product->Link]):'' }}" 
+           target="_blank">Xem tại web</a>
+
         <div class="btn btn-warning check-show" ><a class="" href="javascript:void(0)" onclick="show({{ $product->active==0?1:0  }}, {{ $product->id }})"> {{  $product->active==0?'Ẩn':'Hiển thị' }} </a></div>
     </div> 
     @if(!empty($metaSeo) && !empty($_GET['seo']))
