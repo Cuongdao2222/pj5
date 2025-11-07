@@ -68,18 +68,30 @@
     ?>
 
     <div class="btn-show">
-        <div class="btn btn-warning" ><a href="{{ route('products.edit', $product_id) }}">Cơ bản</a></div>
+        <a class="btn btn-warning" 
+           href="{{ route('products.edit', $product_id) }}">Cơ bản</a>
 
-        <div class="btn btn-warning" ><a href="{{ route('group-product-selected', $product_id) }}">Danh mục</a></div>
-        <div class="btn btn-warning btn-info seo-click"><a href="{{ route('products.edit', $product_id) }}?seo={{ $product_id }}">SEO</a></div>
-        <div class="btn btn-warning"><a href="{{ route('products.edit', $product_id) }}?mota={{ $product_id }}">Mô tả</a></div>
+        <a class="btn btn-warning" 
+           href="{{ route('group-product-selected', $product_id) }}">Danh mục</a>
 
-        <div class="btn btn-warning activess" ><a href="{{ route('filter-property') }}?group-product={{  $group_id??'' }}&productId={{ $product_id }}">Thông số</a></div>
-         <div class="btn btn-warning"><a href="{{ route('images.create') }}?{{ $product_id }}">Ảnh</a></div>
+        <a class="btn btn-warning btn-info seo-click" 
+           href="{{ route('products.edit', $product_id) }}?seo={{ $product_id }}">SEO</a>
+
+        <a class="btn btn-warning" 
+           href="{{ route('products.edit', $product_id) }}?mota={{ $product_id }}">Mô tả</a>
+
+        <a class="btn btn-warning activess" 
+           href="{{ route('filter-property') }}?group-product={{ $group_id ?? '' }}&productId={{ $product_id }}">Thông số</a>
+
+        <a class="btn btn-warning" 
+           href="{{ route('images.create') }}?{{ $product_id }}">Ảnh</a>
 
         @if(!empty($product_id))
-        <div class="btn btn-warning" ><a href="{{ !empty($infoProduct->Link)?route('details', [$infoProduct->Link]):'' }}" target="_blank">Xem tại web</a></div>
+        <a class="btn btn-warning" 
+           href="{{ !empty($infoProduct->Link) ? route('details', [$infoProduct->Link]) : '' }}" 
+           target="_blank">Xem tại web</a>
         @endif
+
     </div>    
 
 
