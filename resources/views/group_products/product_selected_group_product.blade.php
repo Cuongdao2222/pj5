@@ -77,13 +77,13 @@
 
 
 
-<div class="btn btn-warning" ><a href="{{ route('products.edit', $id) }}">Cơ bản</a></div>
-<div class="btn btn-warning activess" ><a href="{{ route('group-product-selected', $id) }}">Danh mục</a></div>
-<div class="btn btn-warning btn-info seo-click"><a href="{{ route('products.edit', $id) }}?seo={{ $id }}">SEO</a></div>
-<div class="btn btn-warning"><a href="{{ route('products.edit', $id) }}?mota={{ $id }}">Mô tả</a></div>
-<div class="btn btn-warning" ><a href="{{ route('filter-property') }}?group-product={{ get_Group_Product($id)[0]??'' }}&productId={{ $id }}">Thông số</a></div>
-<div class="btn btn-warning"><a href="{{ route('images.create') }}?{{ $id }}">Ảnh</a></div>
-<div class="btn btn-warning" ><a href="{{ route('details',  $name_product->Link) }}" target="_blank">Xem tại web</a></div>
+<a href="{{ route('products.edit', $id) }}"><div class="btn btn-warning" >Cơ bản</div></a>
+<a href="{{ route('group-product-selected', $id) }}"><div class="btn btn-warning activess" >Danh mục</div></a>
+<a href="{{ route('products.edit', $id) }}?seo={{ $id }}"><div class="btn btn-warning btn-info seo-click">SEO</div></a>
+<a href="{{ route('products.edit', $id) }}?mota={{ $id }}"><div class="btn btn-warning">Mô tả</div></a>
+<a href="{{ route('filter-property') }}?group-product={{ get_Group_Product($id)[0]??'' }}&productId={{ $id }}"><div class="btn btn-warning" >Thông số</div></a>
+<a href="{{ route('images.create') }}?{{ $id }}"><div class="btn btn-warning">Ảnh</div></a>
+<a href="{{ route('details',  $name_product->Link) }}" target="_blank"><div class="btn btn-warning" >Xem tại web</div></a>
 <h2>Sửa danh mục cho sản phẩm {{ $name_product->Name }}</h2>
 
 <div class="table-responsive">
