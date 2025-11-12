@@ -126,7 +126,7 @@
                        
                 <button><i class="fas fa-search" aria-hidden="true"></i></button>
                 <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search"
-                    aria-label="Search" name="search">
+                    aria-label="Search" name="search" required>
             </form>
         </div>
 
