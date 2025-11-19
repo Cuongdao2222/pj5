@@ -847,7 +847,7 @@ class productController extends AppBaseController
 
                         if($product->count()==0){
                             // search bằng thư viện FullTextSearch
-                            $product = product::FullTextSearch('Name', $search)->select('id', 'Name', 'Price', 'Link', 'Image')->where('active', 1)->get();
+                            $product = product::FullTextSearch('Name', $search)->select('id', 'Name', 'Price', 'Link', 'Image')->where('active', 1)->orderBy('Quantily', 'desc')->get();
                             
                             if($product->count()==0){
                                 $product = product::where('Name', 'like', '%'.$search.'%')->where('active', 1)->get();
