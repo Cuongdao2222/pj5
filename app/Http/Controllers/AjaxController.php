@@ -270,7 +270,7 @@ class AjaxController extends Controller
 
             if(!Cache::has('product_search')){
 
-                $productss = product::select('Link', 'Name', 'Image', 'Price', 'id', 'ProductSku', 'promotion',  'Sailent_Features')->where('active', 1)->get();
+                $productss = product::select('Link', 'Name', 'Image', 'Price', 'id', 'ProductSku', 'promotion',  'Sailent_Features', 'Quantily')->where('active', 1)->orderBy('Quantily', 'desc')->get();
 
                 Cache::forever('product_search',$productss);
 
@@ -304,10 +304,10 @@ class AjaxController extends Controller
 
                         if($product->count()==0){
                             // search bằng thư viện FullTextSearch
-                            $product = product::FullTextSearch('Name', $search)->select('id', 'Name', 'Price', 'Link', 'Image')->where('active',1)->get();
+                            $product = product::FullTextSearch('Name', $search)->select('id', 'Name', 'Price', 'Link', 'Image')->where('active',1)->orderBy('Quantily', 'desc')->get();
                             
                             if($product->count()==0){
-                                $product = product::where('Name', 'like', '%'.$search.'%')->where('active',1)->get();
+                                $product = product::where('Name', 'like', '%'.$search.'%')->where('active',1)->orderBy('Quantily', 'desc')->get();
                             }
                         } 
                        
