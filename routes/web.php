@@ -127,6 +127,9 @@ Route::get('/add-property-filter', 'mainController@filterAdd')->name('add-proper
 
 Route::post('filter-search-client', 'Frontend\filterController@filter')->name('client-search');
 
+
+Route::get('/cache-clear/{id}', 'Frontend\indexController@clearCacheGroup');
+
 // Route::get('/cache-clear', function () {
 //      \Artisan::call('key:generate');
 //       \Artisan::call('config:clear');
