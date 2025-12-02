@@ -286,10 +286,16 @@ class indexController extends Controller
 
     public function clearCacheGroup(Request $request)
     {
-        $id = $request->id;
-        Cache::forget('hot'.$id);
+        // $id = $request->id;
+        // Cache::forget('hot'.$id);
+
+        // echo "thành công";
+
+        Cache::forget('view-homes');
 
         echo "thành công";
+
+        
 
     }
 
