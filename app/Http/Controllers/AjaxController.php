@@ -131,6 +131,8 @@ class AjaxController extends Controller
 
             $addProduct->save();
 
+            Cache::forget('view-homes');
+
             return "thêm thành công sản phẩm có product_id ".$request->product_id;
 
         }
