@@ -1875,35 +1875,39 @@
                                             <aside>
                                                 <strong>Dung tích</strong>
                                                 <hr>
-                                                <a href="{{route('details','tu-100-200-lit')}}">
+                                                <a href="{{route('details','tu-100-lit-200-lit')}}">
                                                     <h3>Từ 100-200 lít</h3>
                                                 </a>
-                                                <a href="{{route('details','tu-200-300-lit')}}">
+                                                <a href="{{route('details','tu-200-lit-300-lit')}}">
                                                     <h3>Từ 200-300 lít</h3>
                                                 </a>
-                                                <a href="{{route('details','tu-300-400-lit')}}">
+                                                <a href="{{route('details','tu-300-lit-400-lit')}}">
                                                     <h3>Từ 300-400 lít</h3>
                                                 </a>
-                                                <a href="{{route('details','tu-400-500-lit')}}">
+                                                <a href="{{route('details','tu-400-lit-500-lit')}}">
                                                     <h3>Từ 400-500 lít</h3>
                                                 </a>
                                                 <a href="{{route('details','tu-500-lit-600-lit')}}">
                                                     <h3>Từ 500-600 lít</h3>
                                                 </a>
-                                                <a href="{{route('details','tu-600-700-lit')}}">
+                                                <a href="{{route('details','tu-600-lit-700-lit')}}">
                                                     <h3>Từ 600-700 lít</h3>
                                                 </a>
-                                                <a href="{{route('details','tu-700-800-lit')}}">
+                                                <a href="{{route('details','tu-700-lit-800-lit')}}">
                                                     <h3>Từ 700-800 lít</h3>
                                                 </a>
-                                                <a href="{{route('details','tu-800-900-lit')}}">
+                                                <a href="{{route('details','tu-800-lit-900-lit')}}">
                                                     <h3>Từ 800-900 lít</h3>
                                                 </a>
-                                                <a href="{{route('details','tu-900-1000-lit')}}">
+                                                <a href="{{route('details','tu-900-lit-1000-lit')}}">
                                                     <h3>Từ 900-1000 lít</h3>
                                                 </a>
-                                                <a href="{{route('details','tren-1000-lit')}}">
-                                                    <h3>Trên 1000 lít</h3>
+
+                                                <a href="{{route('details','tu-1000-lit-1500-lit')}}">
+                                                    <h3>Từ 1000-1500 lít</h3>
+                                                </a>
+                                                <a href="{{route('details','tren-1500-lit')}}">
+                                                    <h3>Trên 1500 lít</h3>
                                                 </a>
                                             </aside>
                                         </div>
