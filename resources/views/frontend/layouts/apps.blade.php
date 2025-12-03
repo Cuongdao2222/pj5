@@ -1887,7 +1887,7 @@
                                                 <a href="{{route('details','tu-400-500-lit')}}">
                                                     <h3>Từ 400-500 lít</h3>
                                                 </a>
-                                                <a href="{{route('details','tu-500-600-lit')}}">
+                                                <a href="{{route('details','tu-500-lit-600-lit')}}">
                                                     <h3>Từ 500-600 lít</h3>
                                                 </a>
                                                 <a href="{{route('details','tu-600-700-lit')}}">
