@@ -377,6 +377,8 @@ class indexController extends Controller
         // file_get_contents('https://dienmaynguoiviet.vn');
         // file_get_contents(Route('redirect-update-cache'));
         Cache::forget('product_search');
+         $productss = product::select('Link', 'Name', 'Image', 'Price', 'id', 'ProductSku', 'manuPrice', 'orders_hot', 'Salient_Features')->where('active', 1)->Orderby('Quantily', 'desc')->get();
+                    Cache::forever('product_search',$productss);
         echo "thanh cong";
     }
 
