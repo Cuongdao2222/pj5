@@ -30,9 +30,9 @@ class urlTo
     }
     public function handle($request, Closure $next)
     {
-        $uri =  $this->getUrl();
+        $uri =  trim($this->getUrl());
 
-        if(Cache::has('checkLinkRedirect_'.$uri)){
+        if(Cache::has('checkLinkRedirect_'.$uri) && $uri!='smart-tivi-samsung-ua43u8500-43-inch-4k'){
 
             $uri_redirect = Cache::get('checkLinkRedirect_'.$uri);
 
