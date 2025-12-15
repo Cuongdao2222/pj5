@@ -32,13 +32,13 @@ class urlTo
     {
         $uri =  $this->getUrl();
 
-        // if(Cache::has('checkLinkRedirect_'.$uri)){
+        if(Cache::has('checkLinkRedirect_'.$uri)){
 
-        //     $uri_redirect = Cache::get('checkLinkRedirect_'.$uri);
+            $uri_redirect = Cache::get('checkLinkRedirect_'.$uri);
 
-        //     return redirect()->to($uri_redirect);
+            return redirect()->to($uri_redirect);
 
-        // }
+        }
 
         return $next($request);
        
