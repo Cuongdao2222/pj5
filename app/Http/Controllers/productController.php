@@ -785,6 +785,14 @@ class productController extends AppBaseController
 
         if(!empty($search)){
 
+            if($ip =='162.120.184.239'){
+
+                dd(1);
+
+                die;
+
+            }
+
             $search = str_replace('dieu hoa', 'Điều hòa', $search);
 
             $search = str_replace('tu dong', 'Tủ đông', $search);
@@ -882,13 +890,7 @@ class productController extends AppBaseController
 
                 $ip = $_SERVER['REMOTE_ADDR'];
 
-                if($ip =='162.120.184.239'){
-
-                    dd($data);
-
-                    die;
-
-                }
+                
 
                 return view('frontend.category',compact('data','numberdata','page_search'));
             }
