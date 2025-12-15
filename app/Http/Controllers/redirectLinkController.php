@@ -66,6 +66,10 @@ class redirectLinkController extends Controller
 
         $data = redirectLink::get();
 
+        dd($data);
+
+        die;
+
         foreach ($data as $key => $value) {
             
             Cache::forever('checkLinkRedirect_'.$value->request_path, $value->target_path);
