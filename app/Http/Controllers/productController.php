@@ -790,7 +790,7 @@ class productController extends AppBaseController
 
         $search = $clearData;
 
-        echo 1;
+        // echo 1;
 
         $ip = $this->getClientIP();
 
