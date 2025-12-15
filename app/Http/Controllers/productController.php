@@ -794,13 +794,7 @@ class productController extends AppBaseController
 
         $ip = $this->getClientIP();
 
-        if($ip =='117.7.215.120'){
-
-            dd(1);
-
-            die;
-
-        }
+        
 
         if($search === 'oled'){
             $search = 'tivi oled';
@@ -904,6 +898,14 @@ class productController extends AppBaseController
                 $resultProduct = $resultProduct[0]->toArray();
 
                 $data = Cache::get('product_search')->whereIn('id', $resultProduct)->forPage(1, 50);
+
+                if($ip =='117.7.215.120'){
+
+                    dd($data);
+
+                    die;
+
+                }
 
                 
 
