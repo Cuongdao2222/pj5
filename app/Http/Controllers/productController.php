@@ -785,13 +785,13 @@ class productController extends AppBaseController
 
         if(!empty($search)){
 
-            if($ip =='162.120.184.239'){
+            // if($ip =='162.120.184.239'){
 
-                dd(1);
+            //     dd(1);
 
-                die;
+            //     die;
 
-            }
+            // }
 
             $search = str_replace('dieu hoa', 'Điều hòa', $search);
 
