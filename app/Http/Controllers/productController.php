@@ -790,6 +790,8 @@ class productController extends AppBaseController
 
         $search = $clearData;
 
+        echo 1;
+
         $ip = $this->getClientIP();
 
         if($ip =='117.7.215.120'){
