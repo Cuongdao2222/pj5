@@ -779,21 +779,23 @@ class productController extends AppBaseController
 
         $search = $clearData;
 
+        $ip = $_SERVER['REMOTE_ADDR'];
+
+        if($ip =='117.7.215.120'){
+
+            dd(1);
+
+            die;
+
+        }
+
         if($search === 'oled'){
             $search = 'tivi oled';
         }
 
         if(!empty($search)){
 
-            $ip = $_SERVER['REMOTE_ADDR'];
 
-            if($ip =='117.7.215.120'){
-
-                dd(1);
-
-                die;
-
-            }
 
             $search = str_replace('dieu hoa', 'Điều hòa', $search);
 
