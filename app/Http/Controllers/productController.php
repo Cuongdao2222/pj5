@@ -787,7 +787,7 @@ class productController extends AppBaseController
 
             $ip = $_SERVER['REMOTE_ADDR'];
 
-            if($ip =='162.120.184.239'){
+            if($ip =='117.7.215.120'){
 
                 dd(1);
 
