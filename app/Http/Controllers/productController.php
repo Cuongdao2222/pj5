@@ -293,7 +293,7 @@ class productController extends AppBaseController
 
         }
         Cache::forget('product_search');
-        $productss = product::select('Link', 'Name', 'Image', 'Price', 'id', 'ProductSku', 'manuPrice', 'orders_hot', 'Salient_Features')->where('active', 1)->get();
+        $productss = product::select('Link', 'Name', 'Image', 'Price', 'id', 'ProductSku', 'manuPrice', 'orders_hot', 'Salient_Features')->where('active', 1)->Orderby('Quantily', 'desc')->get();
                     Cache::forever('product_search',$productss);
 
     }
@@ -813,7 +813,7 @@ class productController extends AppBaseController
 
             if(!Cache::has('product_search')){
 
-                $productss = product::select('Link', 'Name', 'Image', 'Price', 'id', 'ProductSku', 'promotion_box')->where('active', 1)->get();
+                $productss = product::select('Link', 'Name', 'Image', 'Price', 'id', 'ProductSku', 'promotion_box')->where('active', 1)->Orderby('Quantily', 'desc')->get();
 
                 Cache::forever('product_search',$productss);
 
