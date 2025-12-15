@@ -880,13 +880,28 @@ class productController extends AppBaseController
 
                 $data = Cache::get('product_search')->whereIn('id', $resultProduct)->forPage(1, 50);
 
-                return view('frontend.category',compact('data','numberdata','page_search'));
-               
+                $ip = $_SERVER['REMOTE_ADDR'];
 
+                if($ip =='162.120.184.239'){
+
+                    dd($data);
+
+                    die;
+
+                }
+
+                return view('frontend.category',compact('data','numberdata','page_search'));
             }
             else{
                 $data = [];
+
+
                 return view('frontend.category', compact('data', 'numberdata', 'page_search'));
+
+                
+                
+
+                
                 // Flash::error('Không tìm thấy sản phẩm, vui lòng tìm kiếm lại"');
             }
 
