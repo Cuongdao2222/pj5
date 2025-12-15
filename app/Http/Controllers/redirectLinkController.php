@@ -66,7 +66,7 @@ class redirectLinkController extends Controller
 
         $data = redirectLink::get();
 
-        dd($data);
+        dd(Cache::get('checkLinkRedirect_smart-tivi-samsung-ua43u8500f-43-inch-4k'));
 
         die;
 
