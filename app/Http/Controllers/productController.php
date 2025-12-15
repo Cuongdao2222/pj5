@@ -771,6 +771,17 @@ class productController extends AppBaseController
 
     }
 
+    public function getClientIP() {
+        if (!empty($_SERVER['HTTP_CF_CONNECTING_IP'])) {
+            return $_SERVER['HTTP_CF_CONNECTING_IP']; // Cloudflare
+        } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+            return explode(',', $_SERVER['HTTP_X_FORWARDED_FOR'])[0];
+        } elseif (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+            return $_SERVER['HTTP_CLIENT_IP'];
+        }
+        return $_SERVER['REMOTE_ADDR'];
+    }
+
     public function FindbyNameOrModelOfFrontend(Request $request)
     {
         $clearData = trim($request->key);
@@ -779,7 +790,7 @@ class productController extends AppBaseController
 
         $search = $clearData;
 
-        $ip = $_SERVER['REMOTE_ADDR'];
+        $ip = $this->getClientIP();
 
         if($ip =='117.7.215.120'){
 
