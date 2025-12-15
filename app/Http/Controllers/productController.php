@@ -785,13 +785,15 @@ class productController extends AppBaseController
 
         if(!empty($search)){
 
-            // if($ip =='162.120.184.239'){
+            $ip = $_SERVER['REMOTE_ADDR'];
 
-            //     dd(1);
+            if($ip =='162.120.184.239'){
 
-            //     die;
+                dd(1);
 
-            // }
+                die;
+
+            }
 
             $search = str_replace('dieu hoa', 'Điều hòa', $search);
 
@@ -888,7 +890,7 @@ class productController extends AppBaseController
 
                 $data = Cache::get('product_search')->whereIn('id', $resultProduct)->forPage(1, 50);
 
-                $ip = $_SERVER['REMOTE_ADDR'];
+                
 
                 
 
