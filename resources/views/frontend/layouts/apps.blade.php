@@ -1556,9 +1556,7 @@
                                                     <h3>Tủ lạnh Mitsubishi </h3>
                                                 </a>
 
-                                                <a href="{{route('details','tu-lanh-hitachi')}}">
-                                                    <h3>Tủ lạnh Hitachi</h3>
-                                                </a>
+                                              
 
                                                 <a href="{{route('details','tu-lanh-hisense')}}">
                                                     <h3>Tủ lạnh Hisense</h3>
