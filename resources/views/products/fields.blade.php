@@ -49,6 +49,8 @@
 
 @if(!empty($specifications_view))
 <div class="form-group col-sm-12 col-lg-12">
+
+    <h3>{{ $product->Name??'' }}</h3>
     {!! Form::label('Specifications', 'Thông số kỹ thuật:') !!}
     {!! Form::textarea('Specifications', null, ['class' => 'form-control', 'id' =>'content-2']) !!}
 </div>
