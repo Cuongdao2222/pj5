@@ -262,29 +262,7 @@
                 box-shadow: none !important;
             }
 
-            .pine-header-left{
-
-                position: absolute;
-                width: 9%;
-                top: 0;
-                left: 0;
-            }
-
-            .pine-header-right{
-
-                position: absolute;
-                width: 100%;
-                top: 0;
-                right: -90%;
-            }
-
-            .pine-header-left img{
-                width: 100%;
-            }
-
-            .pine-header-right img{
-                width: 10%;
-            }
+            
 
             
 
@@ -841,6 +819,30 @@
                     display: block;   
                 }
 
+                .pine-header-left{
+
+                    position: absolute;
+                    width: 9%;
+                    top: 0;
+                    left: 0;
+                }
+
+                .pine-header-right{
+
+                    position: absolute;
+                    width: 100%;
+                    top: 0;
+                    right: -90%;
+                }
+
+                .pine-header-left img{
+                    width: 100%;
+                }
+
+                .pine-header-right img{
+                    width: 10%;
+                }
+
                 .box-common__tab li {
 
                     width: 170px;
@@ -982,6 +984,10 @@
                  .commit{
                     font-size: 15px;
                 }  
+
+                .pine-header-left, .pine-header-right{
+                    display: none;
+                }
 
                 .show-mobile{
                     bottom: 35px !important;
