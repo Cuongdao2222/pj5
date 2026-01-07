@@ -1297,7 +1297,7 @@
                 <img class="pine-tree" src="{{ asset('background/mai-tree.png') }}" data-was-processed="true">
             </div>
 
-            <div class="pine-header-right">
+            <div class="pine-header-right" style="display:none">
                 <img class="pine-tree" src="{{ asset('background/anhdaophai.png') }}" data-was-processed="true">
             </div>
 
