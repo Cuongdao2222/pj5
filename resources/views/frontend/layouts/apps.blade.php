@@ -1293,9 +1293,9 @@
 
         <header class="header   theme-xmas" data-sub="0">
 
-            <div class="pine-header-left">
+            <!-- <div class="pine-header-left">
                 <img class="pine-tree" src="{{ asset('background/mai-tree.png') }}" data-was-processed="true">
-            </div>
+            </div> -->
 
             <div class="pine-header-right">
                 <img class="pine-tree" src="{{ asset('background/anhdaophai.png') }}" data-was-processed="true">
