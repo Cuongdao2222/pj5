@@ -306,7 +306,7 @@
             }
 
             .category__all{
-                color: #000 !important;
+                color: #fff !important;
                
             }
 
