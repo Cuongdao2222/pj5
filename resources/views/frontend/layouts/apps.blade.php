@@ -1412,7 +1412,7 @@
                         <li class="category">
     
 
-                        <a href="#" class="category__all"><i class="fa fa-bars" aria-hidden="true"></i> Tất cả danh mục</a>
+                        <a href="#" class="category__all"><i class="fa fa-bars" aria-hidden="true"></i> TẤT CẢ DANH MỤC</a>
 
                             @if(!empty($requestcheck)&& \Request::route()->getName() =="homeFe")
                             <div class="bar-top-lefts" style="display: block;">
