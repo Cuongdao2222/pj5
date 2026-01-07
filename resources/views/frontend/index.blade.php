@@ -1693,10 +1693,10 @@
     <div class="pine-tree">
         <img class="pine-tree-left " src="{{ asset('public/background/mai-tree.png')}}" data-was-processed="true"> 
         <img class="pine-tree-right " src="{{ asset('public/background/dao-tree.png')}}" data-was-processed="true">  
-        <img class="tuyet-left loading" src="{{ asset('background/mai-tree.png')}}" data-was-processed="true">  
+       <!--  <img class="tuyet-left loading" src="{{ asset('background/mai-tree.png')}}" data-was-processed="true">  
         <img class="tuyet-right loading" src="{{ asset('background/mai-tree.png')}}" data-was-processed="true">  
         <img class="santa-left loading" src="{{ asset('background/dao-tree.png')}}" data-was-processed="true">  
-        <img class="santa-right loading" src="{{ asset('background/dao-tree.png')}}" data-was-processed="true">
+        <img class="santa-right loading" src="{{ asset('background/dao-tree.png')}}" data-was-processed="true"> -->
     </div> 
 <!-- end hiệu ứng với cả cây thông -->
 
