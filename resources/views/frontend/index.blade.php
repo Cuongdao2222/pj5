@@ -1065,9 +1065,7 @@
 
                         <div class="item"  data-pos="12" id="list_show_group_{{ $key }}">
                             <a href='{{ route('details', $datas->Link) }}'>
-                                @if($datas->Price>=3000000)
-                                <span class="icon_tragop icons-tra-gops">Trả góp <i>0%</i></span>
-                                @endif
+                               
                                 <div class="event">
                                     <img src="{{ asset('images/background-image/event.png') }}?ver=3">
                                     
