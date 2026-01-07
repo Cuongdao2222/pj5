@@ -275,7 +275,7 @@
                 position: absolute;
                 width: 100%;
                 top: 0;
-                right: 0;
+                right: -90%;
             }
 
             .pine-header-left img{
@@ -1297,7 +1297,7 @@
                 <img class="pine-tree" src="{{ asset('background/mai-tree.png') }}" data-was-processed="true">
             </div>
 
-            <div class="pine-header-right" style="display:none">
+            <div class="pine-header-right">
                 <img class="pine-tree" src="{{ asset('background/anhdaophai.png') }}" data-was-processed="true">
             </div>
 
