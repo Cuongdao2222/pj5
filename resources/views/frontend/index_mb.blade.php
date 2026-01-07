@@ -1285,7 +1285,7 @@
     </section>
     <!-- End -->
     <?php 
-        $off_hieuung = 0
+        $off_hieuung = 1
     ?>
     <!-- End -->
     <!-- Hiệu ứng ... rơi -->
