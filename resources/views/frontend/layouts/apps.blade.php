@@ -1267,6 +1267,12 @@
 
         <header class="header   theme-xmas" data-sub="0">
 
+            <div class="pine-header-left" style="display:none">
+                <img class="pine-tree" src="{{ asset('background/mai-tree.png') }}" data-was-processed="true">
+            </div>
+
+            
+
             <div class="header__top desktop header-pc">
                 <section>
                     <a href="{{route('homeFe')}}" class="header__logo">
