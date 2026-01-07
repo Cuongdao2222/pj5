@@ -265,7 +265,7 @@
             .pine-header-left{
 
                 position: absolute;
-                width: 100%;
+                width: 9%;
                 top: 0;
                 left: 0;
             }
@@ -279,7 +279,7 @@
             }
 
             .pine-header-left img{
-                width: 10%;
+                width: 100%;
             }
 
             .pine-header-right img{
