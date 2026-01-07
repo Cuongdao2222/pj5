@@ -262,6 +262,20 @@
                 box-shadow: none !important;
             }
 
+            .pine-header-left{
+
+                position: absolute;
+                width: 100%;
+                top: 0;
+                left: 0;
+            }
+
+            .pine-header-left img{
+                width: 10%;
+            }
+
+            
+
 /*            popup*/
 
             #box-promotion .box-banner{
@@ -1267,7 +1281,7 @@
 
         <header class="header   theme-xmas" data-sub="0">
 
-            <div class="pine-header-left" style="display:none">
+            <div class="pine-header-left">
                 <img class="pine-tree" src="{{ asset('background/mai-tree.png') }}" data-was-processed="true">
             </div>
 
