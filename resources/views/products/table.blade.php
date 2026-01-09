@@ -52,7 +52,7 @@ $Max_ton = DB::table('products')->max('Quantily');
 @endif
 
 
-<h3>Tồn có giá trị lớn nhất là {{ $Max_ton }}</h3>
+<h5>Tồn có giá trị lớn nhất là {{ $Max_ton }}</h5>
 
 <div class="table-responsive">
     <a href="{{ route('update_price_sheet_data') }}" >update giá sản phẩm từ sheet</a>
