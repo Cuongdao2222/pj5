@@ -38,6 +38,8 @@
 
 $search = $_GET['search']??''; 
 
+$Max_ton = DB::table('products')->max('Quantily');
+
 ?>
 
 @if(!empty($search))
@@ -48,6 +50,9 @@ $search = $_GET['search']??'';
     ?>
     <span>Tìm thấy {{ $count_pd }} sản phẩm </span>
 @endif
+
+
+<h3>Tồn có giá trị lớn nhất là {{ $Max_ton }}</h3>
 
 <div class="table-responsive">
     <a href="{{ route('update_price_sheet_data') }}" >update giá sản phẩm từ sheet</a>
