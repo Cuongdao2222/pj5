@@ -830,7 +830,7 @@
                 .pine-header-right{
 
                     position: absolute;
-                    width: 100%;
+                    width: 9%;
                     top: 0;
                     right: -90%;
                 }
@@ -840,7 +840,7 @@
                 }
 
                 .pine-header-right img{
-                    width: 10%;
+                    width: 100%;
                 }
 
                 .box-common__tab li {
