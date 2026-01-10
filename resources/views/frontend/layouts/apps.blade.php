@@ -832,7 +832,7 @@
                     position: absolute;
                     width: 9%;
                     top: 0;
-                    right: -90%;
+                    right: 0;
                 }
 
                 .pine-header-left img{
