@@ -34,7 +34,7 @@ Route::post('showDealClick','flashdealController@showDealByIdClick')->name('show
 
 Route::get('checkPSK', 'crawlController@checkProductSku');
 
-Route::get('sua-ton', 'crawlController@edit_ton_gr');
+
 
 Route::get('flash-deal', 'dealController@dealShowFlash')->name('show-flash-deal');
 
@@ -198,6 +198,8 @@ Route::post('filter-price-product-by-page', 'AjaxController@filterByPageFilter')
 
 
 Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
+
+    Route::get('sua-ton', 'crawlController@edit_ton_gr');
 
     Route::get('test-home', 'Frontend\indexController@testHome')->middleware('throttle:90');
 
