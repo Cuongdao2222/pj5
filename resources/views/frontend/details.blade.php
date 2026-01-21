@@ -1069,21 +1069,7 @@
                     <meta property="position" content="1">
                 </li>
 
-                <?php 
-
-                    if($data->id=='6379'){
-                        $checkss = $_GET['check']??'';
-                        if(!empty($checkss)){
-
-                            echo "<pre>";
-                                print_r($groupProduct[0]['link']);
-                            echo "</pre>";
-
-                        }
-                        
-                    }
-                ?>
-
+            
 
                 @if(!empty($groupLink))
 
