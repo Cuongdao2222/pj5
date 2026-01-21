@@ -1,5 +1,6 @@
 @extends('frontend.layouts.apps')
 @section('content') 
+
 @push('style')
 
     <?php
@@ -338,7 +339,7 @@
     }
 
     $groupProduct = Cache::get('groupsProductDetails');
-    
+
 
     foreach($groupProduct as $groupProducts ){
 
@@ -1067,6 +1068,20 @@
                     <a href="{{route('homeFe')}}">Trang chủ</a>
                     <meta property="position" content="1">
                 </li>
+
+                <?php 
+
+                    if($data->id=='6379'){
+                        $checkss = $_GET['check']??'';
+                        if(!empty($checkss)){
+
+                            dd($groupLink);
+
+                        }
+                        
+                    }
+                ?>
+
 
                 @if(!empty($groupLink))
 
