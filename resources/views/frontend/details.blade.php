@@ -1076,7 +1076,7 @@
                         if(!empty($checkss)){
 
                             echo "<pre>";
-                                print_r($groupProduct);
+                                print_r($groupProduct[0]);
                             echo "</pre>";
 
                         }
