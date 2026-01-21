@@ -86,17 +86,17 @@
 
     <?php 
         if(Schema::hasTable('categories')){
-        $category = DB::table('categories')->select('namecategory', 'id')->get();
-        $new_category = [];
-        if(isset($category)){
-            foreach ($category as $value) {
-                $new_category[$value->id] = $value->namecategory;
+            $category = DB::table('categories')->select('namecategory', 'id')->get();
+            $new_category = [];
+            if(isset($category)){
+                foreach ($category as $value) {
+                    $new_category[$value->id] = $value->namecategory;
+                }
             }
-        }
 
-        // category đã chọn (ví dụ edit bài viết)
-        $categoryselected = !empty($post) ? (array)$post['category'] : ['1'];
-         
+            // category đã chọn (ví dụ edit bài viết)
+            $categoryselected = !empty($post) ? (array)$post['category'] : ['1'];
+        } 
             
     ?>
     @if(Schema::hasTable('categories'))
