@@ -1075,7 +1075,9 @@
                         $checkss = $_GET['check']??'';
                         if(!empty($checkss)){
 
-                            dd($groupProduct);
+                            echo "<pre>";
+                                print_r($groupProduct);
+                            echo "</pre>";
 
                         }
                         
