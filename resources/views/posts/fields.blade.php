@@ -86,42 +86,26 @@
 
     <?php 
         if(Schema::hasTable('categories')){
-            $category = DB::table('categories')->select('namecategory', 'id')->get();
-            $new_category = [];
-            if(isset($category)){
-                foreach ($category as $value) {
-                    $new_category[$value->id] = $value->namecategory;
-                }
+        $category = DB::table('categories')->select('namecategory', 'id')->get();
+        $new_category = [];
+        if(isset($category)){
+            foreach ($category as $value) {
+                $new_category[$value->id] = $value->namecategory;
             }
+        }
 
-            // category đã chọn (ví dụ edit bài viết)
-            $categoryselected = !empty($post) ? (array)$post['category'] : ['1'];
-        } 
+        // category đã chọn (ví dụ edit bài viết)
+        $categoryselected = !empty($post) ? (array)$post['category'] : ['1'];
+         
             
     ?>
     @if(Schema::hasTable('categories'))
     <div class="form-group col-sm-6">
-        {!! Form::label('category', 'Category:') !!}
-
-        <div class="border p-2" style="max-height:200px; overflow:auto">
-            @foreach($new_category as $id => $name)
-                <div class="form-check">
-                    <label class="form-check-label">
-                        <input
-                            type="checkbox"
-                            name="category[]"
-                            value="{{ $id }}"
-                            class="form-check-input"
-                            {{ in_array($id, $categoryselected) ? 'checked' : '' }}
-                        >
-                        {{ $name }}
-                    </label>
-                </div>
-            @endforeach
-        </div>
+        {!! Form::label('category', 'category:') !!}
+       {{ Form::select('category', @$new_category, $categoryselected, ['id' => 'category', 'class' => 'form-control']) }}
     </div>
     @endif
-</div>   
+</div>    
 
 <!-- shortcontent Field -->
 <div class="form-group col-sm-12 col-lg-12">
