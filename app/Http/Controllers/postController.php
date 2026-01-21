@@ -233,6 +233,11 @@ class postController extends AppBaseController
     {
         $post = $this->postRepository->find($id);
 
+
+        dd($post);
+
+        die;
+
         if (empty($post)) {
             Flash::error('Post not found');
 
