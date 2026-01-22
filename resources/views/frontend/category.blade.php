@@ -196,12 +196,7 @@
 
                         @if($filters->name !=  $filtername) 
 
-                        <?php 
-                            $check =$_GET['check']??'';
-                            if($check==1){
-                                dd($filtername);
-                            }
-                        ?>
+                        
 
                         <div class="filter-item isShowing filter-desktop" propertyid="{{ $filters->id }}">
 
@@ -230,7 +225,7 @@
                                             $linkss = $link_cate->link??'';
 
                                             
-                                            if(empty($linkss) && $filtername==='Hãng Sản Xuất'){
+                                            if(empty($linkss) && $convert[trim($property->name)]==='Hãng Sản Xuất'){
 
                                                 $links_cate1 = App\Models\groupProduct::find($ar_list[0]['id']);
 
