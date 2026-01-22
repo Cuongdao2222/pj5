@@ -221,7 +221,7 @@
                                             $check=$_GET['check']??'';
 
                                             if($check==1){
-                                                dd($link_cate);
+                                                dd($filters->name);
 
                                                 
                                             }
