@@ -225,9 +225,9 @@
                                             if($check==1){
                                                 if(empty($linkss) && $filters->name==='Hãng Sản Xuất'){
 
-                                                    dd($ar_list[0]);
+                                                    
 
-                                                    $links_cate1 = App\Models\groupProduct::find($ar_list[0][2]);
+                                                    $links_cate1 = App\Models\groupProduct::find($ar_list[0]['id']);
 
                                                     $linkss = $links_cate1->link;
 
