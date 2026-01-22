@@ -222,22 +222,14 @@
 
                                             $linkss = $link_cate->link??'';
 
-                                            if($check==1){
-                                                if(empty($linkss) && $filters->name==='Hãng Sản Xuất'){
+                                            
+                                            if(empty($linkss) && $filters->name==='Hãng Sản Xuất'){
 
-                                                    
+                                                $links_cate1 = App\Models\groupProduct::find($ar_list[0]['id']);
 
-                                                    $links_cate1 = App\Models\groupProduct::find($ar_list[0]['id']);
-
-                                                    $linkss = $links_cate1->link;
-
-                                    
-                                                }
+                                                $linkss = $links_cate1->link;
 
                                             }
-
-                                            
-                                            
 
                                         ?>
 
