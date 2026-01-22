@@ -229,14 +229,8 @@
 
                                             $check_name_filter = $convert[trim($filters->name)]??'';
 
-
-                                            if($check==1 && empty($linkss)){
-                                                dd($filters);
-                                            }
-
-                                           
                                             
-                                            if(empty($linkss) && $check_name_filter  === 'Hãng Sản Xuất'){
+                                            if(empty($linkss) && $check_name_filter  === 'Hãng Sản Xuất' || empty($linkss) && trim($filters->name)=='Hãng Sản Xuất'){
 
                                                 
 
