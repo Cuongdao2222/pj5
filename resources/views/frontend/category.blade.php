@@ -197,7 +197,7 @@
                         @if($filters->name !=  $filtername) 
 
                         <?php 
-                            $check ==$_GET['check']??'';
+                            $check =$_GET['check']??'';
                             if($check==1){
                                 dd(1);
                             }
