@@ -229,13 +229,16 @@
 
                                             $check_name_filter = $convert[trim($filters->name)]??'';
 
+
+                                            if($check==1 && empty($linkss)){
+                                                dd($check_name_filter);
+                                            }
+
                                            
                                             
                                             if(empty($linkss) && $check_name_filter  === 'Hãng Sản Xuất'){
 
-                                                if($check==1){
-                                                    dd($check_name_filter);
-                                                }
+                                                
 
                                                 $links_cate1 = App\Models\groupProduct::find($ar_list[0]['id']);
 
