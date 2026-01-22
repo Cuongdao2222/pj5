@@ -231,7 +231,7 @@
 
 
                                             if($check==1 && empty($linkss)){
-                                                dd($check_name_filter);
+                                                dd($filters);
                                             }
 
                                            
