@@ -233,7 +233,7 @@
                                             
                                             if(empty($linkss) && $check_name_filter  === 'Hãng Sản Xuất'){
 
-                                                if($check_name_filter==1){
+                                                if($check==1){
                                                     dd($check_name_filter);
                                                 }
 
