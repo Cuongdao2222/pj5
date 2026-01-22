@@ -223,7 +223,7 @@
                                             $linkss = $link_cate->link??'';
 
                                             
-                                            if(empty($linkss) && $filters->name==='Hãng Sản Xuất'){
+                                            if(empty($linkss) && $filtername==='Hãng Sản Xuất'){
 
                                                 $links_cate1 = App\Models\groupProduct::find($ar_list[0]['id']);
 
