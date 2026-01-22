@@ -199,7 +199,7 @@
                         <?php 
                             $check =$_GET['check']??'';
                             if($check==1){
-                                dd(1);
+                                dd($filtername);
                             }
                         ?>
 
