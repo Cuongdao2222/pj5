@@ -227,12 +227,9 @@
 
                                             $linkss = $link_cate->link??'';
 
-                                            $check_name_filter = $convert[trim($property->name)]??'';
+                                            $check_name_filter = $convert[trim($filters->name)]??'';
 
-                                            if($check==1){
-                                                dd($property);
-                                            }
-
+                                           
                                             
                                             if(empty($linkss) && $check_name_filter  === 'Hãng Sản Xuất'){
 
