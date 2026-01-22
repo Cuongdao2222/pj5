@@ -196,6 +196,13 @@
 
                         @if($filters->name !=  $filtername) 
 
+                        <?php 
+                            $check ==$_GET['check']??'';
+                            if($check==1){
+                                dd($filtername);
+                            }
+                        ?>
+
                         <div class="filter-item isShowing filter-desktop" propertyid="{{ $filters->id }}">
 
                             <div class="filter-item__title jsTitle noselecttext showing">
