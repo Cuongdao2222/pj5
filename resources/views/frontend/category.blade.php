@@ -218,6 +218,14 @@
 
                                             $link_cate = App\Models\groupProduct::where('name', 'like', '%'.$name_cate_show.' '.$property->name)->first();
 
+                                            $check=$_GET['check']??'';
+
+                                            if($check==1){
+                                                dd($link_cate);
+
+                                                
+                                            }
+
                                             $linkss = $link_cate->link??'';
 
                                         ?>
