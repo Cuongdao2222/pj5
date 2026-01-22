@@ -220,15 +220,18 @@
 
                                             $check=$_GET['check']??'';
 
-                                            if($check==1){
+                                            $linkss = $link_cate->link??'';
 
-                                                dd($ar_list[0]);
-                                                // dd($filters->name);
+                                            if(empty($linkss) && $filters->name==='Hãng Sản Xuất'){
 
+                                                $links_cate1 = App\Models\groupProduct::find($ar_list[0][2]);
 
+                                                $linkss = $links_cate1->link;
+
+                                
                                             }
 
-                                            $linkss = $link_cate->link??'';
+                                            
 
                                         ?>
 
