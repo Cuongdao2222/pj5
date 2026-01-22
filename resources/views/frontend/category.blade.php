@@ -198,9 +198,7 @@
 
                         <?php 
                             $check =$_GET['check']??'';
-                            if($check==1){
-                                dd($filtername);
-                            }
+                            
                         ?>
 
                         <div class="filter-item isShowing filter-desktop" propertyid="{{ $filters->id }}">
@@ -230,6 +228,10 @@
                                             $linkss = $link_cate->link??'';
 
                                             $check_name_filter = $convert[trim($property->name)]??'';
+
+                                            if($check==1){
+                                                dd($property);
+                                            }
 
                                             
                                             if(empty($linkss) && $check_name_filter  === 'Hãng Sản Xuất'){
