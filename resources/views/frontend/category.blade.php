@@ -233,6 +233,10 @@
                                             
                                             if(empty($linkss) && $check_name_filter  === 'Hãng Sản Xuất'){
 
+                                                if($check_name_filter==1){
+                                                    dd($check_name_filter);
+                                                }
+
                                                 $links_cate1 = App\Models\groupProduct::find($ar_list[0]['id']);
 
                                                 $linkss = $links_cate1->link;
