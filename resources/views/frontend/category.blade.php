@@ -225,12 +225,14 @@
 
                                             $link_cate = App\Models\groupProduct::where('name', 'like', '%'.$name_cate_show.' '.$property->name)->first();
 
-                                            $check=$_GET['check']??'';
+                                            
 
                                             $linkss = $link_cate->link??'';
 
+                                            $check_name_filter = $convert[trim($property->name)]??'';
+
                                             
-                                            if(empty($linkss) && $filtername==='Hãng Sản Xuất'){
+                                            if(empty($linkss) && $check_name_filter  === 'Hãng Sản Xuất'){
 
                                                 $links_cate1 = App\Models\groupProduct::find($ar_list[0]['id']);
 
