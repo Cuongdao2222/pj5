@@ -221,9 +221,11 @@
                                             $check=$_GET['check']??'';
 
                                             if($check==1){
-                                                dd($filters->name);
 
-                                                
+                                                dd($ar_list[0]);
+                                                // dd($filters->name);
+
+
                                             }
 
                                             $linkss = $link_cate->link??'';
