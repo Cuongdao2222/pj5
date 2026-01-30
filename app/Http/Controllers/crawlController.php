@@ -138,15 +138,15 @@ class crawlController extends Controller
 
         $id = $_GET['id'];
 
-        // Kiểm tra sản phẩm có trong deal không?
+        // Kiểm tra sản phẩm có trong deal không để không sửa tồn trong đó ?
 
-        // $data = deal::select('id')->get();
+        $data = deal::select('id')->get();
 
         $break = [];
 
-        // foreach ($data as $key => $value) {
-        //     array_push($break, $value->id);
-        // }
+        foreach ($data as $key => $value) {
+            array_push($break, $value->id);
+        }
 
         $group = groupProduct::find($id);
 
