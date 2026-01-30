@@ -308,6 +308,7 @@
                                 <td>Tình trạng</td>
                                 <td>Quản lý</td>
                                 <td>Tồn kho</td>
+                                <td>Tồn theo số lượng</td>
                                 <td>Sửa giá deal nhanh</td>
                                 <td>Sắp xếp</td>
                                 <td>Cài thời gian riêng</td>
@@ -377,6 +378,8 @@
                                     <b style="color:red">Hết hàng</b>
                                     @endif
                                 </td>
+
+                                <td>{{ @$product_info->Quantily  }}</td>
 
 
                                 <td>
