@@ -1209,10 +1209,10 @@
                             <?php 
 
                                 if($data->id%2==0){
-                                    $numberDeal = 6;
+                                    $numberDeal = 56;
                                 }
                                 else{
-                                    $numberDeal = 5;
+                                    $numberDeal = 68;
                                 }
                             ?>
                             <div id="module_flash_sale" class="pdp-block module">
