@@ -140,7 +140,7 @@ class crawlController extends Controller
 
         // Kiểm tra sản phẩm có trong deal không để không sửa tồn trong đó ?
 
-        $data = deal::select('id')->get();
+        $data = deal::select('id', 'product_id')->get();
 
         $break = [];
 
