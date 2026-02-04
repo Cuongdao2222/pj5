@@ -145,7 +145,7 @@ class crawlController extends Controller
         $break = [];
 
         foreach ($data as $key => $value) {
-            array_push($break, $value->id);
+            array_push($break, $value->product_id);
         }
 
         $group = groupProduct::find($id);
