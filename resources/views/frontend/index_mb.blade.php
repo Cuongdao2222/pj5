@@ -356,15 +356,19 @@
 
             if(!empty($deal)){
 
-                $timeDeal_star =$deal->first()->start;
+                if(!empty($deal->first())){
+                    $timeDeal_star =$deal->first()->start;
 
-                $timeDeal_star =  \Carbon\Carbon::create($timeDeal_star);
+                    $timeDeal_star =  \Carbon\Carbon::create($timeDeal_star);
 
-                $timeDeal_end = $deal->first()->end;
+                    $timeDeal_end = $deal->first()->end;
 
-                $timeDeal_end =  \Carbon\Carbon::create($timeDeal_end);
+                    $timeDeal_end =  \Carbon\Carbon::create($timeDeal_end);
 
-                $timestamp = $now->diffInSeconds($timeDeal_end);
+                    $timestamp = $now->diffInSeconds($timeDeal_end);
+                }
+
+                
             }
 
             
