@@ -87,18 +87,13 @@
 
             $check = !empty($_GET['check'])??'';
 
-
+            if(!empty($check)){
+                dd(count($deal));
+            }
         ?>
         
         @if(!empty($deal)&count($deal)>0)
         <div class="row list-pro">
-
-            <?php 
-
-                if(!empty($check)){
-                    dd(count($deal));
-                }
-            ?>
             
             @foreach($deal as $key => $value)
 
