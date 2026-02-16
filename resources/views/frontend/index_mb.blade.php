@@ -1824,7 +1824,7 @@
 
         times = [];
                   
-        time = {{ $timestamp }};
+        time = {{ !empty($timestamp)??'200' }};
         number_deal_product =10;
         //in time 
       
