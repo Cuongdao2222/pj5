@@ -38,6 +38,7 @@ class product extends Model
         static::updated(function ($instance) {
             // update cache content
             Cache::forget('data-detail'.$instance->slug);
+            Cache::forget('popup1');
             Cache::forever('data-detail'.$instance->Link,$instance);
             Cache::forget('product_search');
 
