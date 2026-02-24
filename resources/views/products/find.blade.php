@@ -64,8 +64,10 @@
             <div class="card-body p-0">
                 @include('products.table')
 
-               
-                        @include('adminlte-templates::common.paginate', ['records' => $products])
+                <div class="d-flex justify-content-center mt-3">
+                    {{ $products->links() }}
+                </div>
+            
                    
             </div>
 
