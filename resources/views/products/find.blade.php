@@ -68,7 +68,7 @@
                     {{ $products->links() }}
                 </div>
                 <div class="d-flex justify-content-center mt-3">
-                    {{ $products->links() }}
+                   {{ $products->appends(request()->query())->links() }}
                 </div>
                    
             </div>

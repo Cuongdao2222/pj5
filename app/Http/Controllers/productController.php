@@ -634,8 +634,7 @@ class productController extends AppBaseController
         $products = Product::where('Name', 'LIKE', '%' . $data . '%')
             ->orWhere('ProductSku', 'LIKE', '%' . $data . '%')
             ->orderBy('id', 'desc')
-            ->paginate(40)
-            ->withQueryString(); // 👈 giữ URL search hiện tại
+            ->paginate(40);
 
         if ($products->total() === 0) {
             Flash::error('Không tìm thấy sản phẩm, vui lòng tìm kiếm lại');
