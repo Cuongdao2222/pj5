@@ -629,40 +629,24 @@ class productController extends AppBaseController
     public function FindbyNameOrModel(Request $request)
     {
         $clearData = trim($request->search);
+        $data = strtoupper(strip_tags($clearData));
 
-        $data      = strip_tags($clearData);
+        $ids = Product::where('Name', 'LIKE', '%' . $data . '%')
+            ->orWhere('ProductSku', 'LIKE', '%' . $data . '%')
+            ->orderBy('id', 'desc')
+            ->limit(50)
+            ->pluck('id');
 
-        $data = strtoupper($data);
-
-        $resultProduct = [];
-
-        $find_first = Product::select('id')->where('Name','LIKE', '%'. $data .'%')->OrWhere('ProductSku', 'LIKE', '%' . $data . '%')->OrderBy('id', 'desc')->get()->take(50)->pluck('id');
-
-    
-        if(isset($find_first)){
-
-            foreach ($find_first as  $value) {
-
-                array_push($resultProduct, $find_first);
-            }
-
-
-        }
-
-        
-        if(isset($resultProduct)){
-
-            $products = Product::whereIn('id', $resultProduct)->paginate(40);
-
-            return view('products.index')
-            ->with('products', $products);
-
-        }
-        else{
-           Flash::error('Không tìm thấy sản phẩm, vui lòng tìm kiếm lại"');
-
+        if ($ids->isEmpty()) {
+            Flash::error('Không tìm thấy sản phẩm, vui lòng tìm kiếm lại');
             return redirect(route('products.index'));
         }
+
+        $products = Product::whereIn('id', $ids)
+            ->orderBy('id', 'desc')
+            ->paginate(40);
+
+        return view('products.index', compact('products'));
             
         
     }
