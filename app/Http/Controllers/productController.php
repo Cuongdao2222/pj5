@@ -631,23 +631,19 @@ class productController extends AppBaseController
         $clearData = trim($request->search);
         $data = strtoupper(strip_tags($clearData));
 
-        $ids = Product::where('Name', 'LIKE', '%' . $data . '%')
+        $products = Product::where('Name', 'LIKE', '%' . $data . '%')
             ->orWhere('ProductSku', 'LIKE', '%' . $data . '%')
             ->orderBy('id', 'desc')
-            ->limit(50)
-            ->pluck('id');
+            ->paginate(40)
+            ->withQueryString(); // 👈 giữ URL search hiện tại
 
-        if ($ids->isEmpty()) {
+        if ($products->total() === 0) {
             Flash::error('Không tìm thấy sản phẩm, vui lòng tìm kiếm lại');
             return redirect(route('products.index'));
         }
 
-        $products = Product::whereIn('id', $ids)
-            ->orderBy('id', 'desc')
-            ->paginate(40)->withQueryString();
-
         return view('products.find', compact('products'));
-            
+                    
         
     }
 
