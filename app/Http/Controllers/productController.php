@@ -646,7 +646,7 @@ class productController extends AppBaseController
             ->orderBy('id', 'desc')
             ->paginate(40);
 
-        return view('products.index', compact('products'));
+        return view('products.find', compact('products'));
             
         
     }
