@@ -64,9 +64,7 @@
             <div class="card-body p-0">
                 @include('products.table')
 
-                <div class="d-flex justify-content-center mt-3">
-                    {{ $products->links() }}
-                </div>
+                
                 <div class="d-flex justify-content-center mt-3">
                    {{ $products->appends(request()->query())->links() }}
                 </div>
