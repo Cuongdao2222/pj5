@@ -67,7 +67,9 @@
                 <div class="d-flex justify-content-center mt-3">
                     {{ $products->links() }}
                 </div>
-                        @include('adminlte-templates::common.paginate', ['records' => $products])
+                <div class="d-flex justify-content-center mt-3">
+                    {{ $products->links() }}
+                </div>
                    
             </div>
 
