@@ -644,7 +644,7 @@ class productController extends AppBaseController
 
         $products = Product::whereIn('id', $ids)
             ->orderBy('id', 'desc')
-            ->paginate(40);
+            ->paginate(40)->withQueryString();
 
         return view('products.find', compact('products'));
             
