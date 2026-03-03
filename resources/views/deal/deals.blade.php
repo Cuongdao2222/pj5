@@ -655,9 +655,41 @@ $('.update-bt-all').click(function(){
 
 function selectProduct(id){
 
-    const product_deal_id = '{{ implode(",", $product_id_deal) }}'.split(',').map(Number); 
+    const product_deal_id = '{{ implode(",", $product_id_deal) }}'.split(',').map(Number);
 
-    if (product_deal_id.includes(id)) {
+    <?php
+        $allProductSkus = App\Models\product::select('id','ProductSku')->get();
+
+        $dealProductSkus = [];
+        if(isset($products) && count($products) > 0){
+            foreach($products as $p){
+                $prod = App\Models\product::find($p->product_id);
+                if($prod && $prod->ProductSku != null){
+                    $dealProductSkus[] = $prod->ProductSku;
+                }
+            }
+        }
+    ?>
+
+    var productSkuMap = {
+    @foreach($allProductSkus as $ap)
+    '{{ $ap->id }}':'{{ addslashes($ap->ProductSku) }}',
+    @endforeach
+    };
+
+    var productModelsInDeal = [
+    @foreach($dealProductSkus as $sku)
+    '{{ addslashes($sku) }}',
+    @endforeach
+    ];
+
+    var sku = productSkuMap[id] ? productSkuMap[id].toString() : '';
+    if(sku && productModelsInDeal.includes(sku)){
+        alert('Model đã tồn tại trong deal, không thể thêm');
+        return;
+    }
+
+    if (product_deal_id.includes(Number(id))) {
 
         alert('sản phẩm này đã có trong deal, vui lòng xem lại nhé');
 
