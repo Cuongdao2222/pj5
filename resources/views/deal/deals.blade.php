@@ -305,6 +305,7 @@
                                 <td width="30px">STT</td>
                                 <td width="120px">Ảnh Sản phẩm</td>
                                 <td>Thông tin</td>
+                                <td>Model</td>
                                 <td>Tình trạng</td>
                                 <td>Quản lý</td>
                                 <td>Tồn kho</td>
@@ -346,6 +347,8 @@
                                     <img src="{{ asset($product_info->Image) }}" width="100" alt="{{ $val->name }}">
                                     <!--<div><a style="color:green" href="javascript:;" onclick="delete_special(1208)">Xóa bỏ</a></div>-->
                                 </td>
+
+
                                 <td>
                                     <div><a href="{{ route('details', $val->link) }}" target="_blank"><b>{{ $val->name }}</b></a></div>
                                     <div>Giá deal : <b style="color:red;">{{  str_replace(',' ,'.', number_format(intval($val->deal_price)))   }}</b> vnd - Giá thường: <b style="color:red;">{{  str_replace(',' ,'.', number_format(intval($product_info->Price)))   }}</b> </div>
@@ -355,6 +358,8 @@
                                     </div>
                                    
                                 </td>
+
+                                <td>{{ $product_info->ProductSku }}</td>
                                 <td>
                                     <div>Số đơn hàng : <b style="color:red;">0</b></div>
                                     <div>Số Sản phẩm đặt mua: <b style="color:red;">0</b></div>
