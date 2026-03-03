@@ -2214,7 +2214,7 @@
                     choose: choose,
                 },
                 success: function(result){
-                    console.log(result)
+                    // console.log(result)
 
                     $('.block-product__content ul').remove();
                    
