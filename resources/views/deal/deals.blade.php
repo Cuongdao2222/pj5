@@ -5,189 +5,50 @@
 
 
 <style type="text/css">
-        
-    body{margin-top:20px;}
+:root{--accent:#2aa493;--muted:#7a7a7a;--bg:#f8fafb;--card:#ffffff}
+body{margin-top:20px;font-family:Inter, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;background:var(--bg);color:#222}
+.main-box{background:var(--card);border-radius:10px;padding:18px;box-shadow:0 6px 18px rgba(27,40,50,0.06)}
 
+/* Buttons */
+.btn-primary{background:var(--accent);border-color:var(--accent);color:#fff;padding:8px 12px;border-radius:6px;cursor:pointer}
+.btn-default{background:#fff;border:1px solid #ddd;color:#333;padding:8px 12px;border-radius:6px;cursor:pointer}
+.btn-primary:hover{opacity:0.95}
 
-    /* USER LIST TABLE */
-    .user-list tbody td > img {
-        position: relative;
-        max-width: 50px;
-        float: left;
-        margin-right: 15px;
-    }
-    .content{
-        margin-top: 52px;
-    }
-    .user-list tbody td .user-link {
-        display: block;
-        font-size: 1.25em;
-        padding-top: 3px;
-        margin-left: 60px;
-    }
-    .user-list tbody td .user-subhead {
-        font-size: 0.875em;
-        font-style: italic;
-    }
+/* Deal table overall */
+#tb_padding, .tb-padding{width:100%;border-collapse:collapse;font-size:14px}
+#tb_padding thead th, .tb-padding thead th{background:#fbfdfe;color:#263238;padding:12px;text-align:left;border-bottom:2px solid #eef3f4}
+#tb_padding td, #tb_padding th, .tb-padding td{Padding:12px;border-bottom:1px solid #eef3f4;vertical-align:middle}
 
-    /* TABLES */
-    .table {
-        border-collapse: separate;
-    }
-    .table-hover > tbody > tr:hover > td,
-    .table-hover > tbody > tr:hover > th {
-        background-color: #eee;
-    }
-    .table thead > tr > th {
-        border-bottom: 1px solid #C2C2C2;
-        padding-bottom: 0;
-    }
-    .table tbody > tr > td {
-        font-size: 0.875em;
-        background: #f5f5f5;
-        /*border-top: 10px solid #fff;*/
-        vertical-align: middle;
-        padding: 12px 8px;
-        border: 1px solid #ddd;
-    }
-    .table tbody > tr > td:first-child,
-    .table thead > tr > th:first-child {
-        padding-left: 20px;
-    }
-    .table thead > tr > th span {
-        border-bottom: 2px solid #C2C2C2;
-        display: inline-block;
-        padding: 0 5px;
-        padding-bottom: 5px;
-        font-weight: normal;
-    }
-    .table thead > tr > th > a span {
-        color: #344644;
-    }
-    .table thead > tr > th > a span:after {
-        content: "\f0dc";
-        font-family: FontAwesome;
-        font-style: normal;
-        font-weight: normal;
-        text-decoration: inherit;
-        margin-left: 5px;
-        font-size: 0.75em;
-    }
-    .table thead > tr > th > a.asc span:after {
-        content: "\f0dd";
-    }
-    .table thead > tr > th > a.desc span:after {
-        content: "\f0de";
-    }
-    .table thead > tr > th > a:hover span {
-        text-decoration: none;
-        color: #2bb6a3;
-        border-color: #2bb6a3;
-    }
-    .table.table-hover tbody > tr > td {
-        -webkit-transition: background-color 0.15s ease-in-out 0s;
-        transition: background-color 0.15s ease-in-out 0s;
-    }
-    .table tbody tr td .call-type {
-        display: block;
-        font-size: 0.75em;
-        text-align: center;
-    }
-    .table tbody tr td .first-line {
-        line-height: 1.5;
-        font-weight: 400;
-        font-size: 1.125em;
-    }
-    .table tbody tr td .first-line span {
-        font-size: 0.875em;
-        color: #969696;
-        font-weight: 300;
-    }
-    .table tbody tr td .second-line {
-        font-size: 0.875em;
-        line-height: 1.2;
-    }
-    .table a.table-link {
-        margin: 0 5px;
-        font-size: 1.125em;
-    }
-    .table a.table-link:hover {
-        text-decoration: none;
-        color: #2aa493;
-    }
-    .table a.table-link.danger {
-        color: #fe635f;
-    }
-    .table a.table-link.danger:hover {
-        color: #dd504c;
-    }
+/* Product row styling */
+#tb_padding tr{background:transparent}
+#tb_padding tr:hover{background:linear-gradient(90deg,#fbfbfb,#f3f8f8)}
 
-    .table-products tbody > tr > td {
-        background: none;
-        border: none;
-        border-bottom: 1px solid #ebebeb;
-        -webkit-transition: background-color 0.15s ease-in-out 0s;
-        transition: background-color 0.15s ease-in-out 0s;
-        position: relative;
-    }
-    .table-products tbody > tr:hover > td {
-        text-decoration: none;
-        background-color: #f6f6f6;
-    }
-    .table-products .name {
-        display: block;
-        font-weight: 600;
-        padding-bottom: 7px;
-    }
-    .table-products .price {
-        display: block;
-        text-decoration: none;
-        width: 50%;
-        float: left;
-        font-size: 0.875em;
-    }
-    .table-products .price > i {
-        color: #8dc859;
-    }
-    .table-products .warranty {
-        display: block;
-        text-decoration: none;
-        width: 50%;
-        float: left;
-        font-size: 0.875em;
-    }
-    .table-products .warranty > i {
-        color: #f1c40f;
-    }
-    .table tbody > tr.table-line-fb > td {
-        background-color: #9daccb;
-        color: #262525;
-    }
-    .table tbody > tr.table-line-twitter > td {
-        background-color: #9fccff;
-        color: #262525;
-    }
-    .table tbody > tr.table-line-plus > td {
-        background-color: #eea59c;
-        color: #262525;
-    }
-    .table-stats .status-social-icon {
-        font-size: 1.9em;
-        vertical-align: bottom;
-    }
-    .table-stats .table-line-fb .status-social-icon {
-        color: #556484;
-    }
-    .table-stats .table-line-twitter .status-social-icon {
-        color: #5885b8;
-    }
-    .table-stats .table-line-plus .status-social-icon {
-        color: #a75d54;
-    }
+/* Image column */
+#tb_padding td img{max-width:110px;border-radius:6px;box-shadow:0 2px 6px rgba(34,34,34,0.06)}
 
-    .modal-dialog{
-        max-width: 800px !important;
-    }
+/* Product info */
+.product-name{font-weight:700;color:#183643;margin-bottom:6px;display:block}
+.product-meta{color:var(--muted);font-size:13px}
+.price-deal{color:#d32f2f;font-weight:700}
+.price-normal{color:#2e7d32;font-weight:600}
+
+/* Controls and small UI */
+.table-actions a{color:var(--accent);text-decoration:none;margin-right:8px}
+.table-actions a.danger{color:#e53935}
+
+/* Small inputs inside table */
+input[type="text"]{padding:6px 8px;border:1px solid #e6ecec;border-radius:6px}
+
+/* Responsive adjustments */
+@media (max-width:900px){
+    #tb_padding td:nth-child(3){display:block}
+    #tb_padding td img{max-width:80px}
+    #tb_padding thead{display:none}
+    #tb_padding tr{display:block;margin-bottom:10px;border-radius:8px;background:var(--card);box-shadow:0 4px 12px rgba(18,20,22,0.03);padding:12px}
+    #tb_padding td{display:flex;justify-content:space-between;padding:8px;border-bottom:0}
+}
+
+.modal-dialog{max-width:840px!important}
 </style>
 
 <script>
