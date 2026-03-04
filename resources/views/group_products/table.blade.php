@@ -227,17 +227,32 @@
         function suaTonClick(event, id, href) {
             event.preventDefault();
             try {
-                var globalKey = 'suaton_used';
-                var last = localStorage.getItem(globalKey);
+                var key = 'suaton_used_' + id;
+                var last = localStorage.getItem(key);
                 var today = new Date().toISOString().slice(0,10);
+
+                // Remove entries that are marked as yesterday to keep localStorage small
+                var yesterday = new Date(Date.now() - 86400000).toISOString().slice(0,10);
+                var toRemove = [];
+                for (var i = 0; i < localStorage.length; i++) {
+                    var k = localStorage.key(i);
+                    if (k && k.indexOf('suaton_used_') === 0) {
+                        try {
+                            var v = localStorage.getItem(k);
+                            if (v === yesterday) toRemove.push(k);
+                        } catch (e) {}
+                    }
+                }
+                toRemove.forEach(function(k){ try { localStorage.removeItem(k); } catch(e){} });
+
                 if (last === today) {
-                    alert('Bạn đã sửa tồn 1 lần hôm nay. Ngày mai mới có thể sửa lại.');
+                    alert('Bạn đã sửa tồn cho danh mục này hôm nay. Ngày mai mới có thể sửa lại.');
                     return false;
                 }
                 if (!confirm('Bạn có chắc muốn sửa tồn cho danh mục này?')) {
                     return false;
                 }
-                localStorage.setItem(globalKey, today);
+                localStorage.setItem(key, today);
                 window.open(href, '_blank');
             } catch (e) {
                 // fallback: if localStorage not available, still require confirm then proceed
