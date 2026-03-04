@@ -199,7 +199,7 @@ Route::post('filter-price-product-by-page', 'AjaxController@filterByPageFilter')
 
 Route::group(['prefix' => 'admins','middleware' => 'auth'], function() {
 
-    Route::get('sua-ton', 'crawlController@edit_ton_gr');
+    Route::get('sua-ton', 'crawlController@edit_ton_gr')->name('sua-ton');
 
     Route::get('test-home', 'Frontend\indexController@testHome')->middleware('throttle:90');
 

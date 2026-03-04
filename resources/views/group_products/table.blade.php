@@ -51,10 +51,8 @@
                     unset($data[$key]);
                   ?>    
              <li class="paren1">
-              <a href="javascript:void(0)"  class="click1" data-id="{{ $item['id'] }}" data-show="{{ $item['active'] }}"><?php echo $item['name']?></a>   @if($item['level']==0|| $item['level']==1|| $item['level']==2)<span class="clicks{{ $item['id'] }}" onclick="showChild('sub{{ $item['id'] }}', 'clicks{{ $item['id'] }}')">+</span>@endif {{ $item['active']==0?'Danh mục đang ẩn':'' }} &nbsp; &nbsp; &nbsp; <a href="javascript:void(0)" onclick="copy_link('https://dienmaynguoiviet.vn/{{ $item['link'] }}')"><i class="fa fa-clone" aria-hidden="true"></i>
-</a> 
-              
-              <?php recursiveMenu($data, $item['id'], false, $item['level']); ?>
+              <a href="javascript:void(0)"  class="click1" data-id="{{ $item['id'] }}" data-show="{{ $item['active'] }}"><?php echo $item['name']?></a>   @if($item['level']==0|| $item['level']==1|| $item['level']==2)<span class="clicks{{ $item['id'] }}" onclick="showChild('sub{{ $item['id'] }}', 'clicks{{ $item['id'] }}')">+</span>@endif {{ $item['active']==0?'Danh mục đang ẩn':'' }} &nbsp; &nbsp; &nbsp; <a href="javascript:void(0)" onclick="copy_link('https://dienmaynguoiviet.vn/{{ $item['link'] }}')"><i class="fa fa-clone" aria-hidden="true"></i></a> @if($item['level']==2) &nbsp; &nbsp; &nbsp; <a href="{{ route('sua-ton', ['id' => $item['id']]) }}" class="sua-ton" target="_blank" rel="noopener noreferrer" onclick="return suaTonClick(event, '{{ $item['id'] }}', this.href)">Sửa tồn</a> @endif
+                  <?php recursiveMenu($data, $item['id'], false, $item['level']); ?>
              </li>
                 <?php }} 
              echo "</ul>";
@@ -224,6 +222,29 @@
             navigator.clipboard.writeText(link);
             
             alert('thành công');
+        }
+
+        function suaTonClick(event, id, href) {
+            event.preventDefault();
+            try {
+                var globalKey = 'suaton_used';
+                var last = localStorage.getItem(globalKey);
+                var today = new Date().toISOString().slice(0,10);
+                if (last === today) {
+                    alert('Bạn đã sửa tồn 1 lần hôm nay. Ngày mai mới có thể sửa lại.');
+                    return false;
+                }
+                if (!confirm('Bạn có chắc muốn sửa tồn cho danh mục này?')) {
+                    return false;
+                }
+                localStorage.setItem(globalKey, today);
+                window.open(href, '_blank');
+            } catch (e) {
+                // fallback: if localStorage not available, still require confirm then proceed
+                if (!confirm('Bạn có chắc muốn sửa tồn cho danh mục này?')) return false;
+                window.open(href, '_blank');
+            }
+            return false;
         }
 
     </script>
