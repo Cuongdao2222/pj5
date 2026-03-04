@@ -246,18 +246,41 @@
                 toRemove.forEach(function(k){ try { localStorage.removeItem(k); } catch(e){} });
 
                 if (last === today) {
-                    alert('Bạn đã sửa tồn cho danh mục này hôm nay. Ngày mai mới có thể sửa lại.');
+                    alert('Bạn đã sửa tồn cho danh mục này hôm nay.');
                     return false;
                 }
-                if (!confirm('Bạn có chắc muốn sửa tồn cho danh mục này?')) {
+
+                if (!confirm('Bạn có chắc muốn xem thông tin Sửa tồn cho danh mục này (không mở tab mới)?')) {
                     return false;
                 }
-                localStorage.setItem(key, today);
-                window.open(href, '_blank');
+
+                // Fetch the page and show a textual preview in an alert instead of opening a new tab
+                fetch(href, { credentials: 'same-origin' })
+                    .then(function(response){ return response.text(); })
+                        .then(function(html){
+                            try {
+                                var parser = new DOMParser();
+                                var doc = parser.parseFromString(html, 'text/html');
+                                // remove script/style to avoid printing JS
+                                doc.querySelectorAll('script, style').forEach(function(n){ if(n && n.parentNode) n.parentNode.removeChild(n); });
+                                // prefer common content containers
+                                var sel = doc.querySelector('main, #content, .container, .modal-body, .card, .panel, .page-content, #app');
+                                var text = '';
+                                if (sel) text = (sel.textContent || sel.innerText || '').trim();
+                                else text = (doc.body && (doc.body.textContent || doc.body.innerText) || '').trim();
+                                if (!text) text = 'Không có nội dung để hiển thị.';
+                                if (text.length > 3000) text = text.slice(0,3000) + '\n\n...[nội dung bị cắt]';
+                                alert(text);
+                            } catch (e) {
+                                alert('Lỗi khi xử lý nội dung trả về.');
+                            }
+                            try { localStorage.setItem(key, today); } catch (e) {}
+                        })
+                    .catch(function(err){
+                        alert('Lỗi khi lấy nội dung: ' + err);
+                    });
             } catch (e) {
-                // fallback: if localStorage not available, still require confirm then proceed
-                if (!confirm('Bạn có chắc muốn sửa tồn cho danh mục này?')) return false;
-                window.open(href, '_blank');
+                alert('Không thể truy cập localStorage hoặc có lỗi khác.');
             }
             return false;
         }

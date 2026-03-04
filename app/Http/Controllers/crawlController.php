@@ -180,10 +180,10 @@ class crawlController extends Controller
 
         echo "sửa tồn $dem sản phẩm  $group->name";
 
-        echo "<pre>";
-        print_r($false);
+        // echo "<pre>";
+        // print_r($false);
 
-        echo"</pre>";
+        // echo"</pre>";
     }
 
     public function delete_product_deal($value='')
