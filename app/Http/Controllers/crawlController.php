@@ -178,7 +178,7 @@ class crawlController extends Controller
             
         }
 
-        echo "sửa tồn $dem sản phẩm  $group->name";
+        echo "Hạ tồn $dem sản phẩm  $group->name";
 
         // echo "<pre>";
         // print_r($false);
