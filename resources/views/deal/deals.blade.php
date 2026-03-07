@@ -53,7 +53,7 @@ input[type="text"]{padding:6px 8px;border:1px solid #e6ecec;border-radius:6px}
 
 <style>
     .container-fix{
-        width: 1340px!important;
+        max-width: 1340px!important;
     }
 </style>
 
