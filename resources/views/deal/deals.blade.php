@@ -51,6 +51,12 @@ input[type="text"]{padding:6px 8px;border:1px solid #e6ecec;border-radius:6px}
 .modal-dialog{max-width:840px!important}
 </style>
 
+<style>
+    .container-fix{
+        width: 1340px!important;
+    }
+</style>
+
 <script>
 
     $(document).ready(function() {
@@ -63,7 +69,7 @@ input[type="text"]{padding:6px 8px;border:1px solid #e6ecec;border-radius:6px}
   </script>
 
 
-<div class="container">
+<div class="container container-fix">
     <div class="row">
         <div class="col-lg-12">
             <div class="main-box clearfix">
